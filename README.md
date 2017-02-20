@@ -5,3 +5,4 @@ Design project for SWEN-262.
 - Anthony Palumbo ajp1925@rit.edu
 - Nicholas Feldman ncf1362@rit.edu
 - Edward Wong exw4141@rit.edu
+- Christopher Lim cxl2436@rit.edu
