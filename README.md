@@ -11,3 +11,4 @@ Design project for SWEN-262.
 - Nicholas Feldman ncf1362@rit.edu
 - Edward Wong exw4141@rit.edu
 - Christopher Lim cxl2436@rit.edu
+- Charles Barber crb7054@rit.edu
