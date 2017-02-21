@@ -1,6 +1,9 @@
 version = 'R1'
 
 apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'lbms.LBMS'
 
 sourceCompatibility = 1.8
 

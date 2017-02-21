@@ -1,6 +1,11 @@
 # Library-Book-Management-System
 Design project for SWEN-262.
 
+# Gradle Commands
+- Run: `gradlew[.bat] run` (Pending main class creation)
+- Build: `gradlew[.bat] build` (Jar is outputted to build/libs/)
+- Unit Tests: `gradlew[.bat] test`
+
 ## Collaborators
 - Anthony Palumbo ajp1925@rit.edu
 - Nicholas Feldman ncf1362@rit.edu
