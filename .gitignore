@@ -1,12 +1,19 @@
-*.class
+## Gradle
+.gradle
+/build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+## Editors
+# Idea
+.idea
+*.iml
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# Vim
+*.swp
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+## OS
+.DS_Store
+.Trashes
+._*
