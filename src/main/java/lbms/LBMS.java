@@ -1,9 +1,8 @@
 package lbms;
 
 /**
+ * Main class to run the Library Book Management System.
  * @author Team B
- * Created: 2-23-2017
- * Description: Main class to run the Library Book Management System.
  */
 public class LBMS {
 
