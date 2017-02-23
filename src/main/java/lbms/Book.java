@@ -12,7 +12,8 @@ public class Book {
     private int isbn, pageCount, numberOfCopies, copiesCheckedOut;
     private Calendar publishDate;
 
-    public Book(int isbn, String title, ArrayList<String> authors, String publisher, Calendar publishDate, int pageCount, int numberOfCopies, int copiesCheckedOut) {
+    public Book(int isbn, String title, ArrayList<String> authors, String publisher, Calendar publishDate,
+                int pageCount, int numberOfCopies, int copiesCheckedOut) {
         this.isbn = isbn;
         this.title = title;
         this.authors = authors;
