@@ -4,7 +4,8 @@ import lbms.Book;
 import java.util.ArrayList;
 
 /**
- * Created by Chris on 2/23/17.
+ * Search class that finds the books with the given ISBN number.
+ * @author Team B
  */
 public class SearchByISBN implements Search {
 
