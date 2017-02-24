@@ -55,4 +55,17 @@ public class Book {
     public Calendar getPublishDate() {
         return publishDate;
     }
+
+    public boolean canCheckOut() {
+        return copiesCheckedOut < numberOfCopies;
+    }
+    public void checkOut() {
+        if (copiesCheckedOut < numberOfCopies) {
+            copiesCheckedOut++;
+        }
+    }
+
+    public void returnBook() {
+        copiesCheckedOut--;
+    }
 }

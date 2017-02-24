@@ -1,23 +1,24 @@
 package lbms;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Chris on 2/23/17.
  */
 public class Visitor {
     private String firstName, lastName;
-    private String address;     //PLACEHOLDER
-    private int phoneNumber;    //PLACEHOLDER
+    private String address;     // PLACEHOLDER type address QUESTION: can we use external address and phone number class
+    private int phoneNumber;    // PLACEHOLDER type phonenumber
     private int visitorID;
-    private ArrayList<Transaction> checkedOutBooks;
+    private HashMap<Integer, Transaction> checkedOutBooks;
 
-    public Visitor(String firstName, String lastName, int phoneNumber, int visitorID) {
+    public Visitor(String firstName, String lastName, String address, int phoneNumber, int visitorID) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
         this.phoneNumber = phoneNumber;
         this.visitorID = visitorID;
-        this.checkedOutBooks = new ArrayList<Transaction>();
+        this.checkedOutBooks = new HashMap<Integer, Transaction>(5);
     }
 
 
@@ -45,12 +46,18 @@ public class Visitor {
         return checkedOutBooks.size();
     }
 
-    public void checkOut(Transaction transaction) {
-
+    public boolean canCheckOut() {
+        return checkedOutBooks.size() < 5;
     }
 
-    public void returnBook() {
+    public void checkOut(Transaction transaction) {
+        if (checkedOutBooks.size() < 5) {
+            checkedOutBooks.put(transaction.getIsbn(), transaction);
+        }
+    }
 
+    public void returnBook(Transaction transaction) {
+        checkedOutBooks.remove(transaction.getIsbn());
     }
 
 }

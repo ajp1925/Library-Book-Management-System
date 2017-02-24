@@ -10,24 +10,24 @@ public class Transaction {
     private final static double WEEK_FINE = 2.00;
     private final static double INITIAL_FINE = 10.00;
 
-    private Book book;
-    private int visitorID;
-    private double fine;
+    private int isbn;
+    private int visitorId;
     private Calendar date, dueDate;
+    private double fine;
 
-    public Transaction(Book book, int visitorID, Calendar date, Calendar dueDate) {
-        this.book = book;
-        this.visitorID = visitorID;
+    public Transaction(int isbn, int visitorId, Calendar date, Calendar dueDate) {
+        this.isbn = isbn;
+        this.visitorId = visitorId;
         this.date = date;
         this.dueDate = dueDate;
     }
 
-    public Book getBook() {
-        return book;
+    public int getIsbn() {
+        return isbn;
     }
 
-    public int getVisitorID() {
-        return visitorID;
+    public int getVisitor() {
+        return visitorId;
     }
 
     public double getFine() {
