@@ -27,7 +27,7 @@ public class SearchByISBN implements Search {
     public ArrayList<Book> search(ArrayList<Book> books) {
         ArrayList<Book> matches = new ArrayList<>();
         for(Book b: books) {
-            if(b.getISBN() == this.isbn) {
+            if(b.getIsbn() == this.isbn) {
                 matches.add(b);
             }
         }

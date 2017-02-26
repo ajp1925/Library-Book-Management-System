@@ -1,6 +1,7 @@
 package lbms;
 
 import lbms.state.State;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,6 +23,10 @@ public class LBMS {
         new LBMS();
     }
 
+    /**
+     * Getter for the list of books
+     * @return the books
+     */
     public ArrayList<Book> getBooks() {
         return books;
     }
@@ -32,6 +37,19 @@ public class LBMS {
     public LBMS() {
         instance = this;
         books = new ArrayList<>();
+
+        /*
+        // Deserialize the data.
+        try {
+            FileInputStream f = new FileInputStream("../serialized/books.ser"); // TODO file not created yet
+            ObjectInputStream in = new ObjectInputStream(f);
+            books = (ArrayList<Book>)in.readObject();
+        }
+        catch(ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        */
 
         // TODO (Nick): Set default state.
 
@@ -44,6 +62,21 @@ public class LBMS {
         } while(!input.matches("(?i)exit|quit") && scanner.hasNextLine());
 
         scanner.close();
+
+        /*
+        // Serializes the data.
+        try {
+            FileOutputStream f = new FileOutputStream("serialized/books.ser"); // TODO need to create the files to work
+            ObjectOutputStream out = new ObjectOutputStream(f);
+            out.writeObject(books);
+            out.close();
+            f.close();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        */
     }
 
 
