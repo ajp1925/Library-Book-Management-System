@@ -1,7 +1,6 @@
 package lbms;
 
 import lbms.state.State;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,6 +26,9 @@ public class LBMS {
         return books;
     }
 
+    /**
+     * Handles user input for the LBMS system.
+     */
     public LBMS() {
         instance = this;
         books = new ArrayList<>();
@@ -34,23 +36,19 @@ public class LBMS {
         // TODO (Nick): Set default state.
 
         Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.print("> ");
-            String input = scanner.nextLine();
-
-            if (input.matches("(?i)exit|quit")) {
-                break;
-            }
-
+        String input;
+        do {
+            System.out.println("> ");
+            input = scanner.nextLine();
             state.handleCommand(input);
-        }
+        } while(!input.matches("(?i)exit|quit") && scanner.hasNextLine());
+
         scanner.close();
     }
 
 
     /**
-     * Executes a checkout of a book by a visitor
-     *
+     * Executes a checkout of a book by a visitor.
      * @param visitor the visitor checking out the book
      * @param book the book being checked out
      * @return a Transaction if a successful Transaction is made, else return null
@@ -62,7 +60,6 @@ public class LBMS {
             visitor.checkOut(transaction);
             return transaction;
         }
-
         return null;
     }
 }
