@@ -56,6 +56,10 @@ public class Book {
         return publishDate;
     }
 
+    public int getISBN() {
+        return this.isbn;
+    }
+
     public boolean canCheckOut() {
         return copiesCheckedOut < numberOfCopies;
     }

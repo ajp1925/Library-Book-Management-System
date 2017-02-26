@@ -2,6 +2,7 @@ package lbms;
 
 import lbms.state.State;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Scanner;
 public class LBMS {
 
     private static LBMS instance;
-
+    private static ArrayList<Book> books;
     private static State state; // TODO: Set default state
 
     /**
@@ -22,8 +23,13 @@ public class LBMS {
         new LBMS();
     }
 
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
     public LBMS() {
         instance = this;
+        books = new ArrayList<>();
 
         // TODO (Nick): Set default state.
 

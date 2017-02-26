@@ -11,12 +11,29 @@ public class SearchByAuthor implements Search {
 
     private String author;
 
+    /**
+     * Constructor for SearchByAuthor.
+     * @param author: a String of the author
+     */
     public SearchByAuthor(String author) {
         this.author = author;
     }
 
-    public ArrayList<Book> search() {
-        // TODO
-        return null;
+    /**
+     * Method to find the books that match the given author
+     * @param books: the list of books
+     * @return A list of books that match the author
+     */
+    public ArrayList<Book> search(ArrayList<Book> books) {
+        ArrayList<Book> matches = new ArrayList<>();
+        for(Book b: books) {
+            for(String author: b.getAuthors()) {
+                if(author.equals(this.author)) {
+                    matches.add(b);
+                    break; // TODO make sure this doesn't stop outer loop
+                }
+            }
+        }
+        return matches;
     }
 }

@@ -11,12 +11,26 @@ public class SearchByISBN implements Search {
 
     private int isbn;
 
+    /**
+     * Constructor for SearchByISBN.
+     * @param isbn: the ISBN number
+     */
     public SearchByISBN(int isbn) {
         this.isbn = isbn;
     }
 
-    public ArrayList<Book> search() {
-        // TODO
-        return null;
+    /**
+     * Finds all the books with the given isbn.
+     * @param books: the list of books
+     * @return a list of books that match the ISBN number
+     */
+    public ArrayList<Book> search(ArrayList<Book> books) {
+        ArrayList<Book> matches = new ArrayList<>();
+        for(Book b: books) {
+            if(b.getISBN() == this.isbn) {
+                matches.add(b);
+            }
+        }
+        return matches;
     }
 }

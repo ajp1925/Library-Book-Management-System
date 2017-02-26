@@ -8,5 +8,12 @@ import java.util.ArrayList;
  * @author Team B
  */
 public interface Search {
-    public ArrayList<Book> search();
+
+    /**
+     * Finds the books with the given search criteria.
+     * @param books: the list of books
+     * @return a list of books that match
+     */
+    ArrayList<Book> search(ArrayList<Book> books);
+
 }
