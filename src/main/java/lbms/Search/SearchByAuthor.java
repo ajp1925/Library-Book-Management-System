@@ -15,9 +15,7 @@ public class SearchByAuthor implements Search {
      * Constructor for SearchByAuthor.
      * @param author: a String of the author
      */
-    public SearchByAuthor(String author) {
-        this.author = author;
-    }
+    public SearchByAuthor(String author) { this.author = author; }
 
     /**
      * Method to find the books that match the given author

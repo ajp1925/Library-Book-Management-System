@@ -1,11 +1,12 @@
 package lbms;
 
 import java.util.HashMap;
+import java.io.Serializable;
 
 /**
  * Class for a Visitor object, used in the library book management system.
  */
-public class Visitor implements java.io.Serializable {
+public class Visitor implements Serializable {
 
     private String firstName, lastName;
     private String address;     // PLACEHOLDER type address QUESTION: can we use external address and phone number class
@@ -28,7 +29,7 @@ public class Visitor implements java.io.Serializable {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.visitorID = visitorID;
-        this.checkedOutBooks = new HashMap<Integer, Transaction>(5);
+        this.checkedOutBooks = new HashMap<Integer, Transaction>(MAX_BOOKS);
     }
 
     /**

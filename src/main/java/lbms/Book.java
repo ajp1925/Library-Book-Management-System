@@ -2,11 +2,12 @@ package lbms;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.io.Serializable;
 
 /**
  * Class for a Book object, used in the library book management system.
  */
-public class Book implements java.io.Serializable {
+public class Book implements Serializable {
 
     private String title, publisher;
     private ArrayList<String> authors;

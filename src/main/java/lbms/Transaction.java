@@ -1,11 +1,12 @@
 package lbms;
 
 import java.util.Calendar;
+import java.io.Serializable;
 
 /**
  * Class for a Transaction object, used in the library book management system.
  */
-public class Transaction implements java.io.Serializable {
+public class Transaction implements Serializable {
     private final static double MAX_FINE = 30.00;
     private final static double WEEK_FINE = 2.00;
     private final static double INITIAL_FINE = 10.00;

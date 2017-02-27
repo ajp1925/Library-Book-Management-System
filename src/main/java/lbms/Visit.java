@@ -1,6 +1,7 @@
 package lbms;
 
 import java.util.Calendar;
+import java.io.Serializable;
 
 /**
  * Class for a Visit Object, used in the library book management system.
