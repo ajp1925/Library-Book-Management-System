@@ -36,20 +36,17 @@ public class LBMS {
      */
     public LBMS() {
         instance = this;
-        books = new ArrayList<>();
 
-        /*
         // Deserialize the data.
         try {
-            FileInputStream f = new FileInputStream("../serialized/books.ser"); // TODO file not created yet
+            FileInputStream f = new FileInputStream("books.ser"); // TODO file not created yet
             ObjectInputStream in = new ObjectInputStream(f);
             books = (ArrayList<Book>)in.readObject();
         }
         catch(ClassNotFoundException | IOException e) {
-            e.printStackTrace();
-            System.exit(1);
+            books = new ArrayList<>();
         }
-        */
+
 
         // TODO (Nick): Set default state.
 
@@ -63,10 +60,11 @@ public class LBMS {
 
         scanner.close();
 
-        /*
+
         // Serializes the data.
         try {
-            FileOutputStream f = new FileOutputStream("serialized/books.ser"); // TODO need to create the files to work
+            File fl = new File("books.ser");
+            FileOutputStream f = new FileOutputStream(fl); // TODO need to create the files to work
             ObjectOutputStream out = new ObjectOutputStream(f);
             out.writeObject(books);
             out.close();
@@ -76,7 +74,7 @@ public class LBMS {
             e.printStackTrace();
             System.exit(1);
         }
-        */
+
     }
 
 
