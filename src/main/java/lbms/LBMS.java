@@ -13,7 +13,7 @@ public class LBMS {
 
     private static LBMS instance;
     private static ArrayList<Book> books;
-    private static State state; // TODO: Set default state
+    private static State state = State.STATE_DEFAULT; // TODO: Set default state
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -53,7 +53,7 @@ public class LBMS {
         Scanner scanner = new Scanner(System.in);
         String input;
         do {
-            System.out.println("> ");
+            System.out.print("> ");
             input = scanner.nextLine();
             state.handleCommand(input);
         } while(!input.matches("(?i)exit|quit") && scanner.hasNextLine());
