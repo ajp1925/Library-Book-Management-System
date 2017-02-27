@@ -1,9 +1,12 @@
 package lbms;
 
-import lbms.state.State;
+import lbms.state.StateManager;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static lbms.state.StateManager.STATE_DEFAULT;
 
 /**
  * Main class to run the Library Book Management System.
@@ -13,8 +16,6 @@ public class LBMS {
 
     private static LBMS instance;
     private static ArrayList<Book> books;
-    private static State state = State.STATE_DEFAULT; // TODO: Set default state
-
     /**
      * Program entry point. Handle command line arguments and start.
      * @param args: the program arguments
@@ -47,17 +48,17 @@ public class LBMS {
             books = new ArrayList<>();
         }
 
-
-        // TODO (Nick): Set default state.
+        StateManager.setState(STATE_DEFAULT);
 
         Scanner scanner = new Scanner(System.in);
-        String input;
-        do {
+        while (true) {
             System.out.print("> ");
-            input = scanner.nextLine();
-            state.handleCommand(input);
-        } while(!input.matches("(?i)exit|quit") && scanner.hasNextLine());
-
+            String input = scanner.nextLine();
+            if (input.matches("(?i)exit|quit")) {
+                break;
+            }
+            StateManager.getState().handleCommand(input);
+        }
         scanner.close();
 
 
