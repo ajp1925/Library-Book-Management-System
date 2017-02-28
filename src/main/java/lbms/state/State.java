@@ -8,6 +8,11 @@ package lbms.state;
 public abstract class State {
 
     /**
+     * Called every time the state is entered.
+     */
+    public abstract void onEnter();
+
+    /**
      * Updates the view. Should only be called internally.
      */
     protected abstract void display();
