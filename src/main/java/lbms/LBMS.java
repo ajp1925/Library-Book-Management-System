@@ -57,7 +57,6 @@ public class LBMS {
             visitors = new ArrayList<>();
             visits = new ArrayList<>();
             transactions = new ArrayList<>();
-            time = new SystemDateTime();
         }
 
         StateManager.setState(STATE_DEFAULT);
@@ -103,7 +102,7 @@ public class LBMS {
      */
     public Transaction checkOut(Visitor visitor, Book book) {
         if (book.canCheckOut() && visitor.canCheckOut()) {
-            Transaction transaction = new Transaction(book.getIsbn(), visitor.getVisitorID(), null, null);       // PLACEHOLDER dates
+            Transaction transaction = new Transaction(book.getIsbn(), visitor.getVisitorID());       // PLACEHOLDER dates
             book.checkOut();
             visitor.checkOut(transaction);
             return transaction;
