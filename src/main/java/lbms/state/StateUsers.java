@@ -1,12 +1,21 @@
 package lbms.state;
 
+/**
+ * Intermediate state which allows choosing whether to search for a user or register a new one.
+ */
 class StateUsers extends State {
 
+    /**
+     * NO-OP
+     */
     @Override
-    public void onEnter() {
+    protected void onEnter() {
         // NO-OP
     }
 
+    /**
+     * Prompts a user to either search or register a user
+     */
     @Override
     protected void display() {
         System.out.println("Please select a command:");
@@ -14,6 +23,9 @@ class StateUsers extends State {
         System.out.println("register)  Register a new user");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void handleCommand(String command) {
         switch (command) {

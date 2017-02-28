@@ -10,7 +10,7 @@ public abstract class State {
     /**
      * Called every time the state is entered.
      */
-    public abstract void onEnter();
+    protected abstract void onEnter();
 
     /**
      * Updates the view. Should only be called internally.

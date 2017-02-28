@@ -2,14 +2,20 @@ package lbms.state;
 
 import java.util.Scanner;
 
+/**
+ * This state handles registering a new user
+ */
 class StateUsersRegister extends State {
 
     private String firstName;
     private String lastName;
     private String address;
 
+    /**
+     * Get information from the user to register a new user
+     */
     @Override
-    public void onEnter() {
+    protected void onEnter() {
         System.out.println("Registering a new user.");
         Scanner scanner = new Scanner(System.in);
         System.out.print("First Name: ");
@@ -20,6 +26,9 @@ class StateUsersRegister extends State {
         address = scanner.nextLine();
     }
 
+    /**
+     * Prompts the user to verify the entered information
+     */
     @Override
     protected void display() {
         System.out.println("Is all this information correct? (y/n)");
@@ -28,6 +37,9 @@ class StateUsersRegister extends State {
         System.out.printf("Address: %s\n", address);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void handleCommand(String command) {
         switch (command) {
