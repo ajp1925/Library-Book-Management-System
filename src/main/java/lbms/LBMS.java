@@ -3,6 +3,7 @@ package lbms;
 import lbms.state.StateManager;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 import static lbms.state.StateManager.STATE_DEFAULT;
@@ -53,7 +54,7 @@ public class LBMS {
             time = (SystemDateTime)in.readObject();
         }
         catch(ClassNotFoundException | IOException e) {
-            books = new ArrayList<>();
+            books = makeBooks();
             visitors = new ArrayList<>();
             visits = new ArrayList<>();
             transactions = new ArrayList<>();
@@ -109,5 +110,24 @@ public class LBMS {
             return transaction;
         }
         return null;
+    }
+
+    private ArrayList<Book> makeBooks() {
+        ArrayList<Book> output = new ArrayList<>();
+        Scanner s = new Scanner("books.txt");
+        String line;
+        String[] parts;
+        String title, publisher;
+        ArrayList<String> authors;
+        int isbn, pageCount, numberOfCopies, copiesCheckedOut;
+        Calendar publishDate;
+        while(s.hasNextLine()) {
+            line = s.nextLine();
+            parts = line.split(",");
+            // TODO create a book object
+            //output.add(b);
+        }
+
+        return output;
     }
 }
