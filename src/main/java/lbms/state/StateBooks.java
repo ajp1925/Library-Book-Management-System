@@ -1,9 +1,9 @@
 package lbms.state;
 
-public class StateBooks extends State {
+class StateBooks extends State {
 
     @Override
-    public void onEnter() {
+    protected void onEnter() {
 
     }
 
