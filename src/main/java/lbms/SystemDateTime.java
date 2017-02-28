@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class SystemDateTime implements Serializable {
     private LocalDateTime time;
 
-    private SystemDateTime() {
+    public SystemDateTime() {
         this.time = LocalDateTime.now();
     }
 

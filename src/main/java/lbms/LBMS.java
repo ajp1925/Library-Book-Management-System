@@ -18,6 +18,7 @@ public class LBMS {
     private static ArrayList<Visitor> visitors;
     private static ArrayList<Visit> visits;
     private static ArrayList<Transaction> transactions;
+    private static SystemDateTime time;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -49,12 +50,14 @@ public class LBMS {
             visitors = (ArrayList<Visitor>)in.readObject();
             visits = (ArrayList<Visit>)in.readObject();
             transactions = (ArrayList<Transaction>)in.readObject();
+            time = (SystemDateTime)in.readObject();
         }
         catch(ClassNotFoundException | IOException e) {
             books = new ArrayList<>();
             visitors = new ArrayList<>();
             visits = new ArrayList<>();
             transactions = new ArrayList<>();
+            time = new SystemDateTime();
         }
 
         StateManager.setState(STATE_DEFAULT);
@@ -80,6 +83,7 @@ public class LBMS {
             out.writeObject(visitors);
             out.writeObject(visits);
             out.writeObject(transactions);
+            out.writeObject(time);
             out.close();
             f.close();
         }
