@@ -5,6 +5,7 @@ public class StateManager {
     public static State STATE_DEFAULT = new StateDefault();
     public static State STATE_USERS = new StateUsers();
     public static State STATE_BOOKS = new StateBooks();
+    public static State STATE_USERS_REGISTER = new StateUsersRegister();
 
     private static State currentState;
 
