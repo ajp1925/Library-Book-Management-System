@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * Class for a Visit Object, used in the library book management system.
  */
-public class Visit implements java.io.Serializable {
+public class Visit implements Serializable {
 
     private int visitorID;
     private Calendar date;

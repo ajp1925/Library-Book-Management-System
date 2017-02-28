@@ -1,7 +1,6 @@
 package lbms;
 
 import lbms.state.StateManager;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,6 +15,10 @@ public class LBMS {
 
     private static LBMS instance;
     private static ArrayList<Book> books;
+    private static ArrayList<Visitor> visitors;
+    private static ArrayList<Visit> visits;
+    private static ArrayList<Transaction> transactions;
+
     /**
      * Program entry point. Handle command line arguments and start.
      * @param args: the program arguments
@@ -40,12 +43,18 @@ public class LBMS {
 
         // Deserialize the data.
         try {
-            FileInputStream f = new FileInputStream("books.ser"); // TODO file not created yet
+            FileInputStream f = new FileInputStream("data.ser");
             ObjectInputStream in = new ObjectInputStream(f);
             books = (ArrayList<Book>)in.readObject();
+            visitors = (ArrayList<Visitor>)in.readObject();
+            visits = (ArrayList<Visit>)in.readObject();
+            transactions = (ArrayList<Transaction>)in.readObject();
         }
         catch(ClassNotFoundException | IOException e) {
             books = new ArrayList<>();
+            visitors = new ArrayList<>();
+            visits = new ArrayList<>();
+            transactions = new ArrayList<>();
         }
 
         StateManager.setState(STATE_DEFAULT);
@@ -64,10 +73,13 @@ public class LBMS {
 
         // Serializes the data.
         try {
-            File fl = new File("books.ser");
+            File fl = new File("data.ser");
             FileOutputStream f = new FileOutputStream(fl); // TODO need to create the files to work
             ObjectOutputStream out = new ObjectOutputStream(f);
             out.writeObject(books);
+            out.writeObject(visitors);
+            out.writeObject(visits);
+            out.writeObject(transactions);
             out.close();
             f.close();
         }
