@@ -8,14 +8,9 @@ package lbms.state;
 public abstract class State {
 
     /**
-     * Called once, when a state is first entered.
+     * Updates the view. Should only be called internally.
      */
-    protected abstract void init();
-
-    /**
-     * Called every time the state is entered.
-     */
-    protected abstract void enter();
+    protected abstract void display();
 
     /**
      * Handle a command passed to the state

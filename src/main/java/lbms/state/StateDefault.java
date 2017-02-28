@@ -3,12 +3,7 @@ package lbms.state;
 class StateDefault extends State {
 
     @Override
-    protected void init() {
-        // NO-OP
-    }
-
-    @Override
-    protected void enter() {
+    protected void display() {
         System.out.println("Welcome to the Library Book Management System!");
         System.out.println("Please select a command: ");
         System.out.println("books)  View books");
