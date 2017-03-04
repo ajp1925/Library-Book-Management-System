@@ -12,7 +12,7 @@ public class Visitor implements Serializable {
     private String address;     // PLACEHOLDER type address QUESTION: can we use external address and phone number class
     private int phoneNumber;    // PLACEHOLDER type phonenumber
     private int visitorID;
-    private HashMap<Integer, Transaction> checkedOutBooks;
+    private HashMap<Long, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
 
     /**
@@ -29,7 +29,7 @@ public class Visitor implements Serializable {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.visitorID = visitorID;
-        this.checkedOutBooks = new HashMap<Integer, Transaction>(MAX_BOOKS);
+        this.checkedOutBooks = new HashMap<Long, Transaction>(MAX_BOOKS);
     }
 
     /**

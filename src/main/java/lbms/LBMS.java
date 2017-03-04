@@ -2,9 +2,10 @@ package lbms;
 
 import lbms.state.StateManager;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import static lbms.state.StateManager.STATE_DEFAULT;
 
@@ -113,20 +114,105 @@ public class LBMS {
 
     private ArrayList<Book> makeBooks() {
         ArrayList<Book> output = new ArrayList<>();
-        Scanner s = new Scanner("books.txt");
-        String line;
-        String[] parts;
-        String title, publisher;
-        ArrayList<String> authors;
-        int isbn, pageCount, numberOfCopies, copiesCheckedOut;
-        Calendar publishDate;
-        while(s.hasNextLine()) {
-            line = s.nextLine();
-            parts = line.split(",");
-            // TODO create a book object
-            //output.add(b);
+        try {
+            File books = new File("books.txt");
+            Scanner s = new Scanner(books);
+            String line;
+            String[] parts;
+            String title, publisher;
+            ArrayList<String> authors;
+            long isbn;
+            int pageCount, numberOfCopies, copiesCheckedOut;
+            Calendar publishDate = null;
+            while (s.hasNextLine()) {
+                int i = 1;
+                line = s.nextLine();
+                parts = line.split(",");
+                isbn = Long.parseLong(parts[0]);
+                title = "";
+                authors = new ArrayList<>();
+                publisher = "";
+                while (parts[i].charAt(0) != '{') {
+                    if (parts[i].charAt(0) == '"' && parts[i].charAt(parts[i].length()-1) == '"'){
+                        title = parts[i].substring(1, parts[i].length()-1);
+                    }
+                    else if (parts[i].charAt(0) == '"') {
+                        title = title + parts[i].substring(1) + ", ";
+                    }
+                    else if (parts[i].charAt(parts[i].length()-1) == '"') {
+                        title = title + parts[i].substring(0, parts[i].length()-1);
+                    }
+                    else {
+                        title = title + parts[i].substring(1) + ",";
+                    }
+                    i += 1;
+                }
+                for (int in = 2; in < parts.length; in++) {
+                    if (parts[in].charAt(0) == '{' && parts[in].charAt(parts[in].length()-1) == '}') {
+                        authors.add(parts[in].substring(1, parts[in].length()-1));
+                        break;
+                    }
+                    else if (parts[in].charAt(0) == '{') {
+                        authors.add(parts[in].substring(1, parts[in].length()));
+                    }
+                    else if (parts[in].charAt(parts[in].length()-1) == '}') {
+                        authors.add(parts[in].substring(0, parts[in].length()-1));
+                        break;
+                    }
+                    else if (authors.size() > 0) {
+                        authors.add(parts[in]);
+                    }
+                }
+                for (int in = 2; in < parts.length; in++) {
+                    if (parts[in].charAt(parts[in].length()-1) == '}') {
+                        publisher = parts[in+1];
+                    }
+                }
+                if (parts[parts.length-3].length() == 10) {
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    try {
+                        Date date = format.parse(parts[parts.length - 3]);
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(date);
+                        publishDate = calendar;
+                    }
+                    catch (ParseException e) {
+                        System.out.println(e);
+                    }
+                }
+                if (parts[parts.length-3].length() == 7) {
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+                    try {
+                        Date date = format.parse(parts[parts.length - 3]);
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(date);
+                        publishDate = calendar;
+                    }
+                    catch (ParseException e) {
+                        System.out.println(e);
+                    }
+                }
+                if (parts[parts.length-3].length() == 4) {
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy");
+                    try {
+                        Date date = format.parse(parts[parts.length - 3]);
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(date);
+                        publishDate = calendar;
+                    }
+                    catch (ParseException e) {
+                        System.out.println(e);
+                    }
+                }
+                pageCount = Integer.parseInt(parts[parts.length-2]);
+                // TODO create a book object
+                Book b = new Book(isbn, title, authors, publisher, publishDate, pageCount, 0, 0);
+                output.add(b);
+            }
         }
-
+        catch (FileNotFoundException e) {
+            System.out.println(e);
+        }
         return output;
     }
 }

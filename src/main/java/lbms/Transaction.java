@@ -12,7 +12,7 @@ public class Transaction implements Serializable {
     private final static double WEEK_FINE = 2.00;
     private final static double INITIAL_FINE = 10.00;
 
-    private int isbn;
+    private long isbn;
     private int visitorId;
     private LocalDate date, dueDate;
     private double fine;
@@ -24,7 +24,7 @@ public class Transaction implements Serializable {
      * @param isbn: the isbn of the book
      * @param visitorId: the ID of the visitor checking it out
      */
-    public Transaction(int isbn, int visitorId) {
+    public Transaction(long isbn, int visitorId) {
         this.isbn = isbn;
         this.visitorId = visitorId;
         this.date = SystemDateTime.instance.getDate();
@@ -35,7 +35,7 @@ public class Transaction implements Serializable {
      * Getter for the ISBN number.
      * @return the isbn of the book checked out
      */
-    public int getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 
