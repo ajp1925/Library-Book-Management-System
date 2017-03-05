@@ -1,21 +1,24 @@
-package lbms.state;
+package lbms.views;
+
+import lbms.API;
+import lbms.models.Visitor;
+import lbms.controllers.ViewController;
 
 import java.util.Scanner;
 
 /**
- * This state handles registering a new user
+ * This views handles registering a new user
  */
-class StateUsersRegister extends State {
+public class RegisterViewState implements State {
 
     private String firstName;
     private String lastName;
     private String address;
 
     /**
-     * Get information from the user to register a new user
+     * Prompts the user to verify the entered information
      */
-    @Override
-    protected void onEnter() {
+    public void init() {
         System.out.println("Registering a new user.");
         Scanner scanner = new Scanner(System.in);
         System.out.print("First Name: ");
@@ -27,25 +30,24 @@ class StateUsersRegister extends State {
     }
 
     /**
-     * Prompts the user to verify the entered information
+     * Get information from the user to register a new user
      */
-    @Override
-    protected void display() {
+    public void onEnter() {
         System.out.println("Is all this information correct? (y/n)");
         System.out.printf("First Name: %s\n", firstName);
         System.out.printf("Last Name: %s\n", lastName);
         System.out.printf("Address: %s\n", address);
+
     }
 
     /**
      * {@inheritDoc}
      */
-    @Override
-    public void handleCommand(String command) {
-        switch (command) {
+    public void change(String state) {
+        switch (state) {
             case "y":
-                // TODO: Save user
-                StateManager.setState(StateManager.STATE_USERS);
+                API.registerVisitor(new Visitor(firstName, lastName, address, 0,0));
+                ViewController.setState(new DefaultViewState());
                 break;
             case "n":
                 onEnter();

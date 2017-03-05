@@ -1,4 +1,6 @@
-package lbms;
+package lbms.models;
+
+import lbms.models.Transaction;
 
 import java.util.HashMap;
 import java.io.Serializable;

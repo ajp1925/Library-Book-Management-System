@@ -1,4 +1,6 @@
-package lbms;
+package lbms.models;
+
+import lbms.models.SystemDateTime;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
