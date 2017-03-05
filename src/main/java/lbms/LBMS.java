@@ -3,6 +3,7 @@ package lbms;
 import lbms.state.StateManager;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -121,7 +122,7 @@ public class LBMS {
     private ArrayList<Book> makeBooks() {
         ArrayList<Book> output = new ArrayList<>();
         try {
-            File books = new File("books.txt");
+            File books = new File(getClass().getResource("/books.txt").toURI());
             Scanner s = new Scanner(books);
             String line;
             String[] parts;
@@ -218,6 +219,9 @@ public class LBMS {
         }
         catch (FileNotFoundException e) {
             System.out.println(e);
+        }
+        catch (URISyntaxException e) {
+            e.printStackTrace();
         }
         return output;
     }
