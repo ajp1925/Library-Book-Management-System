@@ -1,11 +1,14 @@
 package lbms;
 
 import lbms.state.StateManager;
+
 import java.io.*;
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Scanner;
 
 import static lbms.state.StateManager.STATE_DEFAULT;
 
@@ -20,7 +23,6 @@ public class LBMS {
     private static ArrayList<Visitor> visitors;
     private static ArrayList<Visit> visits;
     private static ArrayList<Transaction> transactions;
-    private static SystemDateTime time;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -52,7 +54,7 @@ public class LBMS {
             visitors = (ArrayList<Visitor>)in.readObject();
             visits = (ArrayList<Visit>)in.readObject();
             transactions = (ArrayList<Transaction>)in.readObject();
-            time = (SystemDateTime)in.readObject();
+            //time = (SystemDateTime)in.readObject(); // TODO: Set SystemDateTime
         }
         catch(ClassNotFoundException | IOException e) {
             books = makeBooks();
@@ -84,7 +86,7 @@ public class LBMS {
             out.writeObject(visitors);
             out.writeObject(visits);
             out.writeObject(transactions);
-            out.writeObject(time);
+            out.writeObject(SystemDateTime.getInstance());
             out.close();
             f.close();
         }

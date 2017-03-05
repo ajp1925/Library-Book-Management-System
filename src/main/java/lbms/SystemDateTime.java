@@ -1,17 +1,15 @@
 package lbms;
 
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
-
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Chris on 2/27/17.
  */
-public class SystemDateTime implements Runnable, Serializable {
+public class SystemDateTime extends Thread implements Serializable {
     private static SystemDateTime instance = null;
 
     private LocalDateTime time;
