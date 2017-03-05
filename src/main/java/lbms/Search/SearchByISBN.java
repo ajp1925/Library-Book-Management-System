@@ -10,13 +10,13 @@ import java.util.HashMap;
  */
 public class SearchByISBN implements Search {
 
-    private int isbn;
+    private Long isbn;
 
     /**
      * Constructor for SearchByISBN.
      * @param isbn: the ISBN number
      */
-    public SearchByISBN(int isbn) {
+    public SearchByISBN(Long isbn) {
         this.isbn = isbn;
     }
 
@@ -27,11 +27,7 @@ public class SearchByISBN implements Search {
      */
     public ArrayList<Book> search(HashMap<Long, Book> books) {
         ArrayList<Book> matches = new ArrayList<>();
-        for(Long key: books.keySet()) {
-            if(books.get(key).getIsbn() == this.isbn) {
-                matches.add(books.get(key));
-            }
-        }
+        matches.add(books.get(isbn));
         return matches;
     }
 }

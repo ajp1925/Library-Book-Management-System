@@ -11,7 +11,7 @@ public class Book implements Serializable {
 
     private String title, publisher;
     private ArrayList<String> authors;
-    private long isbn;
+    private Long isbn;
     private int pageCount, numberOfCopies, copiesCheckedOut;
     private Calendar publishDate;
 
