@@ -1,7 +1,8 @@
 package lbms;
 
-import lbms.state.State;
-import lbms.state.StateManager;
+import lbms.views.DefaultViewState;
+import lbms.views.State;
+import lbms.controllers.ViewController;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,24 +12,24 @@ public class TestStateManager {
 
     @Before
     public void setDefaultState() {
-        StateManager.setState(StateManager.STATE_DEFAULT);
+        ViewController.setState(new DefaultViewState());
     }
 
     @Test
     public void defaultStateExists() {
-        assertNotNull(StateManager.getState());
+        assertNotNull(ViewController.getState());
     }
 
     @Test
     public void stateSwitches() {
-        State currentState = StateManager.getState();
-        StateManager.setState(new DummyState());
-        assertNotEquals(currentState, StateManager.getState());
+        State currentState = ViewController.getState();
+        ViewController.setState(new DummyState());
+        assertNotEquals(currentState, ViewController.getState());
     }
 
-    public class DummyState extends State {
-        @Override protected void onEnter() {}
-        @Override protected void display() {}
-        @Override public void handleCommand(String command) {}
+    public class DummyState implements State {
+        public void init() {}
+        public void onEnter() {}
+        public void change(String state) {}
     }
 }

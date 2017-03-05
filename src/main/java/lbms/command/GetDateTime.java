@@ -1,9 +1,9 @@
 package lbms.command;
 
-import lbms.SystemDateTime;
+import lbms.models.SystemDateTime;
 
 /**
- * GetDateTime class that calls the API to get the system time.
+ * GetDateTime class that calls the APIContoller to get the system time.
  */
 public class GetDateTime implements Command {
 

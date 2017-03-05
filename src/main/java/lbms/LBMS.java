@@ -1,14 +1,16 @@
 package lbms;
 
-import lbms.state.StateManager;
-
 import java.io.*;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static lbms.state.StateManager.STATE_DEFAULT;
+import lbms.controllers.ViewController;
+import lbms.models.*;
+import lbms.views.DefaultViewState;
+
+//import static lbms.controllers.ViewController.STATE_DEFAULT;
 
 /**
  * Main class to run the Library Book Management System.
@@ -56,7 +58,7 @@ public class LBMS {
             transactions = new ArrayList<>();
         }
 
-        StateManager.setState(STATE_DEFAULT);
+        ViewController.setState(new DefaultViewState());
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -65,7 +67,7 @@ public class LBMS {
             if (input.matches("(?i)exit|quit")) {
                 break;
             }
-            StateManager.getState().handleCommand(input);
+            ViewController.change(input);
         }
         scanner.close();
 

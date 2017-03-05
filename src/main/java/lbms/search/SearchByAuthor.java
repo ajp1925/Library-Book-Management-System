@@ -1,6 +1,6 @@
 package lbms.search;
 
-import lbms.Book;
+import lbms.models.Book;
 
 import java.util.HashMap;
 import java.util.List;
