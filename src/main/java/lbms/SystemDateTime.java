@@ -22,7 +22,7 @@ public class SystemDateTime extends Thread implements Serializable {
             this.time = time.plusMinutes(1);
             System.out.println(this.toString());
             try {
-                Thread.sleep(3000);
+                Thread.sleep(60000);
             } catch (Exception ex) {}
         }
     }
@@ -44,23 +44,7 @@ public class SystemDateTime extends Thread implements Serializable {
 
     public String toString() { return time.format(formatter); }
 
-    public void plusDays(long days) {
-        //this.interrupt();
-        time = time.plusDays(days);
-//        try {
-//            this.join();
-//        } catch (Exception e) {
-//            System.out.println("EXCEPTION: SystemDateTime Add Days Failure");
-//        }
-    }
+    public void plusDays(long days) { time = time.plusDays(days); }
 
-    public void plusHours(long hours) {
-        //this.interrupt();
-        time = time.plusHours(hours);
-//        try {
-//            this.join();
-//        } catch (Exception e) {
-//            System.out.println("EXCEPTION: SystemDateTime Add Hours Failure");
-//        }
-    }
+    public void plusHours(long hours) { time = time.plusHours(hours); }
 }

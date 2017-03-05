@@ -18,7 +18,7 @@ public class SearchByISBN implements Search {
      * Constructor for SearchByISBN.
      * @param isbn: the ISBN number
      */
-    public SearchByISBN(int isbn) {
+    public SearchByISBN(Long isbn) {
         this(Long.toString(isbn));
     }
 

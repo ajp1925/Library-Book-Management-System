@@ -17,8 +17,7 @@ import static lbms.state.StateManager.STATE_DEFAULT;
 public class LBMS {
 
     private static LBMS instance;
-
-    private static HashMap books;
+    private static HashMap<Long, Book> books;
     private static ArrayList<Book> booksToBuy;
     private static ArrayList<Visitor> visitors;
     private static ArrayList<Visit> visits;
@@ -33,6 +32,14 @@ public class LBMS {
     }
 
     /**
+     * Getter for the hash map of books
+     * @return the books
+     */
+    public HashMap<Long, Book> getBooks() {
+        return books;
+    }
+
+    /**
      * Handles user input for the LBMS system.
      */
     public LBMS() {
@@ -42,7 +49,7 @@ public class LBMS {
         try {
             FileInputStream f = new FileInputStream("data.ser");
             ObjectInputStream in = new ObjectInputStream(f);
-            books = (HashMap)in.readObject();
+            books = (HashMap<Long, Book>)in.readObject();
             booksToBuy = (ArrayList<Book>)in.readObject();
             visitors = (ArrayList<Visitor>)in.readObject();
             visits = (ArrayList<Visit>)in.readObject();
@@ -50,7 +57,7 @@ public class LBMS {
             //time = (SystemDateTime)in.readObject(); // TODO: Set SystemDateTime
         }
         catch(ClassNotFoundException | IOException e) {
-            books = new HashMap();
+            books = new HashMap<Long, Book>();
             booksToBuy = makeBooks();
             visitors = new ArrayList<>();
             visits = new ArrayList<>();
@@ -174,7 +181,7 @@ public class LBMS {
                         publishDate = calendar;
                     }
                     catch (ParseException e) {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                 }
                 if (parts[parts.length-3].length() == 7) {
@@ -186,7 +193,7 @@ public class LBMS {
                         publishDate = calendar;
                     }
                     catch (ParseException e) {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                 }
                 if (parts[parts.length-3].length() == 4) {
@@ -207,10 +214,7 @@ public class LBMS {
                 output.add(b);
             }
         }
-        catch (FileNotFoundException e) {
-            System.out.println(e);
-        }
-        catch (URISyntaxException e) {
+        catch (FileNotFoundException | URISyntaxException e) {
             e.printStackTrace();
         }
         return output;
