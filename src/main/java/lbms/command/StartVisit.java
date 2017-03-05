@@ -5,6 +5,7 @@ package lbms.command;
  */
 public class StartVisit implements Command {
 
+    @Override
     public void execute() {
         // TODO Anthony
     }

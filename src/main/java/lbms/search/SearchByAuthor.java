@@ -40,6 +40,7 @@ public class SearchByAuthor implements Search {
 //        return matches;
 //    }
 
+    @Override
     public List<Book> search(HashMap<Long, Book> books) {
         return books.values().parallelStream()
                 .filter(book -> book.hasAuthorPartial(author))

@@ -5,6 +5,7 @@ package lbms.command;
  */
 public class PayFine implements Command {
 
+    @Override
     public void execute() {
         // TODO Edward
     }

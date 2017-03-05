@@ -27,6 +27,7 @@ public class SearchByTitle implements Search {
      * @param books : the list of books
      * @return a list of books with the given title
      */
+    @Override
     public List<Book> search(HashMap<Long, Book> books) {
         return books.values().parallelStream()
                 .filter(book -> book.getTitle().contains(title))

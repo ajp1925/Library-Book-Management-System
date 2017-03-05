@@ -5,6 +5,7 @@ package lbms.command;
  */
 public class StatisticsReport implements Command {
 
+    @Override
     public void execute() {
         // TODO Charles
     }

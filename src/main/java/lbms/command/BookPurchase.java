@@ -5,6 +5,7 @@ package lbms.command;
  */
 public class BookPurchase implements Command {
 
+    @Override
     public void execute() {
         // TODO Charles
     }
