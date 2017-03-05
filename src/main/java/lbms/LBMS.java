@@ -5,8 +5,6 @@ import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import lbms.state.StateManager;
-import static lbms.state.StateManager.STATE_DEFAULT;
 import lbms.controllers.ViewController;
 import lbms.models.*;
 import lbms.views.DefaultViewState;

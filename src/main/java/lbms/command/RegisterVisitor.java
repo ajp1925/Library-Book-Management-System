@@ -1,7 +1,7 @@
 package lbms.command;
 
 import lbms.API;
-import lbms.Visitor;
+import lbms.models.Visitor;
 
 /**
  * RegisterVisitor class that calls the API to register a visitor in the system.
