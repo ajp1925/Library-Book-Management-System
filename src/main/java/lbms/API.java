@@ -2,25 +2,35 @@ package lbms;
 
 import lbms.search.Search;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * API class contains methods that the Command package uses.
+ * Facade class for interacting with the system.
  */
 public class API {
 
     /**
-     * Registers a visitor in the system.
-     * @param visitor: the visitor to be registered
+     * Registers a visitor with the system, if they are not already registered
+     * @param visitor The visitor to register
      */
     public static void registerVisitor(Visitor visitor) {
-        LBMS.getVisitors().add(visitor);
+        if (!visitorIsRegistered(visitor)) LBMS.getVisitors().add(visitor);
     }
 
     /**
-     * Gets a visitor from the system.
-     * @param visitorID: the ID of the visitor
-     * @return the visitor with the given ID
+     * Check whether a visitor is registered with the system.
+     * @param visitor The visitor to check
+     * @return True if a visitor is registered
+     */
+    public static boolean visitorIsRegistered(Visitor visitor) {
+        return getVisitor(visitor.getVisitorID()) != null;
+    }
+
+    /**
+     * Gets a visitor from their unique ID
+     * @param visitorID the visitor ID
+     * @return The Visitor if it exists, or null
      */
     public static Visitor getVisitor(int visitorID) {
         return LBMS.getVisitors().parallelStream()
@@ -29,8 +39,8 @@ public class API {
     }
 
     /**
-     * Purchases a book for the library.
-     * @param book: the book to be purchased
+     * Buys a book for the library
+     * @param book The book to buy
      */
     public static void buyBook(Book book) {
         LBMS.getBooks().put(book.getIsbn(), book);
@@ -38,11 +48,19 @@ public class API {
 
     /**
      * Finds the books based on the given search method.
-     * @param search: the searched method to be used
+     * @param search the searched method to be used
      * @return a list of books that the search provided
      */
     public static List<Book> findBooks(Search search) {
         return search.search(LBMS.getBooks());
+    }
+
+    /**
+     * Gets the LocalDateTime for the system
+     * @return the system time
+     */
+    public static LocalDateTime getSystemDateTime() {
+        return SystemDateTime.getInstance().getDateTime();
     }
 
     /**
