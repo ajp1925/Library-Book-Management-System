@@ -23,4 +23,12 @@ public class API {
     public static List<Book> findBooks(Search search) {
         return search.search(LBMS.getBooks());
     }
+
+    public static void addHoursToSystemTime(long hours) {
+        SystemDateTime.getInstance().plusHours(hours);
+    }
+
+    public static void addDaysToSystemTime(long days) {
+        SystemDateTime.getInstance().plusDays(days);
+    }
 }
