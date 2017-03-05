@@ -57,7 +57,7 @@ public class LBMS {
             //time = (SystemDateTime)in.readObject(); // TODO: Set SystemDateTime
         }
         catch(ClassNotFoundException | IOException e) {
-            books = new HashMap();
+            books = new HashMap<Long, Book>();
             booksToBuy = makeBooks();
             visitors = new ArrayList<>();
             visits = new ArrayList<>();
@@ -181,7 +181,7 @@ public class LBMS {
                         publishDate = calendar;
                     }
                     catch (ParseException e) {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                 }
                 if (parts[parts.length-3].length() == 7) {
@@ -193,7 +193,7 @@ public class LBMS {
                         publishDate = calendar;
                     }
                     catch (ParseException e) {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                 }
                 if (parts[parts.length-3].length() == 4) {
@@ -214,10 +214,7 @@ public class LBMS {
                 output.add(b);
             }
         }
-        catch (FileNotFoundException e) {
-            System.out.println(e);
-        }
-        catch (URISyntaxException e) {
+        catch (FileNotFoundException | URISyntaxException e) {
             e.printStackTrace();
         }
         return output;
