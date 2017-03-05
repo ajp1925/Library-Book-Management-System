@@ -17,17 +17,19 @@ public class SystemDateTime extends Thread implements Serializable {
 
     @Override
     public void run() {
-        while(true)
-        {
+        while(true) {
             this.time = time.plusMinutes(1);
             System.out.println(this.toString());
             try {
                 Thread.sleep(60000);
-            } catch (Exception ex) {}
+            }
+            catch(Exception ex) {}
         }
     }
 
-    private SystemDateTime() { this.time = LocalDateTime.now(); }
+    private SystemDateTime() {
+        this.time = LocalDateTime.now();
+    }
 
     public static SystemDateTime getInstance() {
         if(instance == null) {
@@ -36,15 +38,27 @@ public class SystemDateTime extends Thread implements Serializable {
         return instance;
     }
 
-    public LocalTime getTime() { return time.toLocalTime(); }
+    public LocalTime getTime() {
+        return time.toLocalTime();
+    }
 
-    public LocalDate getDate() { return time.toLocalDate(); }
+    public LocalDate getDate() {
+        return time.toLocalDate();
+    }
 
-    public LocalDateTime getDateTime() { return time; }
+    public LocalDateTime getDateTime() {
+        return time;
+    }
 
-    public String toString() { return time.format(formatter); }
+    public String toString() {
+        return time.format(formatter);
+    }
 
-    public void plusDays(long days) { time = time.plusDays(days); }
+    public void plusDays(long days) {
+        time = time.plusDays(days);
+    }
 
-    public void plusHours(long hours) { time = time.plusHours(hours); }
+    public void plusHours(long hours) {
+        time = time.plusHours(hours);
+    }
 }
