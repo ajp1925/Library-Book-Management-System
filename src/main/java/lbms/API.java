@@ -1,7 +1,6 @@
 package lbms;
 
 import lbms.models.Book;
-import lbms.LBMS;
 import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
 import lbms.search.Search;
@@ -28,7 +27,7 @@ public class API {
      * @param visitor The visitor to check
      * @return True if a visitor is registered
      */
-    private static boolean visitorIsRegistered(Visitor visitor) {
+    public static boolean visitorIsRegistered(Visitor visitor) {
         return getVisitor(visitor.getVisitorID()) != null;
     }
 
@@ -37,7 +36,7 @@ public class API {
      * @param visitorID the visitor ID
      * @return The Visitor if it exists, or null
      */
-    private static Visitor getVisitor(int visitorID) {
+    public static Visitor getVisitor(int visitorID) {
         return LBMS.getVisitors().parallelStream()
                 .filter(visitor -> visitor.getVisitorID() == visitorID)
                 .findFirst().orElse(null);
