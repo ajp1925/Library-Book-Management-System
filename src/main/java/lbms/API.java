@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Facade class for interacting with the system.
+ * @author Team B
  */
 public class API {
 
@@ -27,7 +28,7 @@ public class API {
      * @param visitor The visitor to check
      * @return True if a visitor is registered
      */
-    public static boolean visitorIsRegistered(Visitor visitor) {
+    private static boolean visitorIsRegistered(Visitor visitor) {
         return getVisitor(visitor.getVisitorID()) != null;
     }
 
@@ -36,7 +37,7 @@ public class API {
      * @param visitorID the visitor ID
      * @return The Visitor if it exists, or null
      */
-    public static Visitor getVisitor(int visitorID) {
+    private static Visitor getVisitor(int visitorID) {
         return LBMS.getVisitors().parallelStream()
                 .filter(visitor -> visitor.getVisitorID() == visitorID)
                 .findFirst().orElse(null);
