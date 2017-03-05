@@ -26,7 +26,7 @@ public class Book implements Serializable {
      * @param numberOfCopies: the quantity of this book the library owns
      * @param copiesCheckedOut: the total number of books that are not available
      */
-    public Book(long isbn, String title, ArrayList<String> authors, String publisher, Calendar publishDate,
+    public Book(Long isbn, String title, ArrayList<String> authors, String publisher, Calendar publishDate,
                 int pageCount, int numberOfCopies, int copiesCheckedOut) {
         this.isbn = isbn;
         this.title = title;
@@ -66,7 +66,7 @@ public class Book implements Serializable {
      * Getter for the ISBN.
      * @return the ISBN number of the book
      */
-    public long getIsbn() {
+    public Long getIsbn() {
         return isbn;
     }
 
