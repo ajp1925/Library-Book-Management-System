@@ -1,13 +1,12 @@
 package lbms;
 
-import lbms.state.StateManager;
-
 import java.io.*;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import lbms.state.StateManager;
 import static lbms.state.StateManager.STATE_DEFAULT;
 
 /**
@@ -29,14 +28,6 @@ public class LBMS {
      */
     public static void main(String[] args) {
         new LBMS();
-    }
-
-    /**
-     * Getter for the hash map of books
-     * @return the books
-     */
-    public HashMap<Long, Book> getBooks() {
-        return books;
     }
 
     /**
@@ -222,5 +213,29 @@ public class LBMS {
             e.printStackTrace();
         }
         return output;
+    }
+
+    /**
+     * Getter for the hash map of books
+     * @return the books
+     */
+    public static HashMap<Long, Book> getBooks() {
+        return books;
+    }
+
+    public static ArrayList<Book> getBooksToBuy() {
+        return booksToBuy;
+    }
+
+    public static ArrayList<Visitor> getVisitors() {
+        return visitors;
+    }
+
+    public static ArrayList<Visit> getVisits() {
+        return visits;
+    }
+
+    public static ArrayList<Transaction> getTransactions() {
+        return transactions;
     }
 }

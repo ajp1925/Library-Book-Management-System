@@ -1,8 +1,10 @@
 package lbms.Search;
 
 import lbms.Book;
-import java.util.ArrayList;
+
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Search class that finds the books with the given ISBN number.
@@ -10,24 +12,24 @@ import java.util.HashMap;
  */
 public class SearchByISBN implements Search {
 
-    private Long isbn;
+    private String isbn;
 
     /**
      * Constructor for SearchByISBN.
      * @param isbn: the ISBN number
      */
     public SearchByISBN(Long isbn) {
+        this(Long.toString(isbn));
+    }
+
+    public SearchByISBN(String isbn) {
         this.isbn = isbn;
     }
 
-    /**
-     * Finds all the books with the given isbn.
-     * @param books: the list of books
-     * @return a list of books that match the ISBN number
-     */
-    public ArrayList<Book> search(HashMap<Long, Book> books) {
-        ArrayList<Book> matches = new ArrayList<>();
-        matches.add(books.get(isbn));
-        return matches;
+    @Override
+    public List<Book> search(HashMap<Long, Book> books) {
+        return books.values().parallelStream()
+                .filter(book -> Long.toString(book.getIsbn()).contains(isbn))
+                .collect(Collectors.toList());
     }
 }

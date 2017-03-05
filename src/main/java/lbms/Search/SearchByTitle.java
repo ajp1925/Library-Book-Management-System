@@ -1,8 +1,10 @@
 package lbms.Search;
 
 import lbms.Book;
-import java.util.ArrayList;
+
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Search class that finds books by the title.
@@ -22,16 +24,12 @@ public class SearchByTitle implements Search {
 
     /**
      * Finds all the books that match the given title.
-     * @param books: the list of books
+     * @param books : the list of books
      * @return a list of books with the given title
      */
-    public ArrayList<Book> search(HashMap<Long, Book> books) {
-        ArrayList<Book> matches = new ArrayList<>();
-        for(Long key: books.keySet()) {
-            if(books.get(key).getTitle().equals(this.title)) {
-                matches.add(books.get(key));
-            }
-        }
-        return matches;
+    public List<Book> search(HashMap<Long, Book> books) {
+        return books.values().parallelStream()
+                .filter(book -> book.getTitle().contains(title))
+                .collect(Collectors.toList());
     }
 }

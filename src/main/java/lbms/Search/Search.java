@@ -1,8 +1,9 @@
 package lbms.Search;
 
 import lbms.Book;
-import java.util.ArrayList;
+
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Interface to model search classes on.
@@ -12,9 +13,9 @@ public interface Search {
 
     /**
      * Finds the books with the given search criteria.
-     * @param books: the list of books
+     * @param books : the list of books
      * @return a list of books that match
      */
-    ArrayList<Book> search(HashMap<Long, Book> books);
+    List<Book> search(HashMap<Long, Book> books);
 
 }

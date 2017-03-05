@@ -1,8 +1,9 @@
 package lbms;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.io.Serializable;
+import java.util.stream.Collectors;
 
 /**
  * Class for a Book object, used in the library book management system.
@@ -60,6 +61,13 @@ public class Book implements Serializable {
      */
     public ArrayList<String> getAuthors() {
         return authors;
+    }
+
+    public boolean hasAuthorPartial(String name) {
+        return !getAuthors().parallelStream()
+                .filter(author -> author.contains(name))
+                .collect(Collectors.toList())
+                .isEmpty();
     }
 
     /**
