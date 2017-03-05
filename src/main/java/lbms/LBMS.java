@@ -1,12 +1,13 @@
 package lbms;
 
+import lbms.state.StateManager;
+
 import java.io.*;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import lbms.state.StateManager;
 import static lbms.state.StateManager.STATE_DEFAULT;
 
 /**
@@ -90,27 +91,6 @@ public class LBMS {
 
     }
 
-
-    /**
-     * Executes a checkout of a book by a visitor.
-     * @param visitor the visitor checking out the book
-     * @param book the book being checked out
-     * @return a Transaction if a successful Transaction is made, else return null
-     */
-    public Transaction checkOut(Visitor visitor, Book book) {
-        if (book.canCheckOut() && visitor.canCheckOut()) {
-            Transaction transaction = new Transaction(book.getIsbn(), visitor.getVisitorID());       // PLACEHOLDER dates
-            book.checkOut();
-            visitor.checkOut(transaction);
-            return transaction;
-        }
-        return null;
-    }
-
-    /**
-     * Establishes book objects from books.txt
-     * @return an ArrayList of all book objects derived from books.txt
-     */
     private ArrayList<Book> makeBooks() {
         ArrayList<Book> output = new ArrayList<>();
         try {
