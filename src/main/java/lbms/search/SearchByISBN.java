@@ -1,4 +1,4 @@
-package lbms.Search;
+package lbms.search;
 
 import lbms.Book;
 
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Search class that finds the books with the given ISBN number.
+ * search class that finds the books with the given ISBN number.
  * @author Team B
  */
 public class SearchByISBN implements Search {

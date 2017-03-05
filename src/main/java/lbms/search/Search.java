@@ -1,4 +1,4 @@
-package lbms.Search;
+package lbms.search;
 
 import lbms.Book;
 

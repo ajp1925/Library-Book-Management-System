@@ -19,7 +19,7 @@ class StateUsers extends State {
     @Override
     protected void display() {
         System.out.println("Please select a command:");
-        System.out.println("search)    Search for a user");
+        System.out.println("search)    search for a user");
         System.out.println("register)  Register a new user");
     }
 
