@@ -204,7 +204,7 @@ public class LBMS {
                         publishDate = calendar;
                     }
                     catch (ParseException e) {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                 }
                 pageCount = Integer.parseInt(parts[parts.length-2]);
