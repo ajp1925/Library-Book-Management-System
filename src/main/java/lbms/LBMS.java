@@ -2,7 +2,6 @@ package lbms;
 
 import lbms.state.StateManager;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -17,6 +16,7 @@ public class LBMS {
 
     private static LBMS instance;
     private static ArrayList<Book> books;
+    private static ArrayList<Book> booksToBuy;
     private static ArrayList<Visitor> visitors;
     private static ArrayList<Visit> visits;
     private static ArrayList<Transaction> transactions;
@@ -49,13 +49,15 @@ public class LBMS {
             FileInputStream f = new FileInputStream("data.ser");
             ObjectInputStream in = new ObjectInputStream(f);
             books = (ArrayList<Book>)in.readObject();
+            booksToBuy = (ArrayList<Book>)in.readObject();
             visitors = (ArrayList<Visitor>)in.readObject();
             visits = (ArrayList<Visit>)in.readObject();
             transactions = (ArrayList<Transaction>)in.readObject();
             time = (SystemDateTime)in.readObject();
         }
         catch(ClassNotFoundException | IOException e) {
-            books = makeBooks();
+            books = new ArrayList<>();
+            booksToBuy = makeBooks();
             visitors = new ArrayList<>();
             visits = new ArrayList<>();
             transactions = new ArrayList<>();
@@ -81,6 +83,7 @@ public class LBMS {
             FileOutputStream f = new FileOutputStream(fl); // TODO need to create the files to work
             ObjectOutputStream out = new ObjectOutputStream(f);
             out.writeObject(books);
+            out.writeObject(booksToBuy);
             out.writeObject(visitors);
             out.writeObject(visits);
             out.writeObject(transactions);
