@@ -116,6 +116,10 @@ public class LBMS {
         return null;
     }
 
+    /**
+     * Establishes book objects from books.txt
+     * @return an ArrayList of all book objects derived from books.txt
+     */
     private ArrayList<Book> makeBooks() {
         ArrayList<Book> output = new ArrayList<>();
         try {
