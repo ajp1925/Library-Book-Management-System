@@ -1,4 +1,4 @@
-package lbms.Search;
+package lbms.search;
 
 import lbms.Book;
 
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Search class that finds books with the same author name.
+ * search class that finds books with the same author name.
  * @author Team B
  */
 public class SearchByAuthor implements Search {
