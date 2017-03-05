@@ -32,14 +32,6 @@ public class LBMS {
     }
 
     /**
-     * Getter for the hash map of books
-     * @return the books
-     */
-    public HashMap<Long, Book> getBooks() {
-        return books;
-    }
-
-    /**
      * Handles user input for the LBMS system.
      */
     public LBMS() {
@@ -224,7 +216,7 @@ public class LBMS {
      * Getter for the hash map of books
      * @return the books
      */
-    public static HashMap getBooks() {
+    public static HashMap<Long, Book> getBooks() {
         return books;
     }
 
