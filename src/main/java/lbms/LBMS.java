@@ -49,7 +49,7 @@ public class LBMS {
         try {
             FileInputStream f = new FileInputStream("data.ser");
             ObjectInputStream in = new ObjectInputStream(f);
-            books = (HashMap)in.readObject();
+            books = (HashMap<Long, Book>)in.readObject();
             booksToBuy = (ArrayList<Book>)in.readObject();
             visitors = (ArrayList<Visitor>)in.readObject();
             visits = (ArrayList<Visit>)in.readObject();
