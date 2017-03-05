@@ -1,13 +1,14 @@
 package lbms;
 
+import lbms.controllers.ViewController;
+import lbms.models.*;
+import lbms.views.DefaultViewState;
+
 import java.io.*;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import lbms.controllers.ViewController;
-import lbms.models.*;
-import lbms.views.DefaultViewState;
 
 //import static lbms.controllers.ViewController.STATE_DEFAULT;
 
@@ -47,7 +48,7 @@ public class LBMS {
             visitors = (ArrayList<Visitor>)in.readObject();
             visits = (ArrayList<Visit>)in.readObject();
             transactions = (ArrayList<Transaction>)in.readObject();
-            //time = (SystemDateTime)in.readObject(); // TODO: Set SystemDateTime
+            SystemDateTime.setInstance((SystemDateTime) in.readObject());
         }
         catch(ClassNotFoundException | IOException e) {
             books = new HashMap<Long, Book>();

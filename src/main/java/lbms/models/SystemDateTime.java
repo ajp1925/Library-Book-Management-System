@@ -41,6 +41,10 @@ public class SystemDateTime extends Thread implements Serializable {
         return instance;
     }
 
+    public static void setInstance(SystemDateTime instance_) {
+        instance = instance_;
+    }
+
     public LocalTime getTime() {
         return time.toLocalTime();
     }
