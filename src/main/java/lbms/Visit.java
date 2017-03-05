@@ -18,42 +18,27 @@ public class Visit implements Serializable {
     private final static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("E. MMM d, yyyy");
     private final static DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
 
-
     /**
      * Constructor for a Visit object.
      * @param visitorID: the ID of the visitor who is at the library
      */
     public Visit(int visitorID) {
         this.visitorID = visitorID;
-        this.dateTime = SystemDateTime.instance.getDateTime();
+        this.dateTime = SystemDateTime.getInstance().getDateTime();
         this.timeOfDeparture = null;
     }
 
-    public void depart() {
-        this.timeOfDeparture = SystemDateTime.instance.getTime();
-    }
+    public void depart() { this.timeOfDeparture = SystemDateTime.getInstance().getTime(); }
 
-    public LocalDate getDate() {
-        return dateTime.toLocalDate();
-    }
+    public LocalDate getDate() { return dateTime.toLocalDate(); }
 
-    public LocalTime getArrivalTime() {
-        return dateTime.toLocalTime();
-    }
+    public LocalTime getArrivalTime() { return dateTime.toLocalTime(); }
 
-    public LocalTime getDepartureTime() {
-        return timeOfDeparture;
-    }
+    public LocalTime getDepartureTime() { return timeOfDeparture; }
 
-    public String printDate() {
-        return this.getDate().format(dateFormatter);
-    }
+    public String printDate() { return this.getDate().format(dateFormatter); }
 
-    public String printArrivalTime() {
-        return this.getArrivalTime().format(timeFormatter);
-    }
+    public String printArrivalTime() { return this.getArrivalTime().format(timeFormatter); }
 
-    public String printDepartureTime() {
-        return this.getDepartureTime().format(timeFormatter);
-    }
+    public String printDepartureTime() { return this.getDepartureTime().format(timeFormatter); }
 }
