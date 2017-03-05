@@ -2,6 +2,7 @@ package lbms.Search;
 
 import lbms.Book;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Search class that finds books by the title.
@@ -24,11 +25,11 @@ public class SearchByTitle implements Search {
      * @param books: the list of books
      * @return a list of books with the given title
      */
-    public ArrayList<Book> search(ArrayList<Book> books) {
+    public ArrayList<Book> search(HashMap<Long, Book> books) {
         ArrayList<Book> matches = new ArrayList<>();
-        for(Book b: books) {
-            if(b.getTitle().equals(this.title)) {
-                matches.add(b);
+        for(Long key: books.keySet()) {
+            if(books.get(key).getTitle().equals(this.title)) {
+                matches.add(books.get(key));
             }
         }
         return matches;

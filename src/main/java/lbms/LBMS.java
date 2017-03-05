@@ -6,10 +6,7 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 import static lbms.state.StateManager.STATE_DEFAULT;
 
@@ -20,7 +17,7 @@ import static lbms.state.StateManager.STATE_DEFAULT;
 public class LBMS {
 
     private static LBMS instance;
-    private static ArrayList<Book> books;
+    private static HashMap books;
     private static ArrayList<Book> booksToBuy;
     private static ArrayList<Visitor> visitors;
     private static ArrayList<Visit> visits;
@@ -35,10 +32,10 @@ public class LBMS {
     }
 
     /**
-     * Getter for the list of books
+     * Getter for the hash map of books
      * @return the books
      */
-    public ArrayList<Book> getBooks() {
+    public HashMap getBooks() {
         return books;
     }
 
@@ -52,7 +49,7 @@ public class LBMS {
         try {
             FileInputStream f = new FileInputStream("data.ser");
             ObjectInputStream in = new ObjectInputStream(f);
-            books = (ArrayList<Book>)in.readObject();
+            books = (HashMap)in.readObject();
             booksToBuy = (ArrayList<Book>)in.readObject();
             visitors = (ArrayList<Visitor>)in.readObject();
             visits = (ArrayList<Visit>)in.readObject();
@@ -60,7 +57,7 @@ public class LBMS {
             //time = (SystemDateTime)in.readObject(); // TODO: Set SystemDateTime
         }
         catch(ClassNotFoundException | IOException e) {
-            books = new ArrayList<>();
+            books = new HashMap();
             booksToBuy = makeBooks();
             visitors = new ArrayList<>();
             visits = new ArrayList<>();

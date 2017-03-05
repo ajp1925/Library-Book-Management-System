@@ -2,6 +2,7 @@ package lbms.Search;
 
 import lbms.Book;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Search class that finds the books with the given ISBN number.
@@ -24,11 +25,11 @@ public class SearchByISBN implements Search {
      * @param books: the list of books
      * @return a list of books that match the ISBN number
      */
-    public ArrayList<Book> search(ArrayList<Book> books) {
+    public ArrayList<Book> search(HashMap<Long, Book> books) {
         ArrayList<Book> matches = new ArrayList<>();
-        for(Book b: books) {
-            if(b.getIsbn() == this.isbn) {
-                matches.add(b);
+        for(Long key: books.keySet()) {
+            if(books.get(key).getIsbn() == this.isbn) {
+                matches.add(books.get(key));
             }
         }
         return matches;

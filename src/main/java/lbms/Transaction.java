@@ -35,7 +35,9 @@ public class Transaction implements Serializable {
      * Getter for the ISBN number.
      * @return the isbn of the book checked out
      */
-    public long getIsbn() { return isbn; }
+    public long getIsbn() {
+        return isbn;
+    }
 
     /**
      * Getter for the visitors ID.
@@ -58,17 +60,25 @@ public class Transaction implements Serializable {
      * Getter for the date.
      * @return the date the book was checked out
      */
-    public LocalDate getDate() { return date; }
+    public LocalDate getDate() {
+        return date;
+    }
 
     /**
      * Getter for the date the book is due.
      * @return the date the book is due
      */
-    public LocalDate getDueDate() { return dueDate; }
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
 
-    public String printDate() { return this.getDate().format(formatter); }
+    public String printDate() {
+        return this.getDate().format(formatter);
+    }
 
-    public String printDueDate() { return this.getDueDate().format(formatter); }
+    public String printDueDate() {
+        return this.getDueDate().format(formatter);
+    }
 
     private void calculateFine() {
         // TODO
