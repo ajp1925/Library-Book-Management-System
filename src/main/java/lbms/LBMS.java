@@ -17,7 +17,7 @@ import static lbms.state.StateManager.STATE_DEFAULT;
 public class LBMS {
 
     private static LBMS instance;
-    private static HashMap books;
+    private static HashMap<Long, Book> books;
     private static ArrayList<Book> booksToBuy;
     private static ArrayList<Visitor> visitors;
     private static ArrayList<Visit> visits;
