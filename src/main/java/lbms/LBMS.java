@@ -35,7 +35,7 @@ public class LBMS {
      * Getter for the hash map of books
      * @return the books
      */
-    public HashMap getBooks() {
+    public HashMap<Long, Book> getBooks() {
         return books;
     }
 
