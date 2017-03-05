@@ -17,6 +17,7 @@ import static lbms.state.StateManager.STATE_DEFAULT;
 public class LBMS {
 
     private static LBMS instance;
+
     private static HashMap books;
     private static ArrayList<Book> booksToBuy;
     private static ArrayList<Visitor> visitors;
@@ -29,14 +30,6 @@ public class LBMS {
      */
     public static void main(String[] args) {
         new LBMS();
-    }
-
-    /**
-     * Getter for the hash map of books
-     * @return the books
-     */
-    public HashMap getBooks() {
-        return books;
     }
 
     /**
@@ -221,5 +214,29 @@ public class LBMS {
             e.printStackTrace();
         }
         return output;
+    }
+
+    /**
+     * Getter for the hash map of books
+     * @return the books
+     */
+    public static HashMap getBooks() {
+        return books;
+    }
+
+    public static ArrayList<Book> getBooksToBuy() {
+        return booksToBuy;
+    }
+
+    public static ArrayList<Visitor> getVisitors() {
+        return visitors;
+    }
+
+    public static ArrayList<Visit> getVisits() {
+        return visits;
+    }
+
+    public static ArrayList<Transaction> getTransactions() {
+        return transactions;
     }
 }
