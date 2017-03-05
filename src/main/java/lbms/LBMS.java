@@ -1,13 +1,12 @@
 package lbms;
 
-import lbms.state.StateManager;
-
 import java.io.*;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import lbms.state.StateManager;
 import static lbms.state.StateManager.STATE_DEFAULT;
 
 /**
