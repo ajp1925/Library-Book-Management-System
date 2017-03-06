@@ -16,7 +16,7 @@ public class AdvanceTime implements Command {
      * @param request: the input string of the request
      */
     public AdvanceTime(String request) {
-        request = request.replaceAll(";", "");
+        request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
         days = Long.parseLong(arguments[0]);
         hours = Long.parseLong(arguments[1]);
