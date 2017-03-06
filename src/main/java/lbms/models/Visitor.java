@@ -91,6 +91,12 @@ public class Visitor implements Serializable {
     }
 
     /**
+     * Getter for the books the vistor has checked out.
+     * @return hashmap of checked out books
+     */
+    public HashMap<Long, Transaction> getCheckedOutBooks(){ return checkedOutBooks; }
+
+    /**
      * Determines if a visitor can check out a book.
      * @return true if the number of checked out books is less than the max
      */
