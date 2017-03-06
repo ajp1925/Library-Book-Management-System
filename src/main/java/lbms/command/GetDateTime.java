@@ -3,7 +3,6 @@ package lbms.command;
 import lbms.API;
 import lbms.models.SystemDateTime;
 
-
 /**
  * GetDateTime class that calls the API to get the system time.
  * @author Team B

@@ -1,12 +1,8 @@
 package lbms.models;
 
-import lbms.API;
 import lbms.LBMS;
-
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.io.Serializable;
-import java.time.temporal.ChronoUnit;
 
 /**
  * Class for a Visit Object, used in the library book management system.
@@ -26,7 +22,7 @@ public class Visit implements Serializable {
         this.visitorID = visitorID;
         this.dateTime = SystemDateTime.getInstance().getDateTime();
         this.timeOfDeparture = null;
-        //this.duration = null;
+        //TODO this.duration = null;
         for(Visitor v: LBMS.getVisitors()) {
             if(v.getVisitorID() == visitorID) {
                 v.switchInLibrary(true);

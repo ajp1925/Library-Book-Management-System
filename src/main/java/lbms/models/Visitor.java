@@ -15,6 +15,7 @@ public class Visitor implements Serializable {
     private HashMap<Long, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
     private boolean inLibrary;
+    private static long systemIDs = 0;
 
     /**
      * Constructor for a Visitor object.
@@ -24,12 +25,12 @@ public class Visitor implements Serializable {
      * @param phoneNumber: the visitor's phone number
      * @param visitorID: an ID generated for the visitor
      */
-    public Visitor(String firstName, String lastName, String address, int phoneNumber, long visitorID) {
+    public Visitor(String firstName, String lastName, String address, int phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.visitorID = visitorID;
+        this.visitorID = ++systemIDs;
         this.checkedOutBooks = new HashMap<Long, Transaction>(MAX_BOOKS);
         this.inLibrary = false;
     }
@@ -136,7 +137,7 @@ public class Visitor implements Serializable {
      * Changes the in library status of a visitor.
      * @param status: a boolean of the status of a visitor
      */
-    public void switchInLibrary(boolean status) {
+    void switchInLibrary(boolean status) {
         inLibrary = status;
     }
 }

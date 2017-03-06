@@ -1,31 +1,31 @@
 package lbms.command;
 
-import lbms.API;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by anthony on 3/5/17.
+ * LibrarySearch class for the library search command.
+ * @author Team B
  */
 public class LibrarySearch implements Command {
 
-    String title;
-    ArrayList<String> authors;
-    Long isbn;
-    String publisher;
-    String sort_order;
+    private String title, publisher, sort_order;
+    private ArrayList<String> authors;
+    private Long isbn;
 
+    /**
+     * Constructor for a LibrarySearch command object.
+     * @param request: the request string for a library search
+     */
     public LibrarySearch(String request) { // TODO throw invalid argument exception
         request = request.replaceAll(";$", "");
         List<String> arguments = Arrays.asList(request.split(","));
-
         title = arguments.remove(0);
+        int index;
 
-        int index = 0;
-        for( ; index < arguments.size(); index++ ) {
-            if( !arguments.get(index).matches("[0-9]+") ) {
+        for(index = 0; index < arguments.size(); index++ ) {
+            if(!arguments.get(index).matches("[0-9]+")) {
                 authors.add(arguments.get(index));
             }
             else {
@@ -34,17 +34,20 @@ public class LibrarySearch implements Command {
             }
         }
 
-        if( index < arguments.size() ) {
+        if(index < arguments.size()) {
             publisher = arguments.get(index);
             index++;
         }
-        if( index < arguments.size() ) {
+        if(index < arguments.size()) {
             sort_order = arguments.get(index);
             index++;
         }
-
     }
 
+    /**
+     * Executes the library search command.
+     * @return a response string or error message
+     */
     @Override
     public String execute() {
         // TODO Charles

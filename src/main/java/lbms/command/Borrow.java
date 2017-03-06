@@ -2,19 +2,22 @@ package lbms.command;
 
 import lbms.API;
 import lbms.models.Transaction;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created by anthony on 3/5/17.
+ * Borrow class that implements the borrow command.
+ * @author Team B
  */
 public class Borrow implements Command {
 
     private int visitorID;
     private ArrayList<Integer> id;
 
+    /**
+     * Constructor for a Borrow class.
+     * @param request: the request input string
+     */
     public Borrow(String request) {
         request = request.replaceAll(";", "");
         String[] arguments = request.split(",");
@@ -24,22 +27,25 @@ public class Borrow implements Command {
         }
     }
 
+    /**
+     * Executes the borrow command.
+     * @return the response or error message
+     */
     @Override
     public String execute() {
-        // TODO Edward
+        // TODO change error message for invalid ID
         Collection<Transaction> transactions = API.getVisitorByID(visitorID).getCheckedOutBooks().values();
         if(!API.visitorIsRegisteredID(visitorID)) {
             return "invalid-id;";
         }
         if (!API.getVisitorByID(visitorID).canCheckOut()) {
-            return "book-limit-exceeded";
+            return "book-limit-exceeded;";
         }
         for (Transaction transaction : transactions) {
             if (transaction.getFine() > 0) {
-                return "outstanding fine," + Double.toString(transaction.getFine());
+                return "outstanding-fine," + Double.toString(transaction.getFine()) + ";";
             }
         }
-        return "due date";
+        return "due date;";
     }
-
 }
