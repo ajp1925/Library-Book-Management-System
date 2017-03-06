@@ -18,7 +18,7 @@ public class GetDateTime implements Command {
      * Gets the system date and time.
      */
     @Override
-    public void execute() {
+    public String execute() {
         LocalDateTime instance = API.getSystemDateTime();
         System.out.println(instance.getYear() + "/" + instance.getMonth() + "/" + instance.getDayOfMonth());
         System.out.println(instance.getHour() + ":" + instance.getMinute() + ":" + instance.getSecond());

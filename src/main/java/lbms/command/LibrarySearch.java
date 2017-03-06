@@ -6,7 +6,7 @@ package lbms.command;
 public class LibrarySearch implements Command {
 
     @Override
-    public void execute() {
+    public String execute() {
         // TODO Charles
     }
 

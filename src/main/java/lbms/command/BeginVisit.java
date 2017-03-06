@@ -1,12 +1,12 @@
 package lbms.command;
 
 /**
- * Created by anthony on 3/5/17.
+ * StartVisit class for the start visit command.
  */
 public class BeginVisit implements Command {
 
     @Override
-    public void execute() {
+    public String execute() {
         // TODO Anthony
     }
 

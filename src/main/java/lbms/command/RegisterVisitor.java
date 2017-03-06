@@ -23,7 +23,7 @@ public class RegisterVisitor implements Command {
      * Executes the registration of a visitor.
      */
     @Override
-    public void execute() {
+    public String execute() {
         API.registerVisitor(visitor);
     }
 

@@ -6,7 +6,7 @@ package lbms.command;
 public class Borrow implements Command {
 
     @Override
-    public void execute() {
+    public String execute() {
         // TODO Edward
     }
 

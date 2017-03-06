@@ -7,7 +7,8 @@ public interface Command {
 
     /**
      * Executes the command.
+     * @return any parameter errors or null for success
      */
-    void execute();
+    String execute();
 
 }
