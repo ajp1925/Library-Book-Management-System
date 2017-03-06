@@ -152,7 +152,6 @@ public class API {
 
     /**
      * Buys *quantity* of each book listed in *ids*
-     *
      * @param quantity
      * @param ids
      * @return
@@ -168,7 +167,6 @@ public class API {
                 }
             }
         }
-
-        return "success" + booksBought + ";";
+        return booksBought;
     }
 }

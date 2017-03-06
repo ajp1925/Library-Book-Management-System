@@ -1,7 +1,6 @@
 package lbms.models;
 
 import lbms.LBMS;
-
 import java.time.*;
 import java.io.Serializable;
 
@@ -23,7 +22,7 @@ public class Visit implements Serializable {
         this.visitorID = visitorID;
         this.dateTime = SystemDateTime.getInstance().getDateTime();
         this.timeOfDeparture = null;
-        //this.duration = null;
+        //TODO this.duration = null;
         for(Visitor v: LBMS.getVisitors()) {
             if(v.getVisitorID() == visitorID) {
                 v.switchInLibrary(true);

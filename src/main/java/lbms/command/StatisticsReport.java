@@ -1,14 +1,15 @@
 package lbms.command;
 
 /**
- * Created by Anthony on 3/5/17.
+ * StatisticsReport class implements the statistics report command.
+ * @author Team B
  */
 public class StatisticsReport implements Command {
 
     private int days;
 
-    public StatisticsReport(int days) {
-        this.days = days;
+    public StatisticsReport(String request) {
+        // TODO Charles
     }
 
     @Override
@@ -17,5 +18,4 @@ public class StatisticsReport implements Command {
 
         return "NOT DONE";
     }
-
 }

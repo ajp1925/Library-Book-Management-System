@@ -7,23 +7,31 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by anthony on 3/5/17.
+ * BookPurchase class that implements the book purchase command.
+ * @author Team B
  */
 public class BookPurchase implements Command {
 
     private int quantity;
-    private List<Integer> ids; // Integer dependent on temporary id from search implementation
+    private List<Integer> ids;
 
-    public BookPurchase(String request) { // TODO throw invalid arg exception
+    /**
+     * Constructor for a BookPurchase class.
+     * @param request: the input string
+     */
+    public BookPurchase(String request) {
         request = request.replaceAll(";$", "");
         List<String> arguments = Arrays.asList(request.split(","));
         quantity = Integer.parseInt(arguments.remove(0));
         ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
+    /**
+     * Executes the book purchase command.
+     * @return a success message for the command
+     */
     @Override
     public String execute() {
-        return API.processPurchaseOrder(quantity, ids);
+        return "success" + API.processPurchaseOrder(quantity, ids) + ";";
     }
-
 }
