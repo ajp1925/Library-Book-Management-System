@@ -78,7 +78,7 @@ public class LBMS {
         // Serializes the data.
         try {
             File fl = new File("data.ser");
-            FileOutputStream f = new FileOutputStream(fl); // TODO need to create the files to work
+            FileOutputStream f = new FileOutputStream(fl);
             ObjectOutputStream out = new ObjectOutputStream(f);
             out.writeObject(books);
             out.writeObject(booksToBuy);
@@ -227,7 +227,7 @@ public class LBMS {
      * Getter for the visitors.
      * @return an array list of visitors of the library
      */
-    static ArrayList<Visitor> getVisitors() {
+    public static ArrayList<Visitor> getVisitors() {
         return visitors;
     }
 

@@ -5,6 +5,9 @@ import lbms.models.SystemDateTime;
 import lbms.models.Visit;
 import lbms.models.Visitor;
 import lbms.search.Search;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -147,5 +150,27 @@ public class API {
         Visit v = new Visit(visitorID);
         LBMS.addVisit(v);
         return v;
+    }
+
+    /**
+     * Buys *quantity* of each book listed in *ids*
+     *
+     * @param quantity
+     * @param ids
+     * @return
+     */
+    public static String processPurchaseOrder(int quantity, List<Integer> ids) {
+        String booksBought = "";
+        for( Integer id : ids ) {
+            for( Book b : LBMS.getBooksToBuy() ) {
+                if( b.getTempID().equals(id)) {
+                    for( int i = quantity; i > 0; i-- ) { buyBook(b); }
+                    booksBought += ("," + b.toString() + Integer.toString(quantity)); //TODO ensure book.toString is of proper format
+                    break;
+                }
+            }
+        }
+
+        return "success" + booksBought + ";";
     }
 }

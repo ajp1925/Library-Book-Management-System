@@ -17,7 +17,6 @@ public interface State {
     void onEnter();
 
     /**
-     * TODO
      * Handle a command passed to the views
      * @param state The command to handle
      */

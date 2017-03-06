@@ -131,4 +131,12 @@ public class Visitor implements Serializable {
     public boolean getInLibrary() {
         return inLibrary;
     }
+
+    /**
+     * Changes the in library status of a visitor.
+     * @param status: a boolean of the status of a visitor
+     */
+    public void switchInLibrary(boolean status) {
+        inLibrary = status;
+    }
 }
