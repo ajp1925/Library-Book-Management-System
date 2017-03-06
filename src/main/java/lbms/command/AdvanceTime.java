@@ -22,12 +22,20 @@ public class AdvanceTime implements Command {
     }
 
     /**
-     * Execute method calls the API for the given information.
+     * Executes the advance time command.
+     * @return the output of errors or null if successful
      */
     @Override
     public String execute() {
+        if(days < 0 || days > 7) {
+            return "Invalid number of days, " + days + ".";
+        }
+        if(hours < 0 || hours > 23) {
+            return "Invalid number of hours, " + hours + ".";
+        }
         API.addDaysToSystemTime(days);
         API.addHoursToSystemTime(hours);
+        return null;
     }
 
 }
