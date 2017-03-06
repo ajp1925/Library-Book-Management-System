@@ -9,26 +9,21 @@ import java.io.Serializable;
  */
 public class Visit implements Serializable {
 
-    private int visitorID;
+    private Visitor visitor;
     private LocalDateTime dateTime;
     private LocalTime timeOfDeparture;
     private Duration duration;
 
     /**
      * Constructor for a Visit object.
-     * @param visitorID: the ID of the visitor who is at the library
+     * @param visitor: the ID of the visitor who is at the library
      */
-    public Visit(int visitorID) {
-        this.visitorID = visitorID;
+    public Visit(Visitor visitor) {
+        this.visitor = visitor;
         this.dateTime = SystemDateTime.getInstance().getDateTime();
         this.timeOfDeparture = null;
-        //TODO this.duration = null;
-        for(Visitor v: LBMS.getVisitors()) {
-            if(v.getVisitorID() == visitorID) {
-                v.switchInLibrary(true);
-                break;
-            }
-        }
+        // TODO this.duration = null;
+        this.visitor.switchInLibrary(true);
     }
 
     /**
@@ -37,13 +32,14 @@ public class Visit implements Serializable {
     public void depart() {
         this.timeOfDeparture = SystemDateTime.getInstance().getTime();
         //this.duration = Duration.between(dateTime.toLocalTime(), timeOfDeparture).
-        for(Visitor v: LBMS.getVisitors()) {
-            if(v.getVisitorID() == visitorID) {
-                v.switchInLibrary(false);
-                break;
-            }
-        }
+        this.visitor.switchInLibrary(false);
     }
+
+    /**
+     * Getter for the visitor
+     * @return the visitor
+     */
+    public Visitor getVisitor() { return this.visitor; }
 
     /**
      * Getter for the visit date.

@@ -3,6 +3,7 @@ package lbms.command;
 import lbms.API;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
+import lbms.models.Visitor;
 
 /**
  * EndVisit class for end visit command.
@@ -26,9 +27,12 @@ public class EndVisit implements Command {
      */
     @Override
     public String execute() {
-        if (API.visitorIsRegisteredID(visitorID) && API.getVisitorByID(visitorID).getInLibrary()) {
-            Visit visit = API.endVisit(visitorID);
-            return visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + ", duration;" ;   //TODO add duration
+        if (API.visitorIsRegisteredID(visitorID)) {
+            Visitor visitor = API.getVisitorByID(visitorID);
+            if (visitor.getInLibrary()) {
+                Visit visit = API.endVisit(visitor);
+                return visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + ", duration;";   //TODO add duration
+            }
         }
         return "invalid-id;";
     }

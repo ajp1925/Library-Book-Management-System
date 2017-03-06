@@ -3,6 +3,7 @@ package lbms.command;
 import lbms.API;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
+import lbms.models.Visitor;
 
 /**
  * StartVisit class for the start visit command.
@@ -32,11 +33,12 @@ public class BeginVisit implements Command {
             return "invalid-id;";
         }
 
+        Visitor visitor = API.getVisitorByID(visitorID);
         if(API.getVisitorByID(visitorID).getInLibrary()) {
             return "duplicate;";
         }
 
-        Visit v = API.beginVisit(visitorID);
+        Visit v = API.beginVisit(visitor);
         return visitorID + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," + v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 }

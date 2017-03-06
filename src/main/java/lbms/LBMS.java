@@ -5,6 +5,7 @@ import lbms.models.*;
 import lbms.views.DefaultViewState;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,9 +22,9 @@ public class LBMS {
     private static HashMap<Long, Book> books;
     private static ArrayList<Book> booksToBuy;
     private static ArrayList<Visitor> visitors;
-    private static ArrayList<Visit> visits;
+    private static ArrayList<Visit> totalVisits;
     private static ArrayList<Transaction> transactions;
-    private static ArrayList<Visit> currentVisits;
+    private static HashMap<Long, Visit> currentVisits;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -37,30 +38,7 @@ public class LBMS {
      * Handles user input for the LBMS system.
      */
     public LBMS() {
-        instance = this;
-
-        // Deserialize the data.
-        try {
-            FileInputStream f = new FileInputStream("data.ser");
-            ObjectInputStream in = new ObjectInputStream(f);
-            books = (HashMap<Long, Book>)in.readObject();
-            booksToBuy = (ArrayList<Book>)in.readObject();
-            visitors = (ArrayList<Visitor>)in.readObject();
-            visits = (ArrayList<Visit>)in.readObject();
-            transactions = (ArrayList<Transaction>)in.readObject();
-            SystemDateTime.setInstance((SystemDateTime) in.readObject());
-        }
-        catch(ClassNotFoundException | IOException e) {
-            books = new HashMap<Long, Book>();
-            booksToBuy = makeBooks();
-            visitors = new ArrayList<>();
-            visits = new ArrayList<>();
-            transactions = new ArrayList<>();
-        }
-
-        currentVisits = new ArrayList<>();
-
-        ViewController.setState(new DefaultViewState());
+        SystemInit();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -73,31 +51,7 @@ public class LBMS {
         }
         scanner.close();
 
-
-        // Serializes the data.
-        try {
-            File fl = new File("data.ser");
-            FileOutputStream f = new FileOutputStream(fl);
-            ObjectOutputStream out = new ObjectOutputStream(f);
-            out.writeObject(books);
-            out.writeObject(booksToBuy);
-            out.writeObject(visitors);
-            out.writeObject(visits);
-            out.writeObject(transactions);
-            out.writeObject(SystemDateTime.getInstance());
-            out.close();
-            f.close();
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-        // Departs all the visitors when the library closes.
-        for(Visit v: currentVisits) {
-            v.depart();
-        }
-
+        SystemClose();
     }
 
     /**
@@ -206,6 +160,61 @@ public class LBMS {
         return output;
     }
 
+    // TODO Chris
+    private void SystemInit() {
+        instance = this;
+
+        // Deserialize the data.
+        try {
+            FileInputStream f = new FileInputStream("data.ser");
+            ObjectInputStream in = new ObjectInputStream(f);
+            books = (HashMap<Long, Book>)in.readObject();
+            booksToBuy = (ArrayList<Book>)in.readObject();
+            visitors = (ArrayList<Visitor>)in.readObject();
+            totalVisits = (ArrayList<Visit>) in.readObject();
+            transactions = (ArrayList<Transaction>)in.readObject();
+            SystemDateTime.setInstance((SystemDateTime) in.readObject());
+        }
+        catch(ClassNotFoundException | IOException e) {
+            books = new HashMap<Long, Book>();
+            booksToBuy = makeBooks();
+            visitors = new ArrayList<>();
+            totalVisits = new ArrayList<>();
+            transactions = new ArrayList<>();
+        }
+
+        currentVisits = new HashMap<Long, Visit>();
+
+        ViewController.setState(new DefaultViewState());
+    }
+
+    // TODO Chris
+    private void SystemClose() {
+        // Departs all the visitors when the library closes.
+        for(Visit visit: currentVisits.values()) {
+            API.endVisit(visit.getVisitor());
+        }
+
+        // Serializes the data.
+        try {
+            File fl = new File("data.ser");
+            FileOutputStream f = new FileOutputStream(fl);
+            ObjectOutputStream out = new ObjectOutputStream(f);
+            out.writeObject(books);
+            out.writeObject(booksToBuy);
+            out.writeObject(visitors);
+            out.writeObject(totalVisits);
+            out.writeObject(transactions);
+            out.writeObject(SystemDateTime.getInstance());
+            out.close();
+            f.close();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
     /**
      * Getter for the hash map of books
      * @return the books
@@ -234,9 +243,11 @@ public class LBMS {
      * Getter for the visits made by visitors.
      * @return the array list of visits
      */
-    public static ArrayList<Visit> getVisits() {
-        return visits;
-    }
+    public static ArrayList<Visit> getTotalVisits() { return totalVisits; }
+
+
+    //TODO Chris
+    public static HashMap<Long, Visit> getCurrentVisits() { return currentVisits; }
 
     /**
      * Getter for the transactions.
@@ -244,13 +255,5 @@ public class LBMS {
      */
     public static ArrayList<Transaction> getTransactions() {
         return transactions;
-    }
-
-    /**
-     * Adds a visitor to the library.
-     * @param v: the visit to be added
-     */
-    public static void addVisit(Visit v) {
-        currentVisits.add(v);
     }
 }
