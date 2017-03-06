@@ -3,7 +3,7 @@ package lbms.controllers;
 import lbms.command.*;
 
 /**
- * Created by Chris on 3/5/17.
+ * CommandController class interacts with the command package to execute commands.
  */
 public class CommandController {
 

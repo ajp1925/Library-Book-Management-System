@@ -19,6 +19,7 @@ public class GetDateTime implements Command {
      */
     @Override
     public String execute() {
-        return API.getSystemDate().format(SystemDateTime.DATE_FORMAT) + "," + API.getSystemTime().format(SystemDateTime.TIME_FORMAT);
+        return API.getSystemDate().format(SystemDateTime.DATE_FORMAT) + "," +
+                API.getSystemTime().format(SystemDateTime.TIME_FORMAT);
     }
 }

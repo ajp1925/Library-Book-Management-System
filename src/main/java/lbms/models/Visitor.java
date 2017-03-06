@@ -11,7 +11,7 @@ public class Visitor implements Serializable {
     private String firstName, lastName;
     private String address;     // PLACEHOLDER type address QUESTION: can we use external address and phone number class
     private int phoneNumber;    // PLACEHOLDER type phonenumber
-    private int visitorID;
+    private long visitorID;
     private HashMap<Long, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
     private boolean inLibrary;
@@ -24,7 +24,7 @@ public class Visitor implements Serializable {
      * @param phoneNumber: the visitor's phone number
      * @param visitorID: an ID generated for the visitor
      */
-    public Visitor(String firstName, String lastName, String address, int phoneNumber, int visitorID) {
+    public Visitor(String firstName, String lastName, String address, int phoneNumber, long visitorID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -78,7 +78,7 @@ public class Visitor implements Serializable {
      * Getter for the visitors ID.
      * @return the visitors ID
      */
-    public int getVisitorID() {
+    public long getVisitorID() {
         return visitorID;
     }
 
@@ -91,10 +91,12 @@ public class Visitor implements Serializable {
     }
 
     /**
-     * Getter for the books the vistor has checked out.
-     * @return hashmap of checked out books
+     * Getter for the checked out books
+     * @return the checked out books
      */
-    public HashMap<Long, Transaction> getCheckedOutBooks(){ return checkedOutBooks; }
+    public HashMap<Long, Transaction> getCheckedOutBooks() {
+        return checkedOutBooks;
+    }
 
     /**
      * Determines if a visitor can check out a book.
@@ -128,5 +130,13 @@ public class Visitor implements Serializable {
      */
     public boolean getInLibrary() {
         return inLibrary;
+    }
+
+    /**
+     * Changes the in library status of a visitor.
+     * @param status: a boolean of the status of a visitor
+     */
+    public void switchInLibrary(boolean status) {
+        inLibrary = status;
     }
 }

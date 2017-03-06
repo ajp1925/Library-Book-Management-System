@@ -1,7 +1,6 @@
 package lbms.search;
 
 import lbms.models.Book;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +23,7 @@ public class SearchByTitle implements Search {
 
     /**
      * Finds all the books that match the given title.
-     * @param books : the list of books
+     * @param books: the list of books
      * @return a list of books with the given title
      */
     @Override
