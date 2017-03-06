@@ -34,7 +34,7 @@ public class API {
      * @param id: the id of the visitor
      * @return True if a visitor is registered
      */
-    public static boolean visitorIsRegisteredID(int id) {
+    public static boolean visitorIsRegisteredID(long id) {
         return getVisitorByID(id) != null;
     }
 
@@ -61,7 +61,7 @@ public class API {
      * @param visitorID: the visitor ID
      * @return The Visitor if it exists, or null
      */
-    public static Visitor getVisitorByID(int visitorID) {
+    public static Visitor getVisitorByID(long visitorID) {
         return LBMS.getVisitors().parallelStream()
                 .filter(visitor -> visitor.getVisitorID() == visitorID)
                 .findFirst().orElse(null);
