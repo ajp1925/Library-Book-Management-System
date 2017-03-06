@@ -23,6 +23,7 @@ public class RegisterVisitor implements Command {
 
     /**
      * Executes the registration of a visitor.
+     * @return the response string or error message
      */
     @Override
     public String execute() {
@@ -32,5 +33,4 @@ public class RegisterVisitor implements Command {
         }
         return "duplicate;";
     }
-
 }
