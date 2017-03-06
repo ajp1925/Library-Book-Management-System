@@ -48,7 +48,7 @@ public class CommandController {
                     response += new AdvanceTime(request[1]).execute();
                     break;
                 case "datetime":
-                    response += new GetDateTime(request[1]).execute();
+                    response += new GetDateTime().execute();
                     break;
                 case "report":
                     response += new StatisticsReport(request[1]).execute();

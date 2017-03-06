@@ -27,9 +27,9 @@ public class RegisterVisitor implements Command {
     public String execute() {
         if(API.registerVisitor(visitor)) {
             SystemDateTime s = SystemDateTime.getInstance();
-            return "register," + visitor.getVisitorID() + "," + s.getDate();
+            return visitor.getVisitorID() + "," + s.getDate().format(SystemDateTime.DATE_FORMAT);
         }
-        return "register,duplicate;";
+        return "duplicate;";
     }
 
 }

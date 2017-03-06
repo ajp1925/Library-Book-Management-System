@@ -1,7 +1,9 @@
 package lbms.command;
 
 import lbms.API;
+import lbms.models.SystemDateTime;
 import lbms.models.Visit;
+import java.time.format.DateTimeFormatter;
 
 /**
  * StartVisit class for the start visit command.
@@ -27,13 +29,15 @@ public class BeginVisit implements Command {
      */
     @Override
     public String execute() {
-        if(!API.visitorIsRegistered(visitorID)) {
-            return "arrive,invalid-id;";
+        if(!API.visitorIsRegisteredID(visitorID)) {
+            return "invalid-id;";
         }
-        if(API.getVisitor(visitorID).getInLibrary()) {
-            return "arrive,duplicate;";
+
+        if(API.getVisitorByID(visitorID).getInLibrary()) {
+            return "duplicate;";
         }
+
         Visit v = API.beginVisit(visitorID);
-        return "arrive," + visitorID + "," + v.getDate() + "," + v.getArrivalTime() + ";";
+        return visitorID + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," + v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 }

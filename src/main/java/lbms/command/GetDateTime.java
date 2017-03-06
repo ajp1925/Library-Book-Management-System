@@ -1,14 +1,14 @@
 package lbms.command;
 
 import lbms.API;
-import java.time.LocalDateTime;
+import lbms.models.SystemDateTime;
+
 
 /**
  * GetDateTime class that calls the API to get the system time.
  * @author Team B
  */
 public class GetDateTime implements Command {
-
     /**
      * Constructor for GetDateTime.
      */
@@ -19,10 +19,6 @@ public class GetDateTime implements Command {
      */
     @Override
     public String execute() {
-        String output = "datetime,";
-        LocalDateTime instance = API.getSystemDateTime();
-        output += instance.getYear() + "/" + instance.getMonth() + "/" + instance.getDayOfMonth() + ",";
-        output += instance.getHour() + ":" + instance.getMinute() + ":" + instance.getSecond() + ";";
-        return output;
+        return API.getSystemDate().format(SystemDateTime.DATE_FORMAT) + "," + API.getSystemTime().format(SystemDateTime.TIME_FORMAT);
     }
 }

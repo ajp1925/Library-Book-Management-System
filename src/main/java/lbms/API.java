@@ -6,6 +6,8 @@ import lbms.models.Visit;
 import lbms.models.Visitor;
 import lbms.search.Search;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 /**
@@ -109,8 +111,16 @@ public class API {
      * Gets the LocalDateTime for the system
      * @return the system time
      */
-    public static LocalDateTime getSystemDateTime() {
-        return SystemDateTime.getInstance().getDateTime();
+    public static LocalDate getSystemDate() {
+        return SystemDateTime.getInstance().getDate();
+    }
+
+    /**
+     * Gets the LocalDateTime for the system
+     * @return the system time
+     */
+    public static LocalTime getSystemTime() {
+        return SystemDateTime.getInstance().getTime();
     }
 
     /**

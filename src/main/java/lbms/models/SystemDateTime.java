@@ -13,7 +13,11 @@ public class SystemDateTime extends Thread implements Serializable {
 
     private static SystemDateTime instance = null;
     private LocalDateTime time;
-    private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E. MMM d, yyyy  hh:mm a");
+
+    public final static DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("YYYY/MM/DD, HH:MM:ss");
+    public final static DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("YYYY/MM/DD");
+    public final static DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:MM:ss");
+
 
     /**
      * Runs the thread for the clock.
@@ -85,7 +89,7 @@ public class SystemDateTime extends Thread implements Serializable {
      * @return string representation of the system date time
      */
     public String toString() {
-        return time.format(formatter);
+        return time.format(DATETIME_FORMAT);
     }
 
     /**
