@@ -3,7 +3,6 @@ package lbms.command;
 import lbms.API;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
-import java.time.format.DateTimeFormatter;
 
 /**
  * StartVisit class for the start visit command.

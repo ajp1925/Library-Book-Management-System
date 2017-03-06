@@ -13,11 +13,12 @@ public class RegisterVisitor implements Command {
     private Visitor visitor;
 
     /**
-     * Constructor for RegisterVisitor class.
-     * @param visitor: the visitor to be registered
+     * Constructor for the RegisterVisitor command.
+     * @param request: the request string to be processed
      */
-    public RegisterVisitor(Visitor visitor) {
-        this.visitor = visitor;
+    public RegisterVisitor(String request) {
+        String[] arguments = request.split(";");
+        visitor = new Visitor(arguments[0], arguments[1], arguments[2], Integer.parseInt(arguments[3]), // TODO add visitor ID that is generated);
     }
 
     /**
