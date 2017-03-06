@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.API;
+import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
 
 /**
@@ -24,7 +25,11 @@ public class RegisterVisitor implements Command {
      */
     @Override
     public String execute() {
-        API.registerVisitor(visitor);
+        if(API.registerVisitor(visitor)) {
+            SystemDateTime s = SystemDateTime.getInstance();
+            return "register," + visitor.getVisitorID() + "," + s.getDate();
+        }
+        return "register,duplicate;";
     }
 
 }

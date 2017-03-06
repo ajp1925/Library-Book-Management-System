@@ -2,9 +2,9 @@ package lbms;
 
 import lbms.models.Book;
 import lbms.models.SystemDateTime;
+import lbms.models.Visit;
 import lbms.models.Visitor;
 import lbms.search.Search;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,35 +16,81 @@ public class API {
 
     /**
      * Registers a visitor with the system, if they are not already registered
-     * @param visitor The visitor to register
+     * @param visitor: The visitor to register
+     * @return true if successfully registered, false if duplicate
      */
-    public static void registerVisitor(Visitor visitor) {
-        if (!visitorIsRegistered(visitor)) LBMS.getVisitors().add(visitor);
+    public static boolean registerVisitor(Visitor visitor) {
+        if (!visitorIsRegisteredID(visitor.getVisitorID()) && !visitorIsRegisteredName(visitor.getName()) &&
+                visitorIsRegisteredAddress(visitor.getAddress())) {
+            LBMS.getVisitors().add(visitor);
+            return true;
+        }
+        return false;
     }
 
     /**
-     * Check whether a visitor is registered with the system.
-     * @param visitor The visitor to check
+     * Checks whether a visitor is registered with the system.
+     * @param id: the id of the visitor
      * @return True if a visitor is registered
      */
-    public static boolean visitorIsRegistered(Visitor visitor) {
-        return getVisitor(visitor.getVisitorID()) != null;
+    public static boolean visitorIsRegisteredID(int id) {
+        return getVisitorByID(id) != null;
+    }
+
+    /**
+     * Checks whether a visitor is registered with the system.
+     * @param name: the name of the visitor
+     * @return True if a visitor is registered
+     */
+    public static boolean visitorIsRegisteredName(String name) {
+        return getVisitorByName(name) != null;
+    }
+
+    /**
+     * Checks whether a visitor is registered with the system.
+     * @param address: the address of the visitor
+     * @return True if a visitor is registered
+     */
+    public static boolean visitorIsRegisteredAddress(String address) {
+        return getVisitorByAddress(address) != null;
     }
 
     /**
      * Gets a visitor from their unique ID
-     * @param visitorID the visitor ID
+     * @param visitorID: the visitor ID
      * @return The Visitor if it exists, or null
      */
-    public static Visitor getVisitor(int visitorID) {
+    public static Visitor getVisitorByID(int visitorID) {
         return LBMS.getVisitors().parallelStream()
                 .filter(visitor -> visitor.getVisitorID() == visitorID)
                 .findFirst().orElse(null);
     }
 
     /**
+     * Gets the visitor with the same name.
+     * @param name: the first and last name combined of the visitor
+     * @return the visitor object
+     */
+    public static Visitor getVisitorByName(String name) {
+        return LBMS.getVisitors().parallelStream()
+                .filter(visitor -> visitor.getName().equals(name))
+                .findFirst().orElse(null);
+    }
+
+    /**
+     * Gets a visitor by their address.
+     * @param address: the address of a visitor
+     * @return the visitor object of the visitor with the given address
+     */
+    public static Visitor getVisitorByAddress(String address) {
+        return LBMS.getVisitors().parallelStream()
+                .filter(visitor -> visitor.getAddress().equals(address))
+                .findFirst().orElse(null);
+    }
+
+    /**
      * Buys a book for the library
-     * @param book The book to buy
+     * @param book: The book to buy
      */
     public static void buyBook(Book book) {
         LBMS.getBooks().put(book.getIsbn(), book);
@@ -52,7 +98,7 @@ public class API {
 
     /**
      * Finds the books based on the given search method.
-     * @param search the searched method to be used
+     * @param search: the searched method to be used
      * @return a list of books that the search provided
      */
     public static List<Book> findBooks(Search search) {
@@ -81,5 +127,16 @@ public class API {
      */
     public static void addDaysToSystemTime(long days) {
         SystemDateTime.getInstance().plusDays(days);
+    }
+
+    /**
+     * Adds a current visit to the LBMS.
+     * @param visitorID: the id of the visitor at the library
+     * @return the visit object
+     */
+    public static Visit beginVisit(int visitorID) {
+        Visit v = new Visit(visitorID);
+        LBMS.addVisit(v);
+        return v;
     }
 }

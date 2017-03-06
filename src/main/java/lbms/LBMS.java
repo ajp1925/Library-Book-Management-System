@@ -24,6 +24,7 @@ public class LBMS {
     private static ArrayList<Visitor> visitors;
     private static ArrayList<Visit> visits;
     private static ArrayList<Transaction> transactions;
+    private static ArrayList<Visit> currentVisits;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -58,6 +59,8 @@ public class LBMS {
             transactions = new ArrayList<>();
         }
 
+        currentVisits = new ArrayList<>();
+
         ViewController.setState(new DefaultViewState());
 
         Scanner scanner = new Scanner(System.in);
@@ -91,6 +94,11 @@ public class LBMS {
             System.exit(1);
         }
 
+        // Departs all the visitors when the library closes.
+        for(Visit v: currentVisits) {
+            v.depart();
+        }
+
     }
 
     /**
@@ -107,7 +115,7 @@ public class LBMS {
             String title, publisher;
             ArrayList<String> authors;
             long isbn;
-            int pageCount, numberOfCopies, copiesCheckedOut;
+            int pageCount;
             Calendar publishDate = null;
             while (s.hasNextLine()) {
                 int i = 1;
@@ -190,9 +198,7 @@ public class LBMS {
                     }
                 }
                 pageCount = Integer.parseInt(parts[parts.length-2]);
-                // TODO create a book object
-                Book b = new Book(isbn, title, authors, publisher, publishDate, pageCount, 0, 0);
-                output.add(b);
+                output.add(new Book(isbn, title, authors, publisher, publishDate, pageCount, 0, 0));
             }
         }
         catch (FileNotFoundException | URISyntaxException e) {
@@ -239,5 +245,13 @@ public class LBMS {
      */
     public static ArrayList<Transaction> getTransactions() {
         return transactions;
+    }
+
+    /**
+     * Adds a visitor to the library.
+     * @param v: the visit to be added
+     */
+    public static void addVisit(Visit v) {
+        currentVisits.add(v);
     }
 }
