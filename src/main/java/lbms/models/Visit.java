@@ -1,7 +1,5 @@
 package lbms.models;
 
-import lbms.models.SystemDateTime;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
@@ -28,19 +26,62 @@ public class Visit implements Serializable {
         this.visitorID = visitorID;
         this.dateTime = SystemDateTime.getInstance().getDateTime();
         this.timeOfDeparture = null;
+        // TODO switch visitor inLibrary to true
     }
 
-    public void depart() { this.timeOfDeparture = SystemDateTime.getInstance().getTime(); }
+    /**
+     * Departs the visitor from the library.
+     */
+    public void depart() {
+        this.timeOfDeparture = SystemDateTime.getInstance().getTime();
+        // TODO switch visitor inLibrary to false
+    }
 
-    public LocalDate getDate() { return dateTime.toLocalDate(); }
+    /**
+     * Getter for the visit date.
+     * @return local date of the visit
+     */
+    public LocalDate getDate() {
+        return dateTime.toLocalDate();
+    }
 
-    public LocalTime getArrivalTime() { return dateTime.toLocalTime(); }
+    /**
+     * Getter for the arrival time.
+     * @return local time for the arrival time
+     */
+    public LocalTime getArrivalTime() {
+        return dateTime.toLocalTime();
+    }
 
-    public LocalTime getDepartureTime() { return timeOfDeparture; }
+    /**
+     * Getter for the departure time.
+     * @return local time for the departure time
+     */
+    public LocalTime getDepartureTime() {
+        return timeOfDeparture;
+    }
 
-    public String printDate() { return this.getDate().format(dateFormatter); }
+    /**
+     * Creates a string of the date.
+     * @return string of the visit date
+     */
+    public String printDate() {
+        return this.getDate().format(dateFormatter);
+    }
 
-    public String printArrivalTime() { return this.getArrivalTime().format(timeFormatter); }
+    /**
+     * Creates a string of the arrival time.
+     * @return string of the visit arrival time
+     */
+    public String printArrivalTime() {
+        return this.getArrivalTime().format(timeFormatter);
+    }
 
-    public String printDepartureTime() { return this.getDepartureTime().format(timeFormatter); }
+    /**
+     * Creates a string of the departure time.
+     * @return string of the visit departure time
+     */
+    public String printDepartureTime() {
+        return this.getDepartureTime().format(timeFormatter);
+    }
 }

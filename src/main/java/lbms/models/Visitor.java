@@ -1,7 +1,5 @@
 package lbms.models;
 
-import lbms.models.Transaction;
-
 import java.util.HashMap;
 import java.io.Serializable;
 
@@ -16,6 +14,7 @@ public class Visitor implements Serializable {
     private int visitorID;
     private HashMap<Long, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
+    private boolean inLibrary;
 
     /**
      * Constructor for a Visitor object.
@@ -32,6 +31,7 @@ public class Visitor implements Serializable {
         this.phoneNumber = phoneNumber;
         this.visitorID = visitorID;
         this.checkedOutBooks = new HashMap<Long, Transaction>(MAX_BOOKS);
+        this.inLibrary = false;
     }
 
     /**
@@ -48,6 +48,14 @@ public class Visitor implements Serializable {
      */
     public String getLastName() {
         return lastName;
+    }
+
+    /**
+     * Getter for the visitors name.
+     * @return the first and last name combined
+     */
+    public String getName() {
+        return firstName + " " + lastName;
     }
 
     /**
@@ -106,5 +114,13 @@ public class Visitor implements Serializable {
      */
     public void returnBook(Transaction transaction) {
         checkedOutBooks.remove(transaction.getIsbn());
+    }
+
+    /**
+     * Getter for the status of the visitor.
+     * @return true if the visitor is in the library, false if not
+     */
+    public boolean getInLibrary() {
+        return inLibrary;
     }
 }

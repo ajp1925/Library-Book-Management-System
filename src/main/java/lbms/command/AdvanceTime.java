@@ -13,29 +13,30 @@ public class AdvanceTime implements Command {
 
     /**
      * Constructor for AdvanceTime class.
-     * @param days: the number of days to advance
-     * @param hours: the number of hours to advance
+     * @param request: the input string of the request
      */
-    public AdvanceTime(long days, long hours) {
-        this.days = days;
-        this.hours = hours;
+    public AdvanceTime(String request) {
+        request = request.replaceAll(";", "");
+        String[] arguments = request.split(",");
+        days = Long.parseLong(arguments[0]);
+        hours = Long.parseLong(arguments[1]);
     }
 
     /**
      * Executes the advance time command.
-     * @return the output of errors or null if successful
+     * @return the response or error message
      */
     @Override
     public String execute() {
         if(days < 0 || days > 7) {
-            return "Invalid number of days, " + days + ".";
+            return "advance,invalid-number-of-days," + days + ";";
         }
         if(hours < 0 || hours > 23) {
-            return "Invalid number of hours, " + hours + ".";
+            return "advance,invalid-number-of-hours," + hours + ";";
         }
         API.addDaysToSystemTime(days);
         API.addHoursToSystemTime(hours);
-        return null;
+        return "advance,success;";
     }
 
 }
