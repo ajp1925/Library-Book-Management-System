@@ -1,14 +1,14 @@
 package lbms;
 
+import lbms.controllers.ViewController;
+import lbms.models.*;
+import lbms.views.DefaultViewState;
+
 import java.io.*;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import lbms.controllers.ViewController;
-import lbms.models.*;
-import lbms.views.DefaultViewState;
 
 //import static lbms.controllers.ViewController.STATE_DEFAULT;
 
@@ -48,7 +48,7 @@ public class LBMS {
             visitors = (ArrayList<Visitor>)in.readObject();
             visits = (ArrayList<Visit>)in.readObject();
             transactions = (ArrayList<Transaction>)in.readObject();
-            //time = (SystemDateTime)in.readObject(); // TODO: Set SystemDateTime
+            SystemDateTime.setInstance((SystemDateTime) in.readObject());
         }
         catch(ClassNotFoundException | IOException e) {
             books = new HashMap<Long, Book>();
@@ -93,6 +93,10 @@ public class LBMS {
 
     }
 
+    /**
+     * Creates the books to be purchased from the input file.
+     * @return an array list of books that the library can purchase
+     */
     private ArrayList<Book> makeBooks() {
         ArrayList<Book> output = new ArrayList<>();
         try {
@@ -205,18 +209,34 @@ public class LBMS {
         return books;
     }
 
+    /**
+     * Getter for the books to be purchased by the library.
+     * @return the array list of books that can be purchased
+     */
     public static ArrayList<Book> getBooksToBuy() {
         return booksToBuy;
     }
 
-    public static ArrayList<Visitor> getVisitors() {
+    /**
+     * Getter for the visitors.
+     * @return an array list of visitors of the library
+     */
+    static ArrayList<Visitor> getVisitors() {
         return visitors;
     }
 
+    /**
+     * Getter for the visits made by visitors.
+     * @return the array list of visits
+     */
     public static ArrayList<Visit> getVisits() {
         return visits;
     }
 
+    /**
+     * Getter for the transactions.
+     * @return an array list of transactions
+     */
     public static ArrayList<Transaction> getTransactions() {
         return transactions;
     }

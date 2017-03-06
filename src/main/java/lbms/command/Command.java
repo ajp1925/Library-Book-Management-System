@@ -1,10 +1,14 @@
 package lbms.command;
 
 /**
- * Created by anthony on 3/5/17.
+ * Interface for the Command design pattern.
  */
 public interface Command {
 
-    void execute();
+    /**
+     * Executes the command.
+     * @return any parameter errors or null for success
+     */
+    String execute();
 
 }

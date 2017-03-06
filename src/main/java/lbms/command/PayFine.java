@@ -5,15 +5,8 @@ package lbms.command;
  */
 public class PayFine implements Command {
 
-    private int visitorID;
-    private double amount;
-
-    public PayFine(int visitorID, double amount) {
-        this.visitorID = visitorID;
-        this.amount = amount;
-    }
-
-    public void execute() {
+    @Override
+    public String execute() {
         // TODO Edward
     }
 

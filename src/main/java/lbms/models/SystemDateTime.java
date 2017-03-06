@@ -7,14 +7,17 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Created by Chris on 2/27/17.
+ * Custom date time implementation for the Library Book Management System.
  */
 public class SystemDateTime extends Thread implements Serializable {
-    private static SystemDateTime instance = null;
 
+    private static SystemDateTime instance = null;
     private LocalDateTime time;
     private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E. MMM d, yyyy  hh:mm a");
 
+    /**
+     * Runs the thread for the clock.
+     */
     @Override
     public void run() {
         while(true) {
@@ -36,6 +39,10 @@ public class SystemDateTime extends Thread implements Serializable {
             instance = new SystemDateTime();
         }
         return instance;
+    }
+
+    public static void setInstance(SystemDateTime instance_) {
+        instance = instance_;
     }
 
     public LocalTime getTime() {

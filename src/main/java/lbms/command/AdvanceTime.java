@@ -24,7 +24,8 @@ public class AdvanceTime implements Command {
     /**
      * Execute method calls the API for the given information.
      */
-    public void execute() {
+    @Override
+    public String execute() {
         API.addDaysToSystemTime(days);
         API.addHoursToSystemTime(hours);
     }

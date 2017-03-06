@@ -5,7 +5,8 @@ package lbms.command;
  */
 public class EndVisit implements Command {
 
-    public void execute() {
+    @Override
+    public String execute() {
         // TODO Chris
     }
 
