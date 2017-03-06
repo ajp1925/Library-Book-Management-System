@@ -10,11 +10,14 @@ import java.util.stream.Collectors;
  */
 public class Book implements Serializable {
 
+    private static Integer nextTempID = 0;
+
     private String title, publisher;
     private ArrayList<String> authors;
     private Long isbn;
     private int pageCount, numberOfCopies, copiesCheckedOut;
     private Calendar publishDate;
+    private Integer tempID;
 
     /**
      * Constructor for a Book.
@@ -109,6 +112,10 @@ public class Book implements Serializable {
     public Calendar getPublishDate() {
         return publishDate;
     }
+
+    public Integer getTempID() { return tempID; }
+
+    public Integer getNextTempID() { return nextTempID; }
 
     /**
      * Determines if a book is available to be checked out.
