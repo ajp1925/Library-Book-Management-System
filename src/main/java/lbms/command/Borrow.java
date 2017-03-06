@@ -3,7 +3,6 @@ package lbms.command;
 import lbms.API;
 import lbms.models.Transaction;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 

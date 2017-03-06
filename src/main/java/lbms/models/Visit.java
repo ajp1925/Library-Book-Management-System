@@ -1,12 +1,9 @@
 package lbms.models;
 
-import lbms.API;
 import lbms.LBMS;
 
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.io.Serializable;
-import java.time.temporal.ChronoUnit;
 
 /**
  * Class for a Visit Object, used in the library book management system.

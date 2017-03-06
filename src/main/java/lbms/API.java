@@ -6,8 +6,6 @@ import lbms.models.Visit;
 import lbms.models.Visitor;
 import lbms.search.Search;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
