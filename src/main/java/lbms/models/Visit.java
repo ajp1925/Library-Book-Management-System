@@ -1,5 +1,8 @@
 package lbms.models;
 
+import lbms.API;
+import lbms.LBMS;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.io.Serializable;
@@ -24,7 +27,12 @@ public class Visit implements Serializable {
         this.dateTime = SystemDateTime.getInstance().getDateTime();
         this.timeOfDeparture = null;
         //this.duration = null;
-        // TODO switch visitor inLibrary to true
+        for(Visitor v: LBMS.getVisitors()) {
+            if(v.getVisitorID() == visitorID) {
+                v.switchInLibrary(true);
+                break;
+            }
+        }
     }
 
     /**
@@ -33,7 +41,12 @@ public class Visit implements Serializable {
     public void depart() {
         this.timeOfDeparture = SystemDateTime.getInstance().getTime();
         //this.duration = Duration.between(dateTime.toLocalTime(), timeOfDeparture).
-        // TODO switch visitor inLibrary to false
+        for(Visitor v: LBMS.getVisitors()) {
+            if(v.getVisitorID() == visitorID) {
+                v.switchInLibrary(false);
+                break;
+            }
+        }
     }
 
     /**
