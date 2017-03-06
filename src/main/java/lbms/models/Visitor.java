@@ -23,7 +23,6 @@ public class Visitor implements Serializable {
      * @param lastName: the last name of the visitor
      * @param address: the address of the visitor
      * @param phoneNumber: the visitor's phone number
-     * @param visitorID: an ID generated for the visitor
      */
     public Visitor(String firstName, String lastName, String address, int phoneNumber) {
         this.firstName = firstName;
