@@ -29,14 +29,14 @@ public class AdvanceTime implements Command {
     @Override
     public String execute() {
         if(days < 0 || days > 7) {
-            return "advance,invalid-number-of-days," + days + ";";
+            return "invalid-number-of-days," + days + ";";
         }
         if(hours < 0 || hours > 23) {
-            return "advance,invalid-number-of-hours," + hours + ";";
+            return "invalid-number-of-hours," + hours + ";";
         }
         API.addDaysToSystemTime(days);
         API.addHoursToSystemTime(hours);
-        return "advance,success;";
+        return "success;";
     }
 
 }

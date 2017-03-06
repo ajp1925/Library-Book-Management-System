@@ -19,8 +19,6 @@ public class Transaction implements Serializable {
     private LocalDate date, dueDate;
     private double fine;
 
-    private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E. MMM d, yyyy");
-
     /**
      * Constructor for a Transaction object.
      * @param isbn: the isbn of the book
@@ -75,11 +73,11 @@ public class Transaction implements Serializable {
     }
 
     public String printDate() {
-        return this.getDate().format(formatter);
+        return this.getDate().format(SystemDateTime.DATE_FORMAT);
     }
 
     public String printDueDate() {
-        return this.getDueDate().format(formatter);
+        return this.getDueDate().format(SystemDateTime.DATE_FORMAT);
     }
 
     private void calculateFine() {

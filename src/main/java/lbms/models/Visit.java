@@ -1,10 +1,9 @@
 package lbms.models;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.io.Serializable;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Class for a Visit Object, used in the library book management system.
@@ -14,9 +13,7 @@ public class Visit implements Serializable {
     private int visitorID;
     private LocalDateTime dateTime;
     private LocalTime timeOfDeparture;
-
-    private final static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("E. MMM d, yyyy");
-    private final static DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
+    private Duration duration;
 
     /**
      * Constructor for a Visit object.
@@ -26,6 +23,7 @@ public class Visit implements Serializable {
         this.visitorID = visitorID;
         this.dateTime = SystemDateTime.getInstance().getDateTime();
         this.timeOfDeparture = null;
+        //this.duration = null;
         // TODO switch visitor inLibrary to true
     }
 
@@ -34,6 +32,7 @@ public class Visit implements Serializable {
      */
     public void depart() {
         this.timeOfDeparture = SystemDateTime.getInstance().getTime();
+        //this.duration = Duration.between(dateTime.toLocalTime(), timeOfDeparture).
         // TODO switch visitor inLibrary to false
     }
 
@@ -66,7 +65,7 @@ public class Visit implements Serializable {
      * @return string of the visit date
      */
     public String printDate() {
-        return this.getDate().format(dateFormatter);
+        return this.getDate().format(SystemDateTime.DATE_FORMAT);
     }
 
     /**
@@ -74,7 +73,7 @@ public class Visit implements Serializable {
      * @return string of the visit arrival time
      */
     public String printArrivalTime() {
-        return this.getArrivalTime().format(timeFormatter);
+        return this.getArrivalTime().format(SystemDateTime.TIME_FORMAT);
     }
 
     /**
@@ -82,6 +81,6 @@ public class Visit implements Serializable {
      * @return string of the visit departure time
      */
     public String printDepartureTime() {
-        return this.getDepartureTime().format(timeFormatter);
+        return this.getDepartureTime().format(SystemDateTime.TIME_FORMAT);
     }
 }
