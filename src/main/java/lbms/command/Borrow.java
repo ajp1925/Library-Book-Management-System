@@ -13,14 +13,14 @@ import java.util.Collection;
 public class Borrow implements Command {
 
     private int visitorID;
-    private ArrayList<Integer> id;
+    private ArrayList<Long> ids;
 
     public Borrow(String request) {
         request = request.replaceAll(";", "");
         String[] arguments = request.split(",");
         visitorID = Integer.parseInt(arguments[0]);
         for (int i = 1; i < arguments.length; i++) {
-            id.add(Integer.parseInt(arguments[i]));
+            ids.add(Long.parseLong(arguments[i]));
         }
     }
 
@@ -29,7 +29,15 @@ public class Borrow implements Command {
         // TODO Edward
         Collection<Transaction> transactions = API.getVisitorByID(visitorID).getCheckedOutBooks().values();
         if(!API.visitorIsRegisteredID(visitorID)) {
-            return "invalid-id;";
+            return "invalid-visitor-id;";
+        }
+        if () {
+            String response = "invalid-book-id,";
+            for (Long id : ids) {
+                response = response + Long.toString(id) + ",";
+            }
+            response = response.replaceAll(",$", "");
+            return response;
         }
         if (!API.getVisitorByID(visitorID).canCheckOut()) {
             return "book-limit-exceeded";
@@ -39,7 +47,7 @@ public class Borrow implements Command {
                 return "outstanding fine," + Double.toString(transaction.getFine());
             }
         }
-        return "due date";
+        return "";
     }
 
 }
