@@ -1,5 +1,7 @@
 package lbms.models;
 
+import lbms.LBMS;
+
 import java.util.HashMap;
 import java.io.Serializable;
 
@@ -15,7 +17,6 @@ public class Visitor implements Serializable {
     private HashMap<Long, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
     private boolean inLibrary;
-    private static long systemIDs = 0;
     private double fines;
 
     /**
@@ -30,7 +31,7 @@ public class Visitor implements Serializable {
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.visitorID = ++systemIDs;
+        this.visitorID = LBMS.getVisitors().size() + 1;
         this.checkedOutBooks = new HashMap<Long, Transaction>(MAX_BOOKS);
         this.inLibrary = false;
         fines = 0;
