@@ -3,12 +3,10 @@ package lbms;
 import lbms.models.*;
 import lbms.search.Search;
 import lbms.search.SearchByISBN;
-
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -47,7 +45,7 @@ public class API {
      * @param name: the name of the visitor
      * @return True if a visitor is registered
      */
-    public static boolean visitorIsRegisteredName(String name) {
+    private static boolean visitorIsRegisteredName(String name) {
         return getVisitorByName(name) != null;
     }
 
@@ -56,7 +54,7 @@ public class API {
      * @param address: the address of the visitor
      * @return True if a visitor is registered
      */
-    public static boolean visitorIsRegisteredAddress(String address) {
+    private static boolean visitorIsRegisteredAddress(String address) {
         return getVisitorByAddress(address) != null;
     }
 
@@ -76,7 +74,7 @@ public class API {
      * @param name: the first and last name combined of the visitor
      * @return the visitor object
      */
-    public static Visitor getVisitorByName(String name) {
+    private static Visitor getVisitorByName(String name) {
         return LBMS.getVisitors().parallelStream()
                 .filter(visitor -> visitor.getName().equals(name))
                 .findFirst().orElse(null);
@@ -87,7 +85,7 @@ public class API {
      * @param address: the address of a visitor
      * @return the visitor object of the visitor with the given address
      */
-    public static Visitor getVisitorByAddress(String address) {
+    private static Visitor getVisitorByAddress(String address) {
         return LBMS.getVisitors().parallelStream()
                 .filter(visitor -> visitor.getAddress().equals(address))
                 .findFirst().orElse(null);
@@ -97,7 +95,7 @@ public class API {
      * Buys a book for the library
      * @param book: The book to buy
      */
-    public static void buyBook(Book book) {
+    private static void buyBook(Book book) {
         LBMS.getBooks().put(book.getIsbn(), book);
     }
 
@@ -166,22 +164,20 @@ public class API {
 
     /**
      * Buys *quantity* of each book listed in *ids*
-     * @param quantity
-     * @param ids
-     * @return
+     * @param quantity: the quantity of books to be purchased
+     * @param ids: the ids of the books to be purchased
+     * @return a response string
      */
     public static String processPurchaseOrder(int quantity, List<Long> ids) {
-        String booksBought = "";
-        for(Long id: ids ) {
-            for(Book b: LBMS.getBooksToBuy() ) {
-                if(b.getTempID() == id) {
-                    for(int i = quantity; i > 0; i--) {
-                        buyBook(b);
-                    }
-                    booksBought += ("," + b.toString() + Integer.toString(quantity)); //TODO ensure book.toString is of proper format
-                    break;
-                }
+        String booksBought = quantity + "";
+        Search s;
+        for(Long id: ids) {
+            s = new SearchByISBN(id);
+            Book b = findBooks(s).get(0);
+            for(int i = quantity; i > 0; i--) {
+                buyBook(b);
             }
+            booksBought += ("," + b.toString() + "," + Integer.toString(quantity)) + '\n';
         }
         return booksBought;
     }
@@ -220,6 +216,6 @@ public class API {
             transactions.add(t);
             return t.getDueDate().format(SystemDateTime.DATE_FORMAT);
         }
-        return null;
+        return "unknown-error";
     }
 }

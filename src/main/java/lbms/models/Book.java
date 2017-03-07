@@ -40,6 +40,7 @@ public class Book implements Serializable {
         this.pageCount = pageCount;
         this.numberOfCopies = numberOfCopies;
         this.copiesCheckedOut = copiesCheckedOut;
+        this.tempID = ++nextTempID;
     }
 
     /**
@@ -66,6 +67,11 @@ public class Book implements Serializable {
         return authors;
     }
 
+    /**
+     * Determines if the string is a partial author.
+     * @param name: the author name
+     * @return true if it is a partial author
+     */
     public boolean hasAuthorPartial(String name) {
         return !getAuthors().parallelStream()
                 .filter(author -> author.contains(name))
@@ -113,12 +119,12 @@ public class Book implements Serializable {
         return publishDate;
     }
 
+    /**
+     * Gets the temporary ID for the book.
+     * @return the temp id
+     */
     public int getTempID() {
         return tempID;
-    }
-
-    public int getNextTempID() {
-        return nextTempID;
     }
 
     /**
@@ -145,8 +151,18 @@ public class Book implements Serializable {
         copiesCheckedOut--;
     }
 
+    /**
+     * String formatting used in API method to purchase books.
+     * @return a string representation of the book in a specific format
+     */
     @Override
     public String toString() {
-        return "Book(" + isbn + ", " + title + ", " + authors + ", " + publisher + ", " + publishDate + ", " + pageCount + ")";
+        String output = this.isbn + "," + this.title + ",{";
+        for(String author: this.authors) {
+            output += author + ",";
+        }
+        output = output.substring(0, output.length() - 1);
+        output += "}," + this.publishDate;
+        return output;
     }
 }
