@@ -14,6 +14,7 @@ public class AdvanceViewState implements State {
     @Override
     public void init() {
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("\nHow many days would you like to advance the clock?");
         days = scanner.nextInt();
         System.out.println("How many hours would you like to advance the clock?");

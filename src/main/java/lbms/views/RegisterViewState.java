@@ -20,8 +20,9 @@ public class RegisterViewState implements State {
      */
     @Override
     public void init() {
-        System.out.println("\nRegistering a new user.");
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nRegistering a new user.");
         System.out.print("First Name: ");
         firstName = scanner.nextLine();
         System.out.print("Last Name: ");

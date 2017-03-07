@@ -17,7 +17,7 @@ public class DefaultViewState implements State {
         System.out.println("books)     View books");
         System.out.println("users)     View users");
         System.out.println("system)    Edit system");
-        System.out.println("exit)      Exit the LBMS");
+        System.out.println("exit)      Exit system");
     }
 
     /**

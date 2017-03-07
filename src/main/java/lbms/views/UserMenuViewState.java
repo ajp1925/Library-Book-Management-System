@@ -2,6 +2,8 @@ package lbms.views;
 
 import lbms.controllers.ViewController;
 
+import javax.swing.text.View;
+
 /**
  * Intermediate views which allows choosing whether to search for a user or register a new one.
  */
@@ -36,7 +38,7 @@ public class UserMenuViewState implements State {
         switch (state) {
             case "search": break;
             case "register": ViewController.setState(new RegisterViewState()); break;
-            case "enter library": break;
+            case "enter library": case "enter": ViewController.setState(new BeginVisitViewState()); break;
             case "exit library": break;
             case "return": ViewController.setState(new DefaultViewState()); break;
             default:
