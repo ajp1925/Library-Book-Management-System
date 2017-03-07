@@ -43,6 +43,7 @@ public class BeginVisit implements Command {
         return visitorID + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," + v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 
+    //@Override
     public static String parseResponse(String response, long visitorID) {
         String[] fields = response.split(",");
         if (fields[1].equals("duplicate;")) {
