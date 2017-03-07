@@ -1,14 +1,14 @@
-package lbms;
+package lbms.controllers;
 
 import lbms.views.DefaultViewState;
 import lbms.views.State;
-import lbms.controllers.ViewController;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
-public class TestStateManager {
+public class ViewControllerTest {
 
     @Before
     public void setDefaultState() {
@@ -28,8 +28,8 @@ public class TestStateManager {
     }
 
     public class DummyState implements State {
-        public void init() {}
-        public void onEnter() {}
-        public void change(String state) {}
+        @Override public void init() {}
+        @Override public void onEnter() {}
+        @Override public void change(String state) {}
     }
 }
