@@ -20,7 +20,7 @@ public class RegisterViewState implements State {
      */
     @Override
     public void init() {
-        System.out.println("Registering a new user.");
+        System.out.println("\nRegistering a new user.");
         Scanner scanner = new Scanner(System.in);
         System.out.print("First Name: ");
         firstName = scanner.nextLine();
@@ -35,7 +35,7 @@ public class RegisterViewState implements State {
      */
     @Override
     public void onEnter() {
-        System.out.println("Is all this information correct? (y/n)");
+        System.out.println("\nIs all this information correct? (y/n)");
         System.out.printf("First Name: %s\n", firstName);
         System.out.printf("Last Name: %s\n", lastName);
         System.out.printf("Address: %s\n", address);
@@ -55,6 +55,9 @@ public class RegisterViewState implements State {
             case "n":
                 onEnter();
                 break;
+            default:
+                System.out.println("Command not found\n");
+                this.onEnter();
         }
     }
 }

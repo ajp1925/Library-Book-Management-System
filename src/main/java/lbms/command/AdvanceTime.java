@@ -34,8 +34,8 @@ public class AdvanceTime implements Command {
         if(hours < 0 || hours > 23) {
             return "invalid-number-of-hours," + hours + ";";
         }
-        API.addDaysToSystemTime(days);
-        API.addHoursToSystemTime(hours);
+        API.addDaysToSystemDateTime(days);
+        API.addHoursToSystemDateTime(hours);
         return "success;";
     }
 }

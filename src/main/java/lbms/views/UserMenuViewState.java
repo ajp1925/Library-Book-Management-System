@@ -12,9 +12,12 @@ public class UserMenuViewState implements State {
      */
     @Override
     public void init() {
-        System.out.println("Please select a command:");
-        System.out.println("search)    search for a user");
-        System.out.println("register)  Register a new user");
+        System.out.println("\nPlease select a command:");
+        System.out.println("search)           Search for a user");
+        System.out.println("register)         Register a new user");
+        System.out.println("enter library)    Allow a user to enter the library");
+        System.out.println("exit library)     Have a user leave the library");
+        System.out.println("return)           Return to main menu");
     }
 
     /**
@@ -33,6 +36,12 @@ public class UserMenuViewState implements State {
         switch (state) {
             case "search": break;
             case "register": ViewController.setState(new RegisterViewState()); break;
+            case "enter library": break;
+            case "exit library": break;
+            case "return": ViewController.setState(new DefaultViewState()); break;
+            default:
+                System.out.println("Command not found\n");
+                this.init();
         }
     }
 }

@@ -13,9 +13,10 @@ public class DefaultViewState implements State {
     @Override
     public void init() {
         System.out.println("Welcome to the Library Book Management System!");
-        System.out.println("Please select a command: ");
+        System.out.println("\nPlease select a command: ");
         System.out.println("books)     View books");
         System.out.println("users)     View users");
+        System.out.println("system)    Edit system");
         System.out.println("exit)      Exit the LBMS");
     }
 
@@ -34,6 +35,10 @@ public class DefaultViewState implements State {
         switch (state) {
             case "books": ViewController.setState(new BooksViewState()); break;
             case "users": ViewController.setState(new UserMenuViewState()); break;
+            case "system": ViewController.setState(new SystemViewState()); break;
+            default:
+                System.out.println("Command not found\n\n");
+                this.init();
         }
     }
 }
