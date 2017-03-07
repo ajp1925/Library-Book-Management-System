@@ -8,7 +8,7 @@ import lbms.command.*;
 public class CommandController {
 
     public static String processRequest(String requestString) {
-        String[] request = requestString.split(",", 1);
+        String[] request = requestString.split(",", 2);
         String response = request[0] + ",";
 
         try {
@@ -53,6 +53,7 @@ public class CommandController {
                     response += new StatisticsReport(request[1]).execute();
                     break;
                 default:
+                    System.out.println("UH OH");
                     break;
             }
         } catch (Exception e) {

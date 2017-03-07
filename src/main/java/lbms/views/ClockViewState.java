@@ -8,14 +8,12 @@ import lbms.controllers.ViewController;
  * Created by Chris on 3/7/17.
  */
 public class ClockViewState implements State {
-    /**
-     * Prompts a user whether to views books or users, or exit
-     */
     @Override
     public void init() {
-        String[] clock = CommandController.processRequest("datetime").split(",");
-        System.out.println("\n" + clock[1] + " " + clock[2]);
-        ViewController.setState(new SystemViewState());
+        String[] response = CommandController.processRequest("datetime").split(",");
+        System.out.println("\nCurrent System Time: " + response[1] + " " + response[2]);
+        System.out.println("advance)    Fast-forward clock");
+        System.out.println("return)     Return to main menu");
     }
 
     /**
@@ -26,10 +24,14 @@ public class ClockViewState implements State {
         // NO-OP
     }
 
-    /**
-     * NO-OP
-     */
+    @Override
     public void change(String state) {
-        // NO-OP
+        switch (state) {
+            case "advance": ViewController.setState(new AdvanceViewState()); break;
+            case "return": ViewController.setState(new DefaultViewState()); break;
+            default:
+                System.out.println("Command not found\n");
+                this.init();
+        }
     }
 }
