@@ -4,6 +4,8 @@ import lbms.API;
 import lbms.models.Book;
 import lbms.search.SearchByTitle;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -50,7 +52,17 @@ public class StoreSearch implements Command {
         int booksFound = 0;
         SearchByTitle search = new SearchByTitle(title);
         List<Book> books = API.findBooks(search);
-
+        if (sortOrder.equals("title")) {
+            Collections.sort(books);
+        }
+        else if (sortOrder.equals("publish-date")) {
+            Collections.sort(books, new Comparator<Book>() {
+                @Override
+                public int compare(Book book1, Book book2) {
+                    return book2.getPublishDate().compareTo(book1.getPublishDate());
+                }
+            });
+        }
         if(books.size() == 0) {
             return Integer.toString(booksFound) + ";";
         }

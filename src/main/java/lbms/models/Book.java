@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Class for a Book object, used in the library book management system.
  */
-public class Book implements Serializable {
+public class Book implements Serializable, Comparable<Book> {
 
     private static int nextTempID = 0;
 
@@ -162,7 +162,14 @@ public class Book implements Serializable {
             output += author + ",";
         }
         output = output.substring(0, output.length() - 1);
-        output += "}," + this.publishDate;
+        output += "}," + this.publishDate.getTime();
         return output;
     }
+
+    @Override
+    public int compareTo(Book book) {
+        String compareTitle = book.getTitle();
+        return this.title.compareTo(compareTitle);
+    }
+
 }
