@@ -26,8 +26,10 @@ public class AdvanceViewState implements State {
         String[] response = CommandController.processRequest("advance," + days + "," + hours + ";").split(",");
         if (response[1].equals("success;")) {
             System.out.println("\nAdvance success, clock has been moved forward " + days + " day(s) and " + hours + " hour(s).");
+        } else if (response[1].equals("invalid-number-of-days")) {
+            System.out.println("\nFailure, " + days + " is an invalid number of days to skip.");
         } else {
-            System.out.println("\nfailure, " + response[0]);
+            System.out.println("\nFailure, " + hours + " is an invalid number of hours to skip.");
         }
         ViewController.setState(new ClockViewState());
     }

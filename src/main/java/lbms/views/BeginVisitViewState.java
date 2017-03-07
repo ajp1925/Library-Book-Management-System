@@ -9,7 +9,6 @@ import java.util.Scanner;
  * Created by Chris on 3/7/17.
  */
 public class BeginVisitViewState implements State {
-
     private long visitorID;
 
     @Override
@@ -28,7 +27,8 @@ public class BeginVisitViewState implements State {
         } else if (response[1].equals("invalid-id;")) {
             System.out.println("\nVisitor " + visitorID + " is not registered in the system.");
         } else {
-            System.out.println("\nVisitor " + visitorID + " has entered the library.");
+            System.out.println("\nVisitor " + visitorID + " has entered the library on "
+                    + response[2] + " at " + response[3].replace(";","") + ".");
         }
         ViewController.setState(new UserMenuViewState());
 
