@@ -10,14 +10,14 @@ import java.util.stream.Collectors;
  */
 public class Book implements Serializable {
 
-    private static Integer nextTempID = 0;
+    private static int nextTempID = 0;
 
     private String title, publisher;
     private ArrayList<String> authors;
-    private Long isbn;
+    private long isbn;
     private int pageCount, numberOfCopies, copiesCheckedOut;
     private Calendar publishDate;
-    private Integer tempID;
+    private int tempID;
 
     /**
      * Constructor for a Book.
@@ -30,7 +30,7 @@ public class Book implements Serializable {
      * @param numberOfCopies: the quantity of this book the library owns
      * @param copiesCheckedOut: the total number of books that are not available
      */
-    public Book(Long isbn, String title, ArrayList<String> authors, String publisher, Calendar publishDate,
+    public Book(long isbn, String title, ArrayList<String> authors, String publisher, Calendar publishDate,
                 int pageCount, int numberOfCopies, int copiesCheckedOut) {
         this.isbn = isbn;
         this.title = title;
@@ -77,7 +77,7 @@ public class Book implements Serializable {
      * Getter for the ISBN.
      * @return the ISBN number of the book
      */
-    public Long getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 
@@ -113,9 +113,13 @@ public class Book implements Serializable {
         return publishDate;
     }
 
-    public Integer getTempID() { return tempID; }
+    public int getTempID() {
+        return tempID;
+    }
 
-    public Integer getNextTempID() { return nextTempID; }
+    public int getNextTempID() {
+        return nextTempID;
+    }
 
     /**
      * Determines if a book is available to be checked out.

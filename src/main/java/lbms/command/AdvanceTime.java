@@ -38,5 +38,4 @@ public class AdvanceTime implements Command {
         API.addHoursToSystemTime(hours);
         return "success;";
     }
-
 }

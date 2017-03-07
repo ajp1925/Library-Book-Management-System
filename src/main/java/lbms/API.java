@@ -1,13 +1,13 @@
 package lbms;
 
-import lbms.models.Book;
-import lbms.models.SystemDateTime;
-import lbms.models.Visit;
-import lbms.models.Visitor;
+import lbms.models.*;
 import lbms.search.Search;
+import lbms.search.SearchByISBN;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,6 +16,8 @@ import java.util.List;
  * @author Team B
  */
 public class API {
+
+    public static DecimalFormat df = new DecimalFormat("#.00");
 
     /**
      * Registers a visitor with the system, if they are not already registered
@@ -168,17 +170,56 @@ public class API {
      * @param ids
      * @return
      */
-    public static String processPurchaseOrder(int quantity, List<Integer> ids) {
+    public static String processPurchaseOrder(int quantity, List<Long> ids) {
         String booksBought = "";
-        for( Integer id : ids ) {
-            for( Book b : LBMS.getBooksToBuy() ) {
-                if( b.getTempID().equals(id)) {
-                    for( int i = quantity; i > 0; i-- ) { buyBook(b); }
+        for(Long id: ids ) {
+            for(Book b: LBMS.getBooksToBuy() ) {
+                if(b.getTempID() == id) {
+                    for(int i = quantity; i > 0; i--) {
+                        buyBook(b);
+                    }
                     booksBought += ("," + b.toString() + Integer.toString(quantity)); //TODO ensure book.toString is of proper format
                     break;
                 }
             }
         }
         return booksBought;
+    }
+
+    /**
+     * Finds the fines due for a visitor.
+     * @param visitorID: the id of the visitor
+     * @return the ammount of fines due
+     */
+    public static double visitorFines(long visitorID) {
+        return getVisitorByID(visitorID).getFines();
+    }
+
+    /**
+     * Checks out a book for a visitor.
+     * @param isbn: the isbn of the book to checkout
+     * @param visitorID: the ID of the visitor checking out the book
+     * @return a string of the response message
+     */
+    public static String checkOutBook(long isbn, long visitorID) {
+        Transaction t = new Transaction(isbn, visitorID);
+        Visitor v = getVisitorByID(visitorID);
+        Search s = new SearchByISBN(isbn);
+        List<Book> l = findBooks(s);
+        Book b;
+        if(l.size() == 0) {
+            return "id-error," + isbn;
+        }
+        else {
+            b = l.get(0);
+        }
+        if(v.canCheckOut()) {
+            v.checkOut(t);
+            b.checkOut();
+            ArrayList<Transaction> transactions = LBMS.getTransactions();
+            transactions.add(t);
+            return t.getDueDate().format(SystemDateTime.DATE_FORMAT);
+        }
+        return null;
     }
 }

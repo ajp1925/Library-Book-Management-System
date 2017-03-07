@@ -11,7 +11,7 @@ import lbms.models.Visitor;
  */
 public class BeginVisit implements Command {
 
-    private int visitorID;
+    private long visitorID;
 
     /**
      * Constructor for BeginVisit command.
@@ -20,7 +20,7 @@ public class BeginVisit implements Command {
     public BeginVisit(String request) {
         request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
-        visitorID = Integer.parseInt(arguments[0]);
+        visitorID = Long.parseLong(arguments[0]);
     }
 
     /**
