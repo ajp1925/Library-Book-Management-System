@@ -17,12 +17,15 @@ import java.util.*;
  */
 public class LBMS {
     private static LBMS instance;
-    private static HashMap<Long, Book> books;
-    private static ArrayList<Book> booksToBuy;
-    private static ArrayList<Visitor> visitors;
-    private static ArrayList<Visit> totalVisits;
-    private static ArrayList<Transaction> transactions;
-    private static HashMap<Long, Visit> currentVisits;
+
+    // These are being overwritten on startup, but we instantiate
+    // them for the sake of null safety and testing.
+    private static HashMap<Long, Book> books = new HashMap<>();
+    private static ArrayList<Book> booksToBuy = new ArrayList<>();
+    private static ArrayList<Visitor> visitors = new ArrayList<>();
+    private static ArrayList<Visit> totalVisits = new ArrayList<>();
+    private static ArrayList<Transaction> transactions = new ArrayList<>();
+    private static HashMap<Long, Visit> currentVisits = new HashMap<>();
 
     private boolean shutdown = false;
 
