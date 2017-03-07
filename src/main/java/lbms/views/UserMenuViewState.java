@@ -10,6 +10,7 @@ public class UserMenuViewState implements State {
     /**
      * Prompts a user to either search or register a user
      */
+    @Override
     public void init() {
         System.out.println("Please select a command:");
         System.out.println("search)    search for a user");
@@ -19,6 +20,7 @@ public class UserMenuViewState implements State {
     /**
      * NO-OP
      */
+    @Override
     public void onEnter() {
         // NO-OP
     }
@@ -26,6 +28,7 @@ public class UserMenuViewState implements State {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void change(String state) {
         switch (state) {
             case "search": break;

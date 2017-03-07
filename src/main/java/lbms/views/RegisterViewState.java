@@ -18,6 +18,7 @@ public class RegisterViewState implements State {
     /**
      * Prompts the user to verify the entered information
      */
+    @Override
     public void init() {
         System.out.println("Registering a new user.");
         Scanner scanner = new Scanner(System.in);
@@ -32,6 +33,7 @@ public class RegisterViewState implements State {
     /**
      * Get information from the user to register a new user
      */
+    @Override
     public void onEnter() {
         System.out.println("Is all this information correct? (y/n)");
         System.out.printf("First Name: %s\n", firstName);
@@ -43,6 +45,7 @@ public class RegisterViewState implements State {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void change(String state) {
         switch (state) {
             case "y":

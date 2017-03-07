@@ -8,6 +8,7 @@ public class ViewController {
 
     public static void setState(State state) {
         viewState = state;
+        viewState.flush();
         viewState.init();
         viewState.onEnter();
     }

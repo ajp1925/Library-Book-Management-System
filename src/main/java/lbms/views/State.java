@@ -21,4 +21,8 @@ public interface State {
      * @param state The command to handle
      */
     void change(String state);
+
+    default void flush() {
+        // TODO
+    }
 }

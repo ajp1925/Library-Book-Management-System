@@ -10,6 +10,7 @@ public class DefaultViewState implements State {
     /**
      * Prompts a user whether to views books or users, or exit
      */
+    @Override
     public void init() {
         System.out.println("Welcome to the Library Book Management System!");
         System.out.println("Please select a command: ");
@@ -21,6 +22,7 @@ public class DefaultViewState implements State {
     /**
      * NO-OP
      */
+    @Override
     public void onEnter() {
         // NO-OP
     }
