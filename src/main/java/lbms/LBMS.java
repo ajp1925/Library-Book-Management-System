@@ -5,7 +5,6 @@ import lbms.models.*;
 import lbms.views.DefaultViewState;
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -73,8 +72,8 @@ public class LBMS {
     private ArrayList<Book> makeBooks() {
         ArrayList<Book> output = new ArrayList<>();
         try {
-            File books = new File(getClass().getResource("/books.txt").toURI());
-            Scanner s = new Scanner(books);
+            InputStream inputStream = LBMS.class.getClassLoader().getResourceAsStream("books.txt");
+            Scanner s = new Scanner(inputStream);
             String line;
             String[] parts;
             String title, publisher;
@@ -165,8 +164,9 @@ public class LBMS {
                 pageCount = Integer.parseInt(parts[parts.length-2]);
                 output.add(new Book(isbn, title, authors, publisher, publishDate, pageCount, 0, 0));
             }
+            inputStream.close();
         }
-        catch (FileNotFoundException | URISyntaxException e) {
+        catch (IOException e) {
             e.printStackTrace();
         }
         return output;
