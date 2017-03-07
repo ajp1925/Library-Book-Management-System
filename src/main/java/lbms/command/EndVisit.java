@@ -18,7 +18,7 @@ public class EndVisit implements Command {
      * @param request: the request input string
      */
     public EndVisit(String request) {
-        visitorID = Long.parseLong(request.replace(";$", ""));
+        visitorID = Long.parseLong(request.replace(";", ""));
     }
 
     /**

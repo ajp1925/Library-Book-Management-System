@@ -21,7 +21,6 @@ public class CommandController {
                     break;
                 case "depart":
                     response += new EndVisit(request[1]).execute();
-                    System.out.println(response);
                     break;
                 case "info":
                     response += new LibrarySearch(request[1]).execute();
