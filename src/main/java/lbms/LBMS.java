@@ -5,7 +5,6 @@ import lbms.models.*;
 import lbms.views.DefaultViewState;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,25 +30,38 @@ public class LBMS {
      * @param args: the program arguments
      */
     public static void main(String[] args) {
-        new LBMS();
+        boolean inputFromUser = true;
+
+        for (String arg : args) {
+            switch (arg) {
+                case "--no-user-input": inputFromUser = false; break;
+            }
+        }
+        new LBMS(inputFromUser);
     }
 
     /**
      * Handles user input for the LBMS system.
      */
-    public LBMS() {
+    public LBMS(boolean inputFromUser) {
         SystemInit();
 
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.print("> ");
-            String input = scanner.nextLine();
-            if (input.matches("(?i)exit|quit")) {
-                break;
+        if (inputFromUser) {
+            ViewController.setState(new DefaultViewState());
+
+            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                System.out.print("> ");
+                String input = scanner.nextLine();
+                if (input.matches("(?i)exit|quit")) {
+                    break;
+                }
+                ViewController.change(input);
             }
-            ViewController.change(input);
+            scanner.close();
+        } else {
+            while (true); // TODO better way to exit
         }
-        scanner.close();
 
         SystemClose();
     }
@@ -184,8 +196,6 @@ public class LBMS {
         }
 
         currentVisits = new HashMap<Long, Visit>();
-
-        ViewController.setState(new DefaultViewState());
     }
 
     // TODO Chris
