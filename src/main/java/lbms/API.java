@@ -6,10 +6,9 @@ import lbms.models.Visit;
 import lbms.models.Visitor;
 import lbms.search.Search;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -143,18 +142,28 @@ public class API {
 
     /**
      * Adds a current visit to the LBMS.
-     * @param visitorID: the id of the visitor at the library
-     * @return the visit object
+     * @param visitor: the visitor at the library
+     * @return the new visit object
      */
-    public static Visit beginVisit(int visitorID) {
-        Visit v = new Visit(visitorID);
-        LBMS.addVisit(v);
-        return v;
+    public static Visit beginVisit(Visitor visitor) {
+        Visit visit = new Visit(visitor);
+        LBMS.getCurrentVisits().put(visitor.getVisitorID(), visit);
+        return visit;
+    }
+
+    /**
+     * Ends and removes the visit from LBMS
+     * @return the visit object removed
+     */
+    public static Visit endVisit(Visitor visitor) {
+        Visit visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());
+        visit.depart();
+        LBMS.getTotalVisits().add(visit);
+        return visit;
     }
 
     /**
      * Buys *quantity* of each book listed in *ids*
-     *
      * @param quantity
      * @param ids
      * @return
@@ -170,7 +179,6 @@ public class API {
                 }
             }
         }
-
-        return "success" + booksBought + ";";
+        return booksBought;
     }
 }

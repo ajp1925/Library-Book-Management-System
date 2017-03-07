@@ -1,10 +1,10 @@
 package lbms.models;
 
-import lbms.models.SystemDateTime;
+import lbms.API;
 
-import java.time.LocalDate;
 import java.io.Serializable;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.Period;
 
 /**
  * Class for a Transaction object, used in the library book management system.
@@ -17,8 +17,6 @@ public class Transaction implements Serializable {
     private long isbn;
     private int visitorId;
     private LocalDate date, dueDate;
-    private double fine;
-
     /**
      * Constructor for a Transaction object.
      * @param isbn: the isbn of the book
@@ -52,7 +50,13 @@ public class Transaction implements Serializable {
      * @return the fine due on the book
      */
     public double getFine() {
-        calculateFine();
+        int days = Period.between(dueDate, API.getSystemDate()).getDays();
+        double fine = 0.0D;
+        for (int i = 0; i < days; i++) {
+            if (i == 0) fine += 10.00D;
+            else fine += 2.00D;
+            i--;
+        }
         return fine;
     }
 
@@ -78,9 +82,5 @@ public class Transaction implements Serializable {
 
     public String printDueDate() {
         return this.getDueDate().format(SystemDateTime.DATE_FORMAT);
-    }
-
-    private void calculateFine() {
-        // TODO
     }
 }

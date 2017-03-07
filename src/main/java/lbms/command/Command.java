@@ -2,6 +2,7 @@ package lbms.command;
 
 /**
  * Interface for the Command design pattern.
+ * @author Team B
  */
 public interface Command {
 

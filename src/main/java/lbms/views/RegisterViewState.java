@@ -46,7 +46,7 @@ public class RegisterViewState implements State {
     public void change(String state) {
         switch (state) {
             case "y":
-                API.registerVisitor(new Visitor(firstName, lastName, address, 0,0));
+                API.registerVisitor(new Visitor(firstName, lastName, address, 0));
                 ViewController.setState(new DefaultViewState());
                 break;
             case "n":

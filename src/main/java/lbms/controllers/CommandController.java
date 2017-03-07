@@ -8,7 +8,6 @@ import lbms.command.*;
 public class CommandController {
 
     public static String processRequest(String requestString) {
-
         String[] request = requestString.split(",", 1);
         String response = request[0] + ",";
 
