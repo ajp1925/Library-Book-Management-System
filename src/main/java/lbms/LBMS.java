@@ -24,6 +24,8 @@ public class LBMS {
     private static ArrayList<Transaction> transactions;
     private static HashMap<Long, Visit> currentVisits;
 
+    private boolean shutdown = false;
+
     /**
      * Program entry point. Handle command line arguments and start.
      * @param args: the program arguments
@@ -52,14 +54,14 @@ public class LBMS {
             while (true) {
                 System.out.print("> ");
                 String input = scanner.nextLine();
-                if (input.matches("(?i)exit|quit")) {
+                if (input.matches("(?i)exit|quit") || shutdown) {
                     break;
                 }
                 ViewController.change(input);
             }
             scanner.close();
         } else {
-            while (true); // TODO better way to exit
+            while (!shutdown);
         }
 
         SystemClose();
@@ -223,6 +225,13 @@ public class LBMS {
             e.printStackTrace();
             System.exit(1);
         }
+    }
+
+    /**
+     * Used to halt the LBMS system.
+     */
+    public void shutdown() {
+        shutdown = true;
     }
 
     /**
