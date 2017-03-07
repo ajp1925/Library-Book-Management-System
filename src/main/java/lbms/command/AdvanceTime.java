@@ -19,7 +19,7 @@ public class AdvanceTime implements Command {
         request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
         days = Long.parseLong(arguments[0]);
-        hours = Long.parseLong(arguments[1]);
+        hours = arguments.length > 1 ? Long.parseLong(arguments[1]) : 0;
     }
 
     /**
