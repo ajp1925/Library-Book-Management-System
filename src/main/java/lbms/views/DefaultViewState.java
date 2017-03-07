@@ -12,7 +12,7 @@ public class DefaultViewState implements State {
      */
     @Override
     public void init() {
-        System.out.println("Welcome to the Library Book Management System!");
+        System.out.println("\nWelcome to the Library Book Management System!");
         System.out.println("\nPlease select a command: ");
         System.out.println("books)     View books");
         System.out.println("users)     View users");

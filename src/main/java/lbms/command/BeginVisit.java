@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.API;
+import lbms.controllers.CommandController;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
 import lbms.models.Visitor;
@@ -40,5 +41,17 @@ public class BeginVisit implements Command {
 
         Visit v = API.beginVisit(visitor);
         return visitorID + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," + v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
+    }
+
+    public static String parseResponse(String response, long visitorID) {
+        String[] fields = response.split(",");
+        if (fields[1].equals("duplicate;")) {
+            return "\nVisitor " + visitorID + " is already in the library.";
+        } else if (fields[1].equals("invalid-id;")) {
+            return "\nVisitor " + visitorID + " is not registered in the system.";
+        } else {
+            return "\nVisitor " + visitorID + " has entered the library on "
+                    + fields[2] + " at " + fields[3].replace(";","") + ".";
+        }
     }
 }

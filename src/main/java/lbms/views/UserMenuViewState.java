@@ -1,5 +1,6 @@
 package lbms.views;
 
+import lbms.command.FindBorrowed;
 import lbms.controllers.ViewController;
 
 public class UserMenuViewState implements State {
@@ -14,6 +15,7 @@ public class UserMenuViewState implements State {
         System.out.println("register)         Register a new user");
         System.out.println("enter library)    Allow a user to enter the library");
         System.out.println("exit library)     Have a user leave the library");
+        System.out.println("borrowed)         Find the books a user has borrowed");
         System.out.println("return)           Return to main menu");
     }
 
@@ -34,7 +36,8 @@ public class UserMenuViewState implements State {
             case "search": break;
             case "register": ViewController.setState(new RegisterViewState()); break;
             case "enter library": case "enter": ViewController.setState(new BeginVisitViewState()); break;
-            case "exit library": ViewController.setState(new EndVisitViewState()); break;
+            case "exit library":case "leave": ViewController.setState(new EndVisitViewState()); break;
+            case "borrowed": ViewController.setState(new FindBorrowedViewState()); break;
             case "return": ViewController.setState(new DefaultViewState()); break;
             default:
                 System.out.println("Command not found\n");

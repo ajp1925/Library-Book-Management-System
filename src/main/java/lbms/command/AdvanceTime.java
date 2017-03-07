@@ -38,4 +38,15 @@ public class AdvanceTime implements Command {
         API.addHoursToSystemDateTime(hours);
         return "success;";
     }
+
+    public static String parseResponse(String response, int days, int hours) {
+        String[] fields = response.split(",");
+        if (fields[1].equals("success;")) {
+            return "\nAdvance success, clock has been moved forward " + days + " day(s) and " + hours + " hour(s).";
+        } else if (fields[1].equals("invalid-number-of-days")) {
+            return"\nFailure, " + days + " is an invalid number of days to skip.";
+        } else {
+            return "\nFailure, " + hours + " is an invalid number of hours to skip.";
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package lbms.views;
 
+import lbms.command.AdvanceTime;
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
 
@@ -23,14 +24,10 @@ public class AdvanceViewState implements State {
 
     @Override
     public void onEnter() {
-        String[] response = CommandController.processRequest("advance," + days + "," + hours + ";").split(",");
-        if (response[1].equals("success;")) {
-            System.out.println("\nAdvance success, clock has been moved forward " + days + " day(s) and " + hours + " hour(s).");
-        } else if (response[1].equals("invalid-number-of-days")) {
-            System.out.println("\nFailure, " + days + " is an invalid number of days to skip.");
-        } else {
-            System.out.println("\nFailure, " + hours + " is an invalid number of hours to skip.");
-        }
+        System.out.println(
+                AdvanceTime.parseResponse(
+                        CommandController.processRequest("advance," + days + "," + hours + ";"), days, hours)
+        );
         ViewController.setState(new ClockViewState());
     }
 
