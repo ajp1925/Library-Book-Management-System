@@ -16,6 +16,7 @@ public class Visitor implements Serializable {
     private final int MAX_BOOKS = 5;
     private boolean inLibrary;
     private static long systemIDs = 0;
+    private double fines;
 
     /**
      * Constructor for a Visitor object.
@@ -32,6 +33,7 @@ public class Visitor implements Serializable {
         this.visitorID = ++systemIDs;
         this.checkedOutBooks = new HashMap<Long, Transaction>(MAX_BOOKS);
         this.inLibrary = false;
+        fines = 0;
     }
 
     /**
@@ -138,5 +140,26 @@ public class Visitor implements Serializable {
      */
     void switchInLibrary(boolean status) {
         inLibrary = status;
+    }
+
+    /**
+     * Determines the fines the visitor owes.
+     * @return the amount of fines due
+     */
+    public double getFines() {
+        double fines = 0;
+        for(Long l: checkedOutBooks.keySet()) {
+            fines += checkedOutBooks.get(l).getFine();
+        }
+        this.fines = fines;
+        return fines;
+    }
+
+    /**
+     * Makes a payment to the library.
+     * @param amount: the amount of fines to pay
+     */
+    public void payFines(double amount) {
+        fines -= amount;
     }
 }

@@ -1,8 +1,6 @@
 package lbms.command;
 
 import lbms.API;
-import lbms.models.Transaction;
-import java.util.Collection;
 
 /**
  * PayFine class for the pay fine command.
@@ -10,7 +8,7 @@ import java.util.Collection;
  */
 public class PayFine implements Command {
 
-    private int visitorID;
+    private long visitorID;
     private double amount;
 
     /**
@@ -20,7 +18,7 @@ public class PayFine implements Command {
     public PayFine(String request) {
         request = request.replaceAll(";", "");
         String[] arguments = request.split(",");
-        visitorID = Integer.parseInt(arguments[0]);
+        visitorID = Long.parseLong(arguments[0]);
         amount = Double.parseDouble(arguments[1]);
     }
 
@@ -30,18 +28,17 @@ public class PayFine implements Command {
      */
     @Override
     public String execute() {
-        // TODO Edward add semi-colons to return statements
-        double balance = 0.00;
-        Collection<Transaction> transactions = API.getVisitorByID(visitorID).getCheckedOutBooks().values();
         if (!API.visitorIsRegisteredID(visitorID)) {
-            return "invalid-visitor-id";
+            return "invalid-visitor-id;";
         }
-        for (Transaction transaction : transactions) {
-            balance += transaction.getFine();
+        double balance = API.getVisitorByID(visitorID).getFines();
+        if(amount < 0 || amount > balance) {
+            return "invalid-amount," + amount + "," + API.df.format(balance) + ";";
         }
-        if (amount < 0 || amount > balance) {
-            return "invalid-amount," + Double.toString(amount) + "," + Double.toString(balance);
+        else {
+            double newBalance = balance - amount;
+            API.getVisitorByID(visitorID).payFines(amount);
+            return "success," + API.df.format(newBalance) + ";";
         }
-        return "success," + Double.toString(balance);
     }
 }

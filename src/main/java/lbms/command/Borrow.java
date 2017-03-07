@@ -1,10 +1,7 @@
 package lbms.command;
 
 import lbms.API;
-import lbms.models.Transaction;
-
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Borrow class that implements the borrow command.
@@ -12,8 +9,8 @@ import java.util.Collection;
  */
 public class Borrow implements Command {
 
-    private int visitorID;
-    private ArrayList<Long> ids;
+    private long visitorID;
+    private ArrayList<Long> id;
 
     /**
      * Constructor for a Borrow class.
@@ -22,9 +19,10 @@ public class Borrow implements Command {
     public Borrow(String request) {
         request = request.replaceAll(";", "");
         String[] arguments = request.split(",");
-        visitorID = Integer.parseInt(arguments[0]);
-        for (int i = 1; i < arguments.length; i++) {
-            ids.add(Long.parseLong(arguments[i]));
+        visitorID = Long.parseLong(arguments[0]);
+        id = new ArrayList<>();
+        for(int i = 1; i < arguments.length; i++) {
+            id.add(Long.parseLong(arguments[i]));
         }
     }
 
@@ -34,27 +32,39 @@ public class Borrow implements Command {
      */
     @Override
     public String execute() {
-        // TODO change error message for invalid ID
-        Collection<Transaction> transactions = API.getVisitorByID(visitorID).getCheckedOutBooks().values();
         if(!API.visitorIsRegisteredID(visitorID)) {
-            return "invalid-visitor-id;";
+            return " invalid-visitor-id;";
         }
-        if () {
-            String response = "invalid-book-id,";
-            for (Long id : ids) {
-                response = response + Long.toString(id) + ",";
+        else if(API.visitorFines(visitorID) > 0) {
+            return "outstanding-fine," + API.df.format(API.getVisitorByID(visitorID).getFines());
+        }
+        String invalidIDs = "{";
+        String temp = "";
+        for(Long l: id) {
+            if(!API.getVisitorByID(visitorID).canCheckOut()) {
+                return "book-limit-exceeded;";
             }
-            response = response.replaceAll(",$", "");
-            return response;
-        }
-        if (!API.getVisitorByID(visitorID).canCheckOut()) {
-            return "book-limit-exceeded;";
-        }
-        for (Transaction transaction : transactions) {
-            if (transaction.getFine() > 0) {
-                return "outstanding-fine," + Double.toString(transaction.getFine()) + ";";
+            temp = API.checkOutBook(l, visitorID);
+            try {
+                if(temp.contains("id-error")) {
+                    String[] error = temp.split(",");
+                    invalidIDs += error[1];
+                }
+            }
+            catch(NullPointerException e) {
+                e.printStackTrace();
+                System.exit(1);
             }
         }
-        return "";
+        if(invalidIDs.length() > 1) {
+            String output = "invalid-book-id,";
+            output += invalidIDs;
+            output = output.substring(0,output.length() - 1);
+            output += "};";
+            return output;
+        }
+        else {
+            return temp + ";";
+        }
     }
 }

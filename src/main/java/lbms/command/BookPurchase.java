@@ -1,7 +1,6 @@
 package lbms.command;
 
 import lbms.API;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +12,7 @@ import java.util.stream.Collectors;
 public class BookPurchase implements Command {
 
     private int quantity;
-    private List<Integer> ids;
+    private List<Long> ids;
 
     /**
      * Constructor for a BookPurchase class.
@@ -23,7 +22,7 @@ public class BookPurchase implements Command {
         request = request.replaceAll(";$", "");
         List<String> arguments = Arrays.asList(request.split(","));
         quantity = Integer.parseInt(arguments.remove(0));
-        ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
+        ids = arguments.parallelStream().map(Long::parseLong).collect(Collectors.toList());
     }
 
     /**

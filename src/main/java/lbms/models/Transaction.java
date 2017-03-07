@@ -1,7 +1,6 @@
 package lbms.models;
 
 import lbms.API;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
@@ -15,14 +14,15 @@ public class Transaction implements Serializable {
     private final static double INITIAL_FINE = 10.00;
 
     private long isbn;
-    private int visitorId;
+    private long visitorId;
     private LocalDate date, dueDate;
+
     /**
      * Constructor for a Transaction object.
      * @param isbn: the isbn of the book
      * @param visitorId: the ID of the visitor checking it out
      */
-    public Transaction(long isbn, int visitorId) {
+    public Transaction(long isbn, long visitorId) {
         this.isbn = isbn;
         this.visitorId = visitorId;
         this.date = SystemDateTime.getInstance().getDate();
@@ -41,7 +41,7 @@ public class Transaction implements Serializable {
      * Getter for the visitors ID.
      * @return the visitors ID
      */
-    public int getVisitor() {
+    public long getVisitor() {
         return visitorId;
     }
 

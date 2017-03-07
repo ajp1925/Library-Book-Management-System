@@ -26,7 +26,6 @@ public class Return implements Command {
         request = request.replaceAll(";$", "");
         String[] split = request.split(",", 1);
         visitorID = Long.parseLong(split[0]);
-        String[] idStrings = split[1].split(",");
         ids = Arrays.stream(split[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
@@ -36,18 +35,18 @@ public class Return implements Command {
      */
     @Override
     public String execute() {
-        if (!API.visitorIsRegisteredID(visitorID)) {
+        if(!API.visitorIsRegisteredID(visitorID)) {
             return "invalid-visitor-id;";
         }
         Visitor visitor = API.getVisitorByID(visitorID);
-        if (visitor.getNumCheckedOut() < ids.size()) {
+        if(visitor.getNumCheckedOut() < ids.size()) {
             return "invalid-book-id," + ids.toString().substring(1, ids.size()-1).replaceAll("\\s", "") + ";";
         }
 
         int i = 1;
-        for (Map.Entry<Long, Transaction> longTransactionEntry: visitor.getCheckedOutBooks().entrySet()) {
-            if (ids.contains(i)) {
-                if (API.getSystemDate().isAfter(longTransactionEntry.getValue().getDueDate())) {
+        for(Map.Entry<Long, Transaction> longTransactionEntry: visitor.getCheckedOutBooks().entrySet()) {
+            if(ids.contains(i)) {
+                if(API.getSystemDate().isAfter(longTransactionEntry.getValue().getDueDate())) {
                     return "overdue," + longTransactionEntry.getValue().getFine() + "," + i;
                 }
             }

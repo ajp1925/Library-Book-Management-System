@@ -11,14 +11,14 @@ import lbms.models.Visitor;
  */
 public class EndVisit implements Command {
 
-    private int visitorID;
+    private long visitorID;
 
     /**
      * Constructor for an EndVisit class.
      * @param request: the request input string
      */
     public EndVisit(String request) {
-        visitorID = Integer.parseInt(request.replace(";$", ""));
+        visitorID = Long.parseLong(request.replace(";$", ""));
     }
 
     /**
@@ -27,12 +27,16 @@ public class EndVisit implements Command {
      */
     @Override
     public String execute() {
-        if (API.visitorIsRegisteredID(visitorID)) {
+        if(API.visitorIsRegisteredID(visitorID)) {
             Visitor visitor = API.getVisitorByID(visitorID);
-            if (visitor.getInLibrary()) {
+            if(visitor.getInLibrary()) {
                 Visit visit = API.endVisit(visitor);
-                return visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + ", duration;";   //TODO add duration
+                long s = visit.getDuration().getSeconds();
+                String duration = String.format("%02d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
+                return visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + "," +
+                        duration + ";";
             }
+            return "invalid-id;";
         }
         return "invalid-id;";
     }
