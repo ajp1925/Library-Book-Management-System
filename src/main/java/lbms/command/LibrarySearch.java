@@ -42,6 +42,9 @@ public class LibrarySearch implements Command {
             sort_order = arguments.get(index);
             index++;
         }
+        else {
+            sort_order = null;
+        }
     }
 
     /**
@@ -52,7 +55,16 @@ public class LibrarySearch implements Command {
     public String execute() {
         // TODO Charles
         // Note: id is actually the isbn
-        return "NOT DONE";
+
+        if(sort_order != null &&
+                !sort_order.equals("title") &&
+                !sort_order.equals("publish-date") &&
+                !sort_order.equals("book-status") )
+        {
+            return "invalid-sort-order;";
+        }
+
+        return "NOT DONE"; // TODO Awaiting API search method
     }
 
 }
