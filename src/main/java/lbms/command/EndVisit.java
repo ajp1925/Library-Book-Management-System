@@ -14,7 +14,7 @@ public class EndVisit implements Command {
     private long visitorID;
 
     /**
-     * Constructor for an EndVisit class.
+     * Constructor for an EndVisit command class.
      * @param request: the request input string
      */
     public EndVisit(String request) {
