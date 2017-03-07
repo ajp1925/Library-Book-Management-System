@@ -9,7 +9,8 @@ public class StatisticsReport implements Command {
     private int days;
 
     public StatisticsReport(String request) {
-        // TODO Charles
+        String[] arguments = request.split(",");
+
     }
 
     @Override

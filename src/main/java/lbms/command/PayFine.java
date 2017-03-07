@@ -16,7 +16,7 @@ public class PayFine implements Command {
      * @param request: the request string to be processed
      */
     public PayFine(String request) {
-        request = request.replaceAll(";", "");
+        request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
         visitorID = Long.parseLong(arguments[0]);
         amount = Double.parseDouble(arguments[1]);

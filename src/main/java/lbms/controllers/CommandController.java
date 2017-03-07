@@ -10,6 +10,9 @@ public class CommandController {
     public static String processRequest(String requestString) {
         String[] request = requestString.split(",", 2);
         String response = request[0] + ",";
+        if(request[0].equals("depart")) {
+            return response + new EndVisit(request[1]).execute();
+        }
 
         try {
             switch (request[0]) {
@@ -19,9 +22,8 @@ public class CommandController {
                 case "arrive":
                     response += new BeginVisit(request[1]).execute();
                     break;
-                case "depart":
+                case("depart"):
                     response += new EndVisit(request[1]).execute();
-                    System.out.println(response);
                     break;
                 case "info":
                     response += new LibrarySearch(request[1]).execute();
@@ -60,7 +62,6 @@ public class CommandController {
         } catch (Exception e) {
 
         }
-
         return response;
     }
 }
