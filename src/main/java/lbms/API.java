@@ -25,7 +25,7 @@ public class API {
      */
     public static boolean registerVisitor(Visitor visitor) {
         if (!visitorIsRegisteredID(visitor.getVisitorID()) && !visitorIsRegisteredName(visitor.getName()) &&
-                visitorIsRegisteredAddress(visitor.getAddress())) {
+                !visitorIsRegisteredAddress(visitor.getAddress())) {
             LBMS.getVisitors().add(visitor);
             return true;
         }
