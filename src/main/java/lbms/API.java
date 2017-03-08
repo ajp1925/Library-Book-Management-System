@@ -177,7 +177,7 @@ public class API {
             }
             booksBought += ("," + b.toString() + "," + Integer.toString(quantity)) + '\n';
         }
-        return booksBought;
+        return (quantity * ids.size()) + booksBought;
     }
 
     /**

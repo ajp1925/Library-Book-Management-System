@@ -85,15 +85,26 @@ public class LibrarySearch implements Command {
                     matches.remove(b);
                 }
                 antiMatches.clear();
-                // TODO check publisher and sort order
-            }
-            else {
-                // TODO return all matches
+                if(publisher != null) {
+                    for(Book b: matches) {
+                        if(!b.getPublisher().equals(publisher)) {
+                            antiMatches.add(b);
+                        }
+                    }
+                    for(Book b: antiMatches) {
+                        matches.remove(b);
+                    }
+                    antiMatches.clear();
+                }
             }
         }
-        else {
-            // TODO return all matches
+
+        // create the return string
+        String matchesString = "";
+        for(Book b: matches) {
+            matchesString += ('\n' + b.getCopiesAvailable() + "," + b.toString());
         }
-        return null; // TODO remove this
+
+        return matches.size() + matchesString;
     }
 }

@@ -112,6 +112,12 @@ public class Book implements Serializable, Comparable<Book> {
     }
 
     /**
+     * Calculates the number of copies currently available.
+     * @return the number of copies of this book that are available
+     */
+    public int getCopiesAvailable() { return numberOfCopies - copiesCheckedOut; }
+
+    /**
      * Getter for the published date.
      * @return the publishing date for the book
      */
