@@ -1,6 +1,6 @@
 package lbms.command;
 
-import lbms.API;
+import lbms.models.SystemDateTime;
 
 /**
  * Created by Chris on 3/8/2017.
@@ -10,7 +10,7 @@ public class ResetTime implements Command {
     @Override
     public String execute() {
         try {
-            API.resetTime();
+            SystemDateTime.getInstance().reset();
             return "success;";
         } catch (Exception e) {
             return "failure;";

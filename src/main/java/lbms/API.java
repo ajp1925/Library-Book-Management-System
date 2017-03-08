@@ -125,24 +125,6 @@ public class API {
     }
 
     /**
-     * Adds hours to the system time.
-     * @param hours: the number of hours to add
-     */
-    public static void addHoursToSystemDateTime(long hours) {
-        SystemDateTime.getInstance().plusHours(hours);
-    }
-
-    /**
-     * Adds days to the system time.
-     * @param days: the number of days to be added to the system
-     */
-    public static void addDaysToSystemDateTime(long days) {
-        SystemDateTime.getInstance().plusDays(days);
-    }
-
-    public static void resetTime() { SystemDateTime.getInstance().reset(); }
-
-    /**
      * Adds a current visit to the LBMS.
      * @param visitor: the visitor at the library
      * @return the new visit object

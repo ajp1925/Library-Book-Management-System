@@ -1,6 +1,6 @@
 package lbms.command;
 
-import lbms.API;
+import lbms.models.SystemDateTime;
 
 /**
  * AdvanceTime class that calls the API to advance system time.
@@ -34,8 +34,8 @@ public class AdvanceTime implements Command {
         if(hours < 0 || hours > 23) {
             return "invalid-number-of-hours," + hours + ";";
         }
-        API.addDaysToSystemDateTime(days);
-        API.addHoursToSystemDateTime(hours);
+        SystemDateTime.getInstance().plusDays(days);
+        SystemDateTime.getInstance().plusHours(hours);
         return "success;";
     }
 
