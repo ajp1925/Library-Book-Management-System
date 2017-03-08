@@ -14,6 +14,7 @@ import java.util.List;
  * Facade class for interacting with the system.
  * @author Team B
  */
+@Deprecated
 public class API {
 
     public static DecimalFormat df = new DecimalFormat("#.00");
