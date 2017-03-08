@@ -1,20 +1,22 @@
 package lbms.search;
 
-import lbms.models.Book;
-import java.util.HashMap;
 import java.util.List;
 
 /**
  * Interface to model search classes on.
  * @author Team B
  */
-public interface Search {
+public interface Search<T> {
 
     /**
-     * Finds the books with the given search criteria.
-     * @param books: the list of books
-     * @return a list of books that match
+     * Finds objects that fit the search criteria
+     * @param s: The string to search for
+     * @return a list of objects that match
      */
-    List<Book> search(HashMap<Long, Book> books);
+    List<T> search(String s);
+
+    default T findFirst(String s) {
+        return search(s).get(0);
+    }
 
 }

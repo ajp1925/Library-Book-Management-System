@@ -8,15 +8,16 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public enum BookSearch {
+public enum BookSearch implements Search<Book> {
     BY_AUTHOR,
     BY_ISBN,
     BY_TITLE;
 
-    public List<Book> search(long isbn) {
-        return search(Long.toString(isbn));
+    public List<Book> search(long l) {
+        return search(Long.toString(l));
     }
 
+    @Override
     public List<Book> search(String s) {
         switch (this) {
             case BY_AUTHOR: return find(book -> book.hasAuthorPartial(s));
