@@ -2,6 +2,8 @@ package lbms.command;
 
 import lbms.API;
 
+import java.text.DecimalFormat;
+
 /**
  * PayFine class for the pay fine command.
  * @author Team B
@@ -33,12 +35,12 @@ public class PayFine implements Command {
         }
         double balance = API.getVisitorByID(visitorID).getFines();
         if(amount < 0 || amount > balance) {
-            return "invalid-amount," + amount + "," + API.df.format(balance) + ";";
+            return "invalid-amount," + amount + "," + new DecimalFormat("#.00").format(balance) + ";";
         }
         else {
             double newBalance = balance - amount;
             API.getVisitorByID(visitorID).payFines(amount);
-            return "success," + API.df.format(newBalance) + ";";
+            return "success," + new DecimalFormat("#.00").format(newBalance) + ";";
         }
     }
 

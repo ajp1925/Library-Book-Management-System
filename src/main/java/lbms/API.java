@@ -3,16 +3,12 @@ package lbms;
 import lbms.models.Visit;
 import lbms.models.Visitor;
 
-import java.text.DecimalFormat;
-
 /**
  * Facade class for interacting with the system.
  * @author Team B
  */
 @Deprecated
 public class API {
-
-    public static DecimalFormat df = new DecimalFormat("#.00");
 
     /**
      * Registers a visitor with the system, if they are not already registered

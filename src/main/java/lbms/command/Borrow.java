@@ -9,6 +9,7 @@ import lbms.models.Visitor;
 import lbms.search.Search;
 import lbms.search.SearchByISBN;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class Borrow implements Command {
             return " invalid-visitor-id;";
         }
         else if (API.getVisitorByID(visitorID).getFines() > 0) {
-            return "outstanding-fine," + API.df.format(API.getVisitorByID(visitorID).getFines());
+            return "outstanding-fine," + new DecimalFormat("#.00").format(API.getVisitorByID(visitorID).getFines());
         }
         String invalidIDs = "{";
         String temp = "";
