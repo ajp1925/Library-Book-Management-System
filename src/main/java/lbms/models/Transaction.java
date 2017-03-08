@@ -14,7 +14,8 @@ public class Transaction implements Serializable {
 
     private long isbn;
     private long visitorId;
-    private LocalDate date, dueDate;
+    private double finePayed = 0;
+    private LocalDate date, dueDate, closeDate;
 
     /**
      * Constructor for a Transaction object.
@@ -60,6 +61,31 @@ public class Transaction implements Serializable {
     }
 
     /**
+     * Getter for the fine money payed
+     * @return the amount of money payed for Transaction fine
+     */
+    public double getFinePayed() { return finePayed; }
+
+    /**
+     * Closes the transaction by setting the fine payed.
+     * Note: a transaction without an associated fine does not need closing
+     * @param amount the amount of fine payed
+     */
+    public void payTransactionFine(double amount) {
+        if( finePayed == 0 && amount == getFine() ) {
+            finePayed += amount;
+            closeTransaction();
+        }
+    }
+
+    /**
+     * Marks that the fine has been paid for this transaction
+     */
+    private void closeTransaction() {
+        closeDate = SystemDateTime.getInstance().getDate();
+    }
+
+    /**
      * Getter for the date.
      * @return the date the book was checked out
      */
@@ -74,6 +100,12 @@ public class Transaction implements Serializable {
     public LocalDate getDueDate() {
         return dueDate;
     }
+
+    /**
+     * Getter for the close date of the transaction (when the fine was paid)
+     * @return the date the transaction was closed
+     */
+    public LocalDate getCloseDate() { return closeDate; }
 
     public String printDate() {
         return this.getDate().format(SystemDateTime.DATE_FORMAT);
