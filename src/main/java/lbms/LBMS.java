@@ -225,6 +225,8 @@ public class LBMS {
         }
 
         currentVisits = new HashMap<Long, Visit>();
+        SystemDateTime systemDateTime = SystemDateTime.getInstance();
+        systemDateTime.start();
     }
 
     // TODO comment this
