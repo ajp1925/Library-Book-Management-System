@@ -48,7 +48,7 @@ public class BookPurchase implements Command {
      * @param ids: the ids of the books to be purchased
      * @return a response string
      */
-    public static String processPurchaseOrder(int quantity, List<Long> ids) {
+    private static String processPurchaseOrder(int quantity, List<Long> ids) {
         String booksBought = "";
         for(Long id: ids) {
             for(Book b: LBMS.getBooksToBuy()) {
