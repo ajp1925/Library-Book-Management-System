@@ -1,6 +1,7 @@
 package lbms.command;
 
-import lbms.API;
+import lbms.LBMS;
+import lbms.models.Book;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,11 +34,41 @@ public class BookPurchase implements Command {
      */
     @Override
     public String execute() {
-        return "success," + API.processPurchaseOrder(quantity, ids) + ";";
+        return "success," + processPurchaseOrder(quantity, ids) + ";";
     }
 
     @Override
     public String parseResponse(String response) {
         return null;    //TODO
+    }
+
+    /**
+     * Buys *quantity* of each book listed in *ids*
+     * @param quantity: the quantity of books to be purchased
+     * @param ids: the ids of the books to be purchased
+     * @return a response string
+     */
+    public static String processPurchaseOrder(int quantity, List<Long> ids) {
+        String booksBought = "";
+        for(Long id: ids) {
+            for(Book b: LBMS.getBooksToBuy()) {
+                if(b.getTempID() == id) {
+                    for(int i = quantity; i > 0; i--) {
+                        buyBook(b);
+                    }
+                    booksBought += ("\n" + b.toString() + "," + Integer.toString(quantity));
+                    break;
+                }
+            }
+        }
+        return (quantity * ids.size()) + booksBought;
+    }
+
+    /**
+     * Buys a book for the library
+     * @param book: The book to buy
+     */
+    private static void buyBook(Book book) {
+        LBMS.getBooks().put(book.getIsbn(), book);
     }
 }

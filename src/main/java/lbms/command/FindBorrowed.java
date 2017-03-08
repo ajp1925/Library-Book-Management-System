@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.API;
+import lbms.LBMS;
 import lbms.models.Book;
 import lbms.models.Visitor;
 import lbms.search.SearchByISBN;
@@ -38,7 +39,7 @@ public class FindBorrowed implements Command {
         final int[] id = {1};
 
         visitor.getCheckedOutBooks().forEach((isbn, transaction) -> {
-            Book book = API.findBooks(new SearchByISBN(isbn)).get(0);
+            Book book = new SearchByISBN(isbn).search(LBMS.getBooks()).get(0);
             sb.append(id[0]++).append(",");
             sb.append(isbn).append(",");
             sb.append(book.getTitle()).append(",");

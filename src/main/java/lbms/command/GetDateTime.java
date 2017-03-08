@@ -1,7 +1,5 @@
 package lbms.command;
 
-import lbms.API;
-import lbms.controllers.CommandController;
 import lbms.models.SystemDateTime;
 
 /**
@@ -19,8 +17,8 @@ public class GetDateTime implements Command {
      */
     @Override
     public String execute() {
-        return API.getSystemDate().format(SystemDateTime.DATE_FORMAT) + "," +
-                API.getSystemTime().format(SystemDateTime.TIME_FORMAT);
+        return SystemDateTime.getInstance().getDate().format(SystemDateTime.DATE_FORMAT) + "," +
+                SystemDateTime.getInstance().getTime().format(SystemDateTime.TIME_FORMAT);
     }
 
     @Override

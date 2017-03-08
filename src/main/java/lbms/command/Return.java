@@ -1,8 +1,10 @@
 package lbms.command;
 
 import lbms.API;
+import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,7 +48,7 @@ public class Return implements Command {
         int i = 1;
         for(Map.Entry<Long, Transaction> longTransactionEntry: visitor.getCheckedOutBooks().entrySet()) {
             if(ids.contains(i)) {
-                if(API.getSystemDate().isAfter(longTransactionEntry.getValue().getDueDate())) {
+                if(SystemDateTime.getInstance().getDate().isAfter(longTransactionEntry.getValue().getDueDate())) {
                     return "overdue," + longTransactionEntry.getValue().getFine() + "," + i;
                 }
             }

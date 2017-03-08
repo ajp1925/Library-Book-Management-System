@@ -1,7 +1,16 @@
 package lbms.command;
 
 import lbms.API;
+import lbms.LBMS;
+import lbms.models.Book;
+import lbms.models.SystemDateTime;
+import lbms.models.Transaction;
+import lbms.models.Visitor;
+import lbms.search.Search;
+import lbms.search.SearchByISBN;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Borrow class that implements the borrow command.
@@ -35,7 +44,7 @@ public class Borrow implements Command {
         if(!API.visitorIsRegisteredID(visitorID)) {
             return " invalid-visitor-id;";
         }
-        else if(API.visitorFines(visitorID) > 0) {
+        else if (API.getVisitorByID(visitorID).getFines() > 0) {
             return "outstanding-fine," + API.df.format(API.getVisitorByID(visitorID).getFines());
         }
         String invalidIDs = "{";
@@ -44,7 +53,7 @@ public class Borrow implements Command {
             if(!API.getVisitorByID(visitorID).canCheckOut()) {
                 return "book-limit-exceeded;";
             }
-            temp = API.checkOutBook(l, visitorID);
+            temp = checkOutBook(l, visitorID);
             try {
                 if(temp.contains("id-error")) {
                     String[] error = temp.split(",");
@@ -71,5 +80,33 @@ public class Borrow implements Command {
     @Override
     public String parseResponse(String response) {
         return null;    //TODO
+    }
+
+    /**
+     * Checks out a book for a visitor.
+     * @param isbn: the isbn of the book to checkout
+     * @param visitorID: the ID of the visitor checking out the book
+     * @return a string of the response message
+     */
+    private static String checkOutBook(long isbn, long visitorID) {
+        Transaction t = new Transaction(isbn, visitorID);
+        Visitor v = API.getVisitorByID(visitorID);
+        Search s = new SearchByISBN(isbn);
+        List<Book> l = s.search(LBMS.getBooks());
+        Book b;
+        if(l.size() == 0) {
+            return "id-error," + isbn;
+        }
+        else {
+            b = l.get(0);
+        }
+        if(v.canCheckOut()) {
+            v.checkOut(t);
+            b.checkOut();
+            ArrayList<Transaction> transactions = LBMS.getTransactions();
+            transactions.add(t);
+            return t.getDueDate().format(SystemDateTime.DATE_FORMAT);
+        }
+        return "unknown-error";
     }
 }

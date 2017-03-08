@@ -1,7 +1,7 @@
 package lbms.command;
 
 import lbms.API;
-import lbms.controllers.CommandController;
+import lbms.LBMS;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
 import lbms.models.Visitor;
@@ -39,7 +39,7 @@ public class BeginVisit implements Command {
             return "duplicate;";
         }
 
-        Visit v = API.beginVisit(visitor);
+        Visit v = beginVisit(visitor);
         return visitorID + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," + v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 
@@ -54,5 +54,16 @@ public class BeginVisit implements Command {
             return "\nVisitor " + visitorID + " has entered the library on "
                     + fields[2] + " at " + fields[3].replace(";","") + ".";
         }
+    }
+
+    /**
+     * Adds a current visit to the LBMS.
+     * @param visitor: the visitor at the library
+     * @return the new visit object
+     */
+    private static Visit beginVisit(Visitor visitor) {
+        Visit visit = new Visit(visitor);
+        LBMS.getCurrentVisits().put(visitor.getVisitorID(), visit);
+        return visit;
     }
 }

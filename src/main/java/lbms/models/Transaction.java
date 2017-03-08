@@ -1,6 +1,5 @@
 package lbms.models;
 
-import lbms.API;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
@@ -50,7 +49,7 @@ public class Transaction implements Serializable {
      * @return the fine due on the book
      */
     public double getFine() {
-        int days = Period.between(dueDate, API.getSystemDate()).getDays();
+        int days = Period.between(dueDate, SystemDateTime.getInstance().getDate()).getDays();
         double fine = 0.0D;
         for (int i = 0; i < days; i++) {
             if (i == 0) fine += 10.00D;
