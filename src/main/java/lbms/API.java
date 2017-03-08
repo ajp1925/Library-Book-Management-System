@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -98,7 +99,12 @@ public class API {
      * @param book: The book to buy
      */
     private static void buyBook(Book book) {
-        LBMS.getBooks().put(book.getIsbn(), book);
+        if(LBMS.getBooks().containsKey(book.getIsbn())) {
+            LBMS.getBooks().get(book.getIsbn()).addBook();
+        }
+        else {
+            LBMS.getBooks().put(book.getIsbn(), book);
+        }
     }
 
     /**
@@ -219,24 +225,73 @@ public class API {
      */
     public static String generateReport(Integer days) {
         String report = "";
-
-        // calculating average visit time for all visits in system
         Duration totalVisitTime = Duration.ZERO;
-        for( Visit v: LBMS.getTotalVisits() ) { totalVisitTime.plus(v.getDuration()); }
-        Duration averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
+        Duration averageVisitTime = Duration.ZERO;
+        int booksPurchased = LBMS.getBooks().size();
+        double collectedFines = 0;
+        double outstandingFines = 0;
+
+
+        //calculate total outstanding fines
+        for( Visitor v: LBMS.getVisitors() ) { outstandingFines += v.getFines(); }
 
         if( days != null ) {
-            //TODO
+
+            LocalDate reportStartDate = getSystemDate().minusDays(days);
+            LocalDate reportEndDate = getSystemDate();
+
+            // grabbing relevant visits
+            ArrayList<Visit> visitsInReport = new ArrayList<Visit>();
+            for(Visit v: LBMS.getTotalVisits()) {
+                if(v.getDate().isBefore(reportEndDate) && v.getDate().isAfter(reportStartDate)) {
+                    visitsInReport.add(v);
+                }
+            }
+            // calculating average visit time for all visits in system
+            for( Visit v: visitsInReport ) { totalVisitTime.plus(v.getDuration()); }
+            if(visitsInReport.size() != 0 ) {
+                averageVisitTime = totalVisitTime.dividedBy(visitsInReport.size());
+            }
+
+            // calculating collected fines
+            for(Transaction t: LBMS.getTransactions()) {
+                if( t.getCloseDate() != null &&
+                        t.getCloseDate().isBefore(reportEndDate) && t.getCloseDate().isAfter(reportStartDate))
+                {
+                    collectedFines += t.getFinePayed();
+                }
+            }
+
+            // determine number of books purchased in timeframe
+            booksPurchased = 0;
+            for(Book b: LBMS.getBooks().values()) {
+                if(b.getPurchaseDate().isBefore(reportEndDate) && b.getPurchaseDate().isAfter(reportStartDate)) {
+                    booksPurchased++;
+                }
+            }
         }
         else {
-            report += ("Number of Books: " + LBMS.getBooks().size() + '\n' +
-                       "Number of Visitors: " + LBMS.getVisitors().size() + '\n' +
-                       "Average Length of Visit: " + averageVisitTime.toString() + '\n' + //TODO fix String for Duration
-                       "Number of Books Purchased: " + LBMS.getBooks().size() + '\n' +
-                       "Fines Collected: " + "" + '\n' + //TODO make Fine class?
-                       "Fines Outstanding: " + "" + '\n' //TODO make Fine class?
-            );
+            // calculating average visit time for all visits in system
+            for (Visit v : LBMS.getTotalVisits()) {
+                totalVisitTime.plus(v.getDuration());
+            }
+            averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
+
+            // calculating collected fines
+            for (Transaction t : LBMS.getTransactions()) {
+                if (t.getCloseDate() != null) {
+                    collectedFines += t.getFinePayed();
+                }
+            }
         }
+
+        report += ("Number of Books: " + LBMS.getBooks().size() + "\n" +
+                "Number of Visitors: " + LBMS.getVisitors().size() + "\n" +
+                "Average Length of Visit: " + averageVisitTime.toString() + "\n" + //TODO fix toString for Duration
+                "Number of Books Purchased: " + booksPurchased + "\n" +
+                "Fines Collected: " + collectedFines + "\n" +
+                "Fines Outstanding: " + outstandingFines + "\n"
+        );
 
         return report;
     }

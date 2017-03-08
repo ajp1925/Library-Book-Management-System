@@ -1,6 +1,7 @@
 package lbms.models;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ public class Book implements Serializable, Comparable<Book> {
     private long isbn;
     private int pageCount, numberOfCopies, copiesCheckedOut;
     private Calendar publishDate;
+    private LocalDate purchaseDate;
     private int tempID;
 
     /**
@@ -131,6 +133,19 @@ public class Book implements Serializable, Comparable<Book> {
      */
     public int getTempID() {
         return tempID;
+    }
+
+    /**
+     * Getter for the purchase date
+     * @return the latest date of purchase (desired?)
+     */
+    public LocalDate getPurchaseDate() { return purchaseDate; }
+
+    /**
+     * Allows the purchase of a book
+     */
+    public void addBook() {
+        numberOfCopies++;
     }
 
     /**

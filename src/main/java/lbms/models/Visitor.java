@@ -162,5 +162,11 @@ public class Visitor implements Serializable {
      */
     public void payFines(double amount) {
         fines -= amount;
+
+        // close transactions with amounts payed
+        for(Long l: checkedOutBooks.keySet()) {
+            Transaction t = checkedOutBooks.get(1);
+            t.payTransactionFine(t.getFine());
+        }
     }
 }
