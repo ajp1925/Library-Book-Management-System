@@ -1,8 +1,9 @@
 package lbms.command;
 
-import lbms.API;
+import lbms.LBMS;
 import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
+import lbms.search.UserSearch;
 
 /**
  * RegisterVisitor class that calls the API to register a visitor in the system.
@@ -28,7 +29,7 @@ public class RegisterVisitor implements Command {
      */
     @Override
     public String execute() {
-        if(API.registerVisitor(visitor)) {
+        if(registerVisitor(visitor)) {
             SystemDateTime s = SystemDateTime.getInstance();
             return visitor.getVisitorID() + "," + s.getDate().format(SystemDateTime.DATE_FORMAT);
         }
@@ -44,5 +45,20 @@ public class RegisterVisitor implements Command {
             return String.format("\nNew visitor created on %s:\n\tName: %s\n\tAddress: %s\n\tVisitor ID: %d",
                     fields[2], visitor.getName(), visitor.getAddress(), visitor.getVisitorID());
         }
+    }
+
+    /**
+     * Registers a visitor with the system, if they are not already registered
+     * @param visitor: The visitor to register
+     * @return true if successfully registered, false if duplicate
+     */
+    private static boolean registerVisitor(Visitor visitor) {
+        if (!(UserSearch.BY_ID.findFirst(visitor.getVisitorID()) != null) &&
+                !(UserSearch.BY_NAME.findFirst(visitor.getName()) != null) &&
+                !(UserSearch.BY_ADDRESS.findFirst(visitor.getAddress()) != null)) {
+            LBMS.getVisitors().add(visitor);
+            return true;
+        }
+        return false;
     }
 }

@@ -4,6 +4,7 @@ import lbms.API;
 import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
+import lbms.search.UserSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,10 +38,10 @@ public class Return implements Command {
      */
     @Override
     public String execute() {
-        if(!API.visitorIsRegisteredID(visitorID)) {
+        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
             return "invalid-visitor-id;";
         }
-        Visitor visitor = API.getVisitorByID(visitorID);
+        Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
         if(visitor.getNumCheckedOut() < ids.size()) {
             return "invalid-book-id," + ids.toString().substring(1, ids.size()-1).replaceAll("\\s", "") + ";";
         }

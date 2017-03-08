@@ -7,6 +7,7 @@ import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
 import lbms.search.BookSearch;
+import lbms.search.UserSearch;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -41,16 +42,16 @@ public class Borrow implements Command {
      */
     @Override
     public String execute() {
-        if(!API.visitorIsRegisteredID(visitorID)) {
+        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
             return " invalid-visitor-id;";
         }
-        else if (API.getVisitorByID(visitorID).getFines() > 0) {
-            return "outstanding-fine," + new DecimalFormat("#.00").format(API.getVisitorByID(visitorID).getFines());
+        else if (UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
+            return "outstanding-fine," + new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines());
         }
         String invalidIDs = "{";
         String temp = "";
         for(Long l: id) {
-            if(!API.getVisitorByID(visitorID).canCheckOut()) {
+            if(!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
                 return "book-limit-exceeded;";
             }
             temp = checkOutBook(l, visitorID);
@@ -90,7 +91,7 @@ public class Borrow implements Command {
      */
     private static String checkOutBook(long isbn, long visitorID) {
         Transaction t = new Transaction(isbn, visitorID);
-        Visitor v = API.getVisitorByID(visitorID);
+        Visitor v = UserSearch.BY_ID.findFirst(visitorID);
         List<Book> l = BookSearch.BY_ISBN.search(isbn);
         Book b;
         if(l.size() == 0) {

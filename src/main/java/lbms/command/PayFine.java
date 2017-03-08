@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.API;
+import lbms.search.UserSearch;
 
 import java.text.DecimalFormat;
 
@@ -30,16 +31,16 @@ public class PayFine implements Command {
      */
     @Override
     public String execute() {
-        if (!API.visitorIsRegisteredID(visitorID)) {
+        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
             return "invalid-visitor-id;";
         }
-        double balance = API.getVisitorByID(visitorID).getFines();
+        double balance = UserSearch.BY_ID.findFirst(visitorID).getFines();
         if(amount < 0 || amount > balance) {
             return "invalid-amount," + amount + "," + new DecimalFormat("#.00").format(balance) + ";";
         }
         else {
             double newBalance = balance - amount;
-            API.getVisitorByID(visitorID).payFines(amount);
+            UserSearch.BY_ID.findFirst(visitorID).payFines(amount);
             return "success," + new DecimalFormat("#.00").format(newBalance) + ";";
         }
     }

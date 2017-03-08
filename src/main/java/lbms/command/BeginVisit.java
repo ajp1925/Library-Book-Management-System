@@ -1,10 +1,10 @@
 package lbms.command;
 
-import lbms.API;
 import lbms.LBMS;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
 import lbms.models.Visitor;
+import lbms.search.UserSearch;
 
 /**
  * StartVisit class for the start visit command.
@@ -30,12 +30,12 @@ public class BeginVisit implements Command {
      */
     @Override
     public String execute() {
-        if(!API.visitorIsRegisteredID(visitorID)) {
+        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
             return "invalid-id;";
         }
 
-        Visitor visitor = API.getVisitorByID(visitorID);
-        if(API.getVisitorByID(visitorID).getInLibrary()) {
+        Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
+        if(UserSearch.BY_ID.findFirst(visitorID).getInLibrary()) {
             return "duplicate;";
         }
 

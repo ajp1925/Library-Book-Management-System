@@ -4,6 +4,7 @@ import lbms.API;
 import lbms.models.Book;
 import lbms.models.Visitor;
 import lbms.search.BookSearch;
+import lbms.search.UserSearch;
 
 /**
  * Queries for a list of books currently borrowed by a specific visitor.
@@ -28,11 +29,11 @@ public class FindBorrowed implements Command {
      */
     @Override
     public String execute() {
-        if (!API.visitorIsRegisteredID(visitorID)) {
+        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
             return "invalid-visitor-id;";
         }
 
-        Visitor visitor = API.getVisitorByID(visitorID);
+        Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
         StringBuilder sb = new StringBuilder();
         sb.append(visitor.getNumCheckedOut()).append(",\n");
         final int[] id = {1};

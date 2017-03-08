@@ -15,8 +15,13 @@ public interface Search<T> {
      */
     List<T> search(String s);
 
+    default T findFirst(Long l) {
+        return findFirst(Long.toString(l));
+    }
+
     default T findFirst(String s) {
-        return search(s).get(0);
+        List<T> results = search(s);
+        return results.isEmpty() ? null : results.get(0);
     }
 
 }

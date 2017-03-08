@@ -1,9 +1,10 @@
 package lbms.command;
 
-import lbms.API;
+import lbms.LBMS;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
 import lbms.models.Visitor;
+import lbms.search.UserSearch;
 
 /**
  * EndVisit class for end visit command.
@@ -27,10 +28,10 @@ public class EndVisit implements Command {
      */
     @Override
     public String execute() {
-        if(API.visitorIsRegisteredID(visitorID)) {
-            Visitor visitor = API.getVisitorByID(visitorID);
+        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
+            Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
             if(visitor.getInLibrary()) {
-                Visit visit = API.endVisit(visitor);
+                Visit visit = LBMS.endVisit(visitor);
                 long s = visit.getDuration().getSeconds();
                 String duration = String.format("%02d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
                 return visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + "," +

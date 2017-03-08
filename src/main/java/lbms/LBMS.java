@@ -237,7 +237,7 @@ public class LBMS {
 
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
-            API.endVisit(visit.getVisitor());
+            endVisit(visit.getVisitor());
         }
 
         // Serializes the data.
@@ -258,6 +258,18 @@ public class LBMS {
             e.printStackTrace();
             System.exit(1);
         }
+    }
+
+    /**
+     * Ends and removes the visit from LBMS
+     * @return the visit object removed
+     */
+    // TODO: Find a better place for me
+    public static Visit endVisit(Visitor visitor) {
+        Visit visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());
+        visit.depart();
+        LBMS.getTotalVisits().add(visit);
+        return visit;
     }
 
     /**
