@@ -18,13 +18,14 @@ public class SystemDateTime extends Thread implements Serializable {
     public final static DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     public final static DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
 
+    private volatile boolean stop = false;
 
     /**
      * Runs the thread for the clock.
      */
     @Override
     public void run() {
-        while(true) {
+        while(!stop) {
             this.time = time.plusSeconds(1);
             try {
                 Thread.sleep(1000);
@@ -108,4 +109,8 @@ public class SystemDateTime extends Thread implements Serializable {
     }
 
     public void reset() { this.time = LocalDateTime.now(); }
+
+    public void stopClock() {
+        this.stop = true;
+    }
 }

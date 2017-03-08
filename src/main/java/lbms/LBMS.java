@@ -233,6 +233,8 @@ public class LBMS {
     private void SystemClose() {
         System.out.println("\nLibrary is now closing!");
 
+        SystemDateTime.getInstance().stopClock();
+
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
             API.endVisit(visit.getVisitor());
