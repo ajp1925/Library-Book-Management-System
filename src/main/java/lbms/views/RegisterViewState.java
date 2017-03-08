@@ -1,6 +1,7 @@
 package lbms.views;
 
 import lbms.API;
+import lbms.command.RegisterVisitor;
 import lbms.controllers.CommandController;
 import lbms.models.Visitor;
 import lbms.controllers.ViewController;
@@ -11,11 +12,16 @@ import java.util.Scanner;
  * This views handles registering a new user
  */
 public class RegisterViewState implements State {
+    private boolean SYSTEM_STATUS;
 
     private String firstName;
     private String lastName;
     private String address;
     private int phone;
+
+    public RegisterViewState(boolean SYSTEM_STATUS) {
+        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    }
 
     /**
      * Prompts the user to verify the entered information
@@ -43,7 +49,7 @@ public class RegisterViewState implements State {
         String response = CommandController.processRequest("register," +
                 firstName + "," + lastName + "," + address + "," + phone + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
-        ViewController.setState(new DefaultViewState());
+        ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
     }
 
     /**

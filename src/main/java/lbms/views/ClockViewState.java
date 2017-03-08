@@ -7,6 +7,11 @@ import lbms.controllers.ViewController;
  * Created by Chris on 3/7/17.
  */
 public class ClockViewState implements State {
+    private boolean SYSTEM_STATUS;
+
+    public ClockViewState(boolean SYSTEM_STATUS) {
+        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    }
 
     @Override
     public void init() {
@@ -27,8 +32,8 @@ public class ClockViewState implements State {
     @Override
     public void change(String state) {
         switch (state) {
-            case "advance": ViewController.setState(new AdvanceViewState()); break;
-            case "return": ViewController.setState(new DefaultViewState()); break;
+            case "advance": ViewController.setState(new AdvanceViewState(SYSTEM_STATUS)); break;
+            case "return": ViewController.setState(new DefaultViewState(SYSTEM_STATUS)); break;
             default:
                 System.out.println("Command not found\n");
                 this.init();

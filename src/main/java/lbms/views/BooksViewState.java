@@ -3,6 +3,11 @@ package lbms.views;
 import lbms.controllers.ViewController;
 
 public class BooksViewState implements State {
+    private boolean SYSTEM_STATUS;
+
+    public BooksViewState(boolean SYSTEM_STATUS) {
+        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    }
 
     @Override
     public void init() {
@@ -25,7 +30,7 @@ public class BooksViewState implements State {
              case "browse": break;
              case "checkout": break;
              case "checkin": break;
-             case "return": ViewController.setState(new DefaultViewState()); break;
+             case "return": ViewController.setState(new DefaultViewState(SYSTEM_STATUS)); break;
              default:
                  System.out.println("Command not found\n");
                  this.init();

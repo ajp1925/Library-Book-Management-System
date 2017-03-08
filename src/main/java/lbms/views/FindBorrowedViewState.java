@@ -1,5 +1,6 @@
 package lbms.views;
 
+import lbms.command.FindBorrowed;
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
 
@@ -9,7 +10,12 @@ import java.util.Scanner;
  * Created by Chris on 3/7/17.
  */
 public class FindBorrowedViewState implements State {
+    private boolean SYSTEM_STATUS;
     private long visitorID;
+
+    public FindBorrowedViewState(boolean SYSTEM_STATUS) {
+        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    }
 
     @Override
     public void init() {
@@ -23,7 +29,7 @@ public class FindBorrowedViewState implements State {
     public void onEnter() {
         String response = CommandController.processRequest("borrowed," + visitorID + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
-        ViewController.setState(new UserMenuViewState());
+        ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
     /**

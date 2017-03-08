@@ -9,7 +9,12 @@ import java.util.Scanner;
  * Created by Chris on 3/7/17.
  */
 public class EndVisitViewState implements State {
+    private boolean SYSTEM_STATUS;
     private long visitorID;
+
+    public EndVisitViewState(boolean SYSTEM_STATUS) {
+        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    }
 
     @Override
     public void init() {
@@ -23,7 +28,7 @@ public class EndVisitViewState implements State {
     public void onEnter() {
         String response = CommandController.processRequest("depart," + visitorID + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
-        ViewController.setState(new UserMenuViewState());
+        ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
     /**

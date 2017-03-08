@@ -8,6 +8,7 @@ import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.time.LocalTime;
 
 //import static lbms.controllers.ViewController.STATE_DEFAULT;
 
@@ -28,6 +29,11 @@ public class LBMS {
     private static HashMap<Long, Visit> currentVisits = new HashMap<>();
 
     private boolean shutdown = false;
+
+    private static boolean SYSTEM_STATUS;
+    private int initial = 0;
+    private final static LocalTime openTime = LocalTime.of(8, 0);
+    private final static LocalTime closeTime = LocalTime.of(20, 0);
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -51,10 +57,27 @@ public class LBMS {
         SystemInit();
 
         if (inputFromUser) {
-            ViewController.setState(new DefaultViewState());
-
             Scanner scanner = new Scanner(System.in);
+
             while (true) {
+                // Check if library is open
+                if (SystemDateTime.getInstance().getTime().isAfter(openTime) &&
+                        SystemDateTime.getInstance().getTime().isBefore(closeTime)) {
+
+                    // Check if library just opened or system start
+                    if (initial == 0 || initial == 1) {
+                        ViewController.setState(new DefaultViewState(true));
+                        initial = 2;
+                    }
+                } else {
+                    // Check if library just closed or system start
+                    if (initial == 0 || initial == 2) {
+                        SystemClose();
+                        ViewController.setState(new DefaultViewState(false));
+                        initial = 1;
+                    }
+                }
+
                 System.out.print("> ");
                 String input = scanner.nextLine();
                 if (input.matches("(?i)exit|quit") || shutdown) {
@@ -62,6 +85,7 @@ public class LBMS {
                 }
                 ViewController.change(input);
             }
+
             scanner.close();
         } else {
             while (!shutdown);
@@ -177,7 +201,7 @@ public class LBMS {
         return output;
     }
 
-    // TODO Chris
+    // TODO comment this
     private void SystemInit() {
         instance = this;
 
@@ -203,8 +227,10 @@ public class LBMS {
         currentVisits = new HashMap<Long, Visit>();
     }
 
-    // TODO Chris
+    // TODO comment this
     private void SystemClose() {
+        System.out.println("\nLibrary is now closing!");
+
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
             API.endVisit(visit.getVisitor());

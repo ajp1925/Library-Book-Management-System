@@ -10,8 +10,13 @@ import java.util.Scanner;
  * Created by Chris on 3/7/17.
  */
 public class AdvanceViewState implements State {
+    private boolean SYSTEM_STATUS;
     private int days;
     private int hours;
+
+    public AdvanceViewState(boolean SYSTEM_STATUS) {
+        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    }
 
     @Override
     public void init() {
@@ -27,7 +32,7 @@ public class AdvanceViewState implements State {
     public void onEnter() {
         String response = CommandController.processRequest("advance," + days + "," + hours + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
-        ViewController.setState(new ClockViewState());
+        ViewController.setState(new ClockViewState(SYSTEM_STATUS));
     }
 
     /**

@@ -4,6 +4,11 @@ import lbms.command.FindBorrowed;
 import lbms.controllers.ViewController;
 
 public class UserMenuViewState implements State {
+    private boolean SYSTEM_STATUS;
+
+    public UserMenuViewState(boolean SYSTEM_STATUS) {
+        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    }
 
     /**
      * Prompts a user to either search or register a user
@@ -34,11 +39,11 @@ public class UserMenuViewState implements State {
     public void change(String state) {
         switch (state) {
             case "search": break;
-            case "register": ViewController.setState(new RegisterViewState()); break;
-            case "enter library": case "enter": ViewController.setState(new BeginVisitViewState()); break;
-            case "exit library":case "leave": ViewController.setState(new EndVisitViewState()); break;
-            case "borrowed": ViewController.setState(new FindBorrowedViewState()); break;
-            case "return": ViewController.setState(new DefaultViewState()); break;
+            case "register": ViewController.setState(new RegisterViewState(SYSTEM_STATUS)); break;
+            case "enter library": case "enter": ViewController.setState(new BeginVisitViewState(SYSTEM_STATUS)); break;
+            case "exit library":case "leave": ViewController.setState(new EndVisitViewState(SYSTEM_STATUS)); break;
+            case "borrowed": ViewController.setState(new FindBorrowedViewState(SYSTEM_STATUS)); break;
+            case "return": ViewController.setState(new DefaultViewState(SYSTEM_STATUS)); break;
             default:
                 System.out.println("Command not found\n");
                 this.init();
