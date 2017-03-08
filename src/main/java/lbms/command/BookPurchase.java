@@ -1,6 +1,8 @@
 package lbms.command;
 
 import lbms.API;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +22,7 @@ public class BookPurchase implements Command {
      */
     public BookPurchase(String request) {
         request = request.replaceAll(";$", "");
-        List<String> arguments = Arrays.asList(request.split(","));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
         quantity = Integer.parseInt(arguments.remove(0));
         ids = arguments.parallelStream().map(Long::parseLong).collect(Collectors.toList());
     }
@@ -31,7 +33,7 @@ public class BookPurchase implements Command {
      */
     @Override
     public String execute() {
-        return "success" + API.processPurchaseOrder(quantity, ids) + ";";
+        return "success," + API.processPurchaseOrder(quantity, ids) + ";";
     }
 
     @Override

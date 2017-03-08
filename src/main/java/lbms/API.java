@@ -170,15 +170,17 @@ public class API {
      * @return a response string
      */
     public static String processPurchaseOrder(int quantity, List<Long> ids) {
-        String booksBought = quantity + "";
-        Search s;
+        String booksBought = "";
         for(Long id: ids) {
-            s = new SearchByISBN(id);
-            Book b = findBooks(s).get(0);
-            for(int i = quantity; i > 0; i--) {
-                buyBook(b);
+            for(Book b: LBMS.getBooksToBuy()) {
+                if(b.getTempID() == id) {
+                    for(int i = quantity; i > 0; i--) {
+                        buyBook(b);
+                    }
+                    booksBought += ("\n" + b.toString() + "," + Integer.toString(quantity));
+                    break;
+                }
             }
-            booksBought += ("," + b.toString() + "," + Integer.toString(quantity)) + '\n';
         }
         return (quantity * ids.size()) + booksBought;
     }
@@ -186,7 +188,7 @@ public class API {
     /**
      * Finds the fines due for a visitor.
      * @param visitorID: the id of the visitor
-     * @return the ammount of fines due
+     * @return the amount of fines due
      */
     public static double visitorFines(long visitorID) {
         return getVisitorByID(visitorID).getFines();
