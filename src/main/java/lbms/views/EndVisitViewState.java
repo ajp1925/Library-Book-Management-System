@@ -15,7 +15,7 @@ public class EndVisitViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\nWhat is the ID of the visitor exiting the library?");
+        System.out.print("\nWhat is the ID of the visitor exiting the library? ");
         visitorID = scanner.nextLong();
     }
 

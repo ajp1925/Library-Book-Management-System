@@ -16,7 +16,7 @@ public class BeginVisitViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\nWhat is the ID of the visitor entering the library?");
+        System.out.print("\nWhat is the ID of the visitor entering the library? ");
         visitorID = scanner.nextLong();
     }
 

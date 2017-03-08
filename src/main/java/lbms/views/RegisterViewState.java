@@ -1,6 +1,7 @@
 package lbms.views;
 
 import lbms.API;
+import lbms.controllers.CommandController;
 import lbms.models.Visitor;
 import lbms.controllers.ViewController;
 
@@ -14,6 +15,7 @@ public class RegisterViewState implements State {
     private String firstName;
     private String lastName;
     private String address;
+    private int phone;
 
     /**
      * Prompts the user to verify the entered information
@@ -22,13 +24,15 @@ public class RegisterViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\nRegistering a new user.");
+        System.out.println("\nRegister a new user.");
         System.out.print("First Name: ");
         firstName = scanner.nextLine();
         System.out.print("Last Name: ");
         lastName = scanner.nextLine();
         System.out.print("Address: ");
         address = scanner.nextLine();
+        System.out.println("Phone Number:");
+        phone = scanner.nextInt();
     }
 
     /**
@@ -36,29 +40,17 @@ public class RegisterViewState implements State {
      */
     @Override
     public void onEnter() {
-        System.out.println("\nIs all this information correct? (y/n)");
-        System.out.printf("First Name: %s\n", firstName);
-        System.out.printf("Last Name: %s\n", lastName);
-        System.out.printf("Address: %s\n", address);
+        String response = CommandController.processRequest("register," +
+                firstName + "," + lastName + "," + address + "," + phone + ";");
+        System.out.println(CommandController.getCommand().parseResponse(response));
+        ViewController.setState(new DefaultViewState());
     }
 
     /**
-     * {@inheritDoc}
+     * NO-OP
      */
     @Override
-    //TODO
     public void change(String state) {
-        switch (state) {
-            case "y":
-                API.registerVisitor(new Visitor(firstName, lastName, address, 0));
-                ViewController.setState(new DefaultViewState());
-                break;
-            case "n":
-                onEnter();
-                break;
-            default:
-                System.out.println("Command not found\n");
-                this.onEnter();
-        }
+        //NO-OP
     }
 }

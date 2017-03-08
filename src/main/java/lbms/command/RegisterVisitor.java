@@ -37,6 +37,12 @@ public class RegisterVisitor implements Command {
 
     @Override
     public String parseResponse(String response) {
-        return null;    //TODO
+        String[] fields = response.split(",");
+        if (fields[1].equals("duplicate;")) {
+            return "This user already exists in the system.";
+        } else {
+            return String.format("\nNew visitor created on %s:\n\tName: %s\n\tAddress: %s\n\tVisitor ID: %d",
+                    fields[2], visitor.getName(), visitor.getAddress(), visitor.getVisitorID());
+        }
     }
 }
