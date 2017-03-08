@@ -12,7 +12,7 @@ public class ViewControllerTest {
 
     @Before
     public void setDefaultState() {
-        ViewController.setState(new DefaultViewState());
+        ViewController.setState(new DefaultViewState(true));
     }
 
     @Test
