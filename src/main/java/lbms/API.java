@@ -139,6 +139,8 @@ public class API {
         SystemDateTime.getInstance().plusDays(days);
     }
 
+    public static void resetTime() { SystemDateTime.getInstance().reset(); }
+
     /**
      * Adds a current visit to the LBMS.
      * @param visitor: the visitor at the library

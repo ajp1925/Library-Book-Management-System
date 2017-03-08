@@ -58,12 +58,18 @@ public class CommandController {
                     command = new AdvanceTime(request[1]);
                     response += command.execute();
                     break;
-                case "datetime":
+                case "datetime;":
+                    response.replace(";", "");
                     command = new GetDateTime();
                     response += command.execute();
                     break;
                 case "report":
+                    response.replace(";", "");
                     command = new StatisticsReport(request[1]);
+                    response += command.execute();
+                    break;
+                case "reset;":      // FOR TESTING
+                    command = new ResetTime();
                     response += command.execute();
                     break;
                 default:

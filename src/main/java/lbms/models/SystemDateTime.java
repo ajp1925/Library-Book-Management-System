@@ -25,10 +25,9 @@ public class SystemDateTime extends Thread implements Serializable {
     @Override
     public void run() {
         while(true) {
-            this.time = time.plusMinutes(1);
-            System.out.println(this.toString());
+            this.time = time.plusSeconds(1);
             try {
-                Thread.sleep(60000);
+                Thread.sleep(1000);
             }
             catch(Exception ex) {}
         }
@@ -107,4 +106,6 @@ public class SystemDateTime extends Thread implements Serializable {
     public void plusHours(long hours) {
         time = time.plusHours(hours);
     }
+
+    public void reset() { this.time = LocalDateTime.now(); }
 }

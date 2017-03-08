@@ -15,9 +15,11 @@ public class ClockViewState implements State {
 
     @Override
     public void init() {
-        String response = CommandController.processRequest("datetime");
+        String response = CommandController.processRequest("datetime;");
         System.out.println(CommandController.getCommand().parseResponse(response));
+        System.out.println("clock)      View system time");
         System.out.println("advance)    Fast-forward clock");
+        System.out.println("reset)      Reset the clock to current time");
         System.out.println("return)     Return to main menu");
     }
 
@@ -32,7 +34,9 @@ public class ClockViewState implements State {
     @Override
     public void change(String state) {
         switch (state) {
+            case "clock": this.init(); break;
             case "advance": ViewController.setState(new AdvanceViewState(SYSTEM_STATUS)); break;
+            case "reset": ViewController.setState(new ResetViewState(SYSTEM_STATUS)); break;
             case "return": ViewController.setState(new DefaultViewState(SYSTEM_STATUS)); break;
             default:
                 System.out.println("Command not found\n");

@@ -33,7 +33,7 @@ public class LBMS {
     private static boolean SYSTEM_STATUS;
     private int initial = 0;
     private final static LocalTime openTime = LocalTime.of(8, 0);
-    private final static LocalTime closeTime = LocalTime.of(20, 0);
+    private final static LocalTime closeTime = LocalTime.of(19, 0);
 
     /**
      * Program entry point. Handle command line arguments and start.
