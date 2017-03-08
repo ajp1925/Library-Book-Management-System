@@ -4,6 +4,7 @@ import lbms.models.*;
 import lbms.search.Search;
 import lbms.search.SearchByISBN;
 import java.text.DecimalFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -215,5 +216,41 @@ public class API {
             return t.getDueDate().format(SystemDateTime.DATE_FORMAT);
         }
         return "unknown-error";
+    }
+
+    /**
+     * Generates a Library report including the following information:
+     *     total number of books in the library
+     *     total number of registered library visitors
+     *     average length of a visit (hh:mm:ss)
+     *     number of books purchased
+     *     amount of fines collected
+     *     amount of fines outstanding
+     * @param days: the number of days that the report should include in its statistics
+     *            if null: report should include statistics using all data
+     * @return a string of the response message
+     */
+    public static String generateReport(Integer days) {
+        String report = "";
+
+        // calculating average visit time for all visits in system
+        Duration totalVisitTime = Duration.ZERO;
+        for( Visit v: LBMS.getTotalVisits() ) { totalVisitTime.plus(v.getDuration()); }
+        Duration averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
+
+        if( days != null ) {
+            //TODO
+        }
+        else {
+            report += ("Number of Books: " + LBMS.getBooks().size() + '\n' +
+                       "Number of Visitors: " + LBMS.getVisitors().size() + '\n' +
+                       "Average Length of Visit: " + averageVisitTime.toString() + '\n' + //TODO fix String for Duration
+                       "Number of Books Purchased: " + LBMS.getBooks().size() + '\n' +
+                       "Fines Collected: " + "" + '\n' + //TODO make Fine class?
+                       "Fines Outstanding: " + "" + '\n' //TODO make Fine class?
+            );
+        }
+
+        return report;
     }
 }

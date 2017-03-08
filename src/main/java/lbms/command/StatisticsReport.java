@@ -1,23 +1,26 @@
 package lbms.command;
 
+import lbms.API;
+import lbms.models.SystemDateTime;
+
 /**
  * StatisticsReport class implements the statistics report command.
  * @author Team B
  */
 public class StatisticsReport implements Command {
 
-    private int days;
+    private Integer days;
 
     public StatisticsReport(String request) {
-        String[] arguments = request.split(",");
-
+        if(!request.equals("")) {
+            request = request.replace(";", "");
+            days = Integer.parseInt(request);
+        }
     }
 
     @Override
     public String execute() {
-        // TODO Charles
-
-        return "NOT DONE";
+        return API.getSystemDate().format(SystemDateTime.DATE_FORMAT) + '\n' + API.generateReport(days);
     }
 
     @Override
