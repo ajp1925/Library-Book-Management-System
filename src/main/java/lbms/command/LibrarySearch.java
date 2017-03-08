@@ -1,8 +1,7 @@
 package lbms.command;
 
-import lbms.LBMS;
 import lbms.models.Book;
-import lbms.search.SearchByTitle;
+import lbms.search.BookSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,7 +60,7 @@ public class LibrarySearch implements Command {
             return "invalid-sort-order;";
         }
         ArrayList<Book> antiMatches = new ArrayList<>();
-        List<Book> matches = new SearchByTitle(title).search(LBMS.getBooks());
+        List<Book> matches = BookSearch.BY_TITLE.search(title);
         if(authors.size() > 0) {
             for(Book b: matches) {
                 for(String author: authors) {

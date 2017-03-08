@@ -6,8 +6,7 @@ import lbms.models.Book;
 import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
-import lbms.search.Search;
-import lbms.search.SearchByISBN;
+import lbms.search.BookSearch;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -92,8 +91,7 @@ public class Borrow implements Command {
     private static String checkOutBook(long isbn, long visitorID) {
         Transaction t = new Transaction(isbn, visitorID);
         Visitor v = API.getVisitorByID(visitorID);
-        Search s = new SearchByISBN(isbn);
-        List<Book> l = s.search(LBMS.getBooks());
+        List<Book> l = BookSearch.BY_ISBN.search(isbn);
         Book b;
         if(l.size() == 0) {
             return "id-error," + isbn;

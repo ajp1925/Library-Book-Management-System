@@ -1,8 +1,7 @@
 package lbms.command;
 
-import lbms.LBMS;
 import lbms.models.Book;
-import lbms.search.SearchByTitle;
+import lbms.search.BookSearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,7 +50,7 @@ public class StoreSearch implements Command {
             return "invalid-sort-order";
         }
         int booksFound = 0;
-        List<Book> books = new SearchByTitle(title).search(LBMS.getBooks());
+        List<Book> books = BookSearch.BY_TITLE.search(title);
         if (sortOrder.equals("title")) {
             Collections.sort(books);
         }

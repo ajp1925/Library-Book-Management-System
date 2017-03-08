@@ -1,10 +1,9 @@
 package lbms.command;
 
 import lbms.API;
-import lbms.LBMS;
 import lbms.models.Book;
 import lbms.models.Visitor;
-import lbms.search.SearchByISBN;
+import lbms.search.BookSearch;
 
 /**
  * Queries for a list of books currently borrowed by a specific visitor.
@@ -39,7 +38,7 @@ public class FindBorrowed implements Command {
         final int[] id = {1};
 
         visitor.getCheckedOutBooks().forEach((isbn, transaction) -> {
-            Book book = new SearchByISBN(isbn).search(LBMS.getBooks()).get(0);
+            Book book = BookSearch.BY_ISBN.search(isbn).get(0);
             sb.append(id[0]++).append(",");
             sb.append(isbn).append(",");
             sb.append(book.getTitle()).append(",");
