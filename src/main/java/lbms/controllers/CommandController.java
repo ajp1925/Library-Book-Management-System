@@ -6,54 +6,65 @@ import lbms.command.*;
  * CommandController class interacts with the command package to execute commands.
  */
 public class CommandController {
+    private static Command command = null;
 
     public static String processRequest(String requestString) {
         String[] request = requestString.split(",", 2);
         String response = request[0] + ",";
-        if(request[0].equals("depart")) {
-            return response + new EndVisit(request[1]).execute();
-        }
 
         try {
             switch (request[0]) {
                 case "register":
-                    response += new RegisterVisitor(request[1]).execute();
+                    command = new RegisterVisitor(request[1]);
+                    response += command.execute();
                     break;
                 case "arrive":
-                    response += new BeginVisit(request[1]).execute();
+                    command = new BeginVisit(request[1]);
+                    response += command.execute();
                     break;
-                case("depart"):
-                    response += new EndVisit(request[1]).execute();
+                case"depart":
+                    command = new EndVisit(request[1]);
+                    response += command.execute();
                     break;
                 case "info":
-                    response += new LibrarySearch(request[1]).execute();
+                    command = new LibrarySearch(request[1]);
+                    response += command.execute();
                     break;
                 case "borrow":
-                    response += new Borrow(request[1]).execute();
+                    command = new Borrow(request[1]);
+                    response += command.execute();
                     break;
                 case "borrowed":
-                    response += new FindBorrowed(request[1]).execute();
+                    command = new FindBorrowed(request[1]);
+                    response += command.execute();
                     break;
                 case "return":
-                    response += new Return(request[1]).execute();
+                    command = new Return(request[1]);
+                    response += command.execute();
                     break;
                 case "pay":
-                    response += new PayFine(request[1]).execute();
+                    command = new PayFine(request[1]);
+                    response += command.execute();
                     break;
                 case "search":
-                    response += new StoreSearch(request[1]).execute();
+                    command =  new StoreSearch(request[1]);
+                    response += command.execute();
                     break;
                 case "buy":
-                    response += new BookPurchase(request[1]).execute();
+                    command = new BookPurchase(request[1]);
+                    response += command.execute();
                     break;
                 case "advance":
-                    response += new AdvanceTime(request[1]).execute();
+                    command = new AdvanceTime(request[1]);
+                    response += command.execute();
                     break;
                 case "datetime":
-                    response += new GetDateTime().execute();
+                    command = new GetDateTime();
+                    response += command.execute();
                     break;
                 case "report":
-                    response += new StatisticsReport(request[1]).execute();
+                    command = new StatisticsReport(request[1]);
+                    response += command.execute();
                     break;
                 default:
                     System.out.println("UH OH");
@@ -63,5 +74,9 @@ public class CommandController {
 
         }
         return response;
+    }
+
+    public static Command getCommand() {
+        return command;
     }
 }

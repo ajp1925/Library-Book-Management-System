@@ -41,4 +41,9 @@ public class PayFine implements Command {
             return "success," + API.df.format(newBalance) + ";";
         }
     }
+
+    @Override
+    public String parseResponse(String response) {
+        return null;    //TODO
+    }
 }

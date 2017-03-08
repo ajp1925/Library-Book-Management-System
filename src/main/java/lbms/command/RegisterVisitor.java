@@ -34,4 +34,9 @@ public class RegisterVisitor implements Command {
         }
         return "duplicate;";
     }
+
+    @Override
+    public String parseResponse(String response) {
+        return null;    //TODO
+    }
 }

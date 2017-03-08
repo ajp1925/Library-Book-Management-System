@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class AdvanceViewState implements State {
     private int days;
     private int hours;
+
     @Override
     public void init() {
         Scanner scanner = new Scanner(System.in);
@@ -24,10 +25,8 @@ public class AdvanceViewState implements State {
 
     @Override
     public void onEnter() {
-        System.out.println(
-                AdvanceTime.parseResponse(
-                        CommandController.processRequest("advance," + days + "," + hours + ";"), days, hours)
-        );
+        String response = CommandController.processRequest("advance," + days + "," + hours + ";");
+        System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new ClockViewState());
     }
 

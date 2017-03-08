@@ -39,7 +39,8 @@ public class AdvanceTime implements Command {
         return "success;";
     }
 
-    public static String parseResponse(String response, int days, int hours) {
+    @Override
+    public String parseResponse(String response) {
         String[] fields = response.split(",");
         if (fields[1].equals("success;")) {
             return "\nAdvance success, clock has been moved forward " + days + " day(s) and " + hours + " hour(s).";

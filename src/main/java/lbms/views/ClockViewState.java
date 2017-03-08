@@ -1,6 +1,5 @@
 package lbms.views;
 
-import lbms.command.GetDateTime;
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
 
@@ -8,10 +7,11 @@ import lbms.controllers.ViewController;
  * Created by Chris on 3/7/17.
  */
 public class ClockViewState implements State {
+
     @Override
     public void init() {
-        String[] response = CommandController.processRequest("datetime").split(",");
-        System.out.println("\nCurrent System Time: " + response[1] + " " + response[2]);
+        String response = CommandController.processRequest("datetime");
+        System.out.println(CommandController.getCommand().parseResponse(response));
         System.out.println("advance)    Fast-forward clock");
         System.out.println("return)     Return to main menu");
     }

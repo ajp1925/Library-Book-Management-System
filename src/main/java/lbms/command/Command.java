@@ -12,4 +12,6 @@ public interface Command {
      */
     String execute();
 
+    String parseResponse(String response);
+
 }

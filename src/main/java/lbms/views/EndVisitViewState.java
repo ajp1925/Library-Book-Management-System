@@ -21,13 +21,8 @@ public class EndVisitViewState implements State {
 
     @Override
     public void onEnter() {
-        String[] response = CommandController.processRequest("depart," + visitorID + ";").split(",");
-        if (response[1].equals("invalid-id;")) {
-            System.out.println("\nVisitor " + visitorID + " is not in the library.");
-        } else {
-            System.out.println("\nVisitor " + visitorID + " has left the library at "
-                    + response[2] + " and was in the library for " + response[3]);
-        }
+        String response = CommandController.processRequest("depart," + visitorID + ";");
+        System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new UserMenuViewState());
     }
 

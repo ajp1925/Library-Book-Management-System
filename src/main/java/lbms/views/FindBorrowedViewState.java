@@ -21,16 +21,8 @@ public class FindBorrowedViewState implements State {
 
     @Override
     public void onEnter() {
-        String[] response = CommandController.processRequest("borrowed," + visitorID + ";").split(",", 3);
-        if (response[1].equals("invalid-visitor-id;")) {
-            System.out.println("\nVisitor " + visitorID + " is not valid.");
-        } else {
-            String[] books = response[3].split("<nl>");
-            System.out.println();
-            for (String book: books) {
-                System.out.println("\tbook");
-            }
-        }
+        String response = CommandController.processRequest("borrowed," + visitorID + ";");
+        System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new UserMenuViewState());
     }
 

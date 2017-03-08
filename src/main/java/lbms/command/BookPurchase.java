@@ -33,4 +33,9 @@ public class BookPurchase implements Command {
     public String execute() {
         return "success" + API.processPurchaseOrder(quantity, ids) + ";";
     }
+
+    @Override
+    public String parseResponse(String response) {
+        return null;    //TODO
+    }
 }

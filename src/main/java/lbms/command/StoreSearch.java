@@ -83,4 +83,9 @@ public class StoreSearch implements Command {
             return response;
         }
     }
+
+    @Override
+    public String parseResponse(String response) {
+        return null;    //TODO
+    }
 }

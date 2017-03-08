@@ -40,13 +40,13 @@ public class RegisterViewState implements State {
         System.out.printf("First Name: %s\n", firstName);
         System.out.printf("Last Name: %s\n", lastName);
         System.out.printf("Address: %s\n", address);
-
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
+    //TODO
     public void change(String state) {
         switch (state) {
             case "y":

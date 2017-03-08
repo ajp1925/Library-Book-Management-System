@@ -53,4 +53,9 @@ public class Return implements Command {
         }
         return "success;";
     }
+
+    @Override
+    public String parseResponse(String response) {
+        return null;    //TODO
+    }
 }

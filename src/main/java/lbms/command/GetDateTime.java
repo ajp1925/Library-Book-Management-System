@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.API;
+import lbms.controllers.CommandController;
 import lbms.models.SystemDateTime;
 
 /**
@@ -20,5 +21,11 @@ public class GetDateTime implements Command {
     public String execute() {
         return API.getSystemDate().format(SystemDateTime.DATE_FORMAT) + "," +
                 API.getSystemTime().format(SystemDateTime.TIME_FORMAT);
+    }
+
+    @Override
+    public String parseResponse(String response) {
+        String[] fields = response.split(",");
+        return "\nCurrent System Time: " + fields[1] + " " + fields[2];
     }
 }

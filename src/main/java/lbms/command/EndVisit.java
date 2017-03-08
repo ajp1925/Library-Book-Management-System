@@ -40,4 +40,15 @@ public class EndVisit implements Command {
         }
         return "invalid-id;";
     }
+
+    @Override
+    public String parseResponse(String response) {
+        String[] fields = response.split(",");
+        if (fields[1].equals("invalid-id;")) {
+            return "\nVisitor " + visitorID + " is not in the library.";
+        } else {
+            return "\nVisitor " + visitorID + " has left the library at "
+                    + fields[2] + " and was in the library for " + fields[3];
+        }
+    }
 }

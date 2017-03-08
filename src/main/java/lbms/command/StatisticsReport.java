@@ -19,4 +19,9 @@ public class StatisticsReport implements Command {
 
         return "NOT DONE";
     }
+
+    @Override
+    public String parseResponse(String response) {
+        return null;    //TODO
+    }
 }

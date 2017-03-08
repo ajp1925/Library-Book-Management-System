@@ -107,4 +107,9 @@ public class LibrarySearch implements Command {
 
         return matches.size() + matchesString;
     }
+
+    @Override
+    public String parseResponse(String response) {
+        return null;    //TODO
+    }
 }
