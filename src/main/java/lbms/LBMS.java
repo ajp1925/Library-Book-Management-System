@@ -86,6 +86,7 @@ public class LBMS {
         else {
             String input;
             do {
+                System.out.print("> ");
                 input = s.nextLine();
                 System.out.println(CommandController.processRequest(input));
             } while(!input.matches("(?i)exit|quit"));
