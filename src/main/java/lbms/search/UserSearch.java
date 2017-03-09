@@ -2,6 +2,7 @@ package lbms.search;
 
 import lbms.LBMS;
 import lbms.models.Visitor;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -43,12 +44,18 @@ public enum UserSearch implements Search<Visitor> {
         return new ArrayList<>();
     }
 
+    @Override
+    public Visitor findFirst(Long l) {
+        if (l.toString().length() == 10) return LBMS.getVisitors().get(l);
+        else return findFirst(Long.toString(l));
+    }
+
     /**
      * Finds the list of visitors that meet the condition.
      * @param condition: the condition that must be true
      * @return the list of visitors that match
      */
     private List<Visitor> find(Predicate<? super Visitor> condition) {
-        return null; //TODO LBMS.getVisitors().parallelStream().filter(condition).collect(Collectors.toList());
+        return LBMS.getVisitors().values().parallelStream().filter(condition).collect(Collectors.toList());
     }
 }
