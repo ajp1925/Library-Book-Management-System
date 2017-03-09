@@ -54,7 +54,7 @@ public class LBMS {
         SystemInit();
         Scanner s = new Scanner(System.in);
 
-        if(console) {
+        if(false) {
             while(true) {
                 // Check if library is open
                 if(SystemDateTime.getInstance().getTime().isAfter(openTime) &&

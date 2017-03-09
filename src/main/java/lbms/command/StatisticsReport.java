@@ -122,12 +122,17 @@ public class StatisticsReport implements Command {
 
         report += ("Number of Books: " + LBMS.getBooks().size() + "\n" +
                 "Number of Visitors: " + LBMS.getVisitors().size() + "\n" +
-                "Average Length of Visit: " + averageVisitTime.toString() + "\n" + //TODO fix toString for Duration
+                "Average Length of Visit: " + formatDuration(averageVisitTime) + "\n" +
                 "Number of Books Purchased: " + booksPurchased + "\n" +
                 "Fines Collected: " + collectedFines + "\n" +
                 "Fines Outstanding: " + outstandingFines + "\n"
         );
 
         return report;
+    }
+
+    public static String formatDuration(Duration duration) {
+        long s = duration.getSeconds();
+        return String.format("%02d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
     }
 }

@@ -19,7 +19,7 @@ public class RegisterVisitor implements Command {
      */
     public RegisterVisitor(String request) {
         String[] arguments = request.split(",");
-        visitor = new Visitor(arguments[0], arguments[1], arguments[2], Integer.parseInt(arguments[3]));
+        visitor = new Visitor(arguments[0], arguments[1], arguments[2], Long.parseLong(arguments[3]));
     }
 
     /**

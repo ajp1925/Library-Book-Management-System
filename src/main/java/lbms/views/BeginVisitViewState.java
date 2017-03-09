@@ -36,7 +36,7 @@ public class BeginVisitViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("arrive," + visitorID + ";");
+        String response = CommandController.processRequest(this.SYSTEM_STATUS + "," + "arrive," + visitorID + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
