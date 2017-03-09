@@ -24,7 +24,6 @@ public class Return implements Command {
      * @param request: the request input string
      */
     public Return(String request) {
-        request = request.replaceAll(";$", "");
         String[] split = request.split(",", 1);
         visitorID = Long.parseLong(split[0]);
         ids = Arrays.stream(split[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());

@@ -53,6 +53,7 @@ public class LBMS {
     public LBMS(boolean console) {
         SystemInit();
         Scanner s = new Scanner(System.in);
+
         if(console) {
             while(true) {
                 // Check if library is open
@@ -91,6 +92,7 @@ public class LBMS {
                 System.out.println(CommandController.processRequest(input));
             } while(!input.matches("(?i)exit|quit"));
         }
+
         s.close();
         SystemClose();
     }
@@ -242,7 +244,7 @@ public class LBMS {
 
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
-            endVisit(visit.getVisitor());
+            CommandController.processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
         }
 
         // Serializes the data.
@@ -263,18 +265,6 @@ public class LBMS {
             e.printStackTrace();
             System.exit(1);
         }
-    }
-
-    /**
-     * Ends and removes the visit from LBMS
-     * @return the visit object removed
-     */
-    // TODO: Find a better place for me
-    public static Visit endVisit(Visitor visitor) {
-        Visit visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());
-        visit.depart();
-        LBMS.getTotalVisits().add(visit);
-        return visit;
     }
 
     /**

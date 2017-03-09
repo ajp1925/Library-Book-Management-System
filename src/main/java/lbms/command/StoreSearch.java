@@ -26,7 +26,6 @@ public class StoreSearch implements Command {
     public StoreSearch(String request) {
         int i = 1;
         authors = new ArrayList<>();
-        request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
         title = arguments[0];
         while(!arguments[i].matches("\\d+")) {

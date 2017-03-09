@@ -18,7 +18,6 @@ public class FindBorrowed implements Command {
      * @param request: the request String for the command
      */
     public FindBorrowed(String request) {
-        request = request.replaceAll(";$", "");
         visitorID = Long.decode(request);
     }
 

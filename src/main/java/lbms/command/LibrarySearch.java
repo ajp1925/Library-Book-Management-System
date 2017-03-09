@@ -21,7 +21,6 @@ public class LibrarySearch implements Command {
      * @param request: the request string for a library search
      */
     public LibrarySearch(String request) {
-        request = request.replaceAll(";$", "");
         List<String> arguments = Arrays.asList(request.split(","));
         title = arguments.remove(0);
         int index;

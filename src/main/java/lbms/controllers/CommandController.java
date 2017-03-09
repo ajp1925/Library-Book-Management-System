@@ -21,7 +21,6 @@ public class CommandController {
         if (requestString.endsWith(";")) {
             String[] request = requestString.replace(";", "").split(",", 2);
             response = request[0] + ",";
-
             try {
                 switch (request[0]) {
                     case "register":
@@ -89,10 +88,10 @@ public class CommandController {
                 System.exit(1);
             }
         } else {
-            response = "partial-request";
+            response = "partial-request;";
         }
 
-        return response + ";";
+        return response;
     }
 
     /**

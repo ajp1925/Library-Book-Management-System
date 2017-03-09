@@ -25,7 +25,6 @@ public class Borrow implements Command {
      * @param request: the request input string
      */
     public Borrow(String request) {
-        request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
         visitorID = Long.parseLong(arguments[0]);
         id = new ArrayList<>();

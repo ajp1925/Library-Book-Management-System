@@ -18,7 +18,6 @@ public class RegisterVisitor implements Command {
      * @param request: the request string to be processed
      */
     public RegisterVisitor(String request) {
-        request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
         visitor = new Visitor(arguments[0], arguments[1], arguments[2], Integer.parseInt(arguments[3]));
     }

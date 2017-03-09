@@ -20,7 +20,6 @@ public class StatisticsReport implements Command {
      */
     public StatisticsReport(String request) {
         if(!request.equals("")) {
-            request = request.replace(";", "");
             days = Integer.parseInt(request);
         }
     }

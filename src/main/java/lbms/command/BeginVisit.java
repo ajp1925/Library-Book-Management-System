@@ -19,7 +19,6 @@ public class BeginVisit implements Command {
      * @param request: the string that holds all the input information
      */
     public BeginVisit(String request) {
-        request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
         visitorID = Long.parseLong(arguments[0]);
     }

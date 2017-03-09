@@ -21,7 +21,6 @@ public class BookPurchase implements Command {
      * @param request: the input string
      */
     public BookPurchase(String request) {
-        request = request.replaceAll(";$", "");
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
         quantity = Integer.parseInt(arguments.remove(0));
         ids = arguments.parallelStream().map(Long::parseLong).collect(Collectors.toList());
