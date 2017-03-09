@@ -98,14 +98,17 @@ public class LibrarySearch implements Command {
         }
 
         // sort matches by given sort-order
-        if( sort_order != null ) {
-            switch( sort_order ){
+        if(sort_order != null) {
+            switch(sort_order){
                 case "title":
                     Collections.sort(matches, (a,b) -> a.getTitle().compareTo(b.getTitle())); //TODO Nick, did I java8 right?
+                    break;
                 case "publish-date":
                     Collections.sort(matches, (a,b) -> a.getPublishDate().compareTo(b.getPublishDate())); //TODO I hope so
+                    break;
                 case "book-status":
                     Collections.sort(matches, (a,b) -> Integer.compare(a.getCopiesAvailable(), b.getCopiesAvailable()) );//TODO is this even java?
+                    break;
             }
         }
 
