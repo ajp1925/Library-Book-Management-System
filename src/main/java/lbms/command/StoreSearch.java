@@ -89,6 +89,12 @@ public class StoreSearch implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        return null;    //TODO
+        String[] fields = response.split(",");
+        if (fields[1].equals("n;")) {
+            return "No books were found.";
+        }
+        else {
+            return fields[2];
+        }
     }
 }

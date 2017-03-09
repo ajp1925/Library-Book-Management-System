@@ -49,6 +49,17 @@ public class PayFine implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        return null;    //TODO
+        String[] fields = response.split(",");
+        if (fields[1].equals("invalid-visitor-id;")) {
+            return "\nVisitor " + visitorID + " is not registered in the system.";
+        }
+        else if (fields[1].equals("invalid-amount")) {
+            return "The specified amount, " + amount + " is not valid as it is negative or exceeds their balance, " +
+                    UserSearch.BY_ID.findFirst(visitorID).getFines() + ".";
+        }
+        else {
+            return "The fine has been successfully paid for. The remaining balance is " +
+                    UserSearch.BY_ID.findFirst(visitorID).getFines() + ".";
+        }
     }
 }
