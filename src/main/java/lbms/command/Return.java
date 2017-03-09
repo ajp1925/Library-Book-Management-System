@@ -61,6 +61,17 @@ public class Return implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        return null;    //TODO
+        switch(response.replaceAll(";$", "") .split(",")[0]) {
+            case "invalid-visitor-id":
+                return "Invalid visitor ID entered.";
+            case "invalid-book-id":
+                return "Invalid book ID entered.";
+            case "success":
+                return "Book(s) successfully returned.";
+            case "overdue":
+                return "This book is overdue.";
+            default:
+                return "Unknown option/command.";
+        }
     }
 }
