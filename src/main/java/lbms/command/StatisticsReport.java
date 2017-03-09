@@ -40,7 +40,8 @@ public class StatisticsReport implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        return null;    //TODO
+        String[] fields = response.split(",");
+        return fields[fields.length - 1];
     }
 
     /**
