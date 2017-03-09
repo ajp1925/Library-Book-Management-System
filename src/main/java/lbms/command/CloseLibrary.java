@@ -24,8 +24,8 @@ public class CloseLibrary implements Command {
     public String parseResponse(String response) {
         String[] fields = response.split(",");
         if (fields[1].equals("library-closed;")) {
-            return "The library is now closed.";
+            return "\nThe library is now closed.";
         }
-        return "There's some kind of error";
+        return "\nThere's some kind of error";
     }
 }
