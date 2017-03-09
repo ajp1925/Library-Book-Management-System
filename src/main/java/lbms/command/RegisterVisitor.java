@@ -60,7 +60,7 @@ public class RegisterVisitor implements Command {
         if (UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null &&
                 UserSearch.BY_NAME.findFirst(visitor.getName()) == null &&
                 UserSearch.BY_ADDRESS.findFirst(visitor.getAddress()) == null) {
-            LBMS.getVisitors().add(visitor);
+            LBMS.getVisitors().put(visitor.getVisitorID(), visitor);
             return true;
         }
         return false;

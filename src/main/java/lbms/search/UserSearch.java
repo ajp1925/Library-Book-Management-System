@@ -49,6 +49,6 @@ public enum UserSearch implements Search<Visitor> {
      * @return the list of visitors that match
      */
     private List<Visitor> find(Predicate<? super Visitor> condition) {
-        return LBMS.getVisitors().parallelStream().filter(condition).collect(Collectors.toList());
+        return null; //TODO LBMS.getVisitors().parallelStream().filter(condition).collect(Collectors.toList());
     }
 }

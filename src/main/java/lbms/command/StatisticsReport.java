@@ -65,7 +65,7 @@ public class StatisticsReport implements Command {
 
 
         //calculate total outstanding fines
-        for(Visitor v: LBMS.getVisitors()) {
+        for(Visitor v: LBMS.getVisitors().values()) {
             outstandingFines += v.getFines();
         }
 

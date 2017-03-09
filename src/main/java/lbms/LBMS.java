@@ -22,7 +22,7 @@ public class LBMS {
     // them for the sake of null safety and testing.
     private static HashMap<Long, Book> books = new HashMap<>();
     private static ArrayList<Book> booksToBuy = new ArrayList<>();
-    private static ArrayList<Visitor> visitors = new ArrayList<>();
+    private static HashMap<Long, Visitor> visitors = new HashMap<>();
     private static ArrayList<Visit> totalVisits = new ArrayList<>();
     private static ArrayList<Transaction> transactions = new ArrayList<>();
     private static HashMap<Long, Visit> currentVisits = new HashMap<>();
@@ -236,7 +236,7 @@ public class LBMS {
             ObjectInputStream in = new ObjectInputStream(f);
             books = (HashMap<Long, Book>)in.readObject();
             booksToBuy = (ArrayList<Book>)in.readObject();
-            visitors = (ArrayList<Visitor>)in.readObject();
+            visitors = (HashMap<Long, Visitor>)in.readObject();
             totalVisits = (ArrayList<Visit>) in.readObject();
             transactions = (ArrayList<Transaction>)in.readObject();
             SystemDateTime.setInstance((SystemDateTime) in.readObject());
@@ -244,7 +244,7 @@ public class LBMS {
         catch(ClassNotFoundException | IOException e) {
             books = new HashMap<Long, Book>();
             booksToBuy = makeBooks();
-            visitors = new ArrayList<>();
+            visitors = new HashMap<>();
             totalVisits = new ArrayList<>();
             transactions = new ArrayList<>();
         }
@@ -312,7 +312,7 @@ public class LBMS {
      * Getter for the visitors.
      * @return an array list of visitors of the library
      */
-    public static ArrayList<Visitor> getVisitors() {
+    public static HashMap<Long, Visitor> getVisitors() {
         return visitors;
     }
 
