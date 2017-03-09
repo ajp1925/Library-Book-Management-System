@@ -4,6 +4,7 @@ import lbms.models.Book;
 import lbms.search.BookSearch;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class LibrarySearch implements Command {
      * @param request: the request string for a library search
      */
     public LibrarySearch(String request) {
-        List<String> arguments = Arrays.asList(request.split(","));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
         title = arguments.remove(0);
         int index;
         authors = new ArrayList<>();
@@ -96,6 +97,18 @@ public class LibrarySearch implements Command {
             }
         }
 
+        // sort matches by given sort-order
+        if( sort_order != null ) {
+            switch( sort_order ){
+                case "title":
+                    Collections.sort(matches, (a,b) -> a.getTitle().compareTo(b.getTitle())); //TODO Nick, did I java8 right?
+                case "publish-date":
+                    Collections.sort(matches, (a,b) -> a.getPublishDate().compareTo(b.getPublishDate())); //TODO I hope so
+                case "book-status":
+                    Collections.sort(matches, (a,b) -> Integer.compare(a.getCopiesAvailable(), b.getCopiesAvailable()) );//TODO is this even java?
+            }
+        }
+
         // create the return string
         String matchesString = "";
         for(Book b: matches) {
@@ -112,6 +125,7 @@ public class LibrarySearch implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        return null;    //TODO
+        String[] fields = response.split(",");
+        return Arrays.toString(Arrays.copyOfRange(fields, 2, fields.length - 1));
     }
 }

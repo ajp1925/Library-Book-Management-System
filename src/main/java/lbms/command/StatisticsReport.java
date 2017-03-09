@@ -40,7 +40,8 @@ public class StatisticsReport implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        return null;    //TODO
+        String[] fields = response.split(",");
+        return fields[fields.length - 1];
     }
 
     /**
@@ -65,7 +66,7 @@ public class StatisticsReport implements Command {
 
 
         //calculate total outstanding fines
-        for(Visitor v: LBMS.getVisitors()) {
+        for(Visitor v: LBMS.getVisitors().values()) {
             outstandingFines += v.getFines();
         }
 

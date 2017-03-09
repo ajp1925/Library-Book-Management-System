@@ -16,7 +16,7 @@ public class BeginVisitTest {
 
     @Before
     public void setup() {
-        visitors = LBMS.getVisitors();
+        visitors = new ArrayList<>(LBMS.getVisitors().values());
         visitors.clear();
         visitors.add(new Visitor("Johnny", "Test", "123 Test", 1234567890));
     }

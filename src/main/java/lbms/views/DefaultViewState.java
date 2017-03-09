@@ -23,22 +23,17 @@ public class DefaultViewState implements State {
      */
     @Override
     public void init() {
-        if(SYSTEM_STATUS) {
-            System.out.println("\nWelcome to the Library Book Management System!");
-            System.out.println("\nPlease select a command: ");
-            System.out.println("books)     View books");
-            System.out.println("users)     View users");
-            System.out.println("system)    Edit system");
-            System.out.println("exit)      Exit system");
+        System.out.println("\nWelcome to the Library Book Management System!");
+
+        if(!SYSTEM_STATUS) {
+            System.out.println("We are currently closed but here you can still access a few commands.");
         }
-        else {
-            System.out.println("\nWelcome to the Library Book Management System after hours!");
-            System.out.println("We are currently closed but here you can access a few system commands.");
-            System.out.println("\nPlease select a command: ");
-            System.out.println("clock)    View system time");
-            System.out.println("stats)    View system statistics");
-            System.out.println("exit)     Exit System");
-        }
+
+        System.out.println("\nPlease select a command: ");
+        System.out.println("books)     View books");
+        System.out.println("users)     View users");
+        System.out.println("system)    Edit system");
+        System.out.println("exit)      Exit system");
     }
 
     @Override
@@ -51,33 +46,19 @@ public class DefaultViewState implements State {
      * @param state: the command to handle
      */
     public void change(String state) {
-        if(SYSTEM_STATUS) {
-            switch(state) {
-                case "books":
-                    ViewController.setState(new BooksViewState(true));
-                    break;
-                case "users":
-                    ViewController.setState(new UserMenuViewState(true));
-                    break;
-                case "system":
-                    ViewController.setState(new SystemViewState(true));
-                    break;
-                default:
-                    System.out.println("Command not found\n\n");
-                    this.init();
-            }
-        }
-        else {
-            switch(state) {
-                case "clock":
-                    ViewController.setState(new ClockViewState(false));
-                    break;
-                case "stats":
-                    break;
-                default:
-                    System.out.println("Command not found\n");
-                    this.init();
-            }
+        switch(state) {
+            case "books":
+                ViewController.setState(new BooksViewState(SYSTEM_STATUS));
+                break;
+            case "users":
+                ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
+                break;
+            case "system":
+                ViewController.setState(new SystemViewState(SYSTEM_STATUS));
+                break;
+            default:
+                System.out.println("Command not found\n\n");
+                this.init();
         }
     }
 }

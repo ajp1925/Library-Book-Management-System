@@ -46,7 +46,7 @@ public class RegisterViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS + "," + "register," + firstName + "," + lastName + "," +
+        String response = CommandController.processRequest(this.SYSTEM_STATUS,"register," + firstName + "," + lastName + "," +
                 address + "," + phone + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new DefaultViewState(SYSTEM_STATUS));

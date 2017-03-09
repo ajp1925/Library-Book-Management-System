@@ -24,7 +24,7 @@ public class ResetViewState implements State {
      */
     @Override
     public void init() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS + "," + "reset;");
+        String response = CommandController.processRequest(this.SYSTEM_STATUS,"reset;");
         System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new ClockViewState(SYSTEM_STATUS));
     }

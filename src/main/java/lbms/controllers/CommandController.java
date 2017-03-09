@@ -1,6 +1,8 @@
 package lbms.controllers;
 
+import lbms.LBMS;
 import lbms.command.*;
+import lbms.models.SystemDateTime;
 
 /**
  * CommandController class interacts with the command package to execute commands.
@@ -15,78 +17,15 @@ public class CommandController {
      * @param requestString: the input string to be processed
      * @return the response output string
      */
-    public static String processRequest(String requestString) {
+    public static String processRequest(boolean SYSTEM_STATUS, String requestString) {
         String response = null;
 
         if (requestString.endsWith(";")) {
             String[] request = requestString.replace(";", "").split(",", 2);
             response = request[0] + ",";
-            try {
-                switch (request[0]) {
-                    case "register":
-                        command = new RegisterVisitor(request[1]);
-                        response += command.execute();
-                        break;
-                    case "arrive":
-                        command = new BeginVisit(request[1]);
-                        response += command.execute();
-                        break;
-                    case "depart":
-                        command = new EndVisit(request[1]);
-                        response += command.execute();
-                        break;
-                    case "info":
-                        command = new LibrarySearch(request[1]);
-                        response += command.execute();
-                        break;
-                    case "borrow":
-                        command = new Borrow(request[1]);
-                        response += command.execute();
-                        break;
-                    case "borrowed":
-                        command = new FindBorrowed(request[1]);
-                        response += command.execute();
-                        break;
-                    case "return":
-                        command = new Return(request[1]);
-                        response += command.execute();
-                        break;
-                    case "pay":
-                        command = new PayFine(request[1]);
-                        response += command.execute();
-                        break;
-                    case "search":
-                        command = new StoreSearch(request[1]);
-                        response += command.execute();
-                        break;
-                    case "buy":
-                        command = new BookPurchase(request[1]);
-                        response += command.execute();
-                        break;
-                    case "advance":
-                        command = new AdvanceTime(request[1]);
-                        response += command.execute();
-                        break;
-                    case "datetime":
-                        command = new GetDateTime();
-                        response += command.execute();
-                        break;
-                    case "report":
-                        command = new StatisticsReport(request[1]);
-                        response += command.execute();
-                        break;
-                    case "reset":      // FOR TESTING
-                        command = new ResetTime();
-                        response += command.execute();
-                        break;
-                    default:
-                        System.out.println("UH OH");
-                        break;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.exit(1);
-            }
+            command = createCommand(SYSTEM_STATUS, request);
+            response += command.execute();
+
         } else {
             response = "partial-request;";
         }
@@ -100,5 +39,45 @@ public class CommandController {
      */
     public static Command getCommand() {
         return command;
+    }
+
+    private static Command createCommand(boolean SYSTEM_STATUS, String[] request) {
+        switch (request[0]) {
+            case "arrive":
+                if (SYSTEM_STATUS) {
+                    return new BeginVisit(request[1]);
+                }
+            case "borrow":
+                if (SYSTEM_STATUS) {
+                    return new Borrow(request[1]);
+                }
+                return new CloseLibrary();
+            case "register":
+                return new RegisterVisitor(request[1]);
+            case "depart":
+                return new EndVisit(request[1]);
+            case "info":
+                return new LibrarySearch(request[1]);
+            case "borrowed":
+                return new FindBorrowed(request[1]);
+            case "return":
+                return new Return(request[1]);
+            case "pay":
+                return new PayFine(request[1]);
+            case "search":
+                return new StoreSearch(request[1]);
+            case "buy":
+                return new BookPurchase(request[1]);
+            case "advance":
+                return new AdvanceTime(request[1]);
+            case "datetime":
+                return new GetDateTime();
+            case "report":
+                return new StatisticsReport(request[1]);
+            case "reset":      // FOR TESTING
+                return new ResetTime();
+            default:
+                return new Invalid();
+        }
     }
 }
