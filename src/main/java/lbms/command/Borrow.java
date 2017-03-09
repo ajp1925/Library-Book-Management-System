@@ -1,6 +1,5 @@
 package lbms.command;
 
-import lbms.API;
 import lbms.LBMS;
 import lbms.models.Book;
 import lbms.models.SystemDateTime;
@@ -42,11 +41,11 @@ public class Borrow implements Command {
      */
     @Override
     public String execute() {
-        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
-            return " invalid-visitor-id;";
+        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
+            return "invalid-visitor-id;";
         }
         else if (UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
-            return "outstanding-fine," + new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines());
+            return "outstanding-fine," + new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + ";";
         }
         String invalidIDs = "{";
         String temp = "";
@@ -80,7 +79,25 @@ public class Borrow implements Command {
 
     @Override
     public String parseResponse(String response) {
-        return null;    //TODO
+        String[] fields = response.split(",");
+        if (fields[1].equals("invalid-visitor-id")) {
+            return "\nVisitor " + visitorID + " is not registered in the system.";
+        }
+        else if (fields[1].equals("outstanding-fine")) {
+            return "\nVisitor " + visitorID + " has to pay " +
+                    new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + " before they " +
+                            "can borrow more books.";
+        }
+        else if (fields[1].equals("book-limit-exceeded")) {
+            return "\nVisitor " + visitorID + " has borrowed the maximum number of books or the borrow request would " +
+                    "cause the visitor to exceed 5 borrowed books.";
+        }
+        else if (fields[1].equals("invalid-book-id")) {
+            return "\nOne of more of the book IDs specified do not match the IDs for the most recent library book search.";
+        }
+        else {
+            return "\nThe books have been successfully and will be due on " + fields[2];    //TODO
+        }
     }
 
     /**
