@@ -1,18 +1,18 @@
 package lbms.models;
 
 import lbms.LBMS;
-
 import java.util.HashMap;
 import java.io.Serializable;
 
 /**
  * Class for a Visitor object, used in the library book management system.
+ * @author Team B
  */
 public class Visitor implements Serializable {
 
     private String firstName, lastName;
     private String address;     // PLACEHOLDER type address QUESTION: can we use external address and phone number class
-    private int phoneNumber;    // PLACEHOLDER type phonenumber
+    private long phoneNumber;    // PLACEHOLDER type phonenumber
     private long visitorID;
     private HashMap<Long, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
@@ -26,7 +26,7 @@ public class Visitor implements Serializable {
      * @param address: the address of the visitor
      * @param phoneNumber: the visitor's phone number
      */
-    public Visitor(String firstName, String lastName, String address, int phoneNumber) {
+    public Visitor(String firstName, String lastName, String address, long phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -73,7 +73,7 @@ public class Visitor implements Serializable {
      * Getter for the visitors phone number.
      * @return the visitors phone number
      */
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -165,7 +165,7 @@ public class Visitor implements Serializable {
 
         // close transactions with amounts payed
         for(Long l: checkedOutBooks.keySet()) {
-            Transaction t = checkedOutBooks.get(1);
+            Transaction t = checkedOutBooks.get(l);
             t.payTransactionFine(t.getFine());
         }
     }

@@ -4,16 +4,24 @@ import lbms.command.*;
 
 /**
  * CommandController class interacts with the command package to execute commands.
+ * @author Team B
  */
 public class CommandController {
+
     private static Command command = null;
 
+    /**
+     * Takes in a request string and outputs a response string.
+     * @param requestString: the input string to be processed
+     * @return the response output string
+     */
     public static String processRequest(String requestString) {
         String[] request = requestString.split(",", 2);
         String response = request[0] + ",";
+        // TODO missing semi-colon is incorrect request
 
         try {
-            switch (request[0]) {
+            switch (request[0].replaceAll(";$", "")) {
                 case "register":
                     command = new RegisterVisitor(request[1]);
                     response += command.execute();
@@ -58,17 +66,15 @@ public class CommandController {
                     command = new AdvanceTime(request[1]);
                     response += command.execute();
                     break;
-                case "datetime;":
-                    response.replace(";", "");
+                case "datetime":
                     command = new GetDateTime();
                     response += command.execute();
                     break;
                 case "report":
-                    response.replace(";", "");
                     command = new StatisticsReport(request[1]);
                     response += command.execute();
                     break;
-                case "reset;":      // FOR TESTING
+                case "reset":      // FOR TESTING
                     command = new ResetTime();
                     response += command.execute();
                     break;
@@ -76,12 +82,18 @@ public class CommandController {
                     System.out.println("UH OH");
                     break;
             }
-        } catch (Exception e) {
-
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            System.exit(1);
         }
         return response;
     }
 
+    /**
+     * Getter for the command.
+     * @return the command
+     */
     public static Command getCommand() {
         return command;
     }

@@ -2,7 +2,6 @@ package lbms.command;
 
 import lbms.LBMS;
 import lbms.models.*;
-
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,6 +14,10 @@ public class StatisticsReport implements Command {
 
     private Integer days;
 
+    /**
+     * Constructor for a StatisticsReport command.
+     * @param request: the request string to be processed
+     */
     public StatisticsReport(String request) {
         if(!request.equals("")) {
             request = request.replace(";", "");
@@ -22,11 +25,20 @@ public class StatisticsReport implements Command {
         }
     }
 
+    /**
+     * Executes the command on the system.
+     * @return a string of the response
+     */
     @Override
     public String execute() {
         return SystemDateTime.getInstance().getDate().format(SystemDateTime.DATE_FORMAT) + '\n' + generateReport(days);
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         return null;    //TODO
@@ -34,17 +46,17 @@ public class StatisticsReport implements Command {
 
     /**
      * Generates a Library report including the following information:
-     *     total number of books in the library
-     *     total number of registered library visitors
-     *     average length of a visit (hh:mm:ss)
-     *     number of books purchased
-     *     amount of fines collected
-     *     amount of fines outstanding
+     *     -total number of books in the library
+     *     -total number of registered library visitors
+     *     -average length of a visit (hh:mm:ss)
+     *     -number of books purchased
+     *     -amount of fines collected
+     *     -amount of fines outstanding
      * @param days: the number of days that the report should include in its statistics
      *            if null: report should include statistics using all data
      * @return a string of the response message
      */
-    public static String generateReport(Integer days) {
+    private String generateReport(Integer days) {
         String report = "";
         Duration totalVisitTime = Duration.ZERO;
         Duration averageVisitTime = Duration.ZERO;
@@ -54,31 +66,34 @@ public class StatisticsReport implements Command {
 
 
         //calculate total outstanding fines
-        for( Visitor v: LBMS.getVisitors() ) { outstandingFines += v.getFines(); }
+        for(Visitor v: LBMS.getVisitors()) {
+            outstandingFines += v.getFines();
+        }
 
-        if( days != null ) {
+        if(days != null) {
 
             LocalDate reportStartDate = SystemDateTime.getInstance().getDate().minusDays(days);
             LocalDate reportEndDate = SystemDateTime.getInstance().getDate();
 
             // grabbing relevant visits
-            ArrayList<Visit> visitsInReport = new ArrayList<Visit>();
+            ArrayList<Visit> visitsInReport = new ArrayList<>();
             for(Visit v: LBMS.getTotalVisits()) {
                 if(v.getDate().isBefore(reportEndDate) && v.getDate().isAfter(reportStartDate)) {
                     visitsInReport.add(v);
                 }
             }
             // calculating average visit time for all visits in system
-            for( Visit v: visitsInReport ) { totalVisitTime.plus(v.getDuration()); }
-            if(visitsInReport.size() != 0 ) {
+            for(Visit v: visitsInReport) {
+                totalVisitTime.plus(v.getDuration());
+            }
+            if(visitsInReport.size() != 0) {
                 averageVisitTime = totalVisitTime.dividedBy(visitsInReport.size());
             }
 
             // calculating collected fines
             for(Transaction t: LBMS.getTransactions()) {
-                if( t.getCloseDate() != null &&
-                        t.getCloseDate().isBefore(reportEndDate) && t.getCloseDate().isAfter(reportStartDate))
-                {
+                if(t.getCloseDate() != null &&
+                        t.getCloseDate().isBefore(reportEndDate) && t.getCloseDate().isAfter(reportStartDate)) {
                     collectedFines += t.getFinePayed();
                 }
             }
@@ -93,14 +108,14 @@ public class StatisticsReport implements Command {
         }
         else {
             // calculating average visit time for all visits in system
-            for (Visit v : LBMS.getTotalVisits()) {
+            for(Visit v : LBMS.getTotalVisits()) {
                 totalVisitTime.plus(v.getDuration());
             }
             averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
 
             // calculating collected fines
-            for (Transaction t : LBMS.getTransactions()) {
-                if (t.getCloseDate() != null) {
+            for(Transaction t : LBMS.getTransactions()) {
+                if(t.getCloseDate() != null) {
                     collectedFines += t.getFinePayed();
                 }
             }

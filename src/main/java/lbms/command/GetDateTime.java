@@ -7,6 +7,7 @@ import lbms.models.SystemDateTime;
  * @author Team B
  */
 public class GetDateTime implements Command {
+
     /**
      * Constructor for GetDateTime.
      */
@@ -21,6 +22,11 @@ public class GetDateTime implements Command {
                 SystemDateTime.getInstance().getTime().format(SystemDateTime.TIME_FORMAT);
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");

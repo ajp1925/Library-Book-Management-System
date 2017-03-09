@@ -2,7 +2,6 @@ package lbms.command;
 
 import lbms.models.Book;
 import lbms.search.BookSearch;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +25,7 @@ public class LibrarySearch implements Command {
         List<String> arguments = Arrays.asList(request.split(","));
         title = arguments.remove(0);
         int index;
+        authors = new ArrayList<>();
         for(index = 0; index < arguments.size(); index++ ) {
             if(!arguments.get(index).matches("[0-9]+")) {
                 authors.add(arguments.get(index));
@@ -106,6 +106,11 @@ public class LibrarySearch implements Command {
         return matches.size() + matchesString;
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         return null;    //TODO

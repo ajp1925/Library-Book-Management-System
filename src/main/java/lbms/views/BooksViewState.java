@@ -2,13 +2,25 @@ package lbms.views;
 
 import lbms.controllers.ViewController;
 
+/**
+ * BooksViewState class for viewing books in the system.
+ * @author Team B
+ */
 public class BooksViewState implements State {
+
     private boolean SYSTEM_STATUS;
 
+    /**
+     * Constructor for a BooksViewState object.
+     * @param SYSTEM_STATUS: the status of the system
+     */
     public BooksViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
+    /**
+     * Initialized the BooksViewState.
+     */
     @Override
     public void init() {
         System.out.println("\nPlease select a command:");
@@ -21,16 +33,27 @@ public class BooksViewState implements State {
 
     @Override
     public void onEnter() {
-
+        // TODO
     }
-     @Override
+
+    /**
+     * Changes the state.
+     * @param state: the command to handle
+     */
+    @Override
     public void change(String state) {
-         switch (state) {
-             case "search": break;
-             case "browse": break;
-             case "checkout": break;
-             case "checkin": break;
-             case "return": ViewController.setState(new DefaultViewState(SYSTEM_STATUS)); break;
+         switch(state) {
+             case "search":
+                 break;
+             case "browse":
+                 break;
+             case "checkout":
+                 break;
+             case "checkin":
+                 break;
+             case "return":
+                 ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                 break;
              default:
                  System.out.println("Command not found\n");
                  this.init();

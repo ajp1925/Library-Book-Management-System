@@ -12,6 +12,11 @@ public interface Command {
      */
     String execute();
 
+    /**
+     * Parses the response string for standard output.
+     * @param response: the response string from execute
+     * @return a string for output
+     */
     String parseResponse(String response);
 
 }

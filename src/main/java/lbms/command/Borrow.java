@@ -1,6 +1,5 @@
 package lbms.command;
 
-import lbms.API;
 import lbms.LBMS;
 import lbms.models.Book;
 import lbms.models.SystemDateTime;
@@ -8,7 +7,6 @@ import lbms.models.Transaction;
 import lbms.models.Visitor;
 import lbms.search.BookSearch;
 import lbms.search.UserSearch;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +40,12 @@ public class Borrow implements Command {
      */
     @Override
     public String execute() {
-        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
+        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
             return " invalid-visitor-id;";
         }
-        else if (UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
-            return "outstanding-fine," + new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines());
+        else if(UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
+            return "outstanding-fine," +
+                    new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines());
         }
         String invalidIDs = "{";
         String temp = "";
@@ -78,6 +77,11 @@ public class Borrow implements Command {
         }
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         return null;    //TODO
@@ -89,17 +93,19 @@ public class Borrow implements Command {
      * @param visitorID: the ID of the visitor checking out the book
      * @return a string of the response message
      */
-    private static String checkOutBook(long isbn, long visitorID) {
+    private String checkOutBook(long isbn, long visitorID) {
         Transaction t = new Transaction(isbn, visitorID);
         Visitor v = UserSearch.BY_ID.findFirst(visitorID);
         List<Book> l = BookSearch.BY_ISBN.search(isbn);
         Book b;
+
         if(l.size() == 0) {
             return "id-error," + isbn;
         }
         else {
             b = l.get(0);
         }
+
         if(v.canCheckOut()) {
             v.checkOut(t);
             b.checkOut();

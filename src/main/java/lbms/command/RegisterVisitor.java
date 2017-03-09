@@ -36,6 +36,11 @@ public class RegisterVisitor implements Command {
         return "duplicate;";
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
@@ -53,9 +58,9 @@ public class RegisterVisitor implements Command {
      * @return true if successfully registered, false if duplicate
      */
     private static boolean registerVisitor(Visitor visitor) {
-        if (!(UserSearch.BY_ID.findFirst(visitor.getVisitorID()) != null) &&
-                !(UserSearch.BY_NAME.findFirst(visitor.getName()) != null) &&
-                !(UserSearch.BY_ADDRESS.findFirst(visitor.getAddress()) != null)) {
+        if (UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null &&
+                UserSearch.BY_NAME.findFirst(visitor.getName()) == null &&
+                UserSearch.BY_ADDRESS.findFirst(visitor.getAddress()) == null) {
             LBMS.getVisitors().add(visitor);
             return true;
         }

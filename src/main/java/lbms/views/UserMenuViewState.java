@@ -1,11 +1,19 @@
 package lbms.views;
 
-import lbms.command.FindBorrowed;
 import lbms.controllers.ViewController;
 
+/**
+ * UserMenuViewState class.
+ * @author Team B
+ */
 public class UserMenuViewState implements State {
+
     private boolean SYSTEM_STATUS;
 
+    /**
+     * Constructor for a UserMenuViewState object.
+     * @param SYSTEM_STATUS
+     */
     public UserMenuViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
@@ -24,26 +32,37 @@ public class UserMenuViewState implements State {
         System.out.println("return)           Return to main menu");
     }
 
-    /**
-     * NO-OP
-     */
     @Override
     public void onEnter() {
-        // NO-OP
+        // NO-OP TODO
     }
 
     /**
-     * {@inheritDoc}
+     * Changes the state of the system.
+     * @param state: the command to handle
      */
     @Override
     public void change(String state) {
         switch (state) {
-            case "search": break;
-            case "register": ViewController.setState(new RegisterViewState(SYSTEM_STATUS)); break;
-            case "enter library": case "enter": ViewController.setState(new BeginVisitViewState(SYSTEM_STATUS)); break;
-            case "exit library":case "leave": ViewController.setState(new EndVisitViewState(SYSTEM_STATUS)); break;
-            case "borrowed": ViewController.setState(new FindBorrowedViewState(SYSTEM_STATUS)); break;
-            case "return": ViewController.setState(new DefaultViewState(SYSTEM_STATUS)); break;
+            case "search":
+                break;
+            case "register":
+                ViewController.setState(new RegisterViewState(SYSTEM_STATUS));
+                break;
+            case "enter library":
+            case "enter":
+                ViewController.setState(new BeginVisitViewState(SYSTEM_STATUS));
+                break;
+            case "exit library":
+            case "leave":
+                ViewController.setState(new EndVisitViewState(SYSTEM_STATUS));
+                break;
+            case "borrowed":
+                ViewController.setState(new FindBorrowedViewState(SYSTEM_STATUS));
+                break;
+            case "return":
+                ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                break;
             default:
                 System.out.println("Command not found\n");
                 this.init();

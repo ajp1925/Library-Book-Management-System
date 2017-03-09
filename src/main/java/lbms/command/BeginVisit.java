@@ -30,7 +30,7 @@ public class BeginVisit implements Command {
      */
     @Override
     public String execute() {
-        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
+        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
             return "invalid-id;";
         }
 
@@ -40,17 +40,25 @@ public class BeginVisit implements Command {
         }
 
         Visit v = beginVisit(visitor);
-        return visitorID + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," + v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
+        return visitorID + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," +
+                v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 
+    /**
+     * Parses the response for begin visit.
+     * @param response: the response string from execute
+     * @return a string for output
+     */
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if (fields[1].equals("duplicate;")) {
+        if(fields[1].equals("duplicate;")) {
             return "\nVisitor " + visitorID + " is already in the library.";
-        } else if (fields[1].equals("invalid-id;")) {
+        }
+        else if(fields[1].equals("invalid-id;")) {
             return "\nVisitor " + visitorID + " is not registered in the system.";
-        } else {
+        }
+        else {
             return "\nVisitor " + visitorID + " has entered the library on "
                     + fields[2] + " at " + fields[3].replace(";","") + ".";
         }
@@ -61,7 +69,7 @@ public class BeginVisit implements Command {
      * @param visitor: the visitor at the library
      * @return the new visit object
      */
-    private static Visit beginVisit(Visitor visitor) {
+    private Visit beginVisit(Visitor visitor) {
         Visit visit = new Visit(visitor);
         LBMS.getCurrentVisits().put(visitor.getVisitorID(), visit);
         return visit;

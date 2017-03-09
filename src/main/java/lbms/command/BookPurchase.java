@@ -2,7 +2,6 @@ package lbms.command;
 
 import lbms.LBMS;
 import lbms.models.Book;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +47,7 @@ public class BookPurchase implements Command {
      * @param ids: the ids of the books to be purchased
      * @return a response string
      */
-    private static String processPurchaseOrder(int quantity, List<Long> ids) {
+    private String processPurchaseOrder(int quantity, List<Long> ids) {
         String booksBought = "";
         for(Long id: ids) {
             for(Book b: LBMS.getBooksToBuy()) {
@@ -68,7 +67,7 @@ public class BookPurchase implements Command {
      * Buys a book for the library
      * @param book: The book to buy
      */
-    private static void buyBook(Book book) {
+    private void buyBook(Book book) {
         LBMS.getBooks().put(book.getIsbn(), book);
     }
 }

@@ -28,7 +28,7 @@ public class EndVisit implements Command {
      */
     @Override
     public String execute() {
-        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
+        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
             Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
             if(visitor.getInLibrary()) {
                 Visit visit = LBMS.endVisit(visitor);
@@ -42,12 +42,18 @@ public class EndVisit implements Command {
         return "invalid-id;";
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if (fields[1].equals("invalid-id;")) {
+        if(fields[1].equals("invalid-id;")) {
             return "\nVisitor " + visitorID + " is not in the library.";
-        } else {
+        }
+        else {
             return "\nVisitor " + visitorID + " has left the library at "
                     + fields[2] + " and was in the library for " + fields[3];
         }
