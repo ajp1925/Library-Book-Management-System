@@ -27,10 +27,10 @@ public class LBMS {
     private static ArrayList<Transaction> transactions = new ArrayList<>();
     private static HashMap<Long, Visit> currentVisits = new HashMap<>();
     private boolean shutdown = false;
-    private static boolean SYSTEM_STATUS = true;
     private int initial = 0;
-    private final static LocalTime openTime = LocalTime.of(8, 0);
-    private final static LocalTime closeTime = LocalTime.of(19, 0);
+
+    public final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
+    public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -54,11 +54,11 @@ public class LBMS {
         SystemInit();
         Scanner s = new Scanner(System.in);
 
-        if(false) {
+        if (console) {
             while(true) {
                 // Check if library is open
-                if(SystemDateTime.getInstance().getTime().isAfter(openTime) &&
-                        SystemDateTime.getInstance().getTime().isBefore(closeTime)) {
+                if(SystemDateTime.getInstance().getTime().isAfter(OPEN_TIME) &&
+                        SystemDateTime.getInstance().getTime().isBefore(CLOSE_TIME)) {
 
                     // Check if library just opened or system start
                     if(initial == 0 || initial == 1) {
@@ -67,6 +67,7 @@ public class LBMS {
                     }
                 }
                 else {
+
                     // Check if library just closed or system start
                     if(initial == 0 || initial == 2) {
                         SystemClose();
@@ -89,7 +90,26 @@ public class LBMS {
             do {
                 System.out.print("> ");
                 input = s.nextLine();
-                System.out.println(CommandController.processRequest(input));
+
+                if(SystemDateTime.getInstance().getTime().isAfter(OPEN_TIME) &&
+                        SystemDateTime.getInstance().getTime().isBefore(CLOSE_TIME)) {
+
+                    // Check if library just opened or system start
+                    if(initial == 0 || initial == 1) {
+                        initial = 2;
+                    }
+
+                    System.out.println(CommandController.processRequest(true, input));
+                } else {
+
+                    // Check if library just closed or system start
+                    if(initial == 0 || initial == 2) {
+                        SystemClose();
+                        initial = 1;
+                    }
+
+                    System.out.println(CommandController.processRequest(false, input));
+                }
             } while(!input.matches("(?i)exit|quit"));
         }
 
@@ -238,13 +258,11 @@ public class LBMS {
      * Serializes the data in the system for future startup.
      */
     private void SystemClose() {
-        System.out.println("\nLibrary is now closing!");
-
         SystemDateTime.getInstance().stopClock();
 
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
-            CommandController.processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
+            CommandController.processRequest(false, "depart," + visit.getVisitor().getVisitorID() + ";");
         }
 
         // Serializes the data.

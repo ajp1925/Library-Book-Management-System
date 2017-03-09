@@ -39,7 +39,7 @@ public class AdvanceViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS + "," + "advance," + days + "," + hours + ";");
+        String response = CommandController.processRequest(this.SYSTEM_STATUS,"advance," + days + "," + hours + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new ClockViewState(SYSTEM_STATUS));
     }

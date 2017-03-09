@@ -12,7 +12,7 @@ public class CloseLibrary implements Command {
      */
     @Override
     public String execute() {
-        return "library-closed";
+        return "library-closed;";
     }
 
     /**
