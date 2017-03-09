@@ -26,6 +26,6 @@ public class CloseLibrary implements Command {
         if (fields[1].equals("library-closed;")) {
             return "The library is now closed.";
         }
-        return "There's some kind of error.";
+        return "There's some kind of error";
     }
 }
