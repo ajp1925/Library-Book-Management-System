@@ -1,15 +1,19 @@
 package lbms.views;
 
 import lbms.controllers.ViewController;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
- * Created by Chris on 3/7/17.
+ * SystemViewState class.
+ * @author Team B
  */
 public class SystemViewState implements State {
 
     private boolean SYSTEM_STATUS;
 
+    /**
+     * Constructor for a SystemViewState.
+     * @param SYSTEM_STATUS: the status of the system
+     */
     public SystemViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
@@ -25,22 +29,25 @@ public class SystemViewState implements State {
         System.out.println("return)    Return to main menu");
     }
 
-    /**
-     * NO-OP
-     */
     @Override
     public void onEnter() {
-        // NO-OP
+        // NO-OP TODO
     }
 
     /**
-     * {@inheritDoc}
+     * Changes the state of the system.
+     * @param state: the command to handle
      */
     public void change(String state) {
-        switch (state) {
-            case "clock": ViewController.setState(new ClockViewState(SYSTEM_STATUS)); break;
-            case "stats": break;
-            case "return": ViewController.setState(new DefaultViewState(SYSTEM_STATUS)); break;
+        switch(state) {
+            case "clock":
+                ViewController.setState(new ClockViewState(SYSTEM_STATUS));
+                break;
+            case "stats":
+                break;
+            case "return":
+                ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                break;
             default:
                 System.out.println("Command not found\n");
                 this.init();

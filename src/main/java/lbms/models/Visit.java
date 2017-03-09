@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 /**
  * Class for a Visit Object, used in the library book management system.
+ * @author Team B
  */
 public class Visit implements Serializable {
 
@@ -38,7 +39,9 @@ public class Visit implements Serializable {
      * Getter for the visitor
      * @return the visitor
      */
-    public Visitor getVisitor() { return this.visitor; }
+    public Visitor getVisitor() {
+        return this.visitor;
+    }
 
     /**
      * Getter for the visit date.

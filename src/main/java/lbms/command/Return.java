@@ -1,11 +1,9 @@
 package lbms.command;
 
-import lbms.API;
 import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
 import lbms.search.UserSearch;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +24,6 @@ public class Return implements Command {
      * @param request: the request input string
      */
     public Return(String request) {
-        request = request.replaceAll(";$", "");
         String[] split = request.split(",", 1);
         visitorID = Long.parseLong(split[0]);
         ids = Arrays.stream(split[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
@@ -38,7 +35,7 @@ public class Return implements Command {
      */
     @Override
     public String execute() {
-        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
+        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
             return "invalid-visitor-id;";
         }
         Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
@@ -57,6 +54,11 @@ public class Return implements Command {
         return "success;";
     }
 
+    /**
+     * Parses the string for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         return null;    //TODO

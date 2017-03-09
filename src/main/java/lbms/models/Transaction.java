@@ -6,6 +6,7 @@ import java.time.Period;
 
 /**
  * Class for a Transaction object, used in the library book management system.
+ * @author Team B
  */
 public class Transaction implements Serializable {
     private final static double MAX_FINE = 30.00;
@@ -33,7 +34,7 @@ public class Transaction implements Serializable {
      * Getter for the ISBN number.
      * @return the isbn of the book checked out
      */
-    public long getIsbn() {
+    long getIsbn() {
         return isbn;
     }
 
@@ -64,14 +65,16 @@ public class Transaction implements Serializable {
      * Getter for the fine money payed
      * @return the amount of money payed for Transaction fine
      */
-    public double getFinePayed() { return finePayed; }
+    public double getFinePayed() {
+        return finePayed;
+    }
 
     /**
      * Closes the transaction by setting the fine payed.
      * Note: a transaction without an associated fine does not need closing
      * @param amount the amount of fine payed
      */
-    public void payTransactionFine(double amount) {
+    void payTransactionFine(double amount) {
         if( finePayed == 0 && amount == getFine() ) {
             finePayed += amount;
             closeTransaction();
@@ -105,12 +108,22 @@ public class Transaction implements Serializable {
      * Getter for the close date of the transaction (when the fine was paid)
      * @return the date the transaction was closed
      */
-    public LocalDate getCloseDate() { return closeDate; }
+    public LocalDate getCloseDate() {
+        return closeDate;
+    }
 
+    /**
+     * Creates a string of the date.
+     * @return the date formatted properly
+     */
     public String printDate() {
         return this.getDate().format(SystemDateTime.DATE_FORMAT);
     }
 
+    /**
+     * Creates a string of the due date.
+     * @return the date formatted properly
+     */
     public String printDueDate() {
         return this.getDueDate().format(SystemDateTime.DATE_FORMAT);
     }

@@ -19,7 +19,7 @@ public class EndVisit implements Command {
      * @param request: the request input string
      */
     public EndVisit(String request) {
-        visitorID = Long.parseLong(request.replaceAll(";$", ""));
+        visitorID = Long.parseLong(request);
     }
 
     /**
@@ -28,10 +28,12 @@ public class EndVisit implements Command {
      */
     @Override
     public String execute() {
-        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
+        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
             Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
-            if(visitor.getInLibrary()) {
-                Visit visit = LBMS.endVisit(visitor);
+            if(visitor != null && visitor.getInLibrary()) {
+                Visit visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());
+                visit.depart();
+                LBMS.getTotalVisits().add(visit);
                 long s = visit.getDuration().getSeconds();
                 String duration = String.format("%02d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
                 return visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + "," +
@@ -42,12 +44,18 @@ public class EndVisit implements Command {
         return "invalid-id;";
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if (fields[1].equals("invalid-id;")) {
+        if(fields[1].equals("invalid-id;")) {
             return "\nVisitor " + visitorID + " is not in the library.";
-        } else {
+        }
+        else {
             return "\nVisitor " + visitorID + " has left the library at "
                     + fields[2] + " and was in the library for " + fields[3];
         }

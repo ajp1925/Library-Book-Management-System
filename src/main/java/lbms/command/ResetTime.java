@@ -3,26 +3,44 @@ package lbms.command;
 import lbms.models.SystemDateTime;
 
 /**
- * Created by Chris on 3/8/2017.
+ * ResetTime class used to reset the time during testing.
+ * @author Team B
  */
 public class ResetTime implements Command {
 
+    /**
+     * Constructor for ResetTime command.
+     */
+    public ResetTime() { }
+
+
+    /**
+     * Executes the reset time command on the system.
+     * @return a string of the response
+     */
     @Override
     public String execute() {
         try {
             SystemDateTime.getInstance().reset();
             return "success;";
-        } catch (Exception e) {
+        }
+        catch(Exception e) {
             return "failure;";
         }
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if (fields[1].equals("success;")) {
+        if(fields[1].equals("success;")) {
             return "\nSuccess, system clock has been reset";
-        } else {
+        }
+        else {
             return "\nFailure, system clock failed to reset";
         }
     }

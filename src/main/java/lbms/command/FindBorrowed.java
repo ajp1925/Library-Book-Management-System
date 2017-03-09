@@ -1,6 +1,5 @@
 package lbms.command;
 
-import lbms.API;
 import lbms.models.Book;
 import lbms.models.Visitor;
 import lbms.search.BookSearch;
@@ -19,7 +18,6 @@ public class FindBorrowed implements Command {
      * @param request: the request String for the command
      */
     public FindBorrowed(String request) {
-        request = request.replaceAll(";$", "");
         visitorID = Long.decode(request);
     }
 
@@ -29,7 +27,7 @@ public class FindBorrowed implements Command {
      */
     @Override
     public String execute() {
-        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
+        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
             return "invalid-visitor-id;";
         }
 
@@ -49,19 +47,23 @@ public class FindBorrowed implements Command {
         return sb.append(";").toString();
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",", 3);
-        if (fields[1].equals("invalid-visitor-id;")) {
+        if(fields[1].equals("invalid-visitor-id;")) {
             return "\nVisitor " + visitorID + " is not valid.";
-        } else {
+        }
+        else {
             String result = "\n";
-
             String[] books = fields[3].split("<nl>");
-            for (String book: books) {
+            for(String book: books) {
                 result += "\tbook";
             }
-
             return result;
         }
     }

@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Custom date time implementation for the Library Book Management System.
+ * @author Team B
  */
 public class SystemDateTime extends Thread implements Serializable {
 
@@ -30,7 +31,9 @@ public class SystemDateTime extends Thread implements Serializable {
             try {
                 Thread.sleep(1000);
             }
-            catch(Exception ex) {}
+            catch(InterruptedException e) {
+                System.err.print("");
+            }
         }
     }
 
@@ -108,8 +111,16 @@ public class SystemDateTime extends Thread implements Serializable {
         time = time.plusHours(hours);
     }
 
-    public void reset() { this.time = LocalDateTime.now(); }
+    /**
+     * Resets the time.
+     */
+    public void reset() {
+        this.time = LocalDateTime.now();
+    }
 
+    /**
+     * Stops the clock.
+     */
     public void stopClock() {
         this.stop = true;
     }

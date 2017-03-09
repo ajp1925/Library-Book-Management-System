@@ -1,7 +1,6 @@
 package lbms.command;
 
 import lbms.search.UserSearch;
-
 import java.text.DecimalFormat;
 
 /**
@@ -18,7 +17,6 @@ public class PayFine implements Command {
      * @param request: the request string to be processed
      */
     public PayFine(String request) {
-        request = request.replaceAll(";$", "");
         String[] arguments = request.split(",");
         visitorID = Long.parseLong(arguments[0]);
         amount = Double.parseDouble(arguments[1]);
@@ -30,7 +28,7 @@ public class PayFine implements Command {
      */
     @Override
     public String execute() {
-        if(!(UserSearch.BY_ID.findFirst(visitorID) != null)) {
+        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
             return "invalid-visitor-id;";
         }
         double balance = UserSearch.BY_ID.findFirst(visitorID).getFines();
@@ -44,6 +42,11 @@ public class PayFine implements Command {
         }
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         return null;    //TODO

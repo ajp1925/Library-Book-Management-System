@@ -1,35 +1,35 @@
 package lbms.views;
 
-import lbms.API;
-import lbms.command.RegisterVisitor;
 import lbms.controllers.CommandController;
-import lbms.models.Visitor;
 import lbms.controllers.ViewController;
-
 import java.util.Scanner;
 
 /**
- * This views handles registering a new user
+ * This views handles registering a new user.
+ * @author Team B
  */
 public class RegisterViewState implements State {
-    private boolean SYSTEM_STATUS;
 
+    private boolean SYSTEM_STATUS;
     private String firstName;
     private String lastName;
     private String address;
-    private int phone;
+    private long phone;
 
+    /**
+     * Constructor for a RegisterViewState object.
+     * @param SYSTEM_STATUS: the status of the system
+     */
     public RegisterViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
     /**
-     * Prompts the user to verify the entered information
+     * Prompts the user to verify the entered information.
      */
     @Override
     public void init() {
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("\nRegister a new user.");
         System.out.print("First Name: ");
         firstName = scanner.nextLine();
@@ -38,7 +38,7 @@ public class RegisterViewState implements State {
         System.out.print("Address: ");
         address = scanner.nextLine();
         System.out.println("Phone Number:");
-        phone = scanner.nextInt();
+        phone = scanner.nextLong();
     }
 
     /**
@@ -46,17 +46,14 @@ public class RegisterViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("register," +
-                firstName + "," + lastName + "," + address + "," + phone + ";");
+        String response = CommandController.processRequest("register," + firstName + "," + lastName + "," +
+                address + "," + phone + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
     }
 
-    /**
-     * NO-OP
-     */
     @Override
     public void change(String state) {
-        //NO-OP
+        //NO-OP TODO
     }
 }

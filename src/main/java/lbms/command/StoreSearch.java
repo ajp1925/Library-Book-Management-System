@@ -2,7 +2,6 @@ package lbms.command;
 
 import lbms.models.Book;
 import lbms.search.BookSearch;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -26,7 +25,7 @@ public class StoreSearch implements Command {
      */
     public StoreSearch(String request) {
         int i = 1;
-        request = request.replaceAll(";$", "");
+        authors = new ArrayList<>();
         String[] arguments = request.split(",");
         title = arguments[0];
         while(!arguments[i].matches("\\d+")) {
@@ -51,10 +50,10 @@ public class StoreSearch implements Command {
         }
         int booksFound = 0;
         List<Book> books = BookSearch.BY_TITLE.search(title);
-        if (sortOrder.equals("title")) {
+        if(sortOrder.equals("title")) {
             Collections.sort(books);
         }
-        else if (sortOrder.equals("publish-date")) {
+        else if(sortOrder.equals("publish-date")) {
             Collections.sort(books, new Comparator<Book>() {
                 @Override
                 public int compare(Book book1, Book book2) {
@@ -83,6 +82,11 @@ public class StoreSearch implements Command {
         }
     }
 
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
     @Override
     public String parseResponse(String response) {
         return null;    //TODO

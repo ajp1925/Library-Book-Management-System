@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 
 /**
  * Class for a Book object, used in the library book management system.
+ * @author Team B
  */
 public class Book implements Serializable, Comparable<Book> {
 
     private static int nextTempID = 0;
-
     private String title, publisher;
     private ArrayList<String> authors;
     private long isbn;
@@ -136,13 +136,15 @@ public class Book implements Serializable, Comparable<Book> {
     }
 
     /**
-     * Getter for the purchase date
+     * Getter for the purchase date.
      * @return the latest date of purchase (desired?)
      */
-    public LocalDate getPurchaseDate() { return purchaseDate; }
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
 
     /**
-     * Allows the purchase of a book
+     * Allows the purchase of a book.
      */
     public void addBook() {
         numberOfCopies++;
@@ -187,6 +189,11 @@ public class Book implements Serializable, Comparable<Book> {
         return output;
     }
 
+    /**
+     * Compares a book to this instance of a book.
+     * @param book: the book to be compared to
+     * @return int representing the comparison of the book titles
+     */
     @Override
     public int compareTo(Book book) {
         String compareTitle = book.getTitle();
