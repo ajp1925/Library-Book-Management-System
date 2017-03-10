@@ -45,6 +45,7 @@ public class SystemViewState implements State {
                 ViewController.setState(new ClockViewState(SYSTEM_STATUS));
                 break;
             case "stats":
+                ViewController.setState(new ReportViewState(SYSTEM_STATUS));
                 break;
             case "return":
                 ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
