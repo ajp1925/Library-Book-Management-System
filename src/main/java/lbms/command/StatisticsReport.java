@@ -132,7 +132,12 @@ public class StatisticsReport implements Command {
         return report;
     }
 
-    public static String formatDuration(Duration duration) {
+    /**
+     * Formats the durations.
+     * @param duration: the duration to be formatted
+     * @return a string of the formatted duration
+     */
+    private static String formatDuration(Duration duration) {
         long s = duration.getSeconds();
         return String.format("%02d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
     }

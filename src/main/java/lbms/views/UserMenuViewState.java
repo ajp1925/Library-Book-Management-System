@@ -12,7 +12,7 @@ public class UserMenuViewState implements State {
 
     /**
      * Constructor for a UserMenuViewState object.
-     * @param SYSTEM_STATUS
+     * @param SYSTEM_STATUS: boolean status of the system
      */
     public UserMenuViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
@@ -36,10 +36,11 @@ public class UserMenuViewState implements State {
         System.out.println("return)           Return to main menu");
     }
 
+    /**
+     * No operation from this method.
+     */
     @Override
-    public void onEnter() {
-        // NO-OP TODO
-    }
+    public void onEnter() { }
 
     /**
      * Changes the state of the system.
@@ -61,14 +62,14 @@ public class UserMenuViewState implements State {
                 break;
             case "enter library":
             case "enter":
-                if (SYSTEM_STATUS) {
-                    ViewController.setState(new BeginVisitViewState(SYSTEM_STATUS));
+                if(SYSTEM_STATUS) {
+                    ViewController.setState(new BeginVisitViewState(true));
                     break;
                 }
             case "exit library":
             case "leave":
-                if (SYSTEM_STATUS) {
-                    ViewController.setState(new EndVisitViewState(SYSTEM_STATUS));
+                if(SYSTEM_STATUS) {
+                    ViewController.setState(new EndVisitViewState(true));
                     break;
                 }
             default:

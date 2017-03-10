@@ -4,7 +4,6 @@ import lbms.views.DefaultViewState;
 import lbms.views.State;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 

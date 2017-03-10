@@ -36,10 +36,11 @@ public class DefaultViewState implements State {
         System.out.println("exit)      Exit system");
     }
 
+    /**
+     * No operation from this method.
+     */
     @Override
-    public void onEnter() {
-        // NO-OP TODO
-    }
+    public void onEnter() { }
 
     /**
      * Changes the state.

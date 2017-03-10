@@ -2,10 +2,8 @@ package lbms.command;
 
 import lbms.models.SystemDateTime;
 import org.junit.Test;
-
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-
 import static org.junit.Assert.assertEquals;
 
 public class AdvanceTimeTest {

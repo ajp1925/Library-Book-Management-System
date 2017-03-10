@@ -29,10 +29,11 @@ public class SystemViewState implements State {
         System.out.println("return)    Return to main menu");
     }
 
+    /**
+     * No operation from this method.
+     */
     @Override
-    public void onEnter() {
-        // NO-OP TODO
-    }
+    public void onEnter() { }
 
     /**
      * Changes the state of the system.
