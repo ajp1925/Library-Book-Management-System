@@ -111,7 +111,9 @@ public class StatisticsReport implements Command {
             for(Visit v : LBMS.getTotalVisits()) {
                 totalVisitTime.plus(v.getDuration());
             }
-            averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
+            if(LBMS.getTotalVisits().size() != 0) {
+                averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
+            }
 
             // calculating collected fines
             for(Transaction t : LBMS.getTransactions()) {
