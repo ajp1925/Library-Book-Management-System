@@ -128,7 +128,7 @@ public class StatisticsReport implements Command {
                 "Average Length of Visit: " + formatDuration(averageVisitTime) + "\n" +
                 "Number of Books Purchased: " + booksPurchased + "\n" +
                 "Fines Collected: " + collectedFines + "\n" +
-                "Fines Outstanding: " + outstandingFines + "\n"
+                "Fines Outstanding: " + outstandingFines
         );
 
         return report;

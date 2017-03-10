@@ -49,10 +49,13 @@ public class BooksViewState implements State {
     public void change(String state) {
          switch(state) {
              case "search":
+                 ViewController.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
                  break;
              case "browse":
+                 // TODO
                  break;
              case "checkin":
+                 // TODO
                  break;
              case "return":
                  ViewController.setState(new DefaultViewState(SYSTEM_STATUS));

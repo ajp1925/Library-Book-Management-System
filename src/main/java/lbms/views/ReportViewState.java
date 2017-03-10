@@ -43,11 +43,13 @@ public class ReportViewState implements State {
         String response;
         if (days == null) {
             response = CommandController.processRequest(this.SYSTEM_STATUS, "report;");
+            System.out.println("\nSystem report:");
         } else {
             response = CommandController.processRequest(this.SYSTEM_STATUS, "report," + days + ";");
+            System.out.println("\nSystem report for " + days + " days:");
         }
 
-        System.out.println("\n" + CommandController.getCommand().parseResponse(response));
+        System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new SystemViewState(SYSTEM_STATUS));
     }
     public void change(String state) { }
