@@ -41,8 +41,10 @@ public class FindBorrowedViewState implements State {
         ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
+    /**
+     * No operation from this method.
+     * @param state: the command to handle
+     */
     @Override
-    public void change(String state) {
-        // NO-OP TODO
-    }
+    public void change(String state) { }
 }

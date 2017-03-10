@@ -44,8 +44,10 @@ public class AdvanceViewState implements State {
         ViewController.setState(new ClockViewState(SYSTEM_STATUS));
     }
 
+    /**
+     * No operation for this method.
+     * @param state: the command to handle
+     */
     @Override
-    public void change(String state) {
-        // NO-OP TODO what is this method?
-    }
+    public void change(String state) { }
 }
