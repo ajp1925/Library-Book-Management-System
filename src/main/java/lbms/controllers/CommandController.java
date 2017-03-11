@@ -73,7 +73,11 @@ public class CommandController {
             case "datetime":
                 return new GetDateTime();
             case "report":
-                return new StatisticsReport(request[1]);
+                if (request.length == 1){
+                    return new StatisticsReport("");
+                } else {
+                    return new StatisticsReport(request[1]);
+                }
             case "reset":      // FOR TESTING
                 return new ResetTime();
             default:

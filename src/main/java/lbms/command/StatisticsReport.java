@@ -111,7 +111,9 @@ public class StatisticsReport implements Command {
             for(Visit v : LBMS.getTotalVisits()) {
                 totalVisitTime.plus(v.getDuration());
             }
-            averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
+            if(LBMS.getTotalVisits().size() != 0) {
+                averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
+            }
 
             // calculating collected fines
             for(Transaction t : LBMS.getTransactions()) {
@@ -126,7 +128,7 @@ public class StatisticsReport implements Command {
                 "Average Length of Visit: " + formatDuration(averageVisitTime) + "\n" +
                 "Number of Books Purchased: " + booksPurchased + "\n" +
                 "Fines Collected: " + collectedFines + "\n" +
-                "Fines Outstanding: " + outstandingFines + "\n"
+                "Fines Outstanding: " + outstandingFines
         );
 
         return report;

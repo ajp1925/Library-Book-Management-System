@@ -50,6 +50,7 @@ public class UserMenuViewState implements State {
     public void change(String state) {
         switch (state) {
             case "search":
+                // TODO
                 break;
             case "register":
                 ViewController.setState(new RegisterViewState(SYSTEM_STATUS));
