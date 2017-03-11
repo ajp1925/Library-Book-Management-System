@@ -1,6 +1,5 @@
 package lbms.command;
 
-import lbms.LBMS;
 import lbms.models.Book;
 import lbms.search.BookSearch;
 import java.util.ArrayList;
@@ -16,9 +15,9 @@ public class StoreSearch implements Command {
 
     private String title;
     private ArrayList<String> authors;
-    private Long isbn;
-    private String publisher;
-    private String sortOrder;
+    private Long isbn = null;
+    private String publisher = null;
+    private String sortOrder = null;
 
     /**
      * Constructor for a StoreSearch object.
@@ -29,21 +28,19 @@ public class StoreSearch implements Command {
         authors = new ArrayList<>();
         String[] arguments = request.split(",");
         title = arguments[0];
-        if (arguments.length > i) {
-            while (!arguments[i].matches("\\d+")) {
-                authors.add(arguments[i]);
-                i += 1;
-            }
+        while(arguments.length > i && !arguments[i].matches("\\d+")) {
+            authors.add(arguments[i]);
+            i += 1;
         }
-        if (arguments.length > i) {
+        if(arguments.length > i) {
             isbn = Long.parseLong(arguments[i]);
             i += 1;
         }
-        if (arguments.length > i) {
+        if(arguments.length > i) {
             publisher = arguments[i];
             i += 1;
         }
-        if (arguments.length > i) {
+        if(arguments.length > i) {
             sortOrder = arguments[i];
         }
     }
@@ -54,23 +51,26 @@ public class StoreSearch implements Command {
      */
     @Override
     public String execute() {
+        if(sortOrder != null && !sortOrder.equals("title") && !sortOrder.equals("publish-date")) {
+            return "invalid-sort-order";
+        }
         int booksFound = 0;
-        List<Book> books = BookSearch.BY_TITLE.searchBookstoBuy(title);
-        if (sortOrder != null) {
-            if (!sortOrder.equals("title") && !sortOrder.equals("publish-date")) {
-                return "invalid-sort-order";
-            }
-            if(sortOrder.equals("title")) {
-                Collections.sort(books);
-            }
-            else if(sortOrder.equals("publish-date")) {
-                Collections.sort(books, new Comparator<Book>() {
-                    @Override
-                    public int compare(Book book1, Book book2) {
-                        return book2.getPublishDate().compareTo(book1.getPublishDate());
-                    }
-                });
-            }
+        List<Book> books = BookSearch.BY_TITLE.search(title);
+        if(sortOrder != null && sortOrder.equals("title")) {
+            Collections.sort(books, new Comparator<Book>() {
+                @Override
+                public int compare(Book book1, Book book2) {
+                    return book2.getTitle().compareTo(book1.getTitle());
+                }
+            });
+        }
+        else if(sortOrder != null && sortOrder.equals("publish-date")) {
+            Collections.sort(books, new Comparator<Book>() {
+                @Override
+                public int compare(Book book1, Book book2) {
+                    return book2.getPublishDate().compareTo(book1.getPublishDate());
+                }
+            });
         }
         if(books.size() == 0) {
             return Integer.toString(booksFound) + ";";
@@ -101,15 +101,11 @@ public class StoreSearch implements Command {
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if (fields[1].equals("0;")) {
+        if(fields[1].equals("n;")) {
             return "No books were found.";
         }
         else {
-            String string = "";
-            for (int i = 2; i < fields.length; i++) {
-                string = string + fields[i];
-            }
-            return string;
+            return fields[2];
         }
     }
 }
