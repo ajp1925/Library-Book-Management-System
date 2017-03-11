@@ -15,9 +15,9 @@ public class StoreSearch implements Command {
 
     private String title;
     private ArrayList<String> authors;
-    private Long isbn;
-    private String publisher;
-    private String sortOrder;
+    private Long isbn = null;
+    private String publisher = null;
+    private String sortOrder = null;
 
     /**
      * Constructor for a StoreSearch object.
@@ -28,15 +28,21 @@ public class StoreSearch implements Command {
         authors = new ArrayList<>();
         String[] arguments = request.split(",");
         title = arguments[0];
-        while(!arguments[i].matches("\\d+")) {
+        while(arguments.length > i && !arguments[i].matches("\\d+")) {
             authors.add(arguments[i]);
             i += 1;
         }
-        isbn = Long.parseLong(arguments[i]);
-        i += 1;
-        publisher = arguments[i];
-        i += 1;
-        sortOrder = arguments[i];
+        if(arguments.length > i) {
+            isbn = Long.parseLong(arguments[i]);
+            i += 1;
+        }
+        if(arguments.length > i) {
+            publisher = arguments[i];
+            i += 1;
+        }
+        if(arguments.length > i) {
+            sortOrder = arguments[i];
+        }
     }
 
     /**
@@ -45,15 +51,20 @@ public class StoreSearch implements Command {
      */
     @Override
     public String execute() {
-        if(sortOrder.equals("title") && sortOrder.equals("publish-date")) {
+        if(sortOrder != null && !sortOrder.equals("title") && !sortOrder.equals("publish-date")) {
             return "invalid-sort-order";
         }
         int booksFound = 0;
         List<Book> books = BookSearch.BY_TITLE.search(title);
-        if(sortOrder.equals("title")) {
-            Collections.sort(books);
+        if(sortOrder != null && sortOrder.equals("title")) {
+            Collections.sort(books, new Comparator<Book>() {
+                @Override
+                public int compare(Book book1, Book book2) {
+                    return book2.getTitle().compareTo(book1.getTitle());
+                }
+            });
         }
-        else if(sortOrder.equals("publish-date")) {
+        else if(sortOrder != null && sortOrder.equals("publish-date")) {
             Collections.sort(books, new Comparator<Book>() {
                 @Override
                 public int compare(Book book1, Book book2) {

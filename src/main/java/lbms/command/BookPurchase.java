@@ -33,7 +33,7 @@ public class BookPurchase implements Command {
      */
     @Override
     public String execute() {
-        return "success," + processPurchaseOrder(quantity, ids) + ";";
+        return "success," + processPurchaseOrder() + ";";
     }
 
     /**
@@ -62,11 +62,9 @@ public class BookPurchase implements Command {
 
     /**
      * Buys *quantity* of each book listed in *ids*
-     * @param quantity: the quantity of books to be purchased
-     * @param ids: the ids of the books to be purchased
      * @return a response string
      */
-    private String processPurchaseOrder(int quantity, List<Long> ids) {
+    private String processPurchaseOrder() {
         String booksBought = "";
         for(Long id: ids) {
             for(Book b: LBMS.getBooksToBuy()) {
