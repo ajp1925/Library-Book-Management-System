@@ -1,5 +1,6 @@
 package lbms.command;
 
+import lbms.LBMS;
 import lbms.models.Book;
 import lbms.search.BookSearch;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class StoreSearch implements Command {
     @Override
     public String execute() {
         int booksFound = 0;
-        List<Book> books = BookSearch.BY_TITLE.search(title);
+        List<Book> books = BookSearch.BY_TITLE.searchBookstoBuy(title);
         if (sortOrder != null) {
             if (!sortOrder.equals("title") && !sortOrder.equals("publish-date")) {
                 return "invalid-sort-order";

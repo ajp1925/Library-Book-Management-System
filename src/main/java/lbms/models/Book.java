@@ -185,7 +185,8 @@ public class Book implements Serializable, Comparable<Book> {
             output += author + ",";
         }
         output = output.substring(0, output.length() - 1);
-        output += "}," + this.publishDate.getTime();
+        output += "}," + this.publishDate.getTime() + "," + this.pageCount + "," + this.numberOfCopies + "," +
+                this.copiesCheckedOut;
         return output;
     }
 

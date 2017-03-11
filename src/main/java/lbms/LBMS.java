@@ -172,15 +172,26 @@ public class LBMS {
                         authors.add(parts[in]);
                     }
                 }
-                for(int in = 2; in < parts.length; in++) {
-                    if(parts[in].charAt(parts[in].length()-1) == '}') {
-                        publisher = parts[in+1];
+                for (int in = 3; in < parts.length; in++) {
+                    if(parts[in].charAt(0) == '"' && parts[in].charAt(parts[in].length()-1) == '"'){
+                        publisher = parts[in].substring(1, parts[in].length()-1);
+                        break;
+                    }
+                    else if(parts[in].charAt(0) == '"') {
+                        publisher = publisher + parts[in].substring(1) + ",";
+                    }
+                    else if(parts[in].charAt(parts[in].length()-1) == '"' && parts[in+1].matches(".*\\d+.*")) {
+                        publisher = publisher + parts[in].substring(0, parts[in].length()-1);
+                        break;
+                    }
+                    else {
+                        publisher = publisher + parts[in].substring(1) + ",";
                     }
                 }
-                if(parts[parts.length-3].length() == 10) {
+                if(parts[parts.length-2].length() == 10) {
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                     try {
-                        Date date = format.parse(parts[parts.length - 3]);
+                        Date date = format.parse(parts[parts.length - 2]);
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTime(date);
                         publishDate = calendar;
@@ -189,10 +200,10 @@ public class LBMS {
                         e.printStackTrace();
                     }
                 }
-                if(parts[parts.length-3].length() == 7) {
+                if(parts[parts.length-2].length() == 7) {
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
                     try {
-                        Date date = format.parse(parts[parts.length - 3]);
+                        Date date = format.parse(parts[parts.length - 2]);
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTime(date);
                         publishDate = calendar;
@@ -201,10 +212,10 @@ public class LBMS {
                         e.printStackTrace();
                     }
                 }
-                if(parts[parts.length-3].length() == 4) {
+                if(parts[parts.length-2].length() == 4) {
                     SimpleDateFormat format = new SimpleDateFormat("yyyy");
                     try {
-                        Date date = format.parse(parts[parts.length - 3]);
+                        Date date = format.parse(parts[parts.length - 2]);
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTime(date);
                         publishDate = calendar;
@@ -213,7 +224,7 @@ public class LBMS {
                         e.printStackTrace();
                     }
                 }
-                pageCount = Integer.parseInt(parts[parts.length-2]);
+                pageCount = Integer.parseInt(parts[parts.length-1]);
                 output.add(new Book(isbn, title, authors, publisher, publishDate, pageCount, 0, 0));
             }
             inputStream.close();

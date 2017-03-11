@@ -51,4 +51,25 @@ public enum BookSearch implements Search<Book> {
     private List<Book> find(Predicate<? super Book> condition) {
         return LBMS.getBooks().values().parallelStream().filter(condition).collect(Collectors.toList());
     }
+
+    public List<Book> searchBookstoBuy(String s) {
+        switch(this) {
+            case BY_AUTHOR:
+                return findBooksToBuy(book -> book.hasAuthorPartial(s));
+            case BY_ISBN:
+                return findBooksToBuy(book -> Long.toString(book.getIsbn()).contains(s));
+            case BY_TITLE:
+                return findBooksToBuy(book -> book.getTitle().contains(s));
+        }
+        return new ArrayList<>();
+    }
+
+    /**
+     * Finds the books.
+     * @param condition: the condition that must be true
+     * @return a list of books that match
+     */
+    private List<Book> findBooksToBuy(Predicate<? super Book> condition) {
+        return LBMS.getBooksToBuy().parallelStream().filter(condition).collect(Collectors.toList());
+    }
 }
