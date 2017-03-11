@@ -10,13 +10,13 @@ public class AdvanceTimeTest {
 
     @Test
     public void tooFewDays() {
-        AdvanceTime command = new AdvanceTime("-1;");
+        AdvanceTime command = new AdvanceTime("-1");
         assertEquals("invalid-number-of-days,-1;", command.execute());
     }
 
     @Test
     public void tooManyDays() {
-        AdvanceTime commmand = new AdvanceTime("8;");
+        AdvanceTime commmand = new AdvanceTime("8");
         assertEquals("invalid-number-of-days,8;", commmand.execute());
     }
 
@@ -34,7 +34,7 @@ public class AdvanceTimeTest {
 
     @Test
     public void advancesTime() {
-        AdvanceTime command = new AdvanceTime("1,1;");
+        AdvanceTime command = new AdvanceTime("1,1");
         LocalDateTime time = SystemDateTime.getInstance().getDateTime();
         command.execute();
         LocalDateTime newTime = SystemDateTime.getInstance().getDateTime();
