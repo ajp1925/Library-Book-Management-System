@@ -29,7 +29,7 @@ public class LibrarySearch implements Command {
                 while(!arguments[index].replaceAll(" \\*$", "").endsWith("}")) {
                     authors.add(arguments[index++].replaceAll("[{}]", ""));
                 }
-                authors.add(arguments[index].replaceAll("[{} \\*$]", ""));
+                authors.add(arguments[index].replaceAll("[{}]| \\*$", ""));
             }
 
             else {
@@ -131,6 +131,12 @@ public class LibrarySearch implements Command {
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        return Arrays.toString(Arrays.copyOfRange(fields, 2, fields.length - 1));
+        if(fields.length > 2) {
+            return Arrays.toString(Arrays.copyOfRange(fields, 2, fields.length - 1));
+        }
+        else {
+            return "No books match query.";
+        }
+
     }
 }
