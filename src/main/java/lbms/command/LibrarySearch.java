@@ -22,31 +22,33 @@ public class LibrarySearch implements Command {
      * @param request: the request string for a library search
      */
     public LibrarySearch(String request) {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
-        title = arguments.remove(0);
-        int index;
-        authors = new ArrayList<>();
-        for(index = 0; index < arguments.size(); index++ ) {
-            if(!arguments.get(index).matches("[0-9]+")) {
-                authors.add(arguments.get(index));
+        String[] arguments = request.split(",");
+        for(int index = 0; index < arguments.length; index++) {
+            if(arguments[index].startsWith("{")) {
+                authors = new ArrayList<>();
+                while(!arguments[index].replaceAll(" \\*$", "").endsWith("}")) {
+                    authors.add(arguments[index++].replaceAll("[{}]", ""));
+                }
+                authors.add(arguments[index].replaceAll("[{} \\*$]", ""));
             }
+
             else {
-                isbn = Long.valueOf(arguments.get(index));
-                break;
+                if(title == null && authors == null) {
+                    title = (arguments[index].replaceAll(" \\*$", ""));
+                }
+                else if(isbn == null && arguments[index].replaceAll(" \\*$", "").matches("^\\d{13}$")) {
+                    isbn = Long.parseLong(arguments[index].replaceAll(" \\*$", ""));
+                }
+                else if(publisher == null && !arguments[index-1].matches("^\\d{13} \\*$")) {
+                    publisher = arguments[index].replaceAll(" \\*$", "");
+                }
+                else if(sort_order == null) {
+                    sort_order = arguments[index].replaceAll(" \\*$", "");
+                }
             }
         }
 
-        if(index < arguments.size()) {
-            publisher = arguments.get(index);
-            index++;
-        }
-        if(index < arguments.size()) {
-            sort_order = arguments.get(index);
-            // index++; uncomment this if additional parameters are used
-        }
-        else {
-            sort_order = null;
-        }
+        if(publisher != null && publisher.equals("")) {publisher = null;}
     }
 
     /**
@@ -101,13 +103,13 @@ public class LibrarySearch implements Command {
         if(sort_order != null) {
             switch(sort_order){
                 case "title":
-                    Collections.sort(matches, (a,b) -> a.getTitle().compareTo(b.getTitle())); //TODO Nick, did I java8 right?
+                    Collections.sort(matches, (a,b) -> a.getTitle().compareTo(b.getTitle()));
                     break;
                 case "publish-date":
-                    Collections.sort(matches, (a,b) -> a.getPublishDate().compareTo(b.getPublishDate())); //TODO I hope so
+                    Collections.sort(matches, (a,b) -> a.getPublishDate().compareTo(b.getPublishDate()));
                     break;
                 case "book-status":
-                    Collections.sort(matches, (a,b) -> Integer.compare(a.getCopiesAvailable(), b.getCopiesAvailable()) );//TODO is this even java?
+                    Collections.sort(matches, (a,b) -> Integer.compare(a.getCopiesAvailable(), b.getCopiesAvailable()) );
                     break;
             }
         }

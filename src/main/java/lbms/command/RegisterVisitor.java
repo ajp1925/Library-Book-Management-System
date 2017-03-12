@@ -30,7 +30,7 @@ public class RegisterVisitor implements Command {
     public String execute() {
         if(registerVisitor(visitor)) {
             SystemDateTime s = SystemDateTime.getInstance();
-            return visitor.getVisitorID() + "," + s.getDate().format(SystemDateTime.DATE_FORMAT);
+            return visitor.getVisitorID() + "," + s.getDate().format(SystemDateTime.DATE_FORMAT) + ";";
         }
         return "duplicate;";
     }
