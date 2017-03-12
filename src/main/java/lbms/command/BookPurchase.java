@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class BookPurchase implements Command {
 
     private int quantity;
-    private List<Long> ids;
+    private List<Integer> ids;
 
     /**
      * Constructor for a BookPurchase class.
@@ -24,7 +24,7 @@ public class BookPurchase implements Command {
     public BookPurchase(String request) {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
         quantity = Integer.parseInt(arguments.remove(0));
-        ids = arguments.parallelStream().map(Long::parseLong).collect(Collectors.toList());
+        ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     /**
@@ -33,7 +33,12 @@ public class BookPurchase implements Command {
      */
     @Override
     public String execute() {
-        return "success," + processPurchaseOrder() + ";";
+        String s = processPurchaseOrder();
+        if(processPurchaseOrder().equals("failure;")) {
+            return s;
+        }
+        s = s.replaceAll("\\n", "");
+        return "success," + s + ";";
     }
 
     /**
@@ -43,21 +48,26 @@ public class BookPurchase implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        response = response.replaceAll(";$", "");
-        String[] fields = response.split(",");
-        if(fields[1].equals("success")) {
-            String output = "Book(s) purchased, ";
-            List<Book> books;
-            for(int i = 2; i < fields.length; i++) {
-                try {
-                    books = BookSearch.BY_ISBN.search(Long.parseLong(fields[i]));
-                    output += books.get(0).getTitle() + " * " + fields[1] + "\n";
+        try {
+            response = response.replaceAll(";$", "");
+            String[] fields = response.split(",");
+            if(fields[1].equals("success")) {
+                String output = "Book(s) purchased, ";
+                List<Book> books;
+                for(int i = 2; i < fields.length; i++) {
+                    try {
+                        books = BookSearch.BY_ISBN.search(Long.parseLong(fields[i]));
+                        output += books.get(0).getTitle() + " * " + fields[1] + "\n";
+                    }
+                    catch(NumberFormatException e) { }
                 }
-                catch(NumberFormatException e) { }
+                return output;
             }
-            return output;
+            return null;
         }
-        return null;
+        catch(Exception e) {
+            return "failure;";
+        }
     }
 
     /**
@@ -66,16 +76,19 @@ public class BookPurchase implements Command {
      */
     private String processPurchaseOrder() {
         String booksBought = "";
-        for(Long id: ids) {
-            for(Book b: LBMS.getBooksToBuy()) {
-                if(b.getTempID() == id) {
-                    for(int i = quantity; i > 0; i--) {
-                        buyBook(b);
-                    }
-                    booksBought += ("\n" + b.toString() + "," + Integer.toString(quantity));
-                    break;
-                }
+        for(int id: ids) {
+            Book b;
+            try {
+                b = LBMS.getLastBookSearch().get(id - 1);
             }
+            catch(IndexOutOfBoundsException e) {
+                return "failure;";
+            }
+            for(int i = quantity; i > 0; i--) {
+                buyBook(b);
+                b.purchase();
+            }
+            booksBought += ("\n" + b.toString() + "," + Integer.toString(quantity));
         }
         return (quantity * ids.size()) + booksBought;
     }

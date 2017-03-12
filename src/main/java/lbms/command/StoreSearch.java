@@ -1,10 +1,10 @@
 package lbms.command;
 
+import lbms.LBMS;
 import lbms.models.Book;
-import lbms.search.BookSearch;
+import lbms.search.BookStoreSearch;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -54,41 +54,60 @@ public class StoreSearch implements Command {
         if(sortOrder != null && !sortOrder.equals("title") && !sortOrder.equals("publish-date")) {
             return "invalid-sort-order";
         }
-        int booksFound = 0;
-        List<Book> books = BookSearch.BY_TITLE.search(title);
-        if(sortOrder != null && sortOrder.equals("title")) {
-            Collections.sort(books, new Comparator<Book>() {
-                @Override
-                public int compare(Book book1, Book book2) {
-                    return book2.getTitle().compareTo(book1.getTitle());
+        List<Book> books = BookStoreSearch.BY_TITLE.search(title);
+        List<Book> remove = new ArrayList<>();
+        if(authors.size() > 0) {
+            for(Book b: books) {
+                for(String author: authors) {
+                    if(!b.hasAuthorPartial(author)) {
+                        remove.add(b);
+                    }
                 }
-            });
+            }
+        }
+        if(isbn != null) {
+            for(Book b: books) {
+                if(b.getIsbn() != isbn) {
+                    remove.add(b);
+                }
+            }
+        }
+        if(publisher != null) {
+            for(Book b: books) {
+                if(!b.getPublisher().contains(publisher)) {
+                    remove.add(b);
+                }
+            }
+        }
+        for(Book b: remove) {
+            books.remove(b);
+        }
+
+        if(sortOrder != null && sortOrder.equals("title")) {
+            Collections.sort(books, (Book b1, Book b2) -> b2.getTitle().compareTo(b1.getTitle()));
         }
         else if(sortOrder != null && sortOrder.equals("publish-date")) {
-            Collections.sort(books, new Comparator<Book>() {
-                @Override
-                public int compare(Book book1, Book book2) {
-                    return book2.getPublishDate().compareTo(book1.getPublishDate());
-                }
-            });
+            Collections.sort(books, (Book b1, Book b2) -> b2.getPublishDate().compareTo(b1.getPublishDate()));
         }
         if(books.size() == 0) {
-            return Integer.toString(booksFound) + ";";
+            return "0;";
         }
         else {
             int id = 1;
             String response = Integer.toString(books.size()) + "\n";
+            LBMS.getLastBookSearch().clear();
             for(Book book : books) {
-                response = response + Integer.toString(id) + "," + book.getIsbn() + "," + book.getTitle()
+                LBMS.getLastBookSearch().add(book);
+                response = response + id + "," + book.getIsbn() + "," + book.getTitle()
                 + ",{";
                 for(String author : book.getAuthors()) {
                     response = response + author + ",";
                 }
                 response = response.replaceAll(",$", "},");
-                response = response + book.getPublishDate() + "\n";
-                response = response.replaceAll("\\n$", ";");
+                response = response + book.dateFormat() + "\n";
                 id += 1;
             }
+            response += ";";
             return response;
         }
     }

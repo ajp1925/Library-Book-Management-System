@@ -1,6 +1,7 @@
 package lbms.models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,14 +13,12 @@ import java.util.stream.Collectors;
  */
 public class Book implements Serializable, Comparable<Book> {
 
-    private static int nextTempID = 0;
     private String title, publisher;
     private ArrayList<String> authors;
     private long isbn;
     private int pageCount, numberOfCopies, copiesCheckedOut;
     private Calendar publishDate;
     private LocalDate purchaseDate;
-    private int tempID;
 
     /**
      * Constructor for a Book.
@@ -42,7 +41,6 @@ public class Book implements Serializable, Comparable<Book> {
         this.pageCount = pageCount;
         this.numberOfCopies = numberOfCopies;
         this.copiesCheckedOut = copiesCheckedOut;
-        this.tempID = ++nextTempID;
     }
 
     /**
@@ -128,14 +126,6 @@ public class Book implements Serializable, Comparable<Book> {
     }
 
     /**
-     * Gets the temporary ID for the book.
-     * @return the temp id
-     */
-    public int getTempID() {
-        return tempID;
-    }
-
-    /**
      * Getter for the purchase date.
      * @return the latest date of purchase (desired?)
      */
@@ -185,9 +175,17 @@ public class Book implements Serializable, Comparable<Book> {
             output += author + ",";
         }
         output = output.substring(0, output.length() - 1);
-        output += "}," + this.publishDate.getTime() + "," + this.pageCount + "," + this.numberOfCopies + "," +
-                this.copiesCheckedOut;
+        output += "}," + dateFormat();
         return output;
+    }
+
+    /**
+     * Formats the calendar date to a string format.
+     * @return a string of the published date
+     */
+    public String dateFormat() {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        return sdf.format(publishDate.getTime());
     }
 
     /**
@@ -201,4 +199,10 @@ public class Book implements Serializable, Comparable<Book> {
         return this.title.compareTo(compareTitle);
     }
 
+    /**
+     * Sets the purchase date when a book is purchased.
+     */
+    public void purchase() {
+        purchaseDate = SystemDateTime.getInstance().getDate();
+    }
 }
