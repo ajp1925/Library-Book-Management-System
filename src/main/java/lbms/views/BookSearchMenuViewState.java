@@ -29,10 +29,10 @@ public class BookSearchMenuViewState implements State {
     public void change(String state) {
         switch(state) {
             case "library":
-                // TODO
+                ViewController.setState(new LibrarySearchViewState(SYSTEM_STATUS));
                 break;
             case "store":
-                // TODO
+                ViewController.setState(new StoreSearchViewState(SYSTEM_STATUS));
                 break;
             case "return":
                 ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
