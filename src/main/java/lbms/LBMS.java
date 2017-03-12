@@ -5,6 +5,7 @@ import lbms.controllers.ViewController;
 import lbms.models.*;
 import lbms.views.DefaultViewState;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -21,6 +22,7 @@ public class LBMS {
     // These are being overwritten on startup, but we instantiate
     // them for the sake of null safety and testing.
     private static HashMap<Long, Book> books = new HashMap<>();
+    private static ArrayList<Book> lastBookSearch = new ArrayList<>();
     private static ArrayList<Book> booksToBuy = new ArrayList<>();
     private static HashMap<Long, Visitor> visitors = new HashMap<>();
     private static ArrayList<Visit> totalVisits = new ArrayList<>();
@@ -298,6 +300,14 @@ public class LBMS {
      */
     public static HashMap<Long, Book> getBooks() {
         return books;
+    }
+
+    /**
+     * Getter for the last set of books from a search.
+     * @return the last books returned from a search
+     */
+    public static ArrayList<Book> getLastBookSearch() {
+        return lastBookSearch;
     }
 
     /**
