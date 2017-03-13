@@ -4,6 +4,7 @@ import lbms.LBMS;
 import lbms.models.Book;
 import lbms.search.BookStoreSearch;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -124,7 +125,7 @@ public class StoreSearch implements Command {
             return "No books were found.";
         }
         else {
-            return fields[2];
+            return Arrays.toString(Arrays.copyOfRange(fields, 1, fields.length - 1));
         }
     }
 }
