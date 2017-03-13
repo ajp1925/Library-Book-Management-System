@@ -55,7 +55,7 @@ public class RegisterViewState implements State {
             System.out.println(response);
         }
 
-        ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+        ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
     /**

@@ -26,7 +26,7 @@ public class BooksMenuViewState implements State {
     public void init() {
         System.out.println("\nPlease select a command:");
         System.out.println("search)      Search for a book");
-        System.out.println("browse)      Show all available books");
+        System.out.println("list)        Show all available books");
 
         if(SYSTEM_STATUS) {
             System.out.println("checkout)    Borrow a book");
@@ -52,8 +52,8 @@ public class BooksMenuViewState implements State {
              case "search":
                  ViewController.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
                  break;
-             case "browse":
-                 // TODO
+             case "list":
+                 ViewController.setState(new BooksListViewState(SYSTEM_STATUS));
                  break;
              case "checkin":
                  ViewController.setState(new ReturnBookViewState(SYSTEM_STATUS));
