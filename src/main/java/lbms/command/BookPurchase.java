@@ -92,10 +92,10 @@ public class BookPurchase implements Command {
             catch(IndexOutOfBoundsException e) {
                 return "failure;";
             }
-            for(int i = 1; i < quantity; i++) {
+            for(int i = 0; i < quantity; i++) {
                 buyBook(b);
             }
-            booksBought += ("\n" + b.toString() + "," + Integer.toString(quantity));
+            booksBought += ("\n" + b.toString() + "," + b.getNumberOfCopies());
         }
         return (quantity * ids.size()) + booksBought;
     }
