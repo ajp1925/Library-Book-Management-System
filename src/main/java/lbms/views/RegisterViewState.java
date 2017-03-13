@@ -38,7 +38,7 @@ public class RegisterViewState implements State {
         System.out.print("Address: ");
         address = scanner.nextLine();
         System.out.print("Phone Number: ");
-        phone = scanner.nextLong();
+        phone = Long.parseLong(scanner.nextLine().replaceAll("[\\D]", ""));
     }
 
     /**
