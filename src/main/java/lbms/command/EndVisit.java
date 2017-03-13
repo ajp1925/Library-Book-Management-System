@@ -28,7 +28,7 @@ public class EndVisit implements Command {
      */
     @Override
     public String execute() {
-        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
+        if(UserSearch.BY_ID.findFirst(visitorID) != null) {
             Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
             if(visitor != null && visitor.getInLibrary()) {
                 Visit visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());
