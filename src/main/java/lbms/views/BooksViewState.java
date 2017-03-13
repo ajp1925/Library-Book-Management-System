@@ -1,6 +1,7 @@
 package lbms.views;
 
 import lbms.controllers.ViewController;
+import lbms.models.SystemDateTime;
 
 /**
  * BooksViewState class for viewing books in the system.
@@ -55,13 +56,14 @@ public class BooksViewState implements State {
                  // TODO
                  break;
              case "checkin":
-                 // TODO
+                 ViewController.setState(new ReturnBookViewState(SYSTEM_STATUS));
                  break;
              case "return":
                  ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
                  break;
              case "checkout":
                  if (SYSTEM_STATUS) {
+                     // TODO
                      break;
                  }
              default:
