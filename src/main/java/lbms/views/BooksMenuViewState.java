@@ -4,29 +4,29 @@ import lbms.controllers.ViewController;
 import lbms.models.SystemDateTime;
 
 /**
- * BooksViewState class for viewing books in the system.
+ * BooksMenuViewState class for viewing books in the system.
  * @author Team B
  */
-public class BooksViewState implements State {
+public class BooksMenuViewState implements State {
 
     private boolean SYSTEM_STATUS;
 
     /**
-     * Constructor for a BooksViewState object.
+     * Constructor for a BooksMenuViewState object.
      * @param SYSTEM_STATUS: the status of the system
      */
-    BooksViewState(boolean SYSTEM_STATUS) {
+    BooksMenuViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
     /**
-     * Initialized the BooksViewState.
+     * Initialized the BooksMenuViewState.
      */
     @Override
     public void init() {
         System.out.println("\nPlease select a command:");
         System.out.println("search)      Search for a book");
-        System.out.println("browse)      Show all available books");
+        System.out.println("list)        Show all available books");
 
         if(SYSTEM_STATUS) {
             System.out.println("checkout)    Borrow a book");
@@ -52,8 +52,8 @@ public class BooksViewState implements State {
              case "search":
                  ViewController.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
                  break;
-             case "browse":
-                 // TODO
+             case "list":
+                 ViewController.setState(new BooksListViewState(SYSTEM_STATUS));
                  break;
              case "checkin":
                  ViewController.setState(new ReturnBookViewState(SYSTEM_STATUS));
@@ -63,7 +63,7 @@ public class BooksViewState implements State {
                  break;
              case "checkout":
                  if (SYSTEM_STATUS) {
-                     // TODO
+                     ViewController.setState(new BorrowBookViewState(SYSTEM_STATUS));
                      break;
                  }
              default:

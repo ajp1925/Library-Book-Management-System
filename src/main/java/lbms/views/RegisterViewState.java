@@ -37,7 +37,7 @@ public class RegisterViewState implements State {
         lastName = scanner.nextLine();
         System.out.print("Address: ");
         address = scanner.nextLine();
-        System.out.println("Phone Number:");
+        System.out.print("Phone Number: ");
         phone = scanner.nextLong();
     }
 
@@ -55,7 +55,7 @@ public class RegisterViewState implements State {
             System.out.println(response);
         }
 
-        ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+        ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
     /**

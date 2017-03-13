@@ -56,14 +56,7 @@ public class LibrarySearchViewState implements State{
                 commandString += " *";
             }
             else {
-                if(prompt.equals(prompts[1]))
-                {
-                    commandString += ",{" + input + "}";
-                }
-                else {
-                    commandString += "," + input;
-                }
-
+                commandString += "," + input;
             }
         }
     }

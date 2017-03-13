@@ -1,5 +1,7 @@
 package lbms.command;
 
+import lbms.LBMS;
+import lbms.models.Book;
 import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
@@ -7,7 +9,6 @@ import lbms.search.UserSearch;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -24,7 +25,8 @@ public class Return implements Command {
      * @param request: the request input string
      */
     public Return(String request) {
-        String[] split = request.split(",", 1);
+        request = request.replaceAll(";$", "").replaceAll("\"", "");
+        String[] split = request.split(",", 2);
         visitorID = Long.parseLong(split[0]);
         ids = Arrays.stream(split[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
@@ -39,18 +41,47 @@ public class Return implements Command {
             return "invalid-visitor-id;";
         }
         Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
-        if(visitor.getNumCheckedOut() < ids.size()) {
-            return "invalid-book-id," + ids.toString().substring(1, ids.size()-1).replaceAll("\\s", "") + ";";
-        }
-
-        int i = 1;
-        for(Map.Entry<Long, Transaction> longTransactionEntry: visitor.getCheckedOutBooks().entrySet()) {
-            if(ids.contains(i)) {
-                if(SystemDateTime.getInstance().getDate().isAfter(longTransactionEntry.getValue().getDueDate())) {
-                    return "overdue," + longTransactionEntry.getValue().getFine() + "," + i;
+        ArrayList<Integer> nonBooks = new ArrayList<>();
+        for(Integer id : ids) {
+            if(LBMS.getLastBookSearch().size() <= id) {
+                try {
+                    Book b = LBMS.getLastBookSearch().get(id - 1);
+                    visitor.getCheckedOutBooks().get(b.getIsbn());
+                }
+                catch(Exception e) {
+                    nonBooks.add(id);
                 }
             }
+            else {
+                nonBooks.add(id);
+            }
         }
+        if(nonBooks.size() > 0) {
+            String output = "invalid-book-id,";
+            for(Integer i : nonBooks) {
+                output += i + ",";
+            }
+            output = output.replaceAll(",$", "");
+            return output + ";";
+        }
+
+        if(visitor.getFines() > 0.0) {
+            String output = "overdue," + String.format("%.2f", visitor.getFines()) + ",";
+            for(Transaction t: visitor.getCheckedOutBooks().values()) {
+                if(SystemDateTime.getInstance().getDate().isAfter(t.getDueDate())) {
+                    output += LBMS.getLastBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + ",";
+                }
+            }
+            return output.replaceAll(",$", ";");
+        }
+
+        for(Integer i : ids) {
+            Book b = LBMS.getLastBookSearch().get(i - 1);
+            b.returnBook();
+            Transaction t = visitor.getCheckedOutBooks().get(b.getIsbn());
+            LBMS.getVisitors().get(visitorID).returnBook(t);
+        }
+
         return "success;";
     }
 

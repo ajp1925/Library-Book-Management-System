@@ -35,7 +35,7 @@ public class BookPurchase implements Command {
 
     /**
      * Executes the book purchase command.
-     * @return a success message for the command
+     * @return a success message for the commandq
      */
     @Override
     public String execute() {
@@ -98,7 +98,7 @@ public class BookPurchase implements Command {
             }
             booksBought += ("\n" + b.toString() + "," + b.getNumberOfCopies()) + ",";
         }
-        return (quantity * ids.size()) + booksBought;
+        return ids.size() + booksBought;
     }
 
     /**

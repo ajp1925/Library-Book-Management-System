@@ -10,6 +10,7 @@ import java.util.*;
  * @author Team B
  */
 public class LibrarySearch implements Command {
+    // TODO check functionality with *
 
     private String title, publisher = null, sort_order = null;
     private ArrayList<String> authors;

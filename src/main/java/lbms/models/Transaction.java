@@ -53,13 +53,16 @@ public class Transaction implements Serializable {
      * Getter for the fine.
      * @return the fine due on the book
      */
-    public double getFine() {
+    double getFine() {
         int days = Period.between(dueDate, SystemDateTime.getInstance().getDate()).getDays();
         double fine = 0.0D;
-        for (int i = 0; i < days; i++) {
-            if (i == 0) fine += 10.00D;
-            else fine += 2.00D;
-            i--;
+        for(int i = 0; i < days; i++) {
+            if(i == 0) {
+                fine += 10.00D;
+            }
+            else {
+                fine += 2.00D;
+            }
         }
         return fine;
     }

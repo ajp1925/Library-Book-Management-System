@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 public enum UserSearch implements Search<Visitor> {
     BY_ID,
     BY_NAME,
-    BY_ADDRESS;
+    BY_ADDRESS,
+    BY_PHONE;
 
     /**
      * Searches the users by id.
@@ -39,18 +40,20 @@ public enum UserSearch implements Search<Visitor> {
                 return find(visitor -> visitor.getName().equals(s));
             case BY_ADDRESS:
                 return find(visitor -> visitor.getAddress().equals(s));
+            case BY_PHONE:
+                return find(visitor -> visitor.getPhoneNumber() == Long.parseLong(s));
         }
         return new ArrayList<>();
     }
 
     /**
-     * Finds
+     * Finds the first visitor.
      * @param l: the id to be searched for
      * @return a visitor with the given id
      */
     @Override
     public Visitor findFirst(Long l) {
-        if(l.toString().length() == 10) {
+        if(l.toString().length() <= 10) {
             return LBMS.getVisitors().get(l);
         }
         return findFirst(Long.toString(l));
