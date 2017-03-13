@@ -1,5 +1,6 @@
 package lbms.command;
 
+import lbms.LBMS;
 import lbms.models.Book;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
@@ -38,8 +39,10 @@ public class FindBorrowed implements Command {
         final int[] id = {1};
 
         Book b;
+        LBMS.getLastBookSearch().clear();
         for(Transaction t: visitor.getCheckedOutBooks().values()) {
             b = BookSearch.BY_ISBN.search(t.getIsbn()).get(0);
+            LBMS.getLastBookSearch().add(b);
             s += "\n";
             s += id[0]++ + "," + t.getIsbn() + "," + b.getTitle() + "," + t.getDate();
         }

@@ -16,7 +16,7 @@ public class CommandController {
      * @return the response output string
      */
     public static String processRequest(boolean SYSTEM_STATUS, String requestString) {
-        String response;
+        String response = "";
 
         if(requestString.endsWith(";")) {
             String[] request = requestString.replace(";", "").split(",", 2);
@@ -32,7 +32,7 @@ public class CommandController {
                 response += "missing-parameters,{all};";
             }
         }
-        else {
+        else if(!requestString.equals("exit")) {
             response = "partial-request;";
         }
 

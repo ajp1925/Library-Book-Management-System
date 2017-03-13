@@ -5,11 +5,9 @@ import lbms.models.Book;
 import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
-import lbms.search.BookSearch;
 import lbms.search.UserSearch;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Borrow class that implements the borrow command.
@@ -55,7 +53,7 @@ public class Borrow implements Command {
             return "outstanding-fine," +
                     new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines());
         }
-        String invalidIDs = "{";
+        String invalidIDs = "";
         String temp = "";
         for(Integer i: id) {
             if(!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
@@ -77,7 +75,7 @@ public class Borrow implements Command {
             String output = "invalid-book-id,";
             output += invalidIDs;
             //output = output.substring(0,output.length() - 1);
-            output += "};";
+            output += ";";
             return output;
         }
         else {

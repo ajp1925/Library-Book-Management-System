@@ -24,14 +24,17 @@ public class RegisterVisitor implements Command {
             visitor = new Visitor(arguments[0], arguments[1], arguments[2], Long.parseLong(arguments[3]));
         }
         catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
-            if (arguments.length == 1) {
+            if(arguments.length == 1) {
                 throw new MissingParametersException("missing-parameters,last-name,address,phone-number");
             }
-            else if (arguments.length == 2) {
+            else if(arguments.length == 2) {
                 throw new MissingParametersException("missing-parameters,address,phone-number");
             }
-            else if (arguments.length == 3) {
+            else if(arguments.length == 3) {
                 throw new MissingParametersException("missing-parameters,phone-number");
+            }
+            else {
+                throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
             }
         }
     }
@@ -75,7 +78,8 @@ public class RegisterVisitor implements Command {
     private static boolean registerVisitor(Visitor visitor) {
         if(UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null &&
                 UserSearch.BY_NAME.findFirst(visitor.getName()) == null &&
-                UserSearch.BY_ADDRESS.findFirst(visitor.getAddress()) == null) {
+                UserSearch.BY_ADDRESS.findFirst(visitor.getAddress()) == null &&
+                UserSearch.BY_PHONE.findFirst(visitor.getPhoneNumber()) == null) {
             LBMS.getVisitors().put(visitor.getVisitorID(), visitor);
             return true;
         }
