@@ -47,9 +47,14 @@ public class PurchaseBookViewState implements State{
      */
     @Override
     public void onEnter() {
-        System.out.println("buy," + quantity + ids + ";");
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"buy," + quantity + ids + ";");
-        System.out.println(CommandController.getCommand().parseResponse(response));
+
+        try {
+            System.out.println(CommandController.getCommand().parseResponse(response));
+        } catch (Exception e) {
+            System.out.println(response);
+        }
+
         ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
 
     }

@@ -44,7 +44,13 @@ public class ReturnBookViewState implements State {
     @Override
     public void onEnter() {
         String response = CommandController.processRequest(this.SYSTEM_STATUS, "return," + visitorID + books + ";");
-        System.out.println(CommandController.getCommand().parseResponse(response));
+
+        try {
+            System.out.println(CommandController.getCommand().parseResponse(response));
+        } catch (Exception e) {
+            System.out.println(response);
+        }
+
         ViewController.setState(new BooksViewState(SYSTEM_STATUS));
     }
 

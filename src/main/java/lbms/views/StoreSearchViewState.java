@@ -66,7 +66,13 @@ public class StoreSearchViewState implements State {
     @Override
     public void onEnter() {
         String response = CommandController.processRequest(this.SYSTEM_STATUS, commandString + ";");
-        System.out.println(CommandController.getCommand().parseResponse(response));
+
+        try {
+            System.out.println(CommandController.getCommand().parseResponse(response));
+        } catch (Exception e) {
+            System.out.println(response);
+        }
+
         ViewController.setState(new StoreSearchCompletedViewState(SYSTEM_STATUS));
     }
 

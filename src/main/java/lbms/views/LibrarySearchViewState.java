@@ -23,6 +23,10 @@ public class LibrarySearchViewState implements State{
             "\nPlease enter the sort-order for the resulting books:",
     };
 
+    /**
+     * Constructor for an LibrarySearchViewState.
+     * @param SYSTEM_STATUS the current status of the system
+     */
     public LibrarySearchViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
@@ -70,7 +74,13 @@ public class LibrarySearchViewState implements State{
     @Override
     public void onEnter() {
         String response = CommandController.processRequest(this.SYSTEM_STATUS, commandString + ";");
-        System.out.println(CommandController.getCommand().parseResponse(response));
+
+        try {
+            System.out.println(CommandController.getCommand().parseResponse(response));
+        } catch (Exception e){
+            System.out.println(response);
+        }
+
         ViewController.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
     }
 
