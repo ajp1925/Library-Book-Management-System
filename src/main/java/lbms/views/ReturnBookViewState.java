@@ -2,7 +2,6 @@ package lbms.views;
 
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
-
 import java.util.Scanner;
 
 /**
