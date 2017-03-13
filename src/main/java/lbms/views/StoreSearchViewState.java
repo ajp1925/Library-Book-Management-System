@@ -16,10 +16,10 @@ public class StoreSearchViewState implements State {
     private String optionalArgumentPrompt = "(Press enter to search only with what you've input so far)";
     private String[] prompts = {
             "\nPlease enter the title of the book to search for:",
-            "Please enter the author(s) of the book to search for (comma separated):",
-            "Please enter the isbn of the book to search for:",
-            "Please enter the publisher of the book to search for:",
-            "Please enter the sort-order for the resulting books:",
+            "\nPlease enter the author(s) of the book to search for (comma separated):",
+            "\nPlease enter the isbn of the book to search for:",
+            "\nPlease enter the publisher of the book to search for:",
+            "\nPlease enter the sort-order for the resulting books:",
     };
 
     /**
