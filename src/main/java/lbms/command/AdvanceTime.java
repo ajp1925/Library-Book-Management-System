@@ -33,6 +33,9 @@ public class AdvanceTime implements Command {
         if(hours < 0 || hours > 23) {
             return "invalid-number-of-hours," + hours + ";";
         }
+        if (hours == 0 && days == 0) {
+            return "invalid-number-of-hours," + hours + ";";
+        }
         SystemDateTime.getInstance().plusDays(days);
         SystemDateTime.getInstance().plusHours(hours);
         return "success;";
