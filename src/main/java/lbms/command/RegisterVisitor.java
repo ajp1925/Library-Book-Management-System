@@ -16,10 +16,16 @@ public class RegisterVisitor implements Command {
     /**
      * Constructor for the RegisterVisitor command.
      * @param request: the request string to be processed
+     * @throws MissingParametersException: missing parameters
      */
-    public RegisterVisitor(String request) {
+    public RegisterVisitor(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
-        visitor = new Visitor(arguments[0], arguments[1], arguments[2], Long.parseLong(arguments[3]));
+        try {
+            visitor = new Visitor(arguments[0], arguments[1], arguments[2], Long.parseLong(arguments[3]));
+        }
+        catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
+        }
     }
 
     /**
@@ -30,7 +36,8 @@ public class RegisterVisitor implements Command {
     public String execute() {
         if(registerVisitor(visitor)) {
             SystemDateTime s = SystemDateTime.getInstance();
-            return visitor.getVisitorID() + "," + s.getDate().format(SystemDateTime.DATE_FORMAT) + ";";
+            return String.format("%010d", visitor.getVisitorID()) + "," +
+                    s.getDate().format(SystemDateTime.DATE_FORMAT) + ";";
         }
         return "duplicate;";
     }
@@ -43,9 +50,10 @@ public class RegisterVisitor implements Command {
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if (fields[1].equals("duplicate;")) {
+        if(fields[1].equals("duplicate;")) {
             return "This user already exists in the system.";
-        } else {
+        }
+        else {
             return String.format("\nNew visitor created on %s:\n\tName: %s\n\tAddress: %s\n\tVisitor ID: %d",
                     fields[2], visitor.getName(), visitor.getAddress(), visitor.getVisitorID());
         }
@@ -57,7 +65,7 @@ public class RegisterVisitor implements Command {
      * @return true if successfully registered, false if duplicate
      */
     private static boolean registerVisitor(Visitor visitor) {
-        if (UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null &&
+        if(UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null &&
                 UserSearch.BY_NAME.findFirst(visitor.getName()) == null &&
                 UserSearch.BY_ADDRESS.findFirst(visitor.getAddress()) == null) {
             LBMS.getVisitors().put(visitor.getVisitorID(), visitor);

@@ -5,7 +5,6 @@ import lbms.controllers.ViewController;
 import lbms.models.*;
 import lbms.views.DefaultViewState;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -17,10 +16,10 @@ import java.time.LocalTime;
  */
 public class LBMS {
 
-    private static LBMS instance;
+    private final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
+    private final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
-    // These are being overwritten on startup, but we instantiate
-    // them for the sake of null safety and testing.
+    private static LBMS instance;
     private static HashMap<Long, Book> books = new HashMap<>();
     private static ArrayList<Book> lastBookSearch = new ArrayList<>();
     private static ArrayList<Book> booksToBuy = new ArrayList<>();
@@ -29,10 +28,6 @@ public class LBMS {
     private static ArrayList<Transaction> transactions = new ArrayList<>();
     private static HashMap<Long, Visit> currentVisits = new HashMap<>();
     private boolean shutdown = false;
-    private int initial = 0;
-
-    public final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
-    public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -55,13 +50,12 @@ public class LBMS {
     public LBMS(boolean console) {
         SystemInit();
         Scanner s = new Scanner(System.in);
-
-        if (console) {
+        int initial = 0;
+        if(console) {
             while(true) {
                 // Check if library is open
                 if(SystemDateTime.getInstance().getTime().isAfter(OPEN_TIME) &&
                         SystemDateTime.getInstance().getTime().isBefore(CLOSE_TIME)) {
-
                     // Check if library just opened or system start
                     if(initial == 0 || initial == 1) {
                         ViewController.setState(new DefaultViewState(true));
@@ -69,7 +63,6 @@ public class LBMS {
                     }
                 }
                 else {
-
                     // Check if library just closed or system start
                     if(initial == 0 || initial == 2) {
                         SystemClose();
@@ -85,36 +78,30 @@ public class LBMS {
                 }
                 ViewController.change(input);
             }
-
         }
         else {
             String input;
             do {
                 System.out.print("> ");
                 input = s.nextLine();
-
                 if(SystemDateTime.getInstance().getTime().isAfter(OPEN_TIME) &&
                         SystemDateTime.getInstance().getTime().isBefore(CLOSE_TIME)) {
-
                     // Check if library just opened or system start
                     if(initial == 0 || initial == 1) {
                         initial = 2;
                     }
-
                     System.out.println(CommandController.processRequest(true, input));
-                } else {
-
+                }
+                else {
                     // Check if library just closed or system start
                     if(initial == 0 || initial == 2) {
                         SystemClose();
                         initial = 1;
                     }
-
                     System.out.println(CommandController.processRequest(false, input));
                 }
             } while(!input.matches("(?i)exit|quit"));
         }
-
         s.close();
         SystemClose();
     }
@@ -128,21 +115,22 @@ public class LBMS {
         try {
             InputStream inputStream = LBMS.class.getClassLoader().getResourceAsStream("books.txt");
             Scanner s = new Scanner(inputStream);
-            String line;
             String[] parts;
-            String title, publisher;
+            String line, title, publisher;
             ArrayList<String> authors;
             long isbn;
-            int pageCount;
+            int pageCount, i;
             Calendar publishDate = null;
+
             while(s.hasNextLine()) {
-                int i = 1;
+                i = 1;
                 line = s.nextLine();
                 parts = line.split(",");
                 isbn = Long.parseLong(parts[0]);
                 title = "";
                 authors = new ArrayList<>();
                 publisher = "";
+
                 while(parts[i].charAt(0) != '{') {
                     if(parts[i].charAt(0) == '"' && parts[i].charAt(parts[i].length()-1) == '"'){
                         title = parts[i].substring(1, parts[i].length()-1);
@@ -156,8 +144,9 @@ public class LBMS {
                     else {
                         title = title + parts[i].substring(1) + ",";
                     }
-                    i += 1;
+                    i++;
                 }
+
                 for(int in = 2; in < parts.length; in++) {
                     if(parts[in].charAt(0) == '{' && parts[in].charAt(parts[in].length()-1) == '}') {
                         authors.add(parts[in].substring(1, parts[in].length()-1));
@@ -174,7 +163,8 @@ public class LBMS {
                         authors.add(parts[in]);
                     }
                 }
-                for (int in = 3; in < parts.length; in++) {
+
+                for(int in = 3; in < parts.length; in++) {
                     if(parts[in].charAt(0) == '"' && parts[in].charAt(parts[in].length()-1) == '"'){
                         publisher = parts[in].substring(1, parts[in].length()-1);
                         break;
@@ -190,6 +180,7 @@ public class LBMS {
                         publisher = publisher + parts[in].substring(1) + ",";
                     }
                 }
+
                 if(parts[parts.length-2].length() == 10) {
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                     try {
@@ -202,7 +193,7 @@ public class LBMS {
                         e.printStackTrace();
                     }
                 }
-                if(parts[parts.length-2].length() == 7) {
+                else if(parts[parts.length-2].length() == 7) {
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
                     try {
                         Date date = format.parse(parts[parts.length - 2]);
@@ -214,7 +205,7 @@ public class LBMS {
                         e.printStackTrace();
                     }
                 }
-                if(parts[parts.length-2].length() == 4) {
+                else if(parts[parts.length-2].length() == 4) {
                     SimpleDateFormat format = new SimpleDateFormat("yyyy");
                     try {
                         Date date = format.parse(parts[parts.length - 2]);
@@ -226,6 +217,7 @@ public class LBMS {
                         e.printStackTrace();
                     }
                 }
+
                 pageCount = Integer.parseInt(parts[parts.length-1]);
                 output.add(new Book(isbn, title, authors, publisher, publishDate, pageCount, 0, 0));
             }
@@ -255,14 +247,13 @@ public class LBMS {
             SystemDateTime.setInstance((SystemDateTime) in.readObject());
         }
         catch(ClassNotFoundException | IOException e) {
-            books = new HashMap<Long, Book>();
+            books = new HashMap<>();
             booksToBuy = makeBooks();
             visitors = new HashMap<>();
             totalVisits = new ArrayList<>();
             transactions = new ArrayList<>();
         }
-
-        currentVisits = new HashMap<Long, Visit>();
+        currentVisits = new HashMap<>();
         SystemDateTime systemDateTime = SystemDateTime.getInstance();
         systemDateTime.start();
     }
@@ -275,7 +266,8 @@ public class LBMS {
 
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
-            CommandController.processRequest(false, "depart," + visit.getVisitor().getVisitorID() + ";");
+            CommandController.processRequest(false, "depart," +
+                    visit.getVisitor().getVisitorID() + ";");
         }
 
         // Serializes the data.

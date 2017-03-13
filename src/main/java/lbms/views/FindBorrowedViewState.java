@@ -17,7 +17,7 @@ public class FindBorrowedViewState implements State {
      * Constructor for FindBorrowedViewState object.
      * @param SYSTEM_STATUS: the status of the system
      */
-    public FindBorrowedViewState(boolean SYSTEM_STATUS) {
+    FindBorrowedViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 

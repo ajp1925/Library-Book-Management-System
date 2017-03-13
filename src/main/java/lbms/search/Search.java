@@ -33,4 +33,5 @@ public interface Search<T> {
         List<T> results = search(s);
         return results.isEmpty() ? null : results.get(0);
     }
+
 }

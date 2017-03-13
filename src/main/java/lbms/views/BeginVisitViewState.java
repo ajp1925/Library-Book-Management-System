@@ -17,7 +17,7 @@ public class BeginVisitViewState implements State {
      * Constructor for the BeginVisitViewState.
      * @param SYSTEM_STATUS: the initial status of the system
      */
-    public BeginVisitViewState(boolean SYSTEM_STATUS) {
+    BeginVisitViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 

@@ -20,11 +20,17 @@ public class BookPurchase implements Command {
     /**
      * Constructor for a BookPurchase class.
      * @param request: the input string
+     * @throws MissingParametersException: missing parameters
      */
-    public BookPurchase(String request) {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
-        quantity = Integer.parseInt(arguments.remove(0));
-        ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
+    public BookPurchase(String request) throws MissingParametersException {
+        try {
+            ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
+            quantity = Integer.parseInt(arguments.remove(0));
+            ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
+        }
+        catch(Exception e) {
+            throw new MissingParametersException("missing-parameters,quantity,id[,ids]");
+        }
     }
 
     /**

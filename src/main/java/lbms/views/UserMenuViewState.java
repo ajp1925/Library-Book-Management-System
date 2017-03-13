@@ -14,7 +14,7 @@ public class UserMenuViewState implements State {
      * Constructor for a UserMenuViewState object.
      * @param SYSTEM_STATUS: boolean status of the system
      */
-    public UserMenuViewState(boolean SYSTEM_STATUS) {
+    UserMenuViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
@@ -27,7 +27,7 @@ public class UserMenuViewState implements State {
         System.out.println("search)           Search for a user");
         System.out.println("register)         Register a new user");
 
-        if (SYSTEM_STATUS) {
+        if(SYSTEM_STATUS) {
             System.out.println("enter library)    Allow a user to enter the library");
             System.out.println("exit library)     Have a user leave the library");
         }

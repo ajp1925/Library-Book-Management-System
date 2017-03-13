@@ -15,7 +15,7 @@ public class ResetViewState implements State {
      * Constructor for a ResetViewState object.
      * @param SYSTEM_STATUS: the status of the system
      */
-    public ResetViewState(boolean SYSTEM_STATUS) {
+    ResetViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 

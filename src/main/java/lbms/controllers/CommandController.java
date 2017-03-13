@@ -1,8 +1,6 @@
 package lbms.controllers;
 
-import lbms.LBMS;
 import lbms.command.*;
-import lbms.models.SystemDateTime;
 
 /**
  * CommandController class interacts with the command package to execute commands.
@@ -18,15 +16,23 @@ public class CommandController {
      * @return the response output string
      */
     public static String processRequest(boolean SYSTEM_STATUS, String requestString) {
-        String response = null;
+        String response;
 
-        if (requestString.endsWith(";")) {
+        if(requestString.endsWith(";")) {
             String[] request = requestString.replace(";", "").split(",", 2);
             response = request[0] + ",";
-            command = createCommand(SYSTEM_STATUS, request);
-            response += command.execute();
-
-        } else {
+            try {
+                command = createCommand(SYSTEM_STATUS, request);
+                response += command.execute();
+            }
+            catch(MissingParametersException e) {
+                response += e.getMessage() + ";";
+            }
+            catch(Exception e) {
+                response += "missing-parameters,{all};";
+            }
+        }
+        else {
             response = "partial-request;";
         }
 
@@ -41,14 +47,20 @@ public class CommandController {
         return command;
     }
 
-    private static Command createCommand(boolean SYSTEM_STATUS, String[] request) {
+    /**
+     * Creates a command based on the input request.
+     * @param SYSTEM_STATUS: whether or not the system is operational
+     * @param request: the input request to be processed
+     * @return a Command object for the request
+     */
+    private static Command createCommand(boolean SYSTEM_STATUS, String[] request) throws Exception {
         switch (request[0]) {
             case "arrive":
-                if (SYSTEM_STATUS) {
+                if(SYSTEM_STATUS) {
                     return new BeginVisit(request[1]);
                 }
             case "borrow":
-                if (SYSTEM_STATUS) {
+                if(SYSTEM_STATUS) {
                     return new Borrow(request[1]);
                 }
                 return new CloseLibrary();
@@ -73,9 +85,10 @@ public class CommandController {
             case "datetime":
                 return new GetDateTime();
             case "report":
-                if (request.length == 1){
+                if(request.length == 1){
                     return new StatisticsReport("");
-                } else {
+                }
+                else {
                     return new StatisticsReport(request[1]);
                 }
             case "reset":      // FOR TESTING

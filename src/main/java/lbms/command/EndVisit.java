@@ -17,9 +17,15 @@ public class EndVisit implements Command {
     /**
      * Constructor for an EndVisit command class.
      * @param request: the request input string
+     * @throws MissingParametersException: missing parameters
      */
-    public EndVisit(String request) {
-        visitorID = Long.parseLong(request);
+    public EndVisit(String request) throws MissingParametersException {
+        try {
+            visitorID = Long.parseLong(request);
+        }
+        catch(NumberFormatException e) {
+            throw new MissingParametersException("missing-parameters,visitor-ID");
+        }
     }
 
     /**
@@ -28,7 +34,7 @@ public class EndVisit implements Command {
      */
     @Override
     public String execute() {
-        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
+        if(UserSearch.BY_ID.findFirst(visitorID) != null) {
             Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
             if(visitor != null && visitor.getInLibrary()) {
                 Visit visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());

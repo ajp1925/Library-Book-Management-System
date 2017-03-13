@@ -43,10 +43,17 @@ public enum UserSearch implements Search<Visitor> {
         return new ArrayList<>();
     }
 
+    /**
+     * Finds
+     * @param l: the id to be searched for
+     * @return a visitor with the given id
+     */
     @Override
     public Visitor findFirst(Long l) {
-        if (l.toString().length() == 10) return LBMS.getVisitors().get(l);
-        else return findFirst(Long.toString(l));
+        if(l.toString().length() == 10) {
+            return LBMS.getVisitors().get(l);
+        }
+        return findFirst(Long.toString(l));
     }
 
     /**
