@@ -145,7 +145,8 @@ public class LibrarySearch implements Command {
         String matchesString = "";
         for(Book b: matches) {
             LBMS.getLastBookSearch().add(b);
-            matchesString += "\n" + b.getCopiesAvailable() + "," + b.toString() + ",";
+            matchesString += "\n" + b.getCopiesAvailable() + "," + (LBMS.getLastBookSearch().indexOf(b) + 1) + "," +
+                    b.toString() + ",";
         }
         if(matches.size() > 0) {
             matchesString = matchesString.substring(0, matchesString.length() - 1);

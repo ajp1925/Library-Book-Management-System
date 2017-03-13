@@ -37,7 +37,7 @@ public class Transaction implements Serializable {
      * Getter for the ISBN number.
      * @return the isbn of the book checked out
      */
-    long getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 

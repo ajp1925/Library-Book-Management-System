@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.models.Book;
+import lbms.models.Transaction;
 import lbms.models.Visitor;
 import lbms.search.BookSearch;
 import lbms.search.UserSearch;
@@ -32,19 +33,18 @@ public class FindBorrowed implements Command {
         }
 
         Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
-        StringBuilder sb = new StringBuilder();
-        sb.append(visitor.getNumCheckedOut()).append(",\n");
+        String s = "";
+        s += visitor.getNumCheckedOut();
         final int[] id = {1};
 
-        visitor.getCheckedOutBooks().forEach((isbn, transaction) -> {
-            Book book = BookSearch.BY_ISBN.search(isbn).get(0);
-            sb.append(id[0]++).append(",");
-            sb.append(isbn).append(",");
-            sb.append(book.getTitle()).append(",");
-            sb.append(transaction.getDate()).append("\n");
-        });
+        Book b;
+        for(Transaction t: visitor.getCheckedOutBooks().values()) {
+            b = BookSearch.BY_ISBN.search(t.getIsbn()).get(0);
+            s += "\n";
+            s += id[0]++ + "," + t.getIsbn() + "," + b.getTitle() + "," + t.getDate();
+        }
 
-        return sb.append(";").toString();
+        return s + ";";
     }
 
     /**

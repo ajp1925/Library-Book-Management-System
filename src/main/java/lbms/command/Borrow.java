@@ -18,7 +18,7 @@ import java.util.List;
 public class Borrow implements Command {
 
     private long visitorID;
-    private ArrayList<Long> id;
+    private ArrayList<Integer> id;
 
     /**
      * Constructor for a Borrow class.
@@ -34,7 +34,7 @@ public class Borrow implements Command {
             visitorID = Long.parseLong(arguments[0]);
             id = new ArrayList<>();
             for(int i = 1; i < arguments.length; i++) {
-                id.add(Long.parseLong(arguments[i]));
+                id.add(Integer.parseInt(arguments[i]));
             }
         }
         catch(NumberFormatException e) {
@@ -57,11 +57,11 @@ public class Borrow implements Command {
         }
         String invalidIDs = "{";
         String temp = "";
-        for(Long l: id) {
+        for(Integer i: id) {
             if(!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
                 return "book-limit-exceeded;";
             }
-            temp = checkOutBook(l, visitorID);
+            temp = checkOutBook(i, visitorID);
             try {
                 if(temp.contains("id-error")) {
                     String[] error = temp.split(",");
@@ -76,7 +76,7 @@ public class Borrow implements Command {
         if(invalidIDs.length() > 1) {
             String output = "invalid-book-id,";
             output += invalidIDs;
-            output = output.substring(0,output.length() - 1);
+            //output = output.substring(0,output.length() - 1);
             output += "};";
             return output;
         }
@@ -115,21 +115,21 @@ public class Borrow implements Command {
 
     /**
      * Checks out a book for a visitor.
-     * @param isbn: the isbn of the book to checkout
+     * @param id: the temp id of the book
      * @param visitorID: the ID of the visitor checking out the book
      * @return a string of the response message
      */
-    private String checkOutBook(long isbn, long visitorID) {
-        Transaction t = new Transaction(isbn, visitorID);
-        Visitor v = UserSearch.BY_ID.findFirst(visitorID);
-        List<Book> l = BookSearch.BY_ISBN.search(isbn);
+    private String checkOutBook(int id, long visitorID) {
         Book b;
-
-        if(l.size() == 0) {
-            return "id-error," + isbn;
+        Visitor v;
+        Transaction t;
+        try {
+            b = LBMS.getLastBookSearch().get(id - 1);
+            t = new Transaction(b.getIsbn(), visitorID);
+            v = UserSearch.BY_ID.findFirst(visitorID);
         }
-        else {
-            b = l.get(0);
+        catch(Exception e) {
+            return "id-error," + id;
         }
 
         if(v.canCheckOut()) {

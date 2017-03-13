@@ -39,7 +39,7 @@ public class BookPurchase implements Command {
      */
     @Override
     public String execute() {
-        if (ids.size() == 0) {
+        if(ids.size() == 0) {
             return "missing-parameters,id;";
         }
         String s = processPurchaseOrder();
