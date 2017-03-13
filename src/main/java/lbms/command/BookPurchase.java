@@ -39,11 +39,13 @@ public class BookPurchase implements Command {
      */
     @Override
     public String execute() {
+        if (ids.size() == 0) {
+            return "missing-parameters,id;";
+        }
         String s = processPurchaseOrder();
         if(processPurchaseOrder().equals("failure;")) {
             return s;
         }
-        s = s.replaceAll("\\n", "");
         return "success," + s + ";";
     }
 
@@ -90,10 +92,10 @@ public class BookPurchase implements Command {
             catch(IndexOutOfBoundsException e) {
                 return "failure;";
             }
-            for(int i = 1; i < quantity; i++) {
+            for(int i = 0; i < quantity; i++) {
                 buyBook(b);
             }
-            booksBought += ("\n" + b.toString() + "," + Integer.toString(quantity));
+            booksBought += ("\n" + b.toString() + "," + b.getNumberOfCopies());
         }
         return (quantity * ids.size()) + booksBought;
     }
