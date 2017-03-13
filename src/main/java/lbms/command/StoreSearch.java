@@ -108,6 +108,7 @@ public class StoreSearch implements Command {
                 response = response + book.dateFormat() + "\n";
                 id += 1;
             }
+            response = response.substring(0, response.length() - 1);
             response += ";";
             return response;
         }

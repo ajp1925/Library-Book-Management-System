@@ -33,7 +33,7 @@ public class Borrow implements Command {
             }
             visitorID = Long.parseLong(arguments[0]);
             id = new ArrayList<>();
-            for (int i = 1; i < arguments.length; i++) {
+            for(int i = 1; i < arguments.length; i++) {
                 id.add(Long.parseLong(arguments[i]));
             }
         }
