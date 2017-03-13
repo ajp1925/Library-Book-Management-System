@@ -3,7 +3,7 @@ package lbms.views;
 import lbms.controllers.ViewController;
 
 /**
- * Created by Chris on 3/10/17. TODO
+ * Book Search Menu view for views package
  */
 public class BookSearchMenuViewState implements State {
     private boolean SYSTEM_STATUS;
