@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
  * @author Team B
  */
 public class Book implements Serializable, Comparable<Book> {
+    // TODO remove unused methods
 
     private String title, publisher;
     private ArrayList<String> authors;
@@ -73,10 +74,8 @@ public class Book implements Serializable, Comparable<Book> {
      * @return true if it is a partial author
      */
     public boolean hasAuthorPartial(String name) {
-        return !getAuthors().parallelStream()
-                .filter(author -> author.contains(name))
-                .collect(Collectors.toList())
-                .isEmpty();
+        return !getAuthors().parallelStream().filter(author -> author.contains(name))
+                .collect(Collectors.toList()).isEmpty();
     }
 
     /**
@@ -115,7 +114,9 @@ public class Book implements Serializable, Comparable<Book> {
      * Calculates the number of copies currently available.
      * @return the number of copies of this book that are available
      */
-    public int getCopiesAvailable() { return numberOfCopies - copiesCheckedOut; }
+    public int getCopiesAvailable() {
+        return numberOfCopies - copiesCheckedOut;
+    }
 
     /**
      * Getter for the published date.
@@ -152,7 +153,7 @@ public class Book implements Serializable, Comparable<Book> {
      * Checks out a book.
      */
     public void checkOut() {
-        if (copiesCheckedOut < numberOfCopies) {
+        if(copiesCheckedOut < numberOfCopies) {
             copiesCheckedOut++;
         }
     }

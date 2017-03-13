@@ -15,7 +15,7 @@ public class ClockViewState implements State {
      * Constructor for a ClockViewState.
      * @param SYSTEM_STATUS: the status of the system
      */
-    public ClockViewState(boolean SYSTEM_STATUS) {
+    ClockViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 

@@ -9,6 +9,9 @@ import java.time.Period;
  * @author Team B
  */
 public class Transaction implements Serializable {
+    // TODO remove unused methods
+
+    /* Constants for overdue fines. */
     private final static double MAX_FINE = 30.00;
     private final static double WEEK_FINE = 2.00;
     private final static double INITIAL_FINE = 10.00;

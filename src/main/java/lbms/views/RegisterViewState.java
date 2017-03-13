@@ -20,7 +20,7 @@ public class RegisterViewState implements State {
      * Constructor for a RegisterViewState object.
      * @param SYSTEM_STATUS: the status of the system
      */
-    public RegisterViewState(boolean SYSTEM_STATUS) {
+    RegisterViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
@@ -46,8 +46,8 @@ public class RegisterViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"register," + firstName + "," + lastName + "," +
-                address + "," + phone + ";");
+        String response = CommandController.processRequest(this.SYSTEM_STATUS,"register," + firstName + ","
+                + lastName + "," + address + "," + phone + ";");
         System.out.println(CommandController.getCommand().parseResponse(response));
         ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
     }

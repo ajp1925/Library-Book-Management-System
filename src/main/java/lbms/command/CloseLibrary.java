@@ -1,7 +1,7 @@
 package lbms.command;
 
 /**
- * CloseLibrary class closes the library
+ * CloseLibrary class closes the library.
  * @author Team B
  */
 public class CloseLibrary implements Command {
@@ -18,7 +18,7 @@ public class CloseLibrary implements Command {
     /**
      * Parses the response for library closed
      * @param response: the response string from execute
-     * @return
+     * @return output to be printed
      */
     @Override
     public String parseResponse(String response) {

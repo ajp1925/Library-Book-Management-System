@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 public enum BookSearch implements Search<Book> {
     BY_AUTHOR,
     BY_ISBN,
-    BY_TITLE;
+    BY_TITLE,
+    BY_PUBLISHER;
 
     /**
      * Searches the books by l.
@@ -39,6 +40,8 @@ public enum BookSearch implements Search<Book> {
                 return find(book -> Long.toString(book.getIsbn()).contains(s));
             case BY_TITLE:
                 return find(book -> book.getTitle().contains(s));
+            case BY_PUBLISHER:
+                return find(book -> book.getPublisher().contains(s));
         }
         return new ArrayList<>();
     }
@@ -52,6 +55,11 @@ public enum BookSearch implements Search<Book> {
         return LBMS.getBooks().values().parallelStream().filter(condition).collect(Collectors.toList());
     }
 
+    /**
+     * Finds the books from the book store.
+     * @param s: the string used for searching
+     * @return a list of books that match the search
+     */
     public List<Book> searchBookstoBuy(String s) {
         switch(this) {
             case BY_AUTHOR:
@@ -60,6 +68,8 @@ public enum BookSearch implements Search<Book> {
                 return findBooksToBuy(book -> Long.toString(book.getIsbn()).contains(s));
             case BY_TITLE:
                 return findBooksToBuy(book -> book.getTitle().contains(s));
+            case BY_PUBLISHER:
+                return findBooksToBuy(book -> book.getPublisher().contains(s));
         }
         return new ArrayList<>();
     }

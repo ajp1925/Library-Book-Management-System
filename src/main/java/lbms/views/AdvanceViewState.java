@@ -18,7 +18,7 @@ public class AdvanceViewState implements State {
      * Constructor for an AdvanceViewState.
      * @param SYSTEM_STATUS: the current status of the system
      */
-    public AdvanceViewState(boolean SYSTEM_STATUS) {
+    AdvanceViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 

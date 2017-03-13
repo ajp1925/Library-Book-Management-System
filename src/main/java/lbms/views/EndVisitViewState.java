@@ -17,7 +17,7 @@ public class EndVisitViewState implements State {
      * Constructor for an EndVisitViewState object.
      * @param SYSTEM_STATUS: the status of the system
      */
-    public EndVisitViewState(boolean SYSTEM_STATUS) {
+    EndVisitViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 

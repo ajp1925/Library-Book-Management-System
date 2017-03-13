@@ -2,8 +2,9 @@ package lbms.command;
 
 import lbms.LBMS;
 import lbms.models.Book;
-import lbms.search.BookStoreSearch;
+import lbms.search.BookSearch;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class StoreSearch implements Command {
         if(sortOrder != null && !sortOrder.equals("title") && !sortOrder.equals("publish-date")) {
             return "invalid-sort-order";
         }
-        List<Book> books = BookStoreSearch.BY_TITLE.search(title);
+        List<Book> books = BookSearch.BY_TITLE.searchBookstoBuy(title);
         List<Book> remove = new ArrayList<>();
         if(authors.size() > 0) {
             for(Book b: books) {
@@ -124,7 +125,7 @@ public class StoreSearch implements Command {
             return "No books were found.";
         }
         else {
-            return fields[2];
+            return Arrays.toString(Arrays.copyOfRange(fields, 1, fields.length - 1));
         }
     }
 }

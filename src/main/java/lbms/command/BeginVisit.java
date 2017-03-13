@@ -17,10 +17,16 @@ public class BeginVisit implements Command {
     /**
      * Constructor for BeginVisit command.
      * @param request: the string that holds all the input information
+     * @throws MissingParametersException: missing parameters
      */
-    public BeginVisit(String request) {
+    public BeginVisit(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
-        visitorID = Long.parseLong(arguments[0]);
+        try {
+            visitorID = Long.parseLong(arguments[0]);
+        }
+        catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            throw new MissingParametersException("missing-parameters,visitor-ID");
+        }
     }
 
     /**
@@ -39,7 +45,7 @@ public class BeginVisit implements Command {
         }
 
         Visit v = beginVisit(visitor);
-        return visitorID + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," +
+        return String.format("%010d", visitorID) + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," +
                 v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 

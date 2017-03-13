@@ -2,23 +2,20 @@ package lbms.views;
 
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
-
-import javax.swing.text.View;
 import java.util.Scanner;
 
 /**
- * Created by Chris on 3/10/17.
+ * Created by Chris on 3/10/17. TODO
  */
 public class ReportViewState implements State {
     private boolean SYSTEM_STATUS;
-    private String input = null;
     private Integer days = null;
 
     /**
      * Constructor for a SystemViewState.
      * @param SYSTEM_STATUS: the status of the system
      */
-    public ReportViewState(boolean SYSTEM_STATUS) {
+    ReportViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
@@ -29,11 +26,12 @@ public class ReportViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nHow many days would you like a report for? Type \"all\" to get all statistics.");
-        input = scanner.nextLine();
+        String input = scanner.nextLine();
 
         try {
             days = Integer.parseInt(input);
-        } catch (Exception e){
+        }
+        catch(Exception e){
             days = null;
         }
     }
@@ -41,10 +39,11 @@ public class ReportViewState implements State {
     @Override
     public void onEnter() {
         String response;
-        if (days == null) {
+        if(days == null) {
             response = CommandController.processRequest(this.SYSTEM_STATUS, "report;");
             System.out.println("\nSystem report:");
-        } else {
+        }
+        else {
             response = CommandController.processRequest(this.SYSTEM_STATUS, "report," + days + ";");
             System.out.println("\nSystem report for " + days + " days:");
         }

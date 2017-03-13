@@ -22,13 +22,13 @@ public class BeginVisitTest {
     }
 
     @Test
-    public void invalidID() {
+    public void invalidID() throws Exception {
         BeginVisit command = new BeginVisit("2");
         assertEquals("invalid-id;", command.execute());
     }
 
     @Test
-    public void beginVisit() {
+    public void beginVisit() throws Exception {
         BeginVisit command = new BeginVisit("1");
 
         String visitDate = SystemDateTime.getInstance().getDateTime().toLocalDate().format(SystemDateTime.DATE_FORMAT);
@@ -37,7 +37,8 @@ public class BeginVisitTest {
     }
 
     @Test
-    public void duplicate() {
+    public void duplicate() throws Exception {
         BeginVisit command = new BeginVisit("1");
+        // TODO
     }
 }

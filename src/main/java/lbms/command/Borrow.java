@@ -23,13 +23,22 @@ public class Borrow implements Command {
     /**
      * Constructor for a Borrow class.
      * @param request: the request input string
+     * @throws MissingParametersException: missing parameters
      */
-    public Borrow(String request) {
+    public Borrow(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
-        visitorID = Long.parseLong(arguments[0]);
-        id = new ArrayList<>();
-        for(int i = 1; i < arguments.length; i++) {
-            id.add(Long.parseLong(arguments[i]));
+        try {
+            if(arguments.length < 2) {
+                throw new NumberFormatException();
+            }
+            visitorID = Long.parseLong(arguments[0]);
+            id = new ArrayList<>();
+            for (int i = 1; i < arguments.length; i++) {
+                id.add(Long.parseLong(arguments[i]));
+            }
+        }
+        catch(NumberFormatException e) {
+            throw new MissingParametersException("missing-parameters,visitor-ID,{ids}");
         }
     }
 

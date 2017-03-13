@@ -9,15 +9,18 @@ import java.io.Serializable;
  * @author Team B
  */
 public class Visitor implements Serializable {
+    // TODO remove unused methods
 
     private String firstName, lastName;
-    private String address;     // PLACEHOLDER type address QUESTION: can we use external address and phone number class
-    private long phoneNumber;    // PLACEHOLDER type phonenumber
+    private String address;
+    private long phoneNumber;
     private long visitorID;
     private HashMap<Long, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
     private boolean inLibrary;
-    private double fines;
+    private double currentFines;
+    private double totalFines;
+    private double payedFines;
 
     /**
      * Constructor for a Visitor object.
@@ -32,9 +35,11 @@ public class Visitor implements Serializable {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.visitorID = LBMS.getVisitors().size() + 1;
-        this.checkedOutBooks = new HashMap<Long, Transaction>(MAX_BOOKS);
+        this.checkedOutBooks = new HashMap<>(MAX_BOOKS);
         this.inLibrary = false;
-        fines = 0;
+        this.currentFines = 0.0;
+        this.totalFines = 0.0;
+        this.payedFines = 0.0;
     }
 
     /**
@@ -106,7 +111,7 @@ public class Visitor implements Serializable {
      * @return true if the number of checked out books is less than the max
      */
     public boolean canCheckOut() {
-        return checkedOutBooks.size() < MAX_BOOKS;
+        return getNumCheckedOut() < MAX_BOOKS && !(totalFines + currentFines > payedFines);
     }
 
     /**
@@ -114,7 +119,7 @@ public class Visitor implements Serializable {
      * @param transaction: the transaction for the checked out book
      */
     public void checkOut(Transaction transaction) {
-        if (canCheckOut()) {
+        if(canCheckOut()) {
             checkedOutBooks.put(transaction.getIsbn(), transaction);
         }
     }
@@ -124,6 +129,7 @@ public class Visitor implements Serializable {
      * @param transaction: the transaction created when the book was checked out
      */
     public void returnBook(Transaction transaction) {
+        totalFines += transaction.getFine();
         checkedOutBooks.remove(transaction.getIsbn());
     }
 
@@ -152,7 +158,7 @@ public class Visitor implements Serializable {
         for(Long l: checkedOutBooks.keySet()) {
             fines += checkedOutBooks.get(l).getFine();
         }
-        this.fines = fines;
+        this.currentFines = fines;
         return fines;
     }
 
@@ -161,12 +167,6 @@ public class Visitor implements Serializable {
      * @param amount: the amount of fines to pay
      */
     public void payFines(double amount) {
-        fines -= amount;
-
-        // close transactions with amounts payed
-        for(Long l: checkedOutBooks.keySet()) {
-            Transaction t = checkedOutBooks.get(l);
-            t.payTransactionFine(t.getFine());
-        }
+        payedFines += amount;
     }
 }

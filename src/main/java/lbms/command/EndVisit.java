@@ -17,9 +17,15 @@ public class EndVisit implements Command {
     /**
      * Constructor for an EndVisit command class.
      * @param request: the request input string
+     * @throws MissingParametersException: missing parameters
      */
-    public EndVisit(String request) {
-        visitorID = Long.parseLong(request);
+    public EndVisit(String request) throws MissingParametersException {
+        try {
+            visitorID = Long.parseLong(request);
+        }
+        catch(NumberFormatException e) {
+            throw new MissingParametersException("missing-parameters,visitor-ID");
+        }
     }
 
     /**

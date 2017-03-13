@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @author Team B
  */
 public class Visit implements Serializable {
+    // TODO remove unused methods
 
     private Visitor visitor;
     private LocalDateTime dateTime;

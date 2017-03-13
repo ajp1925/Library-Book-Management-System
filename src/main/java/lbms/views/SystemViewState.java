@@ -14,7 +14,7 @@ public class SystemViewState implements State {
      * Constructor for a SystemViewState.
      * @param SYSTEM_STATUS: the status of the system
      */
-    public SystemViewState(boolean SYSTEM_STATUS) {
+    SystemViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 

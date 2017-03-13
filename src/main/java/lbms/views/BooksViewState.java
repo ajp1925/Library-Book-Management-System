@@ -1,6 +1,7 @@
 package lbms.views;
 
 import lbms.controllers.ViewController;
+import lbms.models.SystemDateTime;
 
 /**
  * BooksViewState class for viewing books in the system.
@@ -14,7 +15,7 @@ public class BooksViewState implements State {
      * Constructor for a BooksViewState object.
      * @param SYSTEM_STATUS: the status of the system
      */
-    public BooksViewState(boolean SYSTEM_STATUS) {
+    BooksViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
@@ -27,7 +28,7 @@ public class BooksViewState implements State {
         System.out.println("search)      Search for a book");
         System.out.println("browse)      Show all available books");
 
-        if (SYSTEM_STATUS) {
+        if(SYSTEM_STATUS) {
             System.out.println("checkout)    Borrow a book");
         }
 
@@ -55,13 +56,14 @@ public class BooksViewState implements State {
                  // TODO
                  break;
              case "checkin":
-                 // TODO
+                 ViewController.setState(new ReturnBookViewState(SYSTEM_STATUS));
                  break;
              case "return":
                  ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
                  break;
              case "checkout":
                  if (SYSTEM_STATUS) {
+                     // TODO
                      break;
                  }
              default:
