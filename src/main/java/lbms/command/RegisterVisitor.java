@@ -24,7 +24,15 @@ public class RegisterVisitor implements Command {
             visitor = new Visitor(arguments[0], arguments[1], arguments[2], Long.parseLong(arguments[3]));
         }
         catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
-            throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
+            if (arguments.length == 1) {
+                throw new MissingParametersException("missing-parameters,last-name,address,phone-number");
+            }
+            else if (arguments.length == 2) {
+                throw new MissingParametersException("missing-parameters,address,phone-number");
+            }
+            else if (arguments.length == 3) {
+                throw new MissingParametersException("missing-parameters,phone-number");
+            }
         }
     }
 

@@ -11,8 +11,9 @@ import java.util.Scanner;
  */
 public class PurchaseBookViewState implements State{
     private boolean SYSTEM_STATUS;
-    String quantity;
+    int quantity;
     String ids = "";
+    String response;
 
     /**
      * Constructor for an PurchaseBookViewState.
@@ -28,22 +29,16 @@ public class PurchaseBookViewState implements State{
     @Override
     public void init() {
         Scanner scanner = new Scanner(System.in);
-        String input = "";
+
+        System.out.println("\nWhat quantity of these books would you like to purchase?");
+        quantity = scanner.nextInt();
+
         do {
-            System.out.println("Please enter the ID of the book to purchase.");
-            if(!input.equals("")) {
-                System.out.println("Press enter to finish.");
-            }
-
-            input = scanner.nextLine();
-            if(!input.equals("")) {
-                ids += "," + input;
-            }
-
-        } while (!input.equals(""));
-
-        System.out.println("What quantity of these books would you like to purchase?");
-        quantity = scanner.nextLine();
+            System.out.println("\nPlease enter the ID of the book to purchase.");
+            ids += "," + scanner.next();
+            System.out.println("\nAre you buying another book?");
+            response = scanner.next();
+        } while (response.toLowerCase().equals("yes") || response.toLowerCase().equals("y"));
 
     }
 
