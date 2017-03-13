@@ -30,7 +30,7 @@ public class PurchaseBookViewState implements State{
         Scanner scanner = new Scanner(System.in);
         String input = "";
         do {
-            System.out.println("Please enter the ID of the book to purchase.");
+            System.out.println("\nPlease enter the ID of the book to purchase.");
             if(!input.equals("")) {
                 System.out.println("Press enter to finish.");
             }

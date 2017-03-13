@@ -121,11 +121,11 @@ public class StoreSearch implements Command {
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if(fields[1].equals("n;")) {
-            return "No books were found.";
+        if(fields.length > 2) {
+            return Arrays.toString(Arrays.copyOfRange(fields, 2, fields.length - 1));
         }
         else {
-            return Arrays.toString(Arrays.copyOfRange(fields, 1, fields.length - 1));
+            return "No books match query.";
         }
     }
 }
