@@ -105,10 +105,10 @@ public class StoreSearch implements Command {
                     response = response + author + ",";
                 }
                 response = response.replaceAll(",$", "},");
-                response = response + book.dateFormat() + "\n";
+                response = response + book.dateFormat() + ",\n";
                 id += 1;
             }
-            response += ";";
+            response = response.replaceAll(",\\n$",";");
             return response;
         }
     }
