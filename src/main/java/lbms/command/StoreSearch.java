@@ -123,8 +123,12 @@ public class StoreSearch implements Command {
     public String parseResponse(String response) {
         String[] fields = response.replace(";", "").split("\n", 2);
 
-        if(fields[0].endsWith("0")) {
-            return "No books match query.";
+        if (fields.length == 1) {
+            if (fields[0].endsWith("0")) {
+                return "No books match query.";
+            } else {
+                return response;
+            }
         }
         else {
             return fields[1];

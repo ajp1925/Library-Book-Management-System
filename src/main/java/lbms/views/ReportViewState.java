@@ -48,7 +48,12 @@ public class ReportViewState implements State {
             System.out.println("\nSystem report for " + days + " days:");
         }
 
-        System.out.println(CommandController.getCommand().parseResponse(response));
+        try {
+            System.out.println(CommandController.getCommand().parseResponse(response));
+        } catch (Exception e) {
+            System.out.println(response);
+        }
+
         ViewController.setState(new SystemViewState(SYSTEM_STATUS));
     }
     public void change(String state) { }

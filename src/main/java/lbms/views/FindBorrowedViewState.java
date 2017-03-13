@@ -37,7 +37,13 @@ public class FindBorrowedViewState implements State {
     @Override
     public void onEnter() {
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"borrowed," + visitorID + ";");
-        System.out.println(CommandController.getCommand().parseResponse(response));
+
+        try {
+            System.out.println(CommandController.getCommand().parseResponse(response));
+        } catch (Exception e) {
+            System.out.println(response);
+        }
+
         ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 

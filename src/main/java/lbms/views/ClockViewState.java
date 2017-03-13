@@ -25,7 +25,13 @@ public class ClockViewState implements State {
     @Override
     public void init() {
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"datetime;");
-        System.out.println(CommandController.getCommand().parseResponse(response));
+
+        try {
+            System.out.println(CommandController.getCommand().parseResponse(response));
+        } catch (Exception e) {
+            System.out.println(response);
+        }
+
         System.out.println("clock)      View system time");
         System.out.println("advance)    Fast-forward clock");
         System.out.println("reset)      Reset the clock to current time");
