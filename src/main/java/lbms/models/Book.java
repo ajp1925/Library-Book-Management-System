@@ -135,13 +135,6 @@ public class Book implements Serializable, Comparable<Book> {
     }
 
     /**
-     * Allows the purchase of a book.
-     */
-    public void addBook() {
-        numberOfCopies++;
-    }
-
-    /**
      * Determines if a book is available to be checked out.
      * @return true if there is at least one copy to be checked out, false if not
      */
@@ -205,5 +198,6 @@ public class Book implements Serializable, Comparable<Book> {
      */
     public void purchase() {
         purchaseDate = SystemDateTime.getInstance().getDate();
+        numberOfCopies++;
     }
 }

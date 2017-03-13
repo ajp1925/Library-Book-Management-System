@@ -108,7 +108,8 @@ public class StoreSearch implements Command {
                 response = response + book.dateFormat() + ",\n";
                 id += 1;
             }
-            response = response.replaceAll(",\\n$",";");
+            response = response.substring(0, response.length() - 2);
+            response += ";";
             return response;
         }
     }
@@ -120,12 +121,13 @@ public class StoreSearch implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        if(fields.length > 2) {
-            return Arrays.toString(Arrays.copyOfRange(fields, 2, fields.length - 1));
+        String[] fields = response.replace(";", "").split("\n", 2);
+
+        if(fields[0].endsWith("0")) {
+            return "No books match query.";
         }
         else {
-            return "No books match query.";
+            return fields[1];
         }
     }
 }

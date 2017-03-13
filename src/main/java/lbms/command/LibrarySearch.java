@@ -1,5 +1,6 @@
 package lbms.command;
 
+import lbms.LBMS;
 import lbms.models.Book;
 import lbms.search.BookSearch;
 import java.util.*;
@@ -64,9 +65,13 @@ public class LibrarySearch implements Command {
             if(arguments.size() > 0 && SORTS.contains(arguments.get(arguments.size() - 1))) {
                 sort_order = arguments.get(arguments.size() - 1);
             }
+            if(authors.size() == 0) {
+                // Causes a MissingParameterException to be thrown too.
+                throw new ArrayIndexOutOfBoundsException();
+            }
         }
         catch(ArrayIndexOutOfBoundsException e) {
-            throw new MissingParametersException("missing-parameters,title");
+            throw new MissingParametersException("missing-parameters,title,{authors}");
         }
         catch(Exception e) {
             throw new MissingParametersException("unknown-error");
@@ -136,9 +141,10 @@ public class LibrarySearch implements Command {
                     break;
             }
         }
-
+        LBMS.getLastBookSearch().clear();
         String matchesString = "";
         for(Book b: matches) {
+            LBMS.getLastBookSearch().add(b);
             matchesString += "\n" + b.getCopiesAvailable() + "," + b.toString() + ",";
         }
         if(matches.size() > 0) {

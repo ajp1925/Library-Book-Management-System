@@ -92,9 +92,8 @@ public class BookPurchase implements Command {
             catch(IndexOutOfBoundsException e) {
                 return "failure;";
             }
-            for(int i = quantity; i > 0; i--) {
+            for(int i = 1; i < quantity; i++) {
                 buyBook(b);
-                b.purchase();
             }
             booksBought += ("\n" + b.toString() + "," + Integer.toString(quantity));
         }
@@ -106,6 +105,9 @@ public class BookPurchase implements Command {
      * @param book: The book to buy
      */
     private void buyBook(Book book) {
-        LBMS.getBooks().put(book.getIsbn(), book);
+        book.purchase();
+        if(!LBMS.getBooks().values().contains(book)) {
+            LBMS.getBooks().put(book.getIsbn(), book);
+        }
     }
 }
