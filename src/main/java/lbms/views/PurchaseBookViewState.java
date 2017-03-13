@@ -50,7 +50,7 @@ public class PurchaseBookViewState implements State{
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"buy," + quantity + ids + ";");
 
         try {
-            System.out.println(CommandController.getCommand().parseResponse(response));
+            System.out.println("\n" + CommandController.getCommand().parseResponse(response));
         } catch (Exception e) {
             System.out.println(response);
         }

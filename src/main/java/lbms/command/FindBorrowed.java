@@ -57,17 +57,16 @@ public class FindBorrowed implements Command {
      */
     @Override
     public String parseResponse(String response) {
-        String[] fields = response.split(",", 3);
-        if(fields[1].equals("invalid-visitor-id;")) {
-            return "\nVisitor " + visitorID + " is not valid.";
+        String[] fields = response.replace(";", "").split("\n", 2);
+        if (fields.length == 1) {
+            if (fields[0].endsWith("0")) {
+                return "\nVisitor " + visitorID + " has no borrowed books.";
+            } else {
+                return "\nVisitor " + visitorID + " is not valid.";
+            }
         }
         else {
-            String result = "\n";
-            String[] books = fields[3].split("<nl>");
-            for(String book: books) {
-                result += "\tbook";
-            }
-            return result;
+            return "\n" + fields[1];
         }
     }
 }

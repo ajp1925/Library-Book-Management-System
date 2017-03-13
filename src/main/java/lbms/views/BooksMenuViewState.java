@@ -4,23 +4,23 @@ import lbms.controllers.ViewController;
 import lbms.models.SystemDateTime;
 
 /**
- * BooksViewState class for viewing books in the system.
+ * BooksMenuViewState class for viewing books in the system.
  * @author Team B
  */
-public class BooksViewState implements State {
+public class BooksMenuViewState implements State {
 
     private boolean SYSTEM_STATUS;
 
     /**
-     * Constructor for a BooksViewState object.
+     * Constructor for a BooksMenuViewState object.
      * @param SYSTEM_STATUS: the status of the system
      */
-    BooksViewState(boolean SYSTEM_STATUS) {
+    BooksMenuViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
     /**
-     * Initialized the BooksViewState.
+     * Initialized the BooksMenuViewState.
      */
     @Override
     public void init() {
@@ -63,7 +63,7 @@ public class BooksViewState implements State {
                  break;
              case "checkout":
                  if (SYSTEM_STATUS) {
-                     // TODO
+                     ViewController.setState(new BorrowBookViewState(SYSTEM_STATUS));
                      break;
                  }
              default:
