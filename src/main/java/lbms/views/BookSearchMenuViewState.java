@@ -35,7 +35,7 @@ public class BookSearchMenuViewState implements State {
                 ViewController.setState(new StoreSearchViewState(SYSTEM_STATUS));
                 break;
             case "return":
-                ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                ViewController.setState(new BooksMenuViewState(SYSTEM_STATUS));
                 break;
             default:
                 System.out.println("Command not found\n");
