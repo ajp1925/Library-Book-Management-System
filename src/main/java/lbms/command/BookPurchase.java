@@ -43,7 +43,7 @@ public class BookPurchase implements Command {
             return "missing-parameters,id;";
         }
         String s = processPurchaseOrder();
-        if(processPurchaseOrder().equals("failure;")) {
+        if(s.equals("failure;")) {
             return s;
         }
         return "success," + s + ";";
