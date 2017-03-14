@@ -24,8 +24,11 @@ public class LibrarySearch implements Command {
      */
     public LibrarySearch(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
-        if(arguments.length <= 1) {
+        if (arguments.length == 0 || arguments.length == 1 && arguments[0].equals("")) {
             throw new MissingParametersException("missing-parameters,title,{authors}");
+        }
+        if(arguments.length == 1) {
+            throw new MissingParametersException("missing-parameters,{authors}");
         }
         try {
             for (int index = 0; index < arguments.length; index++) {
