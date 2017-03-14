@@ -1,6 +1,5 @@
 package lbms.views;
 
-import lbms.command.LibrarySearch;
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
 
@@ -51,9 +50,6 @@ public class LibrarySearchViewState implements State{
             input = scanner.nextLine();
             if(input.equals("")) {
                 break;
-            }
-            else if(input.equals("*")) {
-                commandString += ",*"; //",*" or " *"
             }
             else {
                 commandString += "," + input;
