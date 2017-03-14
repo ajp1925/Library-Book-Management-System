@@ -31,31 +31,28 @@ public class StoreSearch implements Command {
             throw new MissingParametersException("missing-parameters,title");
         }
         try {
-            for (int index = 0; index < arguments.length; index++) {
-
-                if (sortOrder == null &&
-                        Arrays.asList(arguments).contains("title") ||
-                        Arrays.asList(arguments).contains("publish-date") )
-                {
+            for(int index = 0; index < arguments.length; index++) {
+                if(sortOrder == null && (Arrays.asList(arguments).contains("title") ||
+                        Arrays.asList(arguments).contains("publish-date"))) {
                     sortOrder = arguments[arguments.length - 1];
                 }
 
-                if (arguments[index].equals("*")) {
-                    continue;
-                } else if (arguments[index].startsWith("{")) {
+                if(arguments[index].startsWith("{")) {
                     authors = new ArrayList<>();
                     while (!arguments[index].endsWith("}")) {
                         authors.add(arguments[index++].replaceAll("[{}]", ""));
                     }
                     authors.add(arguments[index].replaceAll("[{}]", ""));
-                } else {
-                    if (title == null && !arguments[0].equals("*")) {
+                }
+                else if(!arguments[index].equals("*")) {
+                    if(title == null && !arguments[0].equals("*")) {
                         title = (arguments[index]);
-                    } else if (isbn == null && arguments[index].matches("^\\d{13}$")) {
+                    }
+                    else if(isbn == null && arguments[index].matches("^\\d{13}$")) {
                         isbn = Long.parseLong(arguments[index]);
-                    } else if ((publisher == null && sortOrder == null && index == (arguments.length) - 1) ||
-                            (publisher == null && sortOrder != null && index == (arguments.length) - 2))
-                    {
+                    }
+                    else if((publisher == null && sortOrder == null && index == (arguments.length) - 1) ||
+                            (publisher == null && sortOrder != null && index == (arguments.length) - 2)) {
                         publisher = arguments[index];
                     }
                 }
