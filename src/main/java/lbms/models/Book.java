@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
  * @author Team B
  */
 public class Book implements Serializable, Comparable<Book> {
-    // TODO remove unused methods
 
     private String title, publisher;
     private ArrayList<String> authors;
@@ -87,27 +86,11 @@ public class Book implements Serializable, Comparable<Book> {
     }
 
     /**
-     * Getter for the page count.
-     * @return the number of pages in the book
-     */
-    public int getPageCount() {
-        return pageCount;
-    }
-
-    /**
      * Getter for the number of copies.
      * @return the quantity of this book the library owns
      */
     public int getNumberOfCopies() {
         return numberOfCopies;
-    }
-
-    /**
-     * Getter for copies checked out.
-     * @return the number of this book that are unavailable
-     */
-    public int getCopiesCheckedOut() {
-        return copiesCheckedOut;
     }
 
     /**
@@ -132,14 +115,6 @@ public class Book implements Serializable, Comparable<Book> {
      */
     public LocalDate getPurchaseDate() {
         return purchaseDate;
-    }
-
-    /**
-     * Determines if a book is available to be checked out.
-     * @return true if there is at least one copy to be checked out, false if not
-     */
-    public boolean canCheckOut() {
-        return copiesCheckedOut < numberOfCopies;
     }
 
     /**

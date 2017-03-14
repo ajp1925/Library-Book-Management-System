@@ -76,12 +76,25 @@ public class RegisterVisitor implements Command {
      * @return true if successfully registered, false if duplicate
      */
     private static boolean registerVisitor(Visitor visitor) {
-        if(UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null &&
-                UserSearch.BY_NAME.findFirst(visitor.getName()) == null &&
-                UserSearch.BY_ADDRESS.findFirst(visitor.getAddress()) == null &&
-                UserSearch.BY_PHONE.findFirst(visitor.getPhoneNumber()) == null) {
-            LBMS.getVisitors().put(visitor.getVisitorID(), visitor);
-            return true;
+        if(UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null) {
+            if(UserSearch.BY_NAME.findFirst(visitor.getName()) == null) {
+                LBMS.getVisitors().put(visitor.getVisitorID(), visitor);
+                return true;
+            }
+            else {
+                Visitor v = UserSearch.BY_NAME.findFirst(visitor.getName());
+                if(v.getPhoneNumber() == visitor.getPhoneNumber()) {
+                    if(v.getAddress().equals(visitor.getAddress())) {
+                        return false;
+                    }
+                    else {
+                        LBMS.getVisitors().put(visitor.getVisitorID(), visitor);
+                        return true;
+                    }
+                }
+                LBMS.getVisitors().put(visitor.getVisitorID(), visitor);
+                return true;
+            }
         }
         return false;
     }
