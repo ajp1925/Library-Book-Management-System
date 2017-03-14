@@ -18,9 +18,14 @@ public class StatisticsReport implements Command {
      * Constructor for a StatisticsReport command.
      * @param request: the request string to be processed
      */
-    public StatisticsReport(String request) {
-        if(!request.equals("")) {
-            days = Integer.parseInt(request);
+    public StatisticsReport(String request) throws MissingParametersException {
+        try {
+            if (!request.equals("")) {
+                days = Integer.parseInt(request);
+            }
+        }
+        catch(NumberFormatException e) {
+            throw new MissingParametersException("incorrect-value-for-days");
         }
     }
 
@@ -30,7 +35,7 @@ public class StatisticsReport implements Command {
      */
     @Override
     public String execute() {
-        return SystemDateTime.getInstance().getDate().format(SystemDateTime.DATE_FORMAT) + '\n' + generateReport(days);
+        return SystemDateTime.getInstance().getDate().format(SystemDateTime.DATE_FORMAT) + ",\n" + generateReport(days);
     }
 
     /**
@@ -70,6 +75,11 @@ public class StatisticsReport implements Command {
             outstandingFines += v.getFines();
         }
 
+        //calculate payed fines
+        for(Visitor v: LBMS.getVisitors().values()) {
+            collectedFines += v.getPayedFines();
+        }
+
         if(days != null) {
 
             LocalDate reportStartDate = SystemDateTime.getInstance().getDate().minusDays(days);
@@ -90,14 +100,6 @@ public class StatisticsReport implements Command {
                 averageVisitTime = totalVisitTime.dividedBy(visitsInReport.size());
             }
 
-            // calculating collected fines
-            for(Transaction t: LBMS.getTransactions()) {
-                if(t.getCloseDate() != null &&
-                        t.getCloseDate().isBefore(reportEndDate) && t.getCloseDate().isAfter(reportStartDate)) {
-                    collectedFines += t.getFinePayed();
-                }
-            }
-
             // determine number of books purchased in timeframe
             booksPurchased = 0;
             for(Book b: LBMS.getBooks().values()) {
@@ -114,13 +116,6 @@ public class StatisticsReport implements Command {
             if(LBMS.getTotalVisits().size() != 0) {
                 averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
             }
-
-            // calculating collected fines
-            for(Transaction t : LBMS.getTransactions()) {
-                if(t.getCloseDate() != null) {
-                    collectedFines += t.getFinePayed();
-                }
-            }
         }
 
         report += ("Number of Books: " + LBMS.getBooks().size() + "\n" +
@@ -130,7 +125,7 @@ public class StatisticsReport implements Command {
                 "Fines Collected: " + collectedFines + "\n" +
                 "Fines Outstanding: " + outstandingFines);
 
-        return report;
+        return report + ";";
     }
 
     /**

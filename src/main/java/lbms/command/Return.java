@@ -80,6 +80,7 @@ public class Return implements Command {
             b.returnBook();
             Transaction t = visitor.getCheckedOutBooks().get(b.getIsbn());
             LBMS.getVisitors().get(visitorID).returnBook(t);
+            t.closeTransaction();
         }
 
         return "success;";

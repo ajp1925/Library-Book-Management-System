@@ -9,7 +9,6 @@ import java.io.Serializable;
  * @author Team B
  */
 public class Visitor implements Serializable {
-    // TODO remove unused methods
 
     private String firstName, lastName;
     private String address;
@@ -40,22 +39,6 @@ public class Visitor implements Serializable {
         this.currentFines = 0.0;
         this.totalFines = 0.0;
         this.payedFines = 0.0;
-    }
-
-    /**
-     * Getter for the visitors first name.
-     * @return the visitors first name
-     */
-    public String getFirstName() {
-        return firstName;
-    }
-
-    /**
-     * Getter for the visitors last name.
-     * @return the visitors last name
-     */
-    public String getLastName() {
-        return lastName;
     }
 
     /**
@@ -159,7 +142,7 @@ public class Visitor implements Serializable {
             fines += checkedOutBooks.get(l).getFine();
         }
         this.currentFines = fines;
-        return fines;
+        return this.currentFines + this.totalFines - this.payedFines;
     }
 
     /**
@@ -168,5 +151,13 @@ public class Visitor implements Serializable {
      */
     public void payFines(double amount) {
         payedFines += amount;
+    }
+
+    /**
+     * Getter for payed fines.
+     * @return the amount of fines this visitor has payed
+     */
+    public double getPayedFines() {
+        return payedFines;
     }
 }

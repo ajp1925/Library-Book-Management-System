@@ -3,7 +3,7 @@ package lbms.views;
 import lbms.controllers.ViewController;
 
 /**
- * Created by Chris on 3/10/17. TODO
+ * Book Search Menu view for views package
  */
 public class BookSearchMenuViewState implements State {
     private boolean SYSTEM_STATUS;
@@ -35,7 +35,7 @@ public class BookSearchMenuViewState implements State {
                 ViewController.setState(new StoreSearchViewState(SYSTEM_STATUS));
                 break;
             case "return":
-                ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                ViewController.setState(new BooksMenuViewState(SYSTEM_STATUS));
                 break;
             default:
                 System.out.println("Command not found\n");

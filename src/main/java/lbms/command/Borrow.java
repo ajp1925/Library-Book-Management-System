@@ -51,7 +51,7 @@ public class Borrow implements Command {
         }
         else if(UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
             return "outstanding-fine," +
-                    new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines());
+                    new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + ";";
         }
         String invalidIDs = "";
         String temp = "";

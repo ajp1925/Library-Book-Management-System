@@ -18,7 +18,6 @@ public class Transaction implements Serializable {
 
     private long isbn;
     private long visitorId;
-    private double finePayed = 0;
     private LocalDate date, dueDate, closeDate;
 
     /**
@@ -55,42 +54,25 @@ public class Transaction implements Serializable {
      */
     double getFine() {
         int days = Period.between(dueDate, SystemDateTime.getInstance().getDate()).getDays();
-        double fine = 0.0D;
+        double fine = 0.0;
         for(int i = 0; i < days; i++) {
             if(i == 0) {
-                fine += 10.00D;
+                fine += INITIAL_FINE;
             }
             else {
-                fine += 2.00D;
+                fine += WEEK_FINE;
             }
         }
-        return fine;
-    }
-
-    /**
-     * Getter for the fine money payed
-     * @return the amount of money payed for Transaction fine
-     */
-    public double getFinePayed() {
-        return finePayed;
-    }
-
-    /**
-     * Closes the transaction by setting the fine payed.
-     * Note: a transaction without an associated fine does not need closing
-     * @param amount the amount of fine payed
-     */
-    void payTransactionFine(double amount) {
-        if( finePayed == 0 && amount == getFine() ) {
-            finePayed += amount;
-            closeTransaction();
+        if(fine < MAX_FINE) {
+            return fine;
         }
+        return MAX_FINE;
     }
 
     /**
      * Marks that the fine has been paid for this transaction
      */
-    private void closeTransaction() {
+    public void closeTransaction() {
         closeDate = SystemDateTime.getInstance().getDate();
     }
 

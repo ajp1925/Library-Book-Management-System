@@ -15,7 +15,7 @@ public class LibrarySearch implements Command {
     private String title, publisher = null, sort_order = null;
     private ArrayList<String> authors;
     private Long isbn = null;
-    private static final Set<String> SORTS = new HashSet<String>(Arrays.asList(
+    private static final Set<String> SORTS = new HashSet<>(Arrays.asList(
             new String[] {"title", "publish-date", "book-status"}
     ));
 
@@ -43,36 +43,49 @@ public class LibrarySearch implements Command {
             }
             int index;
             authors = new ArrayList<>();
-            for(index = 0; index < arguments.size(); index++) {
-                if(!arguments.get(index).matches("[0-9]+") && !arguments.get(index).equals("*")) {
-                    authors.add(arguments.get(index));
-                }
-                else {
-                    index++;
+            arguments = new ArrayList<>(Arrays.asList(request.split("\\{")));
+            if(arguments.size() <= 1) {
+                System.out.println("2");
+                throw new MissingParametersException("missing-parameters,{authors}");
+            }
+            String[] authors = arguments.get(1).split("}");
+            if(authors.length < 1) {
+                System.out.println("1");
+                throw new MissingParametersException("missing-parameters,{authors}");
+            }
+            authors = authors[0].split(",");
+            for(index = 0; index < authors.length; index++) {
+                if(authors[index].equals("*")) {
+                    this.authors = null;
                     break;
                 }
-            }
-            if(index < arguments.size()) {
-                if(!arguments.get(index).equals("*")) {
-                    isbn = Long.valueOf(arguments.get(index));
-                }
+                this.authors.add(authors[index]);
                 index++;
             }
-            if(index < arguments.size()) {
-                if(!arguments.get(index).equals("*")) {
-                    publisher = arguments.get(index);
+            arguments = new ArrayList<>(Arrays.asList(request.split("}")));
+            if(arguments.size() > 1) {
+                arguments = new ArrayList<>(Arrays.asList(arguments.get(1).split(",")));
+                if(arguments.get(0).matches("\\d*")) {
+                    isbn = Long.parseLong(arguments.remove(0));
+                    publisher = arguments.get(0);
                 }
-            }
-            if(arguments.size() > 0 && SORTS.contains(arguments.get(arguments.size() - 1))) {
-                sort_order = arguments.get(arguments.size() - 1);
-            }
-            if(authors.size() == 0) {
-                // Causes a MissingParameterException to be thrown too.
-                throw new ArrayIndexOutOfBoundsException();
+                else {
+                    if(arguments.get(0).matches("\\*")) {
+                        isbn = null;
+                        publisher = arguments.get(0);
+                    }
+                    else {
+                        throw new MissingParametersException("missing-parameters,isbn");
+                    }
+                }
             }
         }
         catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("3");
             throw new MissingParametersException("missing-parameters,title,{authors}");
+        }
+        catch(MissingParametersException e) {
+            throw new MissingParametersException(e.getMessage());
         }
         catch(Exception e) {
             throw new MissingParametersException("unknown-error");
@@ -111,8 +124,8 @@ public class LibrarySearch implements Command {
                 antiMatches.add(b);
             }
             if(authors.size() > 0) {
-                for (String author : authors) {
-                    if (!b.hasAuthorPartial(author)) {
+                for(String author: authors) {
+                    if(!b.hasAuthorPartial(author)) {
                         antiMatches.add(b);
                     }
                 }

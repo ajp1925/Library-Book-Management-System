@@ -26,13 +26,13 @@ public class BooksMenuViewState implements State {
     public void init() {
         System.out.println("\nPlease select a command:");
         System.out.println("search)      Search for a book");
-        System.out.println("list)        Show all available books");
 
         if(SYSTEM_STATUS) {
             System.out.println("checkout)    Borrow a book");
         }
 
         System.out.println("checkin)     Return a book");
+        System.out.println("list)        Show all available books");
         System.out.println("return)      Return to main menu");
     }
 
@@ -62,6 +62,7 @@ public class BooksMenuViewState implements State {
                  ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
                  break;
              case "checkout":
+             case "borrow":
                  if (SYSTEM_STATUS) {
                      ViewController.setState(new BorrowBookViewState(SYSTEM_STATUS));
                      break;
