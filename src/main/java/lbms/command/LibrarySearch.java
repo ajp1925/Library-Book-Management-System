@@ -10,8 +10,6 @@ import java.util.*;
  * @author Team B
  */
 public class LibrarySearch implements Command {
-    // TODO check functionality with *
-
     private String title, publisher = null, sort_order = null;
     private ArrayList<String> authors;
     private Long isbn = null;
@@ -25,71 +23,46 @@ public class LibrarySearch implements Command {
      * @throws MissingParametersException: missing parameters
      */
     public LibrarySearch(String request) throws MissingParametersException {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
-        try {
-            title = arguments.remove(0);
-            if(title.equals("*")) {
-                title = null;
-            }
-            Integer i = null;
-            for(String s: arguments) {
-                if(SORTS.contains(s)) {
-                    i = arguments.indexOf(s);
-                    sort_order = s;
-                }
-            }
-            if(i != null) {
-                arguments.remove((int)i);
-            }
-            int index;
-            authors = new ArrayList<>();
-            arguments = new ArrayList<>(Arrays.asList(request.split("\\{")));
-            if(arguments.size() <= 1) {
-                System.out.println("2");
-                throw new MissingParametersException("missing-parameters,{authors}");
-            }
-            String[] authors = arguments.get(1).split("}");
-            if(authors.length < 1) {
-                System.out.println("1");
-                throw new MissingParametersException("missing-parameters,{authors}");
-            }
-            authors = authors[0].split(",");
-            for(index = 0; index < authors.length; index++) {
-                if(authors[index].equals("*")) {
-                    this.authors = null;
-                    break;
-                }
-                this.authors.add(authors[index]);
-                index++;
-            }
-            arguments = new ArrayList<>(Arrays.asList(request.split("}")));
-            if(arguments.size() > 1) {
-                arguments = new ArrayList<>(Arrays.asList(arguments.get(1).split(",")));
-                if(arguments.get(0).matches("\\d*")) {
-                    isbn = Long.parseLong(arguments.remove(0));
-                    publisher = arguments.get(0);
-                }
-                else {
-                    if(arguments.get(0).matches("\\*")) {
-                        isbn = null;
-                        publisher = arguments.get(0);
-                    }
-                    else {
-                        throw new MissingParametersException("missing-parameters,isbn");
-                    }
-                }
-            }
-        }
-        catch(ArrayIndexOutOfBoundsException e) {
-            System.out.println("3");
+        String[] arguments = request.split(",");
+        if(arguments.length <= 1) {
             throw new MissingParametersException("missing-parameters,title,{authors}");
         }
-        catch(MissingParametersException e) {
-            throw new MissingParametersException(e.getMessage());
+        try {
+            for (int index = 0; index < arguments.length; index++) {
+
+                if (sort_order == null &&
+                    Arrays.asList(arguments).contains("title") ||
+                    Arrays.asList(arguments).contains("publish-date") ||
+                    Arrays.asList(arguments).contains("book-status"))
+                {
+                    sort_order = arguments[arguments.length - 1];
+                }
+
+                if (arguments[index].equals("*")) {
+                    continue;
+                } else if (arguments[index].startsWith("{")) {
+                    authors = new ArrayList<>();
+                    while (!arguments[index].endsWith("}")) {
+                        authors.add(arguments[index++].replaceAll("[{}]", ""));
+                    }
+                    authors.add(arguments[index].replaceAll("[{}]", ""));
+                } else {
+                    if (title == null && !arguments[0].equals("*")) {
+                        title = (arguments[index]);
+                    } else if (isbn == null && arguments[index].matches("^\\d{13}$")) {
+                        isbn = Long.parseLong(arguments[index]);
+                    } else if ((publisher == null && sort_order == null && index == (arguments.length) - 1) ||
+                               (publisher == null && sort_order != null && index == (arguments.length) - 2))
+                    {
+                        publisher = arguments[index];
+                    }
+                }
+            }
         }
         catch(Exception e) {
             throw new MissingParametersException("unknown-error");
         }
+
     }
 
     /**
@@ -107,7 +80,7 @@ public class LibrarySearch implements Command {
         if(title != null) {
             matches = BookSearch.BY_TITLE.search(title);
         }
-        else if(authors.size() > 0) {
+        else if(authors != null) {
             matches = BookSearch.BY_AUTHOR.search(authors.get(0));
         }
         else if(isbn != null) {
@@ -123,7 +96,7 @@ public class LibrarySearch implements Command {
             if(title != null && !b.getTitle().contains(title)) {
                 antiMatches.add(b);
             }
-            if(authors.size() > 0) {
+            if(authors != null) {
                 for(String author: authors) {
                     if(!b.hasAuthorPartial(author)) {
                         antiMatches.add(b);
