@@ -1,0 +1,12 @@
+1.) Remove this file and zip this directory for the submission
+
+Files Needed
+    LBMS-R1.jar
+    src directory
+    Design Document (design.pdf)
+    Presentation (presentation.pdf)
+    Source Code listing (listing.pdf)
+    Git log (vclog.txt)
+    Build log (buildlog.txt)
+    Start Script (start.bat and start.sh)
+    Readme (README.txt)
