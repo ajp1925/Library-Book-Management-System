@@ -24,25 +24,44 @@ public class StoreSearch implements Command {
      * Constructor for a StoreSearch object.
      * @param request: the request string to be read
      */
-    public StoreSearch(String request) {
-        int i = 1;
-        authors = new ArrayList<>();
+    public StoreSearch(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
-        title = arguments[0];
-        while(arguments.length > i && !arguments[i].matches("\\d+")) {
-            authors.add(arguments[i]);
-            i += 1;
+        if(arguments.length <= 0) {
+            throw new MissingParametersException("missing-parameters,title");
         }
-        if(arguments.length > i) {
-            isbn = Long.parseLong(arguments[i]);
-            i += 1;
+        try {
+            for (int index = 0; index < arguments.length; index++) {
+
+                if (sortOrder == null &&
+                        Arrays.asList(arguments).contains("title") ||
+                        Arrays.asList(arguments).contains("publish-date") )
+                {
+                    sortOrder = arguments[arguments.length - 1];
+                }
+
+                if (arguments[index].equals("*")) {
+                    continue;
+                } else if (arguments[index].startsWith("{")) {
+                    authors = new ArrayList<>();
+                    while (!arguments[index].endsWith("}")) {
+                        authors.add(arguments[index++].replaceAll("[{}]", ""));
+                    }
+                    authors.add(arguments[index].replaceAll("[{}]", ""));
+                } else {
+                    if (title == null && !arguments[0].equals("*")) {
+                        title = (arguments[index]);
+                    } else if (isbn == null && arguments[index].matches("^\\d{13}$")) {
+                        isbn = Long.parseLong(arguments[index]);
+                    } else if ((publisher == null && sortOrder == null && index == (arguments.length) - 1) ||
+                            (publisher == null && sortOrder != null && index == (arguments.length) - 2))
+                    {
+                        publisher = arguments[index];
+                    }
+                }
+            }
         }
-        if(arguments.length > i) {
-            publisher = arguments[i];
-            i += 1;
-        }
-        if(arguments.length > i) {
-            sortOrder = arguments[i];
+        catch(Exception e) {
+            throw new MissingParametersException("unknown-error");
         }
     }
 
@@ -57,7 +76,7 @@ public class StoreSearch implements Command {
         }
         List<Book> books = BookSearch.BY_TITLE.searchBookstoBuy(title);
         List<Book> remove = new ArrayList<>();
-        if(authors.size() > 0) {
+        if(authors != null) {
             for(Book b: books) {
                 for(String author: authors) {
                     if(!b.hasAuthorPartial(author)) {

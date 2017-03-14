@@ -47,6 +47,7 @@ public class BookPurchase implements Command {
         if(s.equals("failure;")) {
             return s;
         }
+        s = s.replaceAll(",$","");
         return "success," + s + ";";
     }
 
@@ -96,7 +97,7 @@ public class BookPurchase implements Command {
             for(int i = 0; i < quantity; i++) {
                 buyBook(b);
             }
-            booksBought += ("\n" + b.toString() + "," + b.getNumberOfCopies());
+            booksBought += ("\n" + b.toString() + "," + b.getNumberOfCopies()) + ",";
         }
         return ids.size() + booksBought;
     }
