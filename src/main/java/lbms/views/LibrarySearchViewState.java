@@ -53,7 +53,7 @@ public class LibrarySearchViewState implements State{
                 break;
             }
             else if(input.equals("*")) {
-                commandString += " *";
+                commandString += ",*"; //",*" or " *"
             }
             else {
                 commandString += "," + input;
