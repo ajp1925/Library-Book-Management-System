@@ -73,9 +73,31 @@ public class StoreSearchViewState implements State {
             System.out.println(response);
         }
 
-        ViewController.setState(new StoreSearchCompletedViewState(SYSTEM_STATUS));
+        displayMenu();
+    }
+
+    public void displayMenu() {
+        System.out.println("\nPlease select a command:");
+        System.out.println("purchase)    Buy a book for the library from these search results");
+        System.out.println("search)      Search the store again");
+        System.out.println("return)      Return to main menu");
     }
 
     @Override
-    public void change(String state) { }
+    public void change(String state) {
+        switch(state) {
+            case "purchase":
+                ViewController.setState(new PurchaseBookViewState(SYSTEM_STATUS));
+                break;
+            case "search":
+                ViewController.setState(new StoreSearchViewState(SYSTEM_STATUS));
+                break;
+            case "return":
+                ViewController.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
+                break;
+            default:
+                System.out.println("Command not found\n");
+                this.displayMenu();
+        }
+    }
 }
