@@ -5,7 +5,7 @@ import lbms.controllers.ViewController;
 import java.util.Scanner;
 
 /**
- * Created by Chris on 3/10/17. TODO
+ * Report View for fiew package
  */
 public class ReportViewState implements State {
     private boolean SYSTEM_STATUS;
