@@ -51,9 +51,6 @@ public class LibrarySearchViewState implements State{
             if(input.equals("")) {
                 break;
             }
-            else if(input.equals("*")) {
-                commandString += ",*";
-            }
             else {
                 commandString += "," + input;
             }
