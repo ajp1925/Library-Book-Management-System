@@ -74,7 +74,7 @@ public class LibrarySearchViewState implements State{
             System.out.println(response);
         }
 
-        ViewController.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
+        ViewController.setState(new BooksMenuViewState(SYSTEM_STATUS));
     }
 
     @Override

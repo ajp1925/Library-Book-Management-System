@@ -55,7 +55,7 @@ public class PurchaseBookViewState implements State{
             System.out.println(response);
         }
 
-        ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+        ViewController.setState(new BooksMenuViewState(SYSTEM_STATUS));
 
     }
 
