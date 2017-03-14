@@ -25,7 +25,7 @@ public class SystemViewState implements State {
     public void init() {
         System.out.println("\nPlease select a command: ");
         System.out.println("clock)     View system time");
-        System.out.println("stats)     View system statistics");
+        System.out.println("report)    View system statistics");
         System.out.println("return)    Return to main menu");
     }
 
@@ -44,7 +44,7 @@ public class SystemViewState implements State {
             case "clock":
                 ViewController.setState(new ClockViewState(SYSTEM_STATUS));
                 break;
-            case "stats":
+            case "report":
                 ViewController.setState(new ReportViewState(SYSTEM_STATUS));
                 break;
             case "return":
