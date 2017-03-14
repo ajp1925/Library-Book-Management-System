@@ -61,7 +61,7 @@ public class ClockViewState implements State {
                 ViewController.setState(new ResetViewState(SYSTEM_STATUS));
                 break;
             case "return":
-                ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                ViewController.setState(new SystemViewState(SYSTEM_STATUS));
                 break;
             default:
                 System.out.println("Command not found\n");
