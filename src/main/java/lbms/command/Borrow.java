@@ -44,6 +44,8 @@ public class Borrow implements Command {
     /**
      * Executes the borrow command.
      * @return the response or error message
+     *
+     * TODO make sure only x people can borrow x copies of books
      */
     @Override
     public String execute() {
