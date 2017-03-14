@@ -28,7 +28,8 @@ public class ClockViewState implements State {
 
         try {
             System.out.println(CommandController.getCommand().parseResponse(response));
-        } catch (Exception e) {
+        }
+        catch(Exception e) {
             System.out.println(response);
         }
 
@@ -42,7 +43,7 @@ public class ClockViewState implements State {
      * No operation from this method.
      */
     @Override
-    public void onEnter() { }
+    public void onEnter() {}
 
     /**
      * Changes the state.

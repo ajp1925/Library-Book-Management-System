@@ -9,7 +9,7 @@ public class Invalid implements Command {
     /**
      * Constructor for an Invalid command.
      */
-    public Invalid() { }
+    public Invalid() {}
 
     /**
      * Executes the command.

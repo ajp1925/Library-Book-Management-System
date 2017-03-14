@@ -76,6 +76,7 @@ public class UserMenuViewState implements State {
             default:
                 System.out.println("Command not found\n");
                 this.init();
+                break;
         }
     }
 }

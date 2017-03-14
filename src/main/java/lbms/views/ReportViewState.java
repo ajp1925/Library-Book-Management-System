@@ -2,12 +2,14 @@ package lbms.views;
 
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
+
 import java.util.Scanner;
 
 /**
  * Report View for fiew package
  */
 public class ReportViewState implements State {
+
     private boolean SYSTEM_STATUS;
     private Integer days = null;
 
@@ -36,6 +38,9 @@ public class ReportViewState implements State {
         }
     }
 
+    /**
+     * Method handles the state after initialization.
+     */
     @Override
     public void onEnter() {
         String response;
@@ -50,11 +55,17 @@ public class ReportViewState implements State {
 
         try {
             System.out.println(CommandController.getCommand().parseResponse(response));
-        } catch (Exception e) {
+        }
+        catch(Exception e) {
             System.out.println(response);
         }
 
         ViewController.setState(new SystemViewState(SYSTEM_STATUS));
     }
-    public void change(String state) { }
+
+    /**
+     * No operation for this method.
+     * @param state: the command to handle
+     */
+    public void change(String state) {}
 }

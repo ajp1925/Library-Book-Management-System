@@ -2,6 +2,7 @@ package lbms.views;
 
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
+
 import java.util.Scanner;
 
 /**
@@ -52,7 +53,7 @@ public class EndVisitViewState implements State {
      * @param state: the command to handle
      */
     @Override
-    public void change(String state) { }
+    public void change(String state) {}
 }
 
 

@@ -16,6 +16,7 @@ public class SystemDateTime extends Thread implements Serializable {
     private LocalDateTime time;
     private volatile boolean stop = false;
 
+    /** Formats for the date time. */
     private final static DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("yyyy/MM/dd, HH:mm:ss");
     public final static DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     public final static DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");

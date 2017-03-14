@@ -1,8 +1,9 @@
 package lbms.models;
 
 import lbms.LBMS;
-import java.util.HashMap;
+
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * Class for a Visitor object, used in the library book management system.

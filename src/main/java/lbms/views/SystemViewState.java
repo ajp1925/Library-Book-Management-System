@@ -33,7 +33,7 @@ public class SystemViewState implements State {
      * No operation from this method.
      */
     @Override
-    public void onEnter() { }
+    public void onEnter() {}
 
     /**
      * Changes the state of the system.
@@ -53,6 +53,7 @@ public class SystemViewState implements State {
             default:
                 System.out.println("Command not found\n");
                 this.init();
+                break;
         }
     }
 }

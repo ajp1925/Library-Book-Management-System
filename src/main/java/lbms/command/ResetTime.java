@@ -11,7 +11,7 @@ public class ResetTime implements Command {
     /**
      * Constructor for ResetTime command.
      */
-    public ResetTime() { }
+    public ResetTime() {}
 
 
     /**

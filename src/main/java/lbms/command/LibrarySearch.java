@@ -3,6 +3,7 @@ package lbms.command;
 import lbms.LBMS;
 import lbms.models.Book;
 import lbms.search.BookSearch;
+
 import java.util.*;
 
 /**
@@ -10,12 +11,10 @@ import java.util.*;
  * @author Team B
  */
 public class LibrarySearch implements Command {
+
     private String title, publisher = null, sort_order = null;
     private ArrayList<String> authors;
     private Long isbn = null;
-    private static final Set<String> SORTS = new HashSet<>(Arrays.asList(
-            new String[] {"title", "publish-date", "book-status"}
-    ));
 
     /**
      * Constructor for a LibrarySearch command object.
@@ -28,32 +27,28 @@ public class LibrarySearch implements Command {
             throw new MissingParametersException("missing-parameters,title,{authors}");
         }
         try {
-            for (int index = 0; index < arguments.length; index++) {
-
-                if (sort_order == null &&
-                    Arrays.asList(arguments).contains("title") ||
+            for(int index = 0; index < arguments.length; index++) {
+                if(sort_order == null && (Arrays.asList(arguments).contains("title") ||
                     Arrays.asList(arguments).contains("publish-date") ||
-                    Arrays.asList(arguments).contains("book-status"))
-                {
+                    Arrays.asList(arguments).contains("book-status"))) {
                     sort_order = arguments[arguments.length - 1];
                 }
-
-                if (arguments[index].equals("*")) {
-                    continue;
-                } else if (arguments[index].startsWith("{")) {
+                if(arguments[index].startsWith("{")) {
                     authors = new ArrayList<>();
-                    while (!arguments[index].endsWith("}")) {
+                    while(!arguments[index].endsWith("}")) {
                         authors.add(arguments[index++].replaceAll("[{}]", ""));
                     }
                     authors.add(arguments[index].replaceAll("[{}]", ""));
-                } else {
-                    if (title == null && !arguments[0].equals("*")) {
+                }
+                else if(!arguments[index].equals("*")) {
+                    if(title == null && !arguments[0].equals("*")) {
                         title = (arguments[index]);
-                    } else if (isbn == null && arguments[index].matches("^\\d{13}$")) {
+                    }
+                    else if(isbn == null && arguments[index].matches("^\\d{13}$")) {
                         isbn = Long.parseLong(arguments[index]);
-                    } else if ((publisher == null && sort_order == null && index == (arguments.length) - 1) ||
-                               (publisher == null && sort_order != null && index == (arguments.length) - 2))
-                    {
+                    }
+                    else if((publisher == null && sort_order == null && index == (arguments.length) - 1) ||
+                               (publisher == null && sort_order != null && index == (arguments.length) - 2)) {
                         publisher = arguments[index];
                     }
                 }
@@ -62,7 +57,6 @@ public class LibrarySearch implements Command {
         catch(Exception e) {
             throw new MissingParametersException("unknown-error");
         }
-
     }
 
     /**

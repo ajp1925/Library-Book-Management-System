@@ -10,10 +10,10 @@ import java.util.Scanner;
  * @author Team B
  */
 public class StoreSearchViewState implements State {
+
     private boolean SYSTEM_STATUS;
 
     private String commandString = "search";
-    private String optionalArgumentPrompt = "(Press enter to search only with what you've input so far)";
     private String[] prompts = {
             "\nPlease enter the title of the book to search for:",
             "\nPlease enter the author(s) of the book to search for (comma separated):",
@@ -26,7 +26,7 @@ public class StoreSearchViewState implements State {
      * Constructor for an StoreSearchViewState.
      * @param SYSTEM_STATUS the current status of the system
      */
-    public StoreSearchViewState(boolean SYSTEM_STATUS) {
+    StoreSearchViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
@@ -37,10 +37,9 @@ public class StoreSearchViewState implements State {
     public void init() {
         System.out.println("\nYou are now searching the store.");
         System.out.println("(Enter \"*\" to skip any step)");
-
         Scanner scanner = new Scanner(System.in);
-        String input = "";
-
+        String input;
+        String optionalArgumentPrompt = "(Press enter to search only with what you've input so far)";
         for(String prompt : prompts) {
             System.out.println(prompt);
             if(!prompt.equals(prompts[0])) {
@@ -73,13 +72,20 @@ public class StoreSearchViewState implements State {
         displayMenu();
     }
 
-    public void displayMenu() {
+    /**
+     * Displays the menu for this state.
+     */
+    private void displayMenu() {
         System.out.println("\nPlease select a command:");
         System.out.println("purchase)    Buy a book for the library from these search results");
         System.out.println("search)      Search the store again");
         System.out.println("return)      Return to main menu");
     }
 
+    /**
+     * Changes the state from this state.
+     * @param state: the command to handle
+     */
     @Override
     public void change(String state) {
         switch(state) {
@@ -95,6 +101,7 @@ public class StoreSearchViewState implements State {
             default:
                 System.out.println("Command not found\n");
                 this.displayMenu();
+                break;
         }
     }
 }

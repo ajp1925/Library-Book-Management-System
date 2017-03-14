@@ -1,14 +1,16 @@
 package lbms.models;
 
-import java.time.*;
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * Class for a Visit Object, used in the library book management system.
  * @author Team B
  */
 public class Visit implements Serializable {
-    // TODO remove unused methods
 
     private Visitor visitor;
     private LocalDateTime dateTime;
@@ -66,30 +68,6 @@ public class Visit implements Serializable {
      */
     public LocalTime getDepartureTime() {
         return timeOfDeparture;
-    }
-
-    /**
-     * Creates a string of the date.
-     * @return string of the visit date
-     */
-    public String printDate() {
-        return this.getDate().format(SystemDateTime.DATE_FORMAT);
-    }
-
-    /**
-     * Creates a string of the arrival time.
-     * @return string of the visit arrival time
-     */
-    public String printArrivalTime() {
-        return this.getArrivalTime().format(SystemDateTime.TIME_FORMAT);
-    }
-
-    /**
-     * Creates a string of the departure time.
-     * @return string of the visit departure time
-     */
-    public String printDepartureTime() {
-        return this.getDepartureTime().format(SystemDateTime.TIME_FORMAT);
     }
 
     /**

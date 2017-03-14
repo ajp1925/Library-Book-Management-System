@@ -11,7 +11,7 @@ public class GetDateTime implements Command {
     /**
      * Constructor for GetDateTime.
      */
-    public GetDateTime() { }
+    public GetDateTime() {}
 
     /**
      * Gets the system date and time.

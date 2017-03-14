@@ -1,6 +1,6 @@
 package lbms.controllers;
 
-import lbms.views.*;
+import lbms.views.State;
 
 /**
  * Controller for the views package.

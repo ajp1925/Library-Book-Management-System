@@ -3,23 +3,23 @@ package lbms.views;
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by 15bar on 3/12/2017.
+ * PurchaseBookViewState class for views package.
+ * @author Team B
  */
-public class PurchaseBookViewState implements State{
+public class PurchaseBookViewState implements State {
+
     private boolean SYSTEM_STATUS;
-    int quantity;
-    String ids = "";
-    String response;
+    private int quantity;
+    private String ids = "";
 
     /**
      * Constructor for an PurchaseBookViewState.
      * @param SYSTEM_STATUS: the current status of the system
      */
-    public PurchaseBookViewState(boolean SYSTEM_STATUS) {
+    PurchaseBookViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
@@ -32,14 +32,13 @@ public class PurchaseBookViewState implements State{
 
         System.out.println("\nWhat quantity of these books would you like to purchase?");
         quantity = scanner.nextInt();
-
+        String response;
         do {
             System.out.println("\nPlease enter the ID of the book to purchase.");
             ids += "," + scanner.next();
             System.out.println("\nAre you buying another book?");
             response = scanner.next();
-        } while (response.toLowerCase().equals("yes") || response.toLowerCase().equals("y"));
-
+        } while(response.toLowerCase().equals("yes") || response.toLowerCase().equals("y"));
     }
 
     /**
@@ -51,14 +50,18 @@ public class PurchaseBookViewState implements State{
 
         try {
             System.out.println("\n" + CommandController.getCommand().parseResponse(response));
-        } catch (Exception e) {
+        }
+        catch(Exception e) {
             System.out.println(response);
         }
 
         ViewController.setState(new BooksMenuViewState(SYSTEM_STATUS));
-
     }
 
+    /**
+     * No operation for this method.
+     * @param state: the command to handle
+     */
     @Override
-    public void change(String state) { }
+    public void change(String state) {}
 }

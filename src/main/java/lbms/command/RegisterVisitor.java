@@ -65,8 +65,9 @@ public class RegisterVisitor implements Command {
             return "This user already exists in the system.";
         }
         else {
-            return String.format("\nNew visitor created on %s:\n\tName: %s\n\tAddress: %s\n\tPhone: %s\n\tVisitor ID: %d",
-                    fields[2].replace(";", ""), visitor.getName(), visitor.getAddress(), visitor.getPhoneNumber(), visitor.getVisitorID());
+            return String.format("\nNew visitor created on %s:\n\tName: %s\n\tAddress: %s\n\tPhone: %s\n\tVisitor " +
+                            "ID: %d", fields[2].replace(";", ""), visitor.getName(), visitor.getAddress(),
+                    visitor.getPhoneNumber(), visitor.getVisitorID());
         }
     }
 

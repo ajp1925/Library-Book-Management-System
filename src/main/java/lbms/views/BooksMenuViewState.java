@@ -1,7 +1,6 @@
 package lbms.views;
 
 import lbms.controllers.ViewController;
-import lbms.models.SystemDateTime;
 
 /**
  * BooksMenuViewState class for viewing books in the system.
@@ -63,8 +62,8 @@ public class BooksMenuViewState implements State {
                  break;
              case "checkout":
              case "borrow":
-                 if (SYSTEM_STATUS) {
-                     ViewController.setState(new BorrowBookViewState(SYSTEM_STATUS));
+                 if(SYSTEM_STATUS) {
+                     ViewController.setState(new BorrowBookViewState(true));
                      break;
                  }
              default:

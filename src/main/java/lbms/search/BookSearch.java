@@ -2,6 +2,7 @@ package lbms.search;
 
 import lbms.LBMS;
 import lbms.models.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;

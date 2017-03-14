@@ -2,6 +2,7 @@ package lbms.views;
 
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
+
 import java.util.Scanner;
 
 /**
@@ -48,10 +49,10 @@ public class RegisterViewState implements State {
     public void onEnter() {
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"register," + firstName + ","
                 + lastName + "," + address + "," + phone + ";");
-
         try {
             System.out.println(CommandController.getCommand().parseResponse(response));
-        } catch (Exception e) {
+        }
+        catch(Exception e) {
             System.out.println(response);
         }
 
@@ -63,5 +64,5 @@ public class RegisterViewState implements State {
      * @param state: the command to handle
      */
     @Override
-    public void change(String state) { }
+    public void change(String state) {}
 }

@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.search.UserSearch;
+
 import java.text.DecimalFormat;
 
 /**

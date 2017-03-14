@@ -4,11 +4,12 @@ import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
 import lbms.models.*;
 import lbms.views.DefaultViewState;
+
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
 import java.time.LocalTime;
+import java.util.*;
 
 /**
  * Main class to run the Library Book Management System.
@@ -27,7 +28,6 @@ public class LBMS {
     private static ArrayList<Visit> totalVisits = new ArrayList<>();
     private static ArrayList<Transaction> transactions = new ArrayList<>();
     private static HashMap<Long, Visit> currentVisits = new HashMap<>();
-    private boolean shutdown = false;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -73,7 +73,7 @@ public class LBMS {
 
                 System.out.print("> ");
                 String input = s.nextLine();
-                if(input.matches("(?i)exit|quit") || shutdown) {
+                if(input.matches("(?i)exit|quit")) {
                     break;
                 }
                 ViewController.change(input);
@@ -288,13 +288,6 @@ public class LBMS {
             e.printStackTrace();
             System.exit(1);
         }
-    }
-
-    /**
-     * Used to halt the LBMS system.
-     */
-    public void shutdown() {
-        shutdown = true;
     }
 
     /**

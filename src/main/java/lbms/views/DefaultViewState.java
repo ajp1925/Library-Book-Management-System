@@ -8,7 +8,7 @@ import lbms.controllers.ViewController;
  */
 public class DefaultViewState implements State {
 
-    boolean SYSTEM_STATUS;
+    private boolean SYSTEM_STATUS;
 
     /**
      * Constructor for a DefaultViewState.
@@ -40,7 +40,7 @@ public class DefaultViewState implements State {
      * No operation from this method.
      */
     @Override
-    public void onEnter() { }
+    public void onEnter() {}
 
     /**
      * Changes the state.
@@ -60,6 +60,7 @@ public class DefaultViewState implements State {
             default:
                 System.out.println("Command not found\n\n");
                 this.init();
+                break;
         }
     }
 }
