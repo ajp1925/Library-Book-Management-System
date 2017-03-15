@@ -19,3 +19,5 @@ Known bugs / Unknown functionality
     -Library book search needs to be extensively tested
     -Returning books after paying fines could be buggy
     -Book store search also should be tested
+    -Test views
+    -BUG: Checkout book even though library owns know books
