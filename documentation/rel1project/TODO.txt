@@ -10,3 +10,12 @@ Files Needed
     Build log (buildlog.txt)
     Start Script (start.bat and start.sh)
     Readme (README.txt)
+
+Known bugs / Unknown functionality
+    -For the library report, requesting a report for a certain
+        number of days does not display the correct information
+    -Paying fines can act weird with returning books, needs to be
+        extensively tested
+    -Library book search needs to be extensively tested
+    -Returning books after paying fines could be buggy
+    -Book store search also should be tested
