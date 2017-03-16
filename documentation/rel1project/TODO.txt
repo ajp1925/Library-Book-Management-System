@@ -8,7 +8,7 @@ Files Needed
     Source Code listing (listing.pdf)
     Git log (vclog.txt)
     Build log (buildlog.txt)
-    Start Script (start.bat and start.sh)
+    Start Script (start.bat and startAPI.bat)
     Readme (README.txt)
 
 Known bugs / Unknown functionality
@@ -20,4 +20,4 @@ Known bugs / Unknown functionality
     -Returning books after paying fines could be buggy
     -Book store search also should be tested
     -Test views
-    -BUG: Checkout book even though library owns know books
+    -BUG: Checkout book even though library owns zero books
