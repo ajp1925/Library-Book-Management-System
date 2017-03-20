@@ -1,5 +1,7 @@
 package lbms.views;
 
+import java.io.IOException;
+
 /**
  * Abstract representation of a views.
  *
@@ -28,7 +30,10 @@ public interface State {
      */
     default void flush() {
         if(System.getProperty("os.name").startsWith("Windows")) {
-            System.out.print("\u001b[2J\u001b[H");
+            try {
+                Runtime.getRuntime().exec("cls");
+            }
+            catch(IOException e) {}
         }
         else {
             System.out.print("\033[H\033[2J");
