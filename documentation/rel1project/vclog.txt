@@ -1,3 +1,45 @@
+commit 1c54a1423549c912d78f9810c10385bad797f050
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Mon Mar 20 11:55:10 2017 -0400
+
+    Added cover border
+
+commit 42860eb8e723890c93f5ac9cfb9349318f6e5c4b
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Mon Mar 20 11:52:29 2017 -0400
+
+    Generated final draft design document as pdf
+
+commit 7d491a0cf7b4479f1fcf698e92b043c812acdd25
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 10:43:21 2017 -0400
+
+    Added pattern charts to design doc.
+
+commit b68a70be1f331a698b675de0d30598d6a59b2062
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 20 10:09:26 2017 -0400
+
+    filled in strategy table in design doc
+
+commit dd285276ddfc447a22c1e754dee62582352a4eb2
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 20 09:38:35 2017 -0400
+
+    filled out command table in the design doc
+
+commit 69e2db19eb9f5cf726e7d0b35d5d6f3600087ca4
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Mon Mar 20 03:22:51 2017 -0400
+
+    Updated Design Document
+
+commit fa9833c31d221fc36159615bb071b432d4659680
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 19 21:46:06 2017 -0400
+
+    Added buildlog.txt and vclog.txt
+
 commit ae9334d7d4ca74147361ea585c2ffeb0fcf7a647
 Author: APalumbo97 <ajpalumbo97@gmail.com>
 Date:   Sun Mar 19 21:37:03 2017 -0400
