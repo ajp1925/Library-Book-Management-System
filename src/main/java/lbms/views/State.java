@@ -27,12 +27,13 @@ public interface State {
      * Used to flush the console.
      */
     default void flush() {
-        if (System.getProperty("os.name").startsWith("Windows")) {
-            // TODO: Windows screen clear
-        } else {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+        if(System.getProperty("os.name").startsWith("Windows")) {
+            System.out.print("\u001b[2J\u001b[H");
         }
+        else {
+            System.out.print("\033[H\033[2J");
+        }
+        System.out.flush();
     }
 
 }
