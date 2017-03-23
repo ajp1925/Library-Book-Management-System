@@ -66,7 +66,7 @@ public class BookPurchase implements Command {
                 List<Book> books;
                 for(int i = 2; i < fields.length; i++) {
                     try {
-                        books = BookSearch.BY_ISBN.search(Long.parseLong(fields[i]));
+                        books = BookSearch.BY_ISBN.findAll(Long.parseLong(fields[i]));
                         output += books.get(0).getTitle() + " * " + fields[1] + "\n";
                     }
                     catch(NumberFormatException e) {}

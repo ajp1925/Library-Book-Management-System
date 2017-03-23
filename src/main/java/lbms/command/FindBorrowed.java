@@ -41,7 +41,7 @@ public class FindBorrowed implements Command {
         Book b;
         LBMS.getLastBookSearch().clear();
         for(Transaction t: visitor.getCheckedOutBooks().values()) {
-            b = BookSearch.BY_ISBN.search(t.getIsbn()).get(0);
+            b = BookSearch.BY_ISBN.findAll(t.getIsbn()).get(0);
             LBMS.getLastBookSearch().add(b);
             s += "\n";
             s += id[0]++ + "," + t.getIsbn() + "," + b.getTitle() + "," + t.getDate();

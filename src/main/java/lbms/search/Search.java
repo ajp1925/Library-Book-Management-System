@@ -1,6 +1,9 @@
 package lbms.search;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Interface to model search classes on.
@@ -8,30 +11,24 @@ import java.util.List;
  */
 public interface Search<T> {
 
-    /**
-     * Finds objects that fit the search criteria
-     * @param s: the string to search for
-     * @return a list of objects that match
-     */
-    List<T> search(String s);
+    Predicate<? super T> createPredicate(String s);
 
-    /**
-     * Finds the first instance of l.
-     * @param l: the long to be searched for
-     * @return the first instance of l
-     */
-    default T findFirst(Long l) {
-        return findFirst(Long.toString(l));
+    Stream<T> filterStream(Predicate<? super T> condition);
+
+    default List<T> findAll(Long l) {
+        return findAll(l.toString());
     }
 
-    /**
-     * Finds the first instance of s.
-     * @param s: the string to be searched for
-     * @return the first instance of s
-     */
+    default List<T> findAll(String s) {
+        return filterStream(createPredicate(s)).collect(Collectors.toList());
+    }
+
+    default T findFirst(Long l) {
+        return findFirst(l.toString());
+    }
+
     default T findFirst(String s) {
-        List<T> results = search(s);
-        return results.isEmpty() ? null : results.get(0);
+        return filterStream(createPredicate(s)).findFirst().orElse(null);
     }
 
 }
