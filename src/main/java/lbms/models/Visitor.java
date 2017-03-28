@@ -9,9 +9,11 @@ import java.util.HashMap;
  * Class for a Visitor object, used in the library book management system.
  * @author Team B
  */
-public class Visitor implements Serializable {
+public class Visitor implements Account, Serializable {
 
     private String firstName, lastName;
+    private String username;
+    private String password;
     private String address;
     private long phoneNumber;
     private long visitorID;
@@ -29,12 +31,14 @@ public class Visitor implements Serializable {
      * @param address: the address of the visitor
      * @param phoneNumber: the visitor's phone number
      */
-    public Visitor(String firstName, String lastName, String address, long phoneNumber) {
+    public Visitor(String firstName, String lastName, String username, String password, String address, long phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
+        this.password = password;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.visitorID = LBMS.getVisitors().size() + 1;
+        this.visitorID = LBMS.totalAccounts() + 1;
         this.checkedOutBooks = new HashMap<>(MAX_BOOKS);
         this.inLibrary = false;
         this.currentFines = 0.0;
@@ -48,6 +52,22 @@ public class Visitor implements Serializable {
      */
     public String getName() {
         return firstName + " " + lastName;
+    }
+
+    /**
+     * Getter for the username of a Visitor.
+     * @return the visitors username
+     */
+    public String getUsername() {
+        return this.username;
+    }
+
+    /**
+     * Getter for the visitor's password.
+     * @return the visitor's password
+     */
+    public String getPassword() {
+        return this.password;
     }
 
     /**

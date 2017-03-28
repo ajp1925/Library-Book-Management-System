@@ -21,13 +21,14 @@ public class LBMS {
     private final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
     private static LBMS instance;
-    private static HashMap<Long, Book> books = new HashMap<>();
+    private static HashMap<Long, Book> books;
     private static ArrayList<Book> lastBookSearch = new ArrayList<>();
-    private static ArrayList<Book> booksToBuy = new ArrayList<>();
-    private static HashMap<Long, Visitor> visitors = new HashMap<>();
-    private static ArrayList<Visit> totalVisits = new ArrayList<>();
-    private static ArrayList<Transaction> transactions = new ArrayList<>();
-    private static HashMap<Long, Visit> currentVisits = new HashMap<>();
+    private static ArrayList<Book> booksToBuy;
+    private static HashMap<Long, Visitor> visitors;
+    private static HashMap<Long, Employee> employees;
+    private static ArrayList<Visit> totalVisits;
+    private static ArrayList<Transaction> transactions;
+    private static HashMap<Long, Visit> currentVisits;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -242,6 +243,7 @@ public class LBMS {
             books = (HashMap<Long, Book>)in.readObject();
             booksToBuy = (ArrayList<Book>)in.readObject();
             visitors = (HashMap<Long, Visitor>)in.readObject();
+            employees = (HashMap<Long, Employee>)in.readObject();
             totalVisits = (ArrayList<Visit>) in.readObject();
             transactions = (ArrayList<Transaction>)in.readObject();
             SystemDateTime.setInstance((SystemDateTime) in.readObject());
@@ -250,6 +252,7 @@ public class LBMS {
             books = new HashMap<>();
             booksToBuy = makeBooks();
             visitors = new HashMap<>();
+            employees = new HashMap<>();
             totalVisits = new ArrayList<>();
             transactions = new ArrayList<>();
         }
@@ -278,6 +281,7 @@ public class LBMS {
             out.writeObject(books);
             out.writeObject(booksToBuy);
             out.writeObject(visitors);
+            out.writeObject(employees);
             out.writeObject(totalVisits);
             out.writeObject(transactions);
             out.writeObject(SystemDateTime.getInstance());
@@ -316,10 +320,18 @@ public class LBMS {
 
     /**
      * Getter for the visitors.
-     * @return an array list of visitors of the library
+     * @return a hash map of visitors of the library
      */
     public static HashMap<Long, Visitor> getVisitors() {
         return visitors;
+    }
+
+    /**
+     * Getter for the employees.
+     * @return a hash map of employees of the library
+     */
+    public static HashMap<Long, Employee> getEmployees() {
+        return employees;
     }
 
     /**
@@ -345,5 +357,13 @@ public class LBMS {
      */
     public static ArrayList<Transaction> getTransactions() {
         return transactions;
+    }
+
+    /**
+     * Used for generating account IDs.
+     * @return the total number of accounts in the library
+     */
+    public static long totalAccounts() {
+        return visitors.size() + employees.size();
     }
 }
