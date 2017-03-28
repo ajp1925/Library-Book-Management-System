@@ -1,7 +1,8 @@
 package lbms.controllers;
 
-import lbms.views.DefaultViewState;
-import lbms.views.State;
+import lbms.views.CLIView;
+import lbms.views.viewstate.DefaultViewState;
+import lbms.views.viewstate.State;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertNotEquals;
@@ -11,19 +12,19 @@ public class ViewControllerTest {
 
     @Before
     public void setDefaultState() {
-        ViewController.setState(new DefaultViewState(true));
+        CLIView.setState(new DefaultViewState(true));
     }
 
     @Test
     public void defaultStateExists() {
-        assertNotNull(ViewController.getState());
+        assertNotNull(CLIView.getState());
     }
 
     @Test
     public void stateSwitches() {
-        State currentState = ViewController.getState();
-        ViewController.setState(new DummyState());
-        assertNotEquals(currentState, ViewController.getState());
+        State currentState = CLIView.getState();
+        CLIView.setState(new DummyState());
+        assertNotEquals(currentState, CLIView.getState());
     }
 
     public class DummyState implements State {

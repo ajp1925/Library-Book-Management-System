@@ -3,7 +3,6 @@ package lbms;
 import lbms.controllers.CommandController;
 import lbms.controllers.ViewController;
 import lbms.models.*;
-import lbms.views.DefaultViewState;
 
 import java.io.*;
 import java.text.ParseException;
@@ -17,9 +16,11 @@ import java.util.*;
  * @author Team B
  */
 public class LBMS {
-
-    private final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
-    private final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
+    public final static String GUI = "GUI";
+    public final static String CLI = "CLI";
+    public final static String API = "API";
+    public final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
+    public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
     private static LBMS instance;
     private static HashMap<Long, Book> books;
@@ -36,75 +37,23 @@ public class LBMS {
      * @param args: the program arguments
      */
     public static void main(String[] args) {
-        boolean console;
+        String arg;
         try {
-            console = Boolean.parseBoolean(args[0]);
+            arg = args[0].toUpperCase();
         }
         catch(ArrayIndexOutOfBoundsException e) {
-            console = true;
+            arg = GUI;
         }
-        new LBMS(console);
+
+        new LBMS(arg);
     }
 
     /**
      * Handles user input for the LBMS system.
      */
-    public LBMS(boolean console) {
+    public LBMS(String arg) {
         SystemInit();
-        Scanner s = new Scanner(System.in);
-        int initial = 0;
-        if(console) {
-            while(true) {
-                // Check if library is open
-                if(SystemDateTime.getInstance(null).getTime().isAfter(OPEN_TIME) &&
-                        SystemDateTime.getInstance(null).getTime().isBefore(CLOSE_TIME)) {
-                    // Check if library just opened or system start
-                    if(initial == 0 || initial == 1) {
-                        ViewController.setState(new DefaultViewState(true));
-                        initial = 2;
-                    }
-                }
-                else {
-                    // Check if library just closed or system start
-                    if(initial == 0 || initial == 2) {
-                        SystemClose();
-                        ViewController.setState(new DefaultViewState(false));
-                        initial = 1;
-                    }
-                }
-
-                System.out.print("> ");
-                String input = s.nextLine();
-                if(input.matches("(?i)exit|quit")) {
-                    break;
-                }
-                ViewController.change(input);
-            }
-        }
-        else {
-            String input;
-            do {
-                System.out.print("> ");
-                input = s.nextLine();
-                if(SystemDateTime.getInstance(null).getTime().isAfter(OPEN_TIME) &&
-                        SystemDateTime.getInstance(null).getTime().isBefore(CLOSE_TIME)) {
-                    // Check if library just opened or system start
-                    if(initial == 0 || initial == 1) {
-                        initial = 2;
-                    }
-                    System.out.println(CommandController.processRequest(true, input));
-                }
-                else {
-                    // Check if library just closed or system start
-                    if(initial == 0 || initial == 2) {
-                        SystemClose();
-                        initial = 1;
-                    }
-                    System.out.println(CommandController.processRequest(false, input));
-                }
-            } while(!input.matches("(?i)exit|quit"));
-        }
-        s.close();
+        ViewController.start(arg);
         SystemClose();
     }
 
@@ -266,11 +215,7 @@ public class LBMS {
     private void SystemClose() {
         SystemDateTime.getInstance(null).stopClock();
 
-        // Departs all the visitors when the library closes.
-        for(Visit visit: currentVisits.values()) {
-            CommandController.processRequest(false, "depart," +
-                    visit.getVisitor().getVisitorID() + ";");
-        }
+        LibraryClose();
 
         // Serializes the data.
         try {
@@ -290,6 +235,14 @@ public class LBMS {
         catch(IOException e) {
             e.printStackTrace();
             System.exit(1);
+        }
+    }
+
+    public static void LibraryClose() {
+        // Departs all the visitors when the library closes.
+        for(Visit visit: currentVisits.values()) {
+            CommandController.processRequest(false, "depart," +
+                    visit.getVisitor().getVisitorID() + ";");
         }
     }
 

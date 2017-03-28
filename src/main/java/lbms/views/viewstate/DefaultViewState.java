@@ -1,6 +1,6 @@
-package lbms.views;
+package lbms.views.viewstate;
 
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 /**
  * This is the default views which is entered when the system starts.
@@ -49,13 +49,13 @@ public class DefaultViewState implements State {
     public void change(String state) {
         switch(state) {
             case "books":
-                ViewController.setState(new BooksMenuViewState(SYSTEM_STATUS));
+                CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
                 break;
             case "users":
-                ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
+                CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
                 break;
             case "system":
-                ViewController.setState(new SystemViewState(SYSTEM_STATUS));
+                CLIView.setState(new SystemViewState(SYSTEM_STATUS));
                 break;
             default:
                 System.out.println("Command not found\n\n");

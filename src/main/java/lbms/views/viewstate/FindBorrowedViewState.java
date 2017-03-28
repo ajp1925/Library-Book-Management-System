@@ -1,24 +1,24 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 import java.util.Scanner;
 
 /**
- * EndVisitViewState class for views package.
+ * FindBorrowedViewState class.
  * @author Team B
  */
-public class EndVisitViewState implements State {
+public class FindBorrowedViewState implements State {
 
     private boolean SYSTEM_STATUS;
     private long visitorID;
 
     /**
-     * Constructor for an EndVisitViewState object.
+     * Constructor for FindBorrowedViewState object.
      * @param SYSTEM_STATUS: the status of the system
      */
-    EndVisitViewState(boolean SYSTEM_STATUS) {
+    FindBorrowedViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
@@ -28,7 +28,7 @@ public class EndVisitViewState implements State {
     @Override
     public void init() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("\nWhat is the ID of the visitor exiting the library? ");
+        System.out.println("\nWhat is the ID of the visitor you are querying?");
         visitorID = scanner.nextLong();
     }
 
@@ -37,7 +37,7 @@ public class EndVisitViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"depart," + visitorID + ";");
+        String response = CommandController.processRequest(this.SYSTEM_STATUS,"borrowed," + visitorID + ";");
 
         try {
             System.out.println(CommandController.getCommand().parseResponse(response));
@@ -45,7 +45,7 @@ public class EndVisitViewState implements State {
             System.out.println(response);
         }
 
-        ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
     /**
@@ -55,6 +55,3 @@ public class EndVisitViewState implements State {
     @Override
     public void change(String state) {}
 }
-
-
-

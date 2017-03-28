@@ -1,39 +1,39 @@
 package lbms.controllers;
 
-import lbms.views.State;
+import lbms.LBMS;
+import lbms.views.APIView;
+import lbms.views.CLIView;
+import lbms.views.View;
+
+import java.time.LocalTime;
 
 /**
  * Controller for the views package.
  * @author Team B
  */
 public class ViewController {
+    private static View ui = null;
 
-    private static State viewState;
+    public final static LocalTime OPEN_TIME = LBMS.OPEN_TIME;
+    public final static LocalTime CLOSE_TIME = LBMS.CLOSE_TIME;
 
-    /**
-     * Sets the state of the system.
-     * @param state: the state to be set
-     */
-    public static void setState(State state) {
-        viewState = state;
-        viewState.flush();
-        viewState.init();
-        viewState.onEnter();
+    public static void start(String arg) {
+        switch (arg) {
+            case LBMS.API:
+                ui = APIView.getInstance();
+                break;
+            case LBMS.CLI:
+                ui = CLIView.getInstance();
+                break;
+            default:
+                System.out.println("GUI GOES HERE");
+                break;
+        }
+
+        ui.run();
     }
 
-    /**
-     * Getter for the viewState variable.
-     * @return the viewState
-     */
-    public static State getState() {
-        return viewState;
-    }
-
-    /**
-     * Changes the current state.
-     * @param state: the state to be changed
-     */
-    public static void change(String state) {
-        viewState.change(state);
+    public static void LibraryClose() {
+        LBMS.LibraryClose();
     }
 }

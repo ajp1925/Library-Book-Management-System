@@ -1,6 +1,6 @@
-package lbms.views;
+package lbms.views.viewstate;
 
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 /**
  * BooksMenuViewState class for viewing books in the system.
@@ -49,21 +49,21 @@ public class BooksMenuViewState implements State {
     public void change(String state) {
          switch(state) {
              case "search":
-                 ViewController.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
+                 CLIView.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
                  break;
              case "list":
-                 ViewController.setState(new BooksListViewState(SYSTEM_STATUS));
+                 CLIView.setState(new BooksListViewState(SYSTEM_STATUS));
                  break;
              case "checkin":
-                 ViewController.setState(new ReturnBookViewState(SYSTEM_STATUS));
+                 CLIView.setState(new ReturnBookViewState(SYSTEM_STATUS));
                  break;
              case "return":
-                 ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                 CLIView.setState(new DefaultViewState(SYSTEM_STATUS));
                  break;
              case "checkout":
              case "borrow":
                  if(SYSTEM_STATUS) {
-                     ViewController.setState(new BorrowBookViewState(true));
+                     CLIView.setState(new BorrowBookViewState(true));
                      break;
                  }
              default:

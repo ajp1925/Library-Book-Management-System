@@ -1,7 +1,7 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 import java.util.Scanner;
 
@@ -60,7 +60,7 @@ public class ReportViewState implements State {
             System.out.println(response);
         }
 
-        ViewController.setState(new SystemViewState(SYSTEM_STATUS));
+        CLIView.setState(new SystemViewState(SYSTEM_STATUS));
     }
 
     /**

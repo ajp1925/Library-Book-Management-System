@@ -1,7 +1,7 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 import java.util.Scanner;
 
@@ -56,7 +56,7 @@ public class RegisterViewState implements State {
             System.out.println(response);
         }
 
-        ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
     /**

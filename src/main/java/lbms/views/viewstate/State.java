@@ -1,4 +1,4 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import java.io.IOException;
 

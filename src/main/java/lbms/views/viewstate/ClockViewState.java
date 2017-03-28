@@ -1,7 +1,7 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 /**
  * ClockViewState class processes the clock command.
@@ -56,13 +56,13 @@ public class ClockViewState implements State {
                 this.init();
                 break;
             case "advance":
-                ViewController.setState(new AdvanceViewState(SYSTEM_STATUS));
+                CLIView.setState(new AdvanceViewState(SYSTEM_STATUS));
                 break;
             case "reset":
-                ViewController.setState(new ResetViewState(SYSTEM_STATUS));
+                CLIView.setState(new ResetViewState(SYSTEM_STATUS));
                 break;
             case "return":
-                ViewController.setState(new SystemViewState(SYSTEM_STATUS));
+                CLIView.setState(new SystemViewState(SYSTEM_STATUS));
                 break;
             default:
                 System.out.println("Command not found\n");

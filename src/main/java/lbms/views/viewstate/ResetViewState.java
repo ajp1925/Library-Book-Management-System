@@ -1,7 +1,7 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 /**
  * ResetViewState class.
@@ -33,7 +33,7 @@ public class ResetViewState implements State {
             System.out.println(response);
         }
 
-        ViewController.setState(new ClockViewState(SYSTEM_STATUS));
+        CLIView.setState(new ClockViewState(SYSTEM_STATUS));
     }
 
     /**

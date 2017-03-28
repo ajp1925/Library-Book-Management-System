@@ -1,43 +1,43 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 import java.util.Scanner;
 
 /**
- * FindBorrowedViewState class.
+ * BeginVisitViewState class that processes the begin visit command.
  * @author Team B
  */
-public class FindBorrowedViewState implements State {
+public class BeginVisitViewState implements State {
 
     private boolean SYSTEM_STATUS;
     private long visitorID;
 
     /**
-     * Constructor for FindBorrowedViewState object.
-     * @param SYSTEM_STATUS: the status of the system
+     * Constructor for the BeginVisitViewState.
+     * @param SYSTEM_STATUS: the initial status of the system
      */
-    FindBorrowedViewState(boolean SYSTEM_STATUS) {
+    BeginVisitViewState(boolean SYSTEM_STATUS) {
         this.SYSTEM_STATUS = SYSTEM_STATUS;
     }
 
     /**
-     * Initializes the view.
+     * Initializes the begin visit view state.
      */
     @Override
     public void init() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nWhat is the ID of the visitor you are querying?");
+        System.out.print("\nWhat is the ID of the visitor entering the library? ");
         visitorID = scanner.nextLong();
     }
 
     /**
-     * Processes the command.
+     * Processes the command string for begin visit.
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"borrowed," + visitorID + ";");
+        String response = CommandController.processRequest(this.SYSTEM_STATUS,"arrive," + visitorID + ";");
 
         try {
             System.out.println(CommandController.getCommand().parseResponse(response));
@@ -45,7 +45,7 @@ public class FindBorrowedViewState implements State {
             System.out.println(response);
         }
 
-        ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
     /**

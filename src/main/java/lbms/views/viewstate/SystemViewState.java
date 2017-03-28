@@ -1,6 +1,6 @@
-package lbms.views;
+package lbms.views.viewstate;
 
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 /**
  * SystemViewState class.
@@ -42,13 +42,13 @@ public class SystemViewState implements State {
     public void change(String state) {
         switch(state) {
             case "clock":
-                ViewController.setState(new ClockViewState(SYSTEM_STATUS));
+                CLIView.setState(new ClockViewState(SYSTEM_STATUS));
                 break;
             case "report":
-                ViewController.setState(new ReportViewState(SYSTEM_STATUS));
+                CLIView.setState(new ReportViewState(SYSTEM_STATUS));
                 break;
             case "return":
-                ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                CLIView.setState(new DefaultViewState(SYSTEM_STATUS));
                 break;
             default:
                 System.out.println("Command not found\n");

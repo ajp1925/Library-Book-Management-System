@@ -1,7 +1,7 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.LBMS;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 import lbms.models.Visitor;
 
 /**
@@ -37,7 +37,7 @@ public class UserListViewState implements State {
             }
         }
 
-        ViewController.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
     }
 
     /**

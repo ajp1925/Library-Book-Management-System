@@ -1,7 +1,7 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 import java.util.Scanner;
 
@@ -95,13 +95,13 @@ public class StoreSearchViewState implements State {
     public void change(String state) {
         switch(state) {
             case "purchase":
-                ViewController.setState(new PurchaseBookViewState(SYSTEM_STATUS));
+                CLIView.setState(new PurchaseBookViewState(SYSTEM_STATUS));
                 break;
             case "search":
-                ViewController.setState(new StoreSearchViewState(SYSTEM_STATUS));
+                CLIView.setState(new StoreSearchViewState(SYSTEM_STATUS));
                 break;
             case "return":
-                ViewController.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
+                CLIView.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
                 break;
             default:
                 System.out.println("Command not found\n");

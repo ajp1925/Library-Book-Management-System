@@ -1,7 +1,7 @@
-package lbms.views;
+package lbms.views.viewstate;
 
 import lbms.LBMS;
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 import lbms.models.Book;
 
 /**
@@ -36,7 +36,7 @@ public class BooksListViewState implements State {
             }
         }
 
-        ViewController.setState(new BooksMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
     }
 
     /**

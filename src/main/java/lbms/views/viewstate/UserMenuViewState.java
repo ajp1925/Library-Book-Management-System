@@ -1,6 +1,6 @@
-package lbms.views;
+package lbms.views.viewstate;
 
-import lbms.controllers.ViewController;
+import lbms.views.CLIView;
 
 /**
  * UserMenuViewState class.
@@ -50,27 +50,27 @@ public class UserMenuViewState implements State {
     public void change(String state) {
         switch (state) {
             case "register":
-                ViewController.setState(new RegisterViewState(SYSTEM_STATUS));
+                CLIView.setState(new RegisterViewState(SYSTEM_STATUS));
                 break;
             case "list":
-                ViewController.setState(new UserListViewState(SYSTEM_STATUS));
+                CLIView.setState(new UserListViewState(SYSTEM_STATUS));
                 break;
             case "borrowed":
-                ViewController.setState(new FindBorrowedViewState(SYSTEM_STATUS));
+                CLIView.setState(new FindBorrowedViewState(SYSTEM_STATUS));
                 break;
             case "return":
-                ViewController.setState(new DefaultViewState(SYSTEM_STATUS));
+                CLIView.setState(new DefaultViewState(SYSTEM_STATUS));
                 break;
             case "enter library":
             case "enter":
                 if(SYSTEM_STATUS) {
-                    ViewController.setState(new BeginVisitViewState(true));
+                    CLIView.setState(new BeginVisitViewState(true));
                     break;
                 }
             case "exit library":
             case "leave":
                 if(SYSTEM_STATUS) {
-                    ViewController.setState(new EndVisitViewState(true));
+                    CLIView.setState(new EndVisitViewState(true));
                     break;
                 }
             default:
