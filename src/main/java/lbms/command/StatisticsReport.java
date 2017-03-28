@@ -39,7 +39,7 @@ public class StatisticsReport implements Command {
      */
     @Override
     public String execute() {
-        return SystemDateTime.getInstance().getDate().format(SystemDateTime.DATE_FORMAT) + ",\n" + generateReport(days);
+        return SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + ",\n" + generateReport(days);
     }
 
     /**
@@ -86,8 +86,8 @@ public class StatisticsReport implements Command {
 
         if(days != null) {
 
-            LocalDate reportStartDate = SystemDateTime.getInstance().getDate().minusDays(days);
-            LocalDate reportEndDate = SystemDateTime.getInstance().getDate();
+            LocalDate reportStartDate = SystemDateTime.getInstance(null).getDate().minusDays(days);
+            LocalDate reportEndDate = SystemDateTime.getInstance(null).getDate();
 
             // grabbing relevant visits
             ArrayList<Visit> visitsInReport = new ArrayList<>();

@@ -1,6 +1,5 @@
 package lbms.models;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,7 +9,7 @@ import java.time.format.DateTimeFormatter;
  * Custom date time implementation for the Library Book Management System.
  * @author Team B
  */
-public class SystemDateTime extends Thread implements Serializable {
+public class SystemDateTime extends Thread {
 
     private static SystemDateTime instance = null;
     private LocalDateTime time;
@@ -45,10 +44,18 @@ public class SystemDateTime extends Thread implements Serializable {
     }
 
     /**
+     * Constructor for a SystemDateTime object after de-serialization.
+     * @param time: the time from the previous startup
+     */
+    private SystemDateTime(LocalDateTime time) {
+        this.time = time;
+    }
+
+    /**
      * Gets the instance of the system date time, or creates a new one.
      * @return the instance of the system date time
      */
-    public static SystemDateTime getInstance() {
+    private static SystemDateTime getInstance() {
         if(instance == null) {
             instance = new SystemDateTime();
         }
@@ -56,11 +63,18 @@ public class SystemDateTime extends Thread implements Serializable {
     }
 
     /**
-     * Sets the instance of the system date time.
-     * @param inst: the instance to be set
+     * Gets the instance of the system date time, or creates a new one, may set the time.
+     * @param time: the previous system time
+     * @return an instance of the SystemDateTime
      */
-    public static void setInstance(SystemDateTime inst) {
-        instance = inst;
+    public static SystemDateTime getInstance(LocalDateTime time) {
+        if(time == null) {
+            return getInstance();
+        }
+        else if(instance == null) {
+            instance = new SystemDateTime(time);
+        }
+        return instance;
     }
 
     /**

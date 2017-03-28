@@ -27,7 +27,7 @@ public class Transaction implements Serializable {
     public Transaction(long isbn, long visitorId) {
         this.isbn = isbn;
         this.visitorId = visitorId;
-        this.date = SystemDateTime.getInstance().getDate();
+        this.date = SystemDateTime.getInstance(null).getDate();
         this.dueDate = date.plusDays(7);
     }
 
@@ -52,7 +52,7 @@ public class Transaction implements Serializable {
      * @return the fine due on the book
      */
     double getFine() {
-        int days = Period.between(dueDate, SystemDateTime.getInstance().getDate()).getDays();
+        int days = Period.between(dueDate, SystemDateTime.getInstance(null).getDate()).getDays();
         double fine = 0.0;
         for(int i = 0; i < days; i++) {
             if(i == 0) {
@@ -72,7 +72,7 @@ public class Transaction implements Serializable {
      * Marks that the fine has been paid for this transaction
      */
     public void closeTransaction() {
-        closeDate = SystemDateTime.getInstance().getDate();
+        closeDate = SystemDateTime.getInstance(null).getDate();
     }
 
     /**

@@ -21,7 +21,7 @@ public class RegisterVisitor implements Command {
     public RegisterVisitor(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
         try {
-            visitor = new Visitor(arguments[0], arguments[1], arguments[2], Long.parseLong(arguments[3]));
+//            visitor = new Visitor(arguments[0], arguments[1], arguments[2], Long.parseLong(arguments[3]));
         }
         catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
             if (arguments.length == 1 && arguments[0].equals("")) {
@@ -49,7 +49,7 @@ public class RegisterVisitor implements Command {
     @Override
     public String execute() {
         if(registerVisitor(visitor)) {
-            SystemDateTime s = SystemDateTime.getInstance();
+            SystemDateTime s = SystemDateTime.getInstance(null);
             return String.format("%010d", visitor.getVisitorID()) + "," +
                     s.getDate().format(SystemDateTime.DATE_FORMAT) + ";";
         }

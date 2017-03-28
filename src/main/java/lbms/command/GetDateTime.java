@@ -18,8 +18,8 @@ public class GetDateTime implements Command {
      */
     @Override
     public String execute() {
-        return SystemDateTime.getInstance().getDate().format(SystemDateTime.DATE_FORMAT) + "," +
-                SystemDateTime.getInstance().getTime().format(SystemDateTime.TIME_FORMAT) + ";";
+        return SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + "," +
+                SystemDateTime.getInstance(null).getTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 
     /**

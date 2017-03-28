@@ -23,7 +23,7 @@ public class Visit implements Serializable {
      */
     public Visit(Visitor visitor) {
         this.visitor = visitor;
-        this.dateTime = SystemDateTime.getInstance().getDateTime();
+        this.dateTime = SystemDateTime.getInstance(null).getDateTime();
         this.timeOfDeparture = null;
         this.duration = null;
         this.visitor.switchInLibrary(true);
@@ -33,7 +33,7 @@ public class Visit implements Serializable {
      * Departs the visitor from the library.
      */
     public void depart() {
-        this.timeOfDeparture = SystemDateTime.getInstance().getTime();
+        this.timeOfDeparture = SystemDateTime.getInstance(null).getTime();
         this.duration = Duration.between(dateTime.toLocalTime(), timeOfDeparture);
         this.visitor.switchInLibrary(false);
     }

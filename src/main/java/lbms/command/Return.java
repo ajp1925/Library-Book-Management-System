@@ -69,7 +69,7 @@ public class Return implements Command {
         if(visitor.getFines() > 0.0) {
             String output = "overdue," + String.format("%.2f", visitor.getFines()) + ",";
             for(Transaction t: visitor.getCheckedOutBooks().values()) {
-                if(SystemDateTime.getInstance().getDate().isAfter(t.getDueDate())) {
+                if(SystemDateTime.getInstance(null).getDate().isAfter(t.getDueDate())) {
                     output += LBMS.getLastBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + ",";
                 }
             }

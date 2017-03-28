@@ -21,7 +21,7 @@ public class ResetTime implements Command {
     @Override
     public String execute() {
         try {
-            SystemDateTime.getInstance().reset();
+            SystemDateTime.getInstance(null).reset();
             return "success;";
         }
         catch(Exception e) {

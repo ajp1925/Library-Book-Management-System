@@ -8,6 +8,7 @@ import lbms.views.DefaultViewState;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -55,8 +56,8 @@ public class LBMS {
         if(console) {
             while(true) {
                 // Check if library is open
-                if(SystemDateTime.getInstance().getTime().isAfter(OPEN_TIME) &&
-                        SystemDateTime.getInstance().getTime().isBefore(CLOSE_TIME)) {
+                if(SystemDateTime.getInstance(null).getTime().isAfter(OPEN_TIME) &&
+                        SystemDateTime.getInstance(null).getTime().isBefore(CLOSE_TIME)) {
                     // Check if library just opened or system start
                     if(initial == 0 || initial == 1) {
                         ViewController.setState(new DefaultViewState(true));
@@ -85,8 +86,8 @@ public class LBMS {
             do {
                 System.out.print("> ");
                 input = s.nextLine();
-                if(SystemDateTime.getInstance().getTime().isAfter(OPEN_TIME) &&
-                        SystemDateTime.getInstance().getTime().isBefore(CLOSE_TIME)) {
+                if(SystemDateTime.getInstance(null).getTime().isAfter(OPEN_TIME) &&
+                        SystemDateTime.getInstance(null).getTime().isBefore(CLOSE_TIME)) {
                     // Check if library just opened or system start
                     if(initial == 0 || initial == 1) {
                         initial = 2;
@@ -240,32 +241,30 @@ public class LBMS {
         try {
             FileInputStream f = new FileInputStream("data.ser");
             ObjectInputStream in = new ObjectInputStream(f);
-            books = (HashMap<Long, Book>)in.readObject();
-            booksToBuy = (ArrayList<Book>)in.readObject();
-            visitors = (HashMap<Long, Visitor>)in.readObject();
-            employees = (HashMap<Long, Employee>)in.readObject();
+            books = (HashMap<Long, Book>) in.readObject();
+            booksToBuy = (ArrayList<Book>) in.readObject();
+            visitors = (HashMap<Long, Visitor>) in.readObject();
+            employees = (HashMap<Long, Employee>) in.readObject();
             totalVisits = (ArrayList<Visit>) in.readObject();
-            transactions = (ArrayList<Transaction>)in.readObject();
-            SystemDateTime.setInstance((SystemDateTime) in.readObject());
-        }
-        catch(ClassNotFoundException | IOException e) {
+            transactions = (ArrayList<Transaction>) in.readObject();
+            SystemDateTime.getInstance((LocalDateTime)in.readObject()).start();
+        } catch (ClassNotFoundException | IOException e) {
             books = new HashMap<>();
             booksToBuy = makeBooks();
             visitors = new HashMap<>();
             employees = new HashMap<>();
             totalVisits = new ArrayList<>();
             transactions = new ArrayList<>();
+            SystemDateTime.getInstance(null).start();
         }
         currentVisits = new HashMap<>();
-        SystemDateTime systemDateTime = SystemDateTime.getInstance();
-        systemDateTime.start();
     }
 
     /**
      * Serializes the data in the system for future startup.
      */
     private void SystemClose() {
-        SystemDateTime.getInstance().stopClock();
+        SystemDateTime.getInstance(null).stopClock();
 
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
@@ -284,7 +283,7 @@ public class LBMS {
             out.writeObject(employees);
             out.writeObject(totalVisits);
             out.writeObject(transactions);
-            out.writeObject(SystemDateTime.getInstance());
+            out.writeObject(SystemDateTime.getInstance(null).getDateTime());
             out.close();
             f.close();
         }

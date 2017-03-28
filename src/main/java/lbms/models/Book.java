@@ -172,7 +172,7 @@ public class Book implements Serializable, Comparable<Book> {
      * Sets the purchase date when a book is purchased.
      */
     public void purchase() {
-        purchaseDate = SystemDateTime.getInstance().getDate();
+        purchaseDate = SystemDateTime.getInstance(null).getDate();
         numberOfCopies++;
     }
 }
