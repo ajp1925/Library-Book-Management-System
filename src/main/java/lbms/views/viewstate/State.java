@@ -3,9 +3,7 @@ package lbms.views.viewstate;
 import java.io.IOException;
 
 /**
- * Abstract representation of a views.
- *
- * Note: This is not an interface, as to ensure correct access modifiers.
+ * Abstract representation of a view.
  */
 public interface State {
 
