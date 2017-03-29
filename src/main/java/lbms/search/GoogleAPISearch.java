@@ -6,8 +6,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,15 +94,8 @@ public final class GoogleAPISearch{
 
             responseString = response.toString();
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            System.out.println("You broke the URL (from GoogleSearchAPI)");
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-            System.out.println("You broke the Protocol (from GoogleSearchAPI)");
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("You broke the IO (from GoogleSearchAPI)");
+            System.out.println("Improper Google API Query");
         }
 
         // response is the contents of the XML
