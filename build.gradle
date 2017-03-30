@@ -1,7 +1,17 @@
 version = 'R1'
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 mainClassName = 'lbms.LBMS'
 
@@ -12,7 +22,15 @@ repositories {
 }
 
 dependencies {
+    compile group: 'com.google.code.gson', name: 'gson', version: '1.7.2'
+
     testCompile 'junit:junit:4.12'
+}
+
+jar.enabled = false
+startScripts.dependsOn shadowJar
+shadowJar {
+    classifier = ""
 }
 
 run {
