@@ -35,9 +35,9 @@ public class AdvanceTimeTest {
     @Test
     public void advancesTime() {
         AdvanceTime command = new AdvanceTime("1,1");
-        LocalDateTime time = SystemDateTime.getInstance().getDateTime();
+        LocalDateTime time = SystemDateTime.getInstance(null).getDateTime();
         command.execute();
-        LocalDateTime newTime = SystemDateTime.getInstance().getDateTime();
+        LocalDateTime newTime = SystemDateTime.getInstance(null).getDateTime();
 
         // 90000 seconds = 1 day 1 hour
         assertEquals(90000, newTime.toEpochSecond(ZoneOffset.UTC) - time.toEpochSecond(ZoneOffset.UTC));
