@@ -74,7 +74,7 @@ public class GUIView extends Application implements View {
 
     private Pane loadFXML() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(GUIView.class.getResource("../gui/client.fxml"));
+        loader.setLocation(GUIView.class.getResource("gui/client.fxml"));
         Pane fxmlPane = loader.load();
 
         return fxmlPane;
