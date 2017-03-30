@@ -26,7 +26,7 @@ public final class GoogleAPISearch{
      * @return a list of book objects matching the search parameter
      */
     public static List<Book> searchByTitle(String title) {
-        return parseXML( query(baseURL + "intitle:\"" + title.replaceAll(" ", "+") + "\"") );
+        return parseJSON( query(baseURL + "intitle:\"" + title.replaceAll(" ", "+") + "\"") );
     }
 
     /**
@@ -40,7 +40,7 @@ public final class GoogleAPISearch{
             authorString += ("\"" + author + "\"");
         }
 
-        return parseXML( query(baseURL + "inauthor:" + authorString.replaceAll(" ", "+").replaceAll("\"\"", "\"+\"")) );
+        return parseJSON( query(baseURL + "inauthor:" + authorString.replaceAll(" ", "+").replaceAll("\"\"", "\"+\"")) );
     }
 
     /**
@@ -49,7 +49,7 @@ public final class GoogleAPISearch{
      * @return a list of book objects matching the search parameter
      */
     public static List<Book> searchByISBN(String isbn) {
-        return parseXML( query(baseURL + "isbn:" + isbn) );
+        return parseJSON( query(baseURL + "isbn:" + isbn) );
     }
 
     /**
@@ -59,13 +59,13 @@ public final class GoogleAPISearch{
      */
     public static List<Book> searchByPublisher(String publisher) {
 
-        return parseXML( query(baseURL + "inpublisher:\"" + publisher.replaceAll(" ", "+" + "\"")) );
+        return parseJSON( query(baseURL + "inpublisher:\"" + publisher.replaceAll(" ", "+" + "\"")) );
     }
 
     /**
-     * Uses the URL to gather the XML data from Google books
+     * Uses the URL to gather the JSON data from Google books
      * @param url the complete URL to perform the GET  request
-     * @return a String representation of the XML
+     * @return a String representation of the JSON
      */
     private static String query(String url) {
         String responseString = "";
@@ -98,7 +98,7 @@ public final class GoogleAPISearch{
             System.out.println("Improper Google API Query");
         }
 
-        // response is the contents of the XML
+        // response is the contents of the JSON
         return responseString;
 
     }
@@ -108,11 +108,11 @@ public final class GoogleAPISearch{
     // int pageCount, int numberOfCopies, int copiesCheckedOut
 
     /**
-     * Parses the XML into a HashMap mapping ISBNs to Book objects
-     * @param response a String representation of the XML
+     * Parses the JSON into a List of Book objects
+     * @param response a String representation of the JSON
      * @return a list of book objects matching the search parameter
      */
-    private static List<Book> parseXML(String response){
+    private static List<Book> parseJSON(String response){
         System.out.println(response);
         // TODO
         return null;
