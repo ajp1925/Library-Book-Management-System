@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * Searches the Google Books API
- * @author TeamB
+ * @author Team B
  */
 public final class GoogleAPISearch{
 

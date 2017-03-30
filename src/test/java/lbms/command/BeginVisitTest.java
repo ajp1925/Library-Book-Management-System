@@ -15,6 +15,13 @@ public class BeginVisitTest {
         visitors = LBMS.getVisitors();
         visitors.clear();
         visitors.put(1L, new Visitor("Johnny", "Test", "123 Test", "password", "123 Street", 1234567890));
+//        visitors.put(1L, new Visitor("Johnny", "Test", "123 Test", 1234567890));
+    }
+
+    @Test
+    public void invalidID() throws Exception {
+        BeginVisit command = new BeginVisit("2");
+        assertEquals("invalid-id;", command.execute());
     }
 
 //    @Test
