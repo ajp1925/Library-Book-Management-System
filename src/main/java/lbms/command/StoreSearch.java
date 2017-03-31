@@ -6,7 +6,6 @@ import lbms.search.BookSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -97,37 +96,36 @@ public class StoreSearch implements Command {
                 }
             }
         }
-        for(Book b: remove) {
-            books.remove(b);
-        }
+        books.removeAll(remove);
 
         if(sortOrder != null && sortOrder.equals("title")) {
-            Collections.sort(books, (Book b1, Book b2) -> b2.getTitle().compareTo(b1.getTitle()));
+            books.sort((Book b1, Book b2) -> b2.getTitle().compareTo(b1.getTitle()));
         }
         else if(sortOrder != null && sortOrder.equals("publish-date")) {
-            Collections.sort(books, (Book b1, Book b2) -> b2.getPublishDate().compareTo(b1.getPublishDate()));
+            books.sort((Book b1, Book b2) -> b2.getPublishDate().compareTo(b1.getPublishDate()));
         }
         if(books.size() == 0) {
             return "0;";
         }
         else {
             int id = 1;
-            String response = Integer.toString(books.size()) + "\n";
+            StringBuilder response = new StringBuilder(Integer.toString(books.size()) + "\n");
             LBMS.getLastBookSearch().clear();
             for(Book book : books) {
                 LBMS.getLastBookSearch().add(book);
-                response = response + id + "," + book.getIsbn() + "," + book.getTitle()
-                + ",{";
+                response.append(id).append(",")
+                        .append(book.getIsbn()).append(",")
+                        .append(book.getTitle()).append(",{");
                 for(String author : book.getAuthors()) {
-                    response = response + author + ",";
+                    response.append(author).append(",");
                 }
-                response = response.replaceAll(",$", "},");
-                response = response + book.dateFormat() + ",\n";
+                response = new StringBuilder(response.toString().replaceAll(",$", "},"));
+                response.append(book.dateFormat()).append(",\n");
                 id += 1;
             }
-            response = response.substring(0, response.length() - 2);
-            response += ";";
-            return response;
+            response = new StringBuilder(response.substring(0, response.length() - 2));
+            response.append(";");
+            return response.toString();
         }
     }
 
