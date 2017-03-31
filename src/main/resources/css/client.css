@@ -1,18 +1,50 @@
-#menu {
+#topPane {
     -fx-background-color: #F36E21;
 }
 
-/*#menu {*/
-    /*-fx-background-color: #88F;*/
-    /*-fx-spacing: 5;*/
-/*}*/
+#menuPane {
+    -fx-background-color: #F36E21;
+}
 
-/*#menu .button {*/
-    /*-fx-pref-height: 30;*/
-    /*-fx-pref-width: 200;*/
-    /*-fx-background-color: #66F;*/
-/*}*/
+#menuButton {
+    -fx-background-color: #F36E21;
+    -fx-border-style: none;
+    -fx-graphic: url("../icons/menu.png");
+}
 
-/*#menu .button:hover {*/
-    /*-fx-background-color: #F6F;*/
-/*}*/
+#menuButton:hover {
+    -fx-background-color: #f9b086;
+}
+
+#btnBox {
+    -fx-border-style: none;
+}
+
+#addTabButton {
+    -fx-background-color: #F36E21;
+    -fx-border-style: none;
+    -fx-graphic: url("../icons/add.png");
+}
+
+#addTabButton:hover {
+    -fx-background-color: #f9b086;
+}
+
+#removeTabButton {
+    -fx-background-color: #F36E21;
+    -fx-border-style: none;
+    -fx-graphic: url("../icons/subtract.png");
+}
+
+#removeTabButton:hover {
+    -fx-background-color: #f9b086;
+}
+
+.menu-button {
+    -fx-background-color: #F36E21;
+    -fx-border-style: none;
+}
+
+.menu-button:hover {
+    -fx-background-color: #f9b086;
+}
