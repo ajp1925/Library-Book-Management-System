@@ -107,33 +107,33 @@ public class LibrarySearch implements Command {
                 antiMatches.add(b);
             }
         }
-        for(Book b: antiMatches) {
-            matches.remove(b);
-        }
+        matches.removeAll(antiMatches);
 
         if(sort_order != null) {
             switch(sort_order) {
                 case "title":
-                    Collections.sort(matches, (Book b1, Book b2) -> b2.getTitle().compareTo(b1.getTitle()));
+                    matches.sort((Book b1, Book b2) -> b2.getTitle().compareTo(b1.getTitle()));
                     break;
                 case "publish-date":
-                    Collections.sort(matches, (Book b1, Book b2) -> b2.getPublishDate().compareTo(b1.getPublishDate()));
+                    matches.sort((Book b1, Book b2) -> b2.getPublishDate().compareTo(b1.getPublishDate()));
                     break;
                 case "book-status":
-                    Collections.sort(matches, (Book b1, Book b2) ->
-                            ((Integer)b2.getCopiesAvailable()).compareTo(b1.getCopiesAvailable()));
+                    matches.sort((Book b1, Book b2) ->
+                            ((Integer) b2.getCopiesAvailable()).compareTo(b1.getCopiesAvailable()));
                     break;
             }
         }
         LBMS.getLastBookSearch().clear();
-        String matchesString = "";
+        StringBuilder matchesString = new StringBuilder();
         for(Book b: matches) {
             LBMS.getLastBookSearch().add(b);
-            matchesString += "\n" + b.getCopiesAvailable() + "," + (LBMS.getLastBookSearch().indexOf(b) + 1) + "," +
-                    b.toString() + ",";
+            matchesString.append("\n")
+                    .append(b.getCopiesAvailable()).append(",")
+                    .append(LBMS.getLastBookSearch().indexOf(b) + 1).append(",")
+                    .append(b.toString()).append(",");
         }
         if(matches.size() > 0) {
-            matchesString = matchesString.substring(0, matchesString.length() - 1);
+            matchesString = new StringBuilder(matchesString.substring(0, matchesString.length() - 1));
         }
         else {
             return "0;";
