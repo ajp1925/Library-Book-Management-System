@@ -20,24 +20,20 @@
     -fx-border-style: none;
 }
 
+#addTab {
+    -fx-background-color: #da570b;
+    -fx-padding: 0, 0, 0, 0;
+}
+
 #addTabButton {
-    -fx-background-color: #F36E21;
     -fx-border-style: none;
-    -fx-graphic: url("../icons/add.png");
+    -fx-background-color: #da570b;
+    -fx-text-fill: #e6e6e6;
 }
 
-#addTabButton:hover {
+#addTab:hover, #addTabButton:hover{
     -fx-background-color: #f9b086;
-}
-
-#removeTabButton {
-    -fx-background-color: #F36E21;
-    -fx-border-style: none;
-    -fx-graphic: url("../icons/subtract.png");
-}
-
-#removeTabButton:hover {
-    -fx-background-color: #f9b086;
+    -fx-text-fill: #333333;
 }
 
 .menu-button {
@@ -50,4 +46,36 @@
 
 .menu-button:hover {
     -fx-background-color: #f9b086;
+}
+
+#menuBackground {
+    -fx-background-color: #F36E21;
+}
+
+.tab-header-background {
+    -fx-background-color: #F36E21;
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 0 0 0 50;
+    -fx-max-height: 30;
+    -fx-min-height: 30;
+    -fx-pref-height: 30;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #F36E21;
+    -fx-border-style: none;
+}
+
+.tab-pane .tab:hover {
+    -fx-background-color: #da570b;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #f69055;
+}
+
+.tab-pane .tab:selected .focus-indicator{
+    -fx-border-color: transparent;
 }
