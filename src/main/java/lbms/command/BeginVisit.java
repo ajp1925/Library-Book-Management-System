@@ -57,15 +57,14 @@ public class BeginVisit implements Command {
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if(fields[1].equals("duplicate;")) {
-            return "\nVisitor " + visitorID + " is already in the library.";
-        }
-        else if(fields[1].equals("invalid-id;")) {
-            return "\nVisitor " + visitorID + " is not registered in the system.";
-        }
-        else {
-            return "\nVisitor " + visitorID + " has entered the library on "
-                    + fields[2] + " at " + fields[3].replace(";","") + ".";
+        switch (fields[1]) {
+            case "duplicate;":
+                return "\nVisitor " + visitorID + " is already in the library.";
+            case "invalid-id;":
+                return "\nVisitor " + visitorID + " is not registered in the system.";
+            default:
+                return "\nVisitor " + visitorID + " has entered the library on "
+                        + fields[2] + " at " + fields[3].replace(";", "") + ".";
         }
     }
 

@@ -134,41 +134,28 @@ public class LBMS {
                     }
                 }
 
-                if(parts[parts.length-2].length() == 10) {
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                    try {
+                try {
+                    if (parts[parts.length - 2].length() == 10) {
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date date = format.parse(parts[parts.length - 2]);
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(date);
+                        publishDate = calendar;
+                    } else if (parts[parts.length - 2].length() == 7) {
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+                        Date date = format.parse(parts[parts.length - 2]);
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(date);
+                        publishDate = calendar;
+                    } else if (parts[parts.length - 2].length() == 4) {
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy");
                         Date date = format.parse(parts[parts.length - 2]);
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTime(date);
                         publishDate = calendar;
                     }
-                    catch(ParseException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else if(parts[parts.length-2].length() == 7) {
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
-                    try {
-                        Date date = format.parse(parts[parts.length - 2]);
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.setTime(date);
-                        publishDate = calendar;
-                    }
-                    catch(ParseException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else if(parts[parts.length-2].length() == 4) {
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy");
-                    try {
-                        Date date = format.parse(parts[parts.length - 2]);
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.setTime(date);
-                        publishDate = calendar;
-                    }
-                    catch(ParseException e) {
-                        e.printStackTrace();
-                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
                 pageCount = Integer.parseInt(parts[parts.length-1]);
