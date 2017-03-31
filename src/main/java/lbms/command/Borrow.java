@@ -56,7 +56,7 @@ public class Borrow implements Command {
             return "outstanding-fine," +
                     new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + ";";
         }
-        String invalidIDs = "";
+        StringBuilder invalidIDs = new StringBuilder();
         String temp = "";
         for(Integer i: id) {
             if(!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
@@ -66,7 +66,7 @@ public class Borrow implements Command {
             try {
                 if(temp.contains("id-error")) {
                     String[] error = temp.split(",");
-                    invalidIDs += error[1];
+                    invalidIDs.append(error[1]);
                 }
             }
             catch(NullPointerException e) {
@@ -94,23 +94,20 @@ public class Borrow implements Command {
     @Override
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if(fields[1].equals("invalid-visitor-id;")) {
-            return "\nVisitor " + visitorID + " is not registered in the system.";
-        }
-        else if(fields[1].equals("outstanding-fine")) {
-            return "\nVisitor " + visitorID + " has to pay " +
-                    new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + " before they " +
-                            "can borrow more books.";
-        }
-        else if(fields[1].equals("book-limit-exceeded;")) {
-            return "\nVisitor " + visitorID + " has borrowed the maximum number of books or the borrow request would " +
-                    "cause the visitor to exceed 5 borrowed books.";
-        }
-        else if(fields[1].equals("invalid-book-id")) {
-            return "\nOne of more of the book IDs specified do not match the IDs for the most recent library book search.";
-        }
-        else {
-            return "\nThe books have been successfully borrowed and will be due on " + fields[2] + ".";
+        switch (fields[1]) {
+            case "invalid-visitor-id;":
+                return "\nVisitor " + visitorID + " is not registered in the system.";
+            case "outstanding-fine":
+                return "\nVisitor " + visitorID + " has to pay " +
+                        new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + " before they " +
+                        "can borrow more books.";
+            case "book-limit-exceeded;":
+                return "\nVisitor " + visitorID + " has borrowed the maximum number of books or the borrow request would " +
+                        "cause the visitor to exceed 5 borrowed books.";
+            case "invalid-book-id":
+                return "\nOne of more of the book IDs specified do not match the IDs for the most recent library book search.";
+            default:
+                return "\nThe books have been successfully borrowed and will be due on " + fields[2] + ".";
         }
     }
 
