@@ -26,10 +26,10 @@ public class CLIView implements View {
     @Override
     public void run() {
         Scanner s = new Scanner(System.in);
-        String input;
+        String input = "";
         int initial = 0;
 
-        do {
+        while(true) {
             if(SystemDateTime.getInstance(null).getTime().isAfter(ViewController.OPEN_TIME) &&
                     SystemDateTime.getInstance(null).getTime().isBefore(ViewController.CLOSE_TIME)) {
                 // Check if library just opened or system start
@@ -52,10 +52,13 @@ public class CLIView implements View {
 
                 System.out.print("> ");
                 input = s.nextLine();
+
+                if (input.matches("(?i)exit|quit")) { break; }
+
                 CLIView.change(input);
             }
 
-        } while(!input.matches("(?i)exit|quit"));
+        }
     }
 
     /**

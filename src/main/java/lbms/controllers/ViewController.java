@@ -3,6 +3,7 @@ package lbms.controllers;
 import lbms.LBMS;
 import lbms.views.APIView;
 import lbms.views.CLIView;
+import lbms.views.GUIView;
 import lbms.views.View;
 
 import java.time.LocalTime;
@@ -26,7 +27,7 @@ public class ViewController {
                 ui = CLIView.getInstance();
                 break;
             default:
-                System.out.println("GUI GOES HERE");
+                ui = new GUIView();
                 break;
         }
 
