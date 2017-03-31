@@ -42,6 +42,9 @@
 
 .menu-button {
     -fx-background-color: #F36E21;
+    -fx-font-weight: bold;
+    -fx-font-family: monospace;
+    -fx-font-size: 150%;
     -fx-border-style: none;
 }
 

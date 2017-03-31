@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
  * Created by Chris on 3/30/2017.
  */
 public class ClientController {
+    private final static int MAX_WIDTH = 150;
     @FXML private TabPane tabs;
     @FXML private VBox menuPane;
     @FXML private Button clockButton;
@@ -35,8 +36,8 @@ public class ClientController {
             clockButton.setText("");
             clockButton.setPrefWidth(0);
         } else {
-            menuPane.setPrefWidth(100);
-            clockButton.setPrefWidth(100);
+            menuPane.setPrefWidth(MAX_WIDTH);
+            clockButton.setPrefWidth(MAX_WIDTH);
             clockButton.setText("Clock");
         }
     }
