@@ -1,11 +1,14 @@
 package lbms.views;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lbms.LBMS;
 
 import java.io.IOException;
 
@@ -25,20 +28,21 @@ public class GUIView extends Application implements View {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Library Management System");
 
-        Parent root;
+        Parent root = null;
         try {
-            root = loadFXML();
+            root = loadFXML("/fxml/client.fxml");
         } catch (Exception e) {
-            root = new Pane();
+            System.out.println("Error loading fxml file");
+            System.exit(1);
         }
 
         primaryStage.setScene(new Scene(root, 720, 480));
         primaryStage.show();
     }
 
-    private Parent loadFXML() throws IOException {
+    public static Parent loadFXML(String file) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/client.fxml"));
+        loader.setLocation(GUIView.class.getResource(file));
         return loader.load();
     }
 
