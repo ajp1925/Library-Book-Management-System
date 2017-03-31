@@ -1,6 +1,5 @@
 package lbms.views;
 
-import lbms.controllers.ViewController;
 import lbms.models.SystemDateTime;
 import lbms.views.viewstate.DefaultViewState;
 import lbms.views.viewstate.State;
@@ -30,8 +29,8 @@ public class CLIView implements View {
         int initial = 0;
 
         while(true) {
-            if(SystemDateTime.getInstance(null).getTime().isAfter(ViewController.OPEN_TIME) &&
-                    SystemDateTime.getInstance(null).getTime().isBefore(ViewController.CLOSE_TIME)) {
+            if(SystemDateTime.getInstance(null).getTime().isAfter(ViewFactory.OPEN_TIME) &&
+                    SystemDateTime.getInstance(null).getTime().isBefore(ViewFactory.CLOSE_TIME)) {
                 // Check if library just opened or system start
                 if(initial == 0 || initial == 1) {
                     CLIView.setState(new DefaultViewState(true));
@@ -45,7 +44,7 @@ public class CLIView implements View {
             else {
                 // Check if library just closed or system start
                 if(initial == 0 || initial == 2) {
-                    ViewController.LibraryClose();
+                    ViewFactory.LibraryClose();
                     CLIView.setState(new DefaultViewState(false));
                     initial = 1;
                 }

@@ -1,4 +1,4 @@
-package lbms.controllers;
+package lbms.views;
 
 import lbms.LBMS;
 import lbms.views.APIView;
@@ -12,7 +12,7 @@ import java.time.LocalTime;
  * Controller for the views package.
  * @author Team B
  */
-public class ViewController {
+public class ViewFactory {
     private static View ui = null;
 
     public final static LocalTime OPEN_TIME = LBMS.OPEN_TIME;

@@ -1,7 +1,7 @@
 package lbms;
 
 import lbms.controllers.CommandController;
-import lbms.controllers.ViewController;
+import lbms.views.ViewFactory;
 import lbms.models.*;
 
 import java.io.*;
@@ -53,7 +53,7 @@ public class LBMS {
      */
     public LBMS(String arg) {
         SystemInit();
-        ViewController.start(arg);
+        ViewFactory.start(arg);
         SystemClose();
     }
 
