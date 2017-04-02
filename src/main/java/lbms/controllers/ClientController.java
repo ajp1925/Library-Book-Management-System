@@ -1,6 +1,7 @@
 package lbms.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -21,7 +22,9 @@ public class ClientController {
     @FXML private Button clockButton;
     @FXML private Pane menuBackground;
 
+
     @FXML protected void initialize() {
+        // add new tab button
         Tab tab = new Tab();
         tab.setId("addTab");
         tab.setGraphic(new Button());
@@ -37,9 +40,12 @@ public class ClientController {
         tab.setClosable(false);
         tabs.getTabs().add(tab);
 
+        // set up initial state: login
+
         try {
-            tabs.getTabs().get(0).setContent(GUIView.loadFXML("/fxml/login.fxml"));
+            tabs.getTabs().get(0).setContent((GUIView.loadFXML("/fxml/login.fxml")));
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             System.out.println("Error loading fxml file");
             System.exit(1);
         }
@@ -52,6 +58,7 @@ public class ClientController {
         try {
             tab.setContent((GUIView.loadFXML("/fxml/login.fxml")));
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             System.out.println("Error loading fxml file");
             System.exit(1);
         }
@@ -59,7 +66,6 @@ public class ClientController {
         tabs.getTabs().add(num - 1, tab);
         tabs.getSelectionModel().select(tab);
     }
-
 
     @FXML private void toggleMenu() {
         double width = menuPane.getWidth();
