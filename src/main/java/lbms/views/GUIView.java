@@ -1,10 +1,13 @@
 package lbms.views;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lbms.LBMS;
+import lbms.controllers.ClientController;
 
 import java.io.IOException;
 
@@ -33,6 +36,12 @@ public class GUIView extends Application implements View {
 
         primaryStage.setScene(new Scene(root, 1920, 1080));
         primaryStage.show();
+    }
+
+    @Override
+    public void stop(){
+        ClientController.stop = true;
+        Platform.exit();
     }
 
     public static Parent loadFXML(String file) throws IOException {
