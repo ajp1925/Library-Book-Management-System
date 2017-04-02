@@ -1,13 +1,14 @@
 package lbms.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import lbms.models.SystemDateTime;
 import lbms.views.GUIView;
 
 
@@ -16,14 +17,23 @@ import lbms.views.GUIView;
  */
 public class ClientController {
     private final static int MAX_WIDTH = 150;
+    public static Boolean stop = false;
 
     @FXML private TabPane tabs;
     @FXML private VBox menuPane;
     @FXML private Button clockButton;
     @FXML private Pane menuBackground;
-
+    @FXML private Text clockText;
 
     @FXML protected void initialize() {
+        // init clock
+        Runnable task = () -> {
+            while (!stop) {
+                clockText.setText(SystemDateTime.getInstance(null).toString());
+            }
+        };
+        new Thread(task).start();
+
         // add new tab button
         Tab tab = new Tab();
         tab.setId("addTab");

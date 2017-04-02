@@ -1,8 +1,8 @@
 package lbms.views.viewstate;
 
 import lbms.LBMS;
-import lbms.views.CLIView;
 import lbms.models.Visitor;
+import lbms.views.CLIView;
 
 /**
  * UserListViewState class for views package.

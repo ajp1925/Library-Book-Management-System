@@ -1,16 +1,10 @@
 package lbms.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import lbms.views.GUIView;
-
-import java.io.IOException;
 
 /**
  * Created by Chris on 3/31/17.
