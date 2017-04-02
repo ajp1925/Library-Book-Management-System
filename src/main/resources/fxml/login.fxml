@@ -6,54 +6,71 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="402.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.LoginController">
    <children>
-      <BorderPane prefHeight="401.0" prefWidth="600.0" style="-fx-background-color: ffffff;">
-         <top>
-            <TextFlow prefHeight="100.0" prefWidth="600.0" stylesheets="@../css/login.css" textAlignment="CENTER" BorderPane.alignment="CENTER">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
-                     <font>
-                        <Font name="System Bold" size="48.0" />
-                     </font>
-                  </Text>
-               </children>
-            </TextFlow>
-         </top>
-         <center>
-            <GridPane alignment="CENTER" hgap="10.0" stylesheets="@../css/login.css" BorderPane.alignment="CENTER">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-                  <TextField GridPane.columnIndex="1" />
-                  <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.rowIndex="1" />
-               </children>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
-               </columnConstraints>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="150.0" right="150.0" />
-               </padding>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-         </center>
-         <bottom>
-            <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="205.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" text="Login" />
-               </children>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-            </FlowPane>
-         </bottom>
-      </BorderPane>
+      <FlowPane alignment="CENTER" styleClass="login-background" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane prefHeight="402.0" prefWidth="213.0">
+               <bottom>
+                  <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="205.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#login" text="Login" />
+                              <Text fx:id="loginFailedLabel" strokeType="OUTSIDE" strokeWidth="0.0">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin></Text>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </bottom>
+               <center>
+                  <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <GridPane alignment="CENTER" hgap="15.0" prefHeight="96.0" prefWidth="314.0" stylesheets="@../css/login.css">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                              <TextField fx:id="usernameField" GridPane.columnIndex="1" />
+                              <PasswordField fx:id="passwordField" prefHeight="27.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Text>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="396.0" minWidth="10.0" prefWidth="78.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="193.0" prefWidth="221.0" />
+                           </columnConstraints>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </FlowPane>
+               </center>
+               <top>
+                  <FlowPane alignment="CENTER" prefHeight="101.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text id="login-header" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </FlowPane>
+               </top>
+            </BorderPane>
+         </children>
+      </FlowPane>
    </children>
-</FlowPane>
+</AnchorPane>

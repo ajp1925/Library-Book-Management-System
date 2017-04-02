@@ -1,14 +1,10 @@
 package lbms.views;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TabPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import lbms.LBMS;
 
 import java.io.IOException;
 
@@ -16,7 +12,6 @@ import java.io.IOException;
  * Created by Chris on 3/30/17.
  */
 public class GUIView extends Application implements View {
-
     public GUIView() {}     // MUST BE PUBLIC OTHERWISE CLIENT BREAKS
 
     @Override
@@ -36,7 +31,7 @@ public class GUIView extends Application implements View {
             System.exit(1);
         }
 
-        primaryStage.setScene(new Scene(root, 720, 480));
+        primaryStage.setScene(new Scene(root, 1920, 1080));
         primaryStage.show();
     }
 
