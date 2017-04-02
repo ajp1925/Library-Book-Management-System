@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 /**
  * Returns a book borrowed by a library visitor.
- * @author Team B
+ * @author Team B TODO -> change for R2
  */
 public class Return implements Command {
 

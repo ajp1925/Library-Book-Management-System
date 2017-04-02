@@ -8,7 +8,7 @@ import lbms.search.UserSearch;
 
 /**
  * StartVisit class for the start visit command.
- * @author Team B
+ * @author Team B TODO -> change for R2
  */
 public class BeginVisit implements Command {
 

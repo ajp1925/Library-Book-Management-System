@@ -3,8 +3,11 @@ package lbms.command;
 import lbms.LBMS;
 import lbms.models.Visitor;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.HashMap;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class BeginVisitTest {
 

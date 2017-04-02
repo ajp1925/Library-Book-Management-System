@@ -2,7 +2,7 @@ package lbms.command;
 
 /**
  * Invalid command class.
- * @author Team B
+ * @author Team B TODO -> update for R2
  */
 public class Invalid implements Command {
 

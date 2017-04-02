@@ -8,7 +8,7 @@ import lbms.search.UserSearch;
 
 /**
  * EndVisit class for end visit command.
- * @author Team B
+ * @author Team B TODO -> change for R2
  */
 public class EndVisit implements Command {
 

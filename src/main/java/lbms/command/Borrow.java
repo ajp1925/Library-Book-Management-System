@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * Borrow class that implements the borrow command.
- * @author Team B
+ * @author Team B TODO -> change for R2
  */
 public class Borrow implements Command {
 

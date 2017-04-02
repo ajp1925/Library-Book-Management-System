@@ -1,19 +1,14 @@
 package lbms.models;
 
-import lbms.LBMS;
-
 import java.io.Serializable;
 
 /**
  * Class for an Employee object, used in the library book management system.
  * @author Team B
  */
-public class Employee implements Account, Serializable {
+public class Employee implements Serializable {
 
-    private String firstName, lastName;
-    private String username;
-    private String password;
-    private long employeeID;
+    private Visitor v;
 
     /**
      * Constructor for an Employee class.
@@ -22,12 +17,8 @@ public class Employee implements Account, Serializable {
      * @param username: the employee's username to login
      * @param password: the employee's password
      */
-    public Employee(String firstName, String lastName, String username, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.employeeID = LBMS.totalAccounts() + 1;
+    public Employee(String firstName, String lastName, String username, String password, String address, long phoneNumber) {
+        v = new Visitor(firstName, lastName, username, password, address, phoneNumber);
     }
 
     /**
@@ -35,7 +26,7 @@ public class Employee implements Account, Serializable {
      * @return the first and last name concatenated
      */
     public String getName() {
-        return firstName + " " + lastName;
+        return v.getName();
     }
 
     /**
@@ -43,7 +34,7 @@ public class Employee implements Account, Serializable {
      * @return the username
      */
     public String getUsername() {
-        return this.username;
+        return v.getUsername();
     }
 
     /**
@@ -51,6 +42,6 @@ public class Employee implements Account, Serializable {
      * @return the password
      */
     public String getPassword() {
-        return this.password;
+        return v.getPassword();
     }
 }

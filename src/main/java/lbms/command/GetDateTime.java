@@ -4,7 +4,7 @@ import lbms.models.SystemDateTime;
 
 /**
  * GetDateTime class that calls the API to get the system time.
- * @author Team B
+ * @author Team B TODO -> update for R2
  */
 public class GetDateTime implements Command {
 

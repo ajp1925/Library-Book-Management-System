@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * BookPurchase class that implements the book purchase command.
- * @author Team B
+ * @author Team B TODO -> update for R2
  */
 public class BookPurchase implements Command {
 

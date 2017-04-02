@@ -7,7 +7,7 @@ import lbms.search.UserSearch;
 
 /**
  * RegisterVisitor class that calls the API to register a visitor in the system.
- * @author Team B
+ * @author Team B TODO -> update for R2
  */
 public class RegisterVisitor implements Command {
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * StoreSearch class that implements the book store search command.
- * @author Team B
+ * @author Team B TODO update for R2
  */
 public class StoreSearch implements Command {
 

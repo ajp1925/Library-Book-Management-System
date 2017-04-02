@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 
 /**
  * PayFine class for the pay fine command.
- * @author Team B
+ * @author Team B TODO change for R2
  */
 public class PayFine implements Command {
 

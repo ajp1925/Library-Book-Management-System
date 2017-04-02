@@ -22,6 +22,9 @@ public class ViewFactory {
             case LBMS.CLI:
                 ui = CLIView.getInstance();
                 break;
+            case LBMS.GUI:
+                ui = new GUIView();
+                break;
             default:
                 ui = new GUIView();
                 break;

@@ -4,7 +4,7 @@ import lbms.models.SystemDateTime;
 
 /**
  * ResetTime class used to reset the time during testing.
- * @author Team B
+ * @author Team B TODO -> update for R2
  */
 public class ResetTime implements Command {
 

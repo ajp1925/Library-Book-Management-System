@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Class for a Visitor object, used in the library book management system.
  * @author Team B
  */
-public class Visitor implements Account, Serializable {
+public class Visitor implements Serializable {
 
     private String firstName, lastName;
     private String username;
@@ -23,6 +23,7 @@ public class Visitor implements Account, Serializable {
     private double currentFines;
     private double totalFines;
     private double payedFines;
+    private long clientID;
 
     /**
      * Constructor for a Visitor object.
@@ -180,5 +181,21 @@ public class Visitor implements Account, Serializable {
      */
     public double getPayedFines() {
         return payedFines;
+    }
+
+    /**
+     * Getter for the client ID.
+     * @return the clientID of the visitor
+     */
+    public long getClientID() {
+        return clientID;
+    }
+
+    /**
+     * Setter for the client ID.
+     * @param clientID the number to set for the ID
+     */
+    public void setClientID(long clientID) {
+        this.clientID = clientID;
     }
 }
