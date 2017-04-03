@@ -44,4 +44,12 @@ public class Employee implements Serializable {
     public String getPassword() {
         return v.getPassword();
     }
+
+    /**
+     * Getter for the visitor of the employee.
+     * @return the visitor account
+     */
+    public Visitor getVisitor() {
+        return v;
+    }
 }

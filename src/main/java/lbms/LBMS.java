@@ -24,13 +24,14 @@ public class LBMS {
 
     private static LBMS instance;
     private static HashMap<Long, Book> books;
-    private static ArrayList<Book> lastBookSearch = new ArrayList<>();
-    private static ArrayList<Book> booksToBuy;
+    private static List<Book> lastBookSearch = new ArrayList<>();
+    private static List<Book> booksToBuy;
     private static HashMap<Long, Visitor> visitors;
     private static HashMap<Long, Employee> employees;
-    private static ArrayList<Visit> totalVisits;
-    private static ArrayList<Transaction> transactions;
+    private static List<Visit> totalVisits;
+    private static List<Transaction> transactions;
     private static HashMap<Long, Visit> currentVisits;
+    private static List<Visitor> loggedIn;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -245,7 +246,7 @@ public class LBMS {
      * Getter for the last set of books from a search.
      * @return the last books returned from a search
      */
-    public static ArrayList<Book> getLastBookSearch() {
+    public static List<Book> getLastBookSearch() {
         return lastBookSearch;
     }
 
@@ -253,7 +254,7 @@ public class LBMS {
      * Getter for the books to be purchased by the library.
      * @return the array list of books that can be purchased
      */
-    public static ArrayList<Book> getBooksToBuy() {
+    public static List<Book> getBooksToBuy() {
         return booksToBuy;
     }
 
@@ -277,7 +278,7 @@ public class LBMS {
      * Getter for the visits made by visitors.
      * @return the array list of visits
      */
-    public static ArrayList<Visit> getTotalVisits() {
+    public static List<Visit> getTotalVisits() {
         return totalVisits;
     }
 
@@ -294,7 +295,7 @@ public class LBMS {
      * Getter for the transactions.
      * @return an array list of transactions
      */
-    public static ArrayList<Transaction> getTransactions() {
+    public static List<Transaction> getTransactions() {
         return transactions;
     }
 
@@ -304,5 +305,29 @@ public class LBMS {
      */
     public static long totalAccounts() {
         return visitors.size() + employees.size();
+    }
+
+    /**
+     * Getter for logged in visitors/employees.
+     * @return the list of logged in visitors/employees
+     */
+    public static List<Visitor> getLoggedIn() {
+        return loggedIn;
+    }
+
+    /**
+     * Gets the Employee object based on the visitor account given.
+     * @param v: the visitor account of the employee
+     * @return the employee account
+     */
+    public static Employee getEmployeeByLoggedIn(Visitor v) {
+        if(loggedIn.contains(v)) {
+            for(Employee e: employees.values()) {
+                if(e.getVisitor() == v) {
+                    return e;
+                }
+            }
+        }
+        return null;
     }
 }

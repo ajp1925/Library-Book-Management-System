@@ -9,6 +9,7 @@ import lbms.search.UserSearch;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Borrow class that implements the borrow command.
@@ -27,16 +28,15 @@ public class Borrow implements Command {
     public Borrow(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
         try {
-            if(arguments.length < 2) {
+            if (arguments.length < 2) {
                 throw new NumberFormatException();
             }
             visitorID = Long.parseLong(arguments[0]);
             id = new ArrayList<>();
-            for(int i = 1; i < arguments.length; i++) {
+            for (int i = 1; i < arguments.length; i++) {
                 id.add(Integer.parseInt(arguments[i]));
             }
-        }
-        catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new MissingParametersException("missing-parameters,visitor-ID,{ids}");
         }
     }
@@ -49,39 +49,36 @@ public class Borrow implements Command {
      */
     @Override
     public String execute() {
-        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
+        if (UserSearch.BY_ID.findFirst(visitorID) == null) {
             return "invalid-visitor-id;";
-        }
-        else if(UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
+        } else if (UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
             return "outstanding-fine," +
                     new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + ";";
         }
         StringBuilder invalidIDs = new StringBuilder();
         String temp = "";
-        for(Integer i: id) {
-            if(!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
+        for (Integer i: id) {
+            if (!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
                 return "book-limit-exceeded;";
             }
             temp = checkOutBook(i, visitorID);
             try {
-                if(temp.contains("id-error")) {
+                if (temp.contains("id-error")) {
                     String[] error = temp.split(",");
                     invalidIDs.append(error[1]);
                 }
-            }
-            catch(NullPointerException e) {
+            } catch (NullPointerException e) {
                 e.printStackTrace();
                 System.exit(1);
             }
         }
-        if(invalidIDs.length() > 1) {
+        if (invalidIDs.length() > 1) {
             String output = "invalid-book-id,";
             output += invalidIDs;
             //output = output.substring(0,output.length() - 1);
             output += ";";
             return output;
-        }
-        else {
+        } else {
             return temp + ";";
         }
     }
@@ -125,15 +122,14 @@ public class Borrow implements Command {
             b = LBMS.getLastBookSearch().get(id - 1);
             t = new Transaction(b.getIsbn(), visitorID);
             v = UserSearch.BY_ID.findFirst(visitorID);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             return "id-error," + id;
         }
 
-        if(v.canCheckOut()) {
+        if (v.canCheckOut()) {
             v.checkOut(t);
             b.checkOut();
-            ArrayList<Transaction> transactions = LBMS.getTransactions();
+            List<Transaction> transactions = LBMS.getTransactions();
             transactions.add(t);
             return t.getDueDate().format(SystemDateTime.DATE_FORMAT);
         }
