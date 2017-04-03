@@ -14,7 +14,7 @@ import java.util.List;
  * Searches the Google Books API
  * @author Team B
  */
-public final class GoogleAPISearch{
+public final class GoogleAPISearch {
 
     private static final String baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
