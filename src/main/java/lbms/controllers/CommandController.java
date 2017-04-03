@@ -23,7 +23,7 @@ public class CommandController {
         if (requestString.endsWith(";")) {
             String request[] = requestString.replace(";", "").split(",", 3);
             try {
-                command = createCommand(SYSTEM_STATUS, request, requestString);
+                command = createCommand(SYSTEM_STATUS, request);
                 response = command.execute();
             } catch (MissingParametersException e) {
                 response = e.getMessage() + ";";
@@ -52,73 +52,67 @@ public class CommandController {
      * @param request: the input request to be processed
      * @return a Command object for the request
      */
-    private static Command createCommand(boolean SYSTEM_STATUS, String[] request, String requestString) throws Exception {
-        // TODO update this ASAP
+    private static Command createCommand(boolean SYSTEM_STATUS, String[] request) throws Exception {
         if (request[0].equals("connect")) {
-            return new ClientConnect(requestString);
+            return new ClientConnect();
         } else {
-            try {
-                Long.parseLong(request[0]);
-                switch (request[1]) {
-                    case "disconnect":
-                        return new Disconnect(requestString);
-                    case "create":
-                        return new CreateAccount(requestString);
-                    case "login":
-                        return new LogIn(requestString);
-                    case "logout":
-                        return new LogOut(requestString);
-                    case "undo":
-                        return new Undo(requestString);
-                    case "redo":
-                        return new Redo(requestString);
-                    case "service":
-                        return new SetBookService(requestString);
-                    default:
-                        return new Invalid();
-                }
-            } catch (NumberFormatException e) {
-                switch (request[0]) {
-                    case "arrive":
-                        if (SYSTEM_STATUS) {
-                            return new BeginVisit(requestString);
-                        }
-                    case "borrow":
-                        if (SYSTEM_STATUS) {
-                            return new Borrow(requestString);
-                        }
-                        return new CloseLibrary();
-                    case "register":
-                        return new RegisterVisitor(requestString);
-                    case "depart":
-                        return new EndVisit(requestString);
-                    case "info":
-                        return new LibrarySearch(requestString);
-                    case "borrowed":
-                        return new FindBorrowed(requestString);
-                    case "return":
-                        return new Return(requestString);
-                    case "pay":
-                        return new PayFine(request[1]);
-                    case "search":
-                        return new StoreSearch(requestString);
-                    case "buy":
-                        return new BookPurchase(requestString);
-                    case "advance":
-                        return new AdvanceTime(requestString);
-                    case "datetime":
-                        return new GetDateTime();
-                    case "report":
-                        if (request.length == 1) {
-                            return new StatisticsReport("");
-                        } else {
-                            return new StatisticsReport(requestString);
-                        }
-                    case "reset":      // FOR TESTING
-                        return new ResetTime();
-                    default:
-                        return new Invalid();
-                }
+            long clientID = Long.parseLong(request[0]);
+            // validate clientID
+
+            switch (request[1]) {
+                case "disconnect":
+                    return new Disconnect(request[2]);
+                case "create":
+                    return new CreateAccount(request[2]);
+                case "login":
+                    return new LogIn(request[2]);
+                case "logout":
+                    return new LogOut(request[2]);
+                case "undo":
+                    return new Undo(request[2]);
+                case "redo":
+                    return new Redo(request[2]);
+                case "service":
+                    return new SetBookService(request[2]);
+                case "arrive":
+                    if (SYSTEM_STATUS) {
+                        return new BeginVisit(request[2]);
+                    }
+                case "borrow":
+                    if (SYSTEM_STATUS) {
+                        return new Borrow(request[2]);
+                    }
+                    return new CloseLibrary();
+                case "register":
+                    return new RegisterVisitor(request[2]);
+                case "depart":
+                    return new EndVisit(request[2]);
+                case "info":
+                    return new LibrarySearch(request[2]);
+                case "borrowed":
+                    return new FindBorrowed(request[2]);
+                case "return":
+                    return new Return(request[2]);
+                case "pay":
+                    return new PayFine(request[2]);
+                case "search":
+                    return new StoreSearch(request[2]);
+                case "buy":
+                    return new BookPurchase(request[2]);
+                case "advance":
+                    return new AdvanceTime(request[2]);
+                case "datetime":
+                    return new GetDateTime();
+                case "report":
+                    if (request.length == 2) {
+                        return new StatisticsReport("");
+                    } else {
+                        return new StatisticsReport(request[2]);
+                    }
+                case "reset":      // FOR TESTING
+                    return new ResetTime();
+                default:
+                    return new Invalid();
             }
         }
     }
