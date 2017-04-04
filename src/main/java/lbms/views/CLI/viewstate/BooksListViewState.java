@@ -1,8 +1,8 @@
-package lbms.views.viewstate;
+package lbms.views.CLI.viewstate;
 
 import lbms.LBMS;
 import lbms.models.Book;
-import lbms.views.CLIView;
+import lbms.views.CLI.CLIView;
 
 /**
  * BooksListViewState class for views package.

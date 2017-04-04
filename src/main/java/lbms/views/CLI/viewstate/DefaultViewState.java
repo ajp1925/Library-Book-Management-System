@@ -1,6 +1,6 @@
-package lbms.views.viewstate;
+package lbms.views.CLI.viewstate;
 
-import lbms.views.CLIView;
+import lbms.views.CLI.CLIView;
 
 /**
  * This is the default views which is entered when the system starts.

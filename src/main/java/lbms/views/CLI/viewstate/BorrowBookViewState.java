@@ -1,8 +1,8 @@
-package lbms.views.viewstate;
+package lbms.views.CLI.viewstate;
 
 import lbms.controllers.CommandController;
 import lbms.search.UserSearch;
-import lbms.views.CLIView;
+import lbms.views.CLI.CLIView;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;

@@ -1,7 +1,9 @@
-package lbms.views;
+package lbms.views.API;
 
 import lbms.controllers.CommandController;
 import lbms.models.SystemDateTime;
+import lbms.views.View;
+import lbms.views.ViewFactory;
 
 import java.util.Scanner;
 
@@ -28,8 +30,8 @@ public class APIView implements View {
         do {
             System.out.print("> ");
             input = s.nextLine();
-            if(SystemDateTime.getInstance(null).getTime().isAfter(ViewFactory.OPEN_TIME) &&
-                    SystemDateTime.getInstance(null).getTime().isBefore(ViewFactory.CLOSE_TIME)) {
+            if(SystemDateTime.getInstance(null).getTime().isAfter(ViewFactory.getOpenTime()) &&
+                    SystemDateTime.getInstance(null).getTime().isBefore(ViewFactory.getCloseTime())) {
                 // Check if library just opened or system start
                 if(initial == 0 || initial == 1) {
                     initial = 2;

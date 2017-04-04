@@ -1,9 +1,9 @@
-package lbms.views.viewstate;
+package lbms.views.CLI.viewstate;
 
 import lbms.controllers.CommandController;
 import lbms.models.Book;
 import lbms.search.BookSearch;
-import lbms.views.CLIView;
+import lbms.views.CLI.CLIView;
 
 import java.util.List;
 import java.util.Scanner;
@@ -27,7 +27,7 @@ public class PurchaseBookViewState implements State {
     }
 
     /**
-     * Initializes the PurchaseBook State
+     * Initializes the PurchaseBook StateController
      */
     @Override
     public void init() {

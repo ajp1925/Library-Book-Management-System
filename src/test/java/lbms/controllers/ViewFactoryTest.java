@@ -1,8 +1,8 @@
 package lbms.controllers;
 
-import lbms.views.CLIView;
-import lbms.views.viewstate.DefaultViewState;
-import lbms.views.viewstate.State;
+import lbms.views.CLI.CLIView;
+import lbms.views.CLI.viewstate.DefaultViewState;
+import lbms.views.CLI.viewstate.State;
 import org.junit.Before;
 import org.junit.Test;
 

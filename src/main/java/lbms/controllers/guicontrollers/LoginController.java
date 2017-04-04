@@ -1,7 +1,5 @@
 package lbms.controllers.guicontrollers;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -12,12 +10,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import lbms.controllers.CommandController;
-import lbms.views.GUIView;
+import lbms.views.GUI.SessionManager;
 
 /**
  * Created by Chris on 3/31/17.
  */
-public class LoginController {
+public class LoginController implements StateController {
+    private SessionManager manager;
+
     @FXML private AnchorPane root;
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
@@ -25,8 +25,6 @@ public class LoginController {
     @FXML private Button loginButton;
 
     @FXML protected void initialize() {
-        CommandController.processRequest(true, "connect;");
-
         root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 loginButton.fire();
@@ -35,23 +33,19 @@ public class LoginController {
         });
     }
 
+    public void initManager(final SessionManager manager) {
+        this.manager = manager;
+    }
+
     @FXML private void execute() {
         // TODO edit request string
-        String request = usernameField.getText() + passwordField.getText();
+        String request = manager.getClientId() + usernameField.getText() + passwordField.getText();
         String response = CommandController.processRequest(true, request);
 
         // TODO parse response
 
         if (true) {
-//            try {
-//                ClientController.change();
-//            } catch (Exception e) {
-//                System.out.printf("Error loading fxml file");
-//                System.exit(1);
-//            }
-            //GUIView.update();
-
-            //parent.getTabs().getSelectionModel().getSelectedItem().setContent(GUIView);
+            //manager.display("main_visitor"); // TODO create main view
             loginFailedLabel.setFill(Color.GREEN);
             loginFailedLabel.setText("Success");
         } else {

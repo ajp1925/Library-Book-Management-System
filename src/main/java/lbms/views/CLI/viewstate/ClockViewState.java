@@ -1,7 +1,7 @@
-package lbms.views.viewstate;
+package lbms.views.CLI.viewstate;
 
 import lbms.controllers.CommandController;
-import lbms.views.CLIView;
+import lbms.views.CLI.CLIView;
 
 /**
  * ClockViewState class processes the clock command.

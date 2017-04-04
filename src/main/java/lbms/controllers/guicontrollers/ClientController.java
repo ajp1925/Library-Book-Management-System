@@ -1,5 +1,6 @@
 package lbms.controllers.guicontrollers;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
@@ -8,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lbms.models.SystemDateTime;
-import lbms.views.GUIView;
+import lbms.views.GUI.SessionManager;
 
 
 /**
@@ -57,13 +58,10 @@ public class ClientController {
         int num = tabs.getTabs().size();
         Tab tab = new Tab("Login");
 
-        try {
-            tab.setContent(GUIView.loadFXML("/fxml/login.fxml"));
-        } catch (Exception e){
-            System.out.println("Error loading fxml");
-            System.exit(1);
-        }
+        SessionManager manager = new SessionManager(tab);
+        manager.display("login");
 
+        tab.setOnCloseRequest((Event event) -> { manager.close(); });
         tabs.getTabs().add(num - 1, tab);
         tabs.getSelectionModel().select(tab);
     }

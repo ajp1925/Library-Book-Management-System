@@ -1,6 +1,6 @@
-package lbms.views.viewstate;
+package lbms.views.CLI.viewstate;
 
-import lbms.views.CLIView;
+import lbms.views.CLI.CLIView;
 
 /**
  * Book Search Menu view for views package.

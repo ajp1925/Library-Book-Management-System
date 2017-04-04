@@ -1,22 +1,18 @@
-package lbms.views;
+package lbms.views.GUI;
 
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Tab;
 import javafx.stage.Stage;
 import lbms.controllers.guicontrollers.ClientController;
-
-import java.io.IOException;
+import lbms.views.View;
 
 /**
  * Created by Chris on 3/30/17.
  */
 public class GUIView extends Application implements View {
-//    private ClientController client;
-//    private Controller contoller;
 
     public GUIView() {}     // MUST BE PUBLIC OTHERWISE CLIENT BREAKS
 
@@ -31,7 +27,9 @@ public class GUIView extends Application implements View {
 
         Parent root = null;
         try {
-            root = loadFXML("/fxml/client.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(GUIView.class.getResource("/fxml/client.fxml"));
+            root = loader.load();
         } catch (Exception e) {
             System.out.println("Error loading fxml file");
             System.exit(1);
@@ -45,12 +43,6 @@ public class GUIView extends Application implements View {
     public void stop(){
         ClientController.stop = true;
         Platform.exit();
-    }
-
-    public static Parent loadFXML(String file) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(GUIView.class.getResource(file));
-        return loader.load();
     }
 
     public static void main(String[] args) {

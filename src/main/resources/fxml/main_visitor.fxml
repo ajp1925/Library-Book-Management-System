@@ -1,2 +1,3 @@
 <?import javafx.scene.layout.Pane?>
-<Pane></Pane>
+<?import javafx.scene.text.Text?>
+<Pane><Text text="Hello Visitor"></Text></Pane>

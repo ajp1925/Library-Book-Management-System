@@ -1,8 +1,10 @@
-package lbms.views;
+package lbms.views.CLI;
 
 import lbms.models.SystemDateTime;
-import lbms.views.viewstate.DefaultViewState;
-import lbms.views.viewstate.State;
+import lbms.views.View;
+import lbms.views.ViewFactory;
+import lbms.views.CLI.viewstate.DefaultViewState;
+import lbms.views.CLI.viewstate.State;
 
 import java.util.Scanner;
 
@@ -29,8 +31,8 @@ public class CLIView implements View {
         int initial = 0;
 
         while(true) {
-            if(SystemDateTime.getInstance(null).getTime().isAfter(ViewFactory.OPEN_TIME) &&
-                    SystemDateTime.getInstance(null).getTime().isBefore(ViewFactory.CLOSE_TIME)) {
+            if(SystemDateTime.getInstance(null).getTime().isAfter(ViewFactory.getOpenTime()) &&
+                    SystemDateTime.getInstance(null).getTime().isBefore(ViewFactory.getCloseTime())) {
                 // Check if library just opened or system start
                 if(initial == 0 || initial == 1) {
                     CLIView.setState(new DefaultViewState(true));

@@ -1,6 +1,9 @@
 package lbms.views;
 
 import lbms.LBMS;
+import lbms.views.API.APIView;
+import lbms.views.CLI.CLIView;
+import lbms.views.GUI.GUIView;
 
 import java.time.LocalTime;
 
@@ -9,8 +12,8 @@ import java.time.LocalTime;
  * @author Team B
  */
 public class ViewFactory {
-    final static LocalTime OPEN_TIME = LBMS.OPEN_TIME;
-    final static LocalTime CLOSE_TIME = LBMS.CLOSE_TIME;
+    private final static LocalTime OPEN_TIME = LBMS.OPEN_TIME;
+    private final static LocalTime CLOSE_TIME = LBMS.CLOSE_TIME;
 
     public static void start(LBMS.StartType type) {
         View ui;
@@ -33,7 +36,15 @@ public class ViewFactory {
         ui.run();
     }
 
-    static void LibraryClose() {
+    public static void LibraryClose() {
         LBMS.LibraryClose();
+    }
+
+    public static LocalTime getCloseTime() {
+        return CLOSE_TIME;
+    }
+
+    public static LocalTime getOpenTime() {
+        return OPEN_TIME;
     }
 }
