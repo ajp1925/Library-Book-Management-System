@@ -19,9 +19,9 @@ public enum UserSearch implements Search<Visitor> {
     @Override
     public Predicate<? super Visitor> createPredicate(String s) {
         switch(this) {
-            case BY_ID:      return visitor -> Long.toString(visitor.getVisitorID()).equals(s);
-            case BY_NAME:    return visitor -> visitor.getName().equals(s);
-            case BY_ADDRESS: return visitor -> visitor.getAddress().equals(s);
+            case BY_ID:      return visitor -> Long.toString(visitor.getVisitorID()).contains(s);
+            case BY_NAME:    return visitor -> visitor.getName().contains(s);
+            case BY_ADDRESS: return visitor -> visitor.getAddress().contains(s);
             case BY_PHONE:   return visitor -> visitor.getPhoneNumber() == Long.parseLong(s);
             default:         return visitor -> true;
         }
