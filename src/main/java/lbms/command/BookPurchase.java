@@ -28,6 +28,9 @@ public class BookPurchase implements Command, Undoable {
             ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
             quantity = Integer.parseInt(arguments.remove(0));
             ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
+            if(ids.size() == 0) {
+                throw new MissingParametersException("missing-parameters,quantity,id[,ids]");
+            }
         }
         catch(Exception e) {
             throw new MissingParametersException("missing-parameters,quantity,id[,ids]");
@@ -73,7 +76,7 @@ public class BookPurchase implements Command, Undoable {
             for(int i = 0; i < quantity; i++) {
                 buyBook(b);
             }
-            booksBought += ("\n" + b.toString() + "," + b.getNumberOfCopies()) + ",";
+            booksBought += ("\n" + b.toString() + "," + quantity) + ",";
         }
         return ids.size() + booksBought;
     }

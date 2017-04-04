@@ -25,7 +25,7 @@ public class LBMS {
     public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
     private static LBMS instance;
-    private static HashMap<ISBN, Book> books;
+    private static HashMap<ISBN, Book> books = new HashMap<>();
     private static List<Book> lastBookSearch = new ArrayList<>();
     private static List<Book> booksToBuy;
     private static HashMap<Long, Visitor> visitors;
