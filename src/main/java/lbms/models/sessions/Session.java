@@ -6,7 +6,7 @@ import lbms.models.Visitor;
  * Session class for the LBMS
  * @author Team B
  */
-public class Session implements ISession {
+class Session implements ISession {
 
     private long clientID;
     private Visitor v;
@@ -16,15 +16,15 @@ public class Session implements ISession {
         this.clientID = clientID;
     }
 
-    public long getClientID() {
+    long getClientID() {
         return clientID;
     }
 
-    public void setV(Visitor v) {
+    void setV(Visitor v) {
         this.v = v;
     }
 
-    public Visitor getV() {
+    Visitor getV() {
         return v;
     }
 }
