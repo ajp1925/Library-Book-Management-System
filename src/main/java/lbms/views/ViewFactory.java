@@ -12,17 +12,17 @@ public class ViewFactory {
     final static LocalTime OPEN_TIME = LBMS.OPEN_TIME;
     final static LocalTime CLOSE_TIME = LBMS.CLOSE_TIME;
 
-    public static void start(String arg) {
+    public static void start(LBMS.StartType type) {
         View ui;
 
-        switch (arg) {
-            case LBMS.API:
+        switch (type) {
+            case API:
                 ui = APIView.getInstance();
                 break;
-            case LBMS.CLI:
+            case CLI:
                 ui = CLIView.getInstance();
                 break;
-            case LBMS.GUI:
+            case GUI:
                 ui = new GUIView();
                 break;
             default:

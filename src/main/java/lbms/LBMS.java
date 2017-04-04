@@ -16,9 +16,11 @@ import java.util.*;
  * @author Team B
  */
 public class LBMS {
-    public final static String GUI = "GUI";
-    public final static String CLI = "CLI";
-    public final static String API = "API";
+
+    public enum StartType {
+        GUI, CLI, API;
+    }
+
     public final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
     public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
@@ -38,23 +40,20 @@ public class LBMS {
      * @param args: the program arguments
      */
     public static void main(String[] args) {
-        String arg;
-        try {
-            arg = args[0].toUpperCase();
+        if (args.length >= 1) {
+            new LBMS(StartType.valueOf(args[0]));
+        } else {
+            System.out.println("Usage: java LBMS.jar <type>");
+            System.out.println("Valid types are: GUI, CLI, API");
         }
-        catch(ArrayIndexOutOfBoundsException e) {
-            arg = GUI;
-        }
-
-        new LBMS(arg);
     }
 
     /**
      * Handles user input for the LBMS system.
      */
-    public LBMS(String arg) {
+    public LBMS(StartType type) {
         SystemInit();
-        ViewFactory.start(arg);
+        ViewFactory.start(type);
         SystemClose();
     }
 

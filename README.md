@@ -2,7 +2,7 @@
 Design project for SWEN-262.
 
 # Gradle Commands
-- Run: `gradlew[.bat] run -q`
+- Run: `gradlew[.bat] run -q -PappArgs="['GUI']"`
 - Build: `gradlew[.bat] build` (Jar is outputted to build/libs/)
 - Unit Tests: `gradlew[.bat] test`
 
