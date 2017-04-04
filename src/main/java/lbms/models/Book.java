@@ -15,7 +15,7 @@ public class Book implements Serializable, Comparable<Book> {
 
     private String title, publisher;
     private ArrayList<String> authors;
-    private long isbn;
+    private ISBN isbn;
     private int pageCount, numberOfCopies, copiesCheckedOut;
     private Calendar publishDate;
     private LocalDate purchaseDate;
@@ -31,7 +31,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @param numberOfCopies: the quantity of this book the library owns
      * @param copiesCheckedOut: the total number of books that are not available
      */
-    public Book(long isbn, String title, ArrayList<String> authors, String publisher, Calendar publishDate,
+    public Book(ISBN isbn, String title, ArrayList<String> authors, String publisher, Calendar publishDate,
                 int pageCount, int numberOfCopies, int copiesCheckedOut) {
         this.isbn = isbn;
         this.title = title;
@@ -81,7 +81,7 @@ public class Book implements Serializable, Comparable<Book> {
      * Getter for the ISBN.
      * @return the ISBN number of the book
      */
-    public long getIsbn() {
+    public ISBN getIsbn() {
         return isbn;
     }
 

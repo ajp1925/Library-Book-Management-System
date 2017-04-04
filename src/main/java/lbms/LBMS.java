@@ -23,7 +23,7 @@ public class LBMS {
     public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
     private static LBMS instance;
-    private static HashMap<Long, Book> books;
+    private static HashMap<ISBN, Book> books;
     private static List<Book> lastBookSearch = new ArrayList<>();
     private static List<Book> booksToBuy;
     private static HashMap<Long, Visitor> visitors;
@@ -70,7 +70,7 @@ public class LBMS {
             String[] parts;
             String line, title, publisher;
             ArrayList<String> authors;
-            long isbn;
+            ISBN isbn;
             int pageCount, i;
             Calendar publishDate = null;
 
@@ -78,7 +78,7 @@ public class LBMS {
                 i = 1;
                 line = s.nextLine();
                 parts = line.split(",");
-                isbn = Long.parseLong(parts[0]);
+                isbn = new ISBN(parts[0]);
                 title = "";
                 authors = new ArrayList<>();
                 publisher = "";
@@ -178,7 +178,7 @@ public class LBMS {
         try {
             FileInputStream f = new FileInputStream("data.ser");
             ObjectInputStream in = new ObjectInputStream(f);
-            books = (HashMap<Long, Book>) in.readObject();
+            books = (HashMap<ISBN, Book>) in.readObject();
             booksToBuy = (ArrayList<Book>) in.readObject();
             visitors = (HashMap<Long, Visitor>) in.readObject();
             employees = (HashMap<Long, Employee>) in.readObject();
@@ -238,7 +238,7 @@ public class LBMS {
      * Getter for the hash map of books
      * @return the books
      */
-    public static HashMap<Long, Book> getBooks() {
+    public static HashMap<ISBN, Book> getBooks() {
         return books;
     }
 

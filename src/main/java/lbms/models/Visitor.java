@@ -17,7 +17,7 @@ public class Visitor implements Serializable {
     private String address;
     private long phoneNumber;
     private long visitorID;
-    private HashMap<Long, Transaction> checkedOutBooks;
+    private HashMap<ISBN, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
     private boolean inLibrary;
     private double currentFines;
@@ -107,7 +107,7 @@ public class Visitor implements Serializable {
      * Getter for the checked out books
      * @return the checked out books
      */
-    public HashMap<Long, Transaction> getCheckedOutBooks() {
+    public HashMap<ISBN, Transaction> getCheckedOutBooks() {
         return checkedOutBooks;
     }
 
@@ -160,7 +160,7 @@ public class Visitor implements Serializable {
      */
     public double getFines() {
         double fines = 0;
-        for(Long l: checkedOutBooks.keySet()) {
+        for(ISBN l: checkedOutBooks.keySet()) {
             fines += checkedOutBooks.get(l).getFine();
         }
         this.currentFines = fines;

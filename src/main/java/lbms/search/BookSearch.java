@@ -21,7 +21,7 @@ public enum BookSearch implements Search<Book> {
     public Predicate<? super Book> createPredicate(String s) {
         switch (this) {
             case BY_AUTHOR:    return book -> book.hasAuthorPartial(s);
-            case BY_ISBN:      return book -> Long.toString(book.getIsbn()).contains(s);
+            case BY_ISBN:      return book -> book.getIsbn().toString().contains(s);
             case BY_TITLE:     return book -> book.getTitle().contains(s);
             case BY_PUBLISHER: return book -> book.getPublisher().contains(s);
             default:           return book -> true;

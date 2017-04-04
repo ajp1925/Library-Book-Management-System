@@ -2,6 +2,7 @@ package lbms.command;
 
 import lbms.LBMS;
 import lbms.models.Book;
+import lbms.models.ISBN;
 import lbms.search.BookSearch;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class LibrarySearch implements Command {
 
     private String title, publisher = null, sort_order = null;
     private ArrayList<String> authors;
-    private Long isbn = null;
+    private ISBN isbn;
 
     /**
      * Constructor for a LibrarySearch command object.
@@ -50,7 +51,7 @@ public class LibrarySearch implements Command {
                         title = (arguments[index]);
                     }
                     else if(isbn == null && arguments[index].matches("^\\d{13}$")) {
-                        isbn = Long.parseLong(arguments[index]);
+                        isbn = new ISBN(arguments[index]);
                     }
                     else if((publisher == null && sort_order == null && index == (arguments.length) - 1) ||
                                (publisher == null && sort_order != null && index == (arguments.length) - 2)) {
@@ -83,7 +84,7 @@ public class LibrarySearch implements Command {
             matches = BookSearch.BY_AUTHOR.findAll(authors.get(0));
         }
         else if(isbn != null) {
-            matches = BookSearch.BY_ISBN.findAll(isbn);
+            matches = BookSearch.BY_ISBN.findAll(isbn.toString());
         }
         else if(publisher != null) {
             matches = BookSearch.BY_PUBLISHER.findAll(publisher);
