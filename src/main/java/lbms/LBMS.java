@@ -48,7 +48,8 @@ public class LBMS {
                 System.out.println("Valid types are: GUI, CLI, API");
             }
         } else {
-            new LBMS(StartType.GUI);
+            System.out.println("Usage: java LBMS.jar <type>");
+            System.out.println("Valid types are: GUI, CLI, API");
         }
     }
 
