@@ -1,6 +1,9 @@
 package lbms.models;
 
-public class ISBN {
+import java.io.Serializable;
+
+public class ISBN implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private final String value;
 
