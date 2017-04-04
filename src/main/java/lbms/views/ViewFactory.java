@@ -9,12 +9,12 @@ import java.time.LocalTime;
  * @author Team B
  */
 public class ViewFactory {
-    private static View ui = null;
-
-    public final static LocalTime OPEN_TIME = LBMS.OPEN_TIME;
-    public final static LocalTime CLOSE_TIME = LBMS.CLOSE_TIME;
+    final static LocalTime OPEN_TIME = LBMS.OPEN_TIME;
+    final static LocalTime CLOSE_TIME = LBMS.CLOSE_TIME;
 
     public static void start(String arg) {
+        View ui;
+
         switch (arg) {
             case LBMS.API:
                 ui = APIView.getInstance();
@@ -33,7 +33,7 @@ public class ViewFactory {
         ui.run();
     }
 
-    public static void LibraryClose() {
+    static void LibraryClose() {
         LBMS.LibraryClose();
     }
 }

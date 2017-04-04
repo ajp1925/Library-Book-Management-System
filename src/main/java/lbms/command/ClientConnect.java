@@ -8,10 +8,9 @@ public class ClientConnect implements Command {
 
     /**
      * Constructor parses the request string and creates the necessary data in the class.
-     * @param request: the string that will be parsed for input
      * @throws MissingParametersException: when the request format is invalid
      */
-    public ClientConnect(String request) throws MissingParametersException {
+    public ClientConnect() throws MissingParametersException {
         // TODO
     }
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="402.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.LoginController">
+<AnchorPane fx:id="root" prefHeight="402.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.LoginController">
    <children>
       <FlowPane alignment="CENTER" styleClass="login-background" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -16,7 +16,7 @@
                      <children>
                         <VBox alignment="TOP_CENTER">
                            <children>
-                              <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#login" text="Login" />
+                              <Button fx:id="loginButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#execute" text="Login" />
                               <Text fx:id="loginFailedLabel" strokeType="OUTSIDE" strokeWidth="0.0">
                                  <VBox.margin>
                                     <Insets top="10.0" />

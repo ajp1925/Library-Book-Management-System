@@ -5,9 +5,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
 import javafx.stage.Stage;
-import lbms.LBMS;
-import lbms.controllers.ClientController;
+import lbms.controllers.guicontrollers.ClientController;
 
 import java.io.IOException;
 
@@ -15,6 +15,9 @@ import java.io.IOException;
  * Created by Chris on 3/30/17.
  */
 public class GUIView extends Application implements View {
+//    private ClientController client;
+//    private Controller contoller;
+
     public GUIView() {}     // MUST BE PUBLIC OTHERWISE CLIENT BREAKS
 
     @Override

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.ClientController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.ClientController">
    <children>
       <Pane fx:id="menuBackground" prefHeight="30.0" prefWidth="0" stylesheets="@../css/client.css" />
       <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -27,7 +27,6 @@
          <center>
             <TabPane fx:id="tabs" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/client.css" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER">
               <tabs>
-                <Tab text="Untitled Tab 1" />
               </tabs>
             </TabPane>
          </center>
