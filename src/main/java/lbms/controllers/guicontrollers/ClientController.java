@@ -5,6 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -14,6 +18,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lbms.models.SystemDateTime;
 import lbms.views.GUI.SessionManager;
+
+import java.awt.*;
 
 
 /**
@@ -92,6 +98,7 @@ public class ClientController {
     private void createMenuBar() {
         // Create Menu Bar
         MenuBar menuBar = new MenuBar();
+        menuBar.setStyle("-fx-background-color: #F36E21");
 
         // Add Menu
         KeyCombination.Modifier key;
