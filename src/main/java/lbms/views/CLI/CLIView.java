@@ -41,6 +41,9 @@ public class CLIView implements View {
 
                 System.out.print("> ");
                 input = s.nextLine();
+
+                if (input.matches("(?i)exit|quit")) { break; }
+
                 CLIView.change(input);
             }
             else {
