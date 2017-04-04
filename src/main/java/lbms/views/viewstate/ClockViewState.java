@@ -27,7 +27,7 @@ public class ClockViewState implements State {
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"datetime;");
 
         try {
-            System.out.println(CommandController.getCommand().parseResponse(response));
+            System.out.println(parseResponse(response));
         }
         catch(Exception e) {
             System.out.println(response);
@@ -68,5 +68,15 @@ public class ClockViewState implements State {
                 System.out.println("Command not found\n");
                 this.init();
         }
+    }
+
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
+    public String parseResponse(String response) {
+        String[] fields = response.split(",");
+        return "\nCurrent System Time: " + fields[1] + " " + fields[2];
     }
 }

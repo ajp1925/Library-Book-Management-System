@@ -23,10 +23,4 @@ public class ClientConnect implements Command {
         // TODO
         return null;
     }
-
-    @Override
-    public String parseResponse(String response) {
-        // TODO move? remove? who needs this method anyways?
-        return null;
-    }
 }

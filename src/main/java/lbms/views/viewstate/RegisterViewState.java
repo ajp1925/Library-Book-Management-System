@@ -1,6 +1,8 @@
 package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
+import lbms.models.Visitor;
+import lbms.search.UserSearch;
 import lbms.views.CLIView;
 
 import java.util.Scanner;
@@ -50,7 +52,7 @@ public class RegisterViewState implements State {
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"register," + firstName + ","
                 + lastName + "," + address + "," + phone + ";");
         try {
-            System.out.println(CommandController.getCommand().parseResponse(response));
+            System.out.println(parseResponse(response));
         }
         catch(Exception e) {
             System.out.println(response);
@@ -65,4 +67,23 @@ public class RegisterViewState implements State {
      */
     @Override
     public void change(String state) {}
+
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
+    public String parseResponse(String response) {
+        String[] fields = response.split(",");
+        if(fields[1].equals("duplicate;")) {
+            return "This user already exists in the system.";
+        }
+        else {
+            // TODO fix the search under this line, may work may not????
+            Visitor visitor = UserSearch.BY_ID.findFirst(fields[0]);
+            return String.format("\nNew visitor created on %s:\n\tName: %s\n\tAddress: %s\n\tPhone: %s\n\tVisitor " +
+                            "ID: %d", fields[2].replace(";", ""), visitor.getName(), visitor.getAddress(),
+                    visitor.getPhoneNumber(), visitor.getVisitorID());
+        }
+    }
 }

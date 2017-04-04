@@ -58,24 +58,6 @@ public class RegisterVisitor implements Command {
     }
 
     /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
-    @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        if(fields[1].equals("duplicate;")) {
-            return "This user already exists in the system.";
-        }
-        else {
-            return String.format("\nNew visitor created on %s:\n\tName: %s\n\tAddress: %s\n\tPhone: %s\n\tVisitor " +
-                            "ID: %d", fields[2].replace(";", ""), visitor.getName(), visitor.getAddress(),
-                    visitor.getPhoneNumber(), visitor.getVisitorID());
-        }
-    }
-
-    /**
      * Registers a visitor with the system, if they are not already registered
      * @param visitor: The visitor to register
      * @return true if successfully registered, false if duplicate

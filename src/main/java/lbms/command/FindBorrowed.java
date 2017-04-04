@@ -49,24 +49,4 @@ public class FindBorrowed implements Command {
 
         return s + ";";
     }
-
-    /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
-    @Override
-    public String parseResponse(String response) {
-        String[] fields = response.replace(";", "").split("\n", 2);
-        if (fields.length == 1) {
-            if (fields[0].endsWith("0")) {
-                return "\nVisitor " + visitorID + " has no borrowed books.";
-            } else {
-                return "\nVisitor " + visitorID + " is not valid.";
-            }
-        }
-        else {
-            return "\n" + fields[1];
-        }
-    }
 }

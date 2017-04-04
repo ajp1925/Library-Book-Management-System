@@ -10,7 +10,7 @@ import lbms.search.UserSearch;
  * EndVisit class for end visit command.
  * @author Team B TODO -> change for R2
  */
-public class EndVisit implements Command {
+public class EndVisit implements Command, Undoable {
 
     private long visitorID;
 
@@ -50,20 +50,9 @@ public class EndVisit implements Command {
         return "invalid-id;";
     }
 
-    /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
     @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        if(fields[1].equals("invalid-id;")) {
-            return "\nVisitor " + visitorID + " is not in the library.";
-        }
-        else {
-            return "\nVisitor " + visitorID + " has left the library at "
-                    + fields[2] + " and was in the library for " + fields[3];
-        }
+    public void unExecute() {
+        // TODO
     }
+
 }

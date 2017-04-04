@@ -40,7 +40,7 @@ public class EndVisitViewState implements State {
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"depart," + visitorID + ";");
 
         try {
-            System.out.println(CommandController.getCommand().parseResponse(response));
+            System.out.println(parseResponse(response));
         } catch (Exception e) {
             System.out.println(response);
         }
@@ -54,6 +54,22 @@ public class EndVisitViewState implements State {
      */
     @Override
     public void change(String state) {}
+
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
+    public String parseResponse(String response) {
+        String[] fields = response.split(",");
+        if(fields[1].equals("invalid-id;")) {
+            return "\nVisitor " + visitorID + " is not in the library.";
+        }
+        else {
+            return "\nVisitor " + visitorID + " has left the library at "
+                    + fields[2] + " and was in the library for " + fields[3];
+        }
+    }
 }
 
 

@@ -24,10 +24,4 @@ public class CreateAccount implements Command {
         // TODO
         return null;
     }
-
-    @Override
-    public String parseResponse(String response) {
-        // TODO
-        return null;
-    }
 }

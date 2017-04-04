@@ -22,9 +22,4 @@ public class LogOut implements Command {
         // TODO
         return null;
     }
-
-    public String parseResponse(String response) {
-        // TODO
-        return null;
-    }
 }

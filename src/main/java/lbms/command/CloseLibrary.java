@@ -15,17 +15,4 @@ public class CloseLibrary implements Command {
         return "library-closed;";
     }
 
-    /**
-     * Parses the response for library closed
-     * @param response: the response string from execute
-     * @return output to be printed
-     */
-    @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        if (fields[1].equals("library-closed;")) {
-            return "\nThe library is now closed.";
-        }
-        return "\nThere's some kind of error";
-    }
 }

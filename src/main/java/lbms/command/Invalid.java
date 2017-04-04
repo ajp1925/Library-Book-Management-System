@@ -18,16 +18,4 @@ public class Invalid implements Command {
     public String execute() {
         return "invalid-command;";
     }
-
-    /**
-     * Parses the response for standard output
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
-    public String parseResponse(String response) {
-        if(response.equals("invalid-command;")) {
-            return "Invalid Command.\n";
-        }
-        return null;
-    }
 }

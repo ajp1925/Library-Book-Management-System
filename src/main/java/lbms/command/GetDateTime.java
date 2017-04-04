@@ -21,15 +21,4 @@ public class GetDateTime implements Command {
         return SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + "," +
                 SystemDateTime.getInstance(null).getTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
-
-    /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
-    @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        return "\nCurrent System Time: " + fields[1] + " " + fields[2];
-    }
 }

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * Returns a book borrowed by a library visitor.
  * @author Team B TODO -> change for R2
  */
-public class Return implements Command {
+public class Return implements Command, Undoable {
 
     private long visitorID;
     private List<Integer> ids = new ArrayList<>();
@@ -87,24 +87,8 @@ public class Return implements Command {
         return "success;";
     }
 
-    /**
-     * Parses the string for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
     @Override
-    public String parseResponse(String response) {
-        switch(response.replaceAll(";$", "") .split(",")[0]) {
-            case "invalid-visitor-id":
-                return "Invalid visitor ID entered.";
-            case "invalid-book-id":
-                return "Invalid book ID entered.";
-            case "success":
-                return "Book(s) successfully returned.";
-            case "overdue":
-                return "This book is overdue.";
-            default:
-                return "Unknown option/command.";
-        }
+    public void unExecute() {
+        // TODO
     }
 }

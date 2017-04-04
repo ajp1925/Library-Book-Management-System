@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
  * PayFine class for the pay fine command.
  * @author Team B TODO change for R2
  */
-public class PayFine implements Command {
+public class PayFine implements Command, Undoable {
 
     private long visitorID;
     private double amount;
@@ -43,23 +43,8 @@ public class PayFine implements Command {
         }
     }
 
-    /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
     @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        switch (fields[1]) {
-            case "invalid-visitor-id;":
-                return "\nVisitor " + visitorID + " is not registered in the system.";
-            case "invalid-amount":
-                return "The specified amount, " + amount + " is not valid as it is negative or exceeds their balance, " +
-                        UserSearch.BY_ID.findFirst(visitorID).getFines() + ".";
-            default:
-                return "The fine has been successfully paid for. The remaining balance is " +
-                        UserSearch.BY_ID.findFirst(visitorID).getFines() + ".";
-        }
+    public void unExecute() {
+        // TODO
     }
 }

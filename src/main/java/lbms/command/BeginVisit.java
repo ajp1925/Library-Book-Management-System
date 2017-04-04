@@ -10,7 +10,7 @@ import lbms.search.UserSearch;
  * StartVisit class for the start visit command.
  * @author Team B TODO -> change for R2
  */
-public class BeginVisit implements Command {
+public class BeginVisit implements Command, Undoable {
 
     private long visitorID;
 
@@ -49,23 +49,9 @@ public class BeginVisit implements Command {
                 v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 
-    /**
-     * Parses the response for begin visit.
-     * @param response: the response string from execute
-     * @return a string for output
-     */
     @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        switch (fields[1]) {
-            case "duplicate;":
-                return "\nVisitor " + visitorID + " is already in the library.";
-            case "invalid-id;":
-                return "\nVisitor " + visitorID + " is not registered in the system.";
-            default:
-                return "\nVisitor " + visitorID + " has entered the library on "
-                        + fields[2] + " at " + fields[3].replace(";", "") + ".";
-        }
+    public void unExecute() {
+        // TODO
     }
 
     /**

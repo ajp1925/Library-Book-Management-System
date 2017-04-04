@@ -43,17 +43,6 @@ public class StatisticsReport implements Command {
     }
 
     /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
-    @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        return fields[fields.length - 1];
-    }
-
-    /**
      * Generates a Library report including the following information:
      *     -total number of books in the library
      *     -total number of registered library visitors

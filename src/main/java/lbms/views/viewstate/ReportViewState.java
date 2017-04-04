@@ -54,7 +54,7 @@ public class ReportViewState implements State {
         }
 
         try {
-            System.out.println(CommandController.getCommand().parseResponse(response));
+            System.out.println(parseResponse(response));
         }
         catch(Exception e) {
             System.out.println(response);
@@ -68,4 +68,14 @@ public class ReportViewState implements State {
      * @param state: the command to handle
      */
     public void change(String state) {}
+
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
+    public String parseResponse(String response) {
+        String[] fields = response.split(",");
+        return fields[fields.length - 1];
+    }
 }

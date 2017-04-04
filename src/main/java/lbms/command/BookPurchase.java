@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * BookPurchase class that implements the book purchase command.
  * @author Team B TODO -> update for R2
  */
-public class BookPurchase implements Command {
+public class BookPurchase implements Command, Undoable {
 
     private int quantity;
     private List<Integer> ids;
@@ -51,33 +51,9 @@ public class BookPurchase implements Command {
         return "success," + s + ";";
     }
 
-    /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
     @Override
-    public String parseResponse(String response) {
-        try {
-            response = response.replaceAll(";$", "");
-            String[] fields = response.split(",");
-            if(fields[1].equals("success")) {
-                String output = "Book(s) purchased, ";
-                List<Book> books;
-                for(int i = 2; i < fields.length; i++) {
-                    try {
-                        books = BookSearch.BY_ISBN.findAll(Long.parseLong(fields[i]));
-                        output += books.get(0).getTitle() + " * " + fields[1] + "\n";
-                    }
-                    catch(NumberFormatException e) {}
-                }
-                return output;
-            }
-            return null;
-        }
-        catch(Exception e) {
-            return "failure;";
-        }
+    public void unExecute() {
+        // TODO
     }
 
     /**

@@ -43,7 +43,7 @@ public class AdvanceViewState implements State {
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"advance," + days + "," + hours + ";");
 
         try {
-            System.out.println(CommandController.getCommand().parseResponse(response));
+            System.out.println(parseResponse(response));
         } catch (Exception e) {
             System.out.println(response);
         }
@@ -57,4 +57,21 @@ public class AdvanceViewState implements State {
      */
     @Override
     public void change(String state) {}
+
+    /**
+     * Parses the response for advance time.
+     * @param response: the response string from execute
+     * @return output for advance time
+     */
+    public String parseResponse(String response) {
+        String[] fields = response.split(",");
+        switch(fields[1]) {
+            case ("success;"):
+                return "\nAdvance success, clock has been moved forward " + days + " day(s) and " + hours + " hour(s).";
+            case ("invalid-number-of-days"):
+                return "\nFailure, " + days + " is an invalid number of days to skip.";
+            default:
+                return "\nFailure, " + hours + " is an invalid number of hours to skip.";
+        }
+    }
 }

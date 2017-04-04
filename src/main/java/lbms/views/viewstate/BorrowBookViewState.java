@@ -1,8 +1,10 @@
 package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
+import lbms.search.UserSearch;
 import lbms.views.CLIView;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -49,7 +51,7 @@ public class BorrowBookViewState implements State {
                 + ";");
 
         try {
-            System.out.println(CommandController.getCommand().parseResponse(response));
+            System.out.println(parseResponse(response));
         }
         catch(Exception e) {
             System.out.println(response);
@@ -64,4 +66,28 @@ public class BorrowBookViewState implements State {
      */
     @Override
     public void change(String state) {}
+
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
+    public String parseResponse(String response) {
+        String[] fields = response.split(",");
+        switch (fields[1]) {
+            case "invalid-visitor-id;":
+                return "\nVisitor " + visitorID + " is not registered in the system.";
+            case "outstanding-fine":
+                return "\nVisitor " + visitorID + " has to pay " +
+                        new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + " before they " +
+                        "can borrow more books.";
+            case "book-limit-exceeded;":
+                return "\nVisitor " + visitorID + " has borrowed the maximum number of books or the borrow request would " +
+                        "cause the visitor to exceed 5 borrowed books.";
+            case "invalid-book-id":
+                return "\nOne of more of the book IDs specified do not match the IDs for the most recent library book search.";
+            default:
+                return "\nThe books have been successfully borrowed and will be due on " + fields[2] + ".";
+        }
+    }
 }

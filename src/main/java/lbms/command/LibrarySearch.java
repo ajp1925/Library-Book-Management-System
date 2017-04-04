@@ -144,25 +144,4 @@ public class LibrarySearch implements Command {
 
         return matches.size() + "," + matchesString + ";";
     }
-
-    /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
-    @Override
-    public String parseResponse(String response) {
-        String[] fields = response.replace(";", "").split("\n", 2);
-
-        if (fields.length == 1) {
-            if (fields[0].endsWith("0")) {
-                return "No books match query.";
-            } else {
-                return response;
-            }
-        }
-        else {
-            return fields[1];
-        }
-    }
 }

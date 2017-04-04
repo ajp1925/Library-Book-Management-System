@@ -1,8 +1,11 @@
 package lbms.views.viewstate;
 
 import lbms.controllers.CommandController;
+import lbms.models.Book;
+import lbms.search.BookSearch;
 import lbms.views.CLIView;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -49,7 +52,7 @@ public class PurchaseBookViewState implements State {
         String response = CommandController.processRequest(this.SYSTEM_STATUS,"buy," + quantity + ids + ";");
 
         try {
-            System.out.println("\n" + CommandController.getCommand().parseResponse(response));
+            System.out.println("\n" + parseResponse(response));
         }
         catch(Exception e) {
             System.out.println(response);
@@ -64,4 +67,33 @@ public class PurchaseBookViewState implements State {
      */
     @Override
     public void change(String state) {}
+
+
+    /**
+     * Parses the response for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
+    public String parseResponse(String response) {
+        try {
+            response = response.replaceAll(";$", "");
+            String[] fields = response.split(",");
+            if(fields[1].equals("success")) {
+                String output = "Book(s) purchased, ";
+                List<Book> books;
+                for(int i = 2; i < fields.length; i++) {
+                    try {
+                        books = BookSearch.BY_ISBN.findAll(Long.parseLong(fields[i]));
+                        output += books.get(0).getTitle() + " * " + fields[1] + "\n";
+                    }
+                    catch(NumberFormatException e) {}
+                }
+                return output;
+            }
+            return null;
+        }
+        catch(Exception e) {
+            return "failure;";
+        }
+    }
 }

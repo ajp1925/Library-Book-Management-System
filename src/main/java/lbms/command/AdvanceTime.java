@@ -40,22 +40,4 @@ public class AdvanceTime implements Command {
         SystemDateTime.getInstance(null).plusHours(hours);
         return "success;";
     }
-
-    /**
-     * Parses the response for advance time.
-     * @param response: the response string from execute
-     * @return output for advance time
-     */
-    @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        switch(fields[1]) {
-            case ("success;"):
-                return "\nAdvance success, clock has been moved forward " + days + " day(s) and " + hours + " hour(s).";
-            case ("invalid-number-of-days"):
-                return "\nFailure, " + days + " is an invalid number of days to skip.";
-            default:
-                return "\nFailure, " + hours + " is an invalid number of hours to skip.";
-        }
-    }
 }

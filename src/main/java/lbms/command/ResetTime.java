@@ -28,20 +28,4 @@ public class ResetTime implements Command {
             return "failure;";
         }
     }
-
-    /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
-    @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        if(fields[1].equals("success;")) {
-            return "\nSuccess, system clock has been reset";
-        }
-        else {
-            return "\nFailure, system clock failed to reset";
-        }
-    }
 }

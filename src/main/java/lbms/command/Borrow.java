@@ -15,7 +15,7 @@ import java.util.List;
  * Borrow class that implements the borrow command.
  * @author Team B TODO -> change for R2
  */
-public class Borrow implements Command {
+public class Borrow implements Command, Undoable {
 
     private long visitorID;
     private ArrayList<Integer> id;
@@ -83,29 +83,9 @@ public class Borrow implements Command {
         }
     }
 
-    /**
-     * Parses the response for standard output.
-     * @param response: the response string from execute
-     * @return the output to be printed
-     */
     @Override
-    public String parseResponse(String response) {
-        String[] fields = response.split(",");
-        switch (fields[1]) {
-            case "invalid-visitor-id;":
-                return "\nVisitor " + visitorID + " is not registered in the system.";
-            case "outstanding-fine":
-                return "\nVisitor " + visitorID + " has to pay " +
-                        new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + " before they " +
-                        "can borrow more books.";
-            case "book-limit-exceeded;":
-                return "\nVisitor " + visitorID + " has borrowed the maximum number of books or the borrow request would " +
-                        "cause the visitor to exceed 5 borrowed books.";
-            case "invalid-book-id":
-                return "\nOne of more of the book IDs specified do not match the IDs for the most recent library book search.";
-            default:
-                return "\nThe books have been successfully borrowed and will be due on " + fields[2] + ".";
-        }
+    public void unExecute() {
+        // TODO
     }
 
     /**

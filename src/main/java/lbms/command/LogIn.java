@@ -31,10 +31,4 @@ public class LogIn implements Command {
         // TODO
         return null;
     }
-
-    @Override
-    public String parseResponse(String response) {
-        // TODO
-        return null;
-    }
 }

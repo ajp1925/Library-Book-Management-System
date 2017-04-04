@@ -48,7 +48,7 @@ public class ReturnBookViewState implements State {
         String response = CommandController.processRequest(this.SYSTEM_STATUS, "return," + visitorID + books + ";");
 
         try {
-            System.out.println(CommandController.getCommand().parseResponse(response));
+            System.out.println(parseResponse(response));
         } catch (Exception e) {
             System.out.println(response);
         }
@@ -62,4 +62,24 @@ public class ReturnBookViewState implements State {
      */
     @Override
     public void change(String state) {}
+
+    /**
+     * Parses the string for standard output.
+     * @param response: the response string from execute
+     * @return the output to be printed
+     */
+    public String parseResponse(String response) {
+        switch(response.replaceAll(";$", "") .split(",")[0]) {
+            case "invalid-visitor-id":
+                return "Invalid visitor ID entered.";
+            case "invalid-book-id":
+                return "Invalid book ID entered.";
+            case "success":
+                return "Book(s) successfully returned.";
+            case "overdue":
+                return "This book is overdue.";
+            default:
+                return "Unknown option/command.";
+        }
+    }
 }
