@@ -1,14 +1,20 @@
 package lbms.controllers.guicontrollers;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lbms.models.SystemDateTime;
+import lbms.views.GUI.GUIView;
 import lbms.views.GUI.SessionManager;
 
 
@@ -20,6 +26,7 @@ public class ClientController {
     private final static int MAX_WIDTH = 150;
     public static Boolean stop = false;
 
+    @FXML private BorderPane root;
     @FXML private TabPane tabs;
     @FXML private VBox menuPane;
     @FXML private Button clockButton;
@@ -27,6 +34,8 @@ public class ClientController {
     @FXML private Text clockText;
 
     @FXML protected void initialize() {
+        createMenuBar();
+
         // init clock
         Runnable task = () -> {
             while (!stop) {
@@ -79,6 +88,54 @@ public class ClientController {
             menuBackground.setPrefWidth(MAX_WIDTH);
             clockButton.setPrefWidth(MAX_WIDTH);
             clockButton.setText("Clock");
+        }
+    }
+
+    private void createMenuBar() {
+        // Create Menu Bar
+        MenuBar menuBar = new MenuBar();
+
+        // File
+        Menu fileMenu = new Menu("File");
+
+        MenuItem newTab = new MenuItem("New Tab");
+        newTab.setOnAction((ActionEvent event) -> { addTab(); });
+        newTab.setAccelerator(new KeyCodeCombination(KeyCode.T, KeyCombination.META_DOWN));
+
+        MenuItem closeTab = new MenuItem("Close Tab");
+        closeTab.setOnAction((ActionEvent event) -> { tabs.getTabs().remove(tabs.getSelectionModel().getSelectedItem()); });
+        closeTab.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.META_DOWN));
+
+
+        MenuItem closeWindow = new MenuItem("Close Window");
+        closeWindow.setOnAction((ActionEvent event) -> { Platform.exit(); });
+        closeWindow.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.META_DOWN, KeyCombination.SHIFT_DOWN));
+
+        fileMenu.getItems().addAll(newTab, closeTab, closeWindow);
+
+        // Edit
+        Menu editMenu = new Menu("Edit");
+
+        MenuItem undo = new MenuItem("Undo");
+        undo.setOnAction((ActionEvent event) -> { /*TODO*/ System.out.println("Undo"); });
+        undo.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.META_DOWN));
+
+        MenuItem redo = new MenuItem("Redo");
+        redo.setOnAction((ActionEvent event) -> { /*TODO*/ System.out.println("Redo"); });
+        redo.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.META_DOWN, KeyCombination.SHIFT_DOWN));
+
+        editMenu.getItems().addAll(undo, redo);
+
+        // Menu
+        menuBar.getMenus().addAll(fileMenu, editMenu);
+
+        // Add Menu
+        final String os = System.getProperty ("os.name");
+        if (os != null && os.startsWith ("Mac")) {
+            menuBar.useSystemMenuBarProperty().set(true);
+            root.getChildren().add(menuBar);
+        } else {
+            root.setTop(menuBar);
         }
     }
 }

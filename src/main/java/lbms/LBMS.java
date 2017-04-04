@@ -42,7 +42,7 @@ public class LBMS {
     public static void main(String[] args) {
         if (args.length >= 1) {
             try {
-                new LBMS(StartType.valueOf(args[0]));
+                new LBMS(StartType.valueOf(args[0].toUpperCase()));
             } catch (IllegalArgumentException e) {
                 System.out.println("Usage: java LBMS.jar <type>");
                 System.out.println("Valid types are: GUI, CLI, API");
