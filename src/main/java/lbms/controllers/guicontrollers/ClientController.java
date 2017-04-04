@@ -8,13 +8,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lbms.models.SystemDateTime;
-import lbms.views.GUI.GUIView;
 import lbms.views.GUI.SessionManager;
 
 
@@ -95,21 +93,33 @@ public class ClientController {
         // Create Menu Bar
         MenuBar menuBar = new MenuBar();
 
+        // Add Menu
+        KeyCombination.Modifier key;
+        final String os = System.getProperty ("os.name");
+        if (os != null && os.startsWith ("Mac")) {
+            menuBar.useSystemMenuBarProperty().set(true);
+            root.getChildren().add(menuBar);
+            key = KeyCombination.META_DOWN;
+        } else {
+            root.setTop(menuBar);
+            key = KeyCombination.CONTROL_DOWN;
+        }
+
         // File
         Menu fileMenu = new Menu("File");
 
         MenuItem newTab = new MenuItem("New Tab");
         newTab.setOnAction((ActionEvent event) -> { addTab(); });
-        newTab.setAccelerator(new KeyCodeCombination(KeyCode.T, KeyCombination.META_DOWN));
+        newTab.setAccelerator(new KeyCodeCombination(KeyCode.T, key));
 
         MenuItem closeTab = new MenuItem("Close Tab");
         closeTab.setOnAction((ActionEvent event) -> { tabs.getTabs().remove(tabs.getSelectionModel().getSelectedItem()); });
-        closeTab.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.META_DOWN));
+        closeTab.setAccelerator(new KeyCodeCombination(KeyCode.W, key));
 
 
         MenuItem closeWindow = new MenuItem("Close Window");
         closeWindow.setOnAction((ActionEvent event) -> { Platform.exit(); });
-        closeWindow.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.META_DOWN, KeyCombination.SHIFT_DOWN));
+        closeWindow.setAccelerator(new KeyCodeCombination(KeyCode.W, key, KeyCombination.SHIFT_DOWN));
 
         fileMenu.getItems().addAll(newTab, closeTab, closeWindow);
 
@@ -118,25 +128,16 @@ public class ClientController {
 
         MenuItem undo = new MenuItem("Undo");
         undo.setOnAction((ActionEvent event) -> { /*TODO*/ System.out.println("Undo"); });
-        undo.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.META_DOWN));
+        undo.setAccelerator(new KeyCodeCombination(KeyCode.Z, key));
 
         MenuItem redo = new MenuItem("Redo");
         redo.setOnAction((ActionEvent event) -> { /*TODO*/ System.out.println("Redo"); });
-        redo.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.META_DOWN, KeyCombination.SHIFT_DOWN));
+        redo.setAccelerator(new KeyCodeCombination(KeyCode.Z, key, KeyCombination.SHIFT_DOWN));
 
         editMenu.getItems().addAll(undo, redo);
 
         // Menu
         menuBar.getMenus().addAll(fileMenu, editMenu);
-
-        // Add Menu
-        final String os = System.getProperty ("os.name");
-        if (os != null && os.startsWith ("Mac")) {
-            menuBar.useSystemMenuBarProperty().set(true);
-            root.getChildren().add(menuBar);
-        } else {
-            root.setTop(menuBar);
-        }
     }
 }
 
