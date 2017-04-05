@@ -59,8 +59,6 @@ public class CommandController {
             if (LBMS.getSessionProxies().get(clientID) == null) {
                 throw new MissingParametersException("invalid-client-id;");
             }
-            Command c;
-            Undoable u = null;
 
             switch (request[1]) {
                 case "disconnect":
