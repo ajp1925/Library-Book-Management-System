@@ -29,7 +29,7 @@
 #addTabButton {
     -fx-border-style: none;
     -fx-background-color: #F36E21;
-    -fx-padding: 0 0 2.5 0;
+    -fx-padding: 0 0 2.25 0;
 }
 
 #addTab:hover, #addTabButton:hover{
@@ -39,9 +39,6 @@
 
 .menu-button {
     -fx-background-color: #F36E21;
-    -fx-font-weight: bold;
-    -fx-font-family: monospace;
-    -fx-font-size: 150%;
     -fx-border-style: none;
 }
 
@@ -80,4 +77,28 @@
 
 .tab-pane .tab:selected .focus-indicator{
     -fx-border-color: transparent;
+}
+
+.menu-bar {
+    -fx-background-color: #F36E21;
+}
+
+.menu-button:hover .label {
+    -fx-text-fill: black;
+}
+
+.menu-button:showing {
+    -fx-background-color: #f9b086;
+}
+
+.menu-button:showing .label {
+    -fx-text-fill: black;
+}
+
+.menu-item:focused {
+    -fx-background-color: #f9b086;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: black;
 }

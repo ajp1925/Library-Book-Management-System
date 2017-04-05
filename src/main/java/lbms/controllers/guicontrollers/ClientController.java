@@ -56,8 +56,8 @@ public class ClientController {
         Button btn = ((Button)addTab.getGraphic());
         btn.setOnMouseClicked(event -> addTab());
         btn.setBorder(null);
-        btn.setMinSize(30, 26);
-        btn.setMaxSize(30,26);
+        btn.setMinSize(31, 26);
+        btn.setMaxSize(31,26);
         btn.setId("addTabButton");
         btn.setText("+");
 
@@ -98,7 +98,7 @@ public class ClientController {
     private void createMenuBar() {
         // Create Menu Bar
         MenuBar menuBar = new MenuBar();
-        menuBar.setStyle("-fx-background-color: #F36E21");
+        menuBar.getStylesheets().add(getClass().getResource("/css/client.css").toExternalForm());
 
         // Add Menu
         KeyCombination.Modifier key;
