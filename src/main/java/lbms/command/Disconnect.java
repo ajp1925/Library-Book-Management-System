@@ -1,18 +1,22 @@
 package lbms.command;
 
+import lbms.LBMS;
+
 /**
  * Disconnect class for the disconnect command.
  * @author Team B
  */
 public class Disconnect implements Command {
 
+    private long clientID;
+
     /**
      * Constructor for the Disconnect class.
-     * @param request: the input string to be parsed
+     * @param clientID: the client to disconnect
      * @throws MissingParametersException: when the request format is invalid
      */
-    public Disconnect(String request) throws MissingParametersException {
-        // TODO
+    public Disconnect(long clientID) throws MissingParametersException {
+        this.clientID = clientID;
     }
 
     /**
@@ -21,7 +25,7 @@ public class Disconnect implements Command {
      */
     @Override
     public String execute() {
-        // TODO
-        return null;
+        LBMS.getSessionProxies().remove(clientID);
+        return "disconnect;";
     }
 }

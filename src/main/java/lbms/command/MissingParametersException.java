@@ -10,7 +10,7 @@ public class MissingParametersException extends Exception {
      * Overloaded constructor for this exception.
      * @param message: the message for the exception.
      */
-    MissingParametersException(String message) {
+    public MissingParametersException(String message) {
         super(message);
     }
 

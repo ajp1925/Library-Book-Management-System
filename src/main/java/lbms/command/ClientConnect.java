@@ -1,17 +1,22 @@
 package lbms.command;
 
+import lbms.LBMS;
+import lbms.models.sessions.SessionProxy;
+
 /**
  * ClientConnect class for the client connect command.
  * @author Team B
  */
 public class ClientConnect implements Command {
 
+    private SessionProxy sp;
+
     /**
      * Constructor parses the request string and creates the necessary data in the class.
      * @throws MissingParametersException: when the request format is invalid
      */
     public ClientConnect() throws MissingParametersException {
-        // TODO
+        this.sp = new SessionProxy();
     }
 
     /**
@@ -20,7 +25,7 @@ public class ClientConnect implements Command {
      */
     @Override
     public String execute() {
-        // TODO
-        return null;
+        LBMS.getSessionProxies().put(this.sp.getClientID(), this.sp);
+        return sp.getClientID() + ";";
     }
 }

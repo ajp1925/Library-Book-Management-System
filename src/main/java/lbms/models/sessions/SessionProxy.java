@@ -7,7 +7,8 @@ import lbms.models.Visitor;
 import java.util.Stack;
 
 /**
- * Created by anthony on 4/4/17.
+ * SessionProxy class used to control the sessions.
+ * @author Team B
  */
 public class SessionProxy implements ISession {
 
@@ -15,16 +16,28 @@ public class SessionProxy implements ISession {
     private Stack<Undoable> undoStack;
     private Stack<Undoable> redoStack;
 
+    /**
+     * Constructor for a SessionProxy object.
+     */
     public SessionProxy() {
-        this.s = new Session(LBMS.getSessionProxies().size() + 1);
+        LBMS.incrementSessions();
+        this.s = new Session(LBMS.getTotalSessions());
         undoStack = new Stack<>();
         redoStack = new Stack<>();
     }
 
+    /**
+     * Getter for the visitor of the session.
+     * @return the visitor of the session
+     */
     public Visitor getV() {
         return s.getV();
     }
 
+    /**
+     * Adds an undoable command to the undostack.
+     * @param u: the undoable command to be added
+     */
     public void addUndoable(Undoable u) {
         undoStack.push(u);
     }

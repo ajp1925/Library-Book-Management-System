@@ -1,8 +1,7 @@
 package lbms.controllers;
 
+import lbms.LBMS;
 import lbms.command.*;
-
-import java.text.ParseException;
 
 /**
  * CommandController class interacts with the command package to execute commands.
@@ -24,7 +23,7 @@ public class CommandController {
             String request[] = requestString.replace(";", "").split(",", 3);
             try {
                 command = createCommand(SYSTEM_STATUS, request);
-                response = command.execute();
+                response = request[0] + "," + command.execute();
             } catch (MissingParametersException e) {
                 response = e.getMessage() + ";";
             } catch (Exception e) {
@@ -57,11 +56,15 @@ public class CommandController {
             return new ClientConnect();
         } else {
             long clientID = Long.parseLong(request[0]);
-            // validate clientID
+            if (LBMS.getSessionProxies().get(clientID) == null) {
+                throw new MissingParametersException("invalid-client-id;");
+            }
+            Command c;
+            Undoable u = null;
 
             switch (request[1]) {
                 case "disconnect":
-                    return new Disconnect(request[2]);
+                    return new Disconnect(Long.parseLong(request[0]));
                 case "create":
                     return new CreateAccount(request[2]);
                 case "login":
@@ -76,29 +79,42 @@ public class CommandController {
                     return new SetBookService(request[2]);
                 case "arrive":
                     if (SYSTEM_STATUS) {
-                        return new BeginVisit(request[2]);
+                        BeginVisit b = new BeginVisit(request[2]);
+                        LBMS.getSessionProxies().get(clientID).addUndoable(b);
+                        return b;
                     }
+                    return new CloseLibrary();
                 case "borrow":
                     if (SYSTEM_STATUS) {
-                        return new Borrow(request[2]);
+                        Borrow b = new Borrow(request[2]);
+                        LBMS.getSessionProxies().get(clientID).addUndoable(b);
+                        return b;
                     }
                     return new CloseLibrary();
                 case "register":
                     return new RegisterVisitor(request[2]);
                 case "depart":
-                    return new EndVisit(request[2]);
+                    EndVisit ev = new EndVisit(request[2]);
+                    LBMS.getSessionProxies().get(clientID).addUndoable(ev);
+                    return ev;
                 case "info":
                     return new LibrarySearch(request[2]);
                 case "borrowed":
                     return new FindBorrowed(request[2]);
                 case "return":
-                    return new Return(request[2]);
+                    Return r = new Return(request[2]);
+                    LBMS.getSessionProxies().get(clientID).addUndoable(r);
+                    return r;
                 case "pay":
-                    return new PayFine(request[2]);
+                    PayFine pf = new PayFine(request[2]);
+                    LBMS.getSessionProxies().get(clientID).addUndoable(pf);
+                    return pf;
                 case "search":
                     return new StoreSearch(request[2]);
                 case "buy":
-                    return new BookPurchase(request[2]);
+                    BookPurchase bp = new BookPurchase(request[2]);
+                    LBMS.getSessionProxies().get(clientID).addUndoable(bp);
+                    return bp;
                 case "advance":
                     return new AdvanceTime(request[2]);
                 case "datetime":
@@ -106,9 +122,8 @@ public class CommandController {
                 case "report":
                     if (request.length == 2) {
                         return new StatisticsReport("");
-                    } else {
-                        return new StatisticsReport(request[2]);
                     }
+                    return new StatisticsReport(request[2]);
                 case "reset":      // FOR TESTING
                     return new ResetTime();
                 default:

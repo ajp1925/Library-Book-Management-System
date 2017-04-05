@@ -35,6 +35,7 @@ public class LBMS {
     private static List<Transaction> transactions;
     private static HashMap<Long, Visit> currentVisits;
     private static HashMap<Long, SessionProxy> sessionProxies;
+    private static long totalSessions;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -201,6 +202,7 @@ public class LBMS {
         }
         currentVisits = new HashMap<>();
         sessionProxies = new HashMap<>();
+        totalSessions = 0;
     }
 
     /**
@@ -319,5 +321,20 @@ public class LBMS {
      */
     public static HashMap<Long, SessionProxy> getSessionProxies() {
         return sessionProxies;
+    }
+
+    /**
+     * Getter for the total number of sessions.
+     * @return the total number of sessions
+     */
+    public static long getTotalSessions() {
+        return totalSessions;
+    }
+
+    /**
+     * Incremenets the total number of sessions by one.
+     */
+    public static void incrementSessions() {
+        totalSessions++;
     }
 }
