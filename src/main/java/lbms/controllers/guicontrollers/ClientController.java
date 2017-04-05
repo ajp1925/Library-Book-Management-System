@@ -15,6 +15,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import lbms.models.SystemDateTime;
 import lbms.views.GUI.SessionManager;
@@ -57,8 +58,10 @@ public class ClientController {
         btn.setMaxSize(31,26);
         btn.setId("addTabButton");
         btn.setText("+");
+        btn.setTextFill(Color.BLACK);
 
         addTab.setClosable(false);
+        addTab.setDisable(true);
         tabs.getTabs().add(addTab);
 
         addTab();
@@ -117,7 +120,11 @@ public class ClientController {
         newTab.setAccelerator(new KeyCodeCombination(KeyCode.T, key));
 
         MenuItem closeTab = new MenuItem("Close Tab");
-        closeTab.setOnAction((ActionEvent event) -> { tabs.getTabs().remove(tabs.getSelectionModel().getSelectedItem()); });
+        closeTab.setOnAction((ActionEvent event) -> {
+            if (tabs.getSelectionModel().getSelectedItem().isClosable()) {
+                tabs.getTabs().remove(tabs.getSelectionModel().getSelectedItem());
+            }
+        });
         closeTab.setAccelerator(new KeyCodeCombination(KeyCode.W, key));
 
 

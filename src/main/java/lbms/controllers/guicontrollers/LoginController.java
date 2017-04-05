@@ -40,7 +40,7 @@ public class LoginController implements StateController {
     @FXML private void execute() {
         // TODO edit request string
         String request = manager.getClientId() + usernameField.getText() + passwordField.getText();
-        String response = CommandController.processRequest(true, request);
+        String response = CommandController.processRequest(CommandController.isOpen(), request);
 
         // TODO parse response
 
