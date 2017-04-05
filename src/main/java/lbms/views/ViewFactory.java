@@ -39,12 +39,4 @@ public class ViewFactory {
     public static void LibraryClose() {
         LBMS.LibraryClose();
     }
-
-    public static LocalTime getCloseTime() {
-        return CLOSE_TIME;
-    }
-
-    public static LocalTime getOpenTime() {
-        return OPEN_TIME;
-    }
 }

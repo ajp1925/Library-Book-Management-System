@@ -30,22 +30,8 @@ public class APIView implements View {
         do {
             System.out.print("> ");
             input = s.nextLine();
-            if(SystemDateTime.getInstance(null).getTime().isAfter(ViewFactory.getOpenTime()) &&
-                    SystemDateTime.getInstance(null).getTime().isBefore(ViewFactory.getCloseTime())) {
-                // Check if library just opened or system start
-                if(initial == 0 || initial == 1) {
-                    initial = 2;
-                }
-                System.out.println(CommandController.processRequest(true, input));
-            }
-            else {
-                // Check if library just closed or system start
-                if(initial == 0 || initial == 2) {
-                    ViewFactory.LibraryClose();
-                    initial = 1;
-                }
-                System.out.println(CommandController.processRequest(false, input));
-            }
+            System.out.println(CommandController.processRequest(CommandController.isOpen(), input));
+
 
         } while(!input.matches("(?i)exit|quit"));
 

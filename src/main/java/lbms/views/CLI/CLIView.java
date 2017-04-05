@@ -1,5 +1,6 @@
 package lbms.views.CLI;
 
+import lbms.controllers.CommandController;
 import lbms.models.SystemDateTime;
 import lbms.views.View;
 import lbms.views.ViewFactory;
@@ -31,37 +32,11 @@ public class CLIView implements View {
         int initial = 0;
 
         while(true) {
-            if(SystemDateTime.getInstance(null).getTime().isAfter(ViewFactory.getOpenTime()) &&
-                    SystemDateTime.getInstance(null).getTime().isBefore(ViewFactory.getCloseTime())) {
-                // Check if library just opened or system start
-                if(initial == 0 || initial == 1) {
-                    CLIView.setState(new DefaultViewState(true));
-                    initial = 2;
-                }
-
-                System.out.print("> ");
-                input = s.nextLine();
-
-                if (input.matches("(?i)exit|quit")) { break; }
-
-                CLIView.change(input);
-            }
-            else {
-                // Check if library just closed or system start
-                if(initial == 0 || initial == 2) {
-                    ViewFactory.LibraryClose();
-                    CLIView.setState(new DefaultViewState(false));
-                    initial = 1;
-                }
-
-                System.out.print("> ");
-                input = s.nextLine();
-
-                if (input.matches("(?i)exit|quit")) { break; }
-
-                CLIView.change(input);
-            }
-
+            CLIView.setState(new DefaultViewState(CommandController.isOpen()));
+            System.out.print("> ");
+            input = s.nextLine();
+            if (input.matches("(?i)exit|quit")) { break; }
+            CLIView.change(input);
         }
     }
 
