@@ -66,6 +66,7 @@ public class BookPurchaseTest extends TestCase{
     @Override
     protected void tearDown() {
         LBMS.getLastBookSearch().clear();
+        LBMS.getBooks().clear();
         books = null;
     }
 
