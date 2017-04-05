@@ -19,9 +19,6 @@ import javafx.scene.text.Text;
 import lbms.models.SystemDateTime;
 import lbms.views.GUI.SessionManager;
 
-import java.awt.*;
-
-
 /**
  * Created by Chris on 3/30/2017.
  */

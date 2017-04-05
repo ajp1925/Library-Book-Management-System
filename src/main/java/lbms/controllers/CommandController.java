@@ -2,6 +2,8 @@ package lbms.controllers;
 
 import lbms.LBMS;
 import lbms.command.*;
+import lbms.models.SystemDateTime;
+import lbms.views.ViewFactory;
 
 /**
  * CommandController class interacts with the command package to execute commands.
@@ -43,6 +45,11 @@ public class CommandController {
      */
     public static Command getCommand() {
         return command;
+    }
+
+    public static boolean isOpen() {
+        return SystemDateTime.getInstance(null).getTime().isAfter(LBMS.OPEN_TIME) &&
+                SystemDateTime.getInstance(null).getTime().isBefore(LBMS.CLOSE_TIME);
     }
 
     /**
