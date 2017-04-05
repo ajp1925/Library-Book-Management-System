@@ -4,7 +4,7 @@ import lbms.models.SystemDateTime;
 
 /**
  * AdvanceTime class that calls the API to advance system time.
- * @author Team B
+ * @author Team B TODO -> test for R2
  */
 public class AdvanceTime implements Command {
 

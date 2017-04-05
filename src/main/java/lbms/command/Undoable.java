@@ -5,6 +5,13 @@ package lbms.command;
  * @author Team B
  */
 public interface Undoable {
+
+    /**
+     * Executes the command.
+     * @return any parameter errors or null for success
+     */
+    String execute();
+
     // TODO
     void unExecute();
 

@@ -2,6 +2,7 @@ package lbms;
 
 import lbms.controllers.CommandController;
 import lbms.models.*;
+import lbms.models.sessions.SessionProxy;
 import lbms.views.ViewFactory;
 
 import java.io.*;
@@ -33,7 +34,7 @@ public class LBMS {
     private static List<Visit> totalVisits;
     private static List<Transaction> transactions;
     private static HashMap<Long, Visit> currentVisits;
-    private static List<Visitor> loggedIn;
+    private static HashMap<Long, SessionProxy> sessionProxies;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -199,6 +200,7 @@ public class LBMS {
             SystemDateTime.getInstance(null).start();
         }
         currentVisits = new HashMap<>();
+        sessionProxies = new HashMap<>();
     }
 
     /**
@@ -312,26 +314,10 @@ public class LBMS {
     }
 
     /**
-     * Getter for logged in visitors/employees.
-     * @return the list of logged in visitors/employees
+     * Getter for the session proxies.
+     * @return the hash map of session proxies
      */
-    public static List<Visitor> getLoggedIn() {
-        return loggedIn;
-    }
-
-    /**
-     * Gets the Employee object based on the visitor account given.
-     * @param v: the visitor account of the employee
-     * @return the employee account
-     */
-    public static Employee getEmployeeByLoggedIn(Visitor v) {
-        if(loggedIn.contains(v)) {
-            for(Employee e: employees.values()) {
-                if(e.getVisitor() == v) {
-                    return e;
-                }
-            }
-        }
-        return null;
+    public static HashMap<Long, SessionProxy> getSessionProxies() {
+        return sessionProxies;
     }
 }
