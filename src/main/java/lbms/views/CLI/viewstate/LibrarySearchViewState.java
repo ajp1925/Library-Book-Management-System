@@ -21,13 +21,6 @@ public class LibrarySearchViewState implements State{
     };
 
     /**
-     * Constructor for an LibrarySearchViewState.
-     */
-    LibrarySearchViewState() {
-
-    }
-
-    /**
      * Produces the command string based on user input.
      */
     @Override

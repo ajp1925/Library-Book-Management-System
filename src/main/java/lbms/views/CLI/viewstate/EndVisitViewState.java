@@ -14,11 +14,6 @@ public class EndVisitViewState implements State {
     private long visitorID;
 
     /**
-     * Constructor for an EndVisitViewState object.
-     */
-    EndVisitViewState() {}
-
-    /**
      * Initializes the view.
      */
     @Override

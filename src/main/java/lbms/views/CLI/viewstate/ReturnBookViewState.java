@@ -15,13 +15,6 @@ public class ReturnBookViewState implements State {
     private String books = "";
 
     /**
-     * Constructor for FindBorrowedViewState object.
-     */
-    ReturnBookViewState() {
-
-    }
-
-    /**
      * Initializes the view.
      */
     @Override

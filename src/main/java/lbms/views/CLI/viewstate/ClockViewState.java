@@ -10,11 +10,6 @@ import lbms.views.CLI.CLIView;
 public class ClockViewState implements State {
 
     /**
-     * Constructor for a ClockViewState.
-     */
-    ClockViewState() {}
-
-    /**
      * Initializes the ClockViewState.
      */
     @Override

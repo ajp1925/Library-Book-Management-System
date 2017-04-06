@@ -17,11 +17,6 @@ public class BorrowBookViewState implements State {
     private String books = "";
 
     /**
-     * Constructor for a BorrowBookViewState object.
-     */
-    BorrowBookViewState() {}
-
-    /**
      * Initializes the state.
      */
     @Override

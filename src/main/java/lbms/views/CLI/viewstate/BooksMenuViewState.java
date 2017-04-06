@@ -8,10 +8,6 @@ import lbms.views.CLI.CLIView;
  * @author Team B
  */
 public class BooksMenuViewState implements State {
-    /**
-     * Constructor for a BooksMenuViewState object.
-     */
-    BooksMenuViewState() { }
 
     /**
      * Initialized the BooksMenuViewState.

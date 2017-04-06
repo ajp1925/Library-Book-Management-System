@@ -18,12 +18,6 @@ public class PurchaseBookViewState implements State {
     private String ids = "";
 
     /**
-     * Constructor for an PurchaseBookViewState.
-     */
-    PurchaseBookViewState() {
-    }
-
-    /**
      * Initializes the PurchaseBook StateController
      */
     @Override

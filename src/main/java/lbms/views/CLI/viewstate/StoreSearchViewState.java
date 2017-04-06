@@ -21,13 +21,6 @@ public class StoreSearchViewState implements State {
     };
 
     /**
-     * Constructor for an StoreSearchViewState.
-     */
-    StoreSearchViewState() {
-
-    }
-
-    /**
      * Produces the command string based on user input.
      */
     @Override

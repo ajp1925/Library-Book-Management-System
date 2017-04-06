@@ -10,12 +10,6 @@ import lbms.views.CLI.CLIView;
 public class UserMenuViewState implements State {
 
     /**
-     * Constructor for a UserMenuViewState object.
-     */
-    UserMenuViewState() {
-    }
-
-    /**
      * Prompts a user to either search or register a user
      */
     @Override

@@ -9,11 +9,6 @@ import lbms.views.CLI.CLIView;
 public class BookSearchMenuViewState implements State {
 
     /**
-     * Constructor for BookSearchMenuViewState.
-     */
-    BookSearchMenuViewState() {}
-
-    /**
      * Initializes the state.
      */
     @Override

@@ -19,12 +19,6 @@ public class RegisterViewState implements State {
     private long phone;
 
     /**
-     * Constructor for a RegisterViewState object.
-     */
-    RegisterViewState() {
-    }
-
-    /**
      * Prompts the user to verify the entered information.
      */
     @Override

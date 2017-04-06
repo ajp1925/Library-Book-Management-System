@@ -9,13 +9,6 @@ import lbms.views.CLI.CLIView;
 public class SystemViewState implements State {
 
     /**
-     * Constructor for a SystemViewState.
-     */
-    SystemViewState() {
-
-    }
-
-    /**
      * Prompts a user whether to views books or users, or exit
      */
     @Override

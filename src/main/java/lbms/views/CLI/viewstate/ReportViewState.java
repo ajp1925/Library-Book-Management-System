@@ -12,12 +12,6 @@ public class ReportViewState implements State {
 
     private Integer days = null;
 
-    /**
-     * Constructor for a SystemViewState.
-     */
-    ReportViewState() {
-
-    }
 
     /**
      * Prompts a user whether to views books or users, or exit

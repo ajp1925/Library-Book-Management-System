@@ -11,11 +11,6 @@ import lbms.views.CLI.CLIView;
 public class BooksListViewState implements State {
 
     /**
-     * Constructor for BooksListViewState.
-     */
-    BooksListViewState() {}
-
-    /**
      * Initializes the state.
      */
     @Override

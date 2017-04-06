@@ -8,11 +8,6 @@ import lbms.views.CLI.CLIView;
  * @author Team B
  */
 public class ResetViewState implements State {
-    /**
-     * Constructor for a ResetViewState object.
-     */
-    ResetViewState() {
-    }
 
     /**
      * Initializes the view.

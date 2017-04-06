@@ -14,13 +14,6 @@ public class FindBorrowedViewState implements State {
     private long visitorID;
 
     /**
-     * Constructor for FindBorrowedViewState object.
-     */
-    FindBorrowedViewState() {
-
-    }
-
-    /**
      * Initializes the view.
      */
     @Override

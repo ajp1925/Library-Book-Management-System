@@ -14,11 +14,6 @@ public class BeginVisitViewState implements State {
     private long visitorID;
 
     /**
-     * Constructor for the BeginVisitViewState.
-     */
-    BeginVisitViewState() { }
-
-    /**
      * Initializes the begin visit view state.
      */
     @Override

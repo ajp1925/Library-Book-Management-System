@@ -11,13 +11,6 @@ import lbms.views.CLI.CLIView;
 public class UserListViewState implements State {
 
     /**
-     * Constructor for UserListViewState class.
-     */
-    UserListViewState() {
-
-    }
-
-    /**
      * Initializes the state.
      */
     @Override

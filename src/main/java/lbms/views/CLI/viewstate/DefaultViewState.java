@@ -8,10 +8,6 @@ import lbms.views.CLI.CLIView;
  * @author Team B
  */
 public class DefaultViewState implements State {
-    /**
-     * Constructor for a DefaultViewState.
-     */
-    public DefaultViewState() {}
 
     /**
      * Prompts a user whether to views books or users, or exit.

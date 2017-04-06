@@ -15,11 +15,6 @@ public class AdvanceViewState implements State {
     private int hours;
 
     /**
-     * Constructor for an AdvanceViewState.
-     */
-    AdvanceViewState() { }
-
-    /**
      * Initializes AdvanceViewState.
      */
     @Override
