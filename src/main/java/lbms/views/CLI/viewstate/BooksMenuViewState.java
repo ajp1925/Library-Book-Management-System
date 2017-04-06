@@ -1,5 +1,6 @@
 package lbms.views.CLI.viewstate;
 
+import lbms.controllers.CommandController;
 import lbms.views.CLI.CLIView;
 
 /**
@@ -7,16 +8,10 @@ import lbms.views.CLI.CLIView;
  * @author Team B
  */
 public class BooksMenuViewState implements State {
-
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for a BooksMenuViewState object.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    BooksMenuViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    BooksMenuViewState() { }
 
     /**
      * Initialized the BooksMenuViewState.
@@ -26,7 +21,7 @@ public class BooksMenuViewState implements State {
         System.out.println("\nPlease select a command:");
         System.out.println("search)      Search for a book");
 
-        if(SYSTEM_STATUS) {
+        if(CommandController.isOpen()) {
             System.out.println("checkout)    Borrow a book");
         }
 
@@ -49,21 +44,21 @@ public class BooksMenuViewState implements State {
     public void change(String state) {
          switch(state) {
              case "search":
-                 CLIView.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
+                 CLIView.setState(new BookSearchMenuViewState());
                  break;
              case "list":
-                 CLIView.setState(new BooksListViewState(SYSTEM_STATUS));
+                 CLIView.setState(new BooksListViewState());
                  break;
              case "checkin":
-                 CLIView.setState(new ReturnBookViewState(SYSTEM_STATUS));
+                 CLIView.setState(new ReturnBookViewState());
                  break;
              case "return":
-                 CLIView.setState(new DefaultViewState(SYSTEM_STATUS));
+                 CLIView.setState(new DefaultViewState());
                  break;
              case "checkout":
              case "borrow":
-                 if(SYSTEM_STATUS) {
-                     CLIView.setState(new BorrowBookViewState(true));
+                 if(CommandController.isOpen()) {
+                     CLIView.setState(new BorrowBookViewState());
                      break;
                  }
              default:

@@ -11,7 +11,6 @@ import java.util.Scanner;
  */
 public class LibrarySearchViewState implements State{
 
-    private boolean SYSTEM_STATUS;
     private String commandString = "info";
     private String[] prompts = {
             "\nPlease enter the title of the book to search for:",
@@ -23,10 +22,9 @@ public class LibrarySearchViewState implements State{
 
     /**
      * Constructor for an LibrarySearchViewState.
-     * @param SYSTEM_STATUS the current status of the system
      */
-    LibrarySearchViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    LibrarySearchViewState() {
+
     }
 
     /**
@@ -66,7 +64,7 @@ public class LibrarySearchViewState implements State{
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS, commandString + ";");
+        String response = CommandController.processRequest(commandString + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -75,7 +73,7 @@ public class LibrarySearchViewState implements State{
             System.out.println(response);
         }
 
-        CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new BooksMenuViewState());
     }
 
     /**

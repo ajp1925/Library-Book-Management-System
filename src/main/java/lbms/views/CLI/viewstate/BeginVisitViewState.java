@@ -11,16 +11,12 @@ import java.util.Scanner;
  */
 public class BeginVisitViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private long visitorID;
 
     /**
      * Constructor for the BeginVisitViewState.
-     * @param SYSTEM_STATUS: the initial status of the system
      */
-    BeginVisitViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    BeginVisitViewState() { }
 
     /**
      * Initializes the begin visit view state.
@@ -37,7 +33,7 @@ public class BeginVisitViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"arrive," + visitorID + ";");
+        String response = CommandController.processRequest("arrive," + visitorID + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -45,7 +41,7 @@ public class BeginVisitViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState());
     }
 
     /**

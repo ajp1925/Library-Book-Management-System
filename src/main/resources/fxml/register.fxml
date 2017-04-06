@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" prefHeight="402.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.RegisterController">
+   <children>
+      <FlowPane alignment="CENTER" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane prefHeight="402.0" prefWidth="213.0">
+               <top>
+                  <FlowPane alignment="CENTER" prefHeight="79.0" prefWidth="213.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </FlowPane>
+               </top>
+            </BorderPane>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>

@@ -11,8 +11,6 @@ import java.util.Scanner;
  */
 public class StoreSearchViewState implements State {
 
-    private boolean SYSTEM_STATUS;
-
     private String commandString = "search";
     private String[] prompts = {
             "\nPlease enter the title of the book to search for:",
@@ -24,10 +22,9 @@ public class StoreSearchViewState implements State {
 
     /**
      * Constructor for an StoreSearchViewState.
-     * @param SYSTEM_STATUS the current status of the system
      */
-    StoreSearchViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    StoreSearchViewState() {
+
     }
 
     /**
@@ -66,7 +63,7 @@ public class StoreSearchViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS, commandString + ";");
+        String response = CommandController.processRequest(commandString + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -95,13 +92,13 @@ public class StoreSearchViewState implements State {
     public void change(String state) {
         switch(state) {
             case "purchase":
-                CLIView.setState(new PurchaseBookViewState(SYSTEM_STATUS));
+                CLIView.setState(new PurchaseBookViewState());
                 break;
             case "search":
-                CLIView.setState(new StoreSearchViewState(SYSTEM_STATUS));
+                CLIView.setState(new StoreSearchViewState());
                 break;
             case "return":
-                CLIView.setState(new BookSearchMenuViewState(SYSTEM_STATUS));
+                CLIView.setState(new BookSearchMenuViewState());
                 break;
             default:
                 System.out.println("Command not found\n");

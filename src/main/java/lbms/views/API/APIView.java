@@ -25,14 +25,11 @@ public class APIView implements View {
     public void run() {
         Scanner s = new Scanner(System.in);
         String input;
-        int initial = 0;
 
         do {
             System.out.print("> ");
             input = s.nextLine();
-            System.out.println(CommandController.processRequest(CommandController.isOpen(), input));
-
-
+            System.out.println(CommandController.processRequest(input));
         } while(!input.matches("(?i)exit|quit"));
 
         s.close();

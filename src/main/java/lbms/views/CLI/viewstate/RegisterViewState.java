@@ -13,7 +13,6 @@ import java.util.Scanner;
  */
 public class RegisterViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private String firstName;
     private String lastName;
     private String address;
@@ -21,10 +20,8 @@ public class RegisterViewState implements State {
 
     /**
      * Constructor for a RegisterViewState object.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    RegisterViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    RegisterViewState() {
     }
 
     /**
@@ -49,7 +46,7 @@ public class RegisterViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"register," + firstName + ","
+        String response = CommandController.processRequest("register," + firstName + ","
                 + lastName + "," + address + "," + phone + ";");
         try {
             System.out.println(parseResponse(response));
@@ -58,7 +55,7 @@ public class RegisterViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState());
     }
 
     /**

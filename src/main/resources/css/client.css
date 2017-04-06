@@ -1,19 +1,24 @@
+* {
+    -main-color: #F36E21;
+    -highlight-color: #f9b086;
+}
+
 #topPane {
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
 }
 
 #menuPane {
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
 }
 
 #menuButton {
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
     -fx-border-style: none;
     -fx-graphic: url("../icons/menu.png");
 }
 
 #menuButton:hover {
-    -fx-background-color: #f9b086;
+    -fx-background-color: -highlight-color;
 }
 
 #btnBox {
@@ -22,36 +27,36 @@
 
 #addTab {
     -fx-pref-width: 32;
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
     -fx-padding: 0, 0, 0, 0;
 }
 
 #addTabButton {
     -fx-border-style: none;
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
     -fx-padding: 0 0 2.25 0;
 }
 
 #addTab:hover, #addTabButton:hover{
-    -fx-background-color: #f9b086;
+    -fx-background-color: -highlight-color;
     -fx-text-fill: #333333;
 }
 
 .menu-button {
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
     -fx-border-style: none;
 }
 
 .menu-button:hover {
-    -fx-background-color: #f9b086;
+    -fx-background-color: -highlight-color;
 }
 
 #menuBackground {
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
 }
 
 .tab-header-background {
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
 }
 
 .tab-pane .tab-header-area {
@@ -62,13 +67,13 @@
 }
 
 .tab-pane .tab {
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
     -fx-border-style: none;
     -fx-pref-width: 200;
 }
 
 .tab-pane .tab:hover {
-    -fx-background-color: #f9b086;
+    -fx-background-color: -highlight-color;
 }
 
 .tab-pane .tab:selected {
@@ -80,7 +85,7 @@
 }
 
 .menu-bar {
-    -fx-background-color: #F36E21;
+    -fx-background-color: -main-color;
 }
 
 .menu-button:hover .label {
@@ -88,7 +93,7 @@
 }
 
 .menu-button:showing {
-    -fx-background-color: #f9b086;
+    -fx-background-color: -highlight-color;
 }
 
 .menu-button:showing .label {
@@ -96,7 +101,7 @@
 }
 
 .menu-item:focused {
-    -fx-background-color: #f9b086;
+    -fx-background-color: -highlight-color;
 }
 
 .menu-item:focused .label {

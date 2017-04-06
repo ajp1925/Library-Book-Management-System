@@ -10,15 +10,13 @@ import java.util.Scanner;
  */
 public class ReportViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private Integer days = null;
 
     /**
      * Constructor for a SystemViewState.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    ReportViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    ReportViewState() {
+
     }
 
     /**
@@ -45,11 +43,11 @@ public class ReportViewState implements State {
     public void onEnter() {
         String response;
         if(days == null) {
-            response = CommandController.processRequest(this.SYSTEM_STATUS, "report;");
+            response = CommandController.processRequest("report;");
             System.out.println("\nSystem report:");
         }
         else {
-            response = CommandController.processRequest(this.SYSTEM_STATUS, "report," + days + ";");
+            response = CommandController.processRequest("report," + days + ";");
             System.out.println("\nSystem report for " + days + " days:");
         }
 
@@ -60,7 +58,7 @@ public class ReportViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new SystemViewState(SYSTEM_STATUS));
+        CLIView.setState(new SystemViewState());
     }
 
     /**

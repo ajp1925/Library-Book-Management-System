@@ -10,15 +10,10 @@ import lbms.views.CLI.CLIView;
  */
 public class BooksListViewState implements State {
 
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for BooksListViewState.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    BooksListViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    BooksListViewState() {}
 
     /**
      * Initializes the state.
@@ -36,7 +31,7 @@ public class BooksListViewState implements State {
             }
         }
 
-        CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new BooksMenuViewState());
     }
 
     /**

@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane fx:id="root" prefHeight="402.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.LoginController">
    <children>
-      <FlowPane alignment="CENTER" styleClass="login-background" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <FlowPane alignment="CENTER" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <BorderPane prefHeight="402.0" prefWidth="213.0">
                <bottom>
                   <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="205.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
-                        <VBox alignment="TOP_CENTER">
+                        <VBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="305.0">
                            <children>
                               <Button fx:id="loginButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#execute" text="Login" />
                               <Text fx:id="loginFailedLabel" strokeType="OUTSIDE" strokeWidth="0.0">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin></Text>
+                              <TextFlow prefHeight="15.0" prefWidth="200.0" textAlignment="CENTER">
+                                 <children>
+                                    <Hyperlink fx:id="registerLink" text="Don't have an account? Register here." textAlignment="CENTER" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin>
+                              </TextFlow>
                            </children>
                         </VBox>
                      </children>
@@ -32,7 +44,7 @@
                <center>
                   <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <GridPane alignment="CENTER" hgap="15.0" prefHeight="96.0" prefWidth="314.0" stylesheets="@../css/login.css">
+                        <GridPane alignment="CENTER" hgap="15.0" prefHeight="96.0" prefWidth="314.0" stylesheets="@../css/root.css">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
                               <TextField fx:id="usernameField" GridPane.columnIndex="1" />
@@ -61,7 +73,7 @@
                <top>
                   <FlowPane alignment="CENTER" prefHeight="101.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Text id="login-header" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
                            <font>
                               <Font name="System Bold" size="48.0" />
                            </font>

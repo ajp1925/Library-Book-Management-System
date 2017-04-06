@@ -1,5 +1,6 @@
 package lbms.views.CLI.viewstate;
 
+import lbms.controllers.CommandController;
 import lbms.views.CLI.CLIView;
 
 /**
@@ -8,14 +9,10 @@ import lbms.views.CLI.CLIView;
  */
 public class UserMenuViewState implements State {
 
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for a UserMenuViewState object.
-     * @param SYSTEM_STATUS: boolean status of the system
      */
-    UserMenuViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    UserMenuViewState() {
     }
 
     /**
@@ -25,7 +22,7 @@ public class UserMenuViewState implements State {
     public void init() {
         System.out.println("\nPlease select a command:");
 
-        if(SYSTEM_STATUS) {
+        if(CommandController.isOpen()) {
             System.out.println("enter library)    Allow a user to enter the library");
             System.out.println("exit library)     Have a user leave the library");
         }
@@ -50,27 +47,27 @@ public class UserMenuViewState implements State {
     public void change(String state) {
         switch (state) {
             case "register":
-                CLIView.setState(new RegisterViewState(SYSTEM_STATUS));
+                CLIView.setState(new RegisterViewState());
                 break;
             case "list":
-                CLIView.setState(new UserListViewState(SYSTEM_STATUS));
+                CLIView.setState(new UserListViewState());
                 break;
             case "borrowed":
-                CLIView.setState(new FindBorrowedViewState(SYSTEM_STATUS));
+                CLIView.setState(new FindBorrowedViewState());
                 break;
             case "return":
-                CLIView.setState(new DefaultViewState(SYSTEM_STATUS));
+                CLIView.setState(new DefaultViewState());
                 break;
             case "enter library":
             case "enter":
-                if(SYSTEM_STATUS) {
-                    CLIView.setState(new BeginVisitViewState(true));
+                if(CommandController.isOpen()) {
+                    CLIView.setState(new BeginVisitViewState());
                     break;
                 }
             case "exit library":
             case "leave":
-                if(SYSTEM_STATUS) {
-                    CLIView.setState(new EndVisitViewState(true));
+                if(CommandController.isOpen()) {
+                    CLIView.setState(new EndVisitViewState());
                     break;
                 }
             default:

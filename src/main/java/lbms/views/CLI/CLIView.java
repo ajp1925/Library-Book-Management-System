@@ -29,10 +29,10 @@ public class CLIView implements View {
     public void run() {
         Scanner s = new Scanner(System.in);
         String input = "";
-        int initial = 0;
+
+        CLIView.setState(new DefaultViewState());
 
         while(true) {
-            CLIView.setState(new DefaultViewState(CommandController.isOpen()));
             System.out.print("> ");
             input = s.nextLine();
             if (input.matches("(?i)exit|quit")) { break; }

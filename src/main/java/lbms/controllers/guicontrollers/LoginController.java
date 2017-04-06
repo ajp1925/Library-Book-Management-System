@@ -1,7 +1,9 @@
 package lbms.controllers.guicontrollers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -23,6 +25,7 @@ public class LoginController implements StateController {
     @FXML private PasswordField passwordField;
     @FXML private Text loginFailedLabel;
     @FXML private Button loginButton;
+    @FXML private Hyperlink registerLink;
 
     @FXML protected void initialize() {
         root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
@@ -31,6 +34,8 @@ public class LoginController implements StateController {
                 e.consume();
             }
         });
+
+        registerLink.setOnAction((ActionEvent event) -> { manager.display("register"); });
     }
 
     public void initManager(final SessionManager manager) {
@@ -40,11 +45,11 @@ public class LoginController implements StateController {
     @FXML private void execute() {
         // TODO edit request string
         String request = manager.getClientId() + usernameField.getText() + passwordField.getText();
-        String response = CommandController.processRequest(CommandController.isOpen(), request);
+        String response = CommandController.processRequest(request);
 
         // TODO parse response
 
-        if (true) {
+        if (false) {
             //manager.display("main_visitor"); // TODO create main view
             loginFailedLabel.setFill(Color.GREEN);
             loginFailedLabel.setText("Success");

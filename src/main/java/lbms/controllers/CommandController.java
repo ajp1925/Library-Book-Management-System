@@ -3,7 +3,6 @@ package lbms.controllers;
 import lbms.LBMS;
 import lbms.command.*;
 import lbms.models.SystemDateTime;
-import lbms.views.ViewFactory;
 
 /**
  * CommandController class interacts with the command package to execute commands.

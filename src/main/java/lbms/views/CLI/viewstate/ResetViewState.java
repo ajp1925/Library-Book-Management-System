@@ -8,15 +8,10 @@ import lbms.views.CLI.CLIView;
  * @author Team B
  */
 public class ResetViewState implements State {
-
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for a ResetViewState object.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    ResetViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    ResetViewState() {
     }
 
     /**
@@ -24,7 +19,7 @@ public class ResetViewState implements State {
      */
     @Override
     public void init() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"reset;");
+        String response = CommandController.processRequest("reset;");
 
         try {
             System.out.println(parseResponse(response));
@@ -33,7 +28,7 @@ public class ResetViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new ClockViewState(SYSTEM_STATUS));
+        CLIView.setState(new ClockViewState());
     }
 
     /**

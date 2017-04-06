@@ -8,14 +8,11 @@ import lbms.views.CLI.CLIView;
  */
 public class SystemViewState implements State {
 
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for a SystemViewState.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    SystemViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    SystemViewState() {
+
     }
 
     /**
@@ -42,13 +39,13 @@ public class SystemViewState implements State {
     public void change(String state) {
         switch(state) {
             case "clock":
-                CLIView.setState(new ClockViewState(SYSTEM_STATUS));
+                CLIView.setState(new ClockViewState());
                 break;
             case "report":
-                CLIView.setState(new ReportViewState(SYSTEM_STATUS));
+                CLIView.setState(new ReportViewState());
                 break;
             case "return":
-                CLIView.setState(new DefaultViewState(SYSTEM_STATUS));
+                CLIView.setState(new DefaultViewState());
                 break;
             default:
                 System.out.println("Command not found\n");

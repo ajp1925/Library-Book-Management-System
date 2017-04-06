@@ -237,8 +237,7 @@ public class LBMS {
     public static void LibraryClose() {
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
-            CommandController.processRequest(false, "depart," +
-                    visit.getVisitor().getVisitorID() + ";");
+            CommandController.processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
         }
     }
 

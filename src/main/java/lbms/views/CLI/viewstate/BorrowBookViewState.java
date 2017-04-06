@@ -13,17 +13,13 @@ import java.util.Scanner;
  */
 public class BorrowBookViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private long visitorID;
     private String books = "";
 
     /**
      * Constructor for a BorrowBookViewState object.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    BorrowBookViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    BorrowBookViewState() {}
 
     /**
      * Initializes the state.
@@ -47,8 +43,7 @@ public class BorrowBookViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS, "borrow," + visitorID + books
-                + ";");
+        String response = CommandController.processRequest("borrow," + visitorID + books +";");
 
         try {
             System.out.println(parseResponse(response));
@@ -57,7 +52,7 @@ public class BorrowBookViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new BooksMenuViewState());
     }
 
     /**

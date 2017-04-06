@@ -8,15 +8,10 @@ import lbms.views.CLI.CLIView;
  */
 public class BookSearchMenuViewState implements State {
 
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for BookSearchMenuViewState.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    BookSearchMenuViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    BookSearchMenuViewState() {}
 
     /**
      * Initializes the state.
@@ -42,13 +37,13 @@ public class BookSearchMenuViewState implements State {
     public void change(String state) {
         switch(state) {
             case "library":
-                CLIView.setState(new LibrarySearchViewState(SYSTEM_STATUS));
+                CLIView.setState(new LibrarySearchViewState());
                 break;
             case "store":
-                CLIView.setState(new StoreSearchViewState(SYSTEM_STATUS));
+                CLIView.setState(new StoreSearchViewState());
                 break;
             case "return":
-                CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
+                CLIView.setState(new BooksMenuViewState());
                 break;
             default:
                 System.out.println("Command not found\n");

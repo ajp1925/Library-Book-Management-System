@@ -11,17 +11,13 @@ import java.util.Scanner;
  */
 public class AdvanceViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private int days;
     private int hours;
 
     /**
      * Constructor for an AdvanceViewState.
-     * @param SYSTEM_STATUS: the current status of the system
      */
-    AdvanceViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    AdvanceViewState() { }
 
     /**
      * Initializes AdvanceViewState.
@@ -40,7 +36,7 @@ public class AdvanceViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"advance," + days + "," + hours + ";");
+        String response = CommandController.processRequest("advance," + days + "," + hours + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -48,7 +44,7 @@ public class AdvanceViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new ClockViewState(SYSTEM_STATUS));
+        CLIView.setState(new ClockViewState());
     }
 
     /**

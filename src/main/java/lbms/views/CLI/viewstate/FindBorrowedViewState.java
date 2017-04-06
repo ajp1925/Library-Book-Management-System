@@ -11,15 +11,13 @@ import java.util.Scanner;
  */
 public class FindBorrowedViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private long visitorID;
 
     /**
      * Constructor for FindBorrowedViewState object.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    FindBorrowedViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    FindBorrowedViewState() {
+
     }
 
     /**
@@ -37,7 +35,7 @@ public class FindBorrowedViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"borrowed," + visitorID + ";");
+        String response = CommandController.processRequest("borrowed," + visitorID + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -45,7 +43,7 @@ public class FindBorrowedViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState());
     }
 
     /**

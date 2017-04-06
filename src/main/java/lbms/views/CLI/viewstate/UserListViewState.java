@@ -10,14 +10,11 @@ import lbms.views.CLI.CLIView;
  */
 public class UserListViewState implements State {
 
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for UserListViewState class.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    UserListViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    UserListViewState() {
+
     }
 
     /**
@@ -37,7 +34,7 @@ public class UserListViewState implements State {
             }
         }
 
-        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState());
     }
 
     /**

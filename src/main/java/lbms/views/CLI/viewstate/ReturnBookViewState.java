@@ -11,16 +11,14 @@ import java.util.Scanner;
  */
 public class ReturnBookViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private long visitorID;
     private String books = "";
 
     /**
      * Constructor for FindBorrowedViewState object.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    ReturnBookViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    ReturnBookViewState() {
+
     }
 
     /**
@@ -45,7 +43,7 @@ public class ReturnBookViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS, "return," + visitorID + books + ";");
+        String response = CommandController.processRequest("return," + visitorID + books + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -53,7 +51,7 @@ public class ReturnBookViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new BooksMenuViewState());
     }
 
     /**

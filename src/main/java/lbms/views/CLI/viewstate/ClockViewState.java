@@ -9,22 +9,17 @@ import lbms.views.CLI.CLIView;
  */
 public class ClockViewState implements State {
 
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for a ClockViewState.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    ClockViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    ClockViewState() {}
 
     /**
      * Initializes the ClockViewState.
      */
     @Override
     public void init() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"datetime;");
+        String response = CommandController.processRequest("datetime;");
 
         try {
             System.out.println(parseResponse(response));
@@ -56,13 +51,13 @@ public class ClockViewState implements State {
                 this.init();
                 break;
             case "advance":
-                CLIView.setState(new AdvanceViewState(SYSTEM_STATUS));
+                CLIView.setState(new AdvanceViewState());
                 break;
             case "reset":
-                CLIView.setState(new ResetViewState(SYSTEM_STATUS));
+                CLIView.setState(new ResetViewState());
                 break;
             case "return":
-                CLIView.setState(new SystemViewState(SYSTEM_STATUS));
+                CLIView.setState(new SystemViewState());
                 break;
             default:
                 System.out.println("Command not found\n");

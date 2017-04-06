@@ -1,5 +1,6 @@
 package lbms.views.CLI.viewstate;
 
+import lbms.controllers.CommandController;
 import lbms.views.CLI.CLIView;
 
 /**
@@ -7,16 +8,10 @@ import lbms.views.CLI.CLIView;
  * @author Team B
  */
 public class DefaultViewState implements State {
-
-    private boolean SYSTEM_STATUS;
-
     /**
      * Constructor for a DefaultViewState.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    public DefaultViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    public DefaultViewState() {}
 
     /**
      * Prompts a user whether to views books or users, or exit.
@@ -25,7 +20,7 @@ public class DefaultViewState implements State {
     public void init() {
         System.out.println("\nWelcome to the Library Book Management System!");
 
-        if(!SYSTEM_STATUS) {
+        if(!CommandController.isOpen()) {
             System.out.println("We are currently closed but here you can still access a few commands.");
         }
 
@@ -49,13 +44,13 @@ public class DefaultViewState implements State {
     public void change(String state) {
         switch(state) {
             case "books":
-                CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
+                CLIView.setState(new BooksMenuViewState());
                 break;
             case "users":
-                CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
+                CLIView.setState(new UserMenuViewState());
                 break;
             case "system":
-                CLIView.setState(new SystemViewState(SYSTEM_STATUS));
+                CLIView.setState(new SystemViewState());
                 break;
             default:
                 System.out.println("Command not found\n\n");

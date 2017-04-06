@@ -14,12 +14,12 @@ public class SessionManager {
     private StateController controller;
 
     public SessionManager(Tab tab) {
-        clientId = CommandController.processRequest(CommandController.isOpen(), "connect;");
+        clientId = CommandController.processRequest("connect;");
         this.tab = tab;
     }
 
     public void close() {
-        CommandController.processRequest(CommandController.isOpen(), clientId + ",disconnect;");
+        CommandController.processRequest(clientId + ",disconnect;");
     }
 
     public void display(String file) {

@@ -14,16 +14,13 @@ import java.util.Scanner;
  */
 public class PurchaseBookViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private int quantity;
     private String ids = "";
 
     /**
      * Constructor for an PurchaseBookViewState.
-     * @param SYSTEM_STATUS: the current status of the system
      */
-    PurchaseBookViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
+    PurchaseBookViewState() {
     }
 
     /**
@@ -49,7 +46,7 @@ public class PurchaseBookViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"buy," + quantity + ids + ";");
+        String response = CommandController.processRequest("buy," + quantity + ids + ";");
 
         try {
             System.out.println("\n" + parseResponse(response));
@@ -58,7 +55,7 @@ public class PurchaseBookViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new BooksMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new BooksMenuViewState());
     }
 
     /**

@@ -11,16 +11,12 @@ import java.util.Scanner;
  */
 public class EndVisitViewState implements State {
 
-    private boolean SYSTEM_STATUS;
     private long visitorID;
 
     /**
      * Constructor for an EndVisitViewState object.
-     * @param SYSTEM_STATUS: the status of the system
      */
-    EndVisitViewState(boolean SYSTEM_STATUS) {
-        this.SYSTEM_STATUS = SYSTEM_STATUS;
-    }
+    EndVisitViewState() {}
 
     /**
      * Initializes the view.
@@ -37,7 +33,7 @@ public class EndVisitViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(this.SYSTEM_STATUS,"depart," + visitorID + ";");
+        String response = CommandController.processRequest("depart," + visitorID + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -45,7 +41,7 @@ public class EndVisitViewState implements State {
             System.out.println(response);
         }
 
-        CLIView.setState(new UserMenuViewState(SYSTEM_STATUS));
+        CLIView.setState(new UserMenuViewState());
     }
 
     /**
