@@ -18,13 +18,13 @@ public class CommandController {
      * @param requestString: the input string to be processed
      * @return the response output string
      */
-    public static String processRequest(boolean SYSTEM_STATUS, String requestString) {
+    public static String processRequest(String requestString) {
         String response = "";
 
         if (requestString.endsWith(";")) {
             String request[] = requestString.replace(";", "").split(",", 3);
             try {
-                command = createCommand(SYSTEM_STATUS, request);
+                command = createCommand(request);
                 response = request[0] + "," + command.execute();
             } catch (MissingParametersException e) {
                 response = e.getMessage() + ";";
@@ -54,11 +54,10 @@ public class CommandController {
 
     /**
      * Creates a command based on the input request.
-     * @param SYSTEM_STATUS: whether or not the system is operational
      * @param request: the input request to be processed
      * @return a Command object for the request
      */
-    private static Command createCommand(boolean SYSTEM_STATUS, String[] request) throws Exception {
+    private static Command createCommand(String[] request) throws Exception {
         if (request[0].equals("connect")) {
             return new ClientConnect();
         } else {
@@ -83,14 +82,14 @@ public class CommandController {
                 case "service":
                     return new SetBookService(request[2]);
                 case "arrive":
-                    if (SYSTEM_STATUS) {
+                    if (isOpen()) {
                         BeginVisit b = new BeginVisit(request[2]);
                         LBMS.getSessionProxies().get(clientID).addUndoable(b);
                         return b;
                     }
                     return new CloseLibrary();
                 case "borrow":
-                    if (SYSTEM_STATUS) {
+                    if (isOpen()) {
                         Borrow b = new Borrow(request[2]);
                         LBMS.getSessionProxies().get(clientID).addUndoable(b);
                         return b;
