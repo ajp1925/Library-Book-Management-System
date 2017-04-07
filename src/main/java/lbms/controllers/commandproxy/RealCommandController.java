@@ -49,11 +49,6 @@ public class RealCommandController implements CommandController {
         return command;
     }
 
-    public static boolean isOpen() {
-        return SystemDateTime.getInstance(null).getTime().isAfter(LBMS.OPEN_TIME) &&
-                SystemDateTime.getInstance(null).getTime().isBefore(LBMS.CLOSE_TIME);
-    }
-
     public static LocalDateTime getSystemDateTime() {
         return SystemDateTime.getInstance(null).getDateTime();
     }
