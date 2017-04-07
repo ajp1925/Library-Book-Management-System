@@ -1,12 +1,14 @@
 package lbms.command;
 
+import lbms.LBMS;
+import lbms.models.Visitor;
+
 /**
  * LogIn class for login command.
  * @author Team B
  */
 public class LogIn implements Command {
 
-    private long clientID;
     private String username;
     private String password;
 
@@ -17,9 +19,11 @@ public class LogIn implements Command {
      */
     public LogIn(String request) throws MissingParametersException {
         String parts[] = request.split(",");
-        clientID = Long.parseLong(parts[0]);
-        username = parts[2];
-        password = parts[3];
+        if(parts.length < 2) {
+            throw new MissingParametersException("missing-parameters,username,password");
+        }
+        username = parts[0];
+        password = parts[1];
     }
 
     /**
@@ -28,7 +32,11 @@ public class LogIn implements Command {
      */
     @Override
     public String execute() {
-        // TODO
-        return null;
+        for(Visitor v : LBMS.getVisitors().values()) {
+            if(v.getUsername() != null && v.getUsername().equals(username) && v.getPassword().equals(password)) {
+                return "success;";
+            }
+        }
+        return "bad-username-or-password;";
     }
 }
