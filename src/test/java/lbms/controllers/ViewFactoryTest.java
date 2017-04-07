@@ -13,7 +13,7 @@ public class ViewFactoryTest {
 
     @Before
     public void setDefaultState() {
-        CLIView.setState(new DefaultViewState(true));
+        CLIView.setState(new DefaultViewState());
     }
 
     @Test

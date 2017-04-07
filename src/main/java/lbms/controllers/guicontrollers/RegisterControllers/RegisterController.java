@@ -8,7 +8,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.controllers.guicontrollers.StateController;
 import lbms.views.GUI.SessionManager;
 
@@ -122,11 +122,11 @@ public class RegisterController implements StateController {
 
             if (visitorId.isEmpty()) {
                 try {
-                    String response = CommandController.processRequest(
+                    String response = new ProxyCommandController().processRequest(
                             String.format("%s,register,%s,%s,%s,%s;",
                                     manager.getClientId(), firstName, lastName, address, phoneNumber));
 
-                    String[] fields = response.replace(";", "").split(",");
+                    String[] fields = response.split(",");
                     if (fields[1].equals("duplicate;")) {
                         valid = false;
                     } else {
@@ -201,7 +201,7 @@ public class RegisterController implements StateController {
         } else {
             boolean valid;
             try {
-                String response = CommandController.processRequest(
+                String response = new ProxyCommandController().processRequest(
                         String.format("%s,create,%s,%s,%s,%s;",
                                 manager.getClientId(), username, password, role, visitorId));
 
@@ -229,7 +229,7 @@ public class RegisterController implements StateController {
 
             if (valid) {
                 try {
-                    String response = CommandController.processRequest(
+                    String response = new ProxyCommandController().processRequest(
                             String.format("%s,login,%s,%s;",
                                     manager.getClientId(), username, password));
 

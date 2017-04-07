@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 import java.util.Scanner;
@@ -28,7 +28,7 @@ public class FindBorrowedViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("borrowed," + visitorID + ";");
+        String response = new ProxyCommandController().processRequest("borrowed," + visitorID + ";");
 
         try {
             System.out.println(parseResponse(response));

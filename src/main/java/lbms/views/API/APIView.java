@@ -1,9 +1,7 @@
 package lbms.views.API;
 
-import lbms.controllers.CommandController;
-import lbms.models.SystemDateTime;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.View;
-import lbms.views.ViewFactory;
 
 import java.util.Scanner;
 
@@ -29,7 +27,7 @@ public class APIView implements View {
         do {
             System.out.print("> ");
             input = s.nextLine();
-            System.out.println(CommandController.processRequest(input));
+            System.out.println(new ProxyCommandController().processRequest(input));
         } while(!input.matches("(?i)exit|quit"));
 
         s.close();

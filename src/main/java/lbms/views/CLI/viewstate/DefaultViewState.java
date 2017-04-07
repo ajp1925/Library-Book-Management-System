@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 /**
@@ -16,7 +16,7 @@ public class DefaultViewState implements State {
     public void init() {
         System.out.println("\nWelcome to the Library Book Management System!");
 
-        if(!CommandController.isOpen()) {
+        if(!ProxyCommandController.isOpen()) {
             System.out.println("We are currently closed but here you can still access a few commands.");
         }
 

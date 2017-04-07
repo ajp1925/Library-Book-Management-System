@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 /**
@@ -17,7 +17,7 @@ public class BooksMenuViewState implements State {
         System.out.println("\nPlease select a command:");
         System.out.println("search)      Search for a book");
 
-        if(CommandController.isOpen()) {
+        if(ProxyCommandController.isOpen()) {
             System.out.println("checkout)    Borrow a book");
         }
 
@@ -53,7 +53,7 @@ public class BooksMenuViewState implements State {
                  break;
              case "checkout":
              case "borrow":
-                 if(CommandController.isOpen()) {
+                 if(ProxyCommandController.isOpen()) {
                      CLIView.setState(new BorrowBookViewState());
                      break;
                  }

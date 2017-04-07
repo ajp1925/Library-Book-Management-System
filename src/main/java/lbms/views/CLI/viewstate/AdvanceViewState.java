@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 import java.util.Scanner;
@@ -31,7 +31,7 @@ public class AdvanceViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("advance," + days + "," + hours + ";");
+        String response = new ProxyCommandController().processRequest("advance," + days + "," + hours + ";");
 
         try {
             System.out.println(parseResponse(response));
