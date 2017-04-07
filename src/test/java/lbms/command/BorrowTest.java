@@ -22,7 +22,7 @@ public class BorrowTest extends TestCase{
 
     @Override
     protected void setUp() {
-        v = new Visitor("John", "Smith", "JSmith", "password", "address", 1231231234);
+        v = new Visitor("John", "Smith", "JSmith", "password", "address", new PhoneNumber(123, 123, 1234));
         LBMS.getVisitors().put(Long.parseLong("0000000001"), v);
 
         books = new HashMap<>();

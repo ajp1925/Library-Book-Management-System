@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.LBMS;
+import lbms.models.PhoneNumber;
 import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
 import lbms.search.UserSearch;
@@ -21,7 +22,7 @@ public class RegisterVisitor implements Command {
     public RegisterVisitor(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
         try {
-            visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2], Long.parseLong(arguments[3]));
+            visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2], new PhoneNumber(arguments[3]));
         }
         catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
             // TODO all this is wrong

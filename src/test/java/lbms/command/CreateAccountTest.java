@@ -2,6 +2,7 @@ package lbms.command;
 
 import junit.framework.TestCase;
 import lbms.LBMS;
+import lbms.models.PhoneNumber;
 import lbms.models.Visitor;
 
 /**
@@ -13,15 +14,15 @@ public class CreateAccountTest extends TestCase{
     protected void setUp() {
         LBMS.getVisitors().put(
                 Long.parseLong("0000000001"),
-                new Visitor("first_name", "last_name", null, null, "address", 1231231234)
+                new Visitor("first_name", "last_name", null, null, "address", new PhoneNumber(123, 123, 1234))
                 );
         LBMS.getVisitors().put(
                 Long.parseLong("0000000002"),
-                new Visitor("first_name", "last_name", "JohnSmith", null, "address", 1231231234)
+                new Visitor("first_name", "last_name", "JohnSmith", null, "address", new PhoneNumber(123, 123, 1234))
         );
         LBMS.getVisitors().put(
                 Long.parseLong("0000000003"),
-                new Visitor("first_name", "last_name", "username", "password", "address", 1231231234)
+                new Visitor("first_name", "last_name", "username", "password", "address", new PhoneNumber(123, 123, 1234))
         );
     }
 

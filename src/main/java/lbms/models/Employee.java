@@ -17,7 +17,7 @@ public class Employee implements Serializable {
      * @param username: the employee's username to login
      * @param password: the employee's password
      */
-    public Employee(String firstName, String lastName, String username, String password, String address, long phoneNumber) {
+    public Employee(String firstName, String lastName, String username, String password, String address, PhoneNumber phoneNumber) {
         v = new Visitor(firstName, lastName, username, password, address, phoneNumber);
     }
 
