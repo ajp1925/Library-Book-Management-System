@@ -227,7 +227,7 @@ public class RegisterController implements StateController {
 
                 if (fields[2].equals("success")) {
                     System.out.println("SUCCESS");
-                    manager.display("");
+                    manager.display("");    //TODO enter main view file
                 } else {
                     failedLabel.setText("Invalid Username or Password. Please Try Again.");
                 }
