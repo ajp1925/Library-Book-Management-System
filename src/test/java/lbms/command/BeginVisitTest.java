@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.LBMS;
+import lbms.models.PhoneNumber;
 import lbms.models.Visitor;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class BeginVisitTest {
     public void setup() {
         visitors = LBMS.getVisitors();
         visitors.clear();
-        visitors.put(1L, new Visitor("Johnny", "Test", "123 Test", "password", "123 Street", 1234567890));
+        visitors.put(1L, new Visitor("Johnny", "Test", "123 Test", "password", "123 Street", new PhoneNumber(123, 123, 1234)));
 //        visitors.put(1L, new Visitor("Johnny", "Test", "123 Test", 1234567890));
     }
 

@@ -15,7 +15,7 @@ public class Visitor implements Serializable {
     private String username;
     private String password;
     private String address;
-    private long phoneNumber;
+    private PhoneNumber phoneNumber;
     private long visitorID;
     private HashMap<ISBN, Transaction> checkedOutBooks;
     private final int MAX_BOOKS = 5;
@@ -31,7 +31,7 @@ public class Visitor implements Serializable {
      * @param address: the address of the visitor
      * @param phoneNumber: the visitor's phone number
      */
-    public Visitor(String firstName, String lastName, String username, String password, String address, long phoneNumber) {
+    public Visitor(String firstName, String lastName, String username, String password, String address, PhoneNumber phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -94,7 +94,7 @@ public class Visitor implements Serializable {
      * Getter for the visitors phone number.
      * @return the visitors phone number
      */
-    public long getPhoneNumber() {
+    public PhoneNumber getPhoneNumber() {
         return phoneNumber;
     }
 
