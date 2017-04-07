@@ -107,3 +107,7 @@
 .menu-item:focused .label {
     -fx-text-fill: black;
 }
+
+#bottom-box {
+    -fx-background-color: -main-color;
+}

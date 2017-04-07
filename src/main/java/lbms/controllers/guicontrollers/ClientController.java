@@ -17,8 +17,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import lbms.models.SystemDateTime;
+import lbms.controllers.CommandController;
 import lbms.views.GUI.SessionManager;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Chris on 3/30/2017.
@@ -41,7 +44,8 @@ public class ClientController {
         // init clock
         Runnable task = () -> {
             while (!stop) {
-                clockText.setText(SystemDateTime.getInstance(null).toString());
+                LocalDateTime date = CommandController.getSystemDateTime();
+                clockText.setText(date.format(DateTimeFormatter.ofPattern("HH:mm MM/dd/yyyy")));
             }
         };
         new Thread(task).start();
@@ -130,7 +134,7 @@ public class ClientController {
 
         MenuItem closeWindow = new MenuItem("Close Window");
         closeWindow.setOnAction((ActionEvent event) -> { Platform.exit(); });
-        closeWindow.setAccelerator(new KeyCodeCombination(KeyCode.W, key, KeyCombination.SHIFT_DOWN));
+        closeWindow.setAccelerator(new KeyCodeCombination(KeyCode.Q, key));
 
         fileMenu.getItems().addAll(newTab, closeTab, closeWindow);
 

@@ -34,7 +34,17 @@
                 </center>
              </BorderPane>
              <Button fx:id="menuButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="29.0" prefWidth="32.0" stylesheets="@../css/client.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-             <Text fx:id="clockText" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0" />
+            <AnchorPane id="bottom-box" prefHeight="0.0" prefWidth="600.0" stylesheets="@../css/client.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                   <Text fx:id="clockText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="15.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+               </children>
+               <padding>
+                  <Insets bottom="2.0" top="2.0" />
+               </padding>
+            </AnchorPane>
           </children>
        </AnchorPane>
     </center>

@@ -4,6 +4,9 @@ import lbms.LBMS;
 import lbms.command.*;
 import lbms.models.SystemDateTime;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * CommandController class interacts with the command package to execute commands.
  * @author Team B
@@ -49,6 +52,10 @@ public class CommandController {
     public static boolean isOpen() {
         return SystemDateTime.getInstance(null).getTime().isAfter(LBMS.OPEN_TIME) &&
                 SystemDateTime.getInstance(null).getTime().isBefore(LBMS.CLOSE_TIME);
+    }
+
+    public static LocalDateTime getSystemDateTime() {
+        return SystemDateTime.getInstance(null).getDateTime();
     }
 
     /**

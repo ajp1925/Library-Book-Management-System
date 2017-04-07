@@ -130,6 +130,7 @@ public class RegisterController implements StateController {
                     valid = false;
                 } else {
                     visitorId = fields[1];
+                    System.out.println("Register Success");
                 }
             }
 
