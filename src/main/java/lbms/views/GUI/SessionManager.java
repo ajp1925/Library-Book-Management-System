@@ -2,7 +2,7 @@ package lbms.views.GUI;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.controllers.guicontrollers.StateController;
 
 /**
@@ -15,7 +15,7 @@ public class SessionManager {
 
     public SessionManager(Tab tab) {
         try {
-            String[] fields = CommandController.processRequest("connect;").replace(";", "").split(",", 2);
+            String[] fields = new ProxyCommandController().processRequest("connect;").replace(";", "").split(",", 2);
             clientId = Long.parseLong(fields[1]);
         } catch (Exception e) {
             System.out.println("Error connecting to server.");
@@ -25,7 +25,7 @@ public class SessionManager {
     }
 
     public void close() {
-        CommandController.processRequest(clientId + ",disconnect;");
+        new ProxyCommandController().processRequest(clientId + ",disconnect;");
     }
 
     public void display(String file) {

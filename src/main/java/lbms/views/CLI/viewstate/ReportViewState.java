@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 import java.util.Scanner;
@@ -37,11 +37,11 @@ public class ReportViewState implements State {
     public void onEnter() {
         String response;
         if(days == null) {
-            response = CommandController.processRequest("report;");
+            response = new ProxyCommandController().processRequest("report;");
             System.out.println("\nSystem report:");
         }
         else {
-            response = CommandController.processRequest("report," + days + ";");
+            response = new ProxyCommandController().processRequest("report," + days + ";");
             System.out.println("\nSystem report for " + days + " days:");
         }
 

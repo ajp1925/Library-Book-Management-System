@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 /**
@@ -14,7 +14,7 @@ public class ClockViewState implements State {
      */
     @Override
     public void init() {
-        String response = CommandController.processRequest("datetime;");
+        String response = new ProxyCommandController().processRequest("datetime;");
 
         try {
             System.out.println(parseResponse(response));

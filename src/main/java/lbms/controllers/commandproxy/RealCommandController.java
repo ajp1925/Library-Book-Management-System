@@ -1,4 +1,4 @@
-package lbms.controllers;
+package lbms.controllers.commandproxy;
 
 import lbms.LBMS;
 import lbms.command.*;
@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
  * CommandController class interacts with the command package to execute commands.
  * @author Team B
  */
-public class CommandController {
+public class RealCommandController implements CommandController {
 
     private static Command command = null;
 
@@ -20,7 +20,7 @@ public class CommandController {
      * @param requestString: the input string to be processed
      * @return the response output string
      */
-    public static String processRequest(String requestString) {
+    public String processRequest(String requestString) {
         String response = "";
 
         if (requestString.endsWith(";")) {
@@ -47,11 +47,6 @@ public class CommandController {
      */
     public static Command getCommand() {
         return command;
-    }
-
-    public static boolean isOpen() {
-        return SystemDateTime.getInstance(null).getTime().isAfter(LBMS.OPEN_TIME) &&
-                SystemDateTime.getInstance(null).getTime().isBefore(LBMS.CLOSE_TIME);
     }
 
     public static LocalDateTime getSystemDateTime() {
@@ -88,14 +83,14 @@ public class CommandController {
                 case "service":
                     return new SetBookService(request[2]);
                 case "arrive":
-                    if (isOpen()) {
+                    if (ProxyCommandController.isOpen()) {
                         BeginVisit b = new BeginVisit(request[2]);
                         LBMS.getSessionProxies().get(clientID).addUndoable(b);
                         return b;
                     }
                     return new CloseLibrary();
                 case "borrow":
-                    if (isOpen()) {
+                    if (ProxyCommandController.isOpen()) {
                         Borrow b = new Borrow(request[2]);
                         LBMS.getSessionProxies().get(clientID).addUndoable(b);
                         return b;

@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 /**
@@ -16,7 +16,7 @@ public class UserMenuViewState implements State {
     public void init() {
         System.out.println("\nPlease select a command:");
 
-        if(CommandController.isOpen()) {
+        if(ProxyCommandController.isOpen()) {
             System.out.println("enter library)    Allow a user to enter the library");
             System.out.println("exit library)     Have a user leave the library");
         }
@@ -54,13 +54,13 @@ public class UserMenuViewState implements State {
                 break;
             case "enter library":
             case "enter":
-                if(CommandController.isOpen()) {
+                if(ProxyCommandController.isOpen()) {
                     CLIView.setState(new BeginVisitViewState());
                     break;
                 }
             case "exit library":
             case "leave":
-                if(CommandController.isOpen()) {
+                if(ProxyCommandController.isOpen()) {
                     CLIView.setState(new EndVisitViewState());
                     break;
                 }

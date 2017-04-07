@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 import java.util.Scanner;
@@ -36,7 +36,7 @@ public class ReturnBookViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("return," + visitorID + books + ";");
+        String response = new ProxyCommandController().processRequest("return," + visitorID + books + ";");
 
         try {
             System.out.println(parseResponse(response));

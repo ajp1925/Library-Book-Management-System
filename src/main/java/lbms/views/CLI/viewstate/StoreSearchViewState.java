@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 import java.util.Scanner;
@@ -56,7 +56,7 @@ public class StoreSearchViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest(commandString + ";");
+        String response = new ProxyCommandController().processRequest(commandString + ";");
 
         try {
             System.out.println(parseResponse(response));

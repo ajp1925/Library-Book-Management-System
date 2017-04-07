@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 import java.util.Scanner;
@@ -28,7 +28,7 @@ public class BeginVisitViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("arrive," + visitorID + ";");
+        String response = new ProxyCommandController().processRequest("arrive," + visitorID + ";");
 
         try {
             System.out.println(parseResponse(response));

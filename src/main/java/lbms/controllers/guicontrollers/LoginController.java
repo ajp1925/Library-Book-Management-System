@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
 
 /**
@@ -60,7 +60,7 @@ public class LoginController implements StateController {
 
         if (completed) {
             try {
-                String response = CommandController.processRequest(
+                String response = new ProxyCommandController().processRequest(
                         String.format("%s,login,%s,%s;",
                                 manager.getClientId(), usernameField.getText(), passwordField.getText()));
 

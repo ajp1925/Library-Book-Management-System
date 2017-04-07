@@ -1,6 +1,6 @@
 package lbms;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.models.*;
 import lbms.models.sessions.SessionProxy;
 import lbms.views.ViewFactory;
@@ -237,7 +237,7 @@ public class LBMS {
     public static void LibraryClose() {
         // Departs all the visitors when the library closes.
         for(Visit visit: currentVisits.values()) {
-            CommandController.processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
+            new ProxyCommandController().processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
         }
     }
 
@@ -331,7 +331,7 @@ public class LBMS {
     }
 
     /**
-     * Incremenets the total number of sessions by one.
+     * Increments the total number of sessions by one.
      */
     public static void incrementSessions() {
         totalSessions++;

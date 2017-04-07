@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.CLI.CLIView;
 
 /**
@@ -14,7 +14,7 @@ public class ResetViewState implements State {
      */
     @Override
     public void init() {
-        String response = CommandController.processRequest("reset;");
+        String response = new ProxyCommandController().processRequest("reset;");
 
         try {
             System.out.println(parseResponse(response));

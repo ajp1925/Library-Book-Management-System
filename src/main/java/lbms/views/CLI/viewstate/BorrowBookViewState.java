@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.search.UserSearch;
 import lbms.views.CLI.CLIView;
 
@@ -38,7 +38,7 @@ public class BorrowBookViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("borrow," + visitorID + books +";");
+        String response = new ProxyCommandController().processRequest("borrow," + visitorID + books +";");
 
         try {
             System.out.println(parseResponse(response));

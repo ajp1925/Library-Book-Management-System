@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.models.Visitor;
 import lbms.search.UserSearch;
 import lbms.views.CLI.CLIView;
@@ -40,7 +40,7 @@ public class RegisterViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("register," + firstName + ","
+        String response = new ProxyCommandController().processRequest("register," + firstName + ","
                 + lastName + "," + address + "," + phone + ";");
         try {
             System.out.println(parseResponse(response));

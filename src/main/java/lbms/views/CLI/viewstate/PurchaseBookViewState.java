@@ -1,6 +1,6 @@
 package lbms.views.CLI.viewstate;
 
-import lbms.controllers.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.models.Book;
 import lbms.search.BookSearch;
 import lbms.views.CLI.CLIView;
@@ -40,7 +40,7 @@ public class PurchaseBookViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = CommandController.processRequest("buy," + quantity + ids + ";");
+        String response = new ProxyCommandController().processRequest("buy," + quantity + ids + ";");
 
         try {
             System.out.println("\n" + parseResponse(response));
