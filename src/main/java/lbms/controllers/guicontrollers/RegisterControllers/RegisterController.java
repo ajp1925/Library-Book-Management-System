@@ -158,7 +158,7 @@ public class RegisterController implements StateController {
             }
         } else {
             userController.fail();
-            failedLabel.setText("* Please enter missing fields");
+            failedLabel.setText("* Please enter missing fields.");
         }
     }
 
@@ -189,7 +189,7 @@ public class RegisterController implements StateController {
         }
 
         if (!completed) {
-            failedLabel.setText("* Please enter missing fields");
+            failedLabel.setText("* Please enter missing fields.");
         }
         else if (!password.equals(confirm)) {
             failedLabel.setText("Passwords do not match.\nPlease enter your password again.");

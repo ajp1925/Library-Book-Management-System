@@ -21,7 +21,7 @@
                         <VBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="305.0">
                            <children>
                               <Button fx:id="loginButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#execute" text="Login" />
-                              <Text fx:id="loginFailedLabel" strokeType="OUTSIDE" strokeWidth="0.0">
+                              <Text fx:id="loginFailedLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin></Text>
@@ -46,17 +46,20 @@
                      <children>
                         <GridPane alignment="CENTER" hgap="15.0" prefHeight="96.0" prefWidth="314.0" stylesheets="@../css/root.css">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                              <TextField fx:id="usernameField" GridPane.columnIndex="1" />
-                              <PasswordField fx:id="passwordField" prefHeight="27.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                              <TextField fx:id="usernameField" GridPane.columnIndex="2" />
+                              <PasswordField fx:id="passwordField" prefHeight="27.0" prefWidth="203.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </Text>
+                              <Text fx:id="usernameFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text fx:id="passwordFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
                            </children>
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="396.0" minWidth="10.0" prefWidth="78.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="396.0" minWidth="4.0" prefWidth="9.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="396.0" minWidth="10.0" prefWidth="63.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="193.0" prefWidth="221.0" />
                            </columnConstraints>
                            <opaqueInsets>

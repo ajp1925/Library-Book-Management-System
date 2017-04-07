@@ -26,6 +26,8 @@ public class LoginController implements StateController {
     @FXML private Text loginFailedLabel;
     @FXML private Button loginButton;
     @FXML private Hyperlink registerLink;
+    @FXML private Text usernameFail;
+    @FXML private Text passwordFail;
 
     @FXML protected void initialize() {
         root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
@@ -43,19 +45,33 @@ public class LoginController implements StateController {
     }
 
     @FXML private void execute() {
-        // TODO edit request string
-        String request = manager.getClientId() + usernameField.getText() + passwordField.getText();
-        String response = CommandController.processRequest(request);
+        usernameFail.setText("");
+        passwordFail.setText("");
+        boolean completed = true;
 
-        // TODO parse response
+        if (usernameField.getText().isEmpty()) {
+            usernameFail.setText("*");
+            completed = false;
+        }
+        if (passwordField.getText().isEmpty()) {
+            passwordFail.setText("*");
+            completed = false;
+        }
 
-        if (false) {
-            //manager.display("main_visitor"); // TODO create main view
-            loginFailedLabel.setFill(Color.GREEN);
-            loginFailedLabel.setText("Success");
+        if (completed) {
+            String response = CommandController.processRequest(
+                    String.format("%s,login,%s,%s;",
+                            manager.getClientId(), usernameField.getText(), passwordField.getText()));
+
+            String[] fields = response.replace(",", "").split(",");
+
+            if (fields[2].equals("success")) {
+                manager.display(""); // TODO create main view
+            } else {
+                loginFailedLabel.setText("Invalid Username or Password. Please Try Again.");
+            }
         } else {
-            loginFailedLabel.setFill(Color.FIREBRICK);
-            loginFailedLabel.setText("Invalid Username or Password. Please Try Again.");
+            loginFailedLabel.setText("* Please enter missing fields.");
         }
     }
 }
