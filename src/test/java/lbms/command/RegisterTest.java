@@ -21,7 +21,7 @@ public class RegisterTest extends TestCase{
         Command command = new RegisterVisitor("first_name,last_name,address,1231231234");
         assertEquals("0000000001," + SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + ";",
                 command.execute());
-        assertEquals(LBMS.getVisitors().size(), 1);
+        assertEquals(1, LBMS.getVisitors().size());
         assertNotNull(LBMS.getVisitors().get(Long.parseLong("0000000001")));
     }
 
@@ -30,7 +30,7 @@ public class RegisterTest extends TestCase{
         command.execute();
         Command command2 = new RegisterVisitor("first_name,last_name,address,1231231234");
         assertEquals("duplicate;", command2.execute());
-        assertEquals(LBMS.getVisitors().size(), 1);
+        assertEquals(1, LBMS.getVisitors().size());
     }
 
     public void testAlmostDuplicate() throws MissingParametersException {
@@ -39,6 +39,6 @@ public class RegisterTest extends TestCase{
         Command command2 = new RegisterVisitor("first_name,last_name,address,1234567890");
         assertEquals("0000000002," + SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + ";",
                 command2.execute());
-        assertEquals(LBMS.getVisitors().size(), 2);
+        assertEquals(2, LBMS.getVisitors().size());
     }
 }
