@@ -72,9 +72,9 @@ public class RealCommandController implements CommandController {
                 case "create":
                     return new CreateAccount(request[2]);
                 case "login":
-                    return new LogIn(request[2]);
+                    return new LogIn(clientID + "," + request[2]);
                 case "logout":
-                    return new LogOut(request[2]);
+                    return new LogOut(clientID + "," + request[2]);
                 case "undo":
                     return new Undo(request[2]);
                 case "redo":

@@ -9,6 +9,7 @@ import lbms.models.Visitor;
  */
 public class LogIn implements Command {
 
+    private Long clientID;
     private String username;
     private String password;
 
@@ -19,11 +20,12 @@ public class LogIn implements Command {
      */
     public LogIn(String request) throws MissingParametersException {
         String parts[] = request.split(",");
-        if(parts.length < 2) {
+        if(parts.length < 3) {
             throw new MissingParametersException("missing-parameters,username,password");
         }
-        username = parts[0];
-        password = parts[1];
+        clientID = Long.parseLong(parts[0]);
+        username = parts[1];
+        password = parts[2];
     }
 
     /**
@@ -34,6 +36,7 @@ public class LogIn implements Command {
     public String execute() {
         for(Visitor v : LBMS.getVisitors().values()) {
             if(v.getUsername() != null && v.getUsername().equals(username) && v.getPassword().equals(password)) {
+                LBMS.getSessions().get(clientID).setV(v);
                 return "success;";
             }
         }

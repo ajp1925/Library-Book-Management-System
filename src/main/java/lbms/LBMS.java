@@ -33,7 +33,7 @@ public class LBMS {
     private static List<Visit> totalVisits;
     private static List<Transaction> transactions = new ArrayList<>();
     private static HashMap<Long, Visit> currentVisits;
-    private static HashMap<Long, Session> sessions;
+    private static HashMap<Long, Session> sessions = new HashMap<>();
     private static long totalSessions;
 
     /**
