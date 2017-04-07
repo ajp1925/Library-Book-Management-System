@@ -34,7 +34,7 @@ public class RegisterController implements StateController {
     private UserController userController;
     private Register2Controller controller;
 
-    private String visitorId;
+    private String visitorId = "";
 
     public void initManager(final SessionManager manager) {
         this.manager = manager;
@@ -118,21 +118,25 @@ public class RegisterController implements StateController {
         }
 
         if (completed) {
+            boolean valid = true;
+
             if (visitorId.isEmpty()) {
                 String response = CommandController.processRequest(
                         String.format("%s,register,%s,%s,%s,%s;",
                                 manager.getClientId(), firstName, lastName, address, phoneNumber));
 
-                visitorId = response;
+                String[] fields = response.replace(";", "").split(",");
+                if(fields[1].equals("duplicate;")) {
+                    valid = false;
+                } else {
+                    visitorId = fields[1];
+                }
             }
-
-            //TODO parse response
-            boolean valid = true;
 
             if (valid) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(SessionManager.class.getResource("/fxml/register-2.fxml"));
+                    loader.setLocation(SessionManager.class.getResource("/fxml/register_2.fxml"));
                     GridPane grid = loader.load();
                     controller = loader.getController();
 
@@ -150,7 +154,7 @@ public class RegisterController implements StateController {
 
                 failedLabel.setText("");
             } else {
-                failedLabel.setText("That visitor already exists.\nPlease try again or enter your visitor ID.");
+                failedLabel.setText("This visitor already exists.\nPlease try again or register with visitor ID.");
             }
         } else {
             userController.fail();
@@ -190,13 +194,44 @@ public class RegisterController implements StateController {
         else if (!password.equals(confirm)) {
             failedLabel.setText("Passwords do not match.\nPlease enter your password again.");
         } else {
-            System.out.println(role);
+            boolean valid;
+            String response = CommandController.processRequest(
+                    String.format("%s,create,%s,%s,%s,%s;",
+                            manager.getClientId(), username, password, role, visitorId));
 
-//            // TODO parse response
-//            response = CommandController.processRequest(
-//                    String.format("%s,create,%s,%s,%s,%s;",
-//                            manager.getClientId(), username, password, "", visitorId));
-//
+            String[] fields = response.replace(";", "").split(",");
+            switch (fields[2]) {
+                case "duplicate-username":
+                    failedLabel.setText("Username is taken. Please try a new username.");
+                    valid = false;
+                    break;
+                case "duplicate-visitor":
+                    failedLabel.setText("Visitor already has an account. Please try logging in.");
+                    valid = false;
+                    break;
+                case "invalid-visitor":
+                    failedLabel.setText("No visitor exists. Please register as a visitor first.");
+                    valid = false;
+                    break;
+                default:
+                    valid = true;
+                    break;
+            }
+
+            if (valid) {
+                response = CommandController.processRequest(
+                        String.format("%s,login,%s,%s;",
+                                manager.getClientId(), username, password));
+
+                fields = response.replace(",", "").split(",");
+
+                if (fields[2].equals("success")) {
+                    System.out.println("SUCCESS");
+                    manager.display("");
+                } else {
+                    failedLabel.setText("Invalid Username or Password. Please Try Again.");
+                }
+            }
         }
     }
 }
