@@ -11,8 +11,14 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField fx:id="usernameField" GridPane.columnIndex="2" />
-      <PasswordField fx:id="passwordField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <PasswordField fx:id="confirmField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <PasswordField fx:id="passwordField" prefHeight="26.0" prefWidth="276.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <font>
+            <Font size="9.0" />
+         </font></PasswordField>
+      <PasswordField fx:id="confirmField" prefHeight="25.0" prefWidth="276.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <font>
+            <Font size="9.0" />
+         </font></PasswordField>
       <Text fx:id="usernameFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" />
       <Text fx:id="passwordFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" GridPane.rowIndex="1" />
       <Text fx:id="confirmFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" GridPane.rowIndex="2" />
