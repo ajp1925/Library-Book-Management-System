@@ -25,7 +25,7 @@ public class Disconnect implements Command {
      */
     @Override
     public String execute() {
-        LBMS.getSessionProxies().remove(clientID);
+        LBMS.getSessions().remove(clientID);
         return "disconnect;";
     }
 }

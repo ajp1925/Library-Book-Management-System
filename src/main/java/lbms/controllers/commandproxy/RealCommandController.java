@@ -5,7 +5,6 @@ import lbms.command.*;
 import lbms.models.SystemDateTime;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * CommandController class interacts with the command package to execute commands.
@@ -63,7 +62,7 @@ public class RealCommandController implements CommandController {
             return new ClientConnect();
         } else {
             long clientID = Long.parseLong(request[0]);
-            if (LBMS.getSessionProxies().get(clientID) == null) {
+            if (LBMS.getSessions().get(clientID) == null) {
                 throw new MissingParametersException("invalid-client-id;");
             }
 
@@ -85,14 +84,14 @@ public class RealCommandController implements CommandController {
                 case "arrive":
                     if (ProxyCommandController.isOpen()) {
                         BeginVisit b = new BeginVisit(request[2]);
-                        LBMS.getSessionProxies().get(clientID).addUndoable(b);
+                        LBMS.getSessions().get(clientID).addUndoable(b);
                         return b;
                     }
                     return new CloseLibrary();
                 case "borrow":
                     if (ProxyCommandController.isOpen()) {
                         Borrow b = new Borrow(request[2]);
-                        LBMS.getSessionProxies().get(clientID).addUndoable(b);
+                        LBMS.getSessions().get(clientID).addUndoable(b);
                         return b;
                     }
                     return new CloseLibrary();
@@ -100,7 +99,7 @@ public class RealCommandController implements CommandController {
                     return new RegisterVisitor(request[2]);
                 case "depart":
                     EndVisit ev = new EndVisit(request[2]);
-                    LBMS.getSessionProxies().get(clientID).addUndoable(ev);
+                    LBMS.getSessions().get(clientID).addUndoable(ev);
                     return ev;
                 case "info":
                     return new LibrarySearch(request[2]);
@@ -108,17 +107,17 @@ public class RealCommandController implements CommandController {
                     return new FindBorrowed(request[2]);
                 case "return":
                     Return r = new Return(request[2]);
-                    LBMS.getSessionProxies().get(clientID).addUndoable(r);
+                    LBMS.getSessions().get(clientID).addUndoable(r);
                     return r;
                 case "pay":
                     PayFine pf = new PayFine(request[2]);
-                    LBMS.getSessionProxies().get(clientID).addUndoable(pf);
+                    LBMS.getSessions().get(clientID).addUndoable(pf);
                     return pf;
                 case "search":
                     return new StoreSearch(request[2]);
                 case "buy":
                     BookPurchase bp = new BookPurchase(request[2]);
-                    LBMS.getSessionProxies().get(clientID).addUndoable(bp);
+                    LBMS.getSessions().get(clientID).addUndoable(bp);
                     return bp;
                 case "advance":
                     return new AdvanceTime(request[2]);

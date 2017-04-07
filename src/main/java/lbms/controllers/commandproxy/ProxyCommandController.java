@@ -56,7 +56,7 @@ public class ProxyCommandController implements CommandController {
      * @return true if the client id represents and employee, false otherwise
      */
     public static boolean isEmployee(long clientID) {
-        Visitor v = LBMS.getSessionProxies().get(clientID).getV();
+        Visitor v = LBMS.getSessions().get(clientID).getV();
         for( Employee employee : LBMS.getEmployees().values()) {
             if(employee.getVisitor().getVisitorID() == v.getVisitorID()) {
                 return true;

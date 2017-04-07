@@ -2,7 +2,6 @@ package lbms;
 
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.models.*;
-import lbms.models.sessions.SessionProxy;
 import lbms.views.ViewFactory;
 
 import java.io.*;
@@ -34,7 +33,7 @@ public class LBMS {
     private static List<Visit> totalVisits;
     private static List<Transaction> transactions = new ArrayList<>();
     private static HashMap<Long, Visit> currentVisits;
-    private static HashMap<Long, SessionProxy> sessionProxies;
+    private static HashMap<Long, Session> sessions;
     private static long totalSessions;
 
     /**
@@ -201,7 +200,7 @@ public class LBMS {
             SystemDateTime.getInstance(null).start();
         }
         currentVisits = new HashMap<>();
-        sessionProxies = new HashMap<>();
+        sessions = new HashMap<>();
         totalSessions = 0;
     }
 
@@ -315,11 +314,11 @@ public class LBMS {
     }
 
     /**
-     * Getter for the session proxies.
-     * @return the hash map of session proxies
+     * Getter for the sessions.
+     * @return the hash map of sessions
      */
-    public static HashMap<Long, SessionProxy> getSessionProxies() {
-        return sessionProxies;
+    public static HashMap<Long, Session> getSessions() {
+        return sessions;
     }
 
     /**
