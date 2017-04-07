@@ -45,7 +45,10 @@ public class ProxyCommandController implements CommandController {
      * @return true if any visitor can perform the command, false otherwise
      */
     private boolean unrestricted(String command) {
-        ArrayList<String> visitorCommands = new ArrayList<>(Arrays.asList("arrive", "info", "borrow", "depart", "register"));
+        ArrayList<String> visitorCommands = new ArrayList<>(Arrays.asList(
+                        "arrive", "info", "borrow", "depart", "register",
+                        "login", "logout", "undo", "redo", "disconnect"
+        ));
         return visitorCommands.contains(command);
     }
 
