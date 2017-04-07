@@ -69,7 +69,6 @@ public final class GoogleAPISearch {
      * @return a list of book objects matching the search parameter
      */
     public static List<Book> searchByPublisher(String publisher) {
-
         return parseJSON( query(baseURL + "inpublisher:\"" + publisher.replaceAll(" ", "+" + "\"") + saleableSuffix + maxResultsSuffix) );
     }
 

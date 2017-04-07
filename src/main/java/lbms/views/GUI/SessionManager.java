@@ -10,11 +10,17 @@ import lbms.controllers.guicontrollers.StateController;
  */
 public class SessionManager {
     private Tab tab;
-    private String clientId;
+    private Long clientId;
     private StateController controller;
 
     public SessionManager(Tab tab) {
-        clientId = CommandController.processRequest("connect;");
+        try {
+            String[] fields = CommandController.processRequest("connect;").replace(";", "").split(",", 2);
+            clientId = Long.parseLong(fields[1]);
+        } catch (Exception e) {
+            System.out.println("Error connecting to server.");
+            System.exit(1);
+        }
         this.tab = tab;
     }
 
@@ -35,7 +41,7 @@ public class SessionManager {
         }
     }
 
-    public String getClientId() {
+    public Long getClientId() {
         return clientId;
     }
 }

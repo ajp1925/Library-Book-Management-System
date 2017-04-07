@@ -59,15 +59,19 @@ public class LoginController implements StateController {
         }
 
         if (completed) {
-            String response = CommandController.processRequest(
-                    String.format("%s,login,%s,%s;",
-                            manager.getClientId(), usernameField.getText(), passwordField.getText()));
+            try {
+                String response = CommandController.processRequest(
+                        String.format("%s,login,%s,%s;",
+                                manager.getClientId(), usernameField.getText(), passwordField.getText()));
 
-            String[] fields = response.replace(",", "").split(",");
+                String[] fields = response.replace(",", "").split(",");
 
-            if (fields[2].equals("success")) {
-                manager.display(""); // TODO create main view
-            } else {
+                if (fields[2].equals("success")) {
+                    manager.display(""); // TODO create main view
+                } else {
+                    throw new Exception();
+                }
+            } catch (Exception e) {
                 loginFailedLabel.setText("Invalid Username or Password. Please Try Again.");
             }
         } else {

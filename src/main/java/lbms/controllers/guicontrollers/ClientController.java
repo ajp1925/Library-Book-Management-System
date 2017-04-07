@@ -45,7 +45,7 @@ public class ClientController {
         Runnable task = () -> {
             while (!stop) {
                 LocalDateTime date = CommandController.getSystemDateTime();
-                clockText.setText(date.format(DateTimeFormatter.ofPattern("HH:mm MM/dd/yyyy")));
+                clockText.setText(date.format(DateTimeFormatter.ofPattern("HH:mm    MM/dd/yyyy")));
             }
         };
         new Thread(task).start();

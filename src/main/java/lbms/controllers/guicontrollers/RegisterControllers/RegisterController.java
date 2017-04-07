@@ -87,7 +87,7 @@ public class RegisterController implements StateController {
         });
     }
 
-    @FXML private void next() {
+    @FXML private void register() {
         userController.clearError();
         boolean completed = true;
 
@@ -121,16 +121,20 @@ public class RegisterController implements StateController {
             boolean valid = true;
 
             if (visitorId.isEmpty()) {
-                String response = CommandController.processRequest(
-                        String.format("%s,register,%s,%s,%s,%s;",
-                                manager.getClientId(), firstName, lastName, address, phoneNumber));
+                try {
+                    String response = CommandController.processRequest(
+                            String.format("%s,register,%s,%s,%s,%s;",
+                                    manager.getClientId(), firstName, lastName, address, phoneNumber));
 
-                String[] fields = response.replace(";", "").split(",");
-                if(fields[1].equals("duplicate;")) {
+                    String[] fields = response.replace(";", "").split(",");
+                    if (fields[1].equals("duplicate;")) {
+                        valid = false;
+                    } else {
+                        visitorId = fields[1];
+                        System.out.println("Register Success");
+                    }
+                } catch (Exception e) {
                     valid = false;
-                } else {
-                    visitorId = fields[1];
-                    System.out.println("Register Success");
                 }
             }
 
@@ -196,40 +200,48 @@ public class RegisterController implements StateController {
             failedLabel.setText("Passwords do not match.\nPlease enter your password again.");
         } else {
             boolean valid;
-            String response = CommandController.processRequest(
-                    String.format("%s,create,%s,%s,%s,%s;",
-                            manager.getClientId(), username, password, role, visitorId));
+            try {
+                String response = CommandController.processRequest(
+                        String.format("%s,create,%s,%s,%s,%s;",
+                                manager.getClientId(), username, password, role, visitorId));
 
-            String[] fields = response.replace(";", "").split(",");
-            switch (fields[2]) {
-                case "duplicate-username":
-                    failedLabel.setText("Username is taken. Please try a new username.");
-                    valid = false;
-                    break;
-                case "duplicate-visitor":
-                    failedLabel.setText("Visitor already has an account. Please try logging in.");
-                    valid = false;
-                    break;
-                case "invalid-visitor":
-                    failedLabel.setText("No visitor exists. Please register as a visitor first.");
-                    valid = false;
-                    break;
-                default:
-                    valid = true;
-                    break;
+                String[] fields = response.replace(";", "").split(",");
+                switch (fields[2]) {
+                    case "duplicate-username":
+                        failedLabel.setText("Username is taken. Please try a new username.");
+                        valid = false;
+                        break;
+                    case "duplicate-visitor":
+                        failedLabel.setText("Visitor already has an account. Please try logging in.");
+                        valid = false;
+                        break;
+                    case "invalid-visitor":
+                        failedLabel.setText("No visitor exists. Please register as a visitor first.");
+                        valid = false;
+                        break;
+                    default:
+                        valid = true;
+                        break;
+                }
+            } catch (Exception e) {
+                valid = false;
             }
 
             if (valid) {
-                response = CommandController.processRequest(
-                        String.format("%s,login,%s,%s;",
-                                manager.getClientId(), username, password));
+                try {
+                    String response = CommandController.processRequest(
+                            String.format("%s,login,%s,%s;",
+                                    manager.getClientId(), username, password));
 
-                fields = response.replace(",", "").split(",");
+                    String[] fields = response.replace(",", "").split(",");
 
-                if (fields[2].equals("success")) {
-                    System.out.println("SUCCESS");
-                    manager.display("");    //TODO enter main view file
-                } else {
+                    if (fields[2].equals("success")) {
+                        System.out.println("SUCCESS");
+                        manager.display("");    //TODO enter main view file
+                    } else {
+                        throw new Exception();
+                    }
+                } catch (Exception e) {
                     failedLabel.setText("Invalid Username or Password. Please Try Again.");
                 }
             }
