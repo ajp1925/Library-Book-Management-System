@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="root" prefHeight="402.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.RegisterController">
+<AnchorPane fx:id="root" prefHeight="402.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.RegisterControllers.RegisterController">
    <children>
       <FlowPane alignment="CENTER" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <BorderPane prefHeight="402.0" prefWidth="213.0">
+            <BorderPane>
                <top>
-                  <FlowPane alignment="CENTER" prefHeight="79.0" prefWidth="213.0" BorderPane.alignment="CENTER">
+                  <FlowPane alignment="CENTER" prefHeight="101.0" BorderPane.alignment="CENTER">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
                            <font>
@@ -20,6 +23,68 @@
                      </children>
                   </FlowPane>
                </top>
+               <center>
+                  <FlowPane fx:id="centerPane" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox fx:id="centerBox">
+                           <children>
+                              <FlowPane alignment="CENTER" prefHeight="0.0" prefWidth="400.0">
+                                 <children>
+                                    <RadioButton fx:id="newUserRadio" mnemonicParsing="false" text="New User">
+                                       <FlowPane.margin>
+                                          <Insets right="20.0" />
+                                       </FlowPane.margin>
+                                    </RadioButton>
+                                    <RadioButton fx:id="existingUserRadio" mnemonicParsing="false" text="Existing User">
+                                       <FlowPane.margin>
+                                          <Insets left="20.0" />
+                                       </FlowPane.margin>
+                                    </RadioButton>
+                                 </children>
+                              </FlowPane>
+                              <GridPane fx:id="gridPane">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </FlowPane>
+               </center>
+               <bottom>
+                  <FlowPane alignment="TOP_CENTER" prefHeight="140.0" prefWidth="326.0" BorderPane.alignment="CENTER">
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="78.0" prefWidth="305.0">
+                           <children>
+                              <Button fx:id="submitButton" mnemonicParsing="false" onAction="#next" text="Next" />
+                              <Text fx:id="failedLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="297.0">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextFlow prefHeight="13.0" prefWidth="312.0" textAlignment="CENTER">
+                                 <children>
+                                    <Hyperlink fx:id="loginLink" alignment="CENTER" prefHeight="19.0" prefWidth="251.0" text="Already have an account? Sign in here." textAlignment="CENTER" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                     </children>
+                  </FlowPane>
+               </bottom>
             </BorderPane>
          </children>
       </FlowPane>

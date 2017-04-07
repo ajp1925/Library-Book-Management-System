@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<GridPane fx:controller="lbms.controllers.guicontrollers.RegisterControllers.NewUserController" alignment="CENTER" prefHeight="183.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" GridPane.columnIndex="1" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <TextField fx:id="firstNameField" GridPane.columnIndex="2" />
+        <TextField fx:id="lastNameField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <TextField fx:id="addressField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <TextField fx:id="phoneNumberField" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <Text fx:id="firstNameFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" />
+        <Text fx:id="lastNameFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" GridPane.rowIndex="1" />
+        <Text fx:id="addressFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" GridPane.rowIndex="2" />
+        <Text fx:id="phoneNumberFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" GridPane.rowIndex="3" />
+    </children>
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="5.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="106.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="283.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+</GridPane>
