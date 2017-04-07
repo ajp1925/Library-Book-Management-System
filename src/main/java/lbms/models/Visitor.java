@@ -55,6 +55,18 @@ public class Visitor implements Serializable {
     }
 
     /**
+     * Getter for the visitors first name.
+     * @return the visitors first name
+     */
+    public String getFirstName() { return firstName; }
+
+    /**
+     * Getter for the visitors last name.
+     * @return the visitors last name
+     */
+    public String getLastName() { return lastName; }
+
+    /**
      * Getter for the username of a Visitor.
      * @return the visitors username
      */
