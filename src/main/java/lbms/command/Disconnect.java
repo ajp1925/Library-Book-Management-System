@@ -25,7 +25,9 @@ public class Disconnect implements Command {
      */
     @Override
     public String execute() {
-        LBMS.getSessions().remove(clientID);
+        if(LBMS.getSessions().remove(clientID) == null) {
+            return("invalid-client-id;");
+        }
         return "disconnect;";
     }
 }
