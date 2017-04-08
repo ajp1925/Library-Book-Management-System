@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 /**
  * Created by Chris on 4/6/17.
  */
-public class Register2Controller {
+public class CreateController {
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private PasswordField confirmField;

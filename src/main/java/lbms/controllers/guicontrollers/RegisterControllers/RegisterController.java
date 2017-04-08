@@ -32,7 +32,7 @@ public class RegisterController implements StateController {
     @FXML private RadioButton existingUserRadio;
 
     private UserController userController;
-    private Register2Controller controller;
+    private CreateController controller;
 
     private String visitorId = "";
 
@@ -48,9 +48,7 @@ public class RegisterController implements StateController {
             }
         });
 
-        loginLink.setOnAction((ActionEvent event) -> {
-            manager.display("login");
-        });
+        loginLink.setOnAction(e -> manager.display("login"));
 
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -128,11 +126,10 @@ public class RegisterController implements StateController {
 
                     // parse response
                     String[] fields = response.split(",");
-                    if (fields[1].equals("duplicate;")) {
+                    if (fields[2].equals("duplicate;")) {
                         valid = false;
                     } else {
-                        visitorId = fields[1];
-                        System.out.println("Register Success");
+                        visitorId = fields[2];
                     }
                 } catch (Exception e) {
                     valid = false;
@@ -154,9 +151,7 @@ public class RegisterController implements StateController {
                 }
 
                 submitButton.setText("Submit");
-                submitButton.setOnAction((ActionEvent event) -> {
-                    submit();
-                });
+                submitButton.setOnAction(e -> submit());
 
                 failedLabel.setText("");
             } else {
@@ -169,7 +164,6 @@ public class RegisterController implements StateController {
     }
 
     @FXML private void submit() {
-        System.out.println("Starting submit");
         controller.clearError();
         boolean completed = true;
 
@@ -206,7 +200,7 @@ public class RegisterController implements StateController {
                 String response = new ProxyCommandController().processRequest(
                         String.format("%s,create,%s,%s,%s,%s;",
                                 manager.getClientId(), username, password, role, visitorId));
-                System.out.println(response);
+
                 // parse response
                 String[] fields = response.replace(";", "").split(",");
                 switch (fields[1]) {
@@ -227,12 +221,10 @@ public class RegisterController implements StateController {
                         break;
                 }
             } catch (Exception e) {
-                System.out.println(e);
                 valid = false;
             }
 
             if (valid) {
-                System.out.println("Create Success");
                 try {
                     String response = new ProxyCommandController().processRequest(
                             String.format("%s,login,%s,%s;",
@@ -242,7 +234,6 @@ public class RegisterController implements StateController {
                     String[] fields = response.replace(";", "").split(",");
 
                     if (fields[2].equals("success")) {
-                        System.out.println("SUCCESS");
                         manager.display("main_visitor");    //TODO enter main view file
                     } else {
                         throw new Exception();
