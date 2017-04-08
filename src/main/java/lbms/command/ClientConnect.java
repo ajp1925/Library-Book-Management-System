@@ -13,9 +13,8 @@ public class ClientConnect implements Command {
 
     /**
      * Constructor parses the request string and creates the necessary data in the class.
-     * @throws MissingParametersException: when the request format is invalid
      */
-    public ClientConnect() throws MissingParametersException {
+    public ClientConnect() {
         this.s = new Session();
     }
 
