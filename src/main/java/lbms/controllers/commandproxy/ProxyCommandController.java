@@ -34,7 +34,7 @@ public class ProxyCommandController implements CommandController {
             return new RealCommandController().processRequest(requestString);
         }
         else {
-           return "You do not have permission to perform this action";
+           return request[0] + "," +request[1] + "," + "not-authorized; ";
         }
     }
 
