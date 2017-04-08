@@ -15,6 +15,7 @@ public class SessionManager {
 
     public SessionManager(Tab tab) {
         try {
+            // parse response
             String[] fields = new ProxyCommandController().processRequest("connect;").replace(";", "").split(",", 2);
             clientId = Long.parseLong(fields[1]);
         } catch (Exception e) {

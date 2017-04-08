@@ -21,12 +21,11 @@ public class RealCommandController implements CommandController {
      */
     public String processRequest(String requestString) {
         String response = "";
-
         if (requestString.endsWith(";")) {
             String request[] = requestString.replace(";", "").split(",", 3);
             try {
                 command = createCommand(request);
-                if(request[1].equals("connect")) {
+                if(request[0].equals("connect")) {
                     response = request[0] + "," + command.execute();
                 }
                 else {

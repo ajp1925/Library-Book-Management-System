@@ -64,10 +64,11 @@ public class LoginController implements StateController {
                         String.format("%s,login,%s,%s;",
                                 manager.getClientId(), usernameField.getText(), passwordField.getText()));
 
+                // parse response
                 String[] fields = response.replace(",", "").split(",");
 
                 if (fields[2].equals("success")) {
-                    manager.display(""); // TODO create main view
+                    manager.display("main_visitor"); // TODO create main view
                 } else {
                     throw new Exception();
                 }

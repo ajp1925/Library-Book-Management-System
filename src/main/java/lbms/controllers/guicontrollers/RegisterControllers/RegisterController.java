@@ -126,6 +126,7 @@ public class RegisterController implements StateController {
                             String.format("%s,register,%s,%s,%s,%s;",
                                     manager.getClientId(), firstName, lastName, address, phoneNumber));
 
+                    // parse response
                     String[] fields = response.split(",");
                     if (fields[1].equals("duplicate;")) {
                         valid = false;
@@ -168,6 +169,7 @@ public class RegisterController implements StateController {
     }
 
     @FXML private void submit() {
+        System.out.println("Starting submit");
         controller.clearError();
         boolean completed = true;
 
@@ -204,9 +206,10 @@ public class RegisterController implements StateController {
                 String response = new ProxyCommandController().processRequest(
                         String.format("%s,create,%s,%s,%s,%s;",
                                 manager.getClientId(), username, password, role, visitorId));
-
+                System.out.println(response);
+                // parse response
                 String[] fields = response.replace(";", "").split(",");
-                switch (fields[2]) {
+                switch (fields[1]) {
                     case "duplicate-username":
                         failedLabel.setText("Username is taken. Please try a new username.");
                         valid = false;
@@ -224,20 +227,23 @@ public class RegisterController implements StateController {
                         break;
                 }
             } catch (Exception e) {
+                System.out.println(e);
                 valid = false;
             }
 
             if (valid) {
+                System.out.println("Create Success");
                 try {
                     String response = new ProxyCommandController().processRequest(
                             String.format("%s,login,%s,%s;",
                                     manager.getClientId(), username, password));
 
-                    String[] fields = response.replace(",", "").split(",");
+                    // parse response
+                    String[] fields = response.replace(";", "").split(",");
 
                     if (fields[2].equals("success")) {
                         System.out.println("SUCCESS");
-                        manager.display("");    //TODO enter main view file
+                        manager.display("main_visitor");    //TODO enter main view file
                     } else {
                         throw new Exception();
                     }
