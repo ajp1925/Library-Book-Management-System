@@ -1,6 +1,8 @@
 package lbms.command;
 
 import lbms.LBMS;
+import lbms.controllers.commandproxy.ProxyCommandController;
+import lbms.controllers.commandproxy.RealCommandController;
 import lbms.models.Book;
 import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
@@ -9,6 +11,7 @@ import lbms.search.UserSearch;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,8 +20,9 @@ import java.util.List;
  */
 public class Borrow implements Command, Undoable {
 
+    private long clientID;
     private long visitorID;
-    private ArrayList<Integer> id;
+    private ArrayList<Integer> ids = new ArrayList<>();
 
     /**
      * Constructor for a Borrow class.
@@ -26,19 +30,34 @@ public class Borrow implements Command, Undoable {
      * @throws MissingParametersException: missing parameters
      */
     public Borrow(String request) throws MissingParametersException {
-        String[] arguments = request.split(",");
-        try {
-            if (arguments.length < 2) {
-                throw new NumberFormatException();
-            }
-            visitorID = Long.parseLong(arguments[0]);
-            id = new ArrayList<>();
-            for (int i = 1; i < arguments.length; i++) {
-                id.add(Integer.parseInt(arguments[i]));
-            }
-        } catch (NumberFormatException e) {
-            throw new MissingParametersException("missing-parameters,visitor-ID,{ids}");
+        String[] allArguments = request.split(",");
+        if (allArguments.length < 2) {
+            throw new MissingParametersException("missing-parameters,clientID,{ids}");
         }
+        clientID = Long.parseLong(allArguments[0]);
+        String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
+
+        if (arguments.length < 1) {
+            throw new MissingParametersException("missing-parameters,{ids}");
+        }
+        int index = 0;
+        if(arguments[index].startsWith("{")) {
+            while(!arguments[index].endsWith("}")) {
+                ids.add(Integer.parseInt(arguments[index++].replaceAll("[{}]", "")));
+            }
+            ids.add(Integer.parseInt(arguments[index].replaceAll("[{}]", "")));
+        }
+        else {
+            throw new MissingParametersException("missing-parameters,{ids}");
+        }
+
+        if(index < arguments.length - 1) {
+            visitorID = Long.parseLong(arguments[index+1]);
+        }
+        else {
+            visitorID = LBMS.getSessions().get(clientID).getV().getVisitorID();
+        }
+
     }
 
     /**
@@ -49,6 +68,10 @@ public class Borrow implements Command, Undoable {
      */
     @Override
     public String execute() {
+        if(visitorID != LBMS.getSessions().get(clientID).getV().getVisitorID() && !ProxyCommandController.isEmployee(clientID)) {
+            return "not-authorized;";
+        }
+
         if (UserSearch.BY_ID.findFirst(visitorID) == null) {
             return "invalid-visitor-id;";
         } else if (UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
@@ -57,7 +80,7 @@ public class Borrow implements Command, Undoable {
         }
         StringBuilder invalidIDs = new StringBuilder();
         String temp = "";
-        for (Integer i: id) {
+        for (Integer i: ids) {
             if (!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
                 return "book-limit-exceeded;";
             }

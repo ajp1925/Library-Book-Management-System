@@ -94,7 +94,7 @@ public class RealCommandController implements CommandController {
                     return new CloseLibrary();
                 case "borrow":
                     if (ProxyCommandController.isOpen()) {
-                        Borrow b = new Borrow(request[2]);
+                        Borrow b = new Borrow(request[0] + request[2]);
                         LBMS.getSessions().get(clientID).addUndoable(b);
                         return b;
                     }
