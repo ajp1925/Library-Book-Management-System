@@ -192,6 +192,7 @@ public final class GoogleAPISearch {
                     authors = converter.fromJson(volumeInfo.get("authors").getAsJsonArray(), type );
                 }
 
+
                 // create Book object
                 results.add(new Book(isbn, title, authors, publisher, publishDate, pageCount, 0, 0));
 
