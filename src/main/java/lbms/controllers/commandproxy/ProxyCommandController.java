@@ -47,7 +47,7 @@ public class ProxyCommandController implements CommandController {
     private boolean unrestricted(String command) {
         ArrayList<String> visitorCommands = new ArrayList<>(Arrays.asList(
                         "arrive", "info", "borrow", "depart", "register",
-                        "login", "logout", "undo", "redo", "disconnect"
+                        "login", "logout", "undo", "redo", "disconnect", "create"
         ));
         return visitorCommands.contains(command);
     }
