@@ -71,7 +71,7 @@ public class RegisterVisitor implements Command {
             }
             else {
                 Visitor v = UserSearch.BY_NAME.findFirst(visitor.getName());
-                if(v.getPhoneNumber() == visitor.getPhoneNumber()) {
+                if(v.getPhoneNumber().toString().equals(visitor.getPhoneNumber().toString())) { // uses toString (no .equals)
                     if(v.getAddress().equals(visitor.getAddress())) {
                         return false;
                     }
