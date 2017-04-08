@@ -7,6 +7,7 @@ import lbms.models.Book;
 import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
+import lbms.search.BookSearch;
 import lbms.search.UserSearch;
 
 import java.text.DecimalFormat;
@@ -82,6 +83,9 @@ public class Borrow implements Command, Undoable {
         String temp = "";
         for (Integer i: ids) {
             if (!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
+                return "book-limit-exceeded;";
+            }
+            if(i <= LBMS.getLastBookSearch().size() && LBMS.getLastBookSearch().get(i - 1).getCopiesAvailable() < 1) {
                 return "book-limit-exceeded;";
             }
             temp = checkOutBook(i, visitorID);

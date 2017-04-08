@@ -18,8 +18,8 @@ import java.util.HashMap;
 public class BorrowTest extends TestCase{
 
     HashMap<ISBN, Book> books;
-    Visitor v;
-    Session s;
+    Visitor v, v2;
+    Session s, s2;
 
     @Override
     protected void setUp() {
@@ -29,6 +29,13 @@ public class BorrowTest extends TestCase{
         s = new Session();
         s.setV(v);
         LBMS.getSessions().put(s.getClientID(), s);
+
+        v2 = new Visitor("Jane", "Smith", "JaneSmith", "password", "address", new PhoneNumber(123, 123, 1234));
+        LBMS.getVisitors().put(Long.parseLong("0000000002"), v2);
+
+        s2 = new Session();
+        s2.setV(v2);
+        LBMS.getSessions().put(s2.getClientID(), s2);
 
         books = new HashMap<>();
 
@@ -52,7 +59,7 @@ public class BorrowTest extends TestCase{
                 "Human Kinetics",
                 calendar,
                 306,
-                0,
+                1,
                 0
         ));
 
@@ -65,7 +72,7 @@ public class BorrowTest extends TestCase{
                 "Shelter Publications",
                 calendar,
                 275,
-                0,
+                1,
                 0
         ));
 
@@ -86,14 +93,14 @@ public class BorrowTest extends TestCase{
     }
 
     public void testOneBookVisitorExplicit() throws MissingParametersException {
-        Command command = new Borrow(s.getClientID() + "," + "{1},00000000001"); // "book id (list), visitor id (optional)"
+        Command command = new Borrow(s.getClientID() + "," + "{1}," + v.getVisitorID()); // "book id (list), visitor id (optional)"
         // reponse: YYYY/MM/DD; (due date)
         LocalDate systemNow = SystemDateTime.getInstance(null).getDate();
         assertEquals(systemNow.plusWeeks(1).format(SystemDateTime.DATE_FORMAT) + ";", command.execute());
     }
 
     public void testTwoBooksVisitorExplicit() throws MissingParametersException {
-        Command command = new Borrow(s.getClientID() + "," + "{1,2},00000000001");
+        Command command = new Borrow(s.getClientID() + "," + "{1,2}," + v.getVisitorID());
         LocalDate systemNow = SystemDateTime.getInstance(null).getDate();
         assertEquals(systemNow.plusWeeks(1).format(SystemDateTime.DATE_FORMAT) + ";", command.execute());
     }
@@ -122,7 +129,7 @@ public class BorrowTest extends TestCase{
 
     public void testMissingBookID() {
         try {
-            Command command = new Borrow(s.getClientID() + "," + "000000001");
+            Command command = new Borrow(s.getClientID() + "," + v.getVisitorID());
             fail("Expected exception not thrown");
         }
         catch(MissingParametersException e) {
@@ -154,11 +161,18 @@ public class BorrowTest extends TestCase{
         assertEquals("outstanding-fine,10.00;", command.execute());
     }
 
+    public void testNoBooksRemaining() throws MissingParametersException {
+        Command command = new Borrow(s.getClientID() + "," + "{1}," + v.getVisitorID());
+        command.execute();
+        Command command2 = new Borrow(s2.getClientID() + "," + "{1}," + v2.getVisitorID());
+        assertEquals("book-limit-exceeded;", command2.execute());
+    }
+
 //    public void testBookLimitExceeded() throws MissingParametersException {
-//
+//      TODO
 //    }
 //
 //    public void testBookLimitExceededDuringExecution() throws MissingParametersException {
-//
+//      TODO
 //    }
 }
