@@ -26,7 +26,12 @@ public class RealCommandController implements CommandController {
             String request[] = requestString.replace(";", "").split(",", 3);
             try {
                 command = createCommand(request);
-                response = request[0] + "," + request[1] + "," + command.execute();
+                if(request[1].equals("connect")) {
+                    response = request[0] + "," + command.execute();
+                }
+                else {
+                    response = request[0] + "," + request[1] + "," + command.execute();
+                }
             } catch (MissingParametersException e) {
                 response = e.getMessage() + ";";
             } catch (Exception e) {
