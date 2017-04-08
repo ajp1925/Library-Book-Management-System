@@ -30,9 +30,9 @@ public class LBMS {
     private static List<Book> booksToBuy;
     private static HashMap<Long, Visitor> visitors = new HashMap<>();
     private static HashMap<Long, Employee> employees = new HashMap<>();
-    private static List<Visit> totalVisits;
+    private static List<Visit> totalVisits = new ArrayList<>();
     private static List<Transaction> transactions = new ArrayList<>();
-    private static HashMap<Long, Visit> currentVisits;
+    private static HashMap<Long, Visit> currentVisits = new HashMap<>();
     private static HashMap<Long, Session> sessions = new HashMap<>();
     private static long totalSessions;
 

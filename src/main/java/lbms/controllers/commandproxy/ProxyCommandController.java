@@ -76,4 +76,17 @@ public class ProxyCommandController implements CommandController {
         return SystemDateTime.getInstance(null).getTime().isAfter(LBMS.OPEN_TIME) &&
                 SystemDateTime.getInstance(null).getTime().isBefore(LBMS.CLOSE_TIME);
     }
+
+    /**
+     * Employees are able to perform actions for visitors and therefore may
+     * input a visitorID which does not match their clientID.
+     * Visitors are unable to due this for other visitors.
+     * @param visitorID id of visitor to perform action on
+     * @param clientID id of client requesting action
+     * @return true if clientID can perform action for visitorID, false otherwise
+     */
+    public static boolean assistanceAuthorized(long visitorID, long clientID) {
+        return visitorID == LBMS.getSessions().get(clientID).getV().getVisitorID() ||
+                isEmployee(clientID);
+    }
 }

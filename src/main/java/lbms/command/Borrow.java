@@ -69,7 +69,7 @@ public class Borrow implements Command, Undoable {
      */
     @Override
     public String execute() {
-        if(visitorID != LBMS.getSessions().get(clientID).getV().getVisitorID() && !ProxyCommandController.isEmployee(clientID)) {
+        if(!ProxyCommandController.assistanceAuthorized(visitorID, clientID)) {
             return "not-authorized;";
         }
 

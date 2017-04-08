@@ -94,7 +94,7 @@ public class RealCommandController implements CommandController {
                     return new CloseLibrary();
                 case "borrow":
                     if (ProxyCommandController.isOpen()) {
-                        Borrow b = new Borrow(request[0] + request[2]);
+                        Borrow b = new Borrow(clientID + "," + request[2]);
                         LBMS.getSessions().get(clientID).addUndoable(b);
                         return b;
                     }
@@ -102,7 +102,7 @@ public class RealCommandController implements CommandController {
                 case "register":
                     return new RegisterVisitor(request[2]);
                 case "depart":
-                    EndVisit ev = new EndVisit(request[2]);
+                    EndVisit ev = new EndVisit(clientID + "," + request[2]);
                     LBMS.getSessions().get(clientID).addUndoable(ev);
                     return ev;
                 case "info":
