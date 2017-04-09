@@ -49,6 +49,9 @@ public class BeginVisit implements Command, Undoable {
                 v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 
+    /**
+     * Comment
+     */
     @Override
     public void unExecute() {
         // TODO
