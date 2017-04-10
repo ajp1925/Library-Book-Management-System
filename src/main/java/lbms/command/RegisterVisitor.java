@@ -22,23 +22,18 @@ public class RegisterVisitor implements Command {
     public RegisterVisitor(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
         try {
-            visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2], new PhoneNumber(arguments[3]));
-        }
-        catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            this.visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2], new PhoneNumber(arguments[3]));
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
             // TODO all this is wrong
             if (arguments.length == 1 && arguments[0].equals("")) {
                 throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
-            }
-            else if(arguments.length == 1) {
+            } else if (arguments.length == 1) {
                 throw new MissingParametersException("missing-parameters,last-name,address,phone-number");
-            }
-            else if(arguments.length == 2) {
+            } else if (arguments.length == 2) {
                 throw new MissingParametersException("missing-parameters,address,phone-number");
-            }
-            else if(arguments.length == 3) {
+            } else if (arguments.length == 3) {
                 throw new MissingParametersException("missing-parameters,phone-number");
-            }
-            else {
+            } else {
                 throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
             }
         }
@@ -50,9 +45,9 @@ public class RegisterVisitor implements Command {
      */
     @Override
     public String execute() {
-        if(registerVisitor(visitor)) {
+        if (registerVisitor(this.visitor)) {
             SystemDateTime s = SystemDateTime.getInstance(null);
-            return String.format("%010d", visitor.getVisitorID()) + "," +
+            return String.format("%010d", this.visitor.getVisitorID()) + "," +
                     s.getDate().format(SystemDateTime.DATE_FORMAT) + ";";
         }
         return "duplicate;";
@@ -64,18 +59,16 @@ public class RegisterVisitor implements Command {
      * @return true if successfully registered, false if duplicate
      */
     private static boolean registerVisitor(Visitor visitor) {
-        if(UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null) {
-            if(UserSearch.BY_NAME.findFirst(visitor.getName()) == null) {
+        if (UserSearch.BY_ID.findFirst(visitor.getVisitorID()) == null) {
+            if (UserSearch.BY_NAME.findFirst(visitor.getName()) == null) {
                 LBMS.getVisitors().put(visitor.getVisitorID(), visitor);
                 return true;
-            }
-            else {
+            } else {
                 Visitor v = UserSearch.BY_NAME.findFirst(visitor.getName());
-                if(v.getPhoneNumber().toString().equals(visitor.getPhoneNumber().toString())) { // uses toString (no .equals)
-                    if(v.getAddress().equals(visitor.getAddress())) {
+                if (v.getPhoneNumber().toString().equals(visitor.getPhoneNumber().toString())) { // uses toString (no .equals)
+                    if (v.getAddress().equals(visitor.getAddress())) {
                         return false;
-                    }
-                    else {
+                    } else {
                         LBMS.getVisitors().put(visitor.getVisitorID(), visitor);
                         return true;
                     }

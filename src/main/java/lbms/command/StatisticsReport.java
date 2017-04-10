@@ -27,8 +27,7 @@ public class StatisticsReport implements Command {
             if (!request.equals("")) {
                 days = Integer.parseInt(request);
             }
-        }
-        catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new MissingParametersException("incorrect-value-for-days");
         }
     }
@@ -39,7 +38,8 @@ public class StatisticsReport implements Command {
      */
     @Override
     public String execute() {
-        return SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + ",\n" + generateReport(days);
+        return SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + ",\n" +
+                generateReport(this.days);
     }
 
     /**
@@ -64,49 +64,48 @@ public class StatisticsReport implements Command {
 
 
         //calculate total outstanding fines
-        for(Visitor v: LBMS.getVisitors().values()) {
+        for (Visitor v: LBMS.getVisitors().values()) {
             outstandingFines += v.getFines();
         }
 
         //calculate payed fines
-        for(Visitor v: LBMS.getVisitors().values()) {
+        for (Visitor v: LBMS.getVisitors().values()) {
             collectedFines += v.getPayedFines();
         }
 
-        if(days != null) {
+        if (days != null) {
 
             LocalDate reportStartDate = SystemDateTime.getInstance(null).getDate().minusDays(days);
             LocalDate reportEndDate = SystemDateTime.getInstance(null).getDate();
 
             // grabbing relevant visits
             ArrayList<Visit> visitsInReport = new ArrayList<>();
-            for(Visit v: LBMS.getTotalVisits()) {
-                if(v.getDate().isBefore(reportEndDate) && v.getDate().isAfter(reportStartDate)) {
+            for (Visit v: LBMS.getTotalVisits()) {
+                if (v.getDate().isBefore(reportEndDate) && v.getDate().isAfter(reportStartDate)) {
                     visitsInReport.add(v);
                 }
             }
             // calculating average visit time for all visits in system
-            for(Visit v: visitsInReport) {
+            for (Visit v: visitsInReport) {
                 totalVisitTime.plus(v.getDuration());
             }
-            if(visitsInReport.size() != 0) {
+            if (visitsInReport.size() != 0) {
                 averageVisitTime = totalVisitTime.dividedBy(visitsInReport.size());
             }
 
             // determine number of books purchased in timeframe
             booksPurchased = 0;
-            for(Book b: LBMS.getBooks().values()) {
-                if(b.getPurchaseDate().isBefore(reportEndDate) && b.getPurchaseDate().isAfter(reportStartDate)) {
+            for (Book b: LBMS.getBooks().values()) {
+                if (b.getPurchaseDate().isBefore(reportEndDate) && b.getPurchaseDate().isAfter(reportStartDate)) {
                     booksPurchased++;
                 }
             }
-        }
-        else {
+        } else {
             // calculating average visit time for all visits in system
-            for(Visit v : LBMS.getTotalVisits()) {
+            for (Visit v : LBMS.getTotalVisits()) {
                 totalVisitTime.plus(v.getDuration());
             }
-            if(LBMS.getTotalVisits().size() != 0) {
+            if (LBMS.getTotalVisits().size() != 0) {
                 averageVisitTime = totalVisitTime.dividedBy(LBMS.getTotalVisits().size());
             }
         }

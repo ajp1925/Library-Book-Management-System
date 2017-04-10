@@ -34,7 +34,7 @@ public class Visit implements Serializable {
      */
     public void depart() {
         this.timeOfDeparture = SystemDateTime.getInstance(null).getTime();
-        this.duration = Duration.between(dateTime.toLocalTime(), timeOfDeparture);
+        this.duration = Duration.between(this.dateTime.toLocalTime(), this.timeOfDeparture);
         this.visitor.switchInLibrary(false);
     }
 
@@ -51,7 +51,7 @@ public class Visit implements Serializable {
      * @return local date of the visit
      */
     public LocalDate getDate() {
-        return dateTime.toLocalDate();
+        return this.dateTime.toLocalDate();
     }
 
     /**
@@ -59,7 +59,7 @@ public class Visit implements Serializable {
      * @return local time for the arrival time
      */
     public LocalTime getArrivalTime() {
-        return dateTime.toLocalTime();
+        return this.dateTime.toLocalTime();
     }
 
     /**
@@ -67,7 +67,7 @@ public class Visit implements Serializable {
      * @return local time for the departure time
      */
     public LocalTime getDepartureTime() {
-        return timeOfDeparture;
+        return this.timeOfDeparture;
     }
 
     /**

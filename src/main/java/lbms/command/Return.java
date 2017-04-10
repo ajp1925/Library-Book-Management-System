@@ -28,8 +28,8 @@ public class Return implements Command, Undoable {
     public Return(String request) {
         request = request.replaceAll(";$", "").replaceAll("\"", "");
         String[] split = request.split(",", 2);
-        visitorID = Long.parseLong(split[0]);
-        ids = Arrays.stream(split[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        this.visitorID = Long.parseLong(split[0]);
+        this.ids = Arrays.stream(split[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     /**
@@ -38,45 +38,43 @@ public class Return implements Command, Undoable {
      */
     @Override
     public String execute() {
-        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
+        if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
             return "invalid-visitor-id;";
         }
-        Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
+        Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         ArrayList<Integer> nonBooks = new ArrayList<>();
-        for(Integer id : ids) {
-            if(LBMS.getLastBookSearch().size() <= id) {
+        for (Integer id : this.ids) {
+            if (LBMS.getLastBookSearch().size() <= id) {
                 try {
                     Book b = LBMS.getLastBookSearch().get(id - 1);
                     visitor.getCheckedOutBooks().get(b.getIsbn());
-                }
-                catch(Exception e) {
+                } catch (Exception e) {
                     nonBooks.add(id);
                 }
-            }
-            else {
+            } else {
                 nonBooks.add(id);
             }
         }
-        if(nonBooks.size() > 0) {
+        if (nonBooks.size() > 0) {
             String output = "invalid-book-id,";
-            for(Integer i : nonBooks) {
+            for (Integer i: nonBooks) {
                 output += i + ",";
             }
             output = output.replaceAll(",$", "");
             return output + ";";
         }
 
-        if(visitor.getFines() > 0.0) {
+        if (visitor.getFines() > 0.0) {
             String output = "overdue," + String.format("%.2f", visitor.getFines()) + ",";
-            for(Transaction t: visitor.getCheckedOutBooks().values()) {
-                if(SystemDateTime.getInstance(null).getDate().isAfter(t.getDueDate())) {
+            for (Transaction t: visitor.getCheckedOutBooks().values()) {
+                if (SystemDateTime.getInstance(null).getDate().isAfter(t.getDueDate())) {
                     output += LBMS.getLastBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + ",";
                 }
             }
             return output.replaceAll(",$", ";");
         }
 
-        for(Integer i : ids) {
+        for (Integer i: this.ids) {
             Book b = LBMS.getLastBookSearch().get(i - 1);
             b.returnBook();
             Transaction t = visitor.getCheckedOutBooks().get(b.getIsbn());

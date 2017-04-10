@@ -17,14 +17,16 @@ import java.util.*;
  */
 public class LBMS {
 
+    /** StartType enum for determining how the program should be run. */
     public enum StartType {
         GUI, CLI, API
     }
 
+    /** Constants for the opening and closing time. */
     public final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
     public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
-    private static LBMS instance;
+    /** Data stored in the LBMS */
     private static HashMap<ISBN, Book> books = new HashMap<>();
     private static List<Book> lastBookSearch = new ArrayList<>();
     private static List<Book> booksToBuy;
@@ -41,14 +43,11 @@ public class LBMS {
      * @param args: the program arguments
      */
     public static void main(String[] args) {
-        if (args.length >= 1) {
-            try {
-                new LBMS(StartType.valueOf(args[0].toUpperCase()));
-            } catch (IllegalArgumentException e) {
-                System.out.println("Usage: java LBMS.jar <type>");
-                System.out.println("Valid types are: GUI, CLI, API");
-            }
-        } else {
+        StartType type = null;
+        try {
+            type = StartType.valueOf(args[0].toUpperCase());
+            new LBMS(type);
+        } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Usage: java LBMS.jar <type>");
             System.out.println("Valid types are: GUI, CLI, API");
         }
@@ -79,7 +78,7 @@ public class LBMS {
             int pageCount, i;
             Calendar publishDate = null;
 
-            while(s.hasNextLine()) {
+            while (s.hasNextLine()) {
                 i = 1;
                 line = s.nextLine();
                 parts = line.split(",");
@@ -88,52 +87,43 @@ public class LBMS {
                 authors = new ArrayList<>();
                 publisher = "";
 
-                while(parts[i].charAt(0) != '{') {
-                    if(parts[i].charAt(0) == '"' && parts[i].charAt(parts[i].length()-1) == '"'){
+                while (parts[i].charAt(0) != '{') {
+                    if (parts[i].charAt(0) == '"' && parts[i].charAt(parts[i].length()-1) == '"'){
                         title = parts[i].substring(1, parts[i].length()-1);
-                    }
-                    else if(parts[i].charAt(0) == '"') {
+                    } else if (parts[i].charAt(0) == '"') {
                         title = title + parts[i].substring(1) + ", ";
-                    }
-                    else if(parts[i].charAt(parts[i].length()-1) == '"') {
+                    } else if (parts[i].charAt(parts[i].length()-1) == '"') {
                         title = title + parts[i].substring(0, parts[i].length()-1);
-                    }
-                    else {
+                    } else {
                         title = title + parts[i].substring(1) + ",";
                     }
                     i++;
                 }
 
-                for(int in = 2; in < parts.length; in++) {
-                    if(parts[in].charAt(0) == '{' && parts[in].charAt(parts[in].length()-1) == '}') {
+                for (int in = 2; in < parts.length; in++) {
+                    if (parts[in].charAt(0) == '{' && parts[in].charAt(parts[in].length()-1) == '}') {
                         authors.add(parts[in].substring(1, parts[in].length()-1));
                         break;
-                    }
-                    else if(parts[in].charAt(0) == '{') {
+                    } else if (parts[in].charAt(0) == '{') {
                         authors.add(parts[in].substring(1, parts[in].length()));
-                    }
-                    else if(parts[in].charAt(parts[in].length()-1) == '}') {
+                    } else if (parts[in].charAt(parts[in].length()-1) == '}') {
                         authors.add(parts[in].substring(0, parts[in].length()-1));
                         break;
-                    }
-                    else if(authors.size() > 0) {
+                    } else if (authors.size() > 0) {
                         authors.add(parts[in]);
                     }
                 }
 
-                for(int in = 3; in < parts.length; in++) {
-                    if(parts[in].charAt(0) == '"' && parts[in].charAt(parts[in].length()-1) == '"'){
+                for (int in = 3; in < parts.length; in++) {
+                    if (parts[in].charAt(0) == '"' && parts[in].charAt(parts[in].length()-1) == '"'){
                         publisher = parts[in].substring(1, parts[in].length()-1);
                         break;
-                    }
-                    else if(parts[in].charAt(0) == '"') {
+                    } else if (parts[in].charAt(0) == '"') {
                         publisher = publisher + parts[in].substring(1) + ",";
-                    }
-                    else if(parts[in].charAt(parts[in].length()-1) == '"' && parts[in+1].matches(".*\\d+.*")) {
+                    } else if (parts[in].charAt(parts[in].length()-1) == '"' && parts[in+1].matches(".*\\d+.*")) {
                         publisher = publisher + parts[in].substring(0, parts[in].length()-1);
                         break;
-                    }
-                    else {
+                    } else {
                         publisher = publisher + parts[in].substring(1) + ",";
                     }
                 }
@@ -166,8 +156,7 @@ public class LBMS {
                 output.add(new Book(isbn, title, authors, publisher, publishDate, pageCount, 0, 0));
             }
             inputStream.close();
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return output;
@@ -177,8 +166,6 @@ public class LBMS {
      * Initializes the system.
      */
     private void SystemInit() {
-        instance = this;
-
         // Deserialize the data.
         try {
             FileInputStream f = new FileInputStream("data.ser");
@@ -209,7 +196,6 @@ public class LBMS {
      */
     private void SystemClose() {
         SystemDateTime.getInstance(null).stopClock();
-
         LibraryClose();
 
         // Serializes the data.
@@ -226,16 +212,18 @@ public class LBMS {
             out.writeObject(SystemDateTime.getInstance(null).getDateTime());
             out.close();
             f.close();
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
         }
     }
 
+    /**
+     * Closes the library by removing all current visitors.
+     */
     public static void LibraryClose() {
         // Departs all the visitors when the library closes.
-        for(Visit visit: currentVisits.values()) {
+        for (Visit visit: currentVisits.values()) {
             new ProxyCommandController().processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
         }
     }

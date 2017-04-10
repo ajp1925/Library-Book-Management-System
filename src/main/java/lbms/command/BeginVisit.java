@@ -22,9 +22,8 @@ public class BeginVisit implements Command, Undoable {
     public BeginVisit(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
         try {
-            visitorID = Long.parseLong(arguments[0]);
-        }
-        catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            this.visitorID = Long.parseLong(arguments[0]);
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
             throw new MissingParametersException("missing-parameters,visitor-ID");
         }
     }
@@ -35,17 +34,17 @@ public class BeginVisit implements Command, Undoable {
      */
     @Override
     public String execute() {
-        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
+        if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
             return "invalid-id;";
         }
 
-        Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
-        if(UserSearch.BY_ID.findFirst(visitorID).getInLibrary()) {
+        Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
+        if (UserSearch.BY_ID.findFirst(this.visitorID).getInLibrary()) {
             return "duplicate;";
         }
 
         Visit v = beginVisit(visitor);
-        return String.format("%010d", visitorID) + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," +
+        return String.format("%010d", this.visitorID) + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," +
                 v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 

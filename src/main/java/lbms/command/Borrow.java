@@ -2,12 +2,10 @@ package lbms.command;
 
 import lbms.LBMS;
 import lbms.controllers.commandproxy.ProxyCommandController;
-import lbms.controllers.commandproxy.RealCommandController;
 import lbms.models.Book;
 import lbms.models.SystemDateTime;
 import lbms.models.Transaction;
 import lbms.models.Visitor;
-import lbms.search.BookSearch;
 import lbms.search.UserSearch;
 
 import java.text.DecimalFormat;
@@ -35,28 +33,26 @@ public class Borrow implements Command, Undoable {
         if (allArguments.length < 2) {
             throw new MissingParametersException("missing-parameters,clientID,{ids}");
         }
-        clientID = Long.parseLong(allArguments[0]);
+        this.clientID = Long.parseLong(allArguments[0]);
         String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
 
         if (arguments.length < 1) {
             throw new MissingParametersException("missing-parameters,{ids}");
         }
         int index = 0;
-        if(arguments[index].startsWith("{")) {
-            while(!arguments[index].endsWith("}")) {
-                ids.add(Integer.parseInt(arguments[index++].replaceAll("[{}]", "")));
+        if (arguments[index].startsWith("{")) {
+            while (!arguments[index].endsWith("}")) {
+                this.ids.add(Integer.parseInt(arguments[index++].replaceAll("[{}]", "")));
             }
-            ids.add(Integer.parseInt(arguments[index].replaceAll("[{}]", "")));
-        }
-        else {
+            this.ids.add(Integer.parseInt(arguments[index].replaceAll("[{}]", "")));
+        } else {
             throw new MissingParametersException("missing-parameters,{ids}");
         }
 
-        if(index < arguments.length - 1) {
-            visitorID = Long.parseLong(arguments[index+1]);
-        }
-        else {
-            visitorID = LBMS.getSessions().get(clientID).getV().getVisitorID();
+        if (index < arguments.length - 1) {
+            this.visitorID = Long.parseLong(arguments[index+1]);
+        } else {
+            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
         }
 
     }
@@ -69,26 +65,26 @@ public class Borrow implements Command, Undoable {
      */
     @Override
     public String execute() {
-        if(!ProxyCommandController.assistanceAuthorized(visitorID, clientID)) {
+        if (!ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
             return "not-authorized;";
         }
 
-        if (UserSearch.BY_ID.findFirst(visitorID) == null) {
+        if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
             return "invalid-visitor-id;";
-        } else if (UserSearch.BY_ID.findFirst(visitorID).getFines() > 0) {
+        } else if (UserSearch.BY_ID.findFirst(this.visitorID).getFines() > 0) {
             return "outstanding-fine," +
-                    new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(visitorID).getFines()) + ";";
+                    new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(this.visitorID).getFines()) + ";";
         }
         StringBuilder invalidIDs = new StringBuilder();
         String temp = "";
-        for (Integer i: ids) {
-            if (!UserSearch.BY_ID.findFirst(visitorID).canCheckOut()) {
+        for (Integer i: this.ids) {
+            if (!UserSearch.BY_ID.findFirst(this.visitorID).canCheckOut()) {
                 return "book-limit-exceeded;";
             }
-            if(i <= LBMS.getLastBookSearch().size() && LBMS.getLastBookSearch().get(i - 1).getCopiesAvailable() < 1) {
+            if (i <= LBMS.getLastBookSearch().size() && LBMS.getLastBookSearch().get(i - 1).getCopiesAvailable() < 1) {
                 return "book-limit-exceeded;";
             }
-            temp = checkOutBook(i, visitorID);
+            temp = checkOutBook(i, this.visitorID);
             try {
                 if (temp.contains("id-error")) {
                     String[] error = temp.split(",");

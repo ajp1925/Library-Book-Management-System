@@ -23,8 +23,7 @@ public class ResetTime implements Command {
         try {
             SystemDateTime.getInstance(null).reset();
             return "success;";
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             return "failure;";
         }
     }

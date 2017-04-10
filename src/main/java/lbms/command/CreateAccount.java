@@ -6,14 +6,14 @@ import lbms.models.Visitor;
 
 /**
  * CreateAccount class for the create account command.
- * @author Team B
+ * @author Team B TODO -> test this class
  */
 public class CreateAccount implements Command {
 
-    String username;
-    String password;
-    String role;
-    Long visitorID;
+    private String username;
+    private String password;
+    private String role;
+    private Long visitorID;
 
     /**
      * Constructor for the CreateAccount command.
@@ -22,10 +22,9 @@ public class CreateAccount implements Command {
      */
     public CreateAccount(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
-        if(arguments.length < 4) {
+        if (arguments.length < 4) {
             throw new MissingParametersException("missing-parameters,username,password,role,visitorID");
-        }
-        else {
+        } else {
             this.username = arguments[0];
             this.password = arguments[1];
             this.role = arguments[2];
@@ -40,28 +39,27 @@ public class CreateAccount implements Command {
     @Override
     public String execute() {
         // perform error checks
-        if(usernameExists()) {
+        if (usernameExists()) {
             return "duplicate-username;";
         }
 
-        Visitor v = LBMS.getVisitors().remove(visitorID);
-        if(v == null) {
+        Visitor v = LBMS.getVisitors().remove(this.visitorID);
+        if (v == null) {
             return "invalid-visitor;";
         }
-        if(accountExists(v)) {
+        if (accountExists(v)) {
             LBMS.getVisitors().put(v.getVisitorID(), v);
             return "duplicate-visitor;";
         }
         // add the visitor/employee to LBMS
-        if(role.toLowerCase().equals("visitor") || role.toLowerCase().equals("employee")) {
-            LBMS.getVisitors().put(visitorID,
-                    new Visitor(v.getFirstName(), v.getLastName(), username, password, v.getAddress(), v.getPhoneNumber()));
-            if(role.toLowerCase().equals("employee")) {
-                LBMS.getEmployees().put(visitorID,
-                        new Employee(v.getFirstName(), v.getLastName(), username, password, v.getAddress(), v.getPhoneNumber()));
+        if (this.role.toLowerCase().equals("visitor") || this.role.toLowerCase().equals("employee")) {
+            LBMS.getVisitors().put(this.visitorID, new Visitor(v.getFirstName(), v.getLastName(), this.username,
+                    this.password, v.getAddress(), v.getPhoneNumber()));
+            if (this.role.toLowerCase().equals("employee")) {
+                LBMS.getEmployees().put(this.visitorID, new Employee(v.getFirstName(), v.getLastName(), this.username,
+                        this.password, v.getAddress(), v.getPhoneNumber()));
             }
-        }
-        else {
+        } else {
             return "invalid-role;";
         }
 
@@ -73,8 +71,8 @@ public class CreateAccount implements Command {
      * @return true if username exists, false otherwise
      */
     private boolean usernameExists() {
-        for(Visitor v : LBMS.getVisitors().values()) {
-            if(v.getUsername() != null && v.getUsername().equals(username)) {
+        for (Visitor v : LBMS.getVisitors().values()) {
+            if (v.getUsername() != null && v.getUsername().equals(this.username)) {
                 return true;
             }
         }

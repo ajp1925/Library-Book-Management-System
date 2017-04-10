@@ -2,7 +2,6 @@ package lbms.models;
 
 import lbms.LBMS;
 import lbms.command.Undoable;
-import lbms.models.Visitor;
 
 import java.util.Stack;
 
@@ -17,6 +16,9 @@ public class Session {
     private Stack<Undoable> undoStack;
     private Stack<Undoable> redoStack;
 
+    /**
+     * Constructor for a Session.
+     */
     public Session() {
         LBMS.incrementSessions();
         this.clientID = LBMS.getTotalSessions();
@@ -25,14 +27,26 @@ public class Session {
         this.redoStack = new Stack<>();
     }
 
+    /**
+     * Getter for the clientID.
+     * @return the clientID
+     */
     public long getClientID() {
         return clientID;
     }
 
+    /**
+     * Setter for the visitor.
+     * @param v: the visitor to be set
+     */
     public void setV(Visitor v) {
         this.v = v;
     }
 
+    /**
+     * Getter for the visitor.
+     * @return the visitor for the session
+     */
     public Visitor getV() {
         return v;
     }
@@ -45,6 +59,10 @@ public class Session {
         undoStack.push(u);
     }
 
+    /**
+     * Pops an undoable off the stack and un-executes it.
+     * @return failure message or null if success
+     */
     public String undoUndoable() {
         Undoable u = undoStack.pop();
         u.unExecute();
@@ -52,6 +70,10 @@ public class Session {
         return null; // TODO return a string if failure
     }
 
+    /**
+     * Pops an undoable off the redo stack and executes it.
+     * @return failure message or null if success
+     */
     public String redoUndoable() {
         Undoable u = redoStack.pop();
         u.execute();

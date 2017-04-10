@@ -19,8 +19,8 @@ public class PayFine implements Command, Undoable {
      */
     public PayFine(String request) {
         String[] arguments = request.replaceAll(";$", "").split(",");
-        visitorID = Long.parseLong(arguments[0]);
-        amount = Double.parseDouble(arguments[1]);
+        this.visitorID = Long.parseLong(arguments[0]);
+        this.amount = Double.parseDouble(arguments[1]);
     }
 
     /**
@@ -29,16 +29,15 @@ public class PayFine implements Command, Undoable {
      */
     @Override
     public String execute() {
-        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
+        if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
             return "invalid-visitor-id;";
         }
         double balance = UserSearch.BY_ID.findFirst(visitorID).getFines();
-        if(amount < 0 || amount > balance) {
-            return "invalid-amount," + amount + "," + new DecimalFormat("#.00").format(balance) + ";";
-        }
-        else {
-            double newBalance = balance - amount;
-            UserSearch.BY_ID.findFirst(visitorID).payFines(amount);
+        if (this.amount < 0 || this.amount > balance) {
+            return "invalid-amount," + this.amount + "," + new DecimalFormat("#.00").format(balance) + ";";
+        } else {
+            double newBalance = balance - this.amount;
+            UserSearch.BY_ID.findFirst(this.visitorID).payFines(this.amount);
             return "success," + new DecimalFormat("#.00").format(newBalance) + ";";
         }
     }

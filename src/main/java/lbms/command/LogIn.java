@@ -5,7 +5,7 @@ import lbms.models.Visitor;
 
 /**
  * LogIn class for login command.
- * @author Team B
+ * @author Team B TODO -> test this class
  */
 public class LogIn implements Command {
 
@@ -20,12 +20,12 @@ public class LogIn implements Command {
      */
     public LogIn(String request) throws MissingParametersException {
         String parts[] = request.split(",");
-        if(parts.length < 3) {
+        if (parts.length < 3) {
             throw new MissingParametersException("missing-parameters,username,password");
         }
-        clientID = Long.parseLong(parts[0]);
-        username = parts[1];
-        password = parts[2];
+        this.clientID = Long.parseLong(parts[0]);
+        this.username = parts[1];
+        this.password = parts[2];
     }
 
     /**
@@ -34,9 +34,10 @@ public class LogIn implements Command {
      */
     @Override
     public String execute() {
-        for(Visitor v : LBMS.getVisitors().values()) {
-            if(v.getUsername() != null && v.getUsername().equals(username) && v.getPassword().equals(password)) {
-                LBMS.getSessions().get(clientID).setV(v);
+        for (Visitor v : LBMS.getVisitors().values()) {
+            if (v.getUsername() != null && v.getUsername().equals(this.username) &&
+                    v.getPassword().equals(this.password)) {
+                LBMS.getSessions().get(this.clientID).setV(v);
                 return "success;";
             }
         }

@@ -22,18 +22,17 @@ public class EndVisit implements Command, Undoable {
      * @throws MissingParametersException: missing parameters
      */
     public EndVisit(String request) throws MissingParametersException {
-        if(request.equals("")) {
+        if (request.equals("")) {
             throw new MissingParametersException("missing-parameters,clientID");
         }
 
         String[] arguments = request.split(",");
-        clientID = Long.parseLong(arguments[0]);
-        if(arguments.length == 2) {
-            visitorID = Long.parseLong(arguments[1]);
-        }
-        else {
-            if( LBMS.getSessions().get(clientID) != null ) {
-                visitorID = LBMS.getSessions().get(clientID).getV().getVisitorID();
+        this.clientID = Long.parseLong(arguments[0]);
+        if (arguments.length == 2) {
+            this.visitorID = Long.parseLong(arguments[1]);
+        } else {
+            if ( LBMS.getSessions().get(this.clientID) != null ) {
+                this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
             }
         }
     }
@@ -44,22 +43,22 @@ public class EndVisit implements Command, Undoable {
      */
     @Override
     public String execute() {
-        if( LBMS.getSessions().get(clientID) == null ) {
+        if (LBMS.getSessions().get(this.clientID) == null) {
             return "invalid-client-id;";
         }
 
-        if(UserSearch.BY_ID.findFirst(visitorID) != null) {
-            Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
-            if(visitor != null ) {
-                if(ProxyCommandController.assistanceAuthorized(visitorID, clientID)) {
-                    if(visitor.getInLibrary()) {
+        if (UserSearch.BY_ID.findFirst(this.visitorID) != null) {
+            Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
+            if (visitor != null ) {
+                if (ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
+                    if (visitor.getInLibrary()) {
                         Visit visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());
                         visit.depart();
                         LBMS.getTotalVisits().add(visit);
                         long s = visit.getDuration().getSeconds();
                         String duration = String.format("%02d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
-                        return visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + "," +
-                                duration + ";";
+                        return this.visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) +
+                                "," + duration + ";";
                     }
                     return "invalid-id;";
                 }
@@ -74,5 +73,4 @@ public class EndVisit implements Command, Undoable {
     public void unExecute() {
         // TODO
     }
-
 }

@@ -25,11 +25,10 @@ public class RealCommandController implements CommandController {
             String request[] = requestString.replace(";", "").split(",", 3);
             try {
                 command = createCommand(request);
-                if(request[0].equals("connect")) {
+                if (request[0].equals("connect")) {
                     response = request[0] + "," + command.execute();
-                }
-                else {
-                    response = request[0] + "," + request[1] + "," + command.execute();
+                } else {
+                    response = request[0] + "," + command.execute();
                 }
             } catch (MissingParametersException e) {
                 response = e.getMessage() + ";";
@@ -52,6 +51,10 @@ public class RealCommandController implements CommandController {
         return command;
     }
 
+    /**
+     * Getter for the system clock.
+     * @return a local date time of the system clock
+     */
     public static LocalDateTime getSystemDateTime() {
         return SystemDateTime.getInstance(null).getDateTime();
     }

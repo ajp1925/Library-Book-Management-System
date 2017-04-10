@@ -1,6 +1,5 @@
 package lbms.command;
 
-import com.sun.xml.internal.org.jvnet.mimepull.MIMEParsingException;
 import junit.framework.TestCase;
 import lbms.LBMS;
 import lbms.models.*;

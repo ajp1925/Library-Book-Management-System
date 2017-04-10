@@ -31,7 +31,8 @@ public class Visitor implements Serializable {
      * @param address: the address of the visitor
      * @param phoneNumber: the visitor's phone number
      */
-    public Visitor(String firstName, String lastName, String username, String password, String address, PhoneNumber phoneNumber) {
+    public Visitor(String firstName, String lastName, String username, String password, String address,
+                   PhoneNumber phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -51,20 +52,24 @@ public class Visitor implements Serializable {
      * @return the first and last name combined
      */
     public String getName() {
-        return firstName + " " + lastName;
+        return this.firstName + " " + this.lastName;
     }
 
     /**
      * Getter for the visitors first name.
      * @return the visitors first name
      */
-    public String getFirstName() { return firstName; }
+    public String getFirstName() {
+        return this.firstName;
+    }
 
     /**
      * Getter for the visitors last name.
      * @return the visitors last name
      */
-    public String getLastName() { return lastName; }
+    public String getLastName() {
+        return this.lastName;
+    }
 
     /**
      * Getter for the username of a Visitor.
@@ -87,7 +92,7 @@ public class Visitor implements Serializable {
      * @return the visitors address
      */
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     /**
@@ -95,7 +100,7 @@ public class Visitor implements Serializable {
      * @return the visitors phone number
      */
     public PhoneNumber getPhoneNumber() {
-        return phoneNumber;
+        return this.phoneNumber;
     }
 
     /**
@@ -103,7 +108,7 @@ public class Visitor implements Serializable {
      * @return the visitors ID
      */
     public long getVisitorID() {
-        return visitorID;
+        return this.visitorID;
     }
 
     /**
@@ -111,7 +116,7 @@ public class Visitor implements Serializable {
      * @return the number of checked out books
      */
     public int getNumCheckedOut() {
-        return checkedOutBooks.size();
+        return this.checkedOutBooks.size();
     }
 
     /**
@@ -119,7 +124,7 @@ public class Visitor implements Serializable {
      * @return the checked out books
      */
     public HashMap<ISBN, Transaction> getCheckedOutBooks() {
-        return checkedOutBooks;
+        return this.checkedOutBooks;
     }
 
     /**
@@ -127,7 +132,7 @@ public class Visitor implements Serializable {
      * @return true if the number of checked out books is less than the max
      */
     public boolean canCheckOut() {
-        return getNumCheckedOut() < MAX_BOOKS && !(totalFines + currentFines > payedFines);
+        return getNumCheckedOut() < MAX_BOOKS && !(this.totalFines + this.currentFines > this.payedFines);
     }
 
     /**
@@ -135,8 +140,8 @@ public class Visitor implements Serializable {
      * @param transaction: the transaction for the checked out book
      */
     public void checkOut(Transaction transaction) {
-        if(canCheckOut()) {
-            checkedOutBooks.put(transaction.getIsbn(), transaction);
+        if (canCheckOut()) {
+            this.checkedOutBooks.put(transaction.getIsbn(), transaction);
         }
     }
 
@@ -145,8 +150,8 @@ public class Visitor implements Serializable {
      * @param transaction: the transaction created when the book was checked out
      */
     public void returnBook(Transaction transaction) {
-        totalFines += transaction.getFine();
-        checkedOutBooks.remove(transaction.getIsbn());
+        this.totalFines += transaction.getFine();
+        this.checkedOutBooks.remove(transaction.getIsbn());
     }
 
     /**
@@ -154,7 +159,7 @@ public class Visitor implements Serializable {
      * @return true if the visitor is in the library, false if not
      */
     public boolean getInLibrary() {
-        return inLibrary;
+        return this.inLibrary;
     }
 
     /**
@@ -162,7 +167,7 @@ public class Visitor implements Serializable {
      * @param status: a boolean of the status of a visitor
      */
     void switchInLibrary(boolean status) {
-        inLibrary = status;
+        this.inLibrary = status;
     }
 
     /**
@@ -171,8 +176,8 @@ public class Visitor implements Serializable {
      */
     public double getFines() {
         double fines = 0;
-        for(ISBN l: checkedOutBooks.keySet()) {
-            fines += checkedOutBooks.get(l).getFine();
+        for (ISBN l: this.checkedOutBooks.keySet()) {
+            fines += this.checkedOutBooks.get(l).getFine();
         }
         this.currentFines = fines;
         return this.currentFines + this.totalFines - this.payedFines;
@@ -183,7 +188,7 @@ public class Visitor implements Serializable {
      * @param amount: the amount of fines to pay
      */
     public void payFines(double amount) {
-        payedFines += amount;
+        this.payedFines += amount;
     }
 
     /**
@@ -191,6 +196,6 @@ public class Visitor implements Serializable {
      * @return the amount of fines this visitor has payed
      */
     public double getPayedFines() {
-        return payedFines;
+        return this.payedFines;
     }
 }

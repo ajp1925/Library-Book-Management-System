@@ -48,7 +48,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @return the title of the book
      */
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     /**
@@ -56,7 +56,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @return the publisher of the book
      */
     public String getPublisher() {
-        return publisher;
+        return this.publisher;
     }
 
     /**
@@ -64,7 +64,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @return the list of authors of the book
      */
     public ArrayList<String> getAuthors() {
-        return authors;
+        return this.authors;
     }
 
     /**
@@ -82,7 +82,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @return the ISBN number of the book
      */
     public ISBN getIsbn() {
-        return isbn;
+        return this.isbn;
     }
 
     /**
@@ -90,7 +90,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @return the quantity of this book the library owns
      */
     public int getNumberOfCopies() {
-        return numberOfCopies;
+        return this.numberOfCopies;
     }
 
     /**
@@ -98,7 +98,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @return the number of copies of this book that are available
      */
     public int getCopiesAvailable() {
-        return numberOfCopies - copiesCheckedOut;
+        return this.numberOfCopies - this.copiesCheckedOut;
     }
 
     /**
@@ -106,7 +106,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @return the publishing date for the book
      */
     public Calendar getPublishDate() {
-        return publishDate;
+        return this.publishDate;
     }
 
     /**
@@ -114,15 +114,15 @@ public class Book implements Serializable, Comparable<Book> {
      * @return the latest date of purchase (desired?)
      */
     public LocalDate getPurchaseDate() {
-        return purchaseDate;
+        return this.purchaseDate;
     }
 
     /**
      * Checks out a book.
      */
     public void checkOut() {
-        if(copiesCheckedOut < numberOfCopies) {
-            copiesCheckedOut++;
+        if (this.copiesCheckedOut < this.numberOfCopies) {
+            this.copiesCheckedOut++;
         }
     }
 
@@ -130,7 +130,7 @@ public class Book implements Serializable, Comparable<Book> {
      * Returns a book.
      */
     public void returnBook() {
-        copiesCheckedOut--;
+        this.copiesCheckedOut--;
     }
 
     /**
@@ -140,7 +140,7 @@ public class Book implements Serializable, Comparable<Book> {
     @Override
     public String toString() {
         String output = this.isbn + "," + this.title + ",{";
-        for(String author: this.authors) {
+        for (String author: this.authors) {
             output += author + ",";
         }
         output = output.substring(0, output.length() - 1);

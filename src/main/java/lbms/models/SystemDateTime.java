@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Observable;
 
 /**
  * Custom date time implementation for the Library Book Management System.
@@ -26,12 +25,11 @@ public class SystemDateTime extends Thread {
      */
     @Override
     public void run() {
-        while(!stop) {
-            this.time = time.plusSeconds(1);
+        while (!stop) {
+            this.time = this.time.plusSeconds(1);
             try {
                 Thread.sleep(1000);
-            }
-            catch(InterruptedException e) {
+            } catch (InterruptedException e) {
                 System.err.print("");
             }
         }
@@ -57,7 +55,7 @@ public class SystemDateTime extends Thread {
      * @return the instance of the system date time
      */
     private static SystemDateTime getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new SystemDateTime();
         }
         return instance;
@@ -69,10 +67,9 @@ public class SystemDateTime extends Thread {
      * @return an instance of the SystemDateTime
      */
     public static SystemDateTime getInstance(LocalDateTime time) {
-        if(time == null) {
+        if (time == null) {
             return getInstance();
-        }
-        else if(instance == null) {
+        } else if (instance == null) {
             instance = new SystemDateTime(time);
         }
         return instance;
@@ -83,7 +80,7 @@ public class SystemDateTime extends Thread {
      * @return a local time object of the time
      */
     public LocalTime getTime() {
-        return time.toLocalTime();
+        return this.time.toLocalTime();
     }
 
     /**
@@ -91,7 +88,7 @@ public class SystemDateTime extends Thread {
      * @return a local date object of the system date
      */
     public LocalDate getDate() {
-        return time.toLocalDate();
+        return this.time.toLocalDate();
     }
 
     /**
@@ -99,7 +96,7 @@ public class SystemDateTime extends Thread {
      * @return a local date time object of the system
      */
     public LocalDateTime getDateTime() {
-        return time;
+        return this.time;
     }
 
     /**
@@ -107,7 +104,7 @@ public class SystemDateTime extends Thread {
      * @return string representation of the system date time
      */
     public String toString() {
-        return time.format(DATETIME_FORMAT);
+        return this.time.format(DATETIME_FORMAT);
     }
 
     /**
@@ -115,7 +112,7 @@ public class SystemDateTime extends Thread {
      * @param days: the number of days to advance the time
      */
     public void plusDays(long days) {
-        time = time.plusDays(days);
+        this.time = this.time.plusDays(days);
     }
 
     /**
@@ -123,7 +120,7 @@ public class SystemDateTime extends Thread {
      * @param hours: the number of hours to advance the time
      */
     public void plusHours(long hours) {
-        time = time.plusHours(hours);
+        this.time = this.time.plusHours(hours);
     }
 
     /**

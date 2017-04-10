@@ -36,7 +36,7 @@ public class Transaction implements Serializable {
      * @return the isbn of the book checked out
      */
     public ISBN getIsbn() {
-        return isbn;
+        return this.isbn;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Transaction implements Serializable {
      * @return the visitors ID
      */
     public long getVisitor() {
-        return visitorId;
+        return this.visitorId;
     }
 
     /**
@@ -52,17 +52,16 @@ public class Transaction implements Serializable {
      * @return the fine due on the book
      */
     double getFine() {
-        int days = Period.between(dueDate, SystemDateTime.getInstance(null).getDate()).getDays();
+        int days = Period.between(this.dueDate, SystemDateTime.getInstance(null).getDate()).getDays();
         double fine = 0.0;
-        for(int i = 0; i < days; i++) {
-            if(i == 0) {
+        for (int i = 0; i < days; i++) {
+            if (i == 0) {
                 fine += INITIAL_FINE;
-            }
-            else {
+            } else {
                 fine += WEEK_FINE;
             }
         }
-        if(fine < MAX_FINE) {
+        if (fine < MAX_FINE) {
             return fine;
         }
         return MAX_FINE;
@@ -72,7 +71,7 @@ public class Transaction implements Serializable {
      * Marks that the fine has been paid for this transaction
      */
     public void closeTransaction() {
-        closeDate = SystemDateTime.getInstance(null).getDate();
+        this.closeDate = SystemDateTime.getInstance(null).getDate();
     }
 
     /**
@@ -80,7 +79,7 @@ public class Transaction implements Serializable {
      * @return the date the book was checked out
      */
     public LocalDate getDate() {
-        return date;
+        return this.date;
     }
 
     /**
@@ -88,6 +87,6 @@ public class Transaction implements Serializable {
      * @return the date the book is due
      */
     public LocalDate getDueDate() {
-        return dueDate;
+        return this.dueDate;
     }
 }

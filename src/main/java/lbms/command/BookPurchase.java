@@ -2,7 +2,6 @@ package lbms.command;
 
 import lbms.LBMS;
 import lbms.models.Book;
-import lbms.search.BookSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,13 +25,12 @@ public class BookPurchase implements Command, Undoable {
     public BookPurchase(String request) throws MissingParametersException {
         try {
             ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
-            quantity = Integer.parseInt(arguments.remove(0));
-            ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
-            if(ids.size() == 0) {
+            this.quantity = Integer.parseInt(arguments.remove(0));
+            this.ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
+            if (this.ids.size() == 0) {
                 throw new MissingParametersException("missing-parameters,quantity,id[,ids]");
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw new MissingParametersException("missing-parameters,quantity,id[,ids]");
         }
     }
@@ -43,11 +41,11 @@ public class BookPurchase implements Command, Undoable {
      */
     @Override
     public String execute() {
-        if(ids.size() == 0) {
+        if (this.ids.size() == 0) {
             return "missing-parameters,id;";
         }
         String s = processPurchaseOrder();
-        if(s.equals("failure;")) {
+        if (s.equals("failure;")) {
             return s;
         }
         s = s.replaceAll(",$","");
@@ -65,20 +63,19 @@ public class BookPurchase implements Command, Undoable {
      */
     private String processPurchaseOrder() {
         String booksBought = "";
-        for(int id: ids) {
+        for (int id: this.ids) {
             Book b;
             try {
                 b = LBMS.getLastBookSearch().get(id - 1);
-            }
-            catch(IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException e) {
                 return "failure;";
             }
-            for(int i = 0; i < quantity; i++) {
+            for (int i = 0; i < this.quantity; i++) {
                 buyBook(b);
             }
-            booksBought += ("\n" + b.toString() + "," + quantity) + ",";
+            booksBought += ("\n" + b.toString() + "," + this.quantity) + ",";
         }
-        return ids.size() + booksBought;
+        return this.ids.size() + booksBought;
     }
 
     /**
@@ -87,7 +84,7 @@ public class BookPurchase implements Command, Undoable {
      */
     private void buyBook(Book book) {
         book.purchase();
-        if(!LBMS.getBooks().values().contains(book)) {
+        if (!LBMS.getBooks().values().contains(book)) {
             LBMS.getBooks().put(book.getIsbn(), book);
         }
     }

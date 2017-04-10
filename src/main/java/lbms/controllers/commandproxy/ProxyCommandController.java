@@ -22,18 +22,29 @@ public class ProxyCommandController implements CommandController {
      * @return the response string
      */
     public String processRequest(String requestString) {
+        if (requestString.charAt(requestString.length() - 1) != ';' && !requestString.equals("quit") &&
+                !requestString.equals("exit")) {
+            return "partial-request;";
+        }
         String request[] = requestString.replace(";", "").split(",", 3);
         if (request[0].equals("connect")) {
             return new RealCommandController().processRequest(requestString);
         }
 
-        long clientID = Long.parseLong(request[0]);
+        long clientID;
+        try {
+            clientID = Long.parseLong(request[0]);
+        } catch (NumberFormatException e) {
+            if (!requestString.equals("quit") && !requestString.equals("exit")) {
+                return "invalid-client-id;";
+            }
+            return "";
+        }
         String command = request[1];
 
-        if(unrestricted(command) || !unrestricted(command) && isEmployee(clientID)) {
+        if (unrestricted(command) || !unrestricted(command) && isEmployee(clientID)) {
             return new RealCommandController().processRequest(requestString);
-        }
-        else {
+        } else {
            return request[0] + "," +request[1] + "," + "not-authorized; ";
         }
     }
@@ -58,14 +69,18 @@ public class ProxyCommandController implements CommandController {
      * @param clientID the id of the client
      * @return true if the client id represents and employee, false otherwise
      */
-    public static boolean isEmployee(long clientID) {
-        Visitor v = LBMS.getSessions().get(clientID).getV();
-        for( Employee employee : LBMS.getEmployees().values()) {
-            if(employee.getVisitor().getVisitorID() == v.getVisitorID()) {
-                return true;
+    private static boolean isEmployee(long clientID) {
+        try {
+            Visitor v = LBMS.getSessions().get(clientID).getV();
+            for (Employee employee : LBMS.getEmployees().values()) {
+                if (employee.getVisitor().getVisitorID() == v.getVisitorID()) {
+                    return true;
+                }
             }
+            return false;
+        } catch (Exception e) {
+            return false;
         }
-        return false;
     }
 
     /**

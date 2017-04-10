@@ -17,8 +17,8 @@ public class AdvanceTime implements Command {
      */
     public AdvanceTime(String request) {
         String[] arguments = request.split(",");
-        days = Long.parseLong(arguments[0]);
-        hours = arguments.length > 1 ? Long.parseLong(arguments[1]) : 0;
+        this.days = Long.parseLong(arguments[0]);
+        this.hours = arguments.length > 1 ? Long.parseLong(arguments[1]) : 0;
     }
 
     /**
@@ -27,17 +27,17 @@ public class AdvanceTime implements Command {
      */
     @Override
     public String execute() {
-        if(days < 0 || days > 7) {
-            return "invalid-number-of-days," + days + ";";
+        if (this.days < 0 || this.days > 7) {
+            return "invalid-number-of-days," + this.days + ";";
         }
-        if(hours < 0 || hours > 23) {
-            return "invalid-number-of-hours," + hours + ";";
+        if (this.hours < 0 || this.hours > 23) {
+            return "invalid-number-of-hours," + this.hours + ";";
         }
-        if (hours == 0 && days == 0) {
-            return "invalid-number-of-hours," + hours + ";";
+        if (this.hours == 0 && this.days == 0) {
+            return "invalid-number-of-hours," + this.hours + ";";
         }
-        SystemDateTime.getInstance(null).plusDays(days);
-        SystemDateTime.getInstance(null).plusHours(hours);
+        SystemDateTime.getInstance(null).plusDays(this.days);
+        SystemDateTime.getInstance(null).plusHours(this.hours);
         return "success;";
     }
 }

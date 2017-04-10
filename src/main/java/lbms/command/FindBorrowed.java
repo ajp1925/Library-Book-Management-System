@@ -20,7 +20,7 @@ public class FindBorrowed implements Command {
      * @param request: the request String for the command
      */
     public FindBorrowed(String request) {
-        visitorID = Long.decode(request);
+        this.visitorID = Long.decode(request);
     }
 
     /**
@@ -29,24 +29,23 @@ public class FindBorrowed implements Command {
      */
     @Override
     public String execute() {
-        if(UserSearch.BY_ID.findFirst(visitorID) == null) {
+        if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
             return "invalid-visitor-id;";
         }
 
-        Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
+        Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         String s = "";
         s += visitor.getNumCheckedOut();
         final int[] id = {1};
 
         Book b;
         LBMS.getLastBookSearch().clear();
-        for(Transaction t: visitor.getCheckedOutBooks().values()) {
+        for (Transaction t: visitor.getCheckedOutBooks().values()) {
             b = BookSearch.BY_ISBN.findAll(t.getIsbn().toString()).get(0);
             LBMS.getLastBookSearch().add(b);
             s += "\n";
             s += id[0]++ + "," + t.getIsbn() + "," + b.getTitle() + "," + t.getDate();
         }
-
         return s + ";";
     }
 }

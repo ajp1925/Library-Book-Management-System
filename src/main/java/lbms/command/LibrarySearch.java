@@ -29,38 +29,34 @@ public class LibrarySearch implements Command {
         if (arguments.length == 0 || arguments.length == 1 && arguments[0].equals("")) {
             throw new MissingParametersException("missing-parameters,title,{authors}");
         }
-        if(arguments.length == 1) {
+        if (arguments.length == 1) {
             throw new MissingParametersException("missing-parameters,{authors}");
         }
         try {
-            for(int index = 0; index < arguments.length; index++) {
-                if(sort_order == null && (Arrays.asList(arguments).contains("title") ||
+            for (int index = 0; index < arguments.length; index++) {
+                if (this.sort_order == null && (Arrays.asList(arguments).contains("title") ||
                     Arrays.asList(arguments).contains("publish-date") ||
                     Arrays.asList(arguments).contains("book-status"))) {
-                    sort_order = arguments[arguments.length - 1];
+                    this.sort_order = arguments[arguments.length - 1];
                 }
-                if(arguments[index].startsWith("{")) {
-                    authors = new ArrayList<>();
-                    while(!arguments[index].endsWith("}")) {
-                        authors.add(arguments[index++].replaceAll("[{}]", ""));
+                if (arguments[index].startsWith("{")) {
+                    this.authors = new ArrayList<>();
+                    while (!arguments[index].endsWith("}")) {
+                        this.authors.add(arguments[index++].replaceAll("[{}]", ""));
                     }
-                    authors.add(arguments[index].replaceAll("[{}]", ""));
-                }
-                else if(!arguments[index].equals("*")) {
-                    if(title == null && !arguments[0].equals("*")) {
-                        title = (arguments[index]);
-                    }
-                    else if(isbn == null && arguments[index].matches("^\\d{13}$")) {
-                        isbn = new ISBN(arguments[index]);
-                    }
-                    else if((publisher == null && sort_order == null && index == (arguments.length) - 1) ||
-                               (publisher == null && sort_order != null && index == (arguments.length) - 2)) {
-                        publisher = arguments[index];
+                    this.authors.add(arguments[index].replaceAll("[{}]", ""));
+                } else if (!arguments[index].equals("*")) {
+                    if (this.title == null && !arguments[0].equals("*")) {
+                        this.title = (arguments[index]);
+                    } else if (this.isbn == null && arguments[index].matches("^\\d{13}$")) {
+                        this.isbn = new ISBN(arguments[index]);
+                    } else if ((this.publisher == null && this.sort_order == null && index == (arguments.length) - 1) ||
+                               (this.publisher == null && this.sort_order != null && index == (arguments.length) - 2)) {
+                        this.publisher = arguments[index];
                     }
                 }
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw new MissingParametersException("unknown-error");
         }
     }
@@ -71,49 +67,46 @@ public class LibrarySearch implements Command {
      */
     @Override
     public String execute() {
-        if(sort_order != null && !sort_order.equals("title") && !sort_order.equals("publish-date") &&
-                !sort_order.equals("book-status")) {
+        if (this.sort_order != null && !this.sort_order.equals("title") && !this.sort_order.equals("publish-date") &&
+                !this.sort_order.equals("book-status")) {
             return "invalid-sort-order;";
         }
         List<Book> matches;
         List<Book> antiMatches = new ArrayList<>();
-        if(title != null) {
-            matches = BookSearch.BY_TITLE.findAll(title);
-        }
-        else if(authors != null) {
-            matches = BookSearch.BY_AUTHOR.findAll(authors.get(0));
-        }
-        else if(isbn != null) {
+        if (this.title != null) {
+            matches = BookSearch.BY_TITLE.findAll(this.title);
+        } else if (this.authors != null) {
+            matches = BookSearch.BY_AUTHOR.findAll(this.authors.get(0));
+        } else if (this.isbn != null) {
             matches = BookSearch.BY_ISBN.findAll(isbn.toString());
-        }
-        else if(publisher != null) {
-            matches = BookSearch.BY_PUBLISHER.findAll(publisher);
-        }
-        else {
+        } else if (this.publisher != null) {
+            matches = BookSearch.BY_PUBLISHER.findAll(this.publisher);
+        } else {
             matches = new ArrayList<>();
         }
-        for(Book b: matches) {
-            if(title != null && !b.getTitle().contains(title)) {
+
+        for (Book b: matches) {
+            if (this.title != null && !b.getTitle().contains(this.title)) {
                 antiMatches.add(b);
             }
-            if(authors != null) {
-                for(String author: authors) {
-                    if(!b.hasAuthorPartial(author)) {
+            if (this.authors != null) {
+                for (String author: this.authors) {
+                    if (!b.hasAuthorPartial(author)) {
                         antiMatches.add(b);
                     }
                 }
             }
-            if(isbn != null && b.getIsbn() != isbn) {
+            if (this.isbn != null && b.getIsbn() != this.isbn) {
                 antiMatches.add(b);
             }
-            if(publisher != null && !b.getPublisher().equals(publisher)) {
+            if (this.publisher != null && !b.getPublisher().equals(this.publisher)) {
                 antiMatches.add(b);
             }
         }
         matches.removeAll(antiMatches);
 
-        if(sort_order != null) {
-            switch(sort_order) {
+        if (this.sort_order != null) {
+            switch (this.sort_order) {
                 case "title":
                     matches.sort((Book b1, Book b2) -> b2.getTitle().compareTo(b1.getTitle()));
                     break;
@@ -128,17 +121,16 @@ public class LibrarySearch implements Command {
         }
         LBMS.getLastBookSearch().clear();
         StringBuilder matchesString = new StringBuilder();
-        for(Book b: matches) {
+        for (Book b: matches) {
             LBMS.getLastBookSearch().add(b);
             matchesString.append("\n")
                     .append(b.getCopiesAvailable()).append(",")
                     .append(LBMS.getLastBookSearch().indexOf(b) + 1).append(",")
                     .append(b.toString()).append(",");
         }
-        if(matches.size() > 0) {
+        if (matches.size() > 0) {
             matchesString = new StringBuilder(matchesString.substring(0, matchesString.length() - 1));
-        }
-        else {
+        } else {
             return "0;";
         }
 
