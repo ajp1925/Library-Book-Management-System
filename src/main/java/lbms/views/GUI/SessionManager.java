@@ -12,6 +12,7 @@ public class SessionManager {
     private Tab tab;
     private Long clientId;
     private StateController controller;
+    private String user;
 
     public SessionManager(Tab tab) {
         try {
@@ -23,6 +24,7 @@ public class SessionManager {
             System.exit(1);
         }
         this.tab = tab;
+        user = null;
     }
 
     public void close() {
@@ -44,5 +46,17 @@ public class SessionManager {
 
     public Long getClientId() {
         return clientId;
+    }
+
+    public Tab getTab() {
+        return tab;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getUser() {
+        return user;
     }
 }

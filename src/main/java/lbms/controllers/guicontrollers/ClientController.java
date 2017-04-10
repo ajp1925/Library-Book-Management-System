@@ -17,7 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import lbms.controllers.commandproxy.RealCommandController;
+import lbms.controllers.commandproxy.CommandController;
 import lbms.views.GUI.SessionManager;
 
 import java.time.LocalDateTime;
@@ -44,7 +44,7 @@ public class ClientController {
         // init clock
         Runnable task = () -> {
             while (!stop) {
-                LocalDateTime date = RealCommandController.getSystemDateTime();
+                LocalDateTime date = CommandController.getSystemDateTime();
                 clockText.setText(date.format(DateTimeFormatter.ofPattern("HH:mm    MM/dd/yyyy")));
             }
         };
@@ -65,7 +65,6 @@ public class ClientController {
         btn.setTextFill(Color.BLACK);
 
         addTab.setClosable(false);
-        addTab.setDisable(true);
         tabs.getTabs().add(addTab);
 
         addTab();

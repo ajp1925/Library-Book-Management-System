@@ -1,3 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
-<Pane><Text text="Hello Visitor"></Text></Pane>
+
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.MainVisitorController">
+   <children>
+      <FlowPane alignment="CENTER" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <TabPane id="search-tab-pane" fx:id="searchTabPane" prefWidth="600.0" stylesheets="@../css/main_visitor.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab fx:id="searchTab" closable="false" text="Search By Title">
+                        <content>
+                          <AnchorPane styleClass="search-tab-content" fx:id="searchTitleField" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0" stylesheets="@../css/main_visitor.css">
+                                 <children>
+                                    <TextField layoutX="16.0" layoutY="20.0" prefHeight="27.0" prefWidth="558.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab fx:id="searchTab1" closable="false" text="Search By Author">
+                           <content>
+                              <AnchorPane  styleClass="search-tab-content" fx:id="searchAuthorField" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0" stylesheets="@../css/main_visitor.css">
+                                 <children>
+                                    <TextField layoutX="16.0" layoutY="20.0" prefHeight="27.0" prefWidth="558.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="searchTab2" closable="false" text="Search By ISBN">
+                           <content>
+                              <AnchorPane styleClass="search-tab-content" fx:id="searchISBNField" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0" stylesheets="@../css/main_visitor.css">
+                                 <children>
+                                    <TextField layoutX="16.0" layoutY="20.0" prefHeight="27.0" prefWidth="558.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                     <VBox.margin>
+                        <Insets bottom="75.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </padding>
+                  </TabPane>
+                  <Button id="visit-button" fx:id="visitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" stylesheets="@../css/main_visitor.css" />
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>

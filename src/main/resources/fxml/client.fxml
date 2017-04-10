@@ -27,7 +27,7 @@
                    </VBox>
                 </left>
                 <center>
-                   <TabPane fx:id="tabs" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/client.css" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER">
+                   <TabPane id="client-tab-pane" fx:id="tabs" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/client.css" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER">
                      <tabs>
                      </tabs>
                    </TabPane>
