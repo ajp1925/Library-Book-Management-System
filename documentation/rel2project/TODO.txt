@@ -1,1 +1,10 @@
 Use this directory for R2 stuff.
+
+Documentation:
+
+Patterns we use:
+State - for views (CLI and GUI)
+Factory - for determining what view to use (modified by using arg)
+Visitor - for field checks and changes in GUI
+            (New User Controller, Existing User Controller)
+Decorator - SessionManager maybe
