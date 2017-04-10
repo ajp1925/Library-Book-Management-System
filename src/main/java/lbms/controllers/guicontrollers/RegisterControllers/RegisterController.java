@@ -130,7 +130,7 @@ public class RegisterController implements StateController {
                     String response = new ProxyCommandController().processRequest(
                             String.format("%s,register,%s,%s,%s,%s;",
                                     manager.getClientId(), firstName, lastName, address, phoneNumber));
-
+                    System.out.println(response);
                     // parse response
                     String[] fields = response.split(",");
                     if (fields[2].equals("duplicate;")) {
@@ -204,7 +204,7 @@ public class RegisterController implements StateController {
                 String response = new ProxyCommandController().processRequest(
                         String.format("%s,create,%s,%s,%s,%s;",
                                 manager.getClientId(), username, password, "visitor", visitorId));
-
+                System.out.println(response);
                 // parse response
                 String[] fields = response.replace(";", "").split(",");
                 switch (fields[1]) {
@@ -225,6 +225,7 @@ public class RegisterController implements StateController {
                         break;
                 }
             } catch (Exception e) {
+                System.out.println(e);
                 valid = false;
             }
 

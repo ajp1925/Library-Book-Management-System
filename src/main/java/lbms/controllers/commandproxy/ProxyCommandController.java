@@ -10,14 +10,14 @@ import java.util.Arrays;
 
 /**
  * Implementation of a protection proxy to control access
- * to RealCommandController based on access rights.
+ * to CommandController based on access rights.
  * @author Team B
  */
-public class ProxyCommandController implements CommandController {
+public class ProxyCommandController implements ICommandController {
 
     /**
      * Checks to ensure the command is being requested by the proper user
-     * before sending the command to the RealCommandController.
+     * before sending the command to the CommandController.
      * @param requestString the input string to be processed
      * @return the response string
      */
@@ -28,7 +28,7 @@ public class ProxyCommandController implements CommandController {
         }
         String request[] = requestString.replace(";", "").split(",", 3);
         if (request[0].equals("connect")) {
-            return new RealCommandController().processRequest(requestString);
+            return new CommandController().processRequest(requestString);
         }
 
         long clientID;
@@ -43,7 +43,7 @@ public class ProxyCommandController implements CommandController {
         String command = request[1];
 
         if (unrestricted(command) || !unrestricted(command) && isEmployee(clientID)) {
-            return new RealCommandController().processRequest(requestString);
+            return new CommandController().processRequest(requestString);
         } else {
            return request[0] + "," +request[1] + "," + "not-authorized; ";
         }
