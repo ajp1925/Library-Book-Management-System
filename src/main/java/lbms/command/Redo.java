@@ -1,5 +1,7 @@
 package lbms.command;
 
+import lbms.LBMS;
+
 /**
  * Redo class for the redo command.
  * @author Team B
@@ -22,7 +24,9 @@ public class Redo implements Command {
      */
     @Override
     public String execute() {
-        // TODO
-        return null;
+        if (null != LBMS.getSessions().get(this.clientID).redoUndoable()) {
+            return ",cannot-redo;";
+        }
+        return ",success;";
     }
 }

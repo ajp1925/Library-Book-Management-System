@@ -166,7 +166,7 @@ public class Visitor implements Serializable {
      * Changes the in library status of a visitor.
      * @param status: a boolean of the status of a visitor
      */
-    void switchInLibrary(boolean status) {
+    public void switchInLibrary(boolean status) {
         this.inLibrary = status;
     }
 

@@ -18,7 +18,11 @@ public class AdvanceTime implements Command {
     public AdvanceTime(String request) {
         String[] arguments = request.split(",");
         this.days = Long.parseLong(arguments[0]);
-        this.hours = arguments.length > 1 ? Long.parseLong(arguments[1]) : 0;
+        if (arguments.length > 1) {
+            this.hours = Long.parseLong(arguments[1]);
+        } else {
+            this.hours = 0L;
+        }
     }
 
     /**

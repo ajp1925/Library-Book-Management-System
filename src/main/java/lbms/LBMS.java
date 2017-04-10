@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
-import static lbms.LBMS.SearchService.local;
-
 /**
  * Main class to run the Library Book Management System.
  * @author Team B
@@ -33,25 +31,26 @@ public class LBMS {
     public final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
     public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
-    /** Data stored in the LBMS */
+    /** Data that is serialized on a clean exit. */
     private static HashMap<ISBN, Book> books = new HashMap<>();
-    private static List<Book> lastBookSearch = new ArrayList<>();
     private static List<Book> booksToBuy;
     private static HashMap<Long, Visitor> visitors = new HashMap<>();
     private static HashMap<Long, Employee> employees = new HashMap<>();
     private static List<Visit> totalVisits = new ArrayList<>();
     private static List<Transaction> transactions = new ArrayList<>();
+
+    /** Data that is used during runtime, but not serialized. */
     private static HashMap<Long, Visit> currentVisits = new HashMap<>();
     private static HashMap<Long, Session> sessions = new HashMap<>();
+    private static List<Book> lastBookSearch = new ArrayList<>();
     private static long totalSessions;
-    private static SearchService search;
 
     /**
      * Program entry point. Handle command line arguments and start.
      * @param args: the program arguments
      */
     public static void main(String[] args) {
-        StartType type = null;
+        StartType type;
         try {
             type = StartType.valueOf(args[0].toUpperCase());
             new LBMS(type);
@@ -197,7 +196,6 @@ public class LBMS {
         currentVisits = new HashMap<>();
         sessions = new HashMap<>();
         totalSessions = 0;
-        search = local;
     }
 
     /**
@@ -232,8 +230,9 @@ public class LBMS {
      */
     public static void LibraryClose() {
         // Departs all the visitors when the library closes.
+        ProxyCommandController pcc = new ProxyCommandController();
         for (Visit visit: currentVisits.values()) {
-            new ProxyCommandController().processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
+            pcc.processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
         }
     }
 
@@ -331,21 +330,5 @@ public class LBMS {
      */
     public static void incrementSessions() {
         totalSessions++;
-    }
-
-    /**
-     * Getter for the search service.
-     * @return the method for searching for books to purchase
-     */
-    public static SearchService getSearch() {
-        return search;
-    }
-
-    /**
-     * Setter for the book search method.
-     * @param ss: the search service method
-     */
-    public static void setSearch(SearchService ss) {
-        search = ss;
     }
 }

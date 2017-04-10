@@ -52,9 +52,14 @@ public class BookPurchase implements Command, Undoable {
         return "success," + s + ";";
     }
 
+    /**
+     * Un-executes the command.
+     * @return null if successful, a string if it failed
+     */
     @Override
-    public void unExecute() {
+    public String unExecute() {
         // TODO
+        return null;
     }
 
     /**

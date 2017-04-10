@@ -3,6 +3,7 @@ package lbms.controllers.commandproxy;
 import lbms.LBMS;
 import lbms.command.*;
 import lbms.models.SystemDateTime;
+import lbms.models.Visitor;
 
 import java.time.LocalDateTime;
 
@@ -89,7 +90,16 @@ public class CommandController implements ICommandController {
                     return new SetBookService(clientID, request[2]);
                 case "arrive":
                     if (ProxyCommandController.isOpen()) {
-                        BeginVisit b = new BeginVisit(request[2]);
+                        BeginVisit b;
+                        if (request.length > 2) {
+                            b = new BeginVisit(Long.parseLong(request[2]));
+                        } else {
+                            Visitor v = LBMS.getSessions().get(clientID).getV();
+                            if (v == null) {
+                                throw new MissingParametersException(clientID + ",arrive,not-logged-in");
+                            }
+                            b = new BeginVisit(v.getVisitorID());
+                        }
                         LBMS.getSessions().get(clientID).addUndoable(b);
                         return b;
                     }
@@ -104,7 +114,16 @@ public class CommandController implements ICommandController {
                 case "register":
                     return new RegisterVisitor(request[2]);
                 case "depart":
-                    EndVisit ev = new EndVisit(clientID + "," + request[2]);
+                    EndVisit ev;
+                    if (request.length > 2) {
+                        ev = new EndVisit(Long.parseLong(request[2]));
+                    } else {
+                        Visitor v = LBMS.getSessions().get(clientID).getV();
+                        if (v == null) {
+                            throw new MissingParametersException(clientID + ",depart,not-logged-in");
+                        }
+                        ev = new EndVisit(v.getVisitorID());
+                    }
                     LBMS.getSessions().get(clientID).addUndoable(ev);
                     return ev;
                 case "info":

@@ -1,7 +1,6 @@
 package lbms.command;
 
 import lbms.LBMS;
-import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
 import lbms.models.Visitor;
@@ -9,32 +8,21 @@ import lbms.search.UserSearch;
 
 /**
  * EndVisit class for end visit command.
- * @author Team B TODO -> change for R2
+ * @author Team B
  */
 public class EndVisit implements Command, Undoable {
 
-    private long clientID;
     private long visitorID;
+    private Visit visit;
 
     /**
      * Constructor for an EndVisit command class.
-     * @param request: the request input string
+     * @param visitorID: the visitorID of the visitor leaving the library
      * @throws MissingParametersException: missing parameters
      */
-    public EndVisit(String request) throws MissingParametersException {
-        if (request.equals("")) {
-            throw new MissingParametersException("missing-parameters,clientID");
-        }
-
-        String[] arguments = request.split(",");
-        this.clientID = Long.parseLong(arguments[0]);
-        if (arguments.length == 2) {
-            this.visitorID = Long.parseLong(arguments[1]);
-        } else {
-            if ( LBMS.getSessions().get(this.clientID) != null ) {
-                this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
-            }
-        }
+    public EndVisit(long visitorID) throws MissingParametersException {
+        this.visitorID = visitorID;
+        this.visit = null;
     }
 
     /**
@@ -43,34 +31,34 @@ public class EndVisit implements Command, Undoable {
      */
     @Override
     public String execute() {
-        if (LBMS.getSessions().get(this.clientID) == null) {
-            return "invalid-client-id;";
-        }
-
         if (UserSearch.BY_ID.findFirst(this.visitorID) != null) {
             Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
             if (visitor != null ) {
-                if (ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
-                    if (visitor.getInLibrary()) {
-                        Visit visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());
-                        visit.depart();
-                        LBMS.getTotalVisits().add(visit);
-                        long s = visit.getDuration().getSeconds();
-                        String duration = String.format("%02d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
-                        return this.visitorID + "," + visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) +
-                                "," + duration + ";";
-                    }
-                    return "invalid-id;";
+                if (visitor.getInLibrary()) {
+                    this.visit = LBMS.getCurrentVisits().remove(visitor.getVisitorID());
+                    this.visit.depart();
+                    LBMS.getTotalVisits().add(this.visit);
+                    long s = this.visit.getDuration().getSeconds();
+                    String duration = String.format("%02d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
+                    return "," + String.format("%010d", this.visitorID) + "," +
+                            this.visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + "," + duration + ";";
                 }
-                return "not-authorized;";
+                return ",invalid-id;";
             }
-            return "invalid-id;";
+            return ",invalid-id;";
         }
-        return "invalid-id;";
+        return ",invalid-id;";
     }
 
+    /**
+     * Un-executes the command.
+     * @return null if successful, a string if it fails
+     */
     @Override
-    public void unExecute() {
-        // TODO
+    public String unExecute() {
+        this.visit.undepart();
+        LBMS.getCurrentVisits().put(this.visitorID, this.visit);
+        LBMS.getTotalVisits().remove(this.visit);
+        return null;
     }
 }

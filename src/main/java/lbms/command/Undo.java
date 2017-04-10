@@ -1,5 +1,7 @@
 package lbms.command;
 
+import lbms.LBMS;
+
 /**
  * Undo class for the undo command.
  * @author Team B
@@ -22,7 +24,9 @@ public class Undo implements Command {
      */
     @Override
     public String execute() {
-        // TODO
-        return null;
+        if (null != LBMS.getSessions().get(this.clientID).undoUndoable()) {
+            return ",cannot-undo;";
+        }
+        return ",success;";
     }
 }

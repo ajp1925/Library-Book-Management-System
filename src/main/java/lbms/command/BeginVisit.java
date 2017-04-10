@@ -8,7 +8,7 @@ import lbms.search.UserSearch;
 
 /**
  * StartVisit class for the start visit command.
- * @author Team B TODO -> change for R2
+ * @author Team B
  */
 public class BeginVisit implements Command, Undoable {
 
@@ -16,16 +16,10 @@ public class BeginVisit implements Command, Undoable {
 
     /**
      * Constructor for BeginVisit command.
-     * @param request: the string that holds all the input information
-     * @throws MissingParametersException: missing parameters
+     * @param visitorID: the id of the visitor that is beginning a visit
      */
-    public BeginVisit(String request) throws MissingParametersException {
-        String[] arguments = request.split(",");
-        try {
-            this.visitorID = Long.parseLong(arguments[0]);
-        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
-            throw new MissingParametersException("missing-parameters,visitor-ID");
-        }
+    public BeginVisit(long visitorID) {
+        this.visitorID = visitorID;
     }
 
     /**
@@ -35,25 +29,28 @@ public class BeginVisit implements Command, Undoable {
     @Override
     public String execute() {
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
-            return "invalid-id;";
+            return ",invalid-id;";
         }
 
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         if (UserSearch.BY_ID.findFirst(this.visitorID).getInLibrary()) {
-            return "duplicate;";
+            return ",duplicate;";
         }
 
         Visit v = beginVisit(visitor);
-        return String.format("%010d", this.visitorID) + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," +
+        return "," + String.format("%010d", this.visitorID) + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," +
                 v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 
     /**
-     * Comment
+     * Un-executes the command.
+     * @return null if successful, a string if it failed
      */
     @Override
-    public void unExecute() {
-        // TODO
+    public String unExecute() {
+        LBMS.getCurrentVisits().remove(this.visitorID);
+        LBMS.getVisitors().get(this.visitorID).switchInLibrary(false);
+        return null;
     }
 
     /**

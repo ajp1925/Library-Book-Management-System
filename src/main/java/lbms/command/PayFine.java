@@ -42,8 +42,13 @@ public class PayFine implements Command, Undoable {
         }
     }
 
+    /**
+     * Un-executes the command.
+     * @return null if successful, a string if it fails
+     */
     @Override
-    public void unExecute() {
+    public String unExecute() {
         // TODO
+        return null;
     }
 }

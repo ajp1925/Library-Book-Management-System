@@ -85,8 +85,13 @@ public class Return implements Command, Undoable {
         return "success;";
     }
 
+    /**
+     * Un-executes the command.
+     * @return null if successful, a string if it failed
+     */
     @Override
-    public void unExecute() {
+    public String unExecute() {
         // TODO
+        return null;
     }
 }

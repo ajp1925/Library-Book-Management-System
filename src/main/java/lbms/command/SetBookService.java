@@ -23,10 +23,10 @@ public class SetBookService implements Command {
         String s = request.replaceAll(";", "").replaceAll(",", "");
         switch (s) {
             case "local":
-                search = local;
+                this.search = local;
                 break;
             case "google":
-                search = google;
+                this.search = google;
                 break;
             default:
                 throw new MissingParametersException("invalid-info-service");

@@ -69,10 +69,15 @@ public class Session {
      * @return failure message or null if success
      */
     public String undoUndoable() {
-        Undoable u = undoStack.pop();
+        Undoable u;
+        if (this.undoStack.size() > 0) {
+            u = this.undoStack.pop();
+        } else {
+            return "failure";
+        }
         u.unExecute();
-        redoStack.push(u);
-        return null; // TODO return a string if failure
+        this.redoStack.push(u);
+        return null;
     }
 
     /**
@@ -80,10 +85,15 @@ public class Session {
      * @return failure message or null if success
      */
     public String redoUndoable() {
-        Undoable u = redoStack.pop();
+        Undoable u;
+        if (this.redoStack.size() > 0) {
+            u = this.redoStack.pop();
+        } else {
+            return "failure";
+        }
         u.execute();
-        undoStack.push(u);
-        return null; // TODO return a string if failure
+        this.undoStack.push(u);
+        return null;
     }
 
     /**

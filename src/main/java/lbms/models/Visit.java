@@ -39,6 +39,15 @@ public class Visit implements Serializable {
     }
 
     /**
+     * Reverses a departure.
+     */
+    public void undepart() {
+        this.timeOfDeparture = null;
+        this.duration = null;
+        this.visitor.switchInLibrary(true);
+    }
+
+    /**
      * Getter for the visitor
      * @return the visitor
      */

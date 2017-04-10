@@ -14,7 +14,8 @@ public interface Undoable {
 
     /**
      * Un-executes the command, reverses the execute for that given command.
+     * @return a string if failure, null if success
      */
-    void unExecute();
+    String unExecute();
 
 }
