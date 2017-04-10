@@ -30,19 +30,19 @@ public class LogInTest extends TestCase{
 
     public void testCleanLogin() throws MissingParametersException {
         Command command = new LogIn(s.getClientID() + "," + "username,password");
-        assertEquals("success;", command.execute());
+        assertEquals(",success;", command.execute());
         assertEquals(LBMS.getSessions().get(s.getClientID()).getV().getVisitorID(), v.getVisitorID());
     }
 
     public void testInvalidUsername() throws MissingParametersException{
         Command command = new LogIn(s.getClientID() + "," + "user,password");
-        assertEquals("bad-username-or-password;", command.execute());
+        assertEquals(",bad-username-or-password;", command.execute());
         assertNull(LBMS.getSessions().get(s.getClientID()).getV());
     }
 
     public void testIncorrectPassword() throws MissingParametersException {
         Command command = new LogIn(s.getClientID() + "," + "username,passwordx");
-        assertEquals("bad-username-or-password;", command.execute());
+        assertEquals(",bad-username-or-password;", command.execute());
         assertNull(LBMS.getSessions().get(s.getClientID()).getV());
     }
 

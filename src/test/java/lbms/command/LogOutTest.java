@@ -8,6 +8,7 @@ import lbms.models.Visitor;
 
 /**
  * Created by 15bar on 4/7/2017.
+ * Note: LogOut is passed a Long not a String
  */
 public class LogOutTest extends TestCase{
 
@@ -31,22 +32,22 @@ public class LogOutTest extends TestCase{
     }
 
     public void testCleanLogout() throws MissingParametersException {
-        Command command = new LogOut(s.getClientID() + "");
+        Command command = new LogOut(s.getClientID());
         assertEquals("success;", command.execute());
         assertNull(s.getV());
     }
 
     public void testInvalidClientID() throws MissingParametersException {
-        Command command = new LogOut("99");
+        Command command = new LogOut(Long.parseLong("99"));
         assertEquals("invalid-client-id;", command.execute());
     }
 
-    public void testMissingParameters() {
-        try {
-            Command command = new LogOut("");
-            fail("Expected exception not thrown");
-        } catch (MissingParametersException e) {
-            assertEquals("Invalid clientID passed to LogOut", e.getMessage());
-        }
-    }
+//    public void testMissingParameters() {
+//        try {
+//            Command command = new LogOut("");
+//            fail("Expected exception not thrown");
+//        } catch (MissingParametersException e) {
+//            assertEquals("Invalid clientID passed to LogOut", e.getMessage());
+//        }
+//    }
 }

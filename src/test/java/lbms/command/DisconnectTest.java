@@ -31,6 +31,6 @@ public class DisconnectTest extends TestCase{
 
     public void testInvalidClientID() throws MissingParametersException {
         Command command = new Disconnect(session.getClientID() + 99);
-        assertEquals("invalid-client-id;", command.execute());
+        assertEquals(",invalid-client-id;", command.execute());
     }
 }

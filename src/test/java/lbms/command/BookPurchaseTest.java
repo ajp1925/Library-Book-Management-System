@@ -72,7 +72,7 @@ public class BookPurchaseTest extends TestCase{
 
     public void testOneBook() throws MissingParametersException {
         BookPurchase command = new BookPurchase("5,1");
-        assertEquals("success,1" +
+        assertEquals(",success,1" +
                 "\n9781450431835,Daniels' Running Formula-3rd Edition,{Jack Daniels},12/31/2013,5;",
                 command.execute());
 
@@ -82,7 +82,7 @@ public class BookPurchaseTest extends TestCase{
 
     public void testTwoBooks() throws MissingParametersException {
         BookPurchase command = new BookPurchase("5,1,2");
-        assertEquals("success,2" +
+        assertEquals(",success,2" +
                 "\n9781450431835,Daniels' Running Formula-3rd Edition,{Jack Daniels},12/31/2013,5," +
                 "\n9780936070278,Galloway's Book on Running,{Jeff Galloway},12/31/2013,5;",
                 command.execute());
@@ -96,12 +96,12 @@ public class BookPurchaseTest extends TestCase{
 
     public void testIDTooLow() throws MissingParametersException {
         BookPurchase command = new BookPurchase("5,-1");
-        assertEquals("failure;", command.execute());
+        assertEquals(",failure;", command.execute());
     }
 
     public void testIDTooHigh() throws MissingParametersException {
         BookPurchase command = new BookPurchase("5,1000");
-        assertEquals("failure;", command.execute());
+        assertEquals(",failure;", command.execute());
     }
 
     public void testMissingOneParameter() {
@@ -110,7 +110,7 @@ public class BookPurchaseTest extends TestCase{
             fail("Exception not thrown");
         }
         catch (MissingParametersException e) {
-            assertEquals("missing-parameters,quantity,id[,ids]", e.getMessage());
+            assertEquals(",missing-parameters,quantity,id[,ids]", e.getMessage());
         }
     }
 
@@ -120,7 +120,7 @@ public class BookPurchaseTest extends TestCase{
             fail("Exception not thrown");
         }
         catch (MissingParametersException e) {
-            assertEquals("missing-parameters,quantity,id[,ids]", e.getMessage());
+            assertEquals(",missing-parameters,quantity,id[,ids]", e.getMessage());
         }
     }
 }

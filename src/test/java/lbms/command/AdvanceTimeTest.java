@@ -13,25 +13,25 @@ public class AdvanceTimeTest {
     @Test
     public void tooFewDays() {
         AdvanceTime command = new AdvanceTime("-1");
-        assertEquals("invalid-number-of-days,-1;", command.execute());
+        assertEquals(",invalid-number-of-days,-1;", command.execute());
     }
 
     @Test
     public void tooManyDays() {
         AdvanceTime commmand = new AdvanceTime("8");
-        assertEquals("invalid-number-of-days,8;", commmand.execute());
+        assertEquals(",invalid-number-of-days,8;", commmand.execute());
     }
 
     @Test
     public void tooFewHours() {
         AdvanceTime command = new AdvanceTime("1,-1");
-        assertEquals("invalid-number-of-hours,-1;", command.execute());
+        assertEquals(",invalid-number-of-hours,-1;", command.execute());
     }
 
     @Test
     public void tooManyHours() {
         AdvanceTime command = new AdvanceTime("1,24");
-        assertEquals("invalid-number-of-hours,24;", command.execute());
+        assertEquals(",invalid-number-of-hours,24;", command.execute());
     }
 
     @Test
