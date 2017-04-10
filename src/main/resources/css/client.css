@@ -25,23 +25,6 @@
     -fx-border-style: none;
 }
 
-#addTab {
-    -fx-pref-width: 32;
-    -fx-background-color: -main-color;
-    -fx-padding: 0, 0, 0, 0;
-}
-
-#addTabButton {
-    -fx-border-style: none;
-    -fx-background-color: -main-color;
-    -fx-padding: 0 0 2.25 0;
-}
-
-#addTab:hover, #addTabButton:hover{
-    -fx-background-color: -highlight-color;
-    -fx-text-fill: #333333;
-}
-
 .menu-button {
     -fx-background-color: -main-color;
     -fx-border-style: none;
@@ -55,33 +38,54 @@
     -fx-background-color: -main-color;
 }
 
-.tab-header-background {
+#client-tab-pane .tab-header-background {
     -fx-background-color: -main-color;
 }
 
-.tab-pane .tab-header-area {
+#client-tab-pane .tab-header-area {
     -fx-padding: 0 0 0 50;
     -fx-max-height: 30;
     -fx-min-height: 30;
     -fx-pref-height: 30;
 }
 
-.tab-pane .tab {
+#client-tab-pane .tab {
     -fx-background-color: -main-color;
     -fx-border-style: none;
     -fx-pref-width: 200;
 }
 
-.tab-pane .tab:hover {
+#client-tab-pane .tab:hover {
     -fx-background-color: -highlight-color;
 }
 
-.tab-pane .tab:selected {
+#client-tab-pane .tab:selected {
     -fx-background-color: #ffffff;
 }
 
-.tab-pane .tab:selected .focus-indicator{
+#client-tab-pane .tab:selected .focus-indicator{
     -fx-border-color: transparent;
+}
+
+#addTab {
+    -fx-background-color: -main-color;
+    -fx-padding: 0, 0, 0, 0;
+    -fx-pref-width: 32 !important;
+}
+
+#addTabButton {
+    -fx-border-style: none;
+    -fx-background-color: -main-color;
+    -fx-padding: 0 0 2.25 0;
+}
+
+#addTabButton:hover {
+    -fx-background-color: -highlight-color;
+    -fx-text-fill: #333333;
+}
+
+#addTab:hover {
+    -fx-background-color: -main-color !important;
 }
 
 .menu-bar {

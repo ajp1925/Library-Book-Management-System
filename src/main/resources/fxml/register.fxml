@@ -15,7 +15,7 @@
                <top>
                   <FlowPane alignment="CENTER" prefHeight="101.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
+                        <Text fx:id="header" strokeType="OUTSIDE" strokeWidth="0.0" text="Register User">
                            <font>
                               <Font name="System Bold" size="48.0" />
                            </font>

@@ -1,0 +1,30 @@
+#search-tab-pane {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-radius: 25;
+    -fx-background-color: white;
+}
+
+#search-tab-pane .tab-header-background {
+    -fx-background-color: white;
+}
+
+#search-tab-pane .tab {
+    -fx-background-color: white;
+    -fx-pref-width: 100;
+}
+
+#search-tab-pane .tab:selected {
+    -fx-background-color: -main-color;
+}
+
+#search-tab-pane .tab-header-area {
+    -fx-padding: 0 0 0 0;
+}
+
+.search-tab-content {
+    -fx-border-style: solid;
+    -fx-border-color: -main-color;
+    -fx-background-color: -main-color;
+    -fx-border-radius: 25;
+}

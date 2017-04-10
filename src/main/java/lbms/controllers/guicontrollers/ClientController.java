@@ -65,7 +65,6 @@ public class ClientController {
         btn.setTextFill(Color.BLACK);
 
         addTab.setClosable(false);
-        addTab.setDisable(true);
         tabs.getTabs().add(addTab);
 
         addTab();

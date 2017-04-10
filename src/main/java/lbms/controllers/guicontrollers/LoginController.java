@@ -42,6 +42,7 @@ public class LoginController implements StateController {
 
     public void initManager(final SessionManager manager) {
         this.manager = manager;
+        manager.getTab().setText("Login");
     }
 
     @FXML private void execute() {
@@ -65,10 +66,11 @@ public class LoginController implements StateController {
                                 manager.getClientId(), usernameField.getText(), passwordField.getText()));
 
                 // parse response
-                String[] fields = response.replace(",", "").split(",");
+                String[] fields = response.replace(";", "").split(",");
 
                 if (fields[2].equals("success")) {
-                    manager.display("main_visitor"); // TODO create main view
+                    manager.setUser(usernameField.getText());
+                    manager.display("main_visitor");
                 } else {
                     throw new Exception();
                 }

@@ -1,6 +1,5 @@
 package lbms.controllers.guicontrollers.RegisterControllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -24,6 +23,7 @@ public class RegisterController implements StateController {
     @FXML private AnchorPane root;
     @FXML private FlowPane centerPane;
     @FXML private VBox centerBox;
+    @FXML private Text header;
     @FXML private Button submitButton;
     @FXML private Hyperlink loginLink;
     @FXML private Text failedLabel;
@@ -38,6 +38,7 @@ public class RegisterController implements StateController {
 
     public void initManager(final SessionManager manager) {
         this.manager = manager;
+        manager.getTab().setText("Register User");
     }
 
     @FXML protected void initialize() {
@@ -81,6 +82,12 @@ public class RegisterController implements StateController {
             } catch (Exception e) {
                 System.out.println("Error loading fxml");
                 System.exit(1);
+            }
+
+            if (userController.isNew()) {
+                manager.getTab().setText("Register User");
+            } else {
+                manager.getTab().setText("Existing User");
             }
         });
     }
@@ -139,9 +146,11 @@ public class RegisterController implements StateController {
             if (valid) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(SessionManager.class.getResource("/fxml/register_2.fxml"));
+                    loader.setLocation(SessionManager.class.getResource("/fxml/create.fxml"));
                     GridPane grid = loader.load();
                     controller = loader.getController();
+                    manager.getTab().setText("Create Account");
+                    header.setText("Create Account");
 
                     centerPane.getChildren().clear();
                     centerPane.getChildren().add(grid);
@@ -170,7 +179,6 @@ public class RegisterController implements StateController {
         String username = controller.getUsernameField();
         String password = controller.getPasswordField();
         String confirm = controller.getConfirmField();
-        String role = controller.getSelected();
 
         if (username.isEmpty()) {
             completed = false;
@@ -184,10 +192,6 @@ public class RegisterController implements StateController {
             completed = false;
             controller.failConfirm();
         }
-        if (role.isEmpty()) {
-            completed = false;
-            controller.failRole();
-        }
 
         if (!completed) {
             failedLabel.setText("* Please enter missing fields.");
@@ -199,7 +203,7 @@ public class RegisterController implements StateController {
             try {
                 String response = new ProxyCommandController().processRequest(
                         String.format("%s,create,%s,%s,%s,%s;",
-                                manager.getClientId(), username, password, role, visitorId));
+                                manager.getClientId(), username, password, "visitor", visitorId));
 
                 // parse response
                 String[] fields = response.replace(";", "").split(",");
@@ -234,7 +238,8 @@ public class RegisterController implements StateController {
                     String[] fields = response.replace(";", "").split(",");
 
                     if (fields[2].equals("success")) {
-                        manager.display("main_visitor");    //TODO enter main view file
+                        manager.setUser(username);
+                        manager.display("main_visitor");
                     } else {
                         throw new Exception();
                     }

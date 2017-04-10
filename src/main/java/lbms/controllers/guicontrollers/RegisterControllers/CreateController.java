@@ -17,18 +17,6 @@ public class CreateController {
     @FXML private Text usernameFail;
     @FXML private Text passwordFail;
     @FXML private Text confirmFail;
-    @FXML private Text roleFail;
-
-    @FXML private RadioButton visitor;
-    @FXML private RadioButton employee;
-    private ToggleGroup group;
-
-    @FXML protected void initialize() {
-        group = new ToggleGroup();
-        visitor.setToggleGroup(group);
-        visitor.setSelected(true);
-        employee.setToggleGroup(group);
-    }
 
     String getUsernameField() {
         return usernameField.getText();
@@ -40,10 +28,6 @@ public class CreateController {
 
     String getConfirmField() {
         return confirmField.getText();
-    }
-
-    String getSelected() {
-        return ((RadioButton)group.getSelectedToggle()).getText().toLowerCase();
     }
 
     void failUsername() {
@@ -58,14 +42,9 @@ public class CreateController {
         confirmFail.setText("*");
     }
 
-    void failRole() {
-        roleFail.setText("*");
-    }
-
     void clearError() {
         usernameFail.setText("");
         passwordFail.setText("");
         confirmFail.setText("");
-        roleFail.setText("");
     }
 }
