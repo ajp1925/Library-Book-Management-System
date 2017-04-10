@@ -12,7 +12,9 @@ public interface Undoable {
      */
     String execute();
 
-    // TODO
+    /**
+     * Un-executes the command, reverses the execute for that given command.
+     */
     void unExecute();
 
 }
