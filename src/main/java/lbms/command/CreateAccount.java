@@ -28,7 +28,11 @@ public class CreateAccount implements Command {
             this.username = arguments[0];
             this.password = arguments[1];
             this.role = arguments[2];
-            this.visitorID = Long.parseLong(arguments[3]);
+            try {
+                this.visitorID = Long.parseLong(arguments[3]);
+            } catch (NumberFormatException e) {
+                throw new MissingParametersException("invalid-visitor;");
+            }
         }
     }
 
@@ -40,16 +44,16 @@ public class CreateAccount implements Command {
     public String execute() {
         // perform error checks
         if (usernameExists()) {
-            return "duplicate-username;";
+            return ",duplicate-username;";
         }
 
         Visitor v = LBMS.getVisitors().remove(this.visitorID);
         if (v == null) {
-            return "invalid-visitor;";
+            return ",invalid-visitor;";
         }
         if (accountExists(v)) {
             LBMS.getVisitors().put(v.getVisitorID(), v);
-            return "duplicate-visitor;";
+            return ",duplicate-visitor;";
         }
         // add the visitor/employee to LBMS
         if (this.role.toLowerCase().equals("visitor") || this.role.toLowerCase().equals("employee")) {
@@ -63,7 +67,7 @@ public class CreateAccount implements Command {
             return "invalid-role;";
         }
 
-        return "success;";
+        return ",success;";
     }
 
     /**

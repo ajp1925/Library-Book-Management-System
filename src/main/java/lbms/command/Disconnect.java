@@ -28,6 +28,6 @@ public class Disconnect implements Command {
         if (LBMS.getSessions().remove(this.clientID) == null) {
             return("invalid-client-id;");
         }
-        return "disconnect;";
+        return ";";
     }
 }

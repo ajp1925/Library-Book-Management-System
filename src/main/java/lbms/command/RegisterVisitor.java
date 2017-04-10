@@ -24,18 +24,7 @@ public class RegisterVisitor implements Command {
         try {
             this.visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2], new PhoneNumber(arguments[3]));
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
-            // TODO all this is wrong
-            if (arguments.length == 1 && arguments[0].equals("")) {
-                throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
-            } else if (arguments.length == 1) {
-                throw new MissingParametersException("missing-parameters,last-name,address,phone-number");
-            } else if (arguments.length == 2) {
-                throw new MissingParametersException("missing-parameters,address,phone-number");
-            } else if (arguments.length == 3) {
-                throw new MissingParametersException("missing-parameters,phone-number");
-            } else {
-                throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
-            }
+            throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
         }
     }
 

@@ -28,12 +28,11 @@ public class RealCommandController implements CommandController {
                 if (request[0].equals("connect")) {
                     response = request[0] + "," + command.execute();
                 } else {
-                    response = request[0] + "," + command.execute();
+                    response = request[0] + "," + request[1] + command.execute();
                 }
             } catch (MissingParametersException e) {
                 response = e.getMessage() + ";";
             } catch (Exception e) {
-                e.printStackTrace();
                 response = request[0] + request[1] + "missing-parameters,{all};";
             }
         } else if (!requestString.equals("exit")) {
