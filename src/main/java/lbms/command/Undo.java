@@ -6,13 +6,14 @@ package lbms.command;
  */
 public class Undo implements Command {
 
+    private Long clientID;
+
     /**
      * Constructor for an Undo class object.
-     * @param request: the request string to be processed
-     * @throws MissingParametersException: when the request format is invalid
+     * @param clientID: the id of the client to undo
      */
-    public Undo(String request) throws MissingParametersException {
-        // TODO
+    public Undo(Long clientID) {
+        this.clientID = clientID;
     }
 
     /**

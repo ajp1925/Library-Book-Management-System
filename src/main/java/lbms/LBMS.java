@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
+import static lbms.LBMS.SearchService.local;
+
 /**
  * Main class to run the Library Book Management System.
  * @author Team B
@@ -20,6 +22,11 @@ public class LBMS {
     /** StartType enum for determining how the program should be run. */
     public enum StartType {
         GUI, CLI, API
+    }
+
+    /** SearchService enum used for searching for books to buy. */
+    public enum SearchService {
+        local, google
     }
 
     /** Constants for the opening and closing time. */
@@ -37,6 +44,7 @@ public class LBMS {
     private static HashMap<Long, Visit> currentVisits = new HashMap<>();
     private static HashMap<Long, Session> sessions = new HashMap<>();
     private static long totalSessions;
+    private static SearchService search;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -189,6 +197,7 @@ public class LBMS {
         currentVisits = new HashMap<>();
         sessions = new HashMap<>();
         totalSessions = 0;
+        search = local;
     }
 
     /**
@@ -322,5 +331,21 @@ public class LBMS {
      */
     public static void incrementSessions() {
         totalSessions++;
+    }
+
+    /**
+     * Getter for the search service.
+     * @return the method for searching for books to purchase
+     */
+    public static SearchService getSearch() {
+        return search;
+    }
+
+    /**
+     * Setter for the book search method.
+     * @param ss: the search service method
+     */
+    public static void setSearch(SearchService ss) {
+        search = ss;
     }
 }

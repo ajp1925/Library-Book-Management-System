@@ -5,7 +5,7 @@ import lbms.models.Visitor;
 
 /**
  * LogIn class for login command.
- * @author Team B TODO -> test this class
+ * @author Team B
  */
 public class LogIn implements Command {
 
@@ -38,9 +38,9 @@ public class LogIn implements Command {
             if (v.getUsername() != null && v.getUsername().equals(this.username) &&
                     v.getPassword().equals(this.password)) {
                 LBMS.getSessions().get(this.clientID).setV(v);
-                return "success;";
+                return ",success;";
             }
         }
-        return "bad-username-or-password;";
+        return ",bad-username-or-password;";
     }
 }

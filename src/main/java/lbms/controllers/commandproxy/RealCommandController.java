@@ -33,7 +33,7 @@ public class RealCommandController implements CommandController {
             } catch (MissingParametersException e) {
                 response = e.getMessage() + ";";
             } catch (Exception e) {
-                response = request[0] + request[1] + "missing-parameters,{all};";
+                response = request[0] + "," + request[1] + ",missing-parameters,{all};";
             }
         } else if (!requestString.equals("exit")) {
             response = "partial-request;";
@@ -80,13 +80,13 @@ public class RealCommandController implements CommandController {
                 case "login":
                     return new LogIn(clientID + "," + request[2]);
                 case "logout":
-                    return new LogOut(clientID + "," + request[2]);
+                    return new LogOut(clientID);
                 case "undo":
-                    return new Undo(request[2]);
+                    return new Undo(clientID);
                 case "redo":
-                    return new Redo(request[2]);
+                    return new Redo(clientID);
                 case "service":
-                    return new SetBookService(request[2]);
+                    return new SetBookService(clientID, request[2]);
                 case "arrive":
                     if (ProxyCommandController.isOpen()) {
                         BeginVisit b = new BeginVisit(request[2]);

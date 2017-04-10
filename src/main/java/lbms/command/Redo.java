@@ -6,13 +6,14 @@ package lbms.command;
  */
 public class Redo implements Command {
 
+    private Long clientID;
+
     /**
      * Constructor for a Redo class object.
-     * @param request: the string to be processed
-     * @throws MissingParametersException: when the request format is invalid
+     * @param clientID: the ID of the client
      */
-    public Redo(String request) throws MissingParametersException {
-        // TODO
+    public Redo(Long clientID) {
+        this.clientID = clientID;
     }
 
     /**

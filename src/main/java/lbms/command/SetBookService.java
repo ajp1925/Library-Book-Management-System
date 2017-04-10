@@ -1,18 +1,36 @@
 package lbms.command;
 
+import lbms.LBMS;
+
+import static lbms.LBMS.SearchService.*;
+
 /**
  * SetBookService class for the set book service command.
- * @author Team B
+ * @author Team B TODO -> should work but still needs to be tested
  */
 public class SetBookService implements Command {
+
+    private Long clientID;
+    private LBMS.SearchService search;
 
     /**
      * Constructor for a SetBookService class object.
      * @param request: the request string to be processed
      * @throws MissingParametersException: when the request format is invalid
      */
-    public SetBookService(String request) throws MissingParametersException {
-        // TODO
+    public SetBookService(Long clientID, String request) throws MissingParametersException {
+        this.clientID = clientID;
+        String s = request.replaceAll(";", "").replaceAll(",", "");
+        switch (s) {
+            case "local":
+                search = local;
+                break;
+            case "google":
+                search = google;
+                break;
+            default:
+                throw new MissingParametersException("invalid-info-service");
+        }
     }
 
     /**
@@ -21,7 +39,7 @@ public class SetBookService implements Command {
      */
     @Override
     public String execute() {
-        // TODO
-        return null;
+        LBMS.getSessions().get(this.clientID).setSearch(this.search);
+        return ",success;";
     }
 }

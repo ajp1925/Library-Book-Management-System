@@ -2,8 +2,11 @@ package lbms.models;
 
 import lbms.LBMS;
 import lbms.command.Undoable;
+import lbms.LBMS.SearchService;
 
 import java.util.Stack;
+
+import static lbms.LBMS.SearchService.*;
 
 /**
  * Session class for the LBMS
@@ -13,6 +16,7 @@ public class Session {
 
     private long clientID;
     private Visitor v;
+    private SearchService search;
     private Stack<Undoable> undoStack;
     private Stack<Undoable> redoStack;
 
@@ -23,6 +27,7 @@ public class Session {
         LBMS.incrementSessions();
         this.clientID = LBMS.getTotalSessions();
         this.v = null;
+        this.search = local;
         this.undoStack = new Stack<>();
         this.redoStack = new Stack<>();
     }
@@ -79,5 +84,21 @@ public class Session {
         u.execute();
         undoStack.push(u);
         return null; // TODO return a string if failure
+    }
+
+    /**
+     * Sets the search service for the session.
+     * @param ss: the search service to be set
+     */
+    public void setSearch(SearchService ss) {
+        search = ss;
+    }
+
+    /**
+     * Getter for the search service.
+     * @return the search type being used
+     */
+    public SearchService getSearch() {
+        return search;
     }
 }

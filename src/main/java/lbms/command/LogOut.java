@@ -1,11 +1,10 @@
 package lbms.command;
 
 import lbms.LBMS;
-import lbms.models.Session;
 
 /**
  * LogOut class for the log out command.
- * @author Team  TODO -> test this class
+ * @author Team
  */
 public class LogOut implements Command {
 
@@ -13,15 +12,10 @@ public class LogOut implements Command {
 
     /**
      * Constructor for a log out object.
-     * @param request: the string to be processed
+     * @param clientID: the ID of the client to be logged out
      */
-    public LogOut(String request) throws MissingParametersException {
-        try {
-            this.clientID = Long.parseLong(request.split(",")[0]);
-        } catch (NumberFormatException e) {
-            throw new MissingParametersException("Invalid clientID passed to LogOut");
-        }
-
+    public LogOut(Long clientID) throws MissingParametersException {
+        this.clientID = clientID;
     }
 
     /**
@@ -29,11 +23,7 @@ public class LogOut implements Command {
      * @return a response as a string
      */
     public String execute() {
-        Session session = LBMS.getSessions().get(this.clientID);
-        if (session == null) {
-            return "invalid-client-id;";
-        }
-        session.setV(null);
-        return "success;";
+        LBMS.getSessions().get(this.clientID).setV(null);
+        return ",success;";
     }
 }

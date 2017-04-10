@@ -6,7 +6,7 @@ import lbms.models.Visitor;
 
 /**
  * CreateAccount class for the create account command.
- * @author Team B TODO -> test this class
+ * @author Team B
  */
 public class CreateAccount implements Command {
 
