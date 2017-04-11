@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.LBMS;
+import lbms.models.Session;
 
 /**
  * LogOut class for the log out command.
@@ -23,7 +24,11 @@ public class LogOut implements Command {
      * @return a response as a string
      */
     public String execute() {
-        LBMS.getSessions().get(this.clientID).setV(null);
+        Session session = LBMS.getSessions().get(this.clientID);
+        if(session == null) {
+            return ",invalid-client-id;";
+        }
+        session.setV(null);
         return ",success;";
     }
 }

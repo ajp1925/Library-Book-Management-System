@@ -31,13 +31,13 @@ public class Borrow implements Command, Undoable {
     public Borrow(String request) throws MissingParametersException {
         String[] allArguments = request.split(",");
         if (allArguments.length < 2) {
-            throw new MissingParametersException("missing-parameters,clientID,{ids}");
+            throw new MissingParametersException(",missing-parameters,clientID,{ids}");
         }
         this.clientID = Long.parseLong(allArguments[0]);
         String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
 
         if (arguments.length < 1) {
-            throw new MissingParametersException("missing-parameters,{ids}");
+            throw new MissingParametersException(",missing-parameters,{ids}");
         }
         int index = 0;
         if (arguments[index].startsWith("{")) {
@@ -46,7 +46,7 @@ public class Borrow implements Command, Undoable {
             }
             this.ids.add(Integer.parseInt(arguments[index].replaceAll("[{}]", "")));
         } else {
-            throw new MissingParametersException("missing-parameters,{ids}");
+            throw new MissingParametersException(",missing-parameters,{ids}");
         }
 
         if (index < arguments.length - 1) {
@@ -66,23 +66,23 @@ public class Borrow implements Command, Undoable {
     @Override
     public String execute() {
         if (!ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
-            return "not-authorized;";
+            return ",not-authorized;";
         }
 
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
-            return "invalid-visitor-id;";
+            return ",invalid-visitor-id;";
         } else if (UserSearch.BY_ID.findFirst(this.visitorID).getFines() > 0) {
-            return "outstanding-fine," +
+            return ",outstanding-fine," +
                     new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(this.visitorID).getFines()) + ";";
         }
         StringBuilder invalidIDs = new StringBuilder();
         String temp = "";
         for (Integer i: this.ids) {
             if (!UserSearch.BY_ID.findFirst(this.visitorID).canCheckOut()) {
-                return "book-limit-exceeded;";
+                return ",book-limit-exceeded;";
             }
             if (i <= LBMS.getLastBookSearch().size() && LBMS.getLastBookSearch().get(i - 1).getCopiesAvailable() < 1) {
-                return "book-limit-exceeded;";
+                return ",book-limit-exceeded;";
             }
             temp = checkOutBook(i, this.visitorID);
             try {
@@ -100,9 +100,9 @@ public class Borrow implements Command, Undoable {
             output += invalidIDs;
             //output = output.substring(0,output.length() - 1);
             output += ";";
-            return output;
+            return "," + output;
         } else {
-            return temp + ";";
+            return "," + temp + ";";
         }
     }
 

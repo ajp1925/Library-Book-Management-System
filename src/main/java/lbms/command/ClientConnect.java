@@ -25,6 +25,6 @@ public class ClientConnect implements Command {
     @Override
     public String execute() {
         LBMS.getSessions().put(this.s.getClientID(), this.s);
-        return s.getClientID() + ";";
+        return "," + s.getClientID() + ";";
     }
 }
