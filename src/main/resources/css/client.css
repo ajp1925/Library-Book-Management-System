@@ -3,39 +3,8 @@
     -highlight-color: #f9b086;
 }
 
-#topPane {
-    -fx-background-color: -main-color;
-}
-
-#menuPane {
-    -fx-background-color: -main-color;
-}
-
-#menuButton {
-    -fx-background-color: -main-color;
-    -fx-border-style: none;
-    -fx-graphic: url("../icons/menu.png");
-}
-
-#menuButton:hover {
-    -fx-background-color: -highlight-color;
-}
-
-#btnBox {
-    -fx-border-style: none;
-}
-
-.menu-button {
-    -fx-background-color: -main-color;
-    -fx-border-style: none;
-}
-
-.menu-button:hover {
-    -fx-background-color: -highlight-color;
-}
-
-#menuBackground {
-    -fx-background-color: -main-color;
+#root {
+    -fx-background-color: white;
 }
 
 #client-tab-pane .tab-header-background {
@@ -43,10 +12,7 @@
 }
 
 #client-tab-pane .tab-header-area {
-    -fx-padding: 0 0 0 50;
-    -fx-max-height: 30;
-    -fx-min-height: 30;
-    -fx-pref-height: 30;
+    -fx-padding: 5 0 -1 20;
 }
 
 #client-tab-pane .tab {
@@ -88,8 +54,21 @@
     -fx-background-color: -main-color !important;
 }
 
+#menuBackground {
+    -fx-background-color: -main-color;
+}
+
 .menu-bar {
     -fx-background-color: -main-color;
+}
+
+.menu-button {
+    -fx-background-color: -main-color;
+    -fx-border-style: none;
+}
+
+.menu-button:hover {
+    -fx-background-color: -highlight-color;
 }
 
 .menu-button:hover .label {

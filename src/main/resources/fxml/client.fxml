@@ -10,30 +10,15 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.ClientController">
+<BorderPane id="root" fx:id="root" stylesheets="@../css/client.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.ClientController">
     <center>
        <AnchorPane>
           <children>
-             <Pane fx:id="menuBackground" prefHeight="30.0" prefWidth="0" stylesheets="@../css/client.css" />
              <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <left>
-                   <VBox fx:id="menuPane" prefHeight="366.0" prefWidth="0" stylesheets="@../css/client.css" BorderPane.alignment="CENTER">
-                      <children>
-                         <Button fx:id="clockButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="0" styleClass="menu-button" stylesheets="@../css/client.css" />
-                      </children>
-                      <BorderPane.margin>
-                         <Insets top="30.0" />
-                      </BorderPane.margin>
-                   </VBox>
-                </left>
                 <center>
-                   <TabPane id="client-tab-pane" fx:id="tabs" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/client.css" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER">
-                     <tabs>
-                     </tabs>
-                   </TabPane>
+                   <TabPane id="client-tab-pane" fx:id="tabs" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/client.css" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
                 </center>
              </BorderPane>
-             <Button fx:id="menuButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="29.0" prefWidth="32.0" stylesheets="@../css/client.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <AnchorPane id="bottom-box" prefHeight="0.0" prefWidth="600.0" stylesheets="@../css/client.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                    <Text fx:id="clockText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="15.0">

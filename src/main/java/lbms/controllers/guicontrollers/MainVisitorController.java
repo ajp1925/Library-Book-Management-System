@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
 
@@ -16,12 +15,13 @@ import lbms.views.GUI.SessionManager;
  * @author Team B
  */
 public class MainVisitorController implements StateController {
-
     private SessionManager manager;
 
     private final static int TITLE_INDEX = 0;
     private final static int AUTHOR_INDEX = 1;
     private final static int ISBN_INDEX = 2;
+    private final static String BEGIN_VISIT_ID = "begin-visit-button";
+    private final static String END_VISIT_ID = "end-visit-button";
 
     @FXML private AnchorPane root;
     @FXML private TabPane searchTabPane;
@@ -51,9 +51,11 @@ public class MainVisitorController implements StateController {
         if (ProxyCommandController.inLibrary(manager.getClientId())) {
             visitButton.setText("End Visit");
             visitButton.setOnAction(e -> endVisit());
+            visitButton.setId(END_VISIT_ID);
         } else {
             visitButton.setText("Begin Visit");
             visitButton.setOnAction(e -> beginVisit());
+            visitButton.setId(BEGIN_VISIT_ID);
         }
     }
 
@@ -91,6 +93,7 @@ public class MainVisitorController implements StateController {
             default:
                 visitButton.setText("End Visit");
                 visitButton.setOnAction(e -> endVisit());
+                visitButton.setId(END_VISIT_ID);
                 break;
         }
     }
@@ -109,6 +112,7 @@ public class MainVisitorController implements StateController {
             default:
                 visitButton.setText("Begin Visit");
                 visitButton.setOnAction(e -> beginVisit());
+                visitButton.setId(BEGIN_VISIT_ID);
                 break;
         }
     }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -39,7 +41,7 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0" styleClass="search-tab-content" stylesheets="@../css/main.css">
                                  <children>
                                     <TextField fx:id="searchISBNField" layoutX="16.0" layoutY="20.0" prefHeight="33.0" prefWidth="558.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-                                     <Button id="searchButton" layoutX="883.0" layoutY="24.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
+                                     <Button id="search-button" layoutX="883.0" layoutY="24.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -52,7 +54,10 @@
                         <Insets bottom="25.0" left="30.0" right="30.0" top="20.0" />
                      </padding>
                   </TabPane>
-                  <Button id="visit-button" fx:id="visitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" stylesheets="@../css/main.css" />
+                  <Button styleClass="visit-button" fx:id="visitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" stylesheets="@../css/main.css">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Button>
                </children>
             </VBox>
          </children>
