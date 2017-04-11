@@ -20,7 +20,7 @@ public class EndVisitViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nWhat is the ID of the visitor exiting the library? ");
-        visitorID = scanner.nextLong();
+        this.visitorID = scanner.nextLong();
     }
 
     /**
@@ -28,7 +28,7 @@ public class EndVisitViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest("depart," + visitorID + ";");
+        String response = new ProxyCommandController().processRequest("depart," + this.visitorID + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -53,11 +53,10 @@ public class EndVisitViewState implements State {
      */
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if(fields[1].equals("invalid-id;")) {
-            return "\nVisitor " + visitorID + " is not in the library.";
-        }
-        else {
-            return "\nVisitor " + visitorID + " has left the library at "
+        if (fields[1].equals("invalid-id;")) {
+            return "\nVisitor " + this.visitorID + " is not in the library.";
+        } else {
+            return "\nVisitor " + this.visitorID + " has left the library at "
                     + fields[2] + " and was in the library for " + fields[3];
         }
     }

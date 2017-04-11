@@ -26,13 +26,13 @@ public class RegisterViewState implements State {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nRegister a new user.");
         System.out.print("First Name: ");
-        firstName = scanner.nextLine();
+        this.firstName = scanner.nextLine();
         System.out.print("Last Name: ");
-        lastName = scanner.nextLine();
+        this.lastName = scanner.nextLine();
         System.out.print("Address: ");
-        address = scanner.nextLine();
+        this.address = scanner.nextLine();
         System.out.print("Phone Number: ");
-        phone = Long.parseLong(scanner.nextLine().replaceAll("[\\D]", ""));
+        this.phone = Long.parseLong(scanner.nextLine().replaceAll("[\\D]", ""));
     }
 
     /**
@@ -40,12 +40,11 @@ public class RegisterViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest("register," + firstName + ","
-                + lastName + "," + address + "," + phone + ";");
+        String response = new ProxyCommandController().processRequest("register," + this.firstName + ","
+                + this.lastName + "," + this.address + "," + this.phone + ";");
         try {
             System.out.println(parseResponse(response));
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(response);
         }
 
@@ -66,10 +65,9 @@ public class RegisterViewState implements State {
      */
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if(fields[1].equals("duplicate;")) {
+        if (fields[1].equals("duplicate;")) {
             return "This user already exists in the system.";
-        }
-        else {
+        } else {
             // TODO fix the search under this line, may work may not????
             Visitor visitor = UserSearch.BY_ID.findFirst(fields[0]);
             return String.format("\nNew visitor created on %s:\n\tName: %s\n\tAddress: %s\n\tPhone: %s\n\tVisitor " +

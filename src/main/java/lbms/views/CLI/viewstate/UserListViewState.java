@@ -19,9 +19,8 @@ public class UserListViewState implements State {
 
         if (LBMS.getVisitors().isEmpty()) {
             System.out.println("No users are registered in the system.");
-        }
-        else {
-            for(Visitor visitor : LBMS.getVisitors().values()) {
+        } else {
+            for (Visitor visitor : LBMS.getVisitors().values()) {
                 System.out.println(String.format("Visitor ID: %d\n\tName: %s\n\tAddress: %s\n\tPhone: %s\n",
                         visitor.getVisitorID(), visitor.getName(), visitor.getAddress(), visitor.getPhoneNumber()));
             }

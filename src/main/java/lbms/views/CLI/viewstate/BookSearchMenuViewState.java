@@ -30,7 +30,7 @@ public class BookSearchMenuViewState implements State {
      * @param state: the command to handle
      */
     public void change(String state) {
-        switch(state) {
+        switch (state) {
             case "library":
                 CLIView.setState(new LibrarySearchViewState());
                 break;

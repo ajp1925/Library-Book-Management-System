@@ -30,22 +30,20 @@ public class StoreSearchViewState implements State {
         Scanner scanner = new Scanner(System.in);
         String input;
         String optionalArgumentPrompt = "(Press enter to search only with what you've input so far)";
-        for(String prompt : prompts) {
+        for (String prompt : this.prompts) {
             System.out.println(prompt);
-            if(!prompt.equals(prompts[0])) {
+            if (!prompt.equals(this.prompts[0])) {
                 System.out.println(optionalArgumentPrompt);
             }
 
             input = scanner.nextLine();
-            if(input.equals("")) {
+            if (input.equals("")) {
                 break;
-            }
-            else {
-                if(prompt.equals(prompts[1])) {
-                    commandString += ",{" + input + "}";
-                }
-                else {
-                    commandString += "," + input;
+            } else {
+                if (prompt.equals(this.prompts[1])) {
+                    this.commandString += ",{" + input + "}";
+                } else {
+                    this.commandString += "," + input;
                 }
             }
         }
@@ -56,7 +54,7 @@ public class StoreSearchViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest(commandString + ";");
+        String response = new ProxyCommandController().processRequest(this.commandString + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -83,7 +81,7 @@ public class StoreSearchViewState implements State {
      */
     @Override
     public void change(String state) {
-        switch(state) {
+        switch (state) {
             case "purchase":
                 CLIView.setState(new PurchaseBookViewState());
                 break;
@@ -114,8 +112,7 @@ public class StoreSearchViewState implements State {
             } else {
                 return response;
             }
-        }
-        else {
+        } else {
             return fields[1];
         }
     }

@@ -20,7 +20,7 @@ public class BeginVisitViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nWhat is the ID of the visitor entering the library? ");
-        visitorID = scanner.nextLong();
+        this.visitorID = scanner.nextLong();
     }
 
     /**
@@ -28,7 +28,7 @@ public class BeginVisitViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest("arrive," + visitorID + ";");
+        String response = new ProxyCommandController().processRequest("arrive," + this.visitorID + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -55,11 +55,11 @@ public class BeginVisitViewState implements State {
         String[] fields = response.split(",");
         switch (fields[1]) {
             case "duplicate;":
-                return "\nVisitor " + visitorID + " is already in the library.";
+                return "\nVisitor " + this.visitorID + " is already in the library.";
             case "invalid-id;":
-                return "\nVisitor " + visitorID + " is not registered in the system.";
+                return "\nVisitor " + this.visitorID + " is not registered in the system.";
             default:
-                return "\nVisitor " + visitorID + " has entered the library on "
+                return "\nVisitor " + this.visitorID + " has entered the library on "
                         + fields[2] + " at " + fields[3].replace(";", "") + ".";
         }
     }

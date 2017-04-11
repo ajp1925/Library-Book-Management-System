@@ -21,9 +21,9 @@ public class AdvanceViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nHow many days would you like to advance the clock?");
-        days = scanner.nextInt();
+        this.days = scanner.nextInt();
         System.out.println("How many hours would you like to advance the clock?");
-        hours = scanner.nextInt();
+        this.hours = scanner.nextInt();
     }
 
     /**
@@ -31,7 +31,8 @@ public class AdvanceViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest("advance," + days + "," + hours + ";");
+        String response = new ProxyCommandController().processRequest("advance," + this.days + "," +
+                this.hours + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -56,13 +57,14 @@ public class AdvanceViewState implements State {
      */
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        switch(fields[1]) {
-            case ("success;"):
-                return "\nAdvance success, clock has been moved forward " + days + " day(s) and " + hours + " hour(s).";
-            case ("invalid-number-of-days"):
-                return "\nFailure, " + days + " is an invalid number of days to skip.";
+        switch (fields[1]) {
+            case "success;":
+                return "\nAdvance success, clock has been moved forward " + this.days + " day(s) and " + this.hours
+                        + " hour(s).";
+            case "invalid-number-of-days":
+                return "\nFailure, " + this.days + " is an invalid number of days to skip.";
             default:
-                return "\nFailure, " + hours + " is an invalid number of hours to skip.";
+                return "\nFailure, " + this.hours + " is an invalid number of hours to skip.";
         }
     }
 }

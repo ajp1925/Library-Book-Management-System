@@ -31,22 +31,20 @@ public class LibrarySearchViewState implements State{
         Scanner scanner = new Scanner(System.in);
         String input;
         String optionalArgumentPrompt = "(Press enter to search only with what you've input so far)";
-        for(String prompt : prompts) {
+        for (String prompt : this.prompts) {
             System.out.println(prompt);
-            if(!prompt.equals(prompts[0]) && !prompt.equals(prompts[1])) {
+            if (!prompt.equals(this.prompts[0]) && !prompt.equals(this.prompts[1])) {
                 System.out.println(optionalArgumentPrompt);
             }
 
             input = scanner.nextLine();
-            if(input.equals("")) {
+            if (input.equals("")) {
                 break;
-            }
-            else {
-                if(prompt.equals(prompts[1])) {
-                    commandString += ",{" + input + "}";
-                }
-                else {
-                    commandString += "," + input;
+            } else {
+                if (prompt.equals(this.prompts[1])) {
+                    this.commandString += ",{" + input + "}";
+                } else {
+                    this.commandString += "," + input;
                 }
             }
         }
@@ -57,12 +55,11 @@ public class LibrarySearchViewState implements State{
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest(commandString + ";");
+        String response = new ProxyCommandController().processRequest(this.commandString + ";");
 
         try {
             System.out.println(parseResponse(response));
-        }
-        catch(Exception e){
+        } catch (Exception e){
             System.out.println(response);
         }
 
@@ -90,8 +87,7 @@ public class LibrarySearchViewState implements State{
             } else {
                 return response;
             }
-        }
-        else {
+        } else {
             return fields[1];
         }
     }

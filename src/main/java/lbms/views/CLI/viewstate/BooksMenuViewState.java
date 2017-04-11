@@ -17,7 +17,7 @@ public class BooksMenuViewState implements State {
         System.out.println("\nPlease select a command:");
         System.out.println("search)      Search for a book");
 
-        if(ProxyCommandController.isOpen()) {
+        if (ProxyCommandController.isOpen()) {
             System.out.println("checkout)    Borrow a book");
         }
 
@@ -38,7 +38,7 @@ public class BooksMenuViewState implements State {
      */
     @Override
     public void change(String state) {
-         switch(state) {
+         switch (state) {
              case "search":
                  CLIView.setState(new BookSearchMenuViewState());
                  break;
@@ -53,13 +53,13 @@ public class BooksMenuViewState implements State {
                  break;
              case "checkout":
              case "borrow":
-                 if(ProxyCommandController.isOpen()) {
+                 if (ProxyCommandController.isOpen()) {
                      CLIView.setState(new BorrowBookViewState());
                      break;
                  }
              default:
                  System.out.println("Command not found\n");
-                 this.init();
+                 init();
          }
     }
 }

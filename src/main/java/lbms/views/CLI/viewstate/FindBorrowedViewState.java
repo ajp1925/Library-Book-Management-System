@@ -20,7 +20,7 @@ public class FindBorrowedViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWhat is the ID of the visitor you are querying?");
-        visitorID = scanner.nextLong();
+        this.visitorID = scanner.nextLong();
     }
 
     /**
@@ -28,7 +28,7 @@ public class FindBorrowedViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest("borrowed," + visitorID + ";");
+        String response = new ProxyCommandController().processRequest("borrowed," + this.visitorID + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -55,12 +55,11 @@ public class FindBorrowedViewState implements State {
         String[] fields = response.replace(";", "").split("\n", 2);
         if (fields.length == 1) {
             if (fields[0].endsWith("0")) {
-                return "\nVisitor " + visitorID + " has no borrowed books.";
+                return "\nVisitor " + this.visitorID + " has no borrowed books.";
             } else {
-                return "\nVisitor " + visitorID + " is not valid.";
+                return "\nVisitor " + this.visitorID + " is not valid.";
             }
-        }
-        else {
+        } else {
             return "\n" + fields[1];
         }
     }

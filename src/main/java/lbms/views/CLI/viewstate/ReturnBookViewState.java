@@ -21,14 +21,14 @@ public class ReturnBookViewState implements State {
     public void init() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWhat is the ID of the visitor returning the book? ");
-        visitorID = scanner.nextLong();
+        this.visitorID = scanner.nextLong();
         String response;
         do {
             System.out.println("What is the id of the book they are returning?");
-            books += "," + scanner.next();
+            this.books += "," + scanner.next();
             System.out.println("Is the visitor returning another book?");
             response = scanner.next();
-        } while(response.toLowerCase().equals("yes") || response.toLowerCase().equals("y"));
+        } while (response.toLowerCase().equals("yes") || response.toLowerCase().equals("y"));
     }
 
     /**
@@ -36,7 +36,7 @@ public class ReturnBookViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest("return," + visitorID + books + ";");
+        String response = new ProxyCommandController().processRequest("return," + this.visitorID + this.books + ";");
 
         try {
             System.out.println(parseResponse(response));
@@ -60,7 +60,7 @@ public class ReturnBookViewState implements State {
      * @return the output to be printed
      */
     public String parseResponse(String response) {
-        switch(response.replaceAll(";$", "") .split(",")[0]) {
+        switch (response.replaceAll(";$", "") .split(",")[0]) {
             case "invalid-visitor-id":
                 return "Invalid visitor ID entered.";
             case "invalid-book-id":

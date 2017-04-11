@@ -25,14 +25,14 @@ public class PurchaseBookViewState implements State {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\nWhat quantity of these books would you like to purchase?");
-        quantity = scanner.nextInt();
+        this.quantity = scanner.nextInt();
         String response;
         do {
             System.out.println("\nPlease enter the ID of the book to purchase.");
-            ids += "," + scanner.next();
+            this.ids += "," + scanner.next();
             System.out.println("\nAre you buying another book?");
             response = scanner.next();
-        } while(response.toLowerCase().equals("yes") || response.toLowerCase().equals("y"));
+        } while (response.toLowerCase().equals("yes") || response.toLowerCase().equals("y"));
     }
 
     /**
@@ -40,12 +40,11 @@ public class PurchaseBookViewState implements State {
      */
     @Override
     public void onEnter() {
-        String response = new ProxyCommandController().processRequest("buy," + quantity + ids + ";");
+        String response = new ProxyCommandController().processRequest("buy," + this.quantity + this.ids + ";");
 
         try {
             System.out.println("\n" + parseResponse(response));
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(response);
         }
 
@@ -69,21 +68,19 @@ public class PurchaseBookViewState implements State {
         try {
             response = response.replaceAll(";$", "");
             String[] fields = response.split(",");
-            if(fields[1].equals("success")) {
+            if (fields[1].equals("success")) {
                 String output = "Book(s) purchased, ";
                 List<Book> books;
-                for(int i = 2; i < fields.length; i++) {
+                for (int i = 2; i < fields.length; i++) {
                     try {
                         books = BookSearch.BY_ISBN.findAll(Long.parseLong(fields[i]));
                         output += books.get(0).getTitle() + " * " + fields[1] + "\n";
-                    }
-                    catch(NumberFormatException e) {}
+                    } catch(NumberFormatException e) {}
                 }
                 return output;
             }
             return null;
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             return "failure;";
         }
     }

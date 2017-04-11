@@ -16,7 +16,7 @@ public class DefaultViewState implements State {
     public void init() {
         System.out.println("\nWelcome to the Library Book Management System!");
 
-        if(!ProxyCommandController.isOpen()) {
+        if (!ProxyCommandController.isOpen()) {
             System.out.println("We are currently closed but here you can still access a few commands.");
         }
 
@@ -38,7 +38,7 @@ public class DefaultViewState implements State {
      * @param state: the command to handle
      */
     public void change(String state) {
-        switch(state) {
+        switch (state) {
             case "books":
                 CLIView.setState(new BooksMenuViewState());
                 break;
@@ -50,7 +50,7 @@ public class DefaultViewState implements State {
                 break;
             default:
                 System.out.println("Command not found\n\n");
-                this.init();
+                init();
                 break;
         }
     }

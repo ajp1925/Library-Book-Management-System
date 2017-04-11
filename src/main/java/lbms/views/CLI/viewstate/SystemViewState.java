@@ -30,7 +30,7 @@ public class SystemViewState implements State {
      * @param state: the command to handle
      */
     public void change(String state) {
-        switch(state) {
+        switch (state) {
             case "clock":
                 CLIView.setState(new ClockViewState());
                 break;
@@ -42,7 +42,7 @@ public class SystemViewState implements State {
                 break;
             default:
                 System.out.println("Command not found\n");
-                this.init();
+                init();
                 break;
         }
     }

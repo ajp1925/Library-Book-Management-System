@@ -18,8 +18,7 @@ public class ResetViewState implements State {
 
         try {
             System.out.println(parseResponse(response));
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(response);
         }
 
@@ -46,10 +45,9 @@ public class ResetViewState implements State {
      */
     public String parseResponse(String response) {
         String[] fields = response.split(",");
-        if(fields[1].equals("success;")) {
+        if (fields[1].equals("success;")) {
             return "\nSuccess, system clock has been reset";
-        }
-        else {
+        } else {
             return "\nFailure, system clock failed to reset";
         }
     }

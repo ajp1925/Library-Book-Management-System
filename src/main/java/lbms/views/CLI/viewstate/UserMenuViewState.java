@@ -16,7 +16,7 @@ public class UserMenuViewState implements State {
     public void init() {
         System.out.println("\nPlease select a command:");
 
-        if(ProxyCommandController.isOpen()) {
+        if (ProxyCommandController.isOpen()) {
             System.out.println("enter library)    Allow a user to enter the library");
             System.out.println("exit library)     Have a user leave the library");
         }
@@ -54,19 +54,19 @@ public class UserMenuViewState implements State {
                 break;
             case "enter library":
             case "enter":
-                if(ProxyCommandController.isOpen()) {
+                if (ProxyCommandController.isOpen()) {
                     CLIView.setState(new BeginVisitViewState());
                     break;
                 }
             case "exit library":
             case "leave":
-                if(ProxyCommandController.isOpen()) {
+                if (ProxyCommandController.isOpen()) {
                     CLIView.setState(new EndVisitViewState());
                     break;
                 }
             default:
                 System.out.println("Command not found\n");
-                this.init();
+                init();
                 break;
         }
     }

@@ -18,8 +18,7 @@ public class ClockViewState implements State {
 
         try {
             System.out.println(parseResponse(response));
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(response);
         }
 
@@ -41,9 +40,9 @@ public class ClockViewState implements State {
      */
     @Override
     public void change(String state) {
-        switch(state) {
+        switch (state) {
             case "clock":
-                this.init();
+                init();
                 break;
             case "advance":
                 CLIView.setState(new AdvanceViewState());
@@ -56,7 +55,7 @@ public class ClockViewState implements State {
                 break;
             default:
                 System.out.println("Command not found\n");
-                this.init();
+                init();
         }
     }
 

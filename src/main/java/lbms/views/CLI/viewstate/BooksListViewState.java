@@ -17,11 +17,10 @@ public class BooksListViewState implements State {
     public void init() {
         System.out.println();
 
-        if(LBMS.getBooks().isEmpty()) {
+        if (LBMS.getBooks().isEmpty()) {
             System.out.println("No books are owned by the library.");
-        }
-        else {
-            for(Book book : LBMS.getBooks().values()) {
+        } else {
+            for (Book book : LBMS.getBooks().values()) {
                 System.out.println(book.toString());
             }
         }

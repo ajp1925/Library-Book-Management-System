@@ -23,10 +23,9 @@ public class ReportViewState implements State {
         String input = scanner.nextLine();
 
         try {
-            days = Integer.parseInt(input);
-        }
-        catch(Exception e){
-            days = null;
+            this.days = Integer.parseInt(input);
+        } catch (Exception e){
+            this.days = null;
         }
     }
 
@@ -36,19 +35,17 @@ public class ReportViewState implements State {
     @Override
     public void onEnter() {
         String response;
-        if(days == null) {
+        if (this.days == null) {
             response = new ProxyCommandController().processRequest("report;");
             System.out.println("\nSystem report:");
-        }
-        else {
-            response = new ProxyCommandController().processRequest("report," + days + ";");
-            System.out.println("\nSystem report for " + days + " days:");
+        } else {
+            response = new ProxyCommandController().processRequest("report," + this.days + ";");
+            System.out.println("\nSystem report for " + this.days + " days:");
         }
 
         try {
             System.out.println(parseResponse(response));
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(response);
         }
 
