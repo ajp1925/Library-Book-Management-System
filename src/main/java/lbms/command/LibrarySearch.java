@@ -89,6 +89,9 @@ public class LibrarySearch implements Command {
             if (this.title != null && !b.getTitle().contains(this.title)) {
                 antiMatches.add(b);
             }
+            if (!LBMS.getBooks().containsKey(b.getIsbn())) {
+                antiMatches.add(b);
+            }
             if (this.authors != null) {
                 for (String author: this.authors) {
                     if (!b.hasAuthorPartial(author)) {
@@ -131,9 +134,9 @@ public class LibrarySearch implements Command {
         if (matches.size() > 0) {
             matchesString = new StringBuilder(matchesString.substring(0, matchesString.length() - 1));
         } else {
-            return "0;";
+            return ",0;";
         }
 
-        return matches.size() + "," + matchesString + ";";
+        return "," + matches.size() + "," + matchesString + ";";
     }
 }
