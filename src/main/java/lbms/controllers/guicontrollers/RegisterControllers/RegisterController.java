@@ -127,10 +127,13 @@ public class RegisterController implements StateController {
 
             if (visitorId.isEmpty()) {
                 try {
-                    String response = new ProxyCommandController().processRequest(
-                            String.format("%s,register,%s,%s,%s,%s;",
-                                    manager.getClientId(), firstName, lastName, address, phoneNumber));
-                    System.out.println(response);
+                    String request = String.format("%s,register,%s,%s,%s,%s;",
+                            manager.getClientId(), firstName, lastName, address, phoneNumber);
+                    System.out.println(request);        // TODO remove
+
+                    String response = new ProxyCommandController().processRequest(request);
+                    System.out.println(response);       // TODO remove
+
                     // parse response
                     String[] fields = response.split(",");
                     if (fields[2].equals("duplicate;")) {
@@ -201,10 +204,13 @@ public class RegisterController implements StateController {
         } else {
             boolean valid;
             try {
-                String response = new ProxyCommandController().processRequest(
-                        String.format("%s,create,%s,%s,%s,%s;",
-                                manager.getClientId(), username, password, "visitor", visitorId));
-                System.out.println(response);
+                String request = String.format("%s,create,%s,%s,%s,%s;",
+                        manager.getClientId(), username, password, "visitor", visitorId);
+                System.out.println(request);        // TODO remove
+
+                String response = new ProxyCommandController().processRequest(request);
+                System.out.println(response);       // TODO remove
+
                 // parse response
                 String[] fields = response.replace(";", "").split(",");
                 switch (fields[1]) {
@@ -225,22 +231,29 @@ public class RegisterController implements StateController {
                         break;
                 }
             } catch (Exception e) {
-                System.out.println(e);
                 valid = false;
             }
 
             if (valid) {
                 try {
-                    String response = new ProxyCommandController().processRequest(
-                            String.format("%s,login,%s,%s;",
-                                    manager.getClientId(), username, password));
+                    String request = String.format("%s,login,%s,%s;",
+                            manager.getClientId(), username, password);
+                    System.out.println(request);        // TODO remove
+
+                    String response = new ProxyCommandController().processRequest(request);
+                    System.out.println(response);       // TODO remove
 
                     // parse response
                     String[] fields = response.replace(";", "").split(",");
 
                     if (fields[2].equals("success")) {
                         manager.setUser(username);
-                        manager.display("main_visitor");
+
+                        if (ProxyCommandController.isEmployee(manager.getClientId())) {
+                            manager.display("main_employee");
+                        } else {
+                            manager.display("main_visitor");
+                        }
                     } else {
                         throw new Exception();
                     }

@@ -94,7 +94,7 @@ public class ProxyCommandController implements ICommandController {
      * @param clientID the id of the client
      * @return true if the client id represents and employee, false otherwise
      */
-    private static boolean isEmployee(long clientID) {
+    public static boolean isEmployee(long clientID) {
         try {
             Visitor v = LBMS.getSessions().get(clientID).getV();
             for (Employee employee : LBMS.getEmployees().values()) {
