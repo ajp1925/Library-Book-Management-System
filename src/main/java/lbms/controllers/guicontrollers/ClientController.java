@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Created by Chris on 3/30/2017.
+ * ClientController class
  */
 public class ClientController {
 

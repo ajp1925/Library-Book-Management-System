@@ -3,8 +3,15 @@ package lbms.controllers.guicontrollers;
 import lbms.views.GUI.SessionManager;
 
 /**
- * Created by Chris on 4/4/17.
+ * StateController interface for the GUI.
+ * @author Team B
  */
 public interface StateController {
+
+    /**
+     * Initialized the manager for the controller.
+     * @param manager: the session manager to be set
+     */
     void initManager(SessionManager manager);
+
 }

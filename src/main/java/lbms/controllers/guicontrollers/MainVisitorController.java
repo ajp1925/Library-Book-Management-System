@@ -1,14 +1,19 @@
 package lbms.controllers.guicontrollers;
 
-import javafx.fxml.FXML;
 import lbms.views.GUI.SessionManager;
 
 /**
- * Created by Chris on 4/9/2017.
+ * MainVisitorController class used for controlling visitors.
+ * @author Team B
  */
-public class MainVisitorController implements StateController{
+public class MainVisitorController implements StateController {
+
     private SessionManager manager;
 
+    /**
+     * Initializes the manager for the controller.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(final SessionManager manager) {
         this.manager = manager;

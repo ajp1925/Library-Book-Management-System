@@ -27,7 +27,7 @@ public class CommandController implements ICommandController {
             try {
                 command = createCommand(request);
                 if (request[0].equals("connect")) {
-                    response = request[0] + "," + command.execute();
+                    response = request[0] + "," + command.execute() + ";";
                 } else {
                     response = request[0] + "," + request[1] + command.execute();
                 }

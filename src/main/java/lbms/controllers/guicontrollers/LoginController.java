@@ -9,15 +9,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
 
 /**
- * Created by Chris on 3/31/17.
+ * StateController class used for the state of the GUI.
+ * @author Team B
  */
 public class LoginController implements StateController {
+
     private SessionManager manager;
 
     @FXML private AnchorPane root;
@@ -29,33 +30,43 @@ public class LoginController implements StateController {
     @FXML private Text usernameFail;
     @FXML private Text passwordFail;
 
+    /**
+     * Initializes the login page.
+     */
     @FXML protected void initialize() {
-        root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+        this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                loginButton.fire();
+                this.loginButton.fire();
                 e.consume();
             }
         });
 
-        registerLink.setOnAction((ActionEvent event) -> { manager.display("register"); });
+        this.registerLink.setOnAction((ActionEvent event) -> { this.manager.display("register"); });
     }
 
+    /**
+     * Initializes the manager.
+     * @param manager: the session manager to be set
+     */
     public void initManager(final SessionManager manager) {
         this.manager = manager;
         manager.getTab().setText("Login");
     }
 
+    /**
+     * Executes the controller.
+     */
     @FXML private void execute() {
-        usernameFail.setText("");
-        passwordFail.setText("");
+        this.usernameFail.setText("");
+        this.passwordFail.setText("");
         boolean completed = true;
 
-        if (usernameField.getText().isEmpty()) {
-            usernameFail.setText("*");
+        if (this.usernameField.getText().isEmpty()) {
+            this.usernameFail.setText("*");
             completed = false;
         }
-        if (passwordField.getText().isEmpty()) {
-            passwordFail.setText("*");
+        if (this.passwordField.getText().isEmpty()) {
+            this.passwordFail.setText("*");
             completed = false;
         }
 
@@ -63,22 +74,22 @@ public class LoginController implements StateController {
             try {
                 String response = new ProxyCommandController().processRequest(
                         String.format("%s,login,%s,%s;",
-                                manager.getClientId(), usernameField.getText(), passwordField.getText()));
+                                this.manager.getClientId(), this.usernameField.getText(), this.passwordField.getText()));
 
                 // parse response
                 String[] fields = response.replace(";", "").split(",");
 
                 if (fields[2].equals("success")) {
-                    manager.setUser(usernameField.getText());
-                    manager.display("main_visitor");
+                    this.manager.setUser(this.usernameField.getText());
+                    this.manager.display("main_visitor");
                 } else {
                     throw new Exception();
                 }
             } catch (Exception e) {
-                loginFailedLabel.setText("Invalid Username or Password. Please Try Again.");
+                this.loginFailedLabel.setText("Invalid Username or Password. Please Try Again.");
             }
         } else {
-            loginFailedLabel.setText("* Please enter missing fields.");
+            this.loginFailedLabel.setText("* Please enter missing fields.");
         }
     }
 }
