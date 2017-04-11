@@ -133,7 +133,7 @@ public class BorrowTest extends TestCase{
             fail("Expected exception not thrown");
         }
         catch(MissingParametersException e) {
-            assertEquals(",missing-parameters,{ids}", e.getMessage());
+            assertEquals("missing-parameters,{ids};", e.getMessage());
         }
     }
 
@@ -143,7 +143,7 @@ public class BorrowTest extends TestCase{
             fail("Expected exception not thrown");
         }
         catch(MissingParametersException e) {
-            assertEquals(",missing-parameters,clientID,{ids}", e.getMessage());
+            assertEquals("missing-parameters,clientID,{ids};", e.getMessage());
         }
     }
 

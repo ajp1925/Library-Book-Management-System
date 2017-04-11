@@ -34,7 +34,7 @@ public class StoreSearch implements Command {
         this.clientID = clientID;
         String[] arguments = request.split(",");
         if (arguments.length <= 0) {
-            throw new MissingParametersException("missing-parameters,title");
+            throw new MissingParametersException("missing-parameters,title;");
         }
         try {
             for (int index = 0; index < arguments.length; index++) {

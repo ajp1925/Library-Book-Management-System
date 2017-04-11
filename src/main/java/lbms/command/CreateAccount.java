@@ -23,7 +23,7 @@ public class CreateAccount implements Command {
     public CreateAccount(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
         if (arguments.length < 4) {
-            throw new MissingParametersException(",missing-parameters,username,password,role,visitorID");
+            throw new MissingParametersException("missing-parameters,username,password,role,visitorID;");
         } else {
             this.username = arguments[0];
             this.password = arguments[1];
@@ -31,7 +31,7 @@ public class CreateAccount implements Command {
             try {
                 this.visitorID = Long.parseLong(arguments[3]);
             } catch (NumberFormatException e) {
-                throw new MissingParametersException(",invalid-visitor;");
+                throw new MissingParametersException("invalid-visitor;");
             }
         }
     }

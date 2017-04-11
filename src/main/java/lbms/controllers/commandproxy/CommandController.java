@@ -32,7 +32,7 @@ public class CommandController implements ICommandController {
                     response = request[0] + "," + request[1] + command.execute();
                 }
             } catch (MissingParametersException e) {
-                response = e.getMessage() + ";";
+                response = request[0] + "," + request[1] + "," + e.getMessage();
             } catch (Exception e) {
                 response = request[0] + "," + request[1] + ",missing-parameters,{all};";
             }

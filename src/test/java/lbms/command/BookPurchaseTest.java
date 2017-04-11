@@ -110,7 +110,7 @@ public class BookPurchaseTest extends TestCase{
             fail("Exception not thrown");
         }
         catch (MissingParametersException e) {
-            assertEquals(",missing-parameters,quantity,id[,ids]", e.getMessage());
+            assertEquals("missing-parameters,quantity,id[,ids];", e.getMessage());
         }
     }
 
@@ -120,7 +120,7 @@ public class BookPurchaseTest extends TestCase{
             fail("Exception not thrown");
         }
         catch (MissingParametersException e) {
-            assertEquals(",missing-parameters,quantity,id[,ids]", e.getMessage());
+            assertEquals("missing-parameters,quantity,id[,ids];", e.getMessage());
         }
     }
 }

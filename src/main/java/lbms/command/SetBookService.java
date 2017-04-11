@@ -29,7 +29,7 @@ public class SetBookService implements Command {
                 this.search = google;
                 break;
             default:
-                throw new MissingParametersException("invalid-info-service");
+                throw new MissingParametersException("invalid-info-service;");
         }
     }
 
