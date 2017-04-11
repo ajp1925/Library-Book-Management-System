@@ -81,7 +81,12 @@ public class LoginController implements StateController {
 
                 if (fields[2].equals("success")) {
                     this.manager.setUser(this.usernameField.getText());
-                    this.manager.display("main_visitor");
+
+                    if (ProxyCommandController.isEmployee(manager.getClientId())) {
+                        manager.display("main_employee");
+                    } else {
+                        manager.display("main_visitor");
+                    }
                 } else {
                     throw new Exception();
                 }

@@ -37,6 +37,7 @@ public class SessionManager {
      * Closes the session.
      */
     public void close() {
+        //TODO logout if logged in
         new ProxyCommandController().processRequest(this.clientId + ",disconnect;");
     }
 
@@ -52,6 +53,7 @@ public class SessionManager {
             this.controller = loader.getController();
             this.controller.initManager(this);
         } catch (Exception e) {
+            System.out.println(e);
             System.out.println("Error loading fxml");
             System.exit(1);
         }
