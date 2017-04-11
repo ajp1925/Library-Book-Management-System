@@ -66,10 +66,13 @@ public class LBMS {
         try {
             type = StartType.valueOf(args[0].toUpperCase());
             new LBMS(type);
-        } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
+            new LBMS(StartType.GUI);
+        } catch (IllegalArgumentException e) {
             System.out.println("Usage: java -jar LBMS.jar <type>");
             System.out.println("Valid types are: GUI, CLI, API");
         }
+        System.gc();
     }
 
     /**

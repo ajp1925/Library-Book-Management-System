@@ -2,10 +2,7 @@ package lbms.controllers.commandproxy;
 
 import lbms.LBMS;
 import lbms.command.Invalid;
-import lbms.models.Employee;
-import lbms.models.Session;
-import lbms.models.SystemDateTime;
-import lbms.models.Visitor;
+import lbms.models.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -136,9 +133,14 @@ public class ProxyCommandController implements ICommandController {
      */
     public static boolean inLibrary(long clientID) {
         try {
-            HashMap<Long, Visitor> visitors = LBMS.getVisitors();
+            HashMap<Long, Visit> visits = LBMS.getCurrentVisits();
             Session s = LBMS.getSessions().get(clientID);
-            return visitors.containsKey(s.getV().getVisitorID());
+            for (Visit v: visits.values()) {
+                if (v.getVisitor().getVisitorID() == s.getV().getVisitorID()) {
+                    return true;
+                }
+            }
+            return false;
         } catch (Exception e) {
             return false;
         }
