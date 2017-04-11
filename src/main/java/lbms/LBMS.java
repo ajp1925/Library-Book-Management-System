@@ -83,18 +83,20 @@ public class LBMS {
 
     /**
      * Initializes the system.
+     * Warnings are suppressed for reading in the serialization.
      */
+    @SuppressWarnings("unchecked")
     private void SystemInit() {
         // Deserialize the data.
         try {
             FileInputStream f = new FileInputStream("data.ser");
             ObjectInputStream in = new ObjectInputStream(f);
-            books = (HashMap<ISBN, Book>) in.readObject();
-            booksToBuy = (ArrayList<Book>) in.readObject();
-            visitors = (HashMap<Long, Visitor>) in.readObject();
-            employees = (HashMap<Long, Employee>) in.readObject();
-            totalVisits = (ArrayList<Visit>) in.readObject();
-            transactions = (ArrayList<Transaction>) in.readObject();
+            books = (HashMap<ISBN, Book>)in.readObject();
+            booksToBuy = (ArrayList<Book>)in.readObject();
+            visitors = (HashMap<Long, Visitor>)in.readObject();
+            employees = (HashMap<Long, Employee>)in.readObject();
+            totalVisits = (ArrayList<Visit>)in.readObject();
+            transactions = (ArrayList<Transaction>)in.readObject();
             SystemDateTime.getInstance((LocalDateTime)in.readObject()).start();
         } catch (ClassNotFoundException | IOException e) {
             books = new HashMap<>();
@@ -105,7 +107,7 @@ public class LBMS {
             transactions = new ArrayList<>();
             SystemDateTime.getInstance(null).start();
         }
-        System.gc(); // Collects any unused data and takes out the trash!
+        System.gc(); // Collects any unused data and takes out the trash! (pun intended)
     }
 
     /**

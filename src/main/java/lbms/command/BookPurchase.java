@@ -84,7 +84,7 @@ public class BookPurchase implements Command, Undoable {
             try {
                 b = LBMS.getLastBookSearch().get(id - 1);
             } catch (IndexOutOfBoundsException e) {
-                return "failure;";
+                return ",failure;";
             }
 
             for (int i = 0; i < this.quantity; i++) {
