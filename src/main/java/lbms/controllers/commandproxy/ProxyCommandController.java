@@ -41,11 +41,22 @@ public class ProxyCommandController implements ICommandController {
             return "";
         }
         String command = request[1];
+        Long visitorID;
+        try {
+            visitorID = LBMS.getSessions().get(clientID).getV().getVisitorID();
+        } catch (Exception e) {
+            visitorID = null;
+        }
 
-        if (unrestricted(command) || !unrestricted(command) && isEmployee(clientID)) {
+        if (!isCommand(command)) {
+            return "invalid-command;";
+        }
+
+        if (unrestricted(command) || (!unrestricted(command) && visitorID != null &&
+                isEmployee(visitorID))) {
             return new CommandController().processRequest(requestString);
         } else {
-           return request[0] + "," +request[1] + "," + "not-authorized; ";
+           return request[0] + "," +request[1] + "," + "not-authorized;";
         }
     }
 
@@ -57,10 +68,24 @@ public class ProxyCommandController implements ICommandController {
      */
     private boolean unrestricted(String command) {
         ArrayList<String> visitorCommands = new ArrayList<>(Arrays.asList(
-                        "arrive", "info", "borrow", "depart", "register",
-                        "login", "logout", "undo", "redo", "disconnect", "create"
+                "arrive", "info", "borrow", "depart", "register", "login", "logout", "undo", "redo", "disconnect",
+                "create"
         ));
         return visitorCommands.contains(command);
+    }
+
+    /**
+     * Used to determine if a string is a valid command or not.
+     * @param command: the string being checked
+     * @return true if it is a command, false if not
+     */
+    private boolean isCommand(String command) {
+        ArrayList<String> commands = new ArrayList<>(Arrays.asList(
+                "register", "arrive", "depart", "info", "borrow", "borrowed", "return", "pay", "search", "buy",
+                "advance", "datetime", "report", "connect", "disconnect", "create", "login", "logout", "undo", "redo",
+                "service"
+        ));
+        return commands.contains(command);
     }
 
     /**
@@ -70,15 +95,19 @@ public class ProxyCommandController implements ICommandController {
      * @return true if the client id represents and employee, false otherwise
      */
     private static boolean isEmployee(long clientID) {
+        // TODO this function is not working
         try {
             Visitor v = LBMS.getSessions().get(clientID).getV();
             for (Employee employee : LBMS.getEmployees().values()) {
                 if (employee.getVisitor().getVisitorID() == v.getVisitorID()) {
                     return true;
                 }
+                System.out.println("employee id: " + employee.getVisitor().getVisitorID());
+                System.out.println(employee.getVisitor());
             }
             return false;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }

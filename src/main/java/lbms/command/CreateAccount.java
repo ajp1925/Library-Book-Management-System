@@ -47,7 +47,7 @@ public class CreateAccount implements Command {
             return ",duplicate-username;";
         }
 
-        Visitor v = LBMS.getVisitors().remove(this.visitorID);
+        Visitor v = LBMS.getVisitors().get(this.visitorID);
         if (v == null) {
             return ",invalid-visitor;";
         }
@@ -57,16 +57,14 @@ public class CreateAccount implements Command {
         }
         // add the visitor/employee to LBMS
         if (this.role.toLowerCase().equals("visitor") || this.role.toLowerCase().equals("employee")) {
-            LBMS.getVisitors().put(this.visitorID, new Visitor(v.getFirstName(), v.getLastName(), this.username,
-                    this.password, v.getAddress(), v.getPhoneNumber()));
+            LBMS.getVisitors().put(this.visitorID, v);
             if (this.role.toLowerCase().equals("employee")) {
-                LBMS.getEmployees().put(this.visitorID, new Employee(v.getFirstName(), v.getLastName(), this.username,
-                        this.password, v.getAddress(), v.getPhoneNumber()));
+                LBMS.getEmployees().put(this.visitorID, new Employee(v));
             }
         } else {
-            return "invalid-role;";
+            return ",invalid-role;";
         }
-
+        v.setCredentials(this.username, this.password);
         return ",success;";
     }
 

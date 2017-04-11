@@ -4,7 +4,7 @@ import lbms.models.SystemDateTime;
 
 /**
  * AdvanceTime class that calls the API to advance system time.
- * @author Team B TODO -> test for R2
+ * @author Team B
  */
 public class AdvanceTime implements Command {
 
@@ -32,16 +32,16 @@ public class AdvanceTime implements Command {
     @Override
     public String execute() {
         if (this.days < 0 || this.days > 7) {
-            return "invalid-number-of-days," + this.days + ";";
+            return ",invalid-number-of-days," + this.days + ";";
         }
         if (this.hours < 0 || this.hours > 23) {
-            return "invalid-number-of-hours," + this.hours + ";";
+            return ",invalid-number-of-hours," + this.hours + ";";
         }
         if (this.hours == 0 && this.days == 0) {
-            return "invalid-number-of-hours," + this.hours + ";";
+            return ",invalid-number-of-hours," + this.hours + ";";
         }
         SystemDateTime.getInstance(null).plusDays(this.days);
         SystemDateTime.getInstance(null).plusHours(this.hours);
-        return "success;";
+        return ",success;";
     }
 }

@@ -56,22 +56,6 @@ public class Visitor implements Serializable {
     }
 
     /**
-     * Getter for the visitors first name.
-     * @return the visitors first name
-     */
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    /**
-     * Getter for the visitors last name.
-     * @return the visitors last name
-     */
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    /**
      * Getter for the username of a Visitor.
      * @return the visitors username
      */
@@ -197,5 +181,27 @@ public class Visitor implements Serializable {
      */
     public double getPayedFines() {
         return this.payedFines;
+    }
+
+    /**
+     * Creates a string for a visitor.
+     * @return a string representation of a visitor
+     */
+    @Override
+    public String toString(){
+        return "Firstname: " + this.firstName + "\nLastname: " + this.lastName + "\nAddress: " + this.address +
+                "\nPhone number: " + this.phoneNumber + "\nVisitorID: " + this.visitorID + "\nUsername: " +
+                this.username + "\nPassword: " + this.password + "\nIn-library: " + this.inLibrary + "\nAll fines: " +
+                this.getFines() + "\n";
+    }
+
+    /**
+     * Setter for the username and password when an account is created.
+     * @param username: the account's username
+     * @param password: the account's password
+     */
+    public void setCredentials(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 }

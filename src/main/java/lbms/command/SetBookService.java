@@ -6,7 +6,7 @@ import static lbms.LBMS.SearchService.*;
 
 /**
  * SetBookService class for the set book service command.
- * @author Team B TODO -> should work but still needs to be tested
+ * @author Team B
  */
 public class SetBookService implements Command {
 

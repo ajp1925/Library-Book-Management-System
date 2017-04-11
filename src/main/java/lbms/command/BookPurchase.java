@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 /**
  * BookPurchase class that implements the book purchase command.
- * @author Team B TODO -> update for R2
+ * @author Team B
  */
 public class BookPurchase implements Command, Undoable {
 
@@ -42,14 +42,14 @@ public class BookPurchase implements Command, Undoable {
     @Override
     public String execute() {
         if (this.ids.size() == 0) {
-            return "missing-parameters,id;";
+            return ",missing-parameters,id;";
         }
         String s = processPurchaseOrder();
-        if (s.equals("failure;")) {
+        if (s.equals(",failure;")) {
             return s;
         }
         s = s.replaceAll(",$","");
-        return "success," + s + ";";
+        return ",success," + s + ";";
     }
 
     /**
@@ -70,14 +70,17 @@ public class BookPurchase implements Command, Undoable {
         String booksBought = "";
         for (int id: this.ids) {
             Book b;
+
             try {
                 b = LBMS.getLastBookSearch().get(id - 1);
             } catch (IndexOutOfBoundsException e) {
                 return "failure;";
             }
+
             for (int i = 0; i < this.quantity; i++) {
                 buyBook(b);
             }
+
             booksBought += ("\n" + b.toString() + "," + this.quantity) + ",";
         }
         return this.ids.size() + booksBought;

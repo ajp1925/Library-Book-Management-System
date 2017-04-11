@@ -11,14 +11,11 @@ public class Employee implements Serializable {
     private Visitor v;
 
     /**
-     * Constructor for an Employee class.
-     * @param firstName: the employee's first name
-     * @param lastName: the employee's last name
-     * @param username: the employee's username to login
-     * @param password: the employee's password
+     * Constructor for an Employee object.
+     * @param v: the visitor account for the employee
      */
-    public Employee(String firstName, String lastName, String username, String password, String address, PhoneNumber phoneNumber) {
-        v = new Visitor(firstName, lastName, username, password, address, phoneNumber);
+    public Employee(Visitor v) {
+        this.v = v;
     }
 
     /**
@@ -51,5 +48,14 @@ public class Employee implements Serializable {
      */
     public Visitor getVisitor() {
         return v;
+    }
+
+    /**
+     * Creates a string of the employee's data.
+     * @return a string representation of this object
+     */
+    @Override
+    public String toString() {
+        return "Employee:\n" + v.toString();
     }
 }

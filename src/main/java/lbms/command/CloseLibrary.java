@@ -2,7 +2,7 @@ package lbms.command;
 
 /**
  * CloseLibrary class closes the library.
- * @author Team B TODO -> update for R2
+ * @author Team B
  */
 public class CloseLibrary implements Command {
 
@@ -12,7 +12,7 @@ public class CloseLibrary implements Command {
      */
     @Override
     public String execute() {
-        return "library-closed;";
+        return ",library-closed;";
     }
 
 }

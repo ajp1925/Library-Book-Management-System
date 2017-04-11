@@ -30,7 +30,7 @@ public class FindBorrowed implements Command {
     @Override
     public String execute() {
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
-            return "invalid-visitor-id;";
+            return ",invalid-visitor-id;";
         }
 
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
@@ -46,6 +46,6 @@ public class FindBorrowed implements Command {
             s += "\n";
             s += id[0]++ + "," + t.getIsbn() + "," + b.getTitle() + "," + t.getDate();
         }
-        return s + ";";
+        return "," + s + ";";
     }
 }

@@ -4,7 +4,7 @@ import lbms.models.SystemDateTime;
 
 /**
  * GetDateTime class that calls the API to get the system time.
- * @author Team B TODO -> update for R2
+ * @author Team B
  */
 public class GetDateTime implements Command {
 
@@ -18,7 +18,7 @@ public class GetDateTime implements Command {
      */
     @Override
     public String execute() {
-        return SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + "," +
+        return "," + SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + "," +
                 SystemDateTime.getInstance(null).getTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 }

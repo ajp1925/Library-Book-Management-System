@@ -4,17 +4,22 @@ import lbms.LBMS;
 import lbms.models.Book;
 import lbms.models.ISBN;
 import lbms.search.BookSearch;
+import lbms.search.GoogleAPISearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static lbms.LBMS.SearchService.google;
+import static lbms.LBMS.SearchService.local;
+
 /**
  * StoreSearch class that implements the book store search command.
- * @author Team B TODO update for R2
+ * @author Team B
  */
 public class StoreSearch implements Command {
 
+    private long clientID;
     private String title;
     private ArrayList<String> authors;
     private ISBN isbn;
@@ -25,7 +30,8 @@ public class StoreSearch implements Command {
      * Constructor for a StoreSearch object.
      * @param request: the request string to be read
      */
-    public StoreSearch(String request) throws MissingParametersException {
+    public StoreSearch(long clientID, String request) throws MissingParametersException {
+        this.clientID = clientID;
         String[] arguments = request.split(",");
         if (arguments.length <= 0) {
             throw new MissingParametersException("missing-parameters,title");
@@ -68,7 +74,16 @@ public class StoreSearch implements Command {
         if (this.sortOrder != null && !this.sortOrder.equals("title") && !this.sortOrder.equals("publish-date")) {
             return "invalid-sort-order";
         }
-        List<Book> books = BookSearch.BY_TITLE.toBuy().findAll(this.title);
+
+        List<Book> books;
+        if (LBMS.getSessions().get(this.clientID).getSearch() == local) {
+            books = BookSearch.BY_TITLE.toBuy().findAll(this.title);
+        } else if (LBMS.getSessions().get(clientID).getSearch() == google) {
+            books = GoogleAPISearch.searchByTitle(this.title);
+        } else {
+            books = new ArrayList<>();
+        }
+
         List<Book> remove = new ArrayList<>();
         if (this.authors != null) {
             for (Book b: books) {
@@ -121,7 +136,7 @@ public class StoreSearch implements Command {
             }
             response = new StringBuilder(response.substring(0, response.length() - 2));
             response.append(";");
-            return response.toString();
+            return "," + response.toString();
         }
     }
 }
