@@ -8,3 +8,17 @@ Factory - for determining what view to use (modified by using arg)
 Visitor - for field checks and changes in GUI
             (New User Controller, Existing User Controller)
 Decorator - SessionManager maybe
+
+
+Files needed to submit:
+    -vclog.txt
+    -start.bat
+    -startAPI.bat
+    -README.txt
+    -presentation.pdf
+    -listing.pdf
+    -LBMS-R2.jar
+    -design.pdf
+    -buildlog.txt
+    -SRC directory
+    -remove this TODO file

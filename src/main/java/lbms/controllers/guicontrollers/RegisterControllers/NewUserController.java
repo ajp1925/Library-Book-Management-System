@@ -7,9 +7,11 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 
 /**
- * Created by Chris on 4/6/17.
+ * NewUserController class for the Library Book Management System.
+ * @author Team B
  */
-public class NewUserController implements UserController{
+public class NewUserController implements UserController {
+
     @FXML private TextField firstNameField;
     @FXML private TextField lastNameField;
     @FXML private TextField addressField;
@@ -19,43 +21,56 @@ public class NewUserController implements UserController{
     @FXML private Text addressFail;
     @FXML private Text phoneNumberFail;
 
+    /**
+     * Determines if it is a new controller.
+     * @return true always
+     */
     @Override
     public boolean isNew() {
         return true;
     }
 
+    /**
+     * Gets the fields of the user.
+     * @return an array of strings of the user's information
+     */
     @Override
     public ArrayList<String> getFields() {
         ArrayList<String> arr = new ArrayList<>();
-        arr.add(firstNameField.getText());
-        arr.add(lastNameField.getText());
-        arr.add(addressField.getText());
-        arr.add(phoneNumberField.getText());
+        arr.add(this.firstNameField.getText());
+        arr.add(this.lastNameField.getText());
+        arr.add(this.addressField.getText());
+        arr.add(this.phoneNumberField.getText());
         return arr;
     }
 
+    /**
+     * Fills the text with an '*' if the text is empty.
+     */
     @Override
     public void fail() {
-        if (firstNameField.getText().isEmpty()) {
-            firstNameFail.setText("*");
+        if (this.firstNameField.getText().isEmpty()) {
+            this.firstNameFail.setText("*");
         }
-        if (lastNameField.getText().isEmpty()) {
-            lastNameFail.setText("*");
+        if (this.lastNameField.getText().isEmpty()) {
+            this.lastNameFail.setText("*");
         }
-        if (addressField.getText().isEmpty()) {
-            addressFail.setText("*");
+        if (this.addressField.getText().isEmpty()) {
+            this.addressFail.setText("*");
         }
-        if (phoneNumberField.getText().isEmpty()) {
-            phoneNumberFail.setText("*");
+        if (this.phoneNumberField.getText().isEmpty()) {
+            this.phoneNumberFail.setText("*");
         }
     }
 
-
+    /**
+     * Sets the text to empty for the user fields.
+     */
     public void clearError() {
-        firstNameFail.setText("");
-        lastNameFail.setText("");
-        addressFail.setText("");
-        phoneNumberFail.setText("");
+        this.firstNameFail.setText("");
+        this.lastNameFail.setText("");
+        this.addressFail.setText("");
+        this.phoneNumberFail.setText("");
     }
 
 }

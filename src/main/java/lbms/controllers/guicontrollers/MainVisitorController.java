@@ -30,6 +30,9 @@ public class MainVisitorController implements StateController {
     @FXML private TextField searchISBNField;
     @FXML private Button visitButton;
 
+    /**
+     * Initializes the visitor controller.
+     */
     @FXML protected void initialize() {
         root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -57,6 +60,9 @@ public class MainVisitorController implements StateController {
         }
     }
 
+    /**
+     * Search pane method.
+     */
     public void search() {
         String search = null;
         switch (searchTabPane.getSelectionModel().getSelectedIndex()) {
@@ -75,6 +81,9 @@ public class MainVisitorController implements StateController {
         System.out.println(search);
     }
 
+    /**
+     * Begins a visit for the visitor.
+     */
     private void beginVisit() {
         String request = String.format("%s,arrive;", manager.getClientId());
         System.out.println(request); //TODO remove
@@ -95,6 +104,9 @@ public class MainVisitorController implements StateController {
         }
     }
 
+    /**
+     * Ends a visit for the visitor.
+     */
     private void endVisit() {
         String request = String.format("%s,depart;", manager.getClientId());
         System.out.println(request); //TODO remove

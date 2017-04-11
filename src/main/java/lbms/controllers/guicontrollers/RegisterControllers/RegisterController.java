@@ -15,10 +15,15 @@ import java.util.ArrayList;
 
 
 /**
- * Created by Chris on 4/5/17.
+ * RegisterController class for the Library Book Management System.
+ * @author Team B
  */
 public class RegisterController implements StateController {
+
     private SessionManager manager;
+    private UserController userController;
+    private CreateController controller;
+    private String visitorId = "";
 
     @FXML private AnchorPane root;
     @FXML private FlowPane centerPane;
@@ -27,47 +32,48 @@ public class RegisterController implements StateController {
     @FXML private Button submitButton;
     @FXML private Hyperlink loginLink;
     @FXML private Text failedLabel;
-
     @FXML private RadioButton newUserRadio;
     @FXML private RadioButton existingUserRadio;
 
-    private UserController userController;
-    private CreateController controller;
-
-    private String visitorId = "";
-
+    /**
+     * Initializes the manager.
+     * @param manager: the session manager to be set
+     */
     public void initManager(final SessionManager manager) {
         this.manager = manager;
         manager.getTab().setText("Register User");
     }
 
+    /**
+     * Initializes the state of this class.
+     */
     @FXML protected void initialize() {
-        root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+        this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                submitButton.fire();
+                this.submitButton.fire();
                 e.consume();
             }
         });
 
-        loginLink.setOnAction(e -> manager.display("login"));
+        this.loginLink.setOnAction(e -> this.manager.display("login"));
 
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(SessionManager.class.getResource("/fxml/new_user.fxml"));
             GridPane grid = loader.load();
-            centerBox.getChildren().set(1, grid);
-            userController = loader.getController();
+            this.centerBox.getChildren().set(1, grid);
+            this.userController = loader.getController();
         } catch (Exception e) {
             System.out.println("Error loading fxml");
             System.exit(1);
         }
 
         ToggleGroup group = new ToggleGroup();
-        newUserRadio.setSelected(true);
-        newUserRadio.setToggleGroup(group);
-        newUserRadio.setUserData("new_user");
-        existingUserRadio.setToggleGroup(group);
-        existingUserRadio.setUserData("existing_user");
+        this.newUserRadio.setSelected(true);
+        this.newUserRadio.setToggleGroup(group);
+        this.newUserRadio.setUserData("new_user");
+        this.existingUserRadio.setToggleGroup(group);
+        this.existingUserRadio.setUserData("existing_user");
 
         group.selectedToggleProperty().addListener((observable, old, selected) -> {
             String file = group.getSelectedToggle().getUserData().toString();
@@ -75,25 +81,28 @@ public class RegisterController implements StateController {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(SessionManager.class.getResource("/fxml/" + file + ".fxml"));
                 GridPane grid = loader.load();
-                centerBox.getChildren().set(1, grid);
-                userController = loader.getController();
+                this.centerBox.getChildren().set(1, grid);
+                this.userController = loader.getController();
 
-                failedLabel.setText("");
+                this.failedLabel.setText("");
             } catch (Exception e) {
                 System.out.println("Error loading fxml");
                 System.exit(1);
             }
 
-            if (userController.isNew()) {
-                manager.getTab().setText("Register User");
+            if (this.userController.isNew()) {
+                this.manager.getTab().setText("Register User");
             } else {
-                manager.getTab().setText("Existing User");
+                this.manager.getTab().setText("Existing User");
             }
         });
     }
 
+    /**
+     * Register method registers a visitor.
+     */
     @FXML private void register() {
-        userController.clearError();
+        this.userController.clearError();
         boolean completed = true;
 
         String firstName = "";
@@ -101,8 +110,8 @@ public class RegisterController implements StateController {
         String address = "";
         String phoneNumber = "";
 
-        if (userController.isNew()) {
-            ArrayList<String> fields = userController.getFields();
+        if (this.userController.isNew()) {
+            ArrayList<String> fields = this.userController.getFields();
             firstName = fields.get(0);
             lastName = fields.get(1);
             address = fields.get(2);
@@ -113,22 +122,22 @@ public class RegisterController implements StateController {
             }
         } else {
             String temp;
-            temp = userController.getFields().get(0);
+            temp = this.userController.getFields().get(0);
 
             if (temp.isEmpty()) {
                 completed = false;
             } else {
-                visitorId = temp;
+                this.visitorId = temp;
             }
         }
 
         if (completed) {
             boolean valid = true;
 
-            if (visitorId.isEmpty()) {
+            if (this.visitorId.isEmpty()) {
                 try {
                     String request = String.format("%s,register,%s,%s,%s,%s;",
-                            manager.getClientId(), firstName, lastName, address, phoneNumber);
+                            this.manager.getClientId(), firstName, lastName, address, phoneNumber);
                     System.out.println(request);        // TODO remove
 
                     String response = new ProxyCommandController().processRequest(request);
@@ -139,7 +148,7 @@ public class RegisterController implements StateController {
                     if (fields[2].equals("duplicate;")) {
                         valid = false;
                     } else {
-                        visitorId = fields[2];
+                        this.visitorId = fields[2];
                     }
                 } catch (Exception e) {
                     valid = false;
@@ -151,61 +160,63 @@ public class RegisterController implements StateController {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(SessionManager.class.getResource("/fxml/create.fxml"));
                     GridPane grid = loader.load();
-                    controller = loader.getController();
-                    manager.getTab().setText("Create Account");
-                    header.setText("Create Account");
+                    this.controller = loader.getController();
+                    this.manager.getTab().setText("Create Account");
+                    this.header.setText("Create Account");
 
-                    centerPane.getChildren().clear();
-                    centerPane.getChildren().add(grid);
+                    this.centerPane.getChildren().clear();
+                    this.centerPane.getChildren().add(grid);
                 } catch (Exception e) {
                     System.out.println("Error loading fxml");
                     System.exit(1);
                 }
 
-                submitButton.setText("Submit");
-                submitButton.setOnAction(e -> submit());
+                this.submitButton.setText("Submit");
+                this.submitButton.setOnAction(e -> submit());
 
-                failedLabel.setText("");
+                this.failedLabel.setText("");
             } else {
-                failedLabel.setText("This visitor already exists.\nPlease try again or register with visitor ID.");
+                this.failedLabel.setText("This visitor already exists.\nPlease try again or register with visitor ID.");
             }
         } else {
-            userController.fail();
-            failedLabel.setText("* Please enter missing fields.");
+            this.userController.fail();
+            this.failedLabel.setText("* Please enter missing fields.");
         }
     }
 
+    /**
+     * Submit function used when the submit button is pressed.
+     */
     @FXML private void submit() {
-        controller.clearError();
+        this.controller.clearError();
         boolean completed = true;
 
-        String username = controller.getUsernameField();
-        String password = controller.getPasswordField();
-        String confirm = controller.getConfirmField();
+        String username = this.controller.getUsernameField();
+        String password = this.controller.getPasswordField();
+        String confirm = this.controller.getConfirmField();
 
         if (username.isEmpty()) {
             completed = false;
-            controller.failUsername();
+            this.controller.failUsername();
         }
         if (password.isEmpty()) {
             completed = false;
-            controller.failPassword();
+            this.controller.failPassword();
         }
         if (confirm.isEmpty()) {
             completed = false;
-            controller.failConfirm();
+            this.controller.failConfirm();
         }
 
         if (!completed) {
-            failedLabel.setText("* Please enter missing fields.");
-        }
-        else if (!password.equals(confirm)) {
-            failedLabel.setText("Passwords do not match.\nPlease enter your password again.");
+            this.failedLabel.setText("* Please enter missing fields.");
+        } else if (!password.equals(confirm)) {
+            this.failedLabel.setText("Passwords do not match.\nPlease enter your password again.");
         } else {
             boolean valid;
             try {
                 String request = String.format("%s,create,%s,%s,%s,%s;",
-                        manager.getClientId(), username, password, "visitor", visitorId);
+                        this.manager.getClientId(), username, password, "visitor", this.visitorId);
                 System.out.println(request);        // TODO remove
 
                 String response = new ProxyCommandController().processRequest(request);
@@ -215,15 +226,15 @@ public class RegisterController implements StateController {
                 String[] fields = response.replace(";", "").split(",");
                 switch (fields[1]) {
                     case "duplicate-username":
-                        failedLabel.setText("Username is taken. Please try a new username.");
+                        this.failedLabel.setText("Username is taken. Please try a new username.");
                         valid = false;
                         break;
                     case "duplicate-visitor":
-                        failedLabel.setText("Visitor already has an account. Please try logging in.");
+                        this.failedLabel.setText("Visitor already has an account. Please try logging in.");
                         valid = false;
                         break;
                     case "invalid-visitor":
-                        failedLabel.setText("No visitor exists. Please register as a visitor first.");
+                        this.failedLabel.setText("No visitor exists. Please register as a visitor first.");
                         valid = false;
                         break;
                     default:
@@ -237,7 +248,7 @@ public class RegisterController implements StateController {
             if (valid) {
                 try {
                     String request = String.format("%s,login,%s,%s;",
-                            manager.getClientId(), username, password);
+                            this.manager.getClientId(), username, password);
                     System.out.println(request);        // TODO remove
 
                     String response = new ProxyCommandController().processRequest(request);
@@ -247,18 +258,18 @@ public class RegisterController implements StateController {
                     String[] fields = response.replace(";", "").split(",");
 
                     if (fields[2].equals("success")) {
-                        manager.setUser(username);
+                        this.manager.setUser(username);
 
-                        if (ProxyCommandController.isEmployee(manager.getClientId())) {
-                            manager.display("main_employee");
+                        if (ProxyCommandController.isEmployee(this.manager.getClientId())) {
+                            this.manager.display("main_employee");
                         } else {
-                            manager.display("main_visitor");
+                            this.manager.display("main_visitor");
                         }
                     } else {
                         throw new Exception();
                     }
                 } catch (Exception e) {
-                    failedLabel.setText("Invalid Username or Password. Please Try Again.");
+                    this.failedLabel.setText("Invalid Username or Password. Please Try Again.");
                 }
             }
         }
