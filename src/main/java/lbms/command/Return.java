@@ -92,12 +92,12 @@ public class Return implements Command, Undoable {
     @Override
     public String unExecute() {
         // TODO
-        Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
-        for (Integer id : ids) {
+        Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
+        for (Integer id : this.ids) {
             Book b = LBMS.getLastBookSearch().get(id - 1);
             b.undoReturnBook();
             Transaction t = visitor.getPreviousCheckedOutBooks().get(b.getIsbn());
-            LBMS.getVisitors().get(visitorID).undoReturnBook(t);
+            LBMS.getVisitors().get(this.visitorID).undoReturnBook(t);
         }
         return null;
     }

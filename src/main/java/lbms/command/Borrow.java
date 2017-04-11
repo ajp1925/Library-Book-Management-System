@@ -113,10 +113,10 @@ public class Borrow implements Command, Undoable {
     @Override
     public String unExecute() {
         // TODO
-        for (int id : ids) {
+        for (int id : this.ids) {
             Book b = LBMS.getLastBookSearch().get(id - 1);
-            Transaction t = new Transaction(b.getIsbn(), visitorID);
-            Visitor visitor = UserSearch.BY_ID.findFirst(visitorID);
+            Transaction t = new Transaction(b.getIsbn(), this.visitorID);
+            Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
             visitor.undoCheckOut(t);
             b.undoCheckOut();
             List<Transaction> transactions = LBMS.getTransactions();

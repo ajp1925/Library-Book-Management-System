@@ -113,6 +113,10 @@ public class Visitor implements Serializable {
         return this.checkedOutBooks;
     }
 
+    /**
+     * Getter for previously checked out books
+     * @return previously checked out books
+     */
     public HashMap<ISBN, Transaction> getPreviousCheckedOutBooks() {
         return this.previousCheckedOutBooks;
     }
@@ -135,6 +139,10 @@ public class Visitor implements Serializable {
         }
     }
 
+    /**
+     * Undoes the action of a visitor checking out a book
+     * @param transaction: the transaction for the checked out book
+     */
     public void undoCheckOut(Transaction transaction) {
         checkedOutBooks.remove(transaction.getIsbn());
     }
@@ -148,6 +156,10 @@ public class Visitor implements Serializable {
         this.checkedOutBooks.remove(transaction.getIsbn());
     }
 
+    /**
+     * Undoes the return of a book for a visitor.
+     * @param transaction: the transaction created when the book was checked out
+     */
     public void undoReturnBook(Transaction transaction) {
         totalFines -= transaction.getFine();
         checkedOutBooks.put(transaction.getIsbn(), transaction);
