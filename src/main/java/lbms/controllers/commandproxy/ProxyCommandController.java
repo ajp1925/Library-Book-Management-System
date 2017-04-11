@@ -1,6 +1,7 @@
 package lbms.controllers.commandproxy;
 
 import lbms.LBMS;
+import lbms.command.Invalid;
 import lbms.models.Employee;
 import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
@@ -49,7 +50,7 @@ public class ProxyCommandController implements ICommandController {
         }
 
         if (!isCommand(command)) {
-            return "invalid-command;";
+            return new Invalid().execute();
         }
 
         if (unrestricted(command) || (!unrestricted(command) && visitorID != null &&
@@ -95,7 +96,6 @@ public class ProxyCommandController implements ICommandController {
      * @return true if the client id represents and employee, false otherwise
      */
     private static boolean isEmployee(long clientID) {
-        // TODO this function is not working
         try {
             Visitor v = LBMS.getSessions().get(clientID).getV();
             for (Employee employee : LBMS.getEmployees().values()) {
