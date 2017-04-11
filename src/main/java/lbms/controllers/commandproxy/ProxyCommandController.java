@@ -138,7 +138,7 @@ public class ProxyCommandController implements ICommandController {
         try {
             HashMap<Long, Visitor> visitors = LBMS.getVisitors();
             Session s = LBMS.getSessions().get(clientID);
-            return visitors.containsKey(s.getV().getVisitorID();
+            return visitors.containsKey(s.getV().getVisitorID());
         } catch (Exception e) {
             return false;
         }
