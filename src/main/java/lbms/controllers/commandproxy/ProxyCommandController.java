@@ -3,11 +3,13 @@ package lbms.controllers.commandproxy;
 import lbms.LBMS;
 import lbms.command.Invalid;
 import lbms.models.Employee;
+import lbms.models.Session;
 import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * Implementation of a protection proxy to control access
@@ -108,6 +110,21 @@ public class ProxyCommandController implements ICommandController {
             return false;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Determines if someone is logged into a session/client.
+     * @param clientID: the ID of the client
+     * @return true if someone is logged in, false if not
+     */
+    public static boolean isLoggedIn(long clientID) {
+        try {
+            Session s = LBMS.getSessions().get(clientID);
+            Visitor v = s.getV();
+            return v != null;
+        } catch (Exception e) {
             return false;
         }
     }
