@@ -33,13 +33,13 @@ public class LogOutTest extends TestCase{
 
     public void testCleanLogout() throws MissingParametersException {
         Command command = new LogOut(s.getClientID());
-        assertEquals("success;", command.execute());
+        assertEquals(",success;", command.execute());
         assertNull(s.getV());
     }
 
     public void testInvalidClientID() throws MissingParametersException {
         Command command = new LogOut(Long.parseLong("99"));
-        assertEquals("invalid-client-id;", command.execute());
+        assertEquals(",invalid-client-id;", command.execute());
     }
 
 //    public void testMissingParameters() {

@@ -52,7 +52,7 @@ public class EndVisitTest extends TestCase{
         Command command = new EndVisit(v.getVisitorID());
         assertEquals(1, LBMS.getCurrentVisits().size());
         assertEquals(0, LBMS.getTotalVisits().size());
-        assertEquals("," + v.getVisitorID() + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
+        assertEquals("," + String.format("%010d", v.getVisitorID()) + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
                 command.execute());
         assertEquals(0, LBMS.getCurrentVisits().size());
         assertEquals(1, LBMS.getTotalVisits().size());
@@ -62,7 +62,7 @@ public class EndVisitTest extends TestCase{
         Command command = new EndVisit(s.getV().getVisitorID());
         assertEquals(1, LBMS.getCurrentVisits().size());
         assertEquals(0, LBMS.getTotalVisits().size());
-        assertEquals("," + v.getVisitorID() + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
+        assertEquals("," + String.format("%010d", v.getVisitorID()) + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
                 command.execute());
         assertEquals(0, LBMS.getCurrentVisits().size());
         assertEquals(1, LBMS.getTotalVisits().size());
@@ -71,7 +71,7 @@ public class EndVisitTest extends TestCase{
 
     public void testVisitorAlreadyDeparted() throws MissingParametersException {
         Command command = new EndVisit(s.getV().getVisitorID());
-        assertEquals("," + v.getVisitorID() + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
+        assertEquals("," + String.format("%010d", v.getVisitorID()) + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
                 command.execute());
         assertEquals(",invalid-id;", command.execute());
 
@@ -80,13 +80,13 @@ public class EndVisitTest extends TestCase{
     public void testDepartInvalidVisitor() throws MissingParametersException {
         Command command = new EndVisit(s.getV().getVisitorID());
         assertEquals(",invalid-id;", command.execute());
-
     }
 
-    public void testInvalidClientID() throws MissingParametersException {
-        Command command = new EndVisit(99);
-        assertEquals(",invalid-client-id;", command.execute());
-    }
+    // checked in controller
+//    public void testInvalidClientID() throws MissingParametersException {
+//        Command command = new EndVisit(99);
+//        assertEquals(",invalid-client-id;", command.execute());
+//    }
 
     public void testDepartWrongVisitor() throws MissingParametersException {
         LBMS.getCurrentVisits().put(e.getVisitor().getVisitorID(), new Visit(e.getVisitor()));
@@ -96,19 +96,18 @@ public class EndVisitTest extends TestCase{
 
     public void testEmployeeDepartVisitor() throws MissingParametersException {
         Command command = new EndVisit(se.getV().getVisitorID());
-        assertEquals("," + v.getVisitorID() + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
+        assertEquals("," + String.format("%010d", v.getVisitorID()) + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
                 command.execute());
     }
 
-    public void testMissingParameters() {
-        try {
-            Command command = new EndVisit(0L);
-            fail("Expected exception not thrown");
-        }
-        catch(MissingParametersException e) {
-            assertEquals(",missing-parameters,clientID", e.getMessage());
-        }
-
-
-    }
+    // passed a long now
+//    public void testMissingParameters() {
+//        try {
+//            Command command = new EndVisit("");
+//            fail("Expected exception not thrown");
+//        }
+//        catch(MissingParametersException e) {
+//            assertEquals(",missing-parameters,clientID", e.getMessage());
+//        }
+//    }
 }

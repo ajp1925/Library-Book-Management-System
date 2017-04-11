@@ -39,7 +39,7 @@ public class RegisterVisitor implements Command {
             return "," + String.format("%010d", this.visitor.getVisitorID()) + "," +
                     s.getDate().format(SystemDateTime.DATE_FORMAT) + ";";
         }
-        return "duplicate;";
+        return ",duplicate;";
     }
 
     /**
