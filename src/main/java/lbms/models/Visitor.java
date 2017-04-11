@@ -18,6 +18,7 @@ public class Visitor implements Serializable {
     private PhoneNumber phoneNumber;
     private long visitorID;
     private HashMap<ISBN, Transaction> checkedOutBooks;
+    private HashMap<ISBN, Transaction> previousCheckedOutBooks;
     private final int MAX_BOOKS = 5;
     private boolean inLibrary;
     private double currentFines;
@@ -41,6 +42,7 @@ public class Visitor implements Serializable {
         this.phoneNumber = phoneNumber;
         this.visitorID = LBMS.totalAccounts() + 1;
         this.checkedOutBooks = new HashMap<>(MAX_BOOKS);
+        this.previousCheckedOutBooks = new HashMap<>(MAX_BOOKS);
         this.inLibrary = false;
         this.currentFines = 0.0;
         this.totalFines = 0.0;
@@ -111,6 +113,10 @@ public class Visitor implements Serializable {
         return this.checkedOutBooks;
     }
 
+    public HashMap<ISBN, Transaction> getPreviousCheckedOutBooks() {
+        return this.previousCheckedOutBooks;
+    }
+
     /**
      * Determines if a visitor can check out a book.
      * @return true if the number of checked out books is less than the max
@@ -129,6 +135,10 @@ public class Visitor implements Serializable {
         }
     }
 
+    public void undoCheckOut(Transaction transaction) {
+        checkedOutBooks.remove(transaction.getIsbn());
+    }
+
     /**
      * Returns a book for a visitor.
      * @param transaction: the transaction created when the book was checked out
@@ -136,6 +146,12 @@ public class Visitor implements Serializable {
     public void returnBook(Transaction transaction) {
         this.totalFines += transaction.getFine();
         this.checkedOutBooks.remove(transaction.getIsbn());
+    }
+
+    public void undoReturnBook(Transaction transaction) {
+        totalFines -= transaction.getFine();
+        checkedOutBooks.put(transaction.getIsbn(), transaction);
+        previousCheckedOutBooks.remove(transaction.getIsbn());
     }
 
     /**

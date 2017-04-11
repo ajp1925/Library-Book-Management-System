@@ -49,6 +49,7 @@ public class PayFine implements Command, Undoable {
     @Override
     public String unExecute() {
         // TODO
+        UserSearch.BY_ID.findFirst(visitorID).payFines(-amount);
         return null;
     }
 }

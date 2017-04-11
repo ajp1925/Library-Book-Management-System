@@ -126,11 +126,19 @@ public class Book implements Serializable, Comparable<Book> {
         }
     }
 
+    public void undoCheckOut() {
+        copiesCheckedOut--;
+    }
+
     /**
      * Returns a book.
      */
     public void returnBook() {
         this.copiesCheckedOut--;
+    }
+
+    public void undoReturnBook() {
+        copiesCheckedOut++;
     }
 
     /**
