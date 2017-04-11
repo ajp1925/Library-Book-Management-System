@@ -24,7 +24,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * ClientController class
+ * ClientController class for the Library Book Management System.
+ * @author Team B
  */
 public class ClientController {
 
@@ -88,25 +89,6 @@ public class ClientController {
     }
 
     /**
-     * Toggles the menu on the left hand side of the window.
-     */
-    @FXML private void toggleMenu() {
-        double width = this.menuPane.getWidth();
-
-        if (width != 0) {
-            this.menuPane.setPrefWidth(0);
-            this.menuBackground.setPrefWidth(0);
-            this.clockButton.setText("");
-            this.clockButton.setPrefWidth(0);
-        } else {
-            this.menuPane.setPrefWidth(MAX_WIDTH);
-            this.menuBackground.setPrefWidth(MAX_WIDTH);
-            this.clockButton.setPrefWidth(MAX_WIDTH);
-            this.clockButton.setText("Clock");
-        }
-    }
-
-    /**
      * Creates the menu.
      */
     private void createMenuBar() {
@@ -165,38 +147,41 @@ public class ClientController {
         menuBar.getMenus().addAll(fileMenu, editMenu);
     }
 
+    /**
+     * Creates the buttons for the window.
+     */
     private void createWindowButtons() {
         final String os = System.getProperty ("os.name");
         if (os != null && os.startsWith ("Mac")) {
             try {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(SessionManager.class.getResource("/fxml/mac.fxml"));
-                windowButtonBox = loader.load();
+                this.windowButtonBox = loader.load();
             } catch (Exception e) {
                 System.out.println("Error loading fxml");
                 System.exit(1);
             }
 
-            AnchorPane.clearConstraints(windowButtonBox);
-            AnchorPane.setLeftAnchor(windowButtonBox, 5.0);
-            AnchorPane.setTopAnchor(windowButtonBox, 5.0);
+            AnchorPane.clearConstraints(this.windowButtonBox);
+            AnchorPane.setLeftAnchor(this.windowButtonBox, 5.0);
+            AnchorPane.setTopAnchor(this.windowButtonBox, 5.0);
 
-            tabs.setPadding(new Insets(10, 0, 0, 100));
+            this.tabs.setPadding(new Insets(10, 0, 0, 100));
         } else {
             try {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(SessionManager.class.getResource("/fxml/windows.fxml"));
-                windowButtonBox = loader.load();
+                this.windowButtonBox = loader.load();
             } catch (Exception e) {
                 System.out.println("Error loading fxml");
                 System.exit(1);
             }
 
-            AnchorPane.clearConstraints(windowButtonBox);
-            AnchorPane.setLeftAnchor(windowButtonBox, 5.0);
-            AnchorPane.setTopAnchor(windowButtonBox, 5.0);
+            AnchorPane.clearConstraints(this.windowButtonBox);
+            AnchorPane.setLeftAnchor(this.windowButtonBox, 5.0);
+            AnchorPane.setTopAnchor(this.windowButtonBox, 5.0);
 
-            tabs.setPadding(new Insets(10, 100, 0, 0));
+            this.tabs.setPadding(new Insets(10, 100, 0, 0));
         }
     }
 }

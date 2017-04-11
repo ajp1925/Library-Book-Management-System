@@ -15,6 +15,7 @@ import lbms.views.GUI.SessionManager;
  * @author Team B
  */
 public class MainVisitorController implements StateController {
+
     private SessionManager manager;
 
     private final static int TITLE_INDEX = 0;
