@@ -31,7 +31,7 @@ public class Borrow implements Command, Undoable {
     public Borrow(String request) throws MissingParametersException {
         String[] allArguments = request.split(",");
         if (allArguments.length < 2) {
-            throw new MissingParametersException(",missing-parameters,clientID,{ids}");
+            throw new MissingParametersException(",missing-parameters,visitorID,{ids}");
         }
         this.clientID = Long.parseLong(allArguments[0]);
         String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
