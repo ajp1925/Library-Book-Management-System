@@ -42,7 +42,7 @@ public class Visitor implements Serializable {
         this.phoneNumber = phoneNumber;
         this.visitorID = LBMS.totalAccounts() + 1;
         this.checkedOutBooks = new HashMap<>(MAX_BOOKS);
-        this.previousCheckedOutBooks = new HashMap<>(MAX_BOOKS);
+        this.previousCheckedOutBooks = new HashMap<>();
         this.inLibrary = false;
         this.currentFines = 0.0;
         this.totalFines = 0.0;
@@ -144,7 +144,7 @@ public class Visitor implements Serializable {
      * @param transaction: the transaction for the checked out book
      */
     public void undoCheckOut(Transaction transaction) {
-        checkedOutBooks.remove(transaction.getIsbn());
+        this.checkedOutBooks.remove(transaction.getIsbn());
     }
 
     /**
@@ -161,9 +161,9 @@ public class Visitor implements Serializable {
      * @param transaction: the transaction created when the book was checked out
      */
     public void undoReturnBook(Transaction transaction) {
-        totalFines -= transaction.getFine();
-        checkedOutBooks.put(transaction.getIsbn(), transaction);
-        previousCheckedOutBooks.remove(transaction.getIsbn());
+        this.totalFines -= transaction.getFine();
+        this.checkedOutBooks.put(transaction.getIsbn(), transaction);
+        this.previousCheckedOutBooks.remove(transaction.getIsbn());
     }
 
     /**

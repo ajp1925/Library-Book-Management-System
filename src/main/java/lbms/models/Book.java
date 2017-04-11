@@ -130,7 +130,7 @@ public class Book implements Serializable, Comparable<Book> {
      * Undoes the checkout of a book.
      */
     public void undoCheckOut() {
-        copiesCheckedOut--;
+        this.copiesCheckedOut--;
     }
 
     /**
@@ -144,7 +144,7 @@ public class Book implements Serializable, Comparable<Book> {
      * Undoes the return of a book.
      */
     public void undoReturnBook() {
-        copiesCheckedOut++;
+        this.copiesCheckedOut++;
     }
 
     /**
@@ -194,6 +194,6 @@ public class Book implements Serializable, Comparable<Book> {
      * Undoes the purchase of a book.
      */
     public void undoPurchase() {
-        numberOfCopies--;
+        this.numberOfCopies--;
     }
 }

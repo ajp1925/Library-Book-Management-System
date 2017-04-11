@@ -18,6 +18,7 @@ import java.util.*;
  * GUI: graphical-user-interface that is based on the API functionality
  * CLI: command line interface, also based off of the API functionality, but it is easier to use
  *     the CLI has not been updated for R2, only the API and GUI modes.
+ *
  * @author Team B
  *
  * @author Charles Barber   crb7054@rit.edu
@@ -43,18 +44,18 @@ public class LBMS {
     public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
     /** Data that is serialized on a clean exit. */
-    private static HashMap<ISBN, Book> books;
-    private static List<Book> booksToBuy;
-    private static HashMap<Long, Visitor> visitors;
-    private static HashMap<Long, Employee> employees;
-    private static List<Visit> totalVisits;
-    private static List<Transaction> transactions;
+    private static HashMap<ISBN, Book> books = new HashMap<>();
+    private static List<Book> booksToBuy = new ArrayList<>();
+    private static HashMap<Long, Visitor> visitors = new HashMap<>();
+    private static HashMap<Long, Employee> employees = new HashMap<>();
+    private static List<Visit> totalVisits = new ArrayList<>();
+    private static List<Transaction> transactions = new ArrayList<>();
 
     /** Data that is used during runtime, but not serialized. */
-    private static HashMap<Long, Visit> currentVisits;
-    private static HashMap<Long, Session> sessions;
-    private static List<Book> lastBookSearch;
-    private static long totalSessions;
+    private static HashMap<Long, Visit> currentVisits = new HashMap<>();
+    private static HashMap<Long, Session> sessions = new HashMap<>();
+    private static List<Book> lastBookSearch = new ArrayList<>();
+    private static long totalSessions = 0;
 
     /**
      * Program entry point. Handle command line arguments and start.
@@ -66,7 +67,7 @@ public class LBMS {
             type = StartType.valueOf(args[0].toUpperCase());
             new LBMS(type);
         } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("Usage: java LBMS.jar <type>");
+            System.out.println("Usage: java -jar LBMS.jar <type>");
             System.out.println("Valid types are: GUI, CLI, API");
         }
     }
@@ -104,10 +105,7 @@ public class LBMS {
             transactions = new ArrayList<>();
             SystemDateTime.getInstance(null).start();
         }
-        currentVisits = new HashMap<>();
-        sessions = new HashMap<>();
-        totalSessions = 0;
-        lastBookSearch = new ArrayList<>();
+        System.gc(); // Collects any unused data and takes out the trash!
     }
 
     /**
@@ -140,7 +138,7 @@ public class LBMS {
     /**
      * Closes the library by removing all current visitors.
      */
-    public static void LibraryClose() {
+    private static void LibraryClose() {
         // Departs all the visitors when the library closes.
         ProxyCommandController pcc = new ProxyCommandController();
         for (Visit visit: currentVisits.values()) {
