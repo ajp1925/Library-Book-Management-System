@@ -175,4 +175,8 @@ public class Book implements Serializable, Comparable<Book> {
         this.purchaseDate = SystemDateTime.getInstance(null).getDate();
         this.numberOfCopies++;
     }
+
+    public void undoPurchase() {
+        numberOfCopies--;
+    }
 }

@@ -59,6 +59,16 @@ public class BookPurchase implements Command, Undoable {
     @Override
     public String unExecute() {
         // TODO
+        for (int id : ids) {
+            Book b;
+            b = LBMS.getLastBookSearch().get(id - 1);
+            for (int i = 0; i < quantity; i++) {
+                b.undoPurchase();
+            }
+            if (LBMS.getBooks().get(b.getIsbn()).getNumberOfCopies() <= 0) {
+                LBMS.getBooks().remove(b.getIsbn());
+            }
+        }
         return null;
     }
 
