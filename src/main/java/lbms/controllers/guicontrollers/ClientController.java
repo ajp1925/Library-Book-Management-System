@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -12,9 +14,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.CommandController;
@@ -24,7 +24,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * ClientController class
+ * ClientController class for the Library Book Management System.
+ * @author Team B
  */
 public class ClientController {
 
@@ -33,19 +34,21 @@ public class ClientController {
 
     @FXML private BorderPane root;
     @FXML private TabPane tabs;
-    @FXML private VBox menuPane;
-    @FXML private Button clockButton;
-    @FXML private Pane menuBackground;
     @FXML private Text clockText;
+    @FXML private HBox windowButtonBox;
 
+    /**
+     * Initializes the client controller.
+     */
     @FXML protected void initialize() {
         createMenuBar();
+        //createWindowButtons();
 
         // init clock
         Runnable task = () -> {
             while (!stop) {
                 LocalDateTime date = CommandController.getSystemDateTime();
-                clockText.setText(date.format(DateTimeFormatter.ofPattern("HH:mm    MM/dd/yyyy")));
+                this.clockText.setText(date.format(DateTimeFormatter.ofPattern("HH:mm    MM/dd/yyyy")));
             }
         };
         new Thread(task).start();
@@ -65,39 +68,29 @@ public class ClientController {
         btn.setTextFill(Color.BLACK);
 
         addTab.setClosable(false);
-        tabs.getTabs().add(addTab);
+        this.tabs.getTabs().add(addTab);
 
         addTab();
     }
 
+    /**
+     * Adds a tab to the window.
+     */
     @FXML private void addTab() {
-        int num = tabs.getTabs().size();
+        int num = this.tabs.getTabs().size();
         Tab tab = new Tab("Login");
 
         SessionManager manager = new SessionManager(tab);
         manager.display("login");
 
         tab.setOnCloseRequest((Event event) -> { manager.close(); });
-        tabs.getTabs().add(num - 1, tab);
-        tabs.getSelectionModel().select(tab);
+        this.tabs.getTabs().add(num - 1, tab);
+        this.tabs.getSelectionModel().select(tab);
     }
 
-    @FXML private void toggleMenu() {
-        double width = menuPane.getWidth();
-
-        if (width != 0) {
-            menuPane.setPrefWidth(0);
-            menuBackground.setPrefWidth(0);
-            clockButton.setText("");
-            clockButton.setPrefWidth(0);
-        } else {
-            menuPane.setPrefWidth(MAX_WIDTH);
-            menuBackground.setPrefWidth(MAX_WIDTH);
-            clockButton.setPrefWidth(MAX_WIDTH);
-            clockButton.setText("Clock");
-        }
-    }
-
+    /**
+     * Creates the menu.
+     */
     private void createMenuBar() {
         // Create Menu Bar
         MenuBar menuBar = new MenuBar();
@@ -108,10 +101,10 @@ public class ClientController {
         final String os = System.getProperty ("os.name");
         if (os != null && os.startsWith ("Mac")) {
             menuBar.useSystemMenuBarProperty().set(true);
-            root.getChildren().add(menuBar);
+            this.root.getChildren().add(menuBar);
             key = KeyCombination.META_DOWN;
         } else {
-            root.setTop(menuBar);
+            this.root.setTop(menuBar);
             key = KeyCombination.CONTROL_DOWN;
         }
 
@@ -124,8 +117,8 @@ public class ClientController {
 
         MenuItem closeTab = new MenuItem("Close Tab");
         closeTab.setOnAction((ActionEvent event) -> {
-            if (tabs.getSelectionModel().getSelectedItem().isClosable()) {
-                tabs.getTabs().remove(tabs.getSelectionModel().getSelectedItem());
+            if (this.tabs.getSelectionModel().getSelectedItem().isClosable()) {
+                this.tabs.getTabs().remove(this.tabs.getSelectionModel().getSelectedItem());
             }
         });
         closeTab.setAccelerator(new KeyCodeCombination(KeyCode.W, key));
@@ -153,6 +146,42 @@ public class ClientController {
         // Menu
         menuBar.getMenus().addAll(fileMenu, editMenu);
     }
+
+    /**
+     * Creates the buttons for the window.
+     */
+    private void createWindowButtons() {
+        final String os = System.getProperty ("os.name");
+        if (os != null && os.startsWith ("Mac")) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(SessionManager.class.getResource("/fxml/mac.fxml"));
+                this.windowButtonBox = loader.load();
+            } catch (Exception e) {
+                System.out.println("Error loading fxml");
+                System.exit(1);
+            }
+
+            AnchorPane.clearConstraints(this.windowButtonBox);
+            AnchorPane.setLeftAnchor(this.windowButtonBox, 5.0);
+            AnchorPane.setTopAnchor(this.windowButtonBox, 5.0);
+
+            this.tabs.setPadding(new Insets(10, 0, 0, 100));
+        } else {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(SessionManager.class.getResource("/fxml/windows.fxml"));
+                this.windowButtonBox = loader.load();
+            } catch (Exception e) {
+                System.out.println("Error loading fxml");
+                System.exit(1);
+            }
+
+            AnchorPane.clearConstraints(this.windowButtonBox);
+            AnchorPane.setLeftAnchor(this.windowButtonBox, 5.0);
+            AnchorPane.setTopAnchor(this.windowButtonBox, 5.0);
+
+            this.tabs.setPadding(new Insets(10, 100, 0, 0));
+        }
+    }
 }
-
-

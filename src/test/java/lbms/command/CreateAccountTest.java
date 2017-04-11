@@ -84,7 +84,7 @@ public class CreateAccountTest extends TestCase{
             Command command = new CreateAccount("user,pass,visitor");
             fail("Expected Exception not thrown");
         } catch (MissingParametersException e) {
-            assertEquals(",missing-parameters,username,password,role,visitorID", e.getMessage());
+            assertEquals("missing-parameters,username,password,role,visitorID;", e.getMessage());
         }
     }
 }

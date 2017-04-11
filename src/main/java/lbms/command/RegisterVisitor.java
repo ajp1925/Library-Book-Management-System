@@ -24,7 +24,7 @@ public class RegisterVisitor implements Command {
         try {
             this.visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2], new PhoneNumber(arguments[3]));
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
-            throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number");
+            throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number;");
         }
     }
 

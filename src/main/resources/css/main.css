@@ -32,7 +32,7 @@
 }
 
 #search-tab-pane .tab-header-area {
-    -fx-padding: 0 0 0 0;
+    -fx-padding: 0 0 -1 0;
 }
 
 .search-tab-content {
@@ -43,8 +43,30 @@
     -fx-background-radius: 0 10 10 10;
 }
 
-#searchButton {
+#search-button {
     -fx-border-style: none;
     -fx-background-color: white;
     -fx-graphic: url("../icons/search.png");
+}
+
+.visit-button {
+    -fx-text-fill: white;
+}
+
+#begin-visit-button {
+    -fx-background-color: GREEN;
+}
+
+#begin-visit-button:hover {
+    -fx-background-color: #b3ffb3;
+    -fx-text-fill: black;
+}
+
+#end-visit-button {
+    -fx-background-color: RED;
+}
+
+#end-visit-button:hover {
+    -fx-background-color: #ff9999;
+    -fx-text-fill: black;
 }

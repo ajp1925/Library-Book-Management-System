@@ -1,4 +1,4 @@
-version = 'R1'
+version = 'R2'
 
 buildscript {
     repositories {

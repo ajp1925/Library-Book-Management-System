@@ -31,13 +31,13 @@ public class Borrow implements Command, Undoable {
     public Borrow(String request) throws MissingParametersException {
         String[] allArguments = request.split(",");
         if (allArguments.length < 2) {
-            throw new MissingParametersException(",missing-parameters,visitorID,{ids}");
+            throw new MissingParametersException("missing-parameters,visitorID,{ids}");
         }
         this.clientID = Long.parseLong(allArguments[0]);
         String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
 
         if (arguments.length < 1) {
-            throw new MissingParametersException(",missing-parameters,{ids}");
+            throw new MissingParametersException("missing-parameters,{ids};");
         }
         int index = 0;
         if (arguments[index].startsWith("{")) {
@@ -46,7 +46,7 @@ public class Borrow implements Command, Undoable {
             }
             this.ids.add(Integer.parseInt(arguments[index].replaceAll("[{}]", "")));
         } else {
-            throw new MissingParametersException(",missing-parameters,{ids}");
+            throw new MissingParametersException("missing-parameters,{ids};");
         }
 
         if (index < arguments.length - 1) {

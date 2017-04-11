@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
 
@@ -22,6 +21,8 @@ public class MainVisitorController implements StateController {
     private final static int TITLE_INDEX = 0;
     private final static int AUTHOR_INDEX = 1;
     private final static int ISBN_INDEX = 2;
+    private final static String BEGIN_VISIT_ID = "begin-visit-button";
+    private final static String END_VISIT_ID = "end-visit-button";
 
     @FXML private AnchorPane root;
     @FXML private TabPane searchTabPane;
@@ -30,6 +31,9 @@ public class MainVisitorController implements StateController {
     @FXML private TextField searchISBNField;
     @FXML private Button visitButton;
 
+    /**
+     * Initializes the visitor controller.
+     */
     @FXML protected void initialize() {
         root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -51,12 +55,17 @@ public class MainVisitorController implements StateController {
         if (ProxyCommandController.inLibrary(manager.getClientId())) {
             visitButton.setText("End Visit");
             visitButton.setOnAction(e -> endVisit());
+            visitButton.setId(END_VISIT_ID);
         } else {
             visitButton.setText("Begin Visit");
             visitButton.setOnAction(e -> beginVisit());
+            visitButton.setId(BEGIN_VISIT_ID);
         }
     }
 
+    /**
+     * Search pane method.
+     */
     public void search() {
         String search = null;
         switch (searchTabPane.getSelectionModel().getSelectedIndex()) {
@@ -75,6 +84,9 @@ public class MainVisitorController implements StateController {
         System.out.println(search);
     }
 
+    /**
+     * Begins a visit for the visitor.
+     */
     private void beginVisit() {
         String request = String.format("%s,arrive;", manager.getClientId());
         System.out.println(request); //TODO remove
@@ -91,10 +103,14 @@ public class MainVisitorController implements StateController {
             default:
                 visitButton.setText("End Visit");
                 visitButton.setOnAction(e -> endVisit());
+                visitButton.setId(END_VISIT_ID);
                 break;
         }
     }
 
+    /**
+     * Ends a visit for the visitor.
+     */
     private void endVisit() {
         String request = String.format("%s,depart;", manager.getClientId());
         System.out.println(request); //TODO remove
@@ -109,6 +125,7 @@ public class MainVisitorController implements StateController {
             default:
                 visitButton.setText("Begin Visit");
                 visitButton.setOnAction(e -> beginVisit());
+                visitButton.setId(BEGIN_VISIT_ID);
                 break;
         }
     }

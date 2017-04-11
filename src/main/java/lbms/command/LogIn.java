@@ -21,7 +21,7 @@ public class LogIn implements Command {
     public LogIn(String request) throws MissingParametersException {
         String parts[] = request.split(",");
         if (parts.length < 3) {
-            throw new MissingParametersException("missing-parameters,username,password");
+            throw new MissingParametersException("missing-parameters,username,password;");
         }
         this.clientID = Long.parseLong(parts[0]);
         this.username = parts[1];

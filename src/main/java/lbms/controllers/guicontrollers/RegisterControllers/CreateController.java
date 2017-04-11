@@ -8,9 +8,11 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 
 /**
- * Created by Chris on 4/6/17.
+ * CreateController class for the Library Book Management System.
+ * @author Team B
  */
 public class CreateController {
+
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private PasswordField confirmField;
@@ -18,33 +20,57 @@ public class CreateController {
     @FXML private Text passwordFail;
     @FXML private Text confirmFail;
 
+    /**
+     * Getter for the username.
+     * @return a string of the username
+     */
     String getUsernameField() {
-        return usernameField.getText();
+        return this.usernameField.getText();
     }
 
+    /**
+     * Getter for the password.
+     * @return a string of the password
+     */
     String getPasswordField() {
-        return passwordField.getText();
+        return this.passwordField.getText();
     }
 
+    /**
+     * Getter for the confirm field.
+     * @return the value of the confirm field
+     */
     String getConfirmField() {
-        return confirmField.getText();
+        return this.confirmField.getText();
     }
 
+    /**
+     * Sets the username when it fails.
+     */
     void failUsername() {
-        usernameFail.setText("*");
+        this.usernameFail.setText("*");
     }
 
+    /**
+     * Sets the password when it fails.
+     */
     void failPassword() {
-        passwordFail.setText("*");
+        this.passwordFail.setText("*");
     }
 
+    /**
+     * Confirms that it has failed.
+     */
     void failConfirm() {
-        confirmFail.setText("*");
+        this.confirmFail.setText("*");
     }
 
+    /**
+     * Clears all the fields by setting them to empty strings.
+     */
     void clearError() {
-        usernameFail.setText("");
-        passwordFail.setText("");
-        confirmFail.setText("");
+        this.usernameFail.setText("");
+        this.passwordFail.setText("");
+        this.confirmFail.setText("");
     }
 }
