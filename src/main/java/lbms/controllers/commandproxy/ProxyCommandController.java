@@ -130,6 +130,21 @@ public class ProxyCommandController implements ICommandController {
     }
 
     /**
+     * Determines if the visitor is in the library.
+     * @param clientID: the id of the client where they are logged
+     * @return true if they are in the library, false if not
+     */
+    public static boolean inLibrary(long clientID) {
+        try {
+            HashMap<Long, Visitor> visitors = LBMS.getVisitors();
+            Session s = LBMS.getSessions().get(clientID);
+            return visitors.containsKey(s.getV().getVisitorID();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
      * Checks if the library is currently open based on the system time
      * @return true if the library is open, false otherwise
      */

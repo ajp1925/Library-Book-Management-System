@@ -25,7 +25,7 @@ public class LogOut implements Command {
      */
     public String execute() {
         Session session = LBMS.getSessions().get(this.clientID);
-        if(session == null) {
+        if (session == null) {
             return ",invalid-client-id;";
         }
         session.setV(null);

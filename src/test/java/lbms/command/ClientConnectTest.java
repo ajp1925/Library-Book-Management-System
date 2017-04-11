@@ -18,12 +18,12 @@ public class ClientConnectTest extends TestCase{
 
     public void testConnect() {
         Command command = new ClientConnect();
-        assertEquals("," + LBMS.getTotalSessions() + ";", command.execute());
+        assertEquals("conn" + LBMS.getTotalSessions() + ";", command.execute());
     }
 
     public void testTwoConnections() {
         Command command = new ClientConnect();
-        assertEquals("," + LBMS.getTotalSessions() + ";", command.execute());
+        assertEquals(LBMS.getTotalSessions() + "", command.execute());
         Command command2 = new ClientConnect();
         assertEquals("," + LBMS.getTotalSessions() + ";", command2.execute());
     }
