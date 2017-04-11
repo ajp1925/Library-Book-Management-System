@@ -1,6 +1,14 @@
 package lbms.views;
 
 /**
- * Created by Chris on 3/28/17.
+ * View interface for the library book management system views.
+ * @author Team B
  */
-public interface View { void run(); }
+public interface View {
+
+    /**
+     * Used to start the view.
+     */
+    void run();
+
+}

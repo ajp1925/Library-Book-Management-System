@@ -13,7 +13,18 @@ import java.util.*;
 
 /**
  * Main class to run the Library Book Management System.
+ * 3 different "modes": API, GUI, CLI
+ * API: used for directly sending requests and receiving responses.
+ * GUI: graphical-user-interface that is based on the API functionality
+ * CLI: command line interface, also based off of the API functionality, but it is easier to use
+ *     the CLI has not been updated for R2, only the API and GUI modes.
  * @author Team B
+ *
+ * @author Charles Barber   crb7054@rit.edu
+ * @author Nicholas Feldman ncf1362@rit.edu
+ * @author Christopher Lim  cxl2436@rit.edu
+ * @author Anthony Palumbo  ajp1925@rit.edu
+ * @author Edward Wong      exw4141@rit.edu
  */
 public class LBMS {
 
@@ -32,17 +43,17 @@ public class LBMS {
     public final static LocalTime CLOSE_TIME = LocalTime.of(19, 0);
 
     /** Data that is serialized on a clean exit. */
-    private static HashMap<ISBN, Book> books = new HashMap<>();
+    private static HashMap<ISBN, Book> books;
     private static List<Book> booksToBuy;
-    private static HashMap<Long, Visitor> visitors = new HashMap<>();
-    private static HashMap<Long, Employee> employees = new HashMap<>();
-    private static List<Visit> totalVisits = new ArrayList<>();
-    private static List<Transaction> transactions = new ArrayList<>();
+    private static HashMap<Long, Visitor> visitors;
+    private static HashMap<Long, Employee> employees;
+    private static List<Visit> totalVisits;
+    private static List<Transaction> transactions;
 
     /** Data that is used during runtime, but not serialized. */
-    private static HashMap<Long, Visit> currentVisits = new HashMap<>();
-    private static HashMap<Long, Session> sessions = new HashMap<>();
-    private static List<Book> lastBookSearch = new ArrayList<>();
+    private static HashMap<Long, Visit> currentVisits;
+    private static HashMap<Long, Session> sessions;
+    private static List<Book> lastBookSearch;
     private static long totalSessions;
 
     /**
@@ -67,6 +78,74 @@ public class LBMS {
         SystemInit();
         ViewFactory.start(type);
         SystemClose();
+    }
+
+    /**
+     * Initializes the system.
+     */
+    private void SystemInit() {
+        // Deserialize the data.
+        try {
+            FileInputStream f = new FileInputStream("data.ser");
+            ObjectInputStream in = new ObjectInputStream(f);
+            books = (HashMap<ISBN, Book>) in.readObject();
+            booksToBuy = (ArrayList<Book>) in.readObject();
+            visitors = (HashMap<Long, Visitor>) in.readObject();
+            employees = (HashMap<Long, Employee>) in.readObject();
+            totalVisits = (ArrayList<Visit>) in.readObject();
+            transactions = (ArrayList<Transaction>) in.readObject();
+            SystemDateTime.getInstance((LocalDateTime)in.readObject()).start();
+        } catch (ClassNotFoundException | IOException e) {
+            books = new HashMap<>();
+            booksToBuy = makeBooks();
+            visitors = new HashMap<>();
+            employees = new HashMap<>();
+            totalVisits = new ArrayList<>();
+            transactions = new ArrayList<>();
+            SystemDateTime.getInstance(null).start();
+        }
+        currentVisits = new HashMap<>();
+        sessions = new HashMap<>();
+        totalSessions = 0;
+        lastBookSearch = new ArrayList<>();
+    }
+
+    /**
+     * Serializes the data in the system for future startup.
+     */
+    private void SystemClose() {
+        SystemDateTime.getInstance(null).stopClock();
+        LibraryClose();
+
+        // Serializes the data.
+        try {
+            File fl = new File("data.ser");
+            FileOutputStream f = new FileOutputStream(fl);
+            ObjectOutputStream out = new ObjectOutputStream(f);
+            out.writeObject(books);
+            out.writeObject(booksToBuy);
+            out.writeObject(visitors);
+            out.writeObject(employees);
+            out.writeObject(totalVisits);
+            out.writeObject(transactions);
+            out.writeObject(SystemDateTime.getInstance(null).getDateTime());
+            out.close();
+            f.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+    /**
+     * Closes the library by removing all current visitors.
+     */
+    public static void LibraryClose() {
+        // Departs all the visitors when the library closes.
+        ProxyCommandController pcc = new ProxyCommandController();
+        for (Visit visit: currentVisits.values()) {
+            pcc.processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
+        }
     }
 
     /**
@@ -167,73 +246,6 @@ public class LBMS {
             e.printStackTrace();
         }
         return output;
-    }
-
-    /**
-     * Initializes the system.
-     */
-    private void SystemInit() {
-        // Deserialize the data.
-        try {
-            FileInputStream f = new FileInputStream("data.ser");
-            ObjectInputStream in = new ObjectInputStream(f);
-            books = (HashMap<ISBN, Book>) in.readObject();
-            booksToBuy = (ArrayList<Book>) in.readObject();
-            visitors = (HashMap<Long, Visitor>) in.readObject();
-            employees = (HashMap<Long, Employee>) in.readObject();
-            totalVisits = (ArrayList<Visit>) in.readObject();
-            transactions = (ArrayList<Transaction>) in.readObject();
-            SystemDateTime.getInstance((LocalDateTime)in.readObject()).start();
-        } catch (ClassNotFoundException | IOException e) {
-            books = new HashMap<>();
-            booksToBuy = makeBooks();
-            visitors = new HashMap<>();
-            employees = new HashMap<>();
-            totalVisits = new ArrayList<>();
-            transactions = new ArrayList<>();
-            SystemDateTime.getInstance(null).start();
-        }
-        currentVisits = new HashMap<>();
-        sessions = new HashMap<>();
-        totalSessions = 0;
-    }
-
-    /**
-     * Serializes the data in the system for future startup.
-     */
-    private void SystemClose() {
-        SystemDateTime.getInstance(null).stopClock();
-        LibraryClose();
-
-        // Serializes the data.
-        try {
-            File fl = new File("data.ser");
-            FileOutputStream f = new FileOutputStream(fl);
-            ObjectOutputStream out = new ObjectOutputStream(f);
-            out.writeObject(books);
-            out.writeObject(booksToBuy);
-            out.writeObject(visitors);
-            out.writeObject(employees);
-            out.writeObject(totalVisits);
-            out.writeObject(transactions);
-            out.writeObject(SystemDateTime.getInstance(null).getDateTime());
-            out.close();
-            f.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-    }
-
-    /**
-     * Closes the library by removing all current visitors.
-     */
-    public static void LibraryClose() {
-        // Departs all the visitors when the library closes.
-        ProxyCommandController pcc = new ProxyCommandController();
-        for (Visit visit: currentVisits.values()) {
-            pcc.processRequest("depart," + visit.getVisitor().getVisitorID() + ";");
-        }
     }
 
     /**

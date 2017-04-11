@@ -11,21 +11,21 @@ import java.time.format.DateTimeFormatter;
  */
 public class SystemDateTime extends Thread {
 
-    private static SystemDateTime instance = null;
-    private LocalDateTime time;
-    private volatile boolean stop = false;
-
     /** Formats for the date time. */
     private final static DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("yyyy/MM/dd, HH:mm:ss");
     public final static DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     public final static DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+    private static SystemDateTime instance = null;
+    private LocalDateTime time;
+    private volatile boolean stop = false;
 
     /**
      * Runs the thread for the clock.
      */
     @Override
     public void run() {
-        while (!stop) {
+        while (!this.stop) {
             this.time = this.time.plusSeconds(1);
             try {
                 Thread.sleep(1000);

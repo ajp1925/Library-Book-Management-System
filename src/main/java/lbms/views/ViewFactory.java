@@ -5,16 +5,16 @@ import lbms.views.API.APIView;
 import lbms.views.CLI.CLIView;
 import lbms.views.GUI.GUIView;
 
-import java.time.LocalTime;
-
 /**
  * Controller for the views package.
  * @author Team B
  */
 public class ViewFactory {
-    private final static LocalTime OPEN_TIME = LBMS.OPEN_TIME;
-    private final static LocalTime CLOSE_TIME = LBMS.CLOSE_TIME;
 
+    /**
+     * Starts up the LBMS by creating the user interface type and running it.
+     * @param type: the specified type of interface to use
+     */
     public static void start(LBMS.StartType type) {
         View ui;
 
@@ -36,7 +36,4 @@ public class ViewFactory {
         ui.run();
     }
 
-    public static void LibraryClose() {
-        LBMS.LibraryClose();
-    }
 }

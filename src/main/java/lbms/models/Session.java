@@ -37,7 +37,7 @@ public class Session {
      * @return the clientID
      */
     public long getClientID() {
-        return clientID;
+        return this.clientID;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Session {
      * @return the visitor for the session
      */
     public Visitor getV() {
-        return v;
+        return this.v;
     }
 
     /**
@@ -61,7 +61,7 @@ public class Session {
      * @param u: the undoable command to be added
      */
     public void addUndoable(Undoable u) {
-        undoStack.push(u);
+        this.undoStack.push(u);
     }
 
     /**
@@ -101,7 +101,7 @@ public class Session {
      * @param ss: the search service to be set
      */
     public void setSearch(SearchService ss) {
-        search = ss;
+        this.search = ss;
     }
 
     /**
@@ -109,6 +109,6 @@ public class Session {
      * @return the search type being used
      */
     public SearchService getSearch() {
-        return search;
+        return this.search;
     }
 }

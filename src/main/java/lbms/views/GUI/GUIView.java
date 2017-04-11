@@ -10,17 +10,28 @@ import lbms.controllers.guicontrollers.ClientController;
 import lbms.views.View;
 
 /**
- * Created by Chris on 3/30/17.
+ * GUIView class used for the graphical user interface of the LBMS.
+ * @author Team B
  */
 public class GUIView extends Application implements View {
 
-    public GUIView() {}     // MUST BE PUBLIC OTHERWISE CLIENT BREAKS
+    /**
+     * Constructor for a GUIView.
+     */
+    public GUIView() {}
 
+    /**
+     * Launches the GUI window.
+     */
     @Override
     public void run() {
         launch();
     }
 
+    /**
+     * Starts the interface setup.
+     * @param primaryStage: the first stage
+     */
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Library Management System");
@@ -39,13 +50,13 @@ public class GUIView extends Application implements View {
         primaryStage.show();
     }
 
+    /**
+     * Used to stop the GUIView.
+     */
     @Override
     public void stop(){
         ClientController.stop = true;
         Platform.exit();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 }

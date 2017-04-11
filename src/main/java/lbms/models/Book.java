@@ -154,7 +154,7 @@ public class Book implements Serializable, Comparable<Book> {
      */
     public String dateFormat() {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        return sdf.format(publishDate.getTime());
+        return sdf.format(this.publishDate.getTime());
     }
 
     /**
@@ -172,7 +172,7 @@ public class Book implements Serializable, Comparable<Book> {
      * Sets the purchase date when a book is purchased.
      */
     public void purchase() {
-        purchaseDate = SystemDateTime.getInstance(null).getDate();
-        numberOfCopies++;
+        this.purchaseDate = SystemDateTime.getInstance(null).getDate();
+        this.numberOfCopies++;
     }
 }

@@ -7,32 +7,46 @@ import lbms.views.CLI.viewstate.State;
 import java.util.Scanner;
 
 /**
- * Created by Chris on 3/28/17.
+ * CLIView class for the LBMS command line interface mode.
+ * @author Team B
  */
 public class CLIView implements View {
+
     private static CLIView instance = null;
     private static State viewState;
 
+    /**
+     * Constructor for the CLIView.
+     */
     private CLIView() {}
 
+    /**
+     * Gets the instance of the CLIView or creates a new one.
+     * @return an instance of the CLIView
+     */
     public static CLIView getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new CLIView();
         }
         return instance;
     }
 
+    /**
+     * Runs the command line interface mode of the LBMS.
+     */
     @Override
     public void run() {
         Scanner s = new Scanner(System.in);
-        String input = "";
+        String input;
 
         CLIView.setState(new DefaultViewState());
 
-        while(true) {
+        while (true) {
             System.out.print("> ");
             input = s.nextLine();
-            if (input.matches("(?i)exit|quit")) { break; }
+
+            if (input.matches("(?i)exit|quit")) break;
+
             CLIView.change(input);
         }
     }
