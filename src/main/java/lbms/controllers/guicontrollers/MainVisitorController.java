@@ -7,8 +7,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
+
+import java.util.HashMap;
 
 /**
  * MainVisitorController class used for controlling visitors.
@@ -95,6 +98,8 @@ public class MainVisitorController implements StateController {
         System.out.println(response); //TODO remove
 
         String[] fields = response.replace(";","").split(",");
+        //TODO HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
+
         switch (fields[2]) {
             case "duplicate":
                 break;
@@ -119,6 +124,8 @@ public class MainVisitorController implements StateController {
         System.out.println(response); //TODO remove
 
         String[] fields = response.replace(";","").split(",");
+        //TODO HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
+
         switch (fields[2]) {
             case "invalid-id":
                 break;

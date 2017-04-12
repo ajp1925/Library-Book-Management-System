@@ -52,6 +52,14 @@ public class Book implements Serializable, Comparable<Book> {
     }
 
     /**
+     * Getter for the page count
+     * @return the page count
+     */
+    public int getPageCount() {
+        return this.pageCount;
+    }
+
+    /**
      * Getter for the publisher.
      * @return the publisher of the book
      */
@@ -195,5 +203,17 @@ public class Book implements Serializable, Comparable<Book> {
      */
     public void undoPurchase() {
         this.numberOfCopies--;
+    }
+
+    /**
+     * Get all authors as a string
+     * @return a string representation of all authors
+     */
+    public String getAuthorsString() {
+        String authors = "";
+        for (String author: this.authors) {
+            authors += author + ",";
+        }
+        return authors.replaceAll(",$", "");
     }
 }

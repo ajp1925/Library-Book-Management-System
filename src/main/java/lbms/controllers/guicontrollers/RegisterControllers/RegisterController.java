@@ -7,11 +7,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.controllers.guicontrollers.StateController;
 import lbms.views.GUI.SessionManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -143,8 +145,9 @@ public class RegisterController implements StateController {
                     String response = new ProxyCommandController().processRequest(request);
                     System.out.println(response);       // TODO remove
 
-                    // parse response
                     String[] fields = response.split(",");
+                    // TODO HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
+
                     if (fields[2].equals("duplicate;")) {
                         valid = false;
                     } else {
@@ -222,8 +225,9 @@ public class RegisterController implements StateController {
                 String response = new ProxyCommandController().processRequest(request);
                 System.out.println(response);       // TODO remove
 
-                // parse response
                 String[] fields = response.replace(";", "").split(",");
+                //TODO HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
+
                 switch (fields[1]) {
                     case "duplicate-username":
                         this.failedLabel.setText("Username is taken. Please try a new username.");
@@ -254,8 +258,8 @@ public class RegisterController implements StateController {
                     String response = new ProxyCommandController().processRequest(request);
                     System.out.println(response);       // TODO remove
 
-                    // parse response
                     String[] fields = response.replace(";", "").split(",");
+                    //TODO HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
 
                     if (fields[2].equals("success")) {
                         this.manager.setUser(username);

@@ -61,15 +61,14 @@ public class ProxyCommandController implements ICommandController {
     }
 
     /**
-     * Most commands can only be executed by employees while four
+     * Most commands can only be executed by employees while some commands
      * can be accessed by any visitor and are therefore "unrestricted"
      * @param command the word from the request string which differentiates the command requested
      * @return true if any visitor can perform the command, false otherwise
      */
     private boolean unrestricted(String command) {
         ArrayList<String> visitorCommands = new ArrayList<>(Arrays.asList(
-                "arrive", "info", "borrow", "depart", "register", "login", "logout", "undo", "redo", "disconnect",
-                "create"
+                "arrive", "info", "borrow", "depart", "register", "login", "logout", "undo", "redo", "disconnect"
         ));
         return visitorCommands.contains(command);
     }
