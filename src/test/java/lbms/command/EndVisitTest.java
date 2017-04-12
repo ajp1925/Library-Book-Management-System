@@ -60,12 +60,12 @@ public class EndVisitTest extends TestCase{
         assertEquals(1, LBMS.getTotalVisits().size());
     }
 
-    public void testControllerTEMP() throws MissingParametersException {
-        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",login,JESmith,password;"));
-        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",advance,0,12;"));
-        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",arrive;"));
-        System.out.println(new ProxyCommandController().processRequest(s.getClientID() + ",depart," + e.getVisitor().getVisitorID() + ";"));
-    }
+//    public void testControllerTEMP() throws MissingParametersException {
+//        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",login,JESmith,password;"));
+//        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",advance,0,12;"));
+//        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",arrive;"));
+//        System.out.println(new ProxyCommandController().processRequest(s.getClientID() + ",depart," + e.getVisitor().getVisitorID() + ";"));
+//    }
 
     public void testVisitorAlreadyDeparted() throws MissingParametersException {
         Command command = new EndVisit(s.getV().getVisitorID());
