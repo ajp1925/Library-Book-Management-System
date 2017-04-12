@@ -31,7 +31,7 @@ public class Borrow implements Command, Undoable {
     public Borrow(String request) throws MissingParametersException {
         String[] allArguments = request.split(",");
         if (allArguments.length < 2) {
-            throw new MissingParametersException("missing-parameters,visitorID,{ids}");
+            throw new MissingParametersException("missing-parameters,{all}");
         }
         this.clientID = Long.parseLong(allArguments[0]);
         String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
@@ -39,7 +39,9 @@ public class Borrow implements Command, Undoable {
         if (arguments.length < 1) {
             throw new MissingParametersException("missing-parameters,{ids};");
         }
-        int index = 0;
+
+        /*
+        int index = 1;
         if (arguments[index].startsWith("{")) {
             while (!arguments[index].endsWith("}")) {
                 this.ids.add(Integer.parseInt(arguments[index++].replaceAll("[{}]", "")));
@@ -54,7 +56,7 @@ public class Borrow implements Command, Undoable {
         } else {
             this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
         }
-
+        */
     }
 
     /**

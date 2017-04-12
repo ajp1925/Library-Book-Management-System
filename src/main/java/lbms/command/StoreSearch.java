@@ -117,7 +117,7 @@ public class StoreSearch implements Command {
         }
 
         if (books.size() == 0) {
-            return "0;";
+            return ",0;";
         } else {
             int id = 1;
             StringBuilder response = new StringBuilder(Integer.toString(books.size()) + "\n");
