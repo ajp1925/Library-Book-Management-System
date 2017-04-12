@@ -109,8 +109,14 @@ public class LBMS {
             totalVisits = new ArrayList<>();
             transactions = new ArrayList<>();
             SystemDateTime.getInstance(null).start();
+
+            // Admin account creation.
+            Employee employee = new Employee(new Visitor("firstname", "lastname", "admin",
+                    "password", "address", new PhoneNumber(585,123,1234)));
+            visitors.put(employee.getVisitor().getVisitorID(), employee.getVisitor());
+            employees.put(employee.getVisitor().getVisitorID(), employee);
         }
-        System.gc(); // Collects any unused data and takes out the trash! (pun intended)
+        System.gc(); // Collects any unused data and takes out the trash!
     }
 
     /**
@@ -314,14 +320,6 @@ public class LBMS {
      */
     public static List<Transaction> getTransactions() {
         return transactions;
-    }
-
-    /**
-     * Used for generating account IDs.
-     * @return the total number of accounts in the library
-     */
-    public static long totalAccounts() {
-        return visitors.size() + employees.size();
     }
 
     /**

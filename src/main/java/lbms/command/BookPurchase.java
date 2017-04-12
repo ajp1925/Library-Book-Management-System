@@ -58,7 +58,7 @@ public class BookPurchase implements Command, Undoable {
      */
     @Override
     public String unExecute() {
-        // TODO
+        // TODO test this
         for (int id : this.ids) {
             Book b;
             b = LBMS.getLastBookSearch().get(id - 1);
