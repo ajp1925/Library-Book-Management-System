@@ -10,8 +10,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
+
+import java.util.HashMap;
 
 /**
  * StateController class used for the state of the GUI.
@@ -75,13 +78,11 @@ public class LoginController implements StateController {
                 String response = new ProxyCommandController().processRequest(
                         String.format("%s,login,%s,%s;",
                                 this.manager.getClientId(), this.usernameField.getText(), this.passwordField.getText()));
+                System.out.println(response);
+                HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
 
-                // parse response
-                String[] fields = response.replace(";", "").split(",");
-
-                if (fields[2].equals("success")) {
+                if (responseMap.get("message").equals("success")) {
                     this.manager.setUser(this.usernameField.getText());
-
                     if (ProxyCommandController.isEmployee(manager.getClientId())) {
                         manager.display("main_employee");
                     } else {
