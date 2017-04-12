@@ -2,6 +2,8 @@ package lbms.command;
 
 import junit.framework.TestCase;
 import lbms.LBMS;
+import lbms.controllers.commandproxy.CommandController;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.models.*;
 
 import java.time.LocalDate;
@@ -26,7 +28,7 @@ public class EndVisitTest extends TestCase{
         s.setV(v);
         LBMS.getSessions().put(s.getClientID(), s);
 
-        e = new Employee(v);
+        e = new Employee(new Visitor("John", "Smith", "JESmith", "password", "address", new PhoneNumber(123, 123, 1234)));
         LBMS.getEmployees().put(e.getVisitor().getVisitorID(), e);
         LBMS.getVisitors().put(e.getVisitor().getVisitorID(), e.getVisitor());
 
@@ -58,15 +60,11 @@ public class EndVisitTest extends TestCase{
         assertEquals(1, LBMS.getTotalVisits().size());
     }
 
-    public void testDepartNoVisitor() throws MissingParametersException {
-        Command command = new EndVisit(s.getV().getVisitorID());
-        assertEquals(1, LBMS.getCurrentVisits().size());
-        assertEquals(0, LBMS.getTotalVisits().size());
-        assertEquals("," + String.format("%010d", v.getVisitorID()) + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
-                command.execute());
-        assertEquals(0, LBMS.getCurrentVisits().size());
-        assertEquals(1, LBMS.getTotalVisits().size());
-
+    public void testControllerTEMP() throws MissingParametersException {
+        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",login,JESmith,password;"));
+        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",advance,0,12;"));
+        System.out.println(new ProxyCommandController().processRequest(se.getClientID() + ",arrive;"));
+        System.out.println(new ProxyCommandController().processRequest(s.getClientID() + ",depart," + e.getVisitor().getVisitorID() + ";"));
     }
 
     public void testVisitorAlreadyDeparted() throws MissingParametersException {
@@ -78,36 +76,7 @@ public class EndVisitTest extends TestCase{
     }
 
     public void testDepartInvalidVisitor() throws MissingParametersException {
-        Command command = new EndVisit(s.getV().getVisitorID());
+        Command command = new EndVisit(99L);
         assertEquals(",invalid-id;", command.execute());
     }
-
-    // checked in controller
-//    public void testInvalidClientID() throws MissingParametersException {
-//        Command command = new EndVisit(99);
-//        assertEquals(",invalid-client-id;", command.execute());
-//    }
-
-    public void testDepartWrongVisitor() throws MissingParametersException {
-        LBMS.getCurrentVisits().put(e.getVisitor().getVisitorID(), new Visit(e.getVisitor()));
-        Command command = new EndVisit(s.getV().getVisitorID());
-        assertEquals(",not-authorized;", command.execute());
-    }
-
-    public void testEmployeeDepartVisitor() throws MissingParametersException {
-        Command command = new EndVisit(se.getV().getVisitorID());
-        assertEquals("," + String.format("%010d", v.getVisitorID()) + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
-                command.execute());
-    }
-
-    // passed a long now
-//    public void testMissingParameters() {
-//        try {
-//            Command command = new EndVisit("");
-//            fail("Expected exception not thrown");
-//        }
-//        catch(MissingParametersException e) {
-//            assertEquals(",missing-parameters,clientID", e.getMessage());
-//        }
-//    }
 }
