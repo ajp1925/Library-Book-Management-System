@@ -40,7 +40,7 @@ public class Visitor implements Serializable {
         this.password = password;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.visitorID = LBMS.totalAccounts() + 1;
+        this.visitorID = LBMS.getVisitors().size() + 1;
         this.checkedOutBooks = new HashMap<>(MAX_BOOKS);
         this.previousCheckedOutBooks = new HashMap<>();
         this.inLibrary = false;
