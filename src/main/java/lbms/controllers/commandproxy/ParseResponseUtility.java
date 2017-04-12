@@ -57,14 +57,17 @@ public final class ParseResponseUtility {
                         parsed.put("message", fields[2]);
                         break;
                     case "arrive":
+                        parsed.put("message", "success");
                         parsed.put("visitorID", fields[2]);
                         parsed.put("visitDate", fields[3]);
                         parsed.put("visitStartTime", fields[4]);
                         break;
                     case "borrow":
+                        parsed.put("message", "success");
                         parsed.put("dueDate", fields[2]);
                         break;
                     case "borrowed":
+                        parsed.put("message", "success");
                         parsed.put("numberOfBooks", fields[2]);
                         parsed.put("books", removeBooks(3,fields));
                         break;
@@ -77,18 +80,21 @@ public final class ParseResponseUtility {
                         parsed.put("message", fields[2]);
                         break;
                     case "datetime":
+                        parsed.put("message", "success");
                         parsed.put("date", fields[2]);
                         parsed.put("time", fields[3]);
                         break;
                     case "depart":
+                        parsed.put("message", "success");
                         parsed.put("visitorID", fields[2]);
                         parsed.put("visitEndTime", fields[3]);
                         parsed.put("visitDuration", fields[4]);
                         break;
                     case "disconnect":
-                        // response is just clientID,disconnect;
+                        parsed.put("message", "success");
                         break;
                     case "info":
+                        parsed.put("message", "success");
                         parsed.put("numberOfBooks", fields[2]);
                         parsed.put("books", removeBooks(3,fields));
                         break;
@@ -104,10 +110,12 @@ public final class ParseResponseUtility {
                         parsed.put("message", fields[2]);
                         break;
                     case "register":
+                        parsed.put("message", "success");
                         parsed.put("visitorID", fields[2]);
                         parsed.put("registrationDate", fields[3]);
                         break;
                     case "report":
+                        parsed.put("message", "success");
                         parsed.put("date",fields[2]);
                         parsed.put("report",fields[3]);
                         break;
@@ -129,6 +137,7 @@ public final class ParseResponseUtility {
                         }
                         break;
                     case "search":
+                        parsed.put("message", "success");
                         parsed.put("numberOfBooks", fields[2]);
                         parsed.put("books", removeBooks(3,fields));
                         break;
@@ -140,6 +149,7 @@ public final class ParseResponseUtility {
                         break;
                     default:
                         // remember to check for not-authorized
+                        parsed.put("message", "failure");
                         System.out.println("Bad response to parse");
                         parsed.put("badResponse", response);
                         break;
