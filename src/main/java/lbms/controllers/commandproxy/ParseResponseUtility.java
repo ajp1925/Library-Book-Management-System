@@ -3,6 +3,7 @@ package lbms.controllers.commandproxy;
 import lbms.models.Book;
 import lbms.search.BookSearch;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -161,16 +162,16 @@ public final class ParseResponseUtility {
     }
 
     /**
-     * Takes an arbitrarily long string of books and creates a HashMap with an
-     * entry for each book. The key is the temporary id (or isbn if id does not exist).
-     * The value is a HashMap mapping string of types of Book information (eg. title)
+     * Takes an arbitrarily long string of books and creates an ArrayList with an
+     * entry for each book.
+     * Each index is a HashMap mapping string of types of Book information (eg. title)
      * to a string of the associated value.
      * IMPORTANT: this function was only meant to parse strings that were
      *            part of a command response
-     * @return HashMap(id or isbn, HashMap[bookInfoType, bookInfo])
+     * @return ArrayList(HashMap[bookInfoType, bookInfo])
      */
-    public static HashMap<String, HashMap<String,String>> parseBooks(String booksString) {
-        HashMap<String, HashMap<String,String>> books = new HashMap<>();
+    public static ArrayList<HashMap<String,String>> parseBooks(String booksString) {
+        ArrayList<HashMap<String,String>> books = new ArrayList<>();
 
         String[] booksArray = booksString.replaceAll("^BOOK:", "").split("BOOK:");
 
@@ -188,7 +189,7 @@ public final class ParseResponseUtility {
                 bookInfo.put("isbn", bookPieces[1]);
                 bookInfo.put("title", bookPieces[2]);
                 bookInfo.put("dateBorrowed", bookPieces[3]);
-                books.put(bookPieces[0], bookInfo);
+                books.add(bookInfo);
             } else if (bookPieces[0].length() == 13) { // buy
                 Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[0]);
                 bookInfo.put("isbn", b.getIsbn().toString());
@@ -196,7 +197,7 @@ public final class ParseResponseUtility {
                 bookInfo.put("authors", b.getAuthorsString());
                 bookInfo.put("publishDate", publishDate);
                 bookInfo.put("quantity", bookPieces[bookPieces.length-1]);
-                books.put(bookPieces[0], bookInfo);
+                books.add(bookInfo);
             } else { // info or search
                 bookInfo.put("id", bookPieces[0]);
                 bookInfo.put("quantity", bookPieces[1]);
@@ -207,7 +208,7 @@ public final class ParseResponseUtility {
                 bookInfo.put("publishDate", publishDate);
                 bookInfo.put("publisher", b.getPublisher());
                 bookInfo.put("pageCount", b.getPageCount() + "");
-                books.put(bookPieces[0], bookInfo);
+                books.add(bookInfo);
             }
         }
         return books;
