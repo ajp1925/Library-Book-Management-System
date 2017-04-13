@@ -6,7 +6,7 @@ import lbms.command.Undoable;
 
 import java.util.Stack;
 
-import static lbms.LBMS.SearchService.local;
+import static lbms.LBMS.SearchService.LOCAL;
 
 /**
  * Session class for the LBMS
@@ -27,7 +27,7 @@ public class Session {
         LBMS.incrementSessions();
         this.clientID = LBMS.getTotalSessions();
         this.v = null;
-        this.search = local;
+        this.search = LOCAL;
         this.undoStack = new Stack<>();
         this.redoStack = new Stack<>();
     }

@@ -4,6 +4,7 @@ import lbms.LBMS;
 import lbms.command.Invalid;
 import lbms.models.*;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,6 +15,8 @@ import java.util.HashMap;
  * @author Team B
  */
 public class ProxyCommandController implements ICommandController {
+
+    private static LibraryState libraryStatus = null;
 
     /**
      * Checks to ensure the command is being requested by the proper user
@@ -137,12 +140,24 @@ public class ProxyCommandController implements ICommandController {
     }
 
     /**
+     * Updates the status of the library.
+     */
+    private static void updateStatus() {
+        LocalTime time = SystemDateTime.getInstance(null).getTime();
+        if (time.isAfter(LBMS.OPEN_TIME) && time.isAfter(LBMS.CLOSE_TIME)) {
+            libraryStatus  = new OpenState();
+        } else {
+            libraryStatus = new ClosedState();
+        }
+    }
+
+    /**
      * Checks if the library is currently open based on the system time
      * @return true if the library is open, false otherwise
      */
     public static boolean isOpen() {
-        return SystemDateTime.getInstance(null).getTime().isAfter(LBMS.OPEN_TIME) &&
-                SystemDateTime.getInstance(null).getTime().isBefore(LBMS.CLOSE_TIME);
+        updateStatus();
+        return libraryStatus.isOpen();
     }
 
     /**
@@ -158,6 +173,11 @@ public class ProxyCommandController implements ICommandController {
                 isEmployee(clientID);
     }
 
+    /**
+     * Getter for the visitor ID when the client ID is known.
+     * @param client: the client ID of the session
+     * @return the visitor ID of who is logged in
+     */
     public static Long getVisitorID(Long client) {
         return LBMS.getSessions().get(client).getV().getVisitorID();
     }

@@ -2,8 +2,8 @@ package lbms.command;
 
 import lbms.LBMS;
 
-import static lbms.LBMS.SearchService.google;
-import static lbms.LBMS.SearchService.local;
+import static lbms.LBMS.SearchService.GOOGLE;
+import static lbms.LBMS.SearchService.LOCAL;
 
 /**
  * SetBookService class for the set book service command.
@@ -24,10 +24,10 @@ public class SetBookService implements Command {
         String s = request.replaceAll(";", "").replaceAll(",", "");
         switch (s) {
             case "local":
-                this.search = local;
+                this.search = LOCAL;
                 break;
             case "google":
-                this.search = google;
+                this.search = GOOGLE;
                 break;
             default:
                 throw new MissingParametersException("invalid-info-service;");

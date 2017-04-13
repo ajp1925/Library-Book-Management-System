@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lbms.LBMS.SearchService.google;
-import static lbms.LBMS.SearchService.local;
+import static lbms.LBMS.SearchService.GOOGLE;
+import static lbms.LBMS.SearchService.LOCAL;
 
 /**
  * StoreSearch class that implements the book store search command.
@@ -76,9 +76,9 @@ public class StoreSearch implements Command {
         }
 
         List<Book> books;
-        if (LBMS.getSessions().get(this.clientID).getSearch() == local) {
+        if (LBMS.getSessions().get(this.clientID).getSearch() == LOCAL) {
             books = BookSearch.BY_TITLE.toBuy().findAll(this.title);
-        } else if (LBMS.getSessions().get(clientID).getSearch() == google) {
+        } else if (LBMS.getSessions().get(clientID).getSearch() == GOOGLE) {
             books = GoogleAPISearch.searchByTitle(this.title);
         } else {
             books = new ArrayList<>();

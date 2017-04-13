@@ -13,7 +13,7 @@
 9781783296033,"Harry Potter",{Jody Revenson},"Titan Books",2015-09-25,208
 9780062101891,"Harry Potter Page to Screen",{Bob McCabe},"Harper Design",2011-10-25,540
 9780545582971,"Harry Potter and the Order of the Phoenix",{J. K. Rowling},"Scholastic Paperbacks",2013-08-27,870
-9781781107041,"Harry Potter and the Cursed Child â€“ Parts One and Two (Special Rehearsal Edition)",{J.K. Rowling, John Tiffany, Jack Thorne},"Pottermore",2016-07-31,320
+9781781107041,"Harry Potter and the Cursed Child – Parts One and Two (Special Rehearsal Edition)",{J.K. Rowling, John Tiffany, Jack Thorne},"Pottermore",2016-07-31,320
 9780545387200,"The Hunger Games Trilogy",{Suzanne Collins},"Scholastic Inc.",2011-05-01,1000
 9780545452373,"The World of the Hunger Games",{Kate Egan},"Scholastic Inc.",2012-03-23,192
 9780545227247,"Catching Fire (The Second Book of the Hunger Games)",{Suzanne Collins},"Scholastic Inc.",2010-06-01,400
@@ -56,7 +56,7 @@
 9780671014025,"Icefire",{Judith Reeves-Stevens, Garfield Reeves-Stevens},"Beyond Words/Atria Books",1998,484
 9780545208871,"The Last Council",{Kazu Kibuishi},"Scholastic Inc.",2011,207
 9780545678421,"Firelight (Amulet #7)",{Kazu Kibuishi},"Scholastic Inc.",2016-02-23,208
-9780811220484,"Amulet",{Roberto BolaÃ±o},"New Directions Publishing",2008-05-17,192
+9780811220484,"Amulet",{Roberto Bolaño},"New Directions Publishing",2008-05-17,192
 9781613128992,"The Lie Tree",{Frances Hardinge},"Abrams",2016-04-19,384
 9780545208857,"The Cloud Searchers",{Kazu Kibuishi},"Scholastic Inc.",2010,197
 9781439588987,"The Stonekeeper",{Kazu Kibuishi},"Paw Prints",2009-01-12,208
@@ -74,7 +74,7 @@
 9780199571123,"Oxford Dictionary of English",{Angus Stevenson},"Oxford University Press, USA",2010-08-19,2112
 9780824803537,"Chamorro-English Dictionary",{Donald M. Topping, Pedro Ogo, Bernardita Dungca},"University of Hawaii Press",1975-01-01,336
 9780304366361,"Cassell's Dictionary of Slang",{Jonathon Green},"Sterling Publishing Company, Inc.",2005,1565
-9781591987628,"Build-a-Skill Instant Books: Synonyms and Antonyms, Gr. Kâ€“1, eBook",{Trisha Callella},"Creative Teaching Press",2007-01-01,32
+9781591987628,"Build-a-Skill Instant Books: Synonyms and Antonyms, Gr. K–1, eBook",{Trisha Callella},"Creative Teaching Press",2007-01-01,32
 9781853267574,"Dictionary of Synonyms and Antonyms",{Martin Manser},"Wordsworth Editions",1998,245
 9780521001762,"Using Arabic Synonyms",{Dilworth Parkinson},"Cambridge University Press",2006,688
 9780521794053,"Using Russian Synonyms",{Terence Wade, Nijole White},"Cambridge University Press",2004-01-28,633
@@ -82,7 +82,7 @@
 9780446313100,"A Dictionary of Synonyms and Antonyms",{Joseph Devlin, Jerome Fried},"BRILL",1961,384
 9781416587279,"Experience And Education",{John Dewey},"Simon and Schuster",2007-11-01,96
 9780674028678,"The Race Between Education and Technology",{Claudia Dale Goldin, Lawrence F. Katz},"Harvard University Press",2008,488
-9781442611214,"Lowering Higher Education",{James E. CÃ´tÃ©, Anton Allahar},"University of Toronto Press",2011-01-01,243
+9781442611214,"Lowering Higher Education",{James E. Côté, Anton Allahar},"University of Toronto Press",2011-01-01,243
 9780300001631,"Education at the Crossroads",{Jacques Maritain},"Yale University Press",1943,120
 9780253338167,"Changing Perspectives on International Education",{Patrick O'Meara, Howard D. Mehlinger, Roxana Ma Newman},"Indiana University Press",2001,419
 9780393709544,"The Way of Mindful Education: Cultivating Well-Being in Teachers and Students",{Daniel Rechtschaffen},"W. W. Norton & Company",2014-06-08,352
@@ -164,7 +164,7 @@
 9780307824028,"The Raven and the Monkey's Paw",{Edgar Allan Poe, Edith Wharton, Saki, Charles Dickens, O. Henry},"Modern Library",2012-08-22,224
 9781439113868,"The Raven and Other Writings",{Edgar Allan Poe},"Simon and Schuster",2012-02-28,448
 9781935785118,"THE WORKS OF EDGAR ALLAN POE, The Raven Edition -",{Edgar Allan Poe},"Bottom of the Hill",2010-06-01,198
-9783837059199,"The Raven",{Edgar Allan Poe},"BoD â€“ Books on Demand",2008,84
+9783837059199,"The Raven",{Edgar Allan Poe},"BoD – Books on Demand",2008,84
 9781933747200,"Edgar Allan Poe's Annotated Poems",{Edgar Allan Poe},"Bottletree Books LLC",2008-10,216
 9781938938092,"The Raven (Illustrated)",{Edgar Allan Poe},"Top Five Books LLC",2013-09-13,32
 9781443425353,"The Raven And Other Poems",{Edgar Allan Poe},"Harper Collins",2013-04-09,50
@@ -172,7 +172,7 @@
 9781938938108,"Edgar Allan Poe: Essential Tales & Poems",{Edgar Allan Poe},"Top Five Books LLC",2013-09-16,640
 9780451531056,"The Complete Poetry of Edgar Allan Poe",{Edgar Allan Poe},"Penguin",2008,139
 9781598533873,"Edgar Allan Poe: Poetry and Tales",{Edgar Allan Poe},"Library of America",2015-09-22,1408
-9780917786334,"From Poetry to Prose in Old ProvenÃ§al",{Elizabeth Wilson Poe},"Summa Publications, Inc.",1984-01-01,119
+9780917786334,"From Poetry to Prose in Old Provençal",{Elizabeth Wilson Poe},"Summa Publications, Inc.",1984-01-01,119
 9780375712593,"Poe: Poems",{Edgar Allan Poe},"Everyman's Library",2014-05-28,256
 9780415967372,"Poems and Essays on Poetry",{Edgar Allan Poe},"Taylor & Francis",2003,150
 9780252069215,"Complete Poems",{Edgar Allan Poe, Thomas Ollive Mabbott},"University of Illinois Press",1969,627
@@ -195,7 +195,7 @@
 9781409417620,"Rome",{Dorigen Sophie Caldwell, Lesley Caldwell},"Ashgate Publishing, Ltd.",2011,262
 9780801843006,"A New Topographical Dictionary of Ancient Rome",{L. Richardson, jr},"JHU Press",1992-10-01,458
 9781606060414,"The Origins of Baroque Art in Rome",{Alois Riegl, Andrew Hopkins, Arnold Alexander Witte, Alina Alexandra Payne},"Getty Publications",2010,279
-9780521519533,"The Emperor and Rome",{BjÃ¶rn C. Ewald, Carlos F. NoreÃ±a},"Cambridge University Press",2010-12-02,365
+9780521519533,"The Emperor and Rome",{Björn C. Ewald, Carlos F. Noreña},"Cambridge University Press",2010-12-02,365
 9788882651763,"Roman Fountains",{Marvin Pulvers},"L'ERMA di BRETSCHNEIDER",2002,927
 9780521192170,"Rome Across Time and Space",{Claudia Bolgia, Rosamond McKitterick, John Osborne},"Cambridge University Press",2011-04-07,351
 9781101118252,"Marriage, a History",{Stephanie Coontz},"Penguin",2006-02-28,448
@@ -210,7 +210,7 @@
 9780486406756,"The Extraterrestrial Life Debate, 1750-1900",{Michael J. Crowe},"Courier Corporation",1999,680
 9780300089035,"London 1900",{Jonathan Schneer},"Yale University Press",2001,336
 9780802132505,"Budapest 1900",{John Lukacs},"Grove Press",1990,255
-9781606060421,"Sacred Possessions",{Gail Feigenbaum, S. Ebert-Schifferer, Galina TirnaniÄ‡},"Getty Publications",2011,248
+9781606060421,"Sacred Possessions",{Gail Feigenbaum, S. Ebert-Schifferer, Galina Tirnanić},"Getty Publications",2011,248
 9781440230851,"Standard Catalog of World Coins - 1801-1900",{George S. Cuhaj, Thomas Michael},"Krause Publications",2012-11-29,1296
 9781571811394,"Rethinking Vienna 1900",{Steven Beller},"Berghahn Books",2001,292
 9780773518865,"Diary of a European Tour, 1900",{Margaret Addison, Jean O'Grady},"McGill-Queen's Press - MQUP",1999-11-30,197
@@ -239,7 +239,7 @@
 9780803235861,"Cherokee Women",{Theda Perdue},"U of Nebraska Press",1998,252
 9780802005717,"English Manuscript Studies, 1100-1700",{Peter Beal, Jeremy Griffiths},"University of Toronto Press",1993,306
 9780719049408,"Poverty and Welfare in England, 1700-1850",{Steven King},"Manchester University Press",2000-12-15,294
-9780262122696,"Picturing Machines 1400-1700",{Wolfgang LefÃ¨vre},"MIT Press",2004,347
+9780262122696,"Picturing Machines 1400-1700",{Wolfgang Lefèvre},"MIT Press",2004,347
 9780253211415,"The History of Keyboard Music to 1700",{Willi Apel},"Indiana University Press",1997-01-01,878
 9781440242663,"Standard Catalog of World Coins, 1601-1700",{George S. Cuhaj},"F+W Media, Inc.",2014-11-30,1606
 9780806311029,"New England Marriages Prior to 1700",{unknown},"Genealogical Publishing Com",1985,1009
@@ -248,11 +248,11 @@
 9789004097629,"Handbook of European History 1400 - 1600",{Thomas A. Brady, Heiko Augustinus Oberman, James D. Tracy},"BRILL",1994,709
 9780415279963,"The Age of Discovery, 1400-1600",{David Arnold},"Psychology Press",2002,69
 9789004117730,"The Emporium of the World",{Angela Schottenhammer},"BRILL",2001,449
-9780801888199,"Women's Writing in Italy, 1400â€“1650",{Virginia Cox},"JHU Press",2008-05-02,464
+9780801888199,"Women's Writing in Italy, 1400–1650",{Virginia Cox},"JHU Press",2008-05-02,464
 9780300064674,"Architecture in Italy, 1400-1500",{Ludwig Heinrich Heydenreich, Paul Davies},"Yale University Press",1974,186
 9780521627245,"Africa and Africans in the Making of the Atlantic World, 1400-1800",{John Thornton},"Cambridge University Press",1998-04-28,340
 9781586634018,"Fahrenheit 451",{unknown},"Spark Notes",2002-01,72
-9788499485836,"La conciencia deshumanizada",{Juan Ignacio HernÃ¡iz BlÃ¡zquez},"Editorial Club Universitario",2013-06-12,200
+9788499485836,"La conciencia deshumanizada",{Juan Ignacio Hernáiz Blázquez},"Editorial Club Universitario",2013-06-12,200
 9781853595455,"Understanding Deaf Culture",{Paddy Ladd},"Multilingual Matters",2003,502
 9781563682742,"Deaf Way II",{Harvey Goodstein, Laura Brown},"Gallaudet University Press",2004,175
 9781563680878,"Deaf History Unveiled",{John V. Van Cleve},"Gallaudet University Press",1999,320
@@ -294,7 +294,7 @@
 9780521258753,"Slavery in Dutch South Africa",{Nigel Worden},"Cambridge University Press",1985-04-25,207
 9780195337709,"Encyclopedia of Africa",{Anthony Appiah, Henry Louis Gates},"Oxford University Press on Demand",2010,1392
 9780798302449,"Contemporary Social Issues in Africa",{Mokong Simon Mapadimeng},"African Books Collective",2010,267
-9781919930909,"Animal Rights in South Africa",{MichelÃ¨ Pickover},"Juta and Company Ltd",2005,210
+9781919930909,"Animal Rights in South Africa",{Michelè Pickover},"Juta and Company Ltd",2005,210
 9781906924706,"Oral Literature in Africa",{Ruth Finnegan},"Open Book Publishers",2012-09,614
 9780684802756,"The Africa Cookbook",{Jessica B. Harris},"Simon and Schuster",1998,382
 9780385673914,"The Traveler",{John Twelve Hawks},"Seal Books",2010-10-29,496
@@ -326,7 +326,7 @@
 9780871698544,"Astral Magic in Babylonia",{Erica Reiner},"American Philosophical Society",1995-01-01,150
 9780307407092,"Magic Books & Paper Toys",{Esther K. Smith, Amy Kalyn Sims},"Clarkson Potter",2008,146
 9780271020457,"Spiritual and Demonic Magic",{Daniel Pickering Walker},"Penn State Press",2000,244
-9780759110403,"A Cognitive Theory of Magic",{Jesper SÃ¸rensen},"Rowman Altamira",2007,218
+9780759110403,"A Cognitive Theory of Magic",{Jesper Sørensen},"Rowman Altamira",2007,218
 9780141932408,"Religion and the Decline of Magic",{Keith Thomas},"Penguin UK",2003-01-30,880
 9781451673456,"The Magic",{Rhonda Byrne},"Simon and Schuster",2012-03-06,272
 9789072371898,"Birth in Babylonia and the Bible",{Marten Stol, F. A. M. Wiggermann},"BRILL",2000-01-01,276
@@ -478,7 +478,7 @@
 9781451616545,"The Modern Book of the Dead",{Ptolemy Tompkins},"Simon and Schuster",2012-02-14,304
 9780195363067,"Church and State in Early Modern England, 1509-1640",{Leo F. Solt},"Oxford University Press",1990-04-19,288
 9780781755641,"Modern Epidemiology",{Kenneth J. Rothman, Sander Greenland, Timothy L. Lash},"Lippincott Williams & Wilkins",2008,758
-9781606060599,"Modern Japanese Art and the Meiji State",{DÅshin SatÅ},"Getty Publications",2011,365
+9781606060599,"Modern Japanese Art and the Meiji State",{Dōshin Satō},"Getty Publications",2011,365
 9780195086812,"Church and State in the Modern Age",{J. F. Maclear},"Oxford University Press on Demand",1995,510
 9780199208951,"Oxford Dictionary of Modern Quotations",{Elizabeth Knowles},"Oxford University Press",2007-08-23,479
 9780698179967,"Modern Romance",{Aziz Ansari, Eric Klinenberg},"Penguin",2015-06-16,288

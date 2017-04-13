@@ -2,7 +2,6 @@ package lbms.views;
 
 import lbms.LBMS;
 import lbms.views.API.APIView;
-import lbms.views.CLI.CLIView;
 import lbms.views.GUI.GUIView;
 
 /**
@@ -21,9 +20,6 @@ public class ViewFactory {
         switch (type) {
             case API:
                 ui = APIView.getInstance();
-                break;
-            case CLI:
-                ui = CLIView.getInstance();
                 break;
             case GUI:
                 ui = new GUIView();

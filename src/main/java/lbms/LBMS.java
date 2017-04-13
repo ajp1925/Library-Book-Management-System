@@ -13,14 +13,12 @@ import java.util.*;
 
 /**
  * Main class to run the Library Book Management System.
- * 3 different "modes": API, GUI, CLI
+ * 2 different "modes": API, GUI
  * API: used for directly sending requests and receiving responses.
  * GUI: graphical-user-interface that is based on the API functionality
- * CLI: command line interface, also based off of the API functionality, but it is easier to use
- *     the CLI has not been updated for R2, only the API and GUI modes.
  *
- * @author Team B
- *
+ * Rochester Institute of Technology
+ * SWEN-262 Section: 3, Team B
  * @author Charles Barber   crb7054@rit.edu
  * @author Nicholas Feldman ncf1362@rit.edu
  * @author Christopher Lim  cxl2436@rit.edu
@@ -30,14 +28,10 @@ import java.util.*;
 public class LBMS {
 
     /** StartType enum for determining how the program should be run. */
-    public enum StartType {
-        GUI, CLI, API
-    }
+    public enum StartType { GUI, API }
 
     /** SearchService enum used for searching for books to buy. */
-    public enum SearchService {
-        local, google
-    }
+    public enum SearchService { LOCAL, GOOGLE }
 
     /** Constants for the opening and closing time. */
     public final static LocalTime OPEN_TIME = LocalTime.of(8, 0);
@@ -70,9 +64,11 @@ public class LBMS {
             new LBMS(StartType.GUI);
         } catch (IllegalArgumentException e) {
             System.out.println("Usage: java -jar LBMS.jar <type>");
-            System.out.println("Valid types are: GUI, CLI, API");
+            System.out.println("Valid types are: GUI or API");
+            System.exit(1);
+        } finally {
+            System.gc();
         }
-        System.gc();
     }
 
     /**
