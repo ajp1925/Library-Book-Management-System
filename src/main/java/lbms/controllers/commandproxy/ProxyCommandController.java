@@ -100,8 +100,6 @@ public class ProxyCommandController implements ICommandController {
                 if (employee.getVisitor().getVisitorID() == v.getVisitorID()) {
                     return true;
                 }
-                System.out.println("employee id: " + employee.getVisitor().getVisitorID());
-                System.out.println(employee.getVisitor());
             }
             return false;
         } catch (Exception e) {
