@@ -29,7 +29,6 @@ public class LoginController implements StateController {
     @FXML private PasswordField passwordField;
     @FXML private Text loginFailedLabel;
     @FXML private Button loginButton;
-    @FXML private Hyperlink registerLink;
     @FXML private Text usernameFail;
     @FXML private Text passwordFail;
 
@@ -43,8 +42,6 @@ public class LoginController implements StateController {
                 e.consume();
             }
         });
-
-        this.registerLink.setOnAction((ActionEvent event) -> { this.manager.display("register"); });
     }
 
     /**
@@ -53,7 +50,6 @@ public class LoginController implements StateController {
      */
     public void initManager(final SessionManager manager) {
         this.manager = manager;
-        manager.getTab().setText("Login");
     }
 
     /**
@@ -78,15 +74,18 @@ public class LoginController implements StateController {
                 String response = new ProxyCommandController().processRequest(
                         String.format("%s,login,%s,%s;",
                                 this.manager.getClientId(), this.usernameField.getText(), this.passwordField.getText()));
-                System.out.println(response);
-                HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
+                System.out.println(response);       //TODO remove
 
-                if (responseMap.get("message").equals("success")) {
+                HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
+
+                if (responseObject.get("message").equals("success")) {
+                    this.manager.setVisitor(ProxyCommandController.getVisitorID(manager.getClientId()));
                     this.manager.setUser(this.usernameField.getText());
+
                     if (ProxyCommandController.isEmployee(manager.getClientId())) {
-                        manager.display("main_employee");
+                        manager.display("main_employee", manager.getUser());
                     } else {
-                        manager.display("main_visitor");
+                        manager.display("main_visitor", manager.getUser());
                     }
                 } else {
                     throw new Exception();

@@ -7,8 +7,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
+
+import java.util.HashMap;
 
 /**
  * MainVisitorController class used for controlling visitors.
@@ -50,7 +53,6 @@ public class MainVisitorController implements StateController {
     @Override
     public void initManager(final SessionManager manager) {
         this.manager = manager;
-        manager.getTab().setText(manager.getUser());
 
         if (ProxyCommandController.inLibrary(manager.getClientId())) {
             visitButton.setText("End Visit");
@@ -94,10 +96,9 @@ public class MainVisitorController implements StateController {
         String response = new ProxyCommandController().processRequest(request);
         System.out.println(response); //TODO remove
 
-        String[] fields = response.replace(";","").split(",");
-        //TODO HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
+        HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
-        switch (fields[2]) {
+        switch (responseObject.get("message")) {
             case "duplicate":
                 break;
             case "invalid-id":
@@ -120,10 +121,9 @@ public class MainVisitorController implements StateController {
         String response = new ProxyCommandController().processRequest(request);
         System.out.println(response); //TODO remove
 
-        String[] fields = response.replace(";","").split(",");
-        //TODO HashMap<String, String> responseMap = ParseResponseUtility.parseResponse(response);
+        HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
-        switch (fields[2]) {
+        switch (responseObject.get("message")) {
             case "invalid-id":
                 break;
             default:

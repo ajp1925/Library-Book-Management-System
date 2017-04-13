@@ -79,7 +79,7 @@ public class ClientController {
         Tab tab = new Tab("Login");
 
         SessionManager manager = new SessionManager(tab);
-        manager.display("login");
+        manager.display("login", "Login", false);
 
         tab.setOnCloseRequest((Event event) -> { manager.close(); });
         this.tabs.getTabs().add(num - 1, tab);

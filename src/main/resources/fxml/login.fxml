@@ -16,7 +16,7 @@
          <children>
             <BorderPane>
                <bottom>
-                  <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="140.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                  <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="305.0">
                            <children>
@@ -25,14 +25,6 @@
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin></Text>
-                              <TextFlow prefHeight="15.0" prefWidth="200.0" textAlignment="CENTER">
-                                 <children>
-                                    <Hyperlink fx:id="registerLink" text="Don't have an account? Register here." textAlignment="CENTER" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="25.0" />
-                                 </VBox.margin>
-                              </TextFlow>
                            </children>
                         </VBox>
                      </children>

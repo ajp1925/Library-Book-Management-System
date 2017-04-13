@@ -164,4 +164,8 @@ public class ProxyCommandController implements ICommandController {
         return visitorID == LBMS.getSessions().get(clientID).getV().getVisitorID() ||
                 isEmployee(clientID);
     }
+
+    public static Long getVisitorID(Long client) {
+        return LBMS.getSessions().get(client).getV().getVisitorID();
+    }
 }

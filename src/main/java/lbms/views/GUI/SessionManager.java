@@ -17,6 +17,7 @@ public class SessionManager {
     private Tab tab;
     private Long clientId;
     private StateController controller;
+    private Long visitorID;
     private String user;
 
     /**
@@ -34,7 +35,7 @@ public class SessionManager {
             System.exit(1);
         }
         this.tab = tab;
-        this.user = null;
+        this.visitorID = null;
     }
 
     /**
@@ -48,8 +49,25 @@ public class SessionManager {
     /**
      * Displays the session.
      * @param file: the fxml resource
+     * @param title: title for the tab
      */
-    public void display(String file) {
+    public void display(String file, String title) {
+        load(file);
+        setTitle(title);
+    }
+
+    /**
+     * Displays the session.
+     * @param file: the fxml resource
+     * @param title: title for the tab
+     * @param flag: flag whether to include visitor ID or not
+     */
+    public void display(String file, String title, boolean flag) {
+        load(file);
+        setTitle(title, flag);
+    }
+
+    private void load(String file) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(SessionManager.class.getResource("/fxml/" + file + ".fxml"));
@@ -63,6 +81,19 @@ public class SessionManager {
         }
     }
 
+    private void setTitle(String title) {
+        tab.setText(visitorID + " - " + title);
+
+    }
+
+    private void setTitle(String title, boolean arg) {
+        if (arg) {
+            tab.setText(visitorID + " - " + title);
+        } else {
+            tab.setText(title);
+        }
+    }
+
     /**
      * Getter for the client ID.
      * @return the client ID of the session
@@ -72,26 +103,24 @@ public class SessionManager {
     }
 
     /**
-     * Getter for the tab.
-     * @return the tab
-     */
-    public Tab getTab() {
-        return this.tab;
-    }
-
-    /**
      * Setter for the user of the session.
-     * @param user: the user of the session
+     * @param visitorID: the visitorID of visitor connected to the session
      */
-    public void setUser(String user) {
-        this.user = user;
+    public void setVisitor(Long visitorID) {
+        this.visitorID = visitorID;
     }
 
     /**
      * Getter for the user of the session
      * @return the user
      */
-    public String getUser() {
-        return this.user;
+    public Long getVisitor() {
+        return this.visitorID;
     }
+
+    public void setUser(String user) { this.user = user; }
+
+    public String getUser() { return user; }
+
+    public StateController getController() { return this.controller; }
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" prefHeight="402.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.RegisterControllers.AccountCreatedController">
+   <children>
+      <FlowPane alignment="CENTER" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane>
+               <bottom>
+                  <FlowPane alignment="TOP_CENTER" prefHeight="140.0" prefWidth="326.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="78.0" prefWidth="305.0">
+                           <children>
+                              <Button fx:id="finishButton" mnemonicParsing="false" onAction="#home" text="Finish" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </bottom>
+               <center>
+                  <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username: ">
+                                 <font>
+                                    <Font name="System Bold" size="38.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0">
+                                 <font>
+                                    <Font size="38.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </FlowPane>
+               </center>
+               <top>
+                  <FlowPane alignment="CENTER" prefHeight="101.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account Created Successfully">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </FlowPane>
+               </top>
+            </BorderPane>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>
