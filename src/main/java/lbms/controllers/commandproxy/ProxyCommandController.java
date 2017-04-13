@@ -104,7 +104,6 @@ public class ProxyCommandController implements ICommandController {
             }
             return false;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }

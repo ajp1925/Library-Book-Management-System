@@ -7,7 +7,7 @@ package lbms.command;
 public class MissingParametersException extends Exception {
 
     /**
-     * Overloaded constructor for this exception.
+     * Constructor for this exception.
      * @param message: the message for the exception.
      */
     public MissingParametersException(String message) {

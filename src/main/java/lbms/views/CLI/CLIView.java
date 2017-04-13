@@ -1,8 +1,8 @@
 package lbms.views.CLI;
 
-import lbms.views.View;
 import lbms.views.CLI.viewstate.DefaultViewState;
 import lbms.views.CLI.viewstate.State;
+import lbms.views.View;
 
 import java.util.Scanner;
 

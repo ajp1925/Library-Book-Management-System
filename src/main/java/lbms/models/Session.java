@@ -1,12 +1,12 @@
 package lbms.models;
 
 import lbms.LBMS;
-import lbms.command.Undoable;
 import lbms.LBMS.SearchService;
+import lbms.command.Undoable;
 
 import java.util.Stack;
 
-import static lbms.LBMS.SearchService.*;
+import static lbms.LBMS.SearchService.local;
 
 /**
  * Session class for the LBMS

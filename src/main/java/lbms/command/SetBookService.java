@@ -2,7 +2,8 @@ package lbms.command;
 
 import lbms.LBMS;
 
-import static lbms.LBMS.SearchService.*;
+import static lbms.LBMS.SearchService.google;
+import static lbms.LBMS.SearchService.local;
 
 /**
  * SetBookService class for the set book service command.
