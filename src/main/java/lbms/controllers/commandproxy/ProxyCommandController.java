@@ -68,7 +68,8 @@ public class ProxyCommandController implements ICommandController {
      */
     private boolean unrestricted(String command) {
         ArrayList<String> visitorCommands = new ArrayList<>(Arrays.asList(
-                "arrive", "info", "borrow", "depart", "login", "logout", "undo", "redo", "disconnect"
+                "arrive", "info", "borrow", "depart", "login", "logout", "undo", "redo", "disconnect",
+                "search"
         ));
         return visitorCommands.contains(command);
     }
