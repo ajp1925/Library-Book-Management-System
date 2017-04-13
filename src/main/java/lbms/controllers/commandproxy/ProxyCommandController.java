@@ -97,14 +97,6 @@ public class ProxyCommandController implements ICommandController {
             }
             return false;
         } catch (Exception e) {
-            System.out.println("EXCEPTION");
-            System.out.println(clientID);
-            System.out.println(LBMS.getSessions());
-            System.out.println(LBMS.getSessions().get(clientID));
-            System.out.println(LBMS.getSessions().get(clientID).getV());
-            System.out.println(LBMS.getEmployees());
-            System.out.println(LBMS.getEmployees().values());
-            System.out.println("EXCEPTION");
             return false;
         }
     }
