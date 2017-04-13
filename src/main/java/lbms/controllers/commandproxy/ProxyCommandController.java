@@ -41,22 +41,15 @@ public class ProxyCommandController implements ICommandController {
             return "";
         }
         String command = request[1];
-        Long visitorID;
-        try {
-            visitorID = LBMS.getSessions().get(clientID).getV().getVisitorID();
-        } catch (Exception e) {
-            visitorID = null;
-        }
 
         if (!isCommand(command)) {
             return new Invalid().execute();
         }
 
-        if (unrestricted(command) || (!unrestricted(command) && visitorID != null &&
-                isEmployee(visitorID))) {
+        if (unrestricted(command) || (isLoggedIn(clientID) && isEmployee(clientID))) {
             return new CommandController().processRequest(requestString);
         } else {
-           return request[0] + "," +request[1] + "," + "not-authorized;";
+            return request[0] + "," + request[1] + "," + "not-authorized;";
         }
     }
 
@@ -104,6 +97,14 @@ public class ProxyCommandController implements ICommandController {
             }
             return false;
         } catch (Exception e) {
+            System.out.println("EXCEPTION");
+            System.out.println(clientID);
+            System.out.println(LBMS.getSessions());
+            System.out.println(LBMS.getSessions().get(clientID));
+            System.out.println(LBMS.getSessions().get(clientID).getV());
+            System.out.println(LBMS.getEmployees());
+            System.out.println(LBMS.getEmployees().values());
+            System.out.println("EXCEPTION");
             return false;
         }
     }
