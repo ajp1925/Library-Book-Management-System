@@ -8,6 +8,7 @@ import lbms.models.Transaction;
 import lbms.models.Visitor;
 import lbms.search.UserSearch;
 
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,8 +41,25 @@ public class Borrow implements Command, Undoable {
             throw new MissingParametersException("missing-parameters,{ids};");
         }
 
+        for (int i = 0; i < arguments.length-1; i++) {
+            if (arguments[i].startsWith("{") || arguments[i].endsWith("}")) {
+                this.ids.add(Integer.parseInt(arguments[i].replaceAll("[{}]", "")));
+                if (arguments[i].endsWith("}")) {
+                    break;
+                }
+            }
+            else {
+                this.ids.add(Integer.parseInt(arguments[i]));
+            }
+        }
+        if (arguments[arguments.length-1].endsWith("}")) {
+            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
+        }
+        else {
+            this.visitorID = Long.parseLong(arguments[arguments.length-1]);
+        }
         /*
-        int index = 1;
+        int index = 0;
         if (arguments[index].startsWith("{")) {
             while (!arguments[index].endsWith("}")) {
                 this.ids.add(Integer.parseInt(arguments[index++].replaceAll("[{}]", "")));
