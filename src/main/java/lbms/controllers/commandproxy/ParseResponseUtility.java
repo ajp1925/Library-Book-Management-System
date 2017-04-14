@@ -245,7 +245,7 @@ public final class ParseResponseUtility {
                 "invalid-id", "invalid-visitor-id", "invalid-book-id", "book-limit-exceeded",
                 "outstanding-fine", "duplicate-username", "duplicate-visitor", "invalid-sort-order",
                 "bad-username-or-password", "invalid-amount", "cannot-redo", "cannot-undo",
-                "invalid-visitor", "missing-parameters"
+                "invalid-visitor", "missing-parameters", "library-closed"
         ));
         return errorMessages.contains(message);
     }

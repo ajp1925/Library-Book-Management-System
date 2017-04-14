@@ -144,7 +144,7 @@ public class ProxyCommandController implements ICommandController {
      */
     private static void updateStatus() {
         LocalTime time = SystemDateTime.getInstance(null).getTime();
-        if (time.isAfter(LBMS.OPEN_TIME) && time.isAfter(LBMS.CLOSE_TIME)) {
+        if (time.isAfter(LBMS.OPEN_TIME) && time.isBefore(LBMS.CLOSE_TIME)) {
             libraryStatus  = new OpenState();
         } else {
             libraryStatus = new ClosedState();
