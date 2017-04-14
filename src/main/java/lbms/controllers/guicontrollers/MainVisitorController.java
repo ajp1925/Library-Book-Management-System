@@ -103,6 +103,9 @@ public class MainVisitorController implements StateController {
                 break;
             case "invalid-id":
                 break;
+            case "library-closed":
+                // TODO output that the library is closed
+                break;
             default:
                 visitButton.setText("End Visit");
                 visitButton.setOnAction(e -> endVisit());
