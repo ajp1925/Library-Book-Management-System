@@ -91,15 +91,23 @@ public class CommandController implements ICommandController {
                 case "arrive":
                     if (ProxyCommandController.isOpen()) {
                         BeginVisit b;
+                        if (request.length == 2) {
+                            b = new BeginVisit(Long.toString(clientID));
+                        }
+                        else {
+                            b = new BeginVisit(clientID + "," + request[2]);
+                        }
+                        /*
                         if (request.length > 2) {
                             b = new BeginVisit(Long.parseLong(request[2]));
                         } else {
                             Visitor v = LBMS.getSessions().get(clientID).getV();
                             if (v == null) {
-                                throw new MissingParametersException(clientID + ",arrive,not-logged-in");
+                                throw new MissingParametersException("not-logged-in;");
                             }
                             b = new BeginVisit(v.getVisitorID());
                         }
+                        */
                         LBMS.getSessions().get(clientID).addUndoable(b);
                         return b;
                     }

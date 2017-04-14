@@ -24,7 +24,7 @@ public class BeginVisitTest {
 
     @Test
     public void invalidID() throws Exception {
-        BeginVisit command = new BeginVisit(2L);
+        BeginVisit command = new BeginVisit("1,99");
         assertEquals(",invalid-id;", command.execute());
     }
 

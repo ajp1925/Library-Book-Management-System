@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.LBMS;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
 import lbms.models.Visitor;
@@ -12,14 +13,23 @@ import lbms.search.UserSearch;
  */
 public class BeginVisit implements Command, Undoable {
 
+    private long clientID;
     private long visitorID;
 
     /**
      * Constructor for BeginVisit command.
-     * @param visitorID: the id of the visitor that is beginning a visit
+     * //@param visitorID: the id of the visitor that is beginning a visit
      */
-    public BeginVisit(long visitorID) {
-        this.visitorID = visitorID;
+    public BeginVisit(String request) {
+        String[] arguments = request.split(",");
+        if (arguments.length == 1) {
+            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
+        }
+        else if (arguments.length == 2) {
+            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = Long.parseLong(arguments[1]);
+        }
     }
 
     /**
@@ -28,8 +38,13 @@ public class BeginVisit implements Command, Undoable {
      */
     @Override
     public String execute() {
+
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
             return ",invalid-id;";
+        }
+
+        if (!ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
+            return ",not-authorized;";
         }
 
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
