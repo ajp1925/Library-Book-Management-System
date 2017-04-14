@@ -1,6 +1,7 @@
 package lbms.command;
 
 import lbms.LBMS;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.models.SystemDateTime;
 import lbms.models.Visit;
 import lbms.models.Visitor;
@@ -12,15 +13,24 @@ import lbms.search.UserSearch;
  */
 public class EndVisit implements Command, Undoable {
 
+    private long clientID;
     private long visitorID;
     private Visit visit;
 
     /**
      * Constructor for an EndVisit command class.
-     * @param visitorID: the visitorID of the visitor leaving the library
+     * @param request: request string holding clientID and visitorID
      */
-    public EndVisit(long visitorID) {
-        this.visitorID = visitorID;
+    public EndVisit(String request) {
+        String[] arguments = request.split(",");
+        if (arguments.length == 1) {
+            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
+        }
+        else if (arguments.length == 2) {
+            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = Long.parseLong(arguments[1]);
+        }
         this.visit = null;
     }
 
@@ -30,6 +40,14 @@ public class EndVisit implements Command, Undoable {
      */
     @Override
     public String execute() {
+        if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
+            return ",invalid-id;";
+        }
+
+        if (!ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
+            return ",not-authorized;";
+        }
+
         if (UserSearch.BY_ID.findFirst(this.visitorID) != null) {
             Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
             if (visitor != null ) {

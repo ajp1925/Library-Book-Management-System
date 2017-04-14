@@ -18,7 +18,7 @@ public class BeginVisit implements Command, Undoable {
 
     /**
      * Constructor for BeginVisit command.
-     * //@param visitorID: the id of the visitor that is beginning a visit
+     * @param request: request string holding clientID and visitorID
      */
     public BeginVisit(String request) {
         String[] arguments = request.split(",");

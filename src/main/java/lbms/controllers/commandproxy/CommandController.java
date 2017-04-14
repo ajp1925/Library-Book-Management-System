@@ -90,6 +90,10 @@ public class CommandController implements ICommandController {
                     return new SetBookService(clientID, request[2]);
                 case "arrive":
                     if (ProxyCommandController.isOpen()) {
+                        Visitor v = LBMS.getSessions().get(clientID).getV();
+                        if (v == null) {
+                            throw new MissingParametersException("not-logged-in;");
+                        }
                         BeginVisit b;
                         if (request.length == 2) {
                             b = new BeginVisit(Long.toString(clientID));
@@ -122,7 +126,18 @@ public class CommandController implements ICommandController {
                 case "register":
                     return new RegisterVisitor(request[2]);
                 case "depart":
+                    Visitor v = LBMS.getSessions().get(clientID).getV();
+                    if (v == null) {
+                        throw new MissingParametersException("not-logged-in;");
+                    }
                     EndVisit ev;
+                    if (request.length == 2) {
+                        ev = new EndVisit(Long.toString(clientID));
+                    }
+                    else {
+                        ev = new EndVisit(clientID + "," + request[2]);
+                    }
+                    /*
                     if (request.length > 2) {
                         ev = new EndVisit(Long.parseLong(request[2]));
                     } else {
@@ -132,6 +147,7 @@ public class CommandController implements ICommandController {
                         }
                         ev = new EndVisit(v.getVisitorID());
                     }
+                    */
                     LBMS.getSessions().get(clientID).addUndoable(ev);
                     return ev;
                 case "info":
