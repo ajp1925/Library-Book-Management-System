@@ -36,24 +36,27 @@ public class Borrow implements Command, Undoable {
         this.clientID = Long.parseLong(allArguments[0]);
         String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
 
-        if (arguments.length < 1) {
-            throw new MissingParametersException("missing-parameters,{ids};");
+        if (arguments[arguments.length-1].startsWith("{") && arguments[arguments.length-1].endsWith("}")) {
+            this.ids.add(Integer.parseInt(arguments[arguments.length-1].replaceAll("[{}]","")));
         }
 
-        for (int i = 0; i < arguments.length-1; i++) {
-            if (arguments[i].startsWith("{") || arguments[i].endsWith("}")) {
-                this.ids.add(Integer.parseInt(arguments[i].replaceAll("[{}]", "")));
-                if (arguments[i].endsWith("}")) {
-                    break;
+        else {
+            for (int i = 0; i < arguments.length - 1; i++) {
+                if (arguments[i].startsWith("{") || arguments[i].endsWith("}")) {
+                    this.ids.add(Integer.parseInt(arguments[i].replaceAll("[{}]", "")));
+                    if (arguments[i].endsWith("}")) {
+                        break;
+                    }
+                } else {
+                    this.ids.add(Integer.parseInt(arguments[i]));
                 }
-            } else {
-                this.ids.add(Integer.parseInt(arguments[i]));
             }
         }
-        if (arguments[arguments.length-1].endsWith("}")) {
+
+        if (arguments[arguments.length - 1].endsWith("}")) {
             this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
         } else {
-            this.visitorID = Long.parseLong(arguments[arguments.length-1]);
+            this.visitorID = Long.parseLong(arguments[arguments.length - 1]);
         }
         /*
         int index = 0;
