@@ -31,10 +31,20 @@ public class Borrow implements Command, Undoable {
     public Borrow(String request) throws MissingParametersException {
         String[] allArguments = request.split(",");
         if (allArguments.length < 2) {
-            throw new MissingParametersException("missing-parameters,{all};");
+            throw new MissingParametersException("missing-parameters,{ids};");
         }
+
         this.clientID = Long.parseLong(allArguments[0]);
         String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
+
+        for (int in = 0; in < arguments.length; in++) {
+            if (arguments[in].equals(arguments[arguments.length-1]) && !arguments[in].endsWith("}")) {
+                throw new MissingParametersException("missing-parameters,{ids};");
+            }
+            else if (arguments[in].endsWith("}")) {
+                break;
+            }
+        }
 
         if (arguments[arguments.length-1].startsWith("{") && arguments[arguments.length-1].endsWith("}")) {
             this.ids.add(Integer.parseInt(arguments[arguments.length-1].replaceAll("[{}]","")));
