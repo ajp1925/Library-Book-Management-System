@@ -39,7 +39,15 @@ public class Borrow implements Command, Undoable {
         if (arguments[arguments.length-1].startsWith("{") && arguments[arguments.length-1].endsWith("}")) {
             this.ids.add(Integer.parseInt(arguments[arguments.length-1].replaceAll("[{}]","")));
         }
-
+        else if (arguments[arguments.length-1].endsWith("}")) {
+            for (int i = 0; i < arguments.length; i++) {
+                if (arguments[i].startsWith("{") || arguments[i].endsWith("}")) {
+                    this.ids.add(Integer.parseInt(arguments[i].replaceAll("[{}]", "")));
+                } else {
+                    this.ids.add(Integer.parseInt(arguments[i]));
+                }
+            }
+        }
         else {
             for (int i = 0; i < arguments.length - 1; i++) {
                 if (arguments[i].startsWith("{") || arguments[i].endsWith("}")) {
