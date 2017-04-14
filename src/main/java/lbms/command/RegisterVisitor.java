@@ -6,6 +6,8 @@ import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
 import lbms.search.UserSearch;
 
+import java.util.Arrays;
+
 /**
  * RegisterVisitor class that calls the API to register a visitor in the system.
  * @author Team B
@@ -21,11 +23,24 @@ public class RegisterVisitor implements Command {
      */
     public RegisterVisitor(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
+        if (arguments.length == 1 && arguments[0].equals("")) {
+            throw new MissingParametersException("missing-parameters,{all};");
+        }
+        else if (arguments.length == 1) {
+            throw new MissingParametersException("missing-parameters,{last-name,address,phone-number};");
+        }
+        else if (arguments.length == 2) {
+            throw new MissingParametersException("missing-parameters,{address,phone-number};");
+        }
+        else if (arguments.length == 3) {
+            throw new MissingParametersException("missing-parameters,{phone-number};");
+        }
+
         try {
             this.visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2],
                     new PhoneNumber(arguments[3]));
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
-            throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number;");
+            throw new MissingParametersException("missing-parameters,{all};");
         }
     }
 
