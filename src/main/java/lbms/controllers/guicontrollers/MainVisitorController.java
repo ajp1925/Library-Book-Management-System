@@ -142,6 +142,6 @@ public class MainVisitorController implements StateController {
 
     @FXML public void logout() {
         new ProxyCommandController().processRequest(manager.getClientId() + ",logout;");
-        this.manager.display("login", "Login");
+        this.manager.display("login", "Login", false);
     }
 }
