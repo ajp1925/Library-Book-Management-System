@@ -1,9 +1,7 @@
 package lbms.controllers.guicontrollers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -79,13 +77,13 @@ public class LoginController implements StateController {
                 HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
                 if (responseObject.get("message").equals("success")) {
-                    this.manager.setVisitor(ProxyCommandController.getVisitorID(manager.getClientId()));
+                    this.manager.setVisitor(ProxyCommandController.getVisitorID(this.manager.getClientId()));
                     this.manager.setUser(this.usernameField.getText());
 
-                    if (ProxyCommandController.isEmployee(manager.getClientId())) {
-                        manager.display("main_employee", manager.getUser());
+                    if (ProxyCommandController.isEmployee(this.manager.getClientId())) {
+                        this.manager.display("main_employee", this.manager.getUser());
                     } else {
-                        manager.display("main_visitor", manager.getUser());
+                        this.manager.display("main_visitor", this.manager.getUser());
                     }
                 } else {
                     throw new Exception();

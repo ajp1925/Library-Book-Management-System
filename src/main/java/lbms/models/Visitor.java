@@ -27,9 +27,11 @@ public class Visitor implements Serializable {
 
     /**
      * Constructor for a Visitor object.
-     * @param firstName: the first name of the visitor
+     * @param firstName: the visitor's first name
      * @param lastName: the last name of the visitor
-     * @param address: the address of the visitor
+     * @param username: the visitor's username, if they have an account
+     * @param password: the visitor's password, if they have an account
+     * @param address: the visitor's address
      * @param phoneNumber: the visitor's phone number
      */
     public Visitor(String firstName, String lastName, String username, String password, String address,

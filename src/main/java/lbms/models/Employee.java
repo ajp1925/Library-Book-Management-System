@@ -23,7 +23,7 @@ public class Employee implements Serializable {
      * @return the first and last name concatenated
      */
     public String getName() {
-        return v.getName();
+        return this.v.getName();
     }
 
     /**
@@ -31,7 +31,7 @@ public class Employee implements Serializable {
      * @return the username
      */
     public String getUsername() {
-        return v.getUsername();
+        return this.v.getUsername();
     }
 
     /**
@@ -39,7 +39,7 @@ public class Employee implements Serializable {
      * @return the password
      */
     public String getPassword() {
-        return v.getPassword();
+        return this.v.getPassword();
     }
 
     /**
@@ -47,7 +47,7 @@ public class Employee implements Serializable {
      * @return the visitor account
      */
     public Visitor getVisitor() {
-        return v;
+        return this.v;
     }
 
     /**
@@ -56,6 +56,6 @@ public class Employee implements Serializable {
      */
     @Override
     public String toString() {
-        return "Employee:\n" + v.toString();
+        return "Employee:\n" + this.v.toString();
     }
 }

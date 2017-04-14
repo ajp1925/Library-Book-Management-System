@@ -4,9 +4,11 @@ import javafx.fxml.FXML;
 import lbms.views.GUI.SessionManager;
 
 /**
- * Created by Chris on 4/12/17.
+ * MainEmployeeController class for the GUI of the Library Book Management System.
+ * @author Team B TODO comment all these methods
  */
 public class MainEmployeeController implements StateController {
+
     private SessionManager manager;
 
     @Override
@@ -31,8 +33,10 @@ public class MainEmployeeController implements StateController {
     }
 
     @FXML public void register() {
-        manager.display("register", "Register Visitor");
+        this.manager.display("register", "Register Visitor");
     }
 
-    @FXML public void create() { manager.display("create", "Create Account"); }
+    @FXML public void create() {
+        this.manager.display("create", "Create Account");
+    }
 }

@@ -22,7 +22,8 @@ public class RegisterVisitor implements Command {
     public RegisterVisitor(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
         try {
-            this.visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2], new PhoneNumber(arguments[3]));
+            this.visitor = new Visitor(arguments[0], arguments[1], null, null, arguments[2],
+                    new PhoneNumber(arguments[3]));
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
             throw new MissingParametersException("missing-parameters,first-name,last-name,address,phone-number;");
         }

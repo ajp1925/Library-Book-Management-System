@@ -15,21 +15,16 @@ public class ViewFactory {
      * @param type: the specified type of interface to use
      */
     public static void start(LBMS.StartType type) {
-        View ui;
-
         switch (type) {
             case API:
-                ui = APIView.getInstance();
+                APIView.getInstance().run();
                 break;
             case GUI:
-                ui = new GUIView();
+                new GUIView().run();
                 break;
             default:
-                ui = new GUIView();
+                new GUIView().run();
                 break;
         }
-
-        ui.run();
     }
-
 }

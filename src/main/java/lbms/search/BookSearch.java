@@ -12,7 +12,6 @@ import java.util.stream.Stream;
  * @author Team B
  */
 public enum BookSearch implements Search<Book> {
-
     BY_AUTHOR,
     BY_ISBN,
     BY_TITLE,

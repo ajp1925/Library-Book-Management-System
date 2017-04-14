@@ -17,8 +17,10 @@ import java.util.HashMap;
  * CreateController class for the Library Book Management System.
  * @author Team B
  */
-public class CreateController implements StateController{
+public class CreateController implements StateController {
+
     private SessionManager manager;
+    private ToggleGroup group;
 
     @FXML private AnchorPane root;
     @FXML private TextField visitorField;
@@ -35,8 +37,9 @@ public class CreateController implements StateController{
     @FXML private Text failedLabel;
     @FXML private Button createButton;
 
-    private ToggleGroup group;
-
+    /**
+     * Initializes the controller.
+     */
     @FXML protected void initialize() {
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -45,21 +48,29 @@ public class CreateController implements StateController{
             }
         });
 
-        group = new ToggleGroup();
-        visitorButton.setToggleGroup(group);
-        visitorButton.setUserData("visitor");
-        employeeButton.setToggleGroup(group);
-        employeeButton.setUserData("employee");
-        visitorButton.setSelected(true);
+        this.group = new ToggleGroup();
+        this.visitorButton.setToggleGroup(this.group);
+        this.visitorButton.setUserData("visitor");
+        this.employeeButton.setToggleGroup(this.group);
+        this.employeeButton.setUserData("employee");
+        this.visitorButton.setSelected(true);
     }
 
+    /**
+     * Sets the session manager for this class.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
+    /**
+     * Setter for the text of the visitor.
+     * @param visitorID: the id of the visitor
+     */
     public void setVisitor(String visitorID) {
-        visitorField.setText(visitorID);
+        this.visitorField.setText(visitorID);
     }
 
     /**
@@ -69,31 +80,31 @@ public class CreateController implements StateController{
         clearError();
         boolean completed = true;
 
-        String visitor = visitorField.getText();
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        String confirm = confirmField.getText();
-        String role = group.getSelectedToggle().getUserData().toString();
+        String visitor = this.visitorField.getText();
+        String username = this.usernameField.getText();
+        String password = this.passwordField.getText();
+        String confirm = this.confirmField.getText();
+        String role = this.group.getSelectedToggle().getUserData().toString();
 
         if (visitor.isEmpty()) {
             completed = false;
-            visitorFail.setText("*");
+            this.visitorFail.setText("*");
         }
         if (username.isEmpty()) {
             completed = false;
-            usernameFail.setText("*");
+            this.usernameFail.setText("*");
         }
         if (password.isEmpty()) {
             completed = false;
-            passwordFail.setText("*");
+            this.passwordFail.setText("*");
         }
         if (confirm.isEmpty()) {
             completed = false;
-            confirmFail.setText("*");
+            this.confirmFail.setText("*");
         }
         if (role.isEmpty()) {
             completed = false;
-            roleFail.setText("*");
+            this.roleFail.setText("*");
         }
 
         if (!completed) {
@@ -134,14 +145,17 @@ public class CreateController implements StateController{
             }
 
             if (valid) {
-                manager.display("created_account", "Account Created");
-                ((AccountCreatedController)manager.getController()).setUsername(username);
+                this.manager.display("created_account", "Account Created");
+                ((AccountCreatedController)this.manager.getController()).setUsername(username);
             }
         }
     }
 
+    /**
+     * Tells the manager to cancel the last action.
+     */
     @FXML public void cancel() {
-        manager.display("main_employee", manager.getUser());
+        this.manager.display("main_employee", this.manager.getUser());
     }
 
     /**

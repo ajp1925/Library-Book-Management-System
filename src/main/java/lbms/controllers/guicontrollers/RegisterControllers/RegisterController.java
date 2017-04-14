@@ -1,7 +1,8 @@
 package lbms.controllers.guicontrollers.RegisterControllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -62,26 +63,26 @@ public class RegisterController implements StateController {
         clearError();
         boolean completed = true;
 
-        String firstName = firstNameField.getText();
-        String lastName = lastNameField.getText();
-        String address = addressField.getText();
-        String phoneNumber = phoneNumberField.getText();
+        String firstName = this.firstNameField.getText();
+        String lastName = this.lastNameField.getText();
+        String address = this.addressField.getText();
+        String phoneNumber = this.phoneNumberField.getText();
 
         if (firstName.isEmpty()) {
             completed = false;
-            firstNameFail.setText("*");
+            this.firstNameFail.setText("*");
         }
         if (lastName.isEmpty()) {
             completed = false;
-            lastNameFail.setText("*");
+            this.lastNameFail.setText("*");
         }
         if (address.isEmpty()) {
             completed = false;
-            addressFail.setText("*");
+            this.addressFail.setText("*");
         }
         if (phoneNumber.isEmpty()) {
             completed = false;
-            phoneNumberFail.setText("*");
+            this.phoneNumberFail.setText("*");
         }
 
         if (completed) {
@@ -100,7 +101,8 @@ public class RegisterController implements StateController {
 
                     if (responseObject.get("message").equals("duplicate")) {
                         valid = false;
-                        this.failedLabel.setText("This visitor already exists.\nPlease try again or register with visitor ID.");
+                        this.failedLabel.setText("This visitor already exists.\nPlease try again "
+                                + "or register with visitor ID.");
                     } else if (responseObject.get("message").equals("missing-parameters")) {
                         valid = false;
                         this.failedLabel.setText("One of the fields is invalid. Please try again.");
@@ -113,18 +115,24 @@ public class RegisterController implements StateController {
             }
 
             if (valid) {
-                manager.display("registered_visitor", "Visitor Registered");
-                ((VisitorRegisteredController)manager.getController()).setVisitor(visitorId);
+                this.manager.display("registered_visitor", "Visitor Registered");
+                ((VisitorRegisteredController)this.manager.getController()).setVisitor(this.visitorId);
             }
         } else {
             this.failedLabel.setText("* Please enter missing fields.");
         }
     }
 
+    /**
+     * Tells the session manager to cancel the last action.
+     */
     @FXML public void cancel() {
-        manager.display("main_employee", manager.getUser());
+        this.manager.display("main_employee", this.manager.getUser());
     }
 
+    /**
+     * Clears the error with the form.
+     */
     private void clearError() {
         this.firstNameFail.setText("");
         this.lastNameFail.setText("");

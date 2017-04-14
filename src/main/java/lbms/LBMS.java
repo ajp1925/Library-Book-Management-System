@@ -154,6 +154,94 @@ public class LBMS {
     }
 
     /**
+     * Getter for the hash map of books
+     * @return the books
+     */
+    public static HashMap<ISBN, Book> getBooks() {
+        return books;
+    }
+
+    /**
+     * Getter for the last set of books from a search.
+     * @return the last books returned from a search
+     */
+    public static List<Book> getLastBookSearch() {
+        return lastBookSearch;
+    }
+
+    /**
+     * Getter for the books to be purchased by the library.
+     * @return the array list of books that can be purchased
+     */
+    public static List<Book> getBooksToBuy() {
+        return booksToBuy;
+    }
+
+    /**
+     * Getter for the visitors.
+     * @return a hash map of visitors of the library
+     */
+    public static HashMap<Long, Visitor> getVisitors() {
+        return visitors;
+    }
+
+    /**
+     * Getter for the employees.
+     * @return a hash map of employees of the library
+     */
+    public static HashMap<Long, Employee> getEmployees() {
+        return employees;
+    }
+
+    /**
+     * Getter for the visits made by visitors.
+     * @return the array list of visits
+     */
+    public static List<Visit> getTotalVisits() {
+        return totalVisits;
+    }
+
+
+    /**
+     * Getter for the currentVisits.
+     * @return hash map of the current visits
+     */
+    public static HashMap<Long, Visit> getCurrentVisits() {
+        return currentVisits;
+    }
+
+    /**
+     * Getter for the transactions.
+     * @return an array list of transactions
+     */
+    public static List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    /**
+     * Getter for the sessions.
+     * @return the hash map of sessions
+     */
+    public static HashMap<Long, Session> getSessions() {
+        return sessions;
+    }
+
+    /**
+     * Getter for the total number of sessions.
+     * @return the total number of sessions
+     */
+    public static long getTotalSessions() {
+        return totalSessions;
+    }
+
+    /**
+     * Increments the total number of sessions by one.
+     */
+    public static void incrementSessions() {
+        totalSessions++;
+    }
+
+    /**
      * Creates the books to be purchased from the input file.
      * @return an array list of books that the library can purchase
      */
@@ -251,93 +339,5 @@ public class LBMS {
             e.printStackTrace();
         }
         return output;
-    }
-
-    /**
-     * Getter for the hash map of books
-     * @return the books
-     */
-    public static HashMap<ISBN, Book> getBooks() {
-        return books;
-    }
-
-    /**
-     * Getter for the last set of books from a search.
-     * @return the last books returned from a search
-     */
-    public static List<Book> getLastBookSearch() {
-        return lastBookSearch;
-    }
-
-    /**
-     * Getter for the books to be purchased by the library.
-     * @return the array list of books that can be purchased
-     */
-    public static List<Book> getBooksToBuy() {
-        return booksToBuy;
-    }
-
-    /**
-     * Getter for the visitors.
-     * @return a hash map of visitors of the library
-     */
-    public static HashMap<Long, Visitor> getVisitors() {
-        return visitors;
-    }
-
-    /**
-     * Getter for the employees.
-     * @return a hash map of employees of the library
-     */
-    public static HashMap<Long, Employee> getEmployees() {
-        return employees;
-    }
-
-    /**
-     * Getter for the visits made by visitors.
-     * @return the array list of visits
-     */
-    public static List<Visit> getTotalVisits() {
-        return totalVisits;
-    }
-
-
-    /**
-     * Getter for the currentVisits.
-     * @return hash map of the current visits
-     */
-    public static HashMap<Long, Visit> getCurrentVisits() {
-        return currentVisits;
-    }
-
-    /**
-     * Getter for the transactions.
-     * @return an array list of transactions
-     */
-    public static List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    /**
-     * Getter for the sessions.
-     * @return the hash map of sessions
-     */
-    public static HashMap<Long, Session> getSessions() {
-        return sessions;
-    }
-
-    /**
-     * Getter for the total number of sessions.
-     * @return the total number of sessions
-     */
-    public static long getTotalSessions() {
-        return totalSessions;
-    }
-
-    /**
-     * Increments the total number of sessions by one.
-     */
-    public static void incrementSessions() {
-        totalSessions++;
     }
 }

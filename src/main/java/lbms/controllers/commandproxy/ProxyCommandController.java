@@ -109,7 +109,7 @@ public class ProxyCommandController implements ICommandController {
      * @param clientID: the ID of the client
      * @return true if someone is logged in, false if not
      */
-    public static boolean isLoggedIn(long clientID) {
+    private static boolean isLoggedIn(long clientID) {
         try {
             Session s = LBMS.getSessions().get(clientID);
             Visitor v = s.getV();
@@ -155,7 +155,7 @@ public class ProxyCommandController implements ICommandController {
      * Checks if the library is currently open based on the system time
      * @return true if the library is open, false otherwise
      */
-    public static boolean isOpen() {
+    static boolean isOpen() {
         updateStatus();
         return libraryStatus.isOpen();
     }

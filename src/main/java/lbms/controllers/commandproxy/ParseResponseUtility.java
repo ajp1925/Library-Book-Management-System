@@ -13,6 +13,9 @@ import java.util.HashMap;
  */
 public final class ParseResponseUtility {
 
+    /**
+     * Private constructor to prevent any instantiation of this class.
+     */
     private ParseResponseUtility() {}
 
     /**
@@ -36,22 +39,20 @@ public final class ParseResponseUtility {
         if (fields[0].equals("connect")) {
             parsed.put("command", fields[0]);
             parsed.put("clientID", fields[1]);
-        }
-        else {
+        } else {
             parsed.put("clientID", fields[0]);
             parsed.put("command", fields[1]);
-            if(fields.length > 2 && isErrorMessage(fields[2])) {
+            if (fields.length > 2 && isErrorMessage(fields[2])) {
                 parsed.put("message", fields[2]);
                 String invalidValue = ""; // invalid value may be a set of values
-                for(int i = 3; i < fields.length; i++) {
-                    if(invalidValue.length() != 0) {
+                for (int i = 3; i < fields.length; i++) {
+                    if (invalidValue.length() != 0) {
                         invalidValue += ",";
                     }
                     invalidValue += fields[i];
                 }
                 parsed.put("invalidValue", invalidValue);
-            }
-            else {
+            } else {
                 switch (fields[1]) {
                     case "advance":
                         parsed.put("message", fields[2]);
@@ -127,8 +128,8 @@ public final class ParseResponseUtility {
                         if (fields.length > 3) {
                             parsed.put("fine",fields[3]);
                             String ids = "";
-                            for(int i = 4; i < fields.length; i++) {
-                                if(ids.length() != 0) {
+                            for (int i = 4; i < fields.length; i++) {
+                                if (ids.length() != 0) {
                                     ids += ",";
                                 }
                                 ids += fields[i];
@@ -177,8 +178,8 @@ public final class ParseResponseUtility {
         for (String book : booksArray) {
             String[] bookPieces = book.replace("BOOK:", "").split(",");
             String publishDate = "";
-            for(String piece : bookPieces) {
-                if(piece.matches("\\d{2}/\\d{2}/\\d{4}")) {
+            for (String piece : bookPieces) {
+                if (piece.matches("\\d{2}/\\d{2}/\\d{4}")) {
                     publishDate = piece;
                 }
             }
@@ -224,8 +225,8 @@ public final class ParseResponseUtility {
      */
     private static String removeBooks(int startIndex, String[] fields) {
         String books = "";
-        for(int i = startIndex; i < fields.length; i++) {
-            if(books.length() != 0) {
+        for (int i = startIndex; i < fields.length; i++) {
+            if (books.length() != 0) {
                 books += ",";
             }
             books += fields[i];

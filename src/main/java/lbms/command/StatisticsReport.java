@@ -25,7 +25,7 @@ public class StatisticsReport implements Command {
     public StatisticsReport(String request) throws MissingParametersException {
         try {
             if (!request.equals("")) {
-                days = Integer.parseInt(request);
+                this.days = Integer.parseInt(request);
             }
         } catch (NumberFormatException e) {
             throw new MissingParametersException("incorrect-value-for-days;");

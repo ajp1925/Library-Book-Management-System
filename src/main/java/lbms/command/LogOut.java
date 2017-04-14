@@ -15,7 +15,7 @@ public class LogOut implements Command {
      * Constructor for a log out object.
      * @param clientID: the ID of the client to be logged out
      */
-    public LogOut(Long clientID) throws MissingParametersException {
+    public LogOut(Long clientID) {
         this.clientID = clientID;
     }
 

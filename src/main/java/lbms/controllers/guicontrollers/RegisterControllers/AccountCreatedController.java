@@ -10,18 +10,22 @@ import lbms.controllers.guicontrollers.StateController;
 import lbms.views.GUI.SessionManager;
 
 /**
- * Created by Chris on 4/13/17.
+ * AccountCreatedController for the GUI part of the Library Book Management System.
+ * @author Team B
  */
 public class AccountCreatedController implements StateController {
+
     private SessionManager manager;
 
     @FXML private AnchorPane root;
     @FXML private Text username;
     @FXML private Button finishButton;
 
+    /**
+     * Initializes the controller.
+     */
     @FXML protected void initialize() {
-        finishButton.defaultButtonProperty().bind(finishButton.focusedProperty());
-
+        this.finishButton.defaultButtonProperty().bind(this.finishButton.focusedProperty());
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 this.finishButton.fire();
@@ -30,15 +34,26 @@ public class AccountCreatedController implements StateController {
         });
     }
 
+    /**
+     * Initializes the manager for this class.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
+    /**
+     * Tells the manager to display the home stage.
+     */
     @FXML public void home() {
-        manager.display("main_employee", manager.getUser());
+        this.manager.display("main_employee", this.manager.getUser());
     }
 
+    /**
+     * Sets the username for this class.
+     * @param username: the username to be set
+     */
     public void setUsername(String username) {
         this.username.setText(username);
     }

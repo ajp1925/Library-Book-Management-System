@@ -46,7 +46,7 @@ public class PhoneNumber implements Serializable {
      */
     @Override
     public String toString() {
-        return String.format("%03d%03d%03d", areaCode, exchangeCode, extension);
+        return String.format("%03d%03d%03d", this.areaCode, this.exchangeCode, this.extension);
     }
 
     /**

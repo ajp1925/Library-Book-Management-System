@@ -38,8 +38,8 @@ public class BeginVisit implements Command, Undoable {
         }
 
         Visit v = beginVisit(visitor);
-        return "," + String.format("%010d", this.visitorID) + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ "," +
-                v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
+        return "," + String.format("%010d", this.visitorID) + "," + v.getDate().format(SystemDateTime.DATE_FORMAT)+ ","
+                + v.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + ";";
     }
 
     /**

@@ -28,7 +28,9 @@ public class StoreSearch implements Command {
 
     /**
      * Constructor for a StoreSearch object.
-     * @param request: the request string to be read
+     * @param clientID: the clientID
+     * @param request: the request string to be parsed
+     * @throws MissingParametersException: when the request format is invalid
      */
     public StoreSearch(long clientID, String request) throws MissingParametersException {
         this.clientID = clientID;

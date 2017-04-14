@@ -67,6 +67,10 @@ public class SessionManager {
         setTitle(title, flag);
     }
 
+    /**
+     * Loads a file for the GUI formatting.
+     * @param file: the filename
+     */
     private void load(String file) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -81,16 +85,24 @@ public class SessionManager {
         }
     }
 
+    /**
+     * Sets the title of the tab.
+     * @param title: the title to be set
+     */
     private void setTitle(String title) {
-        tab.setText(visitorID + " - " + title);
-
+        this.tab.setText(this.visitorID + " - " + title);
     }
 
+    /**
+     * Sets the title, includes the visitorID if arg is true
+     * @param title: the title for the tab
+     * @param arg: boolean for including the visitorID
+     */
     private void setTitle(String title, boolean arg) {
         if (arg) {
-            tab.setText(visitorID + " - " + title);
+            this.tab.setText(this.visitorID + " - " + title);
         } else {
-            tab.setText(title);
+            this.tab.setText(title);
         }
     }
 
@@ -118,9 +130,27 @@ public class SessionManager {
         return this.visitorID;
     }
 
-    public void setUser(String user) { this.user = user; }
+    /**
+     * Setter for the user.
+     * @param user: the user to be set
+     */
+    public void setUser(String user) {
+        this.user = user;
+    }
 
-    public String getUser() { return user; }
+    /**
+     * Getter for the user.
+     * @return the user
+     */
+    public String getUser() {
+        return this.user;
+    }
 
-    public StateController getController() { return this.controller; }
+    /**
+     * Getter for the controller.
+     * @return the controller
+     */
+    public StateController getController() {
+        return this.controller;
+    }
 }

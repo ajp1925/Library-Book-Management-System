@@ -46,15 +46,13 @@ public class Borrow implements Command, Undoable {
                 if (arguments[i].endsWith("}")) {
                     break;
                 }
-            }
-            else {
+            } else {
                 this.ids.add(Integer.parseInt(arguments[i]));
             }
         }
         if (arguments[arguments.length-1].endsWith("}")) {
             this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
-        }
-        else {
+        } else {
             this.visitorID = Long.parseLong(arguments[arguments.length-1]);
         }
         /*
@@ -91,8 +89,8 @@ public class Borrow implements Command, Undoable {
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
             return ",invalid-visitor-id;";
         } else if (UserSearch.BY_ID.findFirst(this.visitorID).getFines() > 0) {
-            return ",outstanding-fine," +
-                    new DecimalFormat("#.00").format(UserSearch.BY_ID.findFirst(this.visitorID).getFines()) + ";";
+            return ",outstanding-fine," + new DecimalFormat("#.00").format(UserSearch.BY_ID
+                    .findFirst(this.visitorID).getFines()) + ";";
         }
         StringBuilder invalidIDs = new StringBuilder();
         String temp = "";

@@ -13,9 +13,8 @@ public class Disconnect implements Command {
     /**
      * Constructor for the Disconnect class.
      * @param clientID: the client to disconnect
-     * @throws MissingParametersException: when the request format is invalid
      */
-    public Disconnect(long clientID) throws MissingParametersException {
+    public Disconnect(long clientID) {
         this.clientID = clientID;
     }
 

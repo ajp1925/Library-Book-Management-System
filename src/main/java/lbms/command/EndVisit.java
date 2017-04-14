@@ -18,9 +18,8 @@ public class EndVisit implements Command, Undoable {
     /**
      * Constructor for an EndVisit command class.
      * @param visitorID: the visitorID of the visitor leaving the library
-     * @throws MissingParametersException: missing parameters
      */
-    public EndVisit(long visitorID) throws MissingParametersException {
+    public EndVisit(long visitorID) {
         this.visitorID = visitorID;
         this.visit = null;
     }
@@ -56,7 +55,7 @@ public class EndVisit implements Command, Undoable {
      */
     @Override
     public String unExecute() {
-        this.visit.undepart();
+        this.visit.unDepart();
         LBMS.getCurrentVisits().put(this.visitorID, this.visit);
         LBMS.getTotalVisits().remove(this.visit);
         return null;
