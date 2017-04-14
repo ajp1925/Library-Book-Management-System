@@ -31,7 +31,7 @@ public class Borrow implements Command, Undoable {
     public Borrow(String request) throws MissingParametersException {
         String[] allArguments = request.split(",");
         if (allArguments.length < 2) {
-            throw new MissingParametersException("missing-parameters,{ids};");
+            throw new MissingParametersException(",missing-parameters,{ids};");
         }
 
         this.clientID = Long.parseLong(allArguments[0]);
@@ -39,7 +39,7 @@ public class Borrow implements Command, Undoable {
 
         for (int in = 0; in < arguments.length; in++) {
             if (arguments[in].equals(arguments[arguments.length-1]) && !arguments[in].endsWith("}")) {
-                throw new MissingParametersException("missing-parameters,{ids};");
+                throw new MissingParametersException(",missing-parameters,{ids};");
             }
             else if (arguments[in].endsWith("}")) {
                 break;
