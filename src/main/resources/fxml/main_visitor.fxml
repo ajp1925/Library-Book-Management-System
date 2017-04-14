@@ -54,10 +54,17 @@
                         <Insets bottom="25.0" left="30.0" right="30.0" top="20.0" />
                      </padding>
                   </TabPane>
-                  <Button fx:id="visitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" styleClass="visit-button" stylesheets="@../css/main.css">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font></Button>
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Button fx:id="visitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" styleClass="visit-button" stylesheets="@../css/main.css">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Text fx:id="failedLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" />
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" onAction="#logout" prefWidth="100.0" text="Logout" />
                </children>
             </VBox>
          </children>

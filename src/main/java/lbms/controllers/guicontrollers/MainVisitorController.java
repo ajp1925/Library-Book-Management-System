@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
@@ -33,6 +34,7 @@ public class MainVisitorController implements StateController {
     @FXML private TextField searchAuthorField;
     @FXML private TextField searchISBNField;
     @FXML private Button visitButton;
+    @FXML private Text failedLabel;
 
     /**
      * Initializes the visitor controller.
@@ -99,13 +101,14 @@ public class MainVisitorController implements StateController {
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
         switch (responseObject.get("message")) {
-            case "duplicate":
-                break;
             case "invalid-id":
+                failedLabel.setText("Visitor does not exist.");
                 break;
             case "library-closed":
-                // TODO output that the library is closed
+                failedLabel.setText("Sorry the library is closed, please try again later.");
                 break;
+            case "duplicate":
+                failedLabel.setText("Visitor is already in the library.");
             default:
                 visitButton.setText("End Visit");
                 visitButton.setOnAction(e -> endVisit());
@@ -128,12 +131,17 @@ public class MainVisitorController implements StateController {
 
         switch (responseObject.get("message")) {
             case "invalid-id":
-                break;
+                failedLabel.setText("Visitor is currently not in the library.");
             default:
                 visitButton.setText("Begin Visit");
                 visitButton.setOnAction(e -> beginVisit());
                 visitButton.setId(BEGIN_VISIT_ID);
                 break;
         }
+    }
+
+    @FXML public void logout() {
+        new ProxyCommandController().processRequest(manager.getClientId() + ",logout;");
+        this.manager.display("login", "Login");
     }
 }

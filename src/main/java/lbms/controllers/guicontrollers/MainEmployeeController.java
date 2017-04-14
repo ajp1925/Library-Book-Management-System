@@ -1,6 +1,7 @@
 package lbms.controllers.guicontrollers;
 
 import javafx.fxml.FXML;
+import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
 
 /**
@@ -38,5 +39,10 @@ public class MainEmployeeController implements StateController {
 
     @FXML public void create() {
         this.manager.display("create", "Create Account");
+    }
+
+    @FXML public void logout() {
+        new ProxyCommandController().processRequest(manager.getClientId() + ",logout;");
+        this.manager.display("login", "Login");
     }
 }

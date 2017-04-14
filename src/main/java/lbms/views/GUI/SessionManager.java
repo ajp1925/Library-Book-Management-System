@@ -42,7 +42,7 @@ public class SessionManager {
      * Closes the session.
      */
     public void close() {
-        //TODO logout if logged in
+        new ProxyCommandController().processRequest(this.clientId + ",logout;");
         new ProxyCommandController().processRequest(this.clientId + ",disconnect;");
     }
 
