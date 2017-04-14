@@ -86,6 +86,11 @@
                         <Button mnemonicParsing="false" onAction="#create" prefWidth="125.0" text="Create Account" />
                      </children>
                   </HBox>
+                  <Text fx:id="failedLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <VBox.margin>
+                        <Insets top="-50.0" />
+                     </VBox.margin>
+                  </Text>
                   <Button mnemonicParsing="false" onAction="#logout" prefWidth="100.0" text="Logout" />
                     </children>
                 </VBox>

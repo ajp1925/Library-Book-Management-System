@@ -155,7 +155,7 @@ public class ProxyCommandController implements ICommandController {
      * Checks if the library is currently open based on the system time
      * @return true if the library is open, false otherwise
      */
-    static boolean isOpen() {
+    public static boolean isOpen() {
         updateStatus();
         return libraryStatus.isOpen();
     }

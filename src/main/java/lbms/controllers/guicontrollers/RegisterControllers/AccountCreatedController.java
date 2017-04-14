@@ -19,16 +19,14 @@ public class AccountCreatedController implements StateController {
 
     @FXML private AnchorPane root;
     @FXML private Text username;
-    @FXML private Button finishButton;
 
     /**
      * Initializes the controller.
      */
     @FXML protected void initialize() {
-        this.finishButton.defaultButtonProperty().bind(this.finishButton.focusedProperty());
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                this.finishButton.fire();
+                home();
                 e.consume();
             }
         });

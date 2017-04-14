@@ -7,7 +7,6 @@ Advance Time - employee
 Return Book - employee
 View Book - both
 Checkout Book - both
-Query User - employee
 Statistics report - employee
 
 
