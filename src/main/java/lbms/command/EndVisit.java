@@ -11,7 +11,7 @@ import lbms.search.UserSearch;
  * EndVisit class for end visit command.
  * @author Team B
  */
-public class EndVisit implements Command, Undoable {
+public class EndVisit implements Undoable {
 
     private long clientID;
     private long visitorID;

@@ -17,7 +17,7 @@ import java.util.List;
  * Borrow class that implements the borrow command.
  * @author Team B TODO -> change for R2
  */
-public class Borrow implements Command, Undoable {
+public class Borrow implements Undoable {
 
     private long clientID;
     private long visitorID;

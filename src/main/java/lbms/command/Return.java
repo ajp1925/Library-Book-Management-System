@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * Returns a book borrowed by a library visitor.
  * @author Team B TODO -> change for R2
  */
-public class Return implements Command, Undoable {
+public class Return implements Undoable {
 
     private long visitorID;
     private List<Integer> ids = new ArrayList<>();

@@ -11,7 +11,7 @@ import lbms.search.UserSearch;
  * StartVisit class for the start visit command.
  * @author Team B
  */
-public class BeginVisit implements Command, Undoable {
+public class BeginVisit implements Undoable {
 
     private long clientID;
     private long visitorID;

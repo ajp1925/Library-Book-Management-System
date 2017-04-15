@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * BookPurchase class that implements the book purchase command.
  * @author Team B
  */
-public class BookPurchase implements Command, Undoable {
+public class BookPurchase implements Undoable {
 
     private int quantity;
     private List<Integer> ids;

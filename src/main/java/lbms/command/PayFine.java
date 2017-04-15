@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
  * PayFine class for the pay fine command.
  * @author Team B TODO change for R2
  */
-public class PayFine implements Command, Undoable {
+public class PayFine implements Undoable {
 
     private long visitorID;
     private double amount;
