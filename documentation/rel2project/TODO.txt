@@ -13,7 +13,7 @@ Statistics report - employee
 Documentation:
 
 Patterns we use:
-State - for views (CLI and GUI)
+State - for views (API/GUI) and OPEN/CLOSED library
 Factory - for determining what view to use (modified by using arg)
 Visitor - for field checks and changes in GUI
             (New User Controller, Existing User Controller)
