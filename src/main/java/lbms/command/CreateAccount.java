@@ -4,6 +4,8 @@ import lbms.LBMS;
 import lbms.models.Employee;
 import lbms.models.Visitor;
 
+import java.util.Arrays;
+
 /**
  * CreateAccount class for the create account command.
  * @author Team B
@@ -22,9 +24,19 @@ public class CreateAccount implements Command {
      */
     public CreateAccount(String request) throws MissingParametersException {
         String[] arguments = request.split(",");
-        if (arguments.length < 4) {
-            throw new MissingParametersException("missing-parameters,username,password,role,visitorID;");
-        } else {
+        if (arguments.length == 1 && arguments[0].equals("")) {
+            throw new MissingParametersException("missing-parameters,{all};");
+        }
+        else if (arguments.length == 1) {
+            throw new MissingParametersException("missing-parameters,{password,role,visitorID};");
+        }
+        else if (arguments.length == 2) {
+            throw new MissingParametersException("missing-parameters,{role,visitorID};");
+        }
+        else if (arguments.length == 3) {
+            throw new MissingParametersException("missing-parameters,{visitorID};");
+        }
+        else {
             this.username = arguments[0];
             this.password = arguments[1];
             this.role = arguments[2];
