@@ -116,9 +116,10 @@ public final class ParseResponseUtility {
                         parsed.put("registrationDate", fields[3]);
                         break;
                     case "report":
+                        String[] reportFields = response.replace(";", "").split(",");
                         parsed.put("message", "success");
-                        parsed.put("date",fields[2]);
-                        parsed.put("report",fields[3]);
+                        parsed.put("date",reportFields[2]);
+                        parsed.put("report",reportFields[3]);
                         break;
                     case "reset":
                         parsed.put("message",fields[2]);
@@ -246,7 +247,7 @@ public final class ParseResponseUtility {
                 "invalid-id", "invalid-visitor-id", "invalid-book-id", "book-limit-exceeded",
                 "outstanding-fine", "duplicate-username", "duplicate-visitor", "invalid-sort-order",
                 "bad-username-or-password", "invalid-amount", "cannot-redo", "cannot-undo",
-                "invalid-visitor", "missing-parameters", "library-closed"
+                "invalid-visitor", "missing-parameters", "library-closed", "incorrect-value-for-days"
         ));
         return errorMessages.contains(message);
     }

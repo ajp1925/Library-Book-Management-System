@@ -38,7 +38,7 @@ public class StatisticsReport implements Command {
      */
     @Override
     public String execute() {
-        return SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + ",\n" +
+        return "," + SystemDateTime.getInstance(null).getDate().format(SystemDateTime.DATE_FORMAT) + ",\n" +
                 generateReport(this.days);
     }
 
