@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.SystemController">
     <children>
         <FlowPane alignment="CENTER" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -26,7 +28,7 @@
                         <HBox spacing="25.0">
                            <children>
                               <TextArea fx:id="output" prefHeight="448.0" prefWidth="400.0" />
-                              <VBox prefHeight="448.0" prefWidth="267.0" spacing="10.0">
+                              <VBox prefHeight="448.0" prefWidth="267.0">
                                  <children>
                                     <VBox fx:id="timeBox" alignment="CENTER" prefHeight="180.0" prefWidth="267.0">
                                        <children>
@@ -68,7 +70,7 @@
                                           </FlowPane>
                                        </children>
                                     </VBox>
-                                    <VBox fx:id="reportBox" alignment="CENTER">
+                                    <VBox fx:id="reportBox" alignment="CENTER" prefHeight="269.0" prefWidth="267.0">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="System Statistics">
                                              <VBox.margin>
@@ -77,33 +79,27 @@
                                           </Text>
                                           <GridPane>
                                             <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="53.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="198.0" prefWidth="214.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="122.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="5.0" prefWidth="36.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="92.0" prefWidth="113.0" />
                                             </columnConstraints>
                                             <rowConstraints>
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Days" />
-                                                <TextField fx:id="reportField" GridPane.columnIndex="1" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Days" GridPane.columnIndex="1" />
+                                                <TextField fx:id="reportField" GridPane.columnIndex="2" />
+                                                <Button mnemonicParsing="false" onAction="#report" prefHeight="25.0" prefWidth="108.0" text="Generate Report" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets top="10.0" />
                                              </VBox.margin>
                                           </GridPane>
-                                          <TextArea fx:id="reportOutput" prefHeight="103.0" prefWidth="242.0">
+                                          <TextArea fx:id="reportOutput" prefHeight="183.0" prefWidth="267.0">
                                              <VBox.margin>
                                                 <Insets top="10.0" />
                                              </VBox.margin>
                                           </TextArea>
-                                          <FlowPane alignment="CENTER">
-                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#report" text="Generate Report" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </FlowPane>
                                        </children>
                                     </VBox>
                                     <FlowPane alignment="CENTER" prefHeight="12.0" prefWidth="267.0">
@@ -111,7 +107,7 @@
                                           <Button mnemonicParsing="false" onAction="#home" text="Return" />
                                        </children>
                                        <VBox.margin>
-                                          <Insets top="25.0" />
+                                          <Insets top="10.0" />
                                        </VBox.margin>
                                     </FlowPane>
                                  </children>

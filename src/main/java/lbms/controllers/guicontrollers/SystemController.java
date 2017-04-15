@@ -128,7 +128,7 @@ public class SystemController implements StateController {
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
         if (responseObject.get("message").equals("success")) {
-            reportOutput.setText(responseObject.get("date") + "\n" + responseObject.get("report"));
+            reportOutput.setText("Date: " + responseObject.get("date") + responseObject.get("report"));
         } else {
             reportOutput.setText("An error occurred.\nPlease try again later.");
         }
