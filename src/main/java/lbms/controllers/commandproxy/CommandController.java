@@ -6,6 +6,7 @@ import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 /**
  * ICommandController class interacts with the command package to execute commands.
@@ -153,7 +154,12 @@ public class CommandController implements ICommandController {
                 case "info":
                     return new LibrarySearch(request[2]);
                 case "borrowed":
-                    return new FindBorrowed(request[2]);
+                    if (request.length == 2) {
+                        return new FindBorrowed(request[0]);
+                    }
+                    else if (request.length == 3) {
+                        return new FindBorrowed(request[0] + "," + request[2]);
+                    }
                 case "return":
                     Return r = new Return(request[2]);
                     LBMS.getSessions().get(clientID).addUndoable(r);

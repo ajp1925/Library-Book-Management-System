@@ -13,6 +13,7 @@ import lbms.search.UserSearch;
  */
 public class FindBorrowed implements Command {
 
+    private long clientID;
     private long visitorID;
 
     /**
@@ -20,7 +21,15 @@ public class FindBorrowed implements Command {
      * @param request: the request String for the command
      */
     public FindBorrowed(String request) {
-        this.visitorID = Long.decode(request);
+        String[] arguments = request.split(",");
+        if (arguments.length == 1) {
+            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
+        }
+        else if (arguments.length == 2) {
+            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = Long.parseLong(arguments[1]);
+        }
     }
 
     /**
@@ -43,7 +52,7 @@ public class FindBorrowed implements Command {
         for (Transaction t: visitor.getCheckedOutBooks().values()) {
             b = BookSearch.BY_ISBN.findAll(t.getIsbn().toString()).get(0);
             LBMS.getLastBookSearch().add(b);
-            s += "\n";
+            s += ",\n";
             s += id[0]++ + "," + t.getIsbn() + "," + b.getTitle() + "," + t.getDate();
         }
         return "," + s + ";";
