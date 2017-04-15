@@ -44,6 +44,10 @@ public class MainEmployeeController implements StateController {
         }
     }
 
+    @FXML public void returnBook() {
+
+    }
+
     @FXML public void register() {
         this.manager.display("register", "Register Visitor");
     }
@@ -51,6 +55,8 @@ public class MainEmployeeController implements StateController {
     @FXML public void create() {
         this.manager.display("create", "Create Account");
     }
+
+    @FXML public void settings() { this.manager.display("settings", "System Settings");}
 
     @FXML public void logout() {
         new ProxyCommandController().processRequest(manager.getClientId() + ",logout;");

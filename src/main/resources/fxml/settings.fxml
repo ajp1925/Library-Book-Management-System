@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.SystemController">
+    <children>
+        <FlowPane alignment="CENTER" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <BorderPane>
+                    <top>
+                        <FlowPane alignment="CENTER" prefHeight="75.0" prefWidth="667.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="System Settings">
+                                    <font>
+                                        <Font name="System Bold" size="48.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </FlowPane>
+                    </top>
+                    <center>
+                        <FlowPane alignment="CENTER" prefHeight="390.0" prefWidth="667.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox spacing="25.0">
+                           <children>
+                              <TextArea fx:id="output" prefHeight="448.0" prefWidth="400.0" />
+                              <VBox prefHeight="428.0" prefWidth="242.0" spacing="10.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Advance Time" />
+                                    <GridPane vgap="10.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="52.0" minWidth="39.0" prefWidth="50.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Days" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hours" GridPane.rowIndex="1" />
+                                          <TextField fx:id="daysField" prefHeight="27.0" GridPane.columnIndex="1" />
+                                          <TextField fx:id="hoursField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <FlowPane alignment="CENTER">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#advance" text="Advance Time" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="15.0" />
+                                       </VBox.margin>
+                                    </FlowPane>
+                                    <FlowPane alignment="CENTER">
+                                       <children>
+                                          <Text fx:id="label" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                       </children>
+                                    </FlowPane>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="System Statistics">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Text>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="47.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="170.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Days" />
+                                          <TextField fx:id="reportField" GridPane.columnIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <TextArea fx:id="reportOutput" prefHeight="103.0" prefWidth="242.0">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin></TextArea>
+                                    <FlowPane alignment="CENTER">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#report" text="Generate Report" />
+                                       </children>
+                                    </FlowPane>
+                                    <FlowPane alignment="CENTER" prefWidth="200.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#home" text="Return" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                        </FlowPane>
+                    </center>
+               <bottom>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Text fx:id="inputFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Command Line" />
+                              <Button mnemonicParsing="false" onAction="#command" text="Submit" GridPane.columnIndex="1" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </GridPane>
+                        <TextField fx:id="input" alignment="TOP_LEFT" prefHeight="19.0" prefWidth="667.0" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </VBox>
+               </bottom>
+                </BorderPane>
+            </children>
+        </FlowPane>
+    </children>
+</AnchorPane>

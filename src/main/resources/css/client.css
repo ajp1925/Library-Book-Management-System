@@ -18,7 +18,7 @@
 #client-tab-pane .tab {
     -fx-background-color: -main-color;
     -fx-border-style: none;
-    -fx-pref-width: 200;
+    -fx-pref-width: 225;
 }
 
 #client-tab-pane .tab:hover {

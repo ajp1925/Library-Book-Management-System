@@ -89,9 +89,7 @@ public class SessionManager {
      * Sets the title of the tab.
      * @param title: the title to be set
      */
-    private void setTitle(String title) {
-        this.tab.setText(this.visitorID + " - " + title);
-    }
+    private void setTitle(String title) { this.tab.setText("Visitor ID: " + this.visitorID + " - " + title); }
 
     /**
      * Sets the title, includes the visitorID if arg is true
