@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.MainEmployeeController">
     <children>
         <FlowPane alignment="CENTER" layoutX="-328.0" prefHeight="251.0" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -74,12 +70,12 @@
                      <children>
                          <Button mnemonicParsing="false" onAction="#beginVisit" prefHeight="25.0" prefWidth="125.0" stylesheets="@../css/main.css" text="Begin Visit">
                               <font>
-                                  <Font name="System Bold" size="13.0" />
+                                  <Font size="13.0" />
                               </font>
                         </Button>
                         <Button mnemonicParsing="false" onAction="#endVisit" prefHeight="25.0" prefWidth="125.0" stylesheets="@../css/main.css" text="End Visit">
                            <font>
-                              <Font name="System Bold" size="13.0" />
+                              <Font size="13.0" />
                            </font>
                         </Button>
                         <Button mnemonicParsing="false" onAction="#returnBook" prefWidth="125.0" text="Return Book" />

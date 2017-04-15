@@ -46,7 +46,7 @@ public class GUIView extends Application implements View {
             System.exit(1);
         }
 
-        primaryStage.setScene(new Scene(root, 1280, 720));
+        primaryStage.setScene(new Scene(root, 1280, 800));
         primaryStage.show();
     }
 

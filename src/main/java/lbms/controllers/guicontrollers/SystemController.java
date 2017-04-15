@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ParseResponseUtility;
@@ -25,20 +26,38 @@ public class SystemController implements StateController {
     @FXML private TextArea output;
     @FXML private TextField input;
     @FXML private Text inputFail;
+    @FXML private VBox timeBox;
     @FXML private TextField daysField;
     @FXML private TextField hoursField;
+    @FXML private VBox reportBox;
     @FXML private TextField reportField;
     @FXML private TextArea reportOutput;
 
     @FXML protected void initialize() {
         output.setEditable(false);
-        output.textProperty().addListener(c -> { output.setScrollTop(Double.MAX_VALUE); });
+        output.textProperty().addListener(c -> {
+            output.setScrollTop(Double.MAX_VALUE);
+        });
 
         reportOutput.setEditable(false);
 
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 command();
+                e.consume();
+            }
+        });
+
+        this.timeBox.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                advance();
+                e.consume();
+            }
+        });
+
+        this.reportBox.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                report();
                 e.consume();
             }
         });
@@ -89,6 +108,9 @@ public class SystemController implements StateController {
     }
 
     @FXML public void report() {
+        inputFail.setText("");
+        label.setText("");
+
         String request;
         String days = reportField.getText();
 
