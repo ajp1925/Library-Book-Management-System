@@ -117,22 +117,24 @@ public class Borrow implements Undoable {
                 return ",book-limit-exceeded;";
             }
             if (i <= LBMS.getLastBookSearch().size() && LBMS.getLastBookSearch().get(i - 1).getCopiesAvailable() < 1) {
-                return ",book-limit-exceeded;";
+                return ",no-more-copies;";
             }
             temp = checkOutBook(i, this.visitorID);
             try {
                 if (temp.contains("id-error")) {
                     String[] error = temp.split(",");
-                    invalidIDs.append(error[1]);
+                    String string = error[1] + ",";
+                    invalidIDs.append(string);
                 }
             } catch (NullPointerException e) {
                 e.printStackTrace();
                 System.exit(1);
             }
         }
-        if (invalidIDs.length() > 1) {
+        if (invalidIDs.length() > 0) {
             String output = "invalid-book-id,";
-            output += invalidIDs;
+            invalidIDs.deleteCharAt(invalidIDs.length()-1);
+            output += "{" + invalidIDs + "}";
             //output = output.substring(0,output.length() - 1);
             output += ";";
             return "," + output;
