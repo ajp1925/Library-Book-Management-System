@@ -37,28 +37,25 @@ public class Borrow implements Undoable {
         this.clientID = Long.parseLong(allArguments[0]);
         String[] arguments = Arrays.copyOfRange(allArguments, 1, allArguments.length);
 
-        for (int in = 0; in < arguments.length; in++) {
-            if (arguments[in].equals(arguments[arguments.length-1]) && !arguments[in].endsWith("}")) {
+        for (String arg: arguments) {
+            if (arg.equals(arguments[arguments.length - 1]) && !arg.endsWith("}")) {
                 throw new MissingParametersException(",missing-parameters,{ids};");
-            }
-            else if (arguments[in].endsWith("}")) {
+            } else if (arg.endsWith("}")) {
                 break;
             }
         }
 
         if (arguments[arguments.length-1].startsWith("{") && arguments[arguments.length-1].endsWith("}")) {
             this.ids.add(Integer.parseInt(arguments[arguments.length-1].replaceAll("[{}]","")));
-        }
-        else if (arguments[arguments.length-1].endsWith("}")) {
-            for (int i = 0; i < arguments.length; i++) {
-                if (arguments[i].startsWith("{") || arguments[i].endsWith("}")) {
-                    this.ids.add(Integer.parseInt(arguments[i].replaceAll("[{}]", "")));
+        } else if (arguments[arguments.length-1].endsWith("}")) {
+            for (String arg: arguments) {
+                if (arg.startsWith("{") || arg.endsWith("}")) {
+                    this.ids.add(Integer.parseInt(arg.replaceAll("[{}]", "")));
                 } else {
-                    this.ids.add(Integer.parseInt(arguments[i]));
+                    this.ids.add(Integer.parseInt(arg));
                 }
             }
-        }
-        else {
+        } else {
             for (int i = 0; i < arguments.length - 1; i++) {
                 if (arguments[i].startsWith("{") || arguments[i].endsWith("}")) {
                     this.ids.add(Integer.parseInt(arguments[i].replaceAll("[{}]", "")));

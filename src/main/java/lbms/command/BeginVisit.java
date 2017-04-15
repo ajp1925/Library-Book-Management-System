@@ -25,8 +25,7 @@ public class BeginVisit implements Undoable {
         if (arguments.length == 1) {
             this.clientID = Long.parseLong(arguments[0]);
             this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
-        }
-        else if (arguments.length == 2) {
+        } else if (arguments.length == 2) {
             this.clientID = Long.parseLong(arguments[0]);
             this.visitorID = Long.parseLong(arguments[1]);
         }
