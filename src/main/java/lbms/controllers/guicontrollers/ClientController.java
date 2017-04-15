@@ -14,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.CommandController;
 import lbms.views.GUI.SessionManager;
@@ -43,6 +45,7 @@ public class ClientController {
         //createWindowButtons();
 
         // init clock
+        clockText.setFont(Font.font(null,FontWeight.BOLD, 13));
         Runnable task = () -> {
             while (!stop) {
                 LocalDateTime date = CommandController.getSystemDateTime();
@@ -143,43 +146,5 @@ public class ClientController {
 
         // Menu
         menuBar.getMenus().addAll(fileMenu, editMenu);
-    }
-
-    /**
-     * Creates the buttons for the window.
-     */
-    private void createWindowButtons() {
-        final String os = System.getProperty ("os.name");
-        if (os != null && os.startsWith ("Mac")) {
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(SessionManager.class.getResource("/fxml/mac.fxml"));
-                this.windowButtonBox = loader.load();
-            } catch (Exception e) {
-                System.out.println("Error loading fxml");
-                System.exit(1);
-            }
-
-            AnchorPane.clearConstraints(this.windowButtonBox);
-            AnchorPane.setLeftAnchor(this.windowButtonBox, 5.0);
-            AnchorPane.setTopAnchor(this.windowButtonBox, 5.0);
-
-            this.tabs.setPadding(new Insets(10, 0, 0, 100));
-        } else {
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(SessionManager.class.getResource("/fxml/windows.fxml"));
-                this.windowButtonBox = loader.load();
-            } catch (Exception e) {
-                System.out.println("Error loading fxml");
-                System.exit(1);
-            }
-
-            AnchorPane.clearConstraints(this.windowButtonBox);
-            AnchorPane.setLeftAnchor(this.windowButtonBox, 5.0);
-            AnchorPane.setTopAnchor(this.windowButtonBox, 5.0);
-
-            this.tabs.setPadding(new Insets(10, 100, 0, 0));
-        }
     }
 }

@@ -29,6 +29,10 @@
     -fx-background-color: #ffffff;
 }
 
+#client-tab-pane .tab:selected .tab-label{
+    -fx-font-weight: bold;
+}
+
 #client-tab-pane .tab:selected .focus-indicator{
     -fx-border-color: transparent;
 }
