@@ -57,6 +57,7 @@ public class SystemController implements StateController {
     }
 
     @FXML public void advance() {
+        inputFail.setText("");
         label.setText("");
         label.setFill(Color.FIREBRICK);
 
@@ -115,6 +116,7 @@ public class SystemController implements StateController {
     }
 
     @FXML public void command() {
+        label.setText("");
         String request = input.getText();
 
         if (request.isEmpty()) {
