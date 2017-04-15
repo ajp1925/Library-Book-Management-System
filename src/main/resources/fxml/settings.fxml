@@ -29,7 +29,7 @@
                         <HBox spacing="25.0">
                            <children>
                               <TextArea fx:id="output" prefHeight="448.0" prefWidth="400.0" />
-                              <VBox prefHeight="428.0" prefWidth="242.0" spacing="10.0">
+                              <VBox prefHeight="448.0" prefWidth="267.0" spacing="10.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Advance Time" />
                                     <GridPane vgap="10.0">
@@ -68,8 +68,8 @@
                                     </Text>
                                     <GridPane>
                                       <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="47.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="170.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="53.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="198.0" prefWidth="214.0" />
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -93,7 +93,7 @@
                                           <Button mnemonicParsing="false" onAction="#home" text="Return" />
                                        </children>
                                        <VBox.margin>
-                                          <Insets top="10.0" />
+                                          <Insets top="15.0" />
                                        </VBox.margin>
                                     </FlowPane>
                                  </children>
