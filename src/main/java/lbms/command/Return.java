@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
  */
 public class Return implements Undoable {
 
+    private long clientID;
     private long visitorID;
     private List<Integer> ids = new ArrayList<>();
 
@@ -26,10 +27,49 @@ public class Return implements Undoable {
      * @param request: the request input string
      */
     public Return(String request) {
+        int count = 0;
+        String[] arguments = request.split(",");
+        for (int i = 0; !arguments[i].startsWith("{"); i++) {
+            count++;
+        }
+        if (count == 1) {
+            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
+            for (int i = 1; i < arguments.length; i++) {
+                if (arguments[i].startsWith("{")) {
+                    this.ids.add(Character.getNumericValue(arguments[i].charAt(1)));
+                }
+                else if (arguments[i].endsWith("}")) {
+                    this.ids.add(Character.getNumericValue(arguments[i].charAt(0)));
+                }
+                else {
+                    this.ids.add(Integer.parseInt(arguments[i]));
+                }
+            }
+            //this.ids = Arrays.stream(arguments[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        }
+        else if (count == 2) {
+            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = Long.parseLong(arguments[1]);
+            for (int i = 2; i < arguments.length; i++) {
+                if (arguments[i].startsWith("{")) {
+                    this.ids.add(Character.getNumericValue(arguments[i].charAt(1)));
+                }
+                else if (arguments[i].endsWith("}")) {
+                    this.ids.add(Character.getNumericValue(arguments[i].charAt(0)));
+                }
+                else {
+                    this.ids.add(Integer.parseInt(arguments[i]));
+                }
+            }
+            //this.ids = Arrays.stream(arguments[2].split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        }
+        /*
         request = request.replaceAll(";$", "").replaceAll("\"", "");
         String[] split = request.split(",", 2);
         this.visitorID = Long.parseLong(split[0]);
         this.ids = Arrays.stream(split[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        */
     }
 
     /**
@@ -39,12 +79,12 @@ public class Return implements Undoable {
     @Override
     public String execute() {
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
-            return "invalid-visitor-id;";
+            return ",invalid-visitor-id;";
         }
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         ArrayList<Integer> nonBooks = new ArrayList<>();
         for (Integer id : this.ids) {
-            if (LBMS.getLastBookSearch().size() <= id) {
+            if (LBMS.getLastBookSearch().size() >= id) {
                 try {
                     Book b = LBMS.getLastBookSearch().get(id - 1);
                     visitor.getCheckedOutBooks().get(b.getIsbn());
@@ -56,7 +96,7 @@ public class Return implements Undoable {
             }
         }
         if (nonBooks.size() > 0) {
-            String output = "invalid-book-id,";
+            String output = ",invalid-book-id,";
             for (Integer i: nonBooks) {
                 output += i + ",";
             }
@@ -65,10 +105,10 @@ public class Return implements Undoable {
         }
 
         if (visitor.getFines() > 0.0) {
-            String output = "overdue," + String.format("%.2f", visitor.getFines()) + ",";
+            String output = ",overdue," + String.format("%.2f", visitor.getFines()) + ",";
             for (Transaction t: visitor.getCheckedOutBooks().values()) {
                 if (SystemDateTime.getInstance(null).getDate().isAfter(t.getDueDate())) {
-                    output += LBMS.getLastBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + ",";
+                    output += LBMS.getLastBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + 1 + ",";
                 }
             }
             return output.replaceAll(",$", ";");
@@ -82,7 +122,7 @@ public class Return implements Undoable {
             t.closeTransaction();
         }
 
-        return "success;";
+        return ",success;";
     }
 
     /**

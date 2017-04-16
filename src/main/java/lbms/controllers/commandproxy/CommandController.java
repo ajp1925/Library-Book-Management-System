@@ -161,9 +161,16 @@ public class CommandController implements ICommandController {
                         return new FindBorrowed(request[0] + "," + request[2]);
                     }
                 case "return":
-                    Return r = new Return(request[2]);
-                    LBMS.getSessions().get(clientID).addUndoable(r);
-                    return r;
+                    if (request.length == 3) {
+                        Return r = new Return(request[0] + "," + request[2]);
+                        LBMS.getSessions().get(clientID).addUndoable(r);
+                        return r;
+                    }
+                    else if (request.length == 4) {
+                        Return r = new Return(request[0] + "," + request[2] + "," + request[3]);
+                        LBMS.getSessions().get(clientID).addUndoable(r);
+                        return r;
+                    }
                 case "pay":
                     PayFine pf = new PayFine(request[2]);
                     LBMS.getSessions().get(clientID).addUndoable(pf);
