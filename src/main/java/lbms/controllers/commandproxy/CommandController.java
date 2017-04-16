@@ -172,9 +172,17 @@ public class CommandController implements ICommandController {
                         return r;
                     }
                 case "pay":
-                    PayFine pf = new PayFine(request[2]);
-                    LBMS.getSessions().get(clientID).addUndoable(pf);
-                    return pf;
+                    PayFine pf;
+                    if (request.length == 3) {
+                        pf = new PayFine(request[0] + "," + request[2]);
+                        LBMS.getSessions().get(clientID).addUndoable(pf);
+                        return pf;
+                    }
+                    else if (request.length == 4) {
+                        pf = new PayFine(request[0] + "," + request[2] + "," + request[3]);
+                        LBMS.getSessions().get(clientID).addUndoable(pf);
+                        return pf;
+                    }
                 case "search":
                     return new StoreSearch(clientID, request[2]);
                 case "buy":
