@@ -89,7 +89,7 @@
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Days" GridPane.columnIndex="1" />
                                                 <TextField fx:id="reportField" GridPane.columnIndex="2" />
-                                                <Button mnemonicParsing="false" onAction="#report" prefHeight="25.0" prefWidth="108.0" text="Generate Report" />
+                                                <Button mnemonicParsing="false" onAction="#report" prefHeight="25.0" prefWidth="108.0" text="Create Report" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets top="10.0" />

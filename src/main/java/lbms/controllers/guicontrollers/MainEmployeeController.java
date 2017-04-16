@@ -1,9 +1,18 @@
 package lbms.controllers.guicontrollers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
+import lbms.command.LibrarySearch;
+import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * MainEmployeeController class for the GUI of the Library Book Management System.
@@ -13,7 +22,37 @@ public class MainEmployeeController implements StateController {
 
     private SessionManager manager;
 
+    @FXML private TabPane storeSearchBox;
+    @FXML private TabPane searchBox;
+    @FXML private Tab searchByAuthor;
+    @FXML private Tab searchByTitle;
+    @FXML private Tab searchByISBN;
+    @FXML private TextField searchTitleField;
+    @FXML private TextField searchAuthorField;
+    @FXML private TextField searchISBNField;
+
+
     @FXML private Text failedLabel;
+
+    @FXML protected void initialize() {
+        this.storeSearchBox.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                searchStore();
+                e.consume();
+            }
+        });
+
+        this.searchBox.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                search();
+                e.consume();
+            }
+        });
+
+        searchByAuthor.setUserData("author");
+        searchByTitle.setUserData("title");
+        searchByISBN.setUserData("isbn");
+    }
 
     @Override
     public void initManager(SessionManager manager) {
@@ -21,11 +60,38 @@ public class MainEmployeeController implements StateController {
     }
 
     @FXML public void search() {
+        String author = searchAuthorField.getText();
+        String title = searchTitleField.getText();
+        String isbn = searchISBNField.getText();
 
+        String type = searchBox.getSelectionModel().getSelectedItem().getUserData().toString();
+
+        String request;
+        switch (type) {
+            case "author":
+                request = String.format("%s,info,*,{%s};", manager.getClientId(), author);
+                break;
+            case "title":
+                request = String.format("%s,info,%s,*;", manager.getClientId(), title);
+                break;
+            case "isbn":
+                request = String.format("%s,info,*,*,%s;", manager.getClientId(), isbn);
+                break;
+            default:
+                request = null;
+                break;
+        }
+
+        String response = new ProxyCommandController().processRequest(request);
+        HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
+
+        manager.display("search_library", "Library Search");
+        ((LibrarySearchController)manager.getController()).populate(responseObject);
     }
 
     @FXML public void searchStore() {
-
+        System.out.println("STORE");
+        //TODO
     }
 
     @FXML public void beginVisit() {
@@ -45,7 +111,7 @@ public class MainEmployeeController implements StateController {
     }
 
     @FXML public void returnBook() {
-
+        //TODO
     }
 
     @FXML public void register() {
