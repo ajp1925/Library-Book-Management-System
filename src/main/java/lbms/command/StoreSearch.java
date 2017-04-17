@@ -35,7 +35,7 @@ public class StoreSearch implements Command {
     public StoreSearch(long clientID, String request) throws MissingParametersException {
         this.clientID = clientID;
         String[] arguments = request.split(",");
-        if (arguments.length <= 0) {
+        if (arguments.length == 1 && arguments[0].equals("")) {
             throw new MissingParametersException("missing-parameters,title;");
         }
         try {
@@ -142,7 +142,7 @@ public class StoreSearch implements Command {
             return ",0;";
         } else {
             int id = 1;
-            StringBuilder response = new StringBuilder(Integer.toString(books.size()) + "\n");
+            StringBuilder response = new StringBuilder(Integer.toString(books.size()) + ",\n");
             LBMS.getLastBookSearch().clear();
             for (Book book: books) {
                 LBMS.getLastBookSearch().add(book);
