@@ -199,7 +199,17 @@ public final class ParseResponseUtility {
                 bookInfo.put("publishDate", publishDate);
                 bookInfo.put("quantity", bookPieces[bookPieces.length-1]);
                 books.add(bookInfo);
-            } else { // info or search
+            } else if (bookPieces[1].length() == 13) { // info
+                bookInfo.put("id", bookPieces[0]);
+                Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[1]);
+                bookInfo.put("isbn", b.getIsbn().toString());
+                bookInfo.put("title", b.getTitle());
+                bookInfo.put("authors", b.getAuthorsString());
+                bookInfo.put("publishDate", publishDate);
+                bookInfo.put("publisher", b.getPublisher());
+                bookInfo.put("pageCount", b.getPageCount() + "");
+                books.add(bookInfo);
+            } else { // search
                 bookInfo.put("id", bookPieces[0]);
                 bookInfo.put("quantity", bookPieces[1]);
                 Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[2]);
