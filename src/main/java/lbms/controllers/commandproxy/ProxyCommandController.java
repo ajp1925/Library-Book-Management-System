@@ -45,6 +45,13 @@ public class ProxyCommandController implements ICommandController {
         }
         String command = request[1];
 
+        // allows users who are not logged in to only perform specific actions
+        if (!command.equals("connect") && !command.equals("disconnect") &&
+                !command.equals("login") && !command.equals("logout") &&
+                !isLoggedIn(clientID)) {
+            return "not-authorized;";
+        }
+
         if (!isCommand(command)) {
             return new Invalid().execute();
         }
