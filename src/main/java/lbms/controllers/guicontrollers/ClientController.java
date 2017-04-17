@@ -28,14 +28,11 @@ import java.time.format.DateTimeFormatter;
  * @author Team B
  */
 public class ClientController {
-
-    private final static int MAX_WIDTH = 150;
-    public static Boolean stop = false;
+    private static Boolean stop = false;
 
     @FXML private BorderPane root;
     @FXML private TabPane tabs;
     @FXML private Text clockText;
-    @FXML private HBox windowButtonBox;
 
     /**
      * Initializes the client controller.
@@ -84,10 +81,12 @@ public class ClientController {
         SessionManager manager = new SessionManager(tab);
         manager.display("login", "Login", false);
 
-        tab.setOnCloseRequest((Event event) -> { manager.close(); });
+        tab.setOnCloseRequest((Event event) -> { manager.close(false); });
         this.tabs.getTabs().add(num - 1, tab);
         this.tabs.getSelectionModel().select(tab);
     }
+
+    public static void stop() { stop = true; }
 
     /**
      * Creates the menu.

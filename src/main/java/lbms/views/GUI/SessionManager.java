@@ -41,9 +41,11 @@ public class SessionManager {
     /**
      * Closes the session.
      */
-    public void close() {
+    public void close(boolean arg) {
         new ProxyCommandController().processRequest(this.clientId + ",logout;");
         new ProxyCommandController().processRequest(this.clientId + ",disconnect;");
+
+        if (arg) { tab.getTabPane().getTabs().remove(tab); }
     }
 
     /**

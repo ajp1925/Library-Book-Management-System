@@ -61,7 +61,7 @@ public class GUIView extends Application implements View {
      */
     @Override
     public void stop(){
-        ClientController.stop = true;
+        ClientController.stop();
         Platform.exit();
     }
 
