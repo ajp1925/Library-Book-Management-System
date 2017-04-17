@@ -92,13 +92,13 @@ public class StoreSearch implements Command {
             }
         } else if (LBMS.getSessions().get(clientID).getSearch() == GOOGLE) {
             if (this.title != null) {
-                books = BookSearch.BY_TITLE.toBuy().findAll(this.title);
+                books = GoogleAPISearch.searchByTitle(this.title);
             } else if (this.authors != null) {
-                books = BookSearch.BY_AUTHOR.toBuy().findAll(this.authors.get(0));
+                books = GoogleAPISearch.searchByAuthor(this.authors);
             } else if (this.isbn != null) {
-                books = BookSearch.BY_ISBN.toBuy().findAll(isbn.toString());
+                books = GoogleAPISearch.searchByISBN(this.isbn.toString());
             } else if (this.publisher != null) {
-                books = BookSearch.BY_PUBLISHER.toBuy().findAll(this.publisher);
+                books = GoogleAPISearch.searchByPublisher(this.publisher);
             } else {
                 books = new ArrayList<>();
             }
@@ -153,7 +153,8 @@ public class StoreSearch implements Command {
                     response.append(author).append(",");
                 }
                 response = new StringBuilder(response.toString().replaceAll(",$", "},"));
-                response.append(book.dateFormat()).append(",\n");
+                response.append(book.dateFormat()).append(",");
+                response.append(book.getPageCount()).append(",\n");
                 id += 1;
             }
             response = new StringBuilder(response.substring(0, response.length() - 2));

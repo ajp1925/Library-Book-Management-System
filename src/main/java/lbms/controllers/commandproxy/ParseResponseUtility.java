@@ -1,11 +1,14 @@
 package lbms.controllers.commandproxy;
 
+import lbms.LBMS;
 import lbms.models.Book;
 import lbms.search.BookSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import static lbms.LBMS.SearchService.GOOGLE;
 
 /**
  * Utility class for parsing responses.
@@ -199,17 +202,35 @@ public final class ParseResponseUtility {
                 bookInfo.put("publishDate", publishDate);
                 bookInfo.put("quantity", bookPieces[bookPieces.length-1]);
                 books.add(bookInfo);
-            } else if (bookPieces[1].length() == 13) { // info
+            } else if (bookPieces[1].length() > 3) { // search
                 bookInfo.put("id", bookPieces[0]);
-                Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[1]);
-                bookInfo.put("isbn", b.getIsbn().toString());
-                bookInfo.put("title", b.getTitle());
-                bookInfo.put("authors", b.getAuthorsString());
-                bookInfo.put("publishDate", publishDate);
-                bookInfo.put("publisher", b.getPublisher());
-                bookInfo.put("pageCount", b.getPageCount() + "");
-                books.add(bookInfo);
-            } else { // search
+                if(BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[1]) != null) {
+                    Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[1]);
+                    bookInfo.put("isbn", b.getIsbn().toString());
+                    bookInfo.put("title", b.getTitle());
+                    bookInfo.put("authors", b.getAuthorsString());
+                    bookInfo.put("publishDate", publishDate);
+                    bookInfo.put("publisher", b.getPublisher());
+                    bookInfo.put("pageCount", b.getPageCount() + "");
+                    books.add(bookInfo);
+                }
+                else { // from GoogleAPI
+                    bookInfo.put("isbn", bookPieces[1]);
+                    bookInfo.put("title", bookPieces[2]);
+                    String authorString = "";
+                    for(int index = 3; index < bookPieces.length-2; index++) {
+                        authorString += bookPieces[index].replaceAll("[{}]", "");
+                        if(index != bookPieces.length-3) {
+                            authorString += ",";
+                        }
+                    }
+                    bookInfo.put("authors", authorString);
+                    bookInfo.put("publishDate", bookPieces[bookPieces.length-2]);
+                    bookInfo.put("publisher", "Unknown");
+                    bookInfo.put("pageCount", bookPieces[bookPieces.length-1]);
+                    books.add(bookInfo);
+                }
+            } else { // info
                 bookInfo.put("id", bookPieces[0]);
                 bookInfo.put("quantity", bookPieces[1]);
                 Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[2]);
