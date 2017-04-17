@@ -101,12 +101,15 @@ public class Borrow implements Undoable {
     @Override
     public String execute() {
         if (!ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",not-authorized;";
         }
 
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",invalid-visitor-id;";
         } else if (UserSearch.BY_ID.findFirst(this.visitorID).getFines() > 0) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",outstanding-fine," + new DecimalFormat("#.00").format(UserSearch.BY_ID
                     .findFirst(this.visitorID).getFines()) + ";";
         }
@@ -114,9 +117,11 @@ public class Borrow implements Undoable {
         String temp = "";
         for (Integer i: this.ids) {
             if (!UserSearch.BY_ID.findFirst(this.visitorID).canCheckOut()) {
+                LBMS.getSessions().get(clientID).popUndoable();
                 return ",book-limit-exceeded;";
             }
             if (i <= LBMS.getLastBookSearch().size() && LBMS.getLastBookSearch().get(i - 1).getCopiesAvailable() < 1) {
+                LBMS.getSessions().get(clientID).popUndoable();
                 return ",no-more-copies;";
             }
             temp = checkOutBook(i, this.visitorID);
@@ -133,6 +138,7 @@ public class Borrow implements Undoable {
         }
         if (invalidIDs.length() > 0) {
             String output = "invalid-book-id,";
+            LBMS.getSessions().get(clientID).popUndoable();
             invalidIDs.deleteCharAt(invalidIDs.length()-1);
             output += "{" + invalidIDs + "}";
             //output = output.substring(0,output.length() - 1);
@@ -177,6 +183,7 @@ public class Borrow implements Undoable {
             t = new Transaction(b.getIsbn(), visitorID);
             v = UserSearch.BY_ID.findFirst(visitorID);
         } catch (Exception e) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return "id-error," + id;
         }
 
@@ -187,6 +194,7 @@ public class Borrow implements Undoable {
             transactions.add(t);
             return t.getDueDate().format(SystemDateTime.DATE_FORMAT);
         }
+        LBMS.getSessions().get(clientID).popUndoable();
         return "unknown-error";
     }
 }

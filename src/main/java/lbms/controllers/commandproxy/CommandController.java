@@ -186,7 +186,7 @@ public class CommandController implements ICommandController {
                 case "search":
                     return new StoreSearch(clientID, request[2]);
                 case "buy":
-                    BookPurchase bp = new BookPurchase(request[2]);
+                    BookPurchase bp = new BookPurchase(request[0] + "," + request[2]);
                     LBMS.getSessions().get(clientID).addUndoable(bp);
                     return bp;
                 case "advance":
