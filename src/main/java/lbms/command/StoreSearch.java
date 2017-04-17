@@ -118,7 +118,7 @@ public class StoreSearch implements Command {
         }
         if (this.isbn != null) {
             for (Book b: books) {
-                if (b.getIsbn() != this.isbn) {
+                if (!b.getIsbn().equals(this.isbn)) {
                     remove.add(b);
                 }
             }
