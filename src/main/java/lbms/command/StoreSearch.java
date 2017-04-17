@@ -79,9 +79,29 @@ public class StoreSearch implements Command {
 
         List<Book> books;
         if (LBMS.getSessions().get(this.clientID).getSearch() == LOCAL) {
-            books = BookSearch.BY_TITLE.toBuy().findAll(this.title);
+            if (this.title != null) {
+                books = BookSearch.BY_TITLE.toBuy().findAll(this.title);
+            } else if (this.authors != null) {
+                books = BookSearch.BY_AUTHOR.toBuy().findAll(this.authors.get(0));
+            } else if (this.isbn != null) {
+                books = BookSearch.BY_ISBN.toBuy().findAll(isbn.toString());
+            } else if (this.publisher != null) {
+                books = BookSearch.BY_PUBLISHER.toBuy().findAll(this.publisher);
+            } else {
+                books = new ArrayList<>();
+            }
         } else if (LBMS.getSessions().get(clientID).getSearch() == GOOGLE) {
-            books = GoogleAPISearch.searchByTitle(this.title);
+            if (this.title != null) {
+                books = BookSearch.BY_TITLE.toBuy().findAll(this.title);
+            } else if (this.authors != null) {
+                books = BookSearch.BY_AUTHOR.toBuy().findAll(this.authors.get(0));
+            } else if (this.isbn != null) {
+                books = BookSearch.BY_ISBN.toBuy().findAll(isbn.toString());
+            } else if (this.publisher != null) {
+                books = BookSearch.BY_PUBLISHER.toBuy().findAll(this.publisher);
+            } else {
+                books = new ArrayList<>();
+            }
         } else {
             books = new ArrayList<>();
         }
