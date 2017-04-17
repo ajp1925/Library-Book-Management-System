@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers;
+package lbms.controllers.guicontrollers.SearchControllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;

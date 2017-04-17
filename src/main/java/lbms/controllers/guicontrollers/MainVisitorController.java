@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
+import lbms.controllers.guicontrollers.SearchControllers.LibrarySearchController;
 import lbms.views.GUI.SessionManager;
 
 import java.util.HashMap;

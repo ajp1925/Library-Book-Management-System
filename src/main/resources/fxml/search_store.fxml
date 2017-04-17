@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.SearchControllers.StoreSearchController">
+    <children>
+        <FlowPane alignment="CENTER" layoutX="168.0" layoutY="91.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <BorderPane>
+                    <top>
+                        <VBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <AnchorPane>
+                                    <children>
+                                        <FlowPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                                            <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Store Search">
+                                                    <font>
+                                                        <Font name="System Bold" size="48.0" />
+                                                    </font>
+                                                </Text>
+                                            </children>
+                                        </FlowPane>
+                                        <Button mnemonicParsing="false" onAction="#home" text="Return" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="15.0" />
+                                    </children>
+                                </AnchorPane>
+                                <HBox alignment="CENTER" spacing="175.0">
+                                    <children>
+                                        <AnchorPane>
+                                            <children>
+                                                <TextField fx:id="titleField" layoutX="-59.0" prefHeight="36.0" prefWidth="226.0" promptText="Search By Title" />
+                                                <Button id="search-button" mnemonicParsing="false" onAction="#titleSearch" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane>
+                                            <children>
+                                                <TextField fx:id="authorField" layoutX="-59.0" prefHeight="36.0" prefWidth="226.0" promptText="Search By Author" />
+                                                <Button id="search-button" mnemonicParsing="false" onAction="#authorSearch" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane>
+                                            <children>
+                                                <TextField fx:id="isbnField" layoutX="-59.0" prefHeight="36.0" prefWidth="226.0" promptText="Search By ISBN" />
+                                                <Button id="search-button" mnemonicParsing="false" onAction="#isbnSearch" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </top>
+                    <center>
+                        <VBox alignment="CENTER">
+                            <children>
+                                <GridPane hgap="10.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title" GridPane.columnIndex="1" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Author" GridPane.columnIndex="2" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Publish Date" GridPane.columnIndex="4" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Publisher" GridPane.columnIndex="5" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Page Count" GridPane.columnIndex="3" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN" />
+                                    </children>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <padding>
+                                        <Insets left="25.0" right="25.0" />
+                                    </padding>
+                                </GridPane>
+                                <ScrollPane prefHeight="500.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
+                                    <content>
+                                        <AnchorPane>
+                                            <children>
+                                                <VBox fx:id="results" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <padding>
+                                                        <Insets top="-75.0" />
+                                                    </padding></VBox>
+                                                <Text fx:id="noResultsLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="200.0">
+                                                    <font>
+                                                        <Font name="System Bold" size="36.0" />
+                                                    </font>
+                                                </Text>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                    <BorderPane.margin>
+                                        <Insets top="50.0" />
+                                    </BorderPane.margin>
+                                    <padding>
+                                        <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                                    </padding>
+                                    <VBox.margin>
+                                        <Insets bottom="15.0" />
+                                    </VBox.margin>
+                                </ScrollPane>
+                            </children>
+                            <BorderPane.margin>
+                                <Insets top="50.0" />
+                            </BorderPane.margin>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </children>
+        </FlowPane>
+    </children>
+</AnchorPane>

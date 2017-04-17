@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ProxyCommandController;
+import lbms.controllers.guicontrollers.SearchControllers.LibrarySearchController;
+import lbms.controllers.guicontrollers.SearchControllers.StoreSearchController;
 import lbms.views.GUI.SessionManager;
 
 /**
@@ -22,6 +24,12 @@ public class MainEmployeeController implements StateController {
     @FXML private Tab searchByAuthor;
     @FXML private Tab searchByTitle;
     @FXML private Tab searchByISBN;
+    @FXML private Tab storeByAuthor;
+    @FXML private Tab storeByTitle;
+    @FXML private Tab storeByISBN;
+    @FXML private TextField storeTitleField;
+    @FXML private TextField storeAuthorField;
+    @FXML private TextField storeISBNField;
     @FXML private TextField searchTitleField;
     @FXML private TextField searchAuthorField;
     @FXML private TextField searchISBNField;
@@ -44,9 +52,14 @@ public class MainEmployeeController implements StateController {
             }
         });
 
-        searchByAuthor.setUserData("author");
+
         searchByTitle.setUserData("title");
+        searchByAuthor.setUserData("author");
         searchByISBN.setUserData("isbn");
+
+        storeByTitle.setUserData("title");
+        storeByAuthor.setUserData("author");
+        storeByISBN.setUserData("isbn");
     }
 
     @Override
@@ -65,8 +78,13 @@ public class MainEmployeeController implements StateController {
     }
 
     @FXML public void searchStore() {
-        System.out.println("STORE");
-        //TODO
+        String author = storeAuthorField.getText();
+        String title = storeTitleField.getText();
+        String isbn = storeISBNField.getText();
+        String type = storeSearchBox.getSelectionModel().getSelectedItem().getUserData().toString();
+
+        manager.display("search_store", "Store Search");
+        ((StoreSearchController)manager.getController()).search(type, title, author, isbn);
     }
 
     @FXML public void beginVisit() {

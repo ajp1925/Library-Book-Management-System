@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers;
+package lbms.controllers.guicontrollers.SearchControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
+import lbms.controllers.guicontrollers.StateController;
 import lbms.views.GUI.SessionManager;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class LibrarySearchController implements StateController {
         this.manager = manager;
     }
 
-    void search(String type, String title, String author, String isbn) {
+    public void search(String type, String title, String author, String isbn) {
         String request;
         switch (type) {
             case "author":
