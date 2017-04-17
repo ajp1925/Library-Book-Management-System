@@ -98,7 +98,7 @@ public class StoreSearchController implements StateController {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(SessionManager.class.getResource("/fxml/book.fxml"));
                     results.getChildren().add(loader.load());
-                    ((SearchResultController)loader.getController()).populate(book);
+                    ((SearchResultController)loader.getController()).load(manager, book, false);
                 } catch (Exception e) {
                     System.out.println("Error loading book.");
                 }
