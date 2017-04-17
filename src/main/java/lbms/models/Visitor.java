@@ -155,6 +155,7 @@ public class Visitor implements Serializable {
      */
     public void returnBook(Transaction transaction) {
         this.totalFines += transaction.getFine();
+        this.previousCheckedOutBooks.put(transaction.getIsbn(), transaction);
         this.checkedOutBooks.remove(transaction.getIsbn());
     }
 

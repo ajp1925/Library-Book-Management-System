@@ -41,10 +41,12 @@ public class PayFine implements Undoable {
     @Override
     public String execute() {
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",invalid-visitor-id;";
         }
         double balance = UserSearch.BY_ID.findFirst(visitorID).getFines();
         if (this.amount < 0 || this.amount > balance) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",invalid-amount," + this.amount + "," + new DecimalFormat("#.00").format(balance) + ";";
         } else {
             double newBalance = balance - this.amount;

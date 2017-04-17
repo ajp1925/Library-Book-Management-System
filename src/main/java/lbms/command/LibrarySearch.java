@@ -99,7 +99,7 @@ public class LibrarySearch implements Command {
                     }
                 }
             }
-            if (this.isbn != null && b.getIsbn() != this.isbn) {
+            if (this.isbn != null && !b.getIsbn().equals(this.isbn)) {
                 antiMatches.add(b);
             }
             if (this.publisher != null && !b.getPublisher().equals(this.publisher)) {
