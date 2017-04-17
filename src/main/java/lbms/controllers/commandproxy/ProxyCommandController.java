@@ -46,9 +46,7 @@ public class ProxyCommandController implements ICommandController {
         String command = request[1];
 
         // allows users who are not logged in to only perform specific actions
-        if (!command.equals("connect") && !command.equals("disconnect") &&
-                !command.equals("login") && !command.equals("logout") &&
-                !isLoggedIn(clientID)) {
+        if (loginRequired(command) && !isLoggedIn(clientID)) {
             return "not-authorized;";
         }
 
@@ -89,6 +87,18 @@ public class ProxyCommandController implements ICommandController {
                 "service"
         ));
         return commands.contains(command);
+    }
+
+    /**
+     * Used to determine if a command can be executed without being logged in.
+     * @param command the command to check
+     * @return true if login is required to execute the command, false otherwise
+     */
+    private boolean loginRequired(String command) {
+        ArrayList<String> allowedCommands = new ArrayList<>(Arrays.asList(
+                "connect", "disconnect", "login", "logout"
+        ));
+        return !allowedCommands.contains(command);
     }
 
     /**
