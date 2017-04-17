@@ -33,19 +33,19 @@
                               <AnchorPane>
                                  <children>
                                     <TextField fx:id="titleField" layoutX="-59.0" prefHeight="36.0" prefWidth="226.0" promptText="Search By Title" />
-                                    <Button id="search-button" mnemonicParsing="false" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                                    <Button id="search-button" mnemonicParsing="false" onAction="#titleSearch" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane>
                                  <children>
                                     <TextField fx:id="authorField" layoutX="-59.0" prefHeight="36.0" prefWidth="226.0" promptText="Search By Author" />
-                                    <Button id="search-button" mnemonicParsing="false" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                                    <Button id="search-button" mnemonicParsing="false" onAction="#authorSearch" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane>
                                  <children>
                                     <TextField fx:id="isbnField" layoutX="-59.0" prefHeight="36.0" prefWidth="226.0" promptText="Search By ISBN" />
-                                    <Button id="search-button" mnemonicParsing="false" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                                    <Button id="search-button" mnemonicParsing="false" onAction="#isbnSearch" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                                  </children>
                               </AnchorPane>
                            </children>

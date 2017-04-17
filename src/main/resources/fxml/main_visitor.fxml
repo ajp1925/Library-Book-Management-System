@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.MainVisitorController">
    <children>
       <FlowPane alignment="CENTER" layoutX="-328.0" prefHeight="251.0" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -13,7 +17,7 @@
                <children>
                   <TabPane fx:id="searchTabPane" prefHeight="149.0" prefWidth="1000.0" styleClass="search-tab-pane" stylesheets="@../css/main.css" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab id="title-tab" closable="false" styleClass="search-tab" text="Search By Title">
+                      <Tab id="title-tab" fx:id="searchByTitle" closable="false" styleClass="search-tab" text="Search By Title">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="102.0" prefWidth="938.0" styleClass="search-tab-content" stylesheets="@../css/main.css">
                                  <children>
@@ -22,7 +26,7 @@
                                  </children></AnchorPane>
                         </content>
                       </Tab>
-                        <Tab closable="false" styleClass="search-tab" text="Search By Author">
+                        <Tab fx:id="searchByAuthor" closable="false" styleClass="search-tab" text="Search By Author">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0" styleClass="search-tab-content" stylesheets="@../css/main.css">
                                  <children>
@@ -32,7 +36,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab closable="false" styleClass="search-tab" text="Search By ISBN">
+                        <Tab fx:id="searchByISBN" closable="false" styleClass="search-tab" text="Search By ISBN">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0" styleClass="search-tab-content" stylesheets="@../css/main.css">
                                  <children>

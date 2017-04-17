@@ -2,13 +2,10 @@ Use this directory for R2 stuff.
 
 Front End:
 Undo/Redo - both
-Search - both
-Advance Time - employee
+Search store - employee
 Return Book - employee
 View Book - both
 Checkout Book - both
-Statistics report - employee
-
 
 Documentation:
 

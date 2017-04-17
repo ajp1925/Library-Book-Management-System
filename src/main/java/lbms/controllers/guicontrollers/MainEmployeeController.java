@@ -6,13 +6,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
-import lbms.command.LibrarySearch;
-import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.GUI.SessionManager;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * MainEmployeeController class for the GUI of the Library Book Management System.
@@ -63,30 +58,10 @@ public class MainEmployeeController implements StateController {
         String author = searchAuthorField.getText();
         String title = searchTitleField.getText();
         String isbn = searchISBNField.getText();
-
         String type = searchBox.getSelectionModel().getSelectedItem().getUserData().toString();
 
-        String request;
-        switch (type) {
-            case "author":
-                request = String.format("%s,info,*,{%s};", manager.getClientId(), author);
-                break;
-            case "title":
-                request = String.format("%s,info,%s,*;", manager.getClientId(), title);
-                break;
-            case "isbn":
-                request = String.format("%s,info,*,*,%s;", manager.getClientId(), isbn);
-                break;
-            default:
-                request = null;
-                break;
-        }
-
-        String response = new ProxyCommandController().processRequest(request);
-        HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
         manager.display("search_library", "Library Search");
-        ((LibrarySearchController)manager.getController()).populate(responseObject);
+        ((LibrarySearchController)manager.getController()).search(type, title, author, isbn);
     }
 
     @FXML public void searchStore() {

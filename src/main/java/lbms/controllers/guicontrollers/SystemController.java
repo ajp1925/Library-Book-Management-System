@@ -139,7 +139,7 @@ public class SystemController implements StateController {
         String request = input.getText();
 
         if (request.isEmpty()) {
-            inputFail.setText("No input. Please enter a request.");
+            inputFail.setText("No input. Please enter a search.");
         } else {
             inputFail.setText("");
             String response = new ProxyCommandController().processRequest(manager.getClientId() + "," + request);

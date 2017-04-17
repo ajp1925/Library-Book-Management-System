@@ -2,6 +2,7 @@ package lbms.controllers.guicontrollers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -22,14 +23,14 @@ public class MainVisitorController implements StateController {
 
     private SessionManager manager;
 
-    private final static int TITLE_INDEX = 0;
-    private final static int AUTHOR_INDEX = 1;
-    private final static int ISBN_INDEX = 2;
     private final static String BEGIN_VISIT_ID = "begin-visit-button";
     private final static String END_VISIT_ID = "end-visit-button";
 
     @FXML private AnchorPane root;
     @FXML private TabPane searchTabPane;
+    @FXML private Tab searchByAuthor;
+    @FXML private Tab searchByTitle;
+    @FXML private Tab searchByISBN;
     @FXML private TextField searchTitleField;
     @FXML private TextField searchAuthorField;
     @FXML private TextField searchISBNField;
@@ -46,6 +47,10 @@ public class MainVisitorController implements StateController {
                 e.consume();
             }
         });
+
+        searchByAuthor.setUserData("author");
+        searchByTitle.setUserData("title");
+        searchByISBN.setUserData("isbn");
     }
 
     /**
@@ -71,21 +76,13 @@ public class MainVisitorController implements StateController {
      * Search pane method.
      */
     public void search() {
-        String search = null;
-        switch (searchTabPane.getSelectionModel().getSelectedIndex()) {
-            case TITLE_INDEX:
-                search = searchTitleField.getText();
-                break;
-            case AUTHOR_INDEX:
-                search = searchAuthorField.getText();
-                break;
-            case ISBN_INDEX:
-                search = searchISBNField.getText();
-                break;
-            default:
-                break;
-        }
-        System.out.println(search);
+        String author = searchAuthorField.getText();
+        String title = searchTitleField.getText();
+        String isbn = searchISBNField.getText();
+        String type = searchTabPane.getSelectionModel().getSelectedItem().getUserData().toString();
+
+        manager.display("search_library", "Library Search");
+        ((LibrarySearchController)manager.getController()).search(type, title, author, isbn);
     }
 
     /**
