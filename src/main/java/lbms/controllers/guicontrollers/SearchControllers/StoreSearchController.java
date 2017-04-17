@@ -61,13 +61,13 @@ public class StoreSearchController implements StateController {
         String request;
         switch (type) {
             case "author":
-                request = String.format("%s,search,,{%s};", manager.getClientId(), author);
+                request = String.format("%s,search,*,{%s};", manager.getClientId(), author);
                 break;
             case "title":
                 request = String.format("%s,search,%s,*;", manager.getClientId(), title);
                 break;
             case "isbn":
-                request = String.format("%s,search,,,%s;", manager.getClientId(), isbn);
+                request = String.format("%s,search,*,*,%s;", manager.getClientId(), isbn);
                 break;
             default:
                 request = null;
