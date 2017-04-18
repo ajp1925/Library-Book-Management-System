@@ -231,8 +231,8 @@ public final class ParseResponseUtility {
                     books.add(bookInfo);
                 }
             } else { // info
-                bookInfo.put("id", bookPieces[0]);
-                bookInfo.put("quantity", bookPieces[1]);
+                bookInfo.put("quantity", bookPieces[0]);
+                bookInfo.put("id", bookPieces[1]);
                 Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[2]);
                 bookInfo.put("isbn", b.getIsbn().toString());
                 bookInfo.put("title", b.getTitle());
