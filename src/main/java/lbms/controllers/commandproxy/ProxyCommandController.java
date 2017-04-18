@@ -198,4 +198,16 @@ public class ProxyCommandController implements ICommandController {
     public static Long getVisitorID(Long client) {
         return LBMS.getSessions().get(client).getV().getVisitorID();
     }
+
+    /**
+     * Getter for the store that is currently being searched.
+     * @return the search service
+     */
+    public static String getStore(long clientID) {
+        if(LBMS.getSessions().get(clientID).getSearch() == LBMS.SearchService.GOOGLE) {
+            return "google";
+        } else {
+            return "local";
+        }
+    }
 }
