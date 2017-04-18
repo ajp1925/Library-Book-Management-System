@@ -27,7 +27,7 @@ public class BookPurchase implements Undoable {
         try {
             ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
             this.clientID = Long.parseLong(arguments.remove(0));
-            this.quantity = Integer.parseInt(arguments.remove(1));
+            this.quantity = Integer.parseInt(arguments.remove(0));
             this.ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
             if (this.ids.size() == 0) {
                 throw new MissingParametersException("missing-parameters,quantity,id[,ids];");
