@@ -43,6 +43,7 @@ public class Return implements Undoable {
                 }
             }
         } else if (count == 2) {
+            this.clientID = Long.parseLong(arguments[0]);
             this.visitorID = Long.parseLong(arguments[1]);
             for (int i = 2; i < arguments.length; i++) {
                 if (arguments[i].startsWith("{")) {
