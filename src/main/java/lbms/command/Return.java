@@ -130,17 +130,9 @@ public class Return implements Undoable {
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         for (Integer id : this.ids) {
             Book b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
-            System.out.println(b.getCopiesAvailable());
             b.undoReturnBook();
-            System.out.println(b.getCopiesAvailable());
             Transaction t = visitor.getPreviousCheckedOutBooks().get(b.getIsbn());
-            System.out.println(visitor.getFines());
-            System.out.println(visitor.getPreviousCheckedOutBooks());
-            System.out.println(visitor.getCheckedOutBooks());
             LBMS.getVisitors().get(this.visitorID).undoReturnBook(t);
-            System.out.println(visitor.getFines());
-            System.out.println(visitor.getPreviousCheckedOutBooks());
-            System.out.println(visitor.getCheckedOutBooks());
         }
         return null;
     }
