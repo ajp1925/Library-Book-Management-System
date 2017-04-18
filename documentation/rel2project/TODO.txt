@@ -3,7 +3,6 @@ Use this directory for R2 stuff.
 Front End:
 Undo/Redo - both
 View Profile - both
-Store switcher - employee
 
 Documentation:
 

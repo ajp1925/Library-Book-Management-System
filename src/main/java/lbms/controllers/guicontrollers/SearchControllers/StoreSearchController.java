@@ -2,7 +2,9 @@ package lbms.controllers.guicontrollers.SearchControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -25,11 +27,20 @@ public class StoreSearchController implements StateController {
     private VBox results;
     @FXML private Text noResultsLabel;
 
-    @FXML private TextField titleField;
-    @FXML private TextField authorField;
-    @FXML private TextField isbnField;
+    @FXML private TextField titleField, authorField, isbnField;
+    @FXML private RadioButton localStore, googleStore;
 
     @FXML protected void initialize() {
+        ToggleGroup group = new ToggleGroup();
+        localStore.setToggleGroup(group);
+        localStore.setSelected(true);
+        localStore.setUserData("local");
+        googleStore.setToggleGroup(group);
+        googleStore.setUserData("google");
+
+        localStore.setOnAction(e -> service(localStore));
+        googleStore.setOnAction(e -> service(googleStore));
+
         titleField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 search("title", titleField.getText(), "", "");
@@ -103,6 +114,19 @@ public class StoreSearchController implements StateController {
                     System.out.println("Error loading book.");
                 }
             }
+        }
+    }
+
+    private void service(RadioButton button) {
+        String request = manager.getClientId() + ",service," + button.getUserData() + ";";
+        System.out.println(request);  //todo remove
+        String response = new ProxyCommandController().processRequest(request);
+        System.out.println(response); //todo remove
+
+        HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
+
+        if (!responseObject.get("message").equals("success")) {
+            System.out.println("error occurred");
         }
     }
 
