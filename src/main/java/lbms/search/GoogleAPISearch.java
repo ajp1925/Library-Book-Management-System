@@ -163,11 +163,21 @@ public final class GoogleAPISearch {
                     continue; // skips book
                 } else {
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat formatNoDay = new SimpleDateFormat("yyyy-MM");
+                    SimpleDateFormat formatOnlyYear = new SimpleDateFormat("yyyy");
                     String publishedDateString = volumeInfo.get("publishedDate").toString().replaceAll("\"", "");
                     if (publishedDateString.length() == 4) {
                         publishedDateString += "-01-01";
                     }
-                    Date date = format.parse(publishedDateString);
+                    Date date;
+                    if (publishedDateString.length() > 7) {
+                        date = format.parse(publishedDateString);
+                    } else if (publishedDateString.length() > 4){
+                        date = formatNoDay.parse(publishedDateString);
+                    } else {
+                        date = formatOnlyYear.parse(publishedDateString);
+                    }
+
                     publishDate.setTime(date);
                 }
 
