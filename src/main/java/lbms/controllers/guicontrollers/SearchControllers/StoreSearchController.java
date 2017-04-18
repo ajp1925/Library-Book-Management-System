@@ -32,13 +32,13 @@ public class StoreSearchController implements StateController {
 
     @FXML protected void initialize() {
         ToggleGroup group = new ToggleGroup();
+
         localStore.setToggleGroup(group);
-        localStore.setSelected(true);
         localStore.setUserData("local");
+        localStore.setOnAction(e -> service(localStore));
+
         googleStore.setToggleGroup(group);
         googleStore.setUserData("google");
-
-        localStore.setOnAction(e -> service(localStore));
         googleStore.setOnAction(e -> service(googleStore));
 
         titleField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
@@ -66,6 +66,12 @@ public class StoreSearchController implements StateController {
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
+
+        if (ProxyCommandController.getStore(manager.getClientId()).equals("local")) {
+            localStore.setSelected(true);
+        } else {
+            googleStore.setSelected(true);
+        }
     }
 
     public void search(String type, String title, String author, String isbn) {
