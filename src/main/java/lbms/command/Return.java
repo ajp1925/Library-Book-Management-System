@@ -71,6 +71,7 @@ public class Return implements Undoable {
     @Override
     public String execute() {
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",invalid-visitor-id;";
         }
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
@@ -89,6 +90,7 @@ public class Return implements Undoable {
         }
         if (nonBooks.size() > 0) {
             String output = ",invalid-book-id,";
+            LBMS.getSessions().get(clientID).popUndoable();
             for (Integer i: nonBooks) {
                 output += i + ",";
             }
@@ -103,6 +105,7 @@ public class Return implements Undoable {
                     output += LBMS.getSessions().get(this.clientID).getBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + 1 + ",";
                 }
             }
+            LBMS.getSessions().get(clientID).popUndoable();
             return output.replaceAll(",$", ";");
         }
 
@@ -127,9 +130,17 @@ public class Return implements Undoable {
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         for (Integer id : this.ids) {
             Book b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
+            System.out.println(b.getCopiesAvailable());
             b.undoReturnBook();
+            System.out.println(b.getCopiesAvailable());
             Transaction t = visitor.getPreviousCheckedOutBooks().get(b.getIsbn());
+            System.out.println(visitor.getFines());
+            System.out.println(visitor.getPreviousCheckedOutBooks());
+            System.out.println(visitor.getCheckedOutBooks());
             LBMS.getVisitors().get(this.visitorID).undoReturnBook(t);
+            System.out.println(visitor.getFines());
+            System.out.println(visitor.getPreviousCheckedOutBooks());
+            System.out.println(visitor.getCheckedOutBooks());
         }
         return null;
     }

@@ -3,8 +3,7 @@ Use this directory for R2 stuff.
 Front End:
 Undo/Redo - both
 Return Book - employee
-View Book - both
-Checkout Book - both
+Pay Fine - both
 
 Documentation:
 

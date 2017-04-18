@@ -144,14 +144,19 @@ public class SystemController implements StateController {
             inputFail.setText("");
             String response = new ProxyCommandController().processRequest(manager.getClientId() + "," + request);
 
-            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-            if (Long.parseLong(responseObject.get("clientID")) == manager.getClientId() &&
-                    responseObject.get("command").equals("logout")) {
-                manager.display("login", "Login", false);
-            } else if (Long.parseLong(responseObject.get("clientID")) == manager.getClientId() &&
-                    responseObject.get("command").equals("disconnect")) {
-                manager.close(true);
-            } else {
+            try {
+                HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
+
+                if (Long.parseLong(responseObject.get("clientID")) == manager.getClientId() &&
+                        responseObject.get("command").equals("logout")) {
+                    manager.display("login", "Login", false);
+                } else if (Long.parseLong(responseObject.get("clientID")) == manager.getClientId() &&
+                        responseObject.get("command").equals("disconnect")) {
+                    manager.close(true);
+                } else {
+                    throw new Exception();
+                }
+            } catch (Exception e) {
                 output.appendText(request + "\n");
                 output.appendText(response + "\n");
                 input.clear();

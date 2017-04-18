@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
  */
 public class BookPurchase implements Undoable {
 
+    private long clientID;
     private int quantity;
     private List<Integer> ids;
     private long clientID;
@@ -27,7 +28,8 @@ public class BookPurchase implements Undoable {
         try {
             this.clientID = clientID;
             ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
-            this.quantity = Integer.parseInt(arguments.remove(0));
+            this.clientID = Long.parseLong(arguments.remove(0));
+            this.quantity = Integer.parseInt(arguments.remove(1));
             this.ids = arguments.parallelStream().map(Integer::parseInt).collect(Collectors.toList());
             if (this.ids.size() == 0) {
                 throw new MissingParametersException("missing-parameters,quantity,id[,ids];");
@@ -44,10 +46,12 @@ public class BookPurchase implements Undoable {
     @Override
     public String execute() {
         if (this.ids.size() == 0) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",missing-parameters,id;";
         }
         String s = processPurchaseOrder();
         if (s.equals(",failure;")) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return s;
         }
         s = s.replaceAll(",$","");

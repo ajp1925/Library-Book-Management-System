@@ -39,15 +39,18 @@ public class BeginVisit implements Undoable {
     public String execute() {
 
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",invalid-id;";
         }
 
         if (!ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",not-authorized;";
         }
 
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         if (UserSearch.BY_ID.findFirst(this.visitorID).getInLibrary()) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",duplicate;";
         }
 

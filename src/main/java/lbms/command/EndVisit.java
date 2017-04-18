@@ -41,10 +41,12 @@ public class EndVisit implements Undoable {
     @Override
     public String execute() {
         if (UserSearch.BY_ID.findFirst(this.visitorID) == null) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",invalid-id;";
         }
 
         if (!ProxyCommandController.assistanceAuthorized(this.visitorID, this.clientID)) {
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",not-authorized;";
         }
 
@@ -60,10 +62,13 @@ public class EndVisit implements Undoable {
                     return "," + String.format("%010d", this.visitorID) + "," +
                             this.visit.getDepartureTime().format(SystemDateTime.TIME_FORMAT) + "," + duration + ";";
                 }
+                LBMS.getSessions().get(clientID).popUndoable();
                 return ",invalid-id;";
             }
+            LBMS.getSessions().get(clientID).popUndoable();
             return ",invalid-id;";
         }
+        LBMS.getSessions().get(clientID).popUndoable();
         return ",invalid-id;";
     }
 

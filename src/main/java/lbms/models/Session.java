@@ -67,6 +67,10 @@ public class Session {
         this.undoStack.push(u);
     }
 
+    public void popUndoable() {
+        this.undoStack.pop();
+    }
+
     /**
      * Pops an undoable off the stack and un-executes it.
      * @return failure message or null if success
