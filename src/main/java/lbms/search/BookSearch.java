@@ -32,9 +32,9 @@ public enum BookSearch implements Search<Book> {
             case BY_ISBN:
                 return book -> book.getIsbn().toString().contains(s);
             case BY_TITLE:
-                return book -> book.getTitle().contains(s);
+                return book -> book.getTitle().toLowerCase().contains(s.toLowerCase());
             case BY_PUBLISHER:
-                return book -> book.getPublisher().contains(s);
+                return book -> book.getPublisher().toLowerCase().contains(s.toLowerCase());
             default:
                 return book -> true;
         }

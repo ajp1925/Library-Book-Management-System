@@ -88,7 +88,7 @@ public class LibrarySearch implements Command {
         }
 
         for (Book b: matches) {
-            if (this.title != null && !b.getTitle().contains(this.title)) {
+            if (this.title != null && !b.getTitle().toLowerCase().contains(this.title.toLowerCase())) {
                 antiMatches.add(b);
             }
             if (!LBMS.getBooks().containsKey(b.getIsbn())) {
@@ -104,7 +104,7 @@ public class LibrarySearch implements Command {
             if (this.isbn != null && !b.getIsbn().equals(this.isbn)) {
                 antiMatches.add(b);
             }
-            if (this.publisher != null && !b.getPublisher().equals(this.publisher)) {
+            if (this.publisher != null && !b.getPublisher().toLowerCase().equals(this.publisher.toLowerCase())) {
                 antiMatches.add(b);
             }
         }

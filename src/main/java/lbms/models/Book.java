@@ -81,7 +81,7 @@ public class Book implements Serializable, Comparable<Book> {
      * @return true if it is a partial author
      */
     public boolean hasAuthorPartial(String name) {
-        return !getAuthors().parallelStream().filter(author -> author.contains(name))
+        return !getAuthors().parallelStream().filter(author -> author.toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList()).isEmpty();
     }
 

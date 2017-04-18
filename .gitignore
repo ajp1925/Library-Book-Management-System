@@ -1,5 +1,6 @@
 ## App
 *.ser
+listing.txt
 
 ## Gradle
 .gradle

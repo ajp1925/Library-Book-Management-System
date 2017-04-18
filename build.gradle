@@ -33,6 +33,19 @@ shadowJar {
     classifier = ""
 }
 
+task generateListing() {
+    def outputFile = new File('listing.txt')
+    outputFile.delete()
+    sourceSets.main.allJava.each {
+        outputFile.append("#" * (it.name.length() + 4))
+        outputFile.append(String.format("\n# %s #\n", it.name))
+        outputFile.append("#" * (it.name.length() + 4))
+        outputFile.append("\n\n")
+        outputFile.append(it.getText())
+        outputFile.append("\n")
+    }
+}
+
 run {
     standardInput = System.in
     if (project.hasProperty("appArgs")) {
