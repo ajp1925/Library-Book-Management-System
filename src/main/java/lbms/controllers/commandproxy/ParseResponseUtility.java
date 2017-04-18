@@ -239,16 +239,37 @@ public final class ParseResponseUtility {
                     books.add(bookInfo);
                 }
             } else { // info
-                bookInfo.put("quantity", bookPieces[0]);
-                bookInfo.put("id", bookPieces[1]);
-                Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[2]);
-                bookInfo.put("isbn", b.getIsbn().toString());
-                bookInfo.put("title", b.getTitle());
-                bookInfo.put("authors", b.getAuthorsString());
-                bookInfo.put("publishDate", publishDate);
-                bookInfo.put("publisher", b.getPublisher());
-                bookInfo.put("pageCount", b.getPageCount() + "");
-                books.add(bookInfo);
+                if(BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[2]) != null) {
+                    bookInfo.put("quantity", bookPieces[0]);
+                    bookInfo.put("id", bookPieces[1]);
+                    Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[2]);
+                    bookInfo.put("isbn", b.getIsbn().toString());
+                    bookInfo.put("title", b.getTitle());
+                    bookInfo.put("authors", b.getAuthorsString());
+                    bookInfo.put("publishDate", publishDate);
+                    bookInfo.put("publisher", b.getPublisher());
+                    bookInfo.put("pageCount", b.getPageCount() + "");
+                    books.add(bookInfo);
+                }
+                else { // from googleAPI
+                    bookInfo.put("quantity", bookPieces[0]);
+                    bookInfo.put("id", bookPieces[1]);
+                    bookInfo.put("isbn", bookPieces[2]);
+                    bookInfo.put("title", bookPieces[3]);
+                    String authorString = "";
+                    for(int index = 4; index < bookPieces.length-2; index++) { // library search else length-3
+                        authorString += bookPieces[index].replaceAll("[{}]", "");
+                        if(index != bookPieces.length-3) {
+                            authorString += ",";
+                        }
+                    }
+                    bookInfo.put("authors", authorString);
+                    bookInfo.put("publisher", "Unknown"); // library search not returning publisher
+                    bookInfo.put("publishDate", publishDate);
+                    bookInfo.put("pageCount", bookPieces[bookPieces.length-1]);
+                    books.add(bookInfo);
+                }
+
             }
         }
         return books;

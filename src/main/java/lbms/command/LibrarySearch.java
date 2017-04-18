@@ -131,7 +131,8 @@ public class LibrarySearch implements Command {
             matchesString.append("\n")
                     .append(b.getCopiesAvailable()).append(",")
                     .append(LBMS.getSessions().get(this.clientID).getBookSearch().indexOf(b) + 1).append(",")
-                    .append(b.toString()).append(",");
+                    .append(b.toString()).append(",")
+                    .append(b.getPageCount()).append(",");
         }
         if (matches.size() > 0) {
             matchesString = new StringBuilder(matchesString.substring(0, matchesString.length() - 1));
