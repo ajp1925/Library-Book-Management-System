@@ -9,7 +9,7 @@ import lbms.search.UserSearch;
 
 /**
  * Queries for a list of books currently borrowed by a specific visitor.
- * @author Team B TODO -> change for R2
+ * @author Team B
  */
 public class FindBorrowed implements Command {
 

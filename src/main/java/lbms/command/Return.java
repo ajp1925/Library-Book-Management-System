@@ -42,7 +42,6 @@ public class Return implements Undoable {
                     this.ids.add(Integer.parseInt(arguments[i]));
                 }
             }
-            //this.ids = Arrays.stream(arguments[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
         } else if (count == 2) {
             this.visitorID = Long.parseLong(arguments[1]);
             for (int i = 2; i < arguments.length; i++) {
@@ -54,14 +53,7 @@ public class Return implements Undoable {
                     this.ids.add(Integer.parseInt(arguments[i]));
                 }
             }
-            //this.ids = Arrays.stream(arguments[2].split(",")).map(Integer::parseInt).collect(Collectors.toList());
         }
-        /*
-        request = request.replaceAll(";$", "").replaceAll("\"", "");
-        String[] split = request.split(",", 2);
-        this.visitorID = Long.parseLong(split[0]);
-        this.ids = Arrays.stream(split[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
-        */
     }
 
     /**
@@ -102,7 +94,8 @@ public class Return implements Undoable {
             String output = ",overdue," + String.format("%.2f", visitor.getFines()) + ",";
             for (Transaction t: visitor.getCheckedOutBooks().values()) {
                 if (SystemDateTime.getInstance(null).getDate().isAfter(t.getDueDate())) {
-                    output += LBMS.getSessions().get(this.clientID).getBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + 1 + ",";
+                    output += LBMS.getSessions().get(this.clientID).getBookSearch().indexOf(LBMS.getBooks()
+                            .get(t.getIsbn())) + 1 + ",";
                 }
             }
             LBMS.getSessions().get(clientID).popUndoable();
@@ -126,13 +119,11 @@ public class Return implements Undoable {
      */
     @Override
     public String unExecute() {
-        // TODO test this
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         for (Integer id : this.ids) {
             Book b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
             b.undoReturnBook();
-            Transaction t = visitor.getPreviousCheckedOutBooks().get(b.getIsbn());
-            LBMS.getVisitors().get(this.visitorID).undoReturnBook(t);
+            LBMS.getVisitors().get(this.visitorID).undoReturnBook(visitor.getPreviousCheckedOutBooks().get(b.getIsbn()));
         }
         return null;
     }

@@ -58,7 +58,6 @@ public class PayFine implements Undoable {
      */
     @Override
     public String unExecute() {
-        // TODO test this
         UserSearch.BY_ID.findFirst(this.visitorID).payFines(-this.amount);
         return null;
     }

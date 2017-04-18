@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * Borrow class that implements the borrow command.
- * @author Team B TODO -> change for R2
+ * @author Team B
  */
 public class Borrow implements Undoable {
 
@@ -73,30 +73,11 @@ public class Borrow implements Undoable {
         } else {
             this.visitorID = Long.parseLong(arguments[arguments.length - 1]);
         }
-        /*
-        int index = 0;
-        if (arguments[index].startsWith("{")) {
-            while (!arguments[index].endsWith("}")) {
-                this.ids.add(Integer.parseInt(arguments[index++].replaceAll("[{}]", "")));
-            }
-            this.ids.add(Integer.parseInt(arguments[index].replaceAll("[{}]", "")));
-        } else {
-            throw new MissingParametersException("missing-parameters,{ids};");
-        }
-
-        if (index < arguments.length - 1) {
-            this.visitorID = Long.parseLong(arguments[index+1]);
-        } else {
-            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
-        }
-        */
     }
 
     /**
      * Executes the borrow command.
      * @return the response or error message
-     *
-     * TODO make sure only x people can borrow x copies of books
      */
     @Override
     public String execute() {
@@ -120,7 +101,8 @@ public class Borrow implements Undoable {
                 LBMS.getSessions().get(clientID).popUndoable();
                 return ",book-limit-exceeded;";
             }
-            if (i <= LBMS.getSessions().get(this.clientID).getBookSearch().size() && LBMS.getSessions().get(this.clientID).getBookSearch().get(i - 1).getCopiesAvailable() < 1) {
+            if (i <= LBMS.getSessions().get(this.clientID).getBookSearch().size() &&
+                    LBMS.getSessions().get(this.clientID).getBookSearch().get(i - 1).getCopiesAvailable() < 1) {
                 LBMS.getSessions().get(clientID).popUndoable();
                 return ",no-more-copies;";
             }
@@ -154,8 +136,7 @@ public class Borrow implements Undoable {
      */
     @Override
     public String unExecute() {
-        // TODO
-        for (int id : this.ids) {
+        for (int id: this.ids) {
             Book b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
             Transaction t = new Transaction(b.getIsbn(), this.visitorID);
             Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
