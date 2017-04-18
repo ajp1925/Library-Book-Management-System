@@ -2,6 +2,7 @@ package lbms.controllers.guicontrollers.SearchControllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -14,10 +15,13 @@ public class PurchaseSuccessController {
     private HashMap<String, String> book;
 
     @FXML
+    private AnchorPane root;
+
+    @FXML
     private Text title, quantity;
 
     @FXML protected void initialize() {
-        this.title.getParent().addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
+        this.root.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 close();
                 e.consume();

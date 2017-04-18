@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers;
+package lbms.controllers.guicontrollers.ReturnControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
+import lbms.controllers.guicontrollers.StateController;
 import lbms.views.GUI.SessionManager;
 
 import java.util.ArrayList;
@@ -20,9 +21,10 @@ import java.util.HashMap;
 /**
  * Created by Chris on 4/17/17.
  */
-public class ReturnBookController implements StateController{
+public class ReturnBookController implements StateController {
     private SessionManager manager;
     private HashMap<CheckBox, String> options = new HashMap<>();
+    ArrayList<HashMap<String, String>> books;
     private String visitor;
 
     @FXML private VBox results;
@@ -46,6 +48,7 @@ public class ReturnBookController implements StateController{
     @FXML public void find() {
         visitorIdFail.setText("");
         failedLabel.setText("");
+        results.getChildren().clear();
 
         visitor = visitorIdField.getText();
 
@@ -63,7 +66,7 @@ public class ReturnBookController implements StateController{
                 if (Integer.parseInt(responseObject.get("numberOfBooks")) == 0) {
                     failedLabel.setText("This visitor has not borrowed any books.");
                 } else {
-                    ArrayList<HashMap<String, String>> books = ParseResponseUtility.parseBooks(responseObject.get("books"));
+                    books = ParseResponseUtility.parseBooks(responseObject.get("books"));
 
                     for (HashMap<String, String> book: books) {
                         try {
@@ -106,21 +109,23 @@ public class ReturnBookController implements StateController{
             if (responseObject.get("message").equals("success")) {
                 manager.display("return_success", "Book Returned");
             } else if (responseObject.get("message").equals("overdue")){
-//                Parent root;
-//                try {
-//                    FXMLLoader loader = new FXMLLoader();
-//                    loader.setLocation(SessionManager.class.getResource(""));
-//                    root = loader.load();
-//                    Stage stage = new Stage();
-//                    stage.setTitle(visitor + " - Pay Fine");
-//                    stage.setScene(new Scene(root, 750, 500));
-//                    stage.show();
-//                }
-//                catch (Exception e) {
-//                    System.out.println("Error loading FXML file.");
-//                    System.exit(1);
-//                }
-                System.out.println("pay");
+                Parent root;
+                try {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(SessionManager.class.getResource("/fxml/payment.fxml"));
+                    root = loader.load();
+
+                    Stage stage = new Stage();
+                    stage.setTitle(visitor + " - Pay Fine");
+                    stage.setScene(new Scene(root, 750, 500));
+
+                    ((PayFineController)loader.getController()).load(stage, manager, visitor, responseObject, books);
+                    stage.show();
+                }
+                catch (Exception e) {
+                    System.out.println("Error loading FXML file.");
+                    System.exit(1);
+                }
             } else {
                 failedLabel.setText("Error");
             }
