@@ -39,7 +39,7 @@ public class BookPurchase implements Undoable {
 
     /**
      * Executes the book purchase command.
-     * @return a success message for the commandq
+     * @return a success message for the command
      */
     @Override
     public String execute() {
