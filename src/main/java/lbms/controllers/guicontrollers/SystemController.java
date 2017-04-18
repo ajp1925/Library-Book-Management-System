@@ -104,6 +104,9 @@ public class SystemController implements StateController {
                     label.setFill(Color.GREEN);
                     break;
             }
+
+            daysField.setText("");
+            hoursField.setText("");
         }
     }
 

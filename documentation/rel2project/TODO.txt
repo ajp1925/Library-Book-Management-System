@@ -2,8 +2,8 @@ Use this directory for R2 stuff.
 
 Front End:
 Undo/Redo - both
-Return Book - employee
-Pay Fine - both
+Fine Payment when returning - employee
+View Profile - both
 
 Documentation:
 

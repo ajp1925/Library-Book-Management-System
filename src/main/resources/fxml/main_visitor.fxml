@@ -56,11 +56,16 @@
                   </TabPane>
                   <VBox alignment="CENTER" spacing="10.0">
                      <children>
-                        <Button fx:id="visitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" styleClass="visit-button" stylesheets="@../css/main.css">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Button>
+                        <HBox alignment="CENTER" spacing="100.0">
+                           <children>
+                              <Button fx:id="visitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" styleClass="visit-button" stylesheets="@../css/main.css">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefWidth="125.0" text="View Profile" />
+                           </children>
+                        </HBox>
                         <Text fx:id="failedLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </VBox>

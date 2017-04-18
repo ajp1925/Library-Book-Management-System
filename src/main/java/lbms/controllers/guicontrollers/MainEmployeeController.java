@@ -52,7 +52,6 @@ public class MainEmployeeController implements StateController {
             }
         });
 
-
         searchByTitle.setUserData("title");
         searchByAuthor.setUserData("author");
         searchByISBN.setUserData("isbn");
@@ -103,9 +102,7 @@ public class MainEmployeeController implements StateController {
         }
     }
 
-    @FXML public void returnBook() {
-        //TODO
-    }
+    @FXML public void returnBook() { this.manager.display("return", "Return Book"); }
 
     @FXML public void register() {
         this.manager.display("register", "Register Visitor");

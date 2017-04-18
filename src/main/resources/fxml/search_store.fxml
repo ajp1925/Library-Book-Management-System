@@ -84,10 +84,7 @@
                                     <content>
                                         <AnchorPane>
                                             <children>
-                                                <VBox fx:id="results" alignment="CENTER" maxHeight="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                    <padding>
-                                                        <Insets top="-75.0" />
-                                                    </padding></VBox>
+                                                <VBox fx:id="results" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                 <Text fx:id="noResultsLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="200.0">
                                                     <font>
                                                         <Font name="System Bold" size="36.0" />

@@ -1,6 +1,7 @@
 package lbms.controllers.guicontrollers.SearchControllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -15,6 +16,14 @@ public class PurchaseSuccessController {
     @FXML
     private Text title, quantity;
 
+    @FXML protected void initialize() {
+        this.title.getParent().addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                close();
+                e.consume();
+            }
+        });
+    }
     void load(HashMap<String, String> book) {
         this.book = book;
         display();
@@ -22,7 +31,12 @@ public class PurchaseSuccessController {
 
     private void display() {
         title.setText("Successfully purchased " + book.get("title"));
-        quantity.setText(book.get("quantity") +  " copies purchased");
+
+        if (Integer.parseInt(book.get("quantity")) == 1) {
+            quantity.setText("1 copy purchased");
+        } else {
+            quantity.setText(book.get("quantity") +  " copies purchased");
+        }
     }
 
     @FXML public void close() {

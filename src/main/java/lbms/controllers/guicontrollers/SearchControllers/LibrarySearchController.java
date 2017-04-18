@@ -73,7 +73,9 @@ public class LibrarySearchController implements StateController {
                 break;
         }
 
+        System.out.println(request);    //todo remove
         String response = new ProxyCommandController().processRequest(request);
+        System.out.println(response); // todo remove
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
         display(responseObject);
     }

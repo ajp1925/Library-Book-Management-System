@@ -58,7 +58,8 @@ public class SearchResultController {
             stage.show();
         }
         catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error loading FXML file.");
+            System.exit(1);
         }
     }
 }

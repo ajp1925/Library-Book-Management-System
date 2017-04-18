@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lbms.controllers.commandproxy.ParseResponseUtility;
@@ -28,6 +29,15 @@ public class BookInfoController {
     @FXML private Text title, author, isbn, publisher, publishDate, pageCount, quantity;
     @FXML private Text quantityLabel, failedLabel, inputLabel;
     @FXML private TextField input;
+
+    @FXML protected void initialize() {
+        this.actionButton.getParent().addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                actionButton.fire();
+                e.consume();
+            }
+        });
+    }
 
     void load(Stage stage, SessionManager manager, HashMap<String, String> book, boolean state) {
         this.stage = stage;
@@ -73,7 +83,9 @@ public class BookInfoController {
             failedLabel.setText("Please enter a visitor ID.");
         } else {
             String request = String.format("%s,borrow,{%s},%s;", manager.getClientId(), book.get("id"), input.getText());
+            System.out.println(request); // todo remove
             String response = new ProxyCommandController().processRequest(request);
+            System.out.println(response);   // todo remove
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
             if (responseObject.get("message").equals("success")) {
@@ -88,10 +100,14 @@ public class BookInfoController {
                 catch (Exception e) {
                     e.printStackTrace();
                 }
+            } else if (responseObject.get("message").equals("no-more-copies")){
+                failedLabel.setText("There are no more copies of this book. Please try again later.");
             } else if (responseObject.get("message").equals("book-limit-exceeded")){
                 failedLabel.setText("This visitor has exceeded their book limit. Please return a book then try again");
             } else if (responseObject.get("message").equals("outstanding-fine")){
                 failedLabel.setText("This visitor has an outstanding fine. Please pay fine then try again.");
+            } else if (responseObject.get("message").equals("library-closed")) {
+                failedLabel.setText("Sorry the library is closed. Please try again later.");
             } else {
                 failedLabel.setText("Visitor does not exist. Please try again.");
             }
@@ -100,10 +116,12 @@ public class BookInfoController {
 
     private void purchase() {
         if (input.getText().isEmpty()) {
-            failedLabel.setText("Please enter a visitor ID.");
+            failedLabel.setText("Please enter a quantity.");
         } else {
             String request = String.format("%s,buy,%s,%s;", manager.getClientId(), input.getText(), book.get("id"));
+            System.out.println(request); //todo remove
             String response = new ProxyCommandController().processRequest(request);
+            System.out.println(response); // todo remove
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
             if (responseObject.get("message").equals("success")) {
