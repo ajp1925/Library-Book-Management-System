@@ -13,6 +13,10 @@ import java.util.HashMap;
  */
 public final class ParseResponseUtility {
 
+    public static void main(String[] args) {
+        System.out.println(parseBooks("BOOK:1590335260,\"Computer Games\",{Blair Carter},01/01/2002,1"));
+    }
+
     /**
      * Private constructor to prevent any instantiation of this class.
      */
@@ -196,11 +200,11 @@ public final class ParseResponseUtility {
                 bookInfo.put("title", bookPieces[2]);
                 bookInfo.put("dateBorrowed", bookPieces[3]);
                 books.add(bookInfo);
-            } else if (bookPieces[0].length() == 13) { // buy
+            } else if (bookPieces[0].length() >= 10) { // buy
                 bookInfo.put("isbn", bookPieces[0]);
-                bookInfo.put("title", bookPieces[1]);
+                bookInfo.put("title", bookPieces[1].replaceAll("\"", ""));
                 String authorString = "";
-                for(int index = 3; index < bookPieces.length-2; index++) {
+                for(int index = 2; index < bookPieces.length-2; index++) {
                     authorString += bookPieces[index].replaceAll("[{}]", "");
                     if(index != bookPieces.length-3) {
                         authorString += ",";
@@ -224,7 +228,7 @@ public final class ParseResponseUtility {
                 }
                 else { // from GoogleAPI
                     bookInfo.put("isbn", bookPieces[1]);
-                    bookInfo.put("title", bookPieces[2]);
+                    bookInfo.put("title", bookPieces[2].replaceAll("\"", ""));
                     String authorString = "";
                     for(int index = 3; index < bookPieces.length-2; index++) {
                         authorString += bookPieces[index].replaceAll("[{}]", "");
