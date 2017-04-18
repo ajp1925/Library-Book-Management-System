@@ -26,6 +26,7 @@ public class FindBorrowed implements Command {
             this.clientID = Long.parseLong(arguments[0]);
             this.visitorID = LBMS.getSessions().get(clientID).getV().getVisitorID();
         } else if (arguments.length == 2) {
+            this.clientID = Long.parseLong(arguments[0]);
             this.visitorID = Long.parseLong(arguments[1]);
         }
     }
