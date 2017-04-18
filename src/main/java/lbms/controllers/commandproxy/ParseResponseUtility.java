@@ -197,10 +197,16 @@ public final class ParseResponseUtility {
                 bookInfo.put("dateBorrowed", bookPieces[3]);
                 books.add(bookInfo);
             } else if (bookPieces[0].length() == 13) { // buy
-                Book b = BookSearch.BY_ISBN.toBuy().findFirst(bookPieces[0]);
-                bookInfo.put("isbn", b.getIsbn().toString());
-                bookInfo.put("title", b.getTitle());
-                bookInfo.put("authors", b.getAuthorsString());
+                bookInfo.put("isbn", bookPieces[0]);
+                bookInfo.put("title", bookPieces[1]);
+                String authorString = "";
+                for(int index = 3; index < bookPieces.length-2; index++) {
+                    authorString += bookPieces[index].replaceAll("[{}]", "");
+                    if(index != bookPieces.length-3) {
+                        authorString += ",";
+                    }
+                }
+                bookInfo.put("authors", authorString);
                 bookInfo.put("publishDate", publishDate);
                 bookInfo.put("quantity", bookPieces[bookPieces.length-1]);
                 books.add(bookInfo);
