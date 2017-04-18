@@ -48,7 +48,6 @@ public class LBMS {
     /** Data that is used during runtime, but not serialized. */
     private static HashMap<Long, Visit> currentVisits = new HashMap<>();
     private static HashMap<Long, Session> sessions = new HashMap<>();
-    private static List<Book> lastBookSearch = new ArrayList<>();
     private static long totalSessions = 0;
 
     /**
@@ -159,14 +158,6 @@ public class LBMS {
      */
     public static HashMap<ISBN, Book> getBooks() {
         return books;
-    }
-
-    /**
-     * Getter for the last set of books from a search.
-     * @return the last books returned from a search
-     */
-    public static List<Book> getLastBookSearch() {
-        return lastBookSearch;
     }
 
     /**

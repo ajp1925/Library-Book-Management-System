@@ -143,9 +143,9 @@ public class StoreSearch implements Command {
         } else {
             int id = 1;
             StringBuilder response = new StringBuilder(Integer.toString(books.size()) + ",\n");
-            LBMS.getLastBookSearch().clear();
+            LBMS.getSessions().get(this.clientID).getBookSearch().clear();
             for (Book book: books) {
-                LBMS.getLastBookSearch().add(book);
+                LBMS.getSessions().get(this.clientID).getBookSearch().add(book);
                 response.append(id).append(",")
                         .append(book.getIsbn()).append(",")
                         .append(book.getTitle()).append(",{");

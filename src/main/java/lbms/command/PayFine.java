@@ -4,11 +4,10 @@ import lbms.LBMS;
 import lbms.search.UserSearch;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
 
 /**
  * PayFine class for the pay fine command.
- * @author Team B TODO change for R2
+ * @author Team B
  */
 public class PayFine implements Undoable {
 
@@ -26,9 +25,7 @@ public class PayFine implements Undoable {
             this.clientID = Long.parseLong(arguments[0]);
             this.amount = Double.parseDouble(arguments[1]);
             this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
-        }
-        else if (arguments.length == 3) {
-            this.clientID = Long.parseLong(arguments[0]);
+        } else if (arguments.length == 3) {
             this.amount = Double.parseDouble(arguments[1]);
             this.visitorID = Long.parseLong(arguments[2]);
         }

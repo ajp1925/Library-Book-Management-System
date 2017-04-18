@@ -8,18 +8,16 @@ import lbms.models.Visitor;
 import lbms.search.UserSearch;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Returns a book borrowed by a library visitor.
- * @author Team B TODO -> change for R2
+ * @author Team B
  */
 public class Return implements Undoable {
 
-    private long clientID;
     private long visitorID;
+    private long clientID;
     private List<Integer> ids = new ArrayList<>();
 
     /**
@@ -38,27 +36,21 @@ public class Return implements Undoable {
             for (int i = 1; i < arguments.length; i++) {
                 if (arguments[i].startsWith("{")) {
                     this.ids.add(Character.getNumericValue(arguments[i].charAt(1)));
-                }
-                else if (arguments[i].endsWith("}")) {
+                } else if (arguments[i].endsWith("}")) {
                     this.ids.add(Character.getNumericValue(arguments[i].charAt(0)));
-                }
-                else {
+                } else {
                     this.ids.add(Integer.parseInt(arguments[i]));
                 }
             }
             //this.ids = Arrays.stream(arguments[1].split(",")).map(Integer::parseInt).collect(Collectors.toList());
-        }
-        else if (count == 2) {
-            this.clientID = Long.parseLong(arguments[0]);
+        } else if (count == 2) {
             this.visitorID = Long.parseLong(arguments[1]);
             for (int i = 2; i < arguments.length; i++) {
                 if (arguments[i].startsWith("{")) {
                     this.ids.add(Character.getNumericValue(arguments[i].charAt(1)));
-                }
-                else if (arguments[i].endsWith("}")) {
+                } else if (arguments[i].endsWith("}")) {
                     this.ids.add(Character.getNumericValue(arguments[i].charAt(0)));
-                }
-                else {
+                } else {
                     this.ids.add(Integer.parseInt(arguments[i]));
                 }
             }
@@ -85,9 +77,9 @@ public class Return implements Undoable {
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         ArrayList<Integer> nonBooks = new ArrayList<>();
         for (Integer id : this.ids) {
-            if (LBMS.getLastBookSearch().size() >= id) {
+            if (LBMS.getSessions().get(this.clientID).getBookSearch().size() >= id) {
                 try {
-                    Book b = LBMS.getLastBookSearch().get(id - 1);
+                    Book b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
                     visitor.getCheckedOutBooks().get(b.getIsbn());
                 } catch (Exception e) {
                     nonBooks.add(id);
@@ -110,7 +102,7 @@ public class Return implements Undoable {
             String output = ",overdue," + String.format("%.2f", visitor.getFines()) + ",";
             for (Transaction t: visitor.getCheckedOutBooks().values()) {
                 if (SystemDateTime.getInstance(null).getDate().isAfter(t.getDueDate())) {
-                    output += LBMS.getLastBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + 1 + ",";
+                    output += LBMS.getSessions().get(this.clientID).getBookSearch().indexOf(LBMS.getBooks().get(t.getIsbn())) + 1 + ",";
                 }
             }
             LBMS.getSessions().get(clientID).popUndoable();
@@ -118,7 +110,7 @@ public class Return implements Undoable {
         }
 
         for (Integer i: this.ids) {
-            Book b = LBMS.getLastBookSearch().get(i - 1);
+            Book b = LBMS.getSessions().get(this.clientID).getBookSearch().get(i - 1);
             b.returnBook();
             Transaction t = visitor.getCheckedOutBooks().get(b.getIsbn());
             LBMS.getVisitors().get(visitorID).returnBook(t);
@@ -137,7 +129,7 @@ public class Return implements Undoable {
         // TODO test this
         Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
         for (Integer id : this.ids) {
-            Book b = LBMS.getLastBookSearch().get(id - 1);
+            Book b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
             System.out.println(b.getCopiesAvailable());
             b.undoReturnBook();
             System.out.println(b.getCopiesAvailable());

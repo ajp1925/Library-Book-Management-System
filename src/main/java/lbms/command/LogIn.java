@@ -3,8 +3,6 @@ package lbms.command;
 import lbms.LBMS;
 import lbms.models.Visitor;
 
-import java.util.Arrays;
-
 /**
  * LogIn class for login command.
  * @author Team B
@@ -24,8 +22,7 @@ public class LogIn implements Command {
         String parts[] = request.split(",");
         if (parts.length == 1) {
             throw new MissingParametersException("missing-parameters,{all};");
-        }
-        else if (parts.length == 2) {
+        } else if (parts.length == 2) {
             throw new MissingParametersException("missing-parameters,{password};");
         }
         this.clientID = Long.parseLong(parts[0]);

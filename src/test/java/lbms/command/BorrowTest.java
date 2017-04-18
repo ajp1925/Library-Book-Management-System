@@ -76,13 +76,13 @@ public class BorrowTest extends TestCase{
                 0
         ));
 
-        LBMS.getLastBookSearch().addAll(books.values());
+        LBMS.getSessions().get(s.getClientID()).getBookSearch().addAll(books.values());
         LBMS.getBooks().putAll(books);
     }
 
     @Override
     protected void tearDown() {
-        LBMS.getLastBookSearch().clear();
+        LBMS.getSessions().get(s.getClientID()).getBookSearch().clear();
         LBMS.getBooks().clear();
         LBMS.getVisitors().clear();
         LBMS.getTransactions().clear();

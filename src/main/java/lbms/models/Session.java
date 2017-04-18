@@ -4,6 +4,7 @@ import lbms.LBMS;
 import lbms.LBMS.SearchService;
 import lbms.command.Undoable;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 import static lbms.LBMS.SearchService.LOCAL;
@@ -19,6 +20,7 @@ public class Session {
     private SearchService search;
     private Stack<Undoable> undoStack;
     private Stack<Undoable> redoStack;
+    private ArrayList<Book> bookSearch;
 
     /**
      * Constructor for a Session.
@@ -30,6 +32,7 @@ public class Session {
         this.search = LOCAL;
         this.undoStack = new Stack<>();
         this.redoStack = new Stack<>();
+        this.bookSearch = new ArrayList<>();
     }
 
     /**
@@ -114,5 +117,21 @@ public class Session {
      */
     public SearchService getSearch() {
         return this.search;
+    }
+
+    /**
+     * Clears the undo and redo stacks.
+     */
+    public void clearStacks() {
+        this.undoStack.clear();
+        this.redoStack.clear();
+    }
+
+    /**
+     * Getter for the book search ArrayList.
+     * @return the list of books from the search
+     */
+    public ArrayList<Book> getBookSearch() {
+        return this.bookSearch;
     }
 }

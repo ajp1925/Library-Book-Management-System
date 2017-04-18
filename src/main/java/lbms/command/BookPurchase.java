@@ -14,17 +14,18 @@ import java.util.stream.Collectors;
  */
 public class BookPurchase implements Undoable {
 
-    private long clientID;
     private int quantity;
     private List<Integer> ids;
+    private long clientID;
 
     /**
      * Constructor for a BookPurchase class.
      * @param request: the input string
      * @throws MissingParametersException: missing parameters
      */
-    public BookPurchase(String request) throws MissingParametersException {
+    public BookPurchase(long clientID, String request) throws MissingParametersException {
         try {
+            this.clientID = clientID;
             ArrayList<String> arguments = new ArrayList<>(Arrays.asList(request.split(",")));
             this.clientID = Long.parseLong(arguments.remove(0));
             this.quantity = Integer.parseInt(arguments.remove(0));
@@ -65,7 +66,7 @@ public class BookPurchase implements Undoable {
         // TODO test this
         for (int id : this.ids) {
             Book b;
-            b = LBMS.getLastBookSearch().get(id - 1);
+            b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
             for (int i = 0; i < this.quantity; i++) {
                 b.undoPurchase();
             }
@@ -86,7 +87,7 @@ public class BookPurchase implements Undoable {
             Book b;
 
             try {
-                b = LBMS.getLastBookSearch().get(id - 1);
+                b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
             } catch (IndexOutOfBoundsException e) {
                 return ",failure;";
             }

@@ -152,8 +152,10 @@ public class CommandController implements ICommandController {
                     LBMS.getSessions().get(clientID).addUndoable(ev);
                     return ev;
                 case "info":
-                    return new LibrarySearch(request[2]);
+                    LBMS.getSessions().get(clientID).clearStacks();
+                    return new LibrarySearch(clientID, request[2]);
                 case "borrowed":
+                    LBMS.getSessions().get(clientID).clearStacks();
                     if (request.length == 2) {
                         return new FindBorrowed(request[0]);
                     }
@@ -184,9 +186,10 @@ public class CommandController implements ICommandController {
                         return pf;
                     }
                 case "search":
+                    LBMS.getSessions().get(clientID).clearStacks();
                     return new StoreSearch(clientID, request[2]);
                 case "buy":
-                    BookPurchase bp = new BookPurchase(request[0] + "," + request[2]);
+                    BookPurchase bp = new BookPurchase(clientID, request[2]);
                     LBMS.getSessions().get(clientID).addUndoable(bp);
                     return bp;
                 case "advance":
