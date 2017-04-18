@@ -116,15 +116,14 @@ public class Borrow implements Undoable {
             if (!UserSearch.BY_ID.findFirst(this.visitorID).canCheckOut()) {
                 return ",book-limit-exceeded;";
             }
-            if (i <= LBMS.getLastBookSearch().size() && LBMS.getLastBookSearch().get(i - 1).getCopiesAvailable() < 1) {
+            if (i <= LBMS.getSessions().get(this.clientID).getBookSearch().size() && LBMS.getSessions().get(this.clientID).getBookSearch().get(i - 1).getCopiesAvailable() < 1) {
                 return ",no-more-copies;";
             }
             temp = checkOutBook(i, this.visitorID);
             try {
                 if (temp.contains("id-error")) {
                     String[] error = temp.split(",");
-                    String string = error[1] + ",";
-                    invalidIDs.append(string);
+                    invalidIDs.append(error[1]).append(",");
                 }
             } catch (NullPointerException e) {
                 e.printStackTrace();
@@ -151,7 +150,7 @@ public class Borrow implements Undoable {
     public String unExecute() {
         // TODO
         for (int id : this.ids) {
-            Book b = LBMS.getLastBookSearch().get(id - 1);
+            Book b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
             Transaction t = new Transaction(b.getIsbn(), this.visitorID);
             Visitor visitor = UserSearch.BY_ID.findFirst(this.visitorID);
             visitor.undoCheckOut(t);
@@ -173,7 +172,7 @@ public class Borrow implements Undoable {
         Visitor v;
         Transaction t;
         try {
-            b = LBMS.getLastBookSearch().get(id - 1);
+            b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
             t = new Transaction(b.getIsbn(), visitorID);
             v = UserSearch.BY_ID.findFirst(visitorID);
         } catch (Exception e) {

@@ -13,8 +13,8 @@ import lbms.search.UserSearch;
  */
 public class FindBorrowed implements Command {
 
-    private long clientID;
     private long visitorID;
+    private long clientID;
 
     /**
      * Constructor for FindBorrowed class.
@@ -24,10 +24,8 @@ public class FindBorrowed implements Command {
         String[] arguments = request.split(",");
         if (arguments.length == 1) {
             this.clientID = Long.parseLong(arguments[0]);
-            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
-        }
-        else if (arguments.length == 2) {
-            this.clientID = Long.parseLong(arguments[0]);
+            this.visitorID = LBMS.getSessions().get(clientID).getV().getVisitorID();
+        } else if (arguments.length == 2) {
             this.visitorID = Long.parseLong(arguments[1]);
         }
     }
@@ -48,12 +46,11 @@ public class FindBorrowed implements Command {
         final int[] id = {1};
 
         Book b;
-        LBMS.getLastBookSearch().clear();
+        LBMS.getSessions().get(this.clientID).getBookSearch().clear();
         for (Transaction t: visitor.getCheckedOutBooks().values()) {
             b = BookSearch.BY_ISBN.findAll(t.getIsbn().toString()).get(0);
-            LBMS.getLastBookSearch().add(b);
-            s += ",\n";
-            s += id[0]++ + "," + t.getIsbn() + "," + b.getTitle() + "," + t.getDate();
+            LBMS.getSessions().get(this.clientID).getBookSearch().add(b);
+            s += ",\n" + id[0]++ + "," + t.getIsbn() + "," + b.getTitle() + "," + t.getDate();
         }
         return "," + s + ";";
     }

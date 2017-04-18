@@ -18,13 +18,15 @@ public class LibrarySearch implements Command {
     private String title, publisher = null, sort_order = null;
     private ArrayList<String> authors;
     private ISBN isbn;
+    private long clientID;
 
     /**
      * Constructor for a LibrarySearch command object.
      * @param request: the request string for a library search
      * @throws MissingParametersException: missing parameters
      */
-    public LibrarySearch(String request) throws MissingParametersException {
+    public LibrarySearch(long clientID, String request) throws MissingParametersException {
+        this.clientID = clientID;
         String[] arguments = request.split(",");
         if (arguments.length == 0 || arguments.length == 1 && arguments[0].equals("")) {
             throw new MissingParametersException("missing-parameters,title,{authors};");
@@ -122,13 +124,13 @@ public class LibrarySearch implements Command {
                     break;
             }
         }
-        LBMS.getLastBookSearch().clear();
+        LBMS.getSessions().get(this.clientID).getBookSearch().clear();
         StringBuilder matchesString = new StringBuilder();
         for (Book b: matches) {
-            LBMS.getLastBookSearch().add(b);
+            LBMS.getSessions().get(this.clientID).getBookSearch().add(b);
             matchesString.append("\n")
                     .append(b.getCopiesAvailable()).append(",")
-                    .append(LBMS.getLastBookSearch().indexOf(b) + 1).append(",")
+                    .append(LBMS.getSessions().get(this.clientID).getBookSearch().indexOf(b) + 1).append(",")
                     .append(b.toString()).append(",");
         }
         if (matches.size() > 0) {

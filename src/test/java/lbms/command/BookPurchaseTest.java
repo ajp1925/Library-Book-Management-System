@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import lbms.LBMS;
 import lbms.models.Book;
 import lbms.models.ISBN;
+import lbms.models.Session;
 import lbms.search.BookSearch;
 
 import java.text.ParseException;
@@ -19,6 +20,7 @@ import java.util.List;
 public class BookPurchaseTest extends TestCase{
 
     ArrayList<Book> books;
+    private long clientID;
 
     @Override
     protected void setUp() {
@@ -60,18 +62,21 @@ public class BookPurchaseTest extends TestCase{
                    0
         ));
 
-        LBMS.getLastBookSearch().addAll(books);
+        Session s = new Session();
+        this.clientID = s.getClientID();
+
+        LBMS.getSessions().get(this.clientID).getBookSearch().addAll(books);
     }
 
     @Override
     protected void tearDown() {
-        LBMS.getLastBookSearch().clear();
+        LBMS.getSessions().get(this.clientID).getBookSearch().clear();
         LBMS.getBooks().clear();
         books = null;
     }
 
     public void testOneBook() throws MissingParametersException {
-        BookPurchase command = new BookPurchase("5,1");
+        BookPurchase command = new BookPurchase(this.clientID, "5,1");
         assertEquals(",success,1" +
                 "\n9781450431835,Daniels' Running Formula-3rd Edition,{Jack Daniels},12/31/2013,5;",
                 command.execute());
@@ -81,7 +86,7 @@ public class BookPurchaseTest extends TestCase{
     }
 
     public void testTwoBooks() throws MissingParametersException {
-        BookPurchase command = new BookPurchase("5,1,2");
+        BookPurchase command = new BookPurchase(this.clientID, "5,1,2");
         assertEquals(",success,2" +
                 "\n9781450431835,Daniels' Running Formula-3rd Edition,{Jack Daniels},12/31/2013,5," +
                 "\n9780936070278,Galloway's Book on Running,{Jeff Galloway},12/31/2013,5;",
@@ -95,18 +100,18 @@ public class BookPurchaseTest extends TestCase{
     }
 
     public void testIDTooLow() throws MissingParametersException {
-        BookPurchase command = new BookPurchase("5,-1");
+        BookPurchase command = new BookPurchase(this.clientID, "5,-1");
         assertEquals(",failure;", command.execute());
     }
 
     public void testIDTooHigh() throws MissingParametersException {
-        BookPurchase command = new BookPurchase("5,1000");
+        BookPurchase command = new BookPurchase(this.clientID, "5,1000");
         assertEquals(",failure;", command.execute());
     }
 
     public void testMissingOneParameter() {
         try {
-            BookPurchase command = new BookPurchase("1");
+            BookPurchase command = new BookPurchase(this.clientID, "1");
             fail("Exception not thrown");
         }
         catch (MissingParametersException e) {
@@ -116,7 +121,7 @@ public class BookPurchaseTest extends TestCase{
 
     public void testMissingAllParameters() {
         try {
-            BookPurchase command = new BookPurchase("");
+            BookPurchase command = new BookPurchase(this.clientID, "");
             fail("Exception not thrown");
         }
         catch (MissingParametersException e) {
