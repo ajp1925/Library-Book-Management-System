@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * LibrarySearch class for the library search command.
- * @author Team B TODO -> update for R2
+ * @author Team B
  */
 public class LibrarySearch implements Command {
 

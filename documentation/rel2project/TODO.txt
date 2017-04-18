@@ -24,7 +24,7 @@ Files needed to submit:
     -startAPI.bat
     -README.txt
     -presentation.pdf
-    -listing.pdf
+    -listing.pdf - create listings for controllers package and fxml then combine all listings files
     -LBMS-R2.jar
     -design.pdf
     -buildlog.txt

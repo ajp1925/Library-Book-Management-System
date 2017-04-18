@@ -79,7 +79,7 @@ public class CreateAccount implements Command {
      * @return true if username exists, false otherwise
      */
     private boolean usernameExists() {
-        for (Visitor v : LBMS.getVisitors().values()) {
+        for (Visitor v: LBMS.getVisitors().values()) {
             if (v.getUsername() != null && v.getUsername().equals(this.username)) {
                 return true;
             }

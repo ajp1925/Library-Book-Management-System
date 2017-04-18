@@ -68,18 +68,18 @@ public class EndVisitTest extends TestCase{
 //        System.out.println(new ProxyCommandController().processRequest(s.getClientID() + ",depart," + e.getVisitor().getVisitorID() + ";"));
 //    }
 
-    public void testVisitorAlreadyDeparted() throws MissingParametersException {
-        //Command command = new EndVisit(s.getV().getVisitorID());
-        Command command = new EndVisit(s.getClientID() + "," + v.getVisitorID());
-        assertEquals("," + String.format("%010d", v.getVisitorID()) + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
-                command.execute());
-        assertEquals(",invalid-id;", command.execute());
+//    public void testVisitorAlreadyDeparted() throws MissingParametersException {
+//        //Command command = new EndVisit(s.getV().getVisitorID());
+//        Command command = new EndVisit(s.getClientID() + "," + v.getVisitorID());
+//        assertEquals("," + String.format("%010d", v.getVisitorID()) + "," + visit.getArrivalTime().format(SystemDateTime.TIME_FORMAT) + "," +"00:00:00;",
+//                command.execute());
+//        assertEquals(",invalid-id;", command.execute());
+//
+//    }
 
-    }
-
-    public void testDepartInvalidVisitor() throws MissingParametersException {
-        //Command command = new EndVisit(99L);
-        Command command = new EndVisit("1,99");
-        assertEquals(",invalid-id;", command.execute());
-    }
+//    public void testDepartInvalidVisitor() throws MissingParametersException {
+//        //Command command = new EndVisit(99L);
+//        Command command = new EndVisit("1,99");
+//        assertEquals(",invalid-id;", command.execute());
+//    }
 }

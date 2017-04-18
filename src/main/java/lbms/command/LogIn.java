@@ -36,7 +36,7 @@ public class LogIn implements Command {
      */
     @Override
     public String execute() {
-        for (Visitor v : LBMS.getVisitors().values()) {
+        for (Visitor v: LBMS.getVisitors().values()) {
             if (v.getUsername() != null && v.getUsername().equals(this.username) &&
                     v.getPassword().equals(this.password)) {
                 LBMS.getSessions().get(this.clientID).setV(v);

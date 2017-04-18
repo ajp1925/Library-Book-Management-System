@@ -6,7 +6,6 @@ import lbms.models.SystemDateTime;
 import lbms.models.Visitor;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 /**
  * ICommandController class interacts with the command package to execute commands.

@@ -62,8 +62,7 @@ public class BookPurchase implements Undoable {
      */
     @Override
     public String unExecute() {
-        // TODO test this
-        for (int id : this.ids) {
+        for (int id: this.ids) {
             Book b;
             b = LBMS.getSessions().get(this.clientID).getBookSearch().get(id - 1);
             for (int i = 0; i < this.quantity; i++) {

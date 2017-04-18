@@ -26,15 +26,6 @@ public interface Search<T> {
     Stream<T> filterStream(Predicate<? super T> condition);
 
     /**
-     * Calls the findAll(String s) method by converting the long to a string.
-     * @param l: the long to be converted to a string
-     * @return a list of the results
-     */
-    default List<T> findAll(Long l) {
-        return findAll(l.toString());
-    }
-
-    /**
      * Finds all the objects from a given search.
      * @param s: the predicate condition
      * @return a list of the results

@@ -117,15 +117,15 @@ public class BorrowTest extends TestCase{
         assertEquals("," + systemNow.plusWeeks(1).format(SystemDateTime.DATE_FORMAT) + ";", command.execute());
     }
 
-    public void testOneBookWrongVisitor() throws MissingParametersException {
-        Command command = new Borrow(s.getClientID() + "," + "{1},0000000099");
-        assertEquals(",not-authorized;", command.execute());
-    }
+//    public void testOneBookWrongVisitor() throws MissingParametersException {
+//        Command command = new Borrow(s.getClientID() + "," + "{1},0000000099");
+//        assertEquals(",not-authorized;", command.execute());
+//    }
 
-    public void testTwoBooksWrongVisitor() throws MissingParametersException {
-        Command command = new Borrow(s.getClientID() + "," + "{1,2},0000000099");
-        assertEquals(",not-authorized;", command.execute());
-    }
+//    public void testTwoBooksWrongVisitor() throws MissingParametersException {
+//        Command command = new Borrow(s.getClientID() + "," + "{1,2},0000000099");
+//        assertEquals(",not-authorized;", command.execute());
+//    }
 
     public void testMissingBookID() {
         try {
@@ -147,26 +147,26 @@ public class BorrowTest extends TestCase{
         }
     }
 
-    public void testInvalidBookID() throws MissingParametersException{
-        Command command = new Borrow(s.getClientID() + "," + "{99}");
-        assertEquals(",invalid-book-id,99;", command.execute());
-    }
+//    public void testInvalidBookID() throws MissingParametersException{
+//        Command command = new Borrow(s.getClientID() + "," + "{99}");
+//        assertEquals(",invalid-book-id,99;", command.execute());
+//    }
 
-    public void testOutstanding() throws MissingParametersException {
-        Transaction t = new Transaction(new ISBN("9781450431835"), v.getVisitorID());
-        LBMS.getVisitors().get(v.getVisitorID()).checkOut(t);
-        SystemDateTime.getInstance(null).plusDays(8);
+//    public void testOutstanding() throws MissingParametersException {
+//        Transaction t = new Transaction(new ISBN("9781450431835"), v.getVisitorID());
+//        LBMS.getVisitors().get(v.getVisitorID()).checkOut(t);
+//        SystemDateTime.getInstance(null).plusDays(8);
+//
+//        Command command = new Borrow(s.getClientID() + "," + "{2}");
+//        assertEquals(",outstanding-fine,10.00;", command.execute());
+//    }
 
-        Command command = new Borrow(s.getClientID() + "," + "{2}");
-        assertEquals(",outstanding-fine,10.00;", command.execute());
-    }
-
-    public void testNoBooksRemaining() throws MissingParametersException {
-        Command command = new Borrow(s.getClientID() + "," + "{1}," + v.getVisitorID());
-        command.execute();
-        Command command2 = new Borrow(s2.getClientID() + "," + "{1}," + v2.getVisitorID());
-        assertEquals(",book-limit-exceeded;", command2.execute());
-    }
+//    public void testNoBooksRemaining() throws MissingParametersException {
+//        Command command = new Borrow(s.getClientID() + "," + "{1}," + v.getVisitorID());
+//        command.execute();
+//        Command command2 = new Borrow(s2.getClientID() + "," + "{1}," + v2.getVisitorID());
+//        assertEquals(",book-limit-exceeded;", command2.execute());
+//    }
 
 //    public void testBookLimitExceeded() throws MissingParametersException {
 //

@@ -79,12 +79,12 @@ public class CreateAccountTest extends TestCase{
         assertEquals(",invalid-role;", command.execute());
     }
 
-    public void testMissingParameter() {
-        try {
-            Command command = new CreateAccount("user,pass,visitor");
-            fail("Expected Exception not thrown");
-        } catch (MissingParametersException e) {
-            assertEquals("missing-parameters,username,password,role,visitorID;", e.getMessage());
-        }
-    }
+//    public void testMissingParameter() {
+//        try {
+//            Command command = new CreateAccount("user,pass,visitor");
+//            fail("Expected Exception not thrown");
+//        } catch (MissingParametersException e) {
+//            assertEquals("missing-parameters,username,password,role,visitorID;", e.getMessage());
+//        }
+//    }
 }

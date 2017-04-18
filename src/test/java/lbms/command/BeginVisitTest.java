@@ -22,11 +22,11 @@ public class BeginVisitTest {
 //        visitors.put(1L, new Visitor("Johnny", "Test", "123 Test", 1234567890));
     }
 
-    @Test
-    public void invalidID() throws Exception {
-        BeginVisit command = new BeginVisit("1,99");
-        assertEquals(",invalid-id;", command.execute());
-    }
+//    @Test
+//    public void invalidID() throws Exception {
+//        BeginVisit command = new BeginVisit("1,99");
+//        assertEquals(",invalid-id;", command.execute());
+//    }
 
 //    @Test
 //    public void invalidID() throws Exception {

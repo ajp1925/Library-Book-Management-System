@@ -1,14 +1,11 @@
 package lbms.controllers.commandproxy;
 
-import lbms.LBMS;
 import lbms.models.Book;
 import lbms.search.BookSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
-import static lbms.LBMS.SearchService.GOOGLE;
 
 /**
  * Utility class for parsing responses.

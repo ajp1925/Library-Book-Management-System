@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * StatisticsReport class implements the statistics report command.
- * @author Team B TODO -> update for R2
+ * @author Team B
  */
 public class StatisticsReport implements Command {
 
