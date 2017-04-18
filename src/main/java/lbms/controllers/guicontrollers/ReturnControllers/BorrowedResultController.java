@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers;
+package lbms.controllers.guicontrollers.ReturnControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import lbms.controllers.guicontrollers.SearchControllers.BookInfoController;
 import lbms.views.GUI.SessionManager;
 
 import java.util.HashMap;

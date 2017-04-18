@@ -2,8 +2,8 @@ Use this directory for R2 stuff.
 
 Front End:
 Undo/Redo - both
-Fine Payment when returning - employee
 View Profile - both
+Store switcher - employee
 
 Documentation:
 

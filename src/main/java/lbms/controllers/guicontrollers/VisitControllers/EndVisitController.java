@@ -56,13 +56,11 @@ public class EndVisitController implements StateController {
 
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
-            switch (responseObject.get("message")) {
-                case "invalid-id":
-                    failedLabel.setText("Visitor is currently not in the library.");
-                default:
-                    manager.display("visit_ended","Visit Ended");
-                    ((VisitEndedController)manager.getController()).setVisit(responseObject);
-                    break;
+            if (responseObject.get("message").equals("invalid-id")) {
+                failedLabel.setText("Visitor is currently not in the library.");
+            } else {
+                manager.display("visit_ended", "Visit Ended");
+                ((VisitEndedController) manager.getController()).setVisit(responseObject);
             }
         }
     }
