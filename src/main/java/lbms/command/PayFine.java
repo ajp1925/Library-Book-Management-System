@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
  */
 public class PayFine implements Undoable {
 
+    private long clientID;
     private long visitorID;
     private double amount;
 
@@ -19,12 +20,11 @@ public class PayFine implements Undoable {
      * @param request: the request string to be processed
      */
     public PayFine(String request) {
-        long clientID;
         String[] arguments = request.split(",");
         if (arguments.length == 2) {
-            clientID = Long.parseLong(arguments[0]);
+            this.clientID = Long.parseLong(arguments[0]);
             this.amount = Double.parseDouble(arguments[1]);
-            this.visitorID = LBMS.getSessions().get(clientID).getV().getVisitorID();
+            this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
         } else if (arguments.length == 3) {
             this.amount = Double.parseDouble(arguments[1]);
             this.visitorID = Long.parseLong(arguments[2]);

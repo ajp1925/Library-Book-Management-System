@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
  */
 public class BookPurchase implements Undoable {
 
-    private long clientID;
     private int quantity;
     private List<Integer> ids;
     private long clientID;
