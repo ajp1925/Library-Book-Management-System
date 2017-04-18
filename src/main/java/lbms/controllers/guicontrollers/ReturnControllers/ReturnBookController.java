@@ -19,19 +19,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/17/17.
+ * ReturnBookController class for the library book management system.
+ * @author Team B
  */
 public class ReturnBookController implements StateController {
+
     private SessionManager manager;
     private HashMap<CheckBox, String> options = new HashMap<>();
-    ArrayList<HashMap<String, String>> books;
+    private ArrayList<HashMap<String, String>> books;
     private String visitor;
 
     @FXML private VBox results;
     @FXML private TextField visitorIdField;
     @FXML private Text failedLabel, visitorIdFail;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the state for this instance of the class.
+     */
+    @FXML
+    protected void initialize() {
         this.results.getParent().addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 find();
@@ -40,23 +46,31 @@ public class ReturnBookController implements StateController {
         });
     }
 
+    /**
+     * Initializes the manager for this instance of the class.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
-    @FXML public void find() {
-        visitorIdFail.setText("");
-        failedLabel.setText("");
-        results.getChildren().clear();
+    /**
+     * Finds books that are not returned.
+     */
+    @FXML
+    public void find() {
+        this.visitorIdFail.setText("");
+        this.failedLabel.setText("");
+        this.results.getChildren().clear();
 
-        visitor = visitorIdField.getText();
+        this.visitor = this.visitorIdField.getText();
 
-        if (visitor.isEmpty()) {
-            visitorIdFail.setText("*");
-            failedLabel.setText("Please enter a visitor ID.");
+        if (this.visitor.isEmpty()) {
+            this.visitorIdFail.setText("*");
+            this.failedLabel.setText("Please enter a visitor ID.");
         } else {
-            String request = manager.getClientId() + ",borrowed," + visitor + ";";
+            String request = this.manager.getClientId() + ",borrowed," + this.visitor + ";";
             System.out.println(request);    // todo remove
             String response = new ProxyCommandController().processRequest(request);
             System.out.println(response); // todo remove
@@ -64,38 +78,42 @@ public class ReturnBookController implements StateController {
 
             if (responseObject.get("message").equals("success")) {
                 if (Integer.parseInt(responseObject.get("numberOfBooks")) == 0) {
-                    failedLabel.setText("This visitor has not borrowed any books.");
+                    this.failedLabel.setText("This visitor has not borrowed any books.");
                 } else {
-                    books = ParseResponseUtility.parseBooks(responseObject.get("books"));
+                    this.books = ParseResponseUtility.parseBooks(responseObject.get("books"));
 
-                    for (HashMap<String, String> book: books) {
+                    for (HashMap<String, String> book: this.books) {
                         try {
                             FXMLLoader loader = new FXMLLoader();
                             loader.setLocation(SessionManager.class.getResource("/fxml/borrowed.fxml"));
-                            results.getChildren().add(loader.load());
+                            this.results.getChildren().add(loader.load());
                             BorrowedResultController controller = loader.getController();
-                            controller.load(manager, book);
-                            options.put(controller.getCheckBox(), book.get("id"));
+                            controller.load(this.manager, book);
+                            this.options.put(controller.getCheckBox(), book.get("id"));
                         } catch (Exception e) {
                             System.out.println("Error loading book.");
                         }
                     }
                 }
             } else {
-                failedLabel.setText("Invalid visitor ID. Please try again.");
+                this.failedLabel.setText("Invalid visitor ID. Please try again.");
             }
 
         }
     }
 
-    @FXML void returnBooks() {
-        String request = manager.getClientId() + ",return," + visitor + ",{";
-        if (options.isEmpty()) {
-            failedLabel.setText("This visitor has no borrowed books.");
-        } else{
-            for (CheckBox box : options.keySet()) {
+    /**
+     * Returns books through the GUI.
+     */
+    @FXML
+    void returnBooks() {
+        String request = this.manager.getClientId() + ",return," + this.visitor + ",{";
+        if (this.options.isEmpty()) {
+            this.failedLabel.setText("This visitor has no borrowed books.");
+        } else {
+            for (CheckBox box: this.options.keySet()) {
                 if (box.isSelected()) {
-                    request += options.get(box) + ",";
+                    request += this.options.get(box) + ",";
                 }
             }
             request = request.substring(0, request.lastIndexOf(",")) + "};";
@@ -107,7 +125,7 @@ public class ReturnBookController implements StateController {
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
             if (responseObject.get("message").equals("success")) {
-                manager.display("return_success", "Book Returned");
+                this.manager.display("return_success", "Book Returned");
             } else if (responseObject.get("message").equals("overdue")){
                 Parent root;
                 try {
@@ -127,14 +145,17 @@ public class ReturnBookController implements StateController {
                     System.exit(1);
                 }
             } else {
-                failedLabel.setText("Error");
+                this.failedLabel.setText("Error");
             }
 
         }
     }
 
+    /**
+     * Cancels anything on this page and goes back a page.
+     */
     @FXML
     public void cancel() {
-        manager.display("main_employee", this.manager.getUser());
+        this.manager.display("main_employee", this.manager.getUser());
     }
 }

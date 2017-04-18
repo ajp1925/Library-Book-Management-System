@@ -69,8 +69,7 @@ public class ProxyCommandController implements ICommandController {
      */
     private boolean unrestricted(String command) {
         ArrayList<String> visitorCommands = new ArrayList<>(Arrays.asList(
-                "arrive", "info", "borrow", "depart", "login", "logout", "undo", "redo", "disconnect",
-                "search"
+                "arrive", "info", "borrow", "depart", "login", "logout", "undo", "redo", "disconnect", "search"
         ));
         return visitorCommands.contains(command);
     }
@@ -110,7 +109,7 @@ public class ProxyCommandController implements ICommandController {
     public static boolean isEmployee(long clientID) {
         try {
             Visitor v = LBMS.getSessions().get(clientID).getV();
-            for (Employee employee : LBMS.getEmployees().values()) {
+            for (Employee employee: LBMS.getEmployees().values()) {
                 if (employee.getVisitor().getVisitorID() == v.getVisitorID()) {
                     return true;
                 }

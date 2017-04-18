@@ -12,6 +12,7 @@ import lbms.views.GUI.SessionManager;
 public class VisitorRegisteredController implements StateController {
 
     private SessionManager manager;
+
     @FXML private Text visitorID;
 
     /**
@@ -26,7 +27,8 @@ public class VisitorRegisteredController implements StateController {
     /**
      * Displays the create account form from the session manager.
      */
-    @FXML public void yes() {
+    @FXML
+    public void yes() {
         this.manager.display("create", "Create Account");
         ((CreateController)this.manager.getController()).setVisitor(this.visitorID.getText());
     }
@@ -34,7 +36,8 @@ public class VisitorRegisteredController implements StateController {
     /**
      * Tells the session manager that a computer account will not be created.
      */
-    @FXML public void no() {
+    @FXML
+    public void no() {
         this.manager.display("main_employee", this.manager.getUser());
     }
 

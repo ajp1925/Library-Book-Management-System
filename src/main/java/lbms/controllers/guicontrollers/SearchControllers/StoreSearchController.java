@@ -18,19 +18,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/16/2017.
+ * StoreSearchController class for the Library Book Management System.
+ * @author Team B
  */
 public class StoreSearchController implements StateController {
+
     private SessionManager manager;
 
-    @FXML
-    private VBox results;
+    @FXML private VBox results;
     @FXML private Text noResultsLabel;
-
     @FXML private TextField titleField, authorField, isbnField;
     @FXML private RadioButton localStore, googleStore;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the data for this class.
+     */
+    @FXML
+    protected void initialize() {
         ToggleGroup group = new ToggleGroup();
 
         localStore.setToggleGroup(group);
@@ -43,26 +47,28 @@ public class StoreSearchController implements StateController {
 
         titleField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                search("title", titleField.getText(), "", "");
+                search("title", this.titleField.getText(), "", "");
                 e.consume();
             }
         });
-
-        authorField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+        this.authorField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                search("author", "", authorField.getText(), "");
+                search("author", "", this.authorField.getText(), "");
                 e.consume();
             }
         });
-
-        isbnField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+        this.isbnField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                search("isbn", "", "", isbnField.getText());
+                search("isbn", "", "", this.isbnField.getText());
                 e.consume();
             }
         });
     }
 
+    /**
+     * Setter for the session manager.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
@@ -74,17 +80,24 @@ public class StoreSearchController implements StateController {
         }
     }
 
+    /**
+     * Creates a string request, processes it, and displays the result.
+     * @param type: the type of search
+     * @param title: the title for the search
+     * @param author: the author for the search
+     * @param isbn: the isbn for the search
+     */
     public void search(String type, String title, String author, String isbn) {
         String request;
         switch (type) {
             case "author":
-                request = String.format("%s,search,*,{%s};", manager.getClientId(), author);
+                request = String.format("%s,search,*,{%s};", this.manager.getClientId(), author);
                 break;
             case "title":
-                request = String.format("%s,search,%s,*;", manager.getClientId(), title);
+                request = String.format("%s,search,%s,*;", this.manager.getClientId(), title);
                 break;
             case "isbn":
-                request = String.format("%s,search,*,*,%s;", manager.getClientId(), isbn);
+                request = String.format("%s,search,*,*,%s;", this.manager.getClientId(), isbn);
                 break;
             default:
                 request = null;
@@ -98,24 +111,27 @@ public class StoreSearchController implements StateController {
         display(responseObject);
     }
 
+    /**
+     * Displays the data in the GUI.
+     * @param response: the response hash map of data
+     */
     private void display(HashMap<String, String> response) {
-        titleField.clear();
-        authorField.clear();
-        isbnField.clear();
-        results.getChildren().clear();
-        noResultsLabel.setText("");
+        this.titleField.clear();
+        this.authorField.clear();
+        this.isbnField.clear();
+        this.results.getChildren().clear();
+        this.noResultsLabel.setText("");
 
         if (Integer.parseInt(response.get("numberOfBooks")) == 0) {
-            noResultsLabel.setText("No Books Found");
+            this.noResultsLabel.setText("No Books Found");
         } else {
             ArrayList<HashMap<String, String>> books = ParseResponseUtility.parseBooks(response.get("books"));
-
             for (HashMap<String, String> book: books) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(SessionManager.class.getResource("/fxml/book.fxml"));
-                    results.getChildren().add(loader.load());
-                    ((SearchResultController)loader.getController()).load(manager, book, false);
+                    this.results.getChildren().add(loader.load());
+                    ((SearchResultController)loader.getController()).load(this.manager, book, false);
                 } catch (Exception e) {
                     System.out.println("Error loading book.");
                 }
@@ -140,19 +156,31 @@ public class StoreSearchController implements StateController {
         search("title", titleField.getText(), "", "");
     }
 
-    @FXML public void authorSearch() {
-        search("author", "", authorField.getText(), "");
+    /**
+     * Searches based on the author.
+     */
+    @FXML
+    public void authorSearch() {
+        search("author", "", this.authorField.getText(), "");
     }
 
-    @FXML public void isbnSearch() {
-        search("isbn", "", "", isbnField.getText());
+    /**
+     * Searches based on ISBN.
+     */
+    @FXML
+    public void isbnSearch() {
+        search("isbn", "", "", this.isbnField.getText());
     }
 
-    @FXML public void home() {
-        if (ProxyCommandController.isEmployee(manager.getClientId())) {
-            manager.display("main_employee", manager.getUser());
+    /**
+     * Goes to the home page for the visitor / employee.
+     */
+    @FXML
+    public void home() {
+        if (ProxyCommandController.isEmployee(this.manager.getClientId())) {
+            this.manager.display("main_employee", this.manager.getUser());
         } else {
-            manager.display("main_visitor", manager.getUser());
+            this.manager.display("main_visitor", this.manager.getUser());
         }
     }
 }

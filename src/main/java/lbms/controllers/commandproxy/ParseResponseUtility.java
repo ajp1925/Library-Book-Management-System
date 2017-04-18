@@ -42,15 +42,18 @@ public final class ParseResponseUtility {
         } else {
             parsed.put("clientID", fields[0]);
             parsed.put("command", fields[1]);
+
             if (fields.length > 2 && isErrorMessage(fields[2])) {
                 parsed.put("message", fields[2]);
                 String invalidValue = ""; // invalid value may be a set of values
+
                 for (int i = 3; i < fields.length; i++) {
                     if (invalidValue.length() != 0) {
                         invalidValue += ",";
                     }
                     invalidValue += fields[i];
                 }
+
                 parsed.put("invalidValue", invalidValue);
             } else {
                 switch (fields[1]) {
@@ -129,12 +132,14 @@ public final class ParseResponseUtility {
                         if (fields.length > 3) {
                             parsed.put("fine",fields[3]);
                             String ids = "";
+
                             for (int i = 4; i < fields.length; i++) {
                                 if (ids.length() != 0) {
                                     ids += ",";
                                 }
                                 ids += fields[i];
                             }
+
                             parsed.put("ids", ids); // comma separated list of ids
                         }
                         break;
@@ -155,9 +160,9 @@ public final class ParseResponseUtility {
                         System.out.println("Bad response to parse");
                         parsed.put("badResponse", response);
                         break;
-                } // end switch
-            } // end if error
-        } // end if connect command
+                }
+            }
+        }
 
         return parsed;
     }
@@ -176,10 +181,10 @@ public final class ParseResponseUtility {
 
         String[] booksArray = booksString.replaceAll("^BOOK:", "").split("BOOK:");
 
-        for (String book : booksArray) {
+        for (String book: booksArray) {
             String[] bookPieces = book.replace("BOOK:", "").split(",");
             String publishDate = "";
-            for (String piece : bookPieces) {
+            for (String piece: bookPieces) {
                 if (piece.matches("\\d{2}/\\d{2}/\\d{4}")) {
                     publishDate = piece;
                 }
@@ -271,12 +276,11 @@ public final class ParseResponseUtility {
      */
     private static boolean isErrorMessage(String message) {
         ArrayList<String> errorMessages = new ArrayList<>(Arrays.asList(
-                "not-authorized", "invalid-number-of-days", "invalid-number-of-hours", "duplicate",
-                "invalid-id", "invalid-visitor-id", "invalid-book-id", "book-limit-exceeded",
-                "outstanding-fine", "duplicate-username", "duplicate-visitor", "invalid-sort-order",
-                "bad-username-or-password", "invalid-amount", "cannot-redo", "cannot-undo",
-                "invalid-visitor", "missing-parameters", "library-closed", "incorrect-value-for-days",
-                "no-more-copies"
+                "not-authorized", "invalid-number-of-days", "invalid-number-of-hours", "duplicate", "invalid-id",
+                "invalid-visitor-id", "invalid-book-id", "book-limit-exceeded", "outstanding-fine",
+                "duplicate-username", "duplicate-visitor", "invalid-sort-order", "bad-username-or-password",
+                "invalid-amount", "cannot-redo", "cannot-undo", "invalid-visitor", "missing-parameters",
+                "library-closed", "incorrect-value-for-days", "no-more-copies"
         ));
         return errorMessages.contains(message);
     }

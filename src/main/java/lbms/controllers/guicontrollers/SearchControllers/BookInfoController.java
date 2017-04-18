@@ -17,9 +17,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/17/17.
+ * BookInfoController class for the Library Book Management System.
+ * @author Team B
  */
 public class BookInfoController {
+
     private Stage stage;
     private SessionManager manager;
     private HashMap<String, String> book;
@@ -30,15 +32,26 @@ public class BookInfoController {
     @FXML private Text quantityLabel, failedLabel, inputLabel;
     @FXML private TextField input;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the state for this class.
+     */
+    @FXML
+    protected void initialize() {
         this.actionButton.getParent().addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                actionButton.fire();
+                this.actionButton.fire();
                 e.consume();
             }
         });
     }
 
+    /**
+     * Loads the book information for this page.
+     * @param stage: the stage for the GUI
+     * @param manager: the session manager
+     * @param book: the hash map of books
+     * @param state: the state boolean
+     */
     void load(Stage stage, SessionManager manager, HashMap<String, String> book, boolean state) {
         this.stage = stage;
         this.manager = manager;
@@ -47,45 +60,51 @@ public class BookInfoController {
         display();
     }
 
+    /**
+     * Displays the data.
+     */
     private void display() {
-        this.title.setText(book.get("title"));
-        this.author.setText(book.get("authors"));
-        this.isbn.setText(book.get("isbn"));
-        this.publishDate.setText(book.get("publishDate"));
-        this.publisher.setText(book.get("publisher"));
-        this.pageCount.setText(book.get("pageCount"));
+        this.title.setText(this.book.get("title"));
+        this.author.setText(this.book.get("authors"));
+        this.isbn.setText(this.book.get("isbn"));
+        this.publishDate.setText(this.book.get("publishDate"));
+        this.publisher.setText(this.book.get("publisher"));
+        this.pageCount.setText(this.book.get("pageCount"));
 
-        if (state) {
-            boolean status = ProxyCommandController.isEmployee(manager.getClientId());
+        if (this.state) {
+            boolean status = ProxyCommandController.isEmployee(this.manager.getClientId());
 
-            quantityLabel.setText("Quantity");
-            this.quantity.setText(book.get("quantity"));
-            actionButton.setText("Borrow");
-            actionButton.setOnAction(e -> borrow());
+            this.quantityLabel.setText("Quantity");
+            this.quantity.setText(this.book.get("quantity"));
+            this.actionButton.setText("Borrow");
+            this.actionButton.setOnAction(e -> borrow());
+            this.inputLabel.setText("Visitor ID");
 
-            inputLabel.setText("Visitor ID");
-
-            if (!status){
-                input.setText(manager.getVisitor().toString());
-                input.setDisable(true);
+            if (!status) {
+                this.input.setText(this.manager.getVisitor().toString());
+                this.input.setDisable(true);
             }
 
         } else {
-            quantityLabel.setText("");
-            actionButton.setText("Purchase");
-            actionButton.setOnAction(e -> purchase());
-            inputLabel.setText("Quantity");
+            this.quantityLabel.setText("");
+            this.actionButton.setText("Purchase");
+            this.actionButton.setOnAction(e -> purchase());
+            this.inputLabel.setText("Quantity");
         }
     }
 
+    /**
+     * Borrows the book being viewed.
+     */
     private void borrow() {
-        if (input.getText().isEmpty()) {
-            failedLabel.setText("Please enter a visitor ID.");
+        if (this.input.getText().isEmpty()) {
+            this.failedLabel.setText("Please enter a visitor ID.");
         } else {
-            String request = String.format("%s,borrow,{%s},%s;", manager.getClientId(), book.get("id"), input.getText());
-            System.out.println(request); // todo remove
+            String request = String.format("%s,borrow,{%s},%s;", this.manager.getClientId(), this.book.get("id"),
+                    this.input.getText());
+            System.out.println(request); // TODO remove
             String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response);   // todo remove
+            System.out.println(response);   // TODO remove
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
             if (responseObject.get("message").equals("success")) {
@@ -93,35 +112,39 @@ public class BookInfoController {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(SessionManager.class.getResource("/fxml/borrow_success.fxml"));
                     Parent root = loader.load();
-                    ((BorrowSuccessController)loader.getController()).load(book, input.getText(), responseObject.get("dueDate"));
-
-                    stage.setScene(new Scene(root, 750, 500));
-                }
-                catch (Exception e) {
+                    ((BorrowSuccessController)loader.getController()).load(this.book, this.input.getText(),
+                            responseObject.get("dueDate"));
+                    this.stage.setScene(new Scene(root, 750, 500));
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else if (responseObject.get("message").equals("no-more-copies")){
-                failedLabel.setText("There are no more copies of this book. Please try again later.");
+                this.failedLabel.setText("There are no more copies of this book. Please try again later.");
             } else if (responseObject.get("message").equals("book-limit-exceeded")){
-                failedLabel.setText("This visitor has exceeded their book limit. Please return a book then try again");
+                this.failedLabel.setText("This visitor has exceeded their book limit. Please return a book then try " +
+                        "again");
             } else if (responseObject.get("message").equals("outstanding-fine")){
-                failedLabel.setText("This visitor has an outstanding fine. Please pay fine then try again.");
+                this.failedLabel.setText("This visitor has an outstanding fine. Please pay fine then try again.");
             } else if (responseObject.get("message").equals("library-closed")) {
-                failedLabel.setText("Sorry the library is closed. Please try again later.");
+                this.failedLabel.setText("Sorry the library is closed. Please try again later.");
             } else {
-                failedLabel.setText("Visitor does not exist. Please try again.");
+                this.failedLabel.setText("Visitor does not exist. Please try again.");
             }
         }
     }
 
+    /**
+     * Purchases the book for the library.
+     */
     private void purchase() {
-        if (input.getText().isEmpty()) {
-            failedLabel.setText("Please enter a quantity.");
+        if (this.input.getText().isEmpty()) {
+            this.failedLabel.setText("Please enter a quantity.");
         } else {
-            String request = String.format("%s,buy,%s,%s;", manager.getClientId(), input.getText(), book.get("id"));
-            System.out.println(request); //todo remove
+            String request = String.format("%s,buy,%s,%s;", this.manager.getClientId(), this.input.getText(),
+                    this.book.get("id"));
+            System.out.println(request); //TODO remove
             String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response); // todo remove
+            System.out.println(response); // TODO remove
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
             if (responseObject.get("message").equals("success")) {
@@ -129,16 +152,16 @@ public class BookInfoController {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(SessionManager.class.getResource("/fxml/purchase_success.fxml"));
                     Parent root = loader.load();
-                    ArrayList<HashMap<String, String>> books = ParseResponseUtility.parseBooks(responseObject.get("books"));
+                    ArrayList<HashMap<String, String>> books = ParseResponseUtility.parseBooks(responseObject
+                            .get("books"));
                     ((PurchaseSuccessController)loader.getController()).load(books.get(0));
 
-                    stage.setScene(new Scene(root, 750, 500));
-                }
-                catch (Exception e) {
+                    this.stage.setScene(new Scene(root, 750, 500));
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
-                failedLabel.setText("Purchase failure. Please try again.");
+                this.failedLabel.setText("Purchase failure. Please try again.");
             }
         }
     }

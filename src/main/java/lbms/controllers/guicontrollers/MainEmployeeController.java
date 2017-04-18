@@ -13,7 +13,7 @@ import lbms.views.GUI.SessionManager;
 
 /**
  * MainEmployeeController class for the GUI of the Library Book Management System.
- * @author Team B TODO comment all these methods
+ * @author Team B
  */
 public class MainEmployeeController implements StateController {
 
@@ -33,11 +33,13 @@ public class MainEmployeeController implements StateController {
     @FXML private TextField searchTitleField;
     @FXML private TextField searchAuthorField;
     @FXML private TextField searchISBNField;
-
-
     @FXML private Text failedLabel;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the state of the instance of this class.
+     */
+    @FXML
+    protected void initialize() {
         this.storeSearchBox.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 searchStore();
@@ -52,69 +54,112 @@ public class MainEmployeeController implements StateController {
             }
         });
 
-        searchByTitle.setUserData("title");
-        searchByAuthor.setUserData("author");
-        searchByISBN.setUserData("isbn");
-
-        storeByTitle.setUserData("title");
-        storeByAuthor.setUserData("author");
-        storeByISBN.setUserData("isbn");
+        this.searchByTitle.setUserData("title");
+        this.searchByAuthor.setUserData("author");
+        this.searchByISBN.setUserData("isbn");
+        this.storeByTitle.setUserData("title");
+        this.storeByAuthor.setUserData("author");
+        this.storeByISBN.setUserData("isbn");
     }
 
+    /**
+     * Initializes the manager for this class.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
-    @FXML public void search() {
-        String author = searchAuthorField.getText();
-        String title = searchTitleField.getText();
-        String isbn = searchISBNField.getText();
-        String type = searchBox.getSelectionModel().getSelectedItem().getUserData().toString();
+    /**
+     * Used for setting up the search bars in the GUI.
+     */
+    @FXML
+    public void search() {
+        String author = this.searchAuthorField.getText();
+        String title = this.searchTitleField.getText();
+        String isbn = this.searchISBNField.getText();
+        String type = this.searchBox.getSelectionModel().getSelectedItem().getUserData().toString();
 
-        manager.display("search_library", "Library Search");
-        ((LibrarySearchController)manager.getController()).search(type, title, author, isbn);
+        this.manager.display("search_library", "Library Search");
+        ((LibrarySearchController)this.manager.getController()).search(type, title, author, isbn);
     }
 
-    @FXML public void searchStore() {
-        String author = storeAuthorField.getText();
-        String title = storeTitleField.getText();
-        String isbn = storeISBNField.getText();
-        String type = storeSearchBox.getSelectionModel().getSelectedItem().getUserData().toString();
+    /**
+     * Sets up the search bar for the store search.
+     */
+    @FXML
+    public void searchStore() {
+        String author = this.storeAuthorField.getText();
+        String title = this.storeTitleField.getText();
+        String isbn = this.storeISBNField.getText();
+        String type = this.storeSearchBox.getSelectionModel().getSelectedItem().getUserData().toString();
 
-        manager.display("search_store", "Store Search");
-        ((StoreSearchController)manager.getController()).search(type, title, author, isbn);
+        this.manager.display("search_store", "Store Search");
+        ((StoreSearchController)this.manager.getController()).search(type, title, author, isbn);
     }
 
-    @FXML public void beginVisit() {
+    /**
+     * Method for beginning a visit as an employee.
+     */
+    @FXML
+    public void beginVisit() {
         if (ProxyCommandController.isOpen()) {
             this.manager.display("begin_visit", "Begin Visit");
         } else {
-            failedLabel.setText("Sorry the library is closed, please try again later.");
+            this.failedLabel.setText("Sorry the library is closed, please try again later.");
         }
     }
 
-    @FXML public void endVisit() {
+    /**
+     * Ends a visit for an employee.
+     */
+    @FXML
+    public void endVisit() {
         if (ProxyCommandController.isOpen()) {
             this.manager.display("end_visit", "End Visit");
         } else {
-            failedLabel.setText("Sorry the library is closed, please try again later.");
+            this.failedLabel.setText("Sorry the library is closed, please try again later.");
         }
     }
 
-    @FXML public void returnBook() { this.manager.display("return", "Return Book"); }
+    /**
+     * Returns a book.
+     */
+    @FXML
+    public void returnBook() {
+        this.manager.display("return", "Return Book");
+    }
 
-    @FXML public void register() {
+    /**
+     * Method for an employee registering a visitor.
+     */
+    @FXML
+    public void register() {
         this.manager.display("register", "Register Visitor");
     }
 
-    @FXML public void create() {
+    /**
+     * Method for creating an account as an employee.
+     */
+    @FXML
+    public void create() {
         this.manager.display("create", "Create Account");
     }
 
-    @FXML public void settings() { this.manager.display("settings", "System Settings");}
+    /**
+     * Method for going to the system settings as an employee.
+     */
+    @FXML
+    public void settings() {
+        this.manager.display("settings", "System Settings");
+    }
 
-    @FXML public void logout() {
+    /**
+     * Logs out an employee.
+     */
+    @FXML
+    public void logout() {
         new ProxyCommandController().processRequest(manager.getClientId() + ",logout;");
         this.manager.display("login", "Login", false);
     }

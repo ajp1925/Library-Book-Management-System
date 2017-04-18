@@ -16,9 +16,11 @@ import lbms.views.GUI.SessionManager;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/14/17.
+ * SystemController class for the Library Book Management System.
+ * @author Team B
  */
 public class SystemController implements StateController {
+
     private SessionManager manager;
 
     @FXML private AnchorPane root;
@@ -33,14 +35,17 @@ public class SystemController implements StateController {
     @FXML private TextField reportField;
     @FXML private TextArea reportOutput;
 
-    @FXML protected void initialize() {
-        output.setEditable(false);
-        output.textProperty().addListener(c -> {
-            output.setScrollTop(Double.MAX_VALUE);
+    /**
+     * Initializes the state of this class.
+     */
+    @FXML
+    protected void initialize() {
+        this.output.setEditable(false);
+        this.output.textProperty().addListener(c -> {
+            this.output.setScrollTop(Double.MAX_VALUE);
         });
 
-        reportOutput.setEditable(false);
-
+        this.reportOutput.setEditable(false);
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 command();
@@ -63,30 +68,46 @@ public class SystemController implements StateController {
         });
     }
 
+    /**
+     * Initializes the manager for this instance of the class.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
-    @FXML public void home() {
-        manager.display("main_employee", manager.getUser());
+    /**
+     * Displays the home stage.
+     */
+    @FXML
+    public void home() {
+        this.manager.display("main_employee", this.manager.getUser());
     }
 
-    @FXML public void advance() {
-        inputFail.setText("");
-        label.setText("");
-        label.setFill(Color.FIREBRICK);
+    /**
+     * Advances the time for the system.
+     */
+    @FXML
+    public void advance() {
+        this.inputFail.setText("");
+        this.label.setText("");
+        this.label.setFill(Color.FIREBRICK);
 
-        String days = daysField.getText();
-        String hours = hoursField.getText();
+        String days = this.daysField.getText();
+        String hours = this.hoursField.getText();
 
         if (days.isEmpty() && hours.isEmpty()) {
-            label.setText("Please enter days or hours to advance.");
+            this.label.setText("Please enter days or hours to advance.");
         } else {
-            if (days.isEmpty()) { days = "0"; }
-            if (hours.isEmpty()) { hours = "0"; }
+            if (days.isEmpty()) {
+                days = "0";
+            }
+            if (hours.isEmpty()) {
+                hours = "0";
+            }
 
-            String request = String.format("%s,advance,%s,%s;", manager.getClientId(), days, hours);
+            String request = String.format("%s,advance,%s,%s;", this.manager.getClientId(), days, hours);
             System.out.println(request); //TODO remove
             String response = new ProxyCommandController().processRequest(request);
             System.out.println(response);   //TODO remove
@@ -94,75 +115,80 @@ public class SystemController implements StateController {
 
             switch (responseObject.get("message")) {
                 case "invalid-number-of-hours":
-                    label.setText("Can not advance " + hours + " hours. Please try again.");
+                    this.label.setText("Can not advance " + hours + " hours. Please try again.");
                     break;
                 case "invalid-number-of-days":
-                    label.setText("Can not advance " + days + " days. Please try again.");
+                    this.label.setText("Can not advance " + days + " days. Please try again.");
                     break;
                 default:
-                    label.setText("Success");
-                    label.setFill(Color.GREEN);
+                    this.label.setText("Success");
+                    this.label.setFill(Color.GREEN);
                     break;
             }
 
-            daysField.setText("");
-            hoursField.setText("");
+            this.daysField.setText("");
+            this.hoursField.setText("");
         }
     }
 
-    @FXML public void report() {
-        inputFail.setText("");
-        label.setText("");
+    /**
+     * Used for the system report viewing as an employee.
+     */
+    @FXML
+    public void report() {
+        this.inputFail.setText("");
+        this.label.setText("");
 
         String request;
-        String days = reportField.getText();
+        String days = this.reportField.getText();
 
         if (days.isEmpty()) {
-            request = manager.getClientId() + ",report;";
+            request = this.manager.getClientId() + ",report;";
         } else {
-            request = String.format("%s,report,%s;", manager.getClientId(), days);
+            request = String.format("%s,report,%s;", this.manager.getClientId(), days);
         }
-
         System.out.println(request); //TODO remove
-
         String response = new ProxyCommandController().processRequest(request);
         System.out.println(response);   //TODO remove
-
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
         if (responseObject.get("message").equals("success")) {
-            reportOutput.setText("Date: " + responseObject.get("date") + responseObject.get("report"));
+            this.reportOutput.setText("Date: " + responseObject.get("date") + responseObject.get("report"));
         } else {
-            reportOutput.setText("An error occurred.\nPlease try again later.");
+            this.reportOutput.setText("An error occurred.\nPlease try again later.");
         }
     }
 
-    @FXML public void command() {
-        label.setText("");
-        String request = input.getText();
+    /**
+     * Used to enter commands directly into the Library Book Management System.
+     */
+    @FXML
+    public void command() {
+        this.label.setText("");
+        String request = this.input.getText();
 
         if (request.isEmpty()) {
-            inputFail.setText("No input. Please enter a search.");
+            this.inputFail.setText("No input. Please enter a search.");
         } else {
-            inputFail.setText("");
-            String response = new ProxyCommandController().processRequest(manager.getClientId() + "," + request);
+            this.inputFail.setText("");
+            String response = new ProxyCommandController().processRequest(this.manager.getClientId() + "," + request);
 
             try {
                 HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
-                if (Long.parseLong(responseObject.get("clientID")) == manager.getClientId() &&
+                if (Long.parseLong(responseObject.get("clientID")) == this.manager.getClientId() &&
                         responseObject.get("command").equals("logout")) {
-                    manager.display("login", "Login", false);
-                } else if (Long.parseLong(responseObject.get("clientID")) == manager.getClientId() &&
+                    this.manager.display("login", "Login", false);
+                } else if (Long.parseLong(responseObject.get("clientID")) == this.manager.getClientId() &&
                         responseObject.get("command").equals("disconnect")) {
-                    manager.close(true);
+                    this.manager.close(true);
                 } else {
                     throw new Exception();
                 }
             } catch (Exception e) {
-                output.appendText(request + "\n");
-                output.appendText(response + "\n");
-                input.clear();
+                this.output.appendText(request + "\n");
+                this.output.appendText(response + "\n");
+                this.input.clear();
             }
         }
     }

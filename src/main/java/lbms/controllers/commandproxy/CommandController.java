@@ -95,23 +95,13 @@ public class CommandController implements ICommandController {
                             throw new MissingParametersException("not-logged-in;");
                         }
                         BeginVisit b;
+
                         if (request.length == 2) {
                             b = new BeginVisit(Long.toString(clientID));
-                        }
-                        else {
+                        } else {
                             b = new BeginVisit(clientID + "," + request[2]);
                         }
-                        /*
-                        if (request.length > 2) {
-                            b = new BeginVisit(Long.parseLong(request[2]));
-                        } else {
-                            Visitor v = LBMS.getSessions().get(clientID).getV();
-                            if (v == null) {
-                                throw new MissingParametersException("not-logged-in;");
-                            }
-                            b = new BeginVisit(v.getVisitorID());
-                        }
-                        */
+
                         LBMS.getSessions().get(clientID).addUndoable(b);
                         return b;
                     }
@@ -131,23 +121,13 @@ public class CommandController implements ICommandController {
                         throw new MissingParametersException("not-logged-in;");
                     }
                     EndVisit ev;
+
                     if (request.length == 2) {
                         ev = new EndVisit(Long.toString(clientID));
-                    }
-                    else {
+                    } else {
                         ev = new EndVisit(clientID + "," + request[2]);
                     }
-                    /*
-                    if (request.length > 2) {
-                        ev = new EndVisit(Long.parseLong(request[2]));
-                    } else {
-                        Visitor v = LBMS.getSessions().get(clientID).getV();
-                        if (v == null) {
-                            throw new MissingParametersException(clientID + ",depart,not-logged-in");
-                        }
-                        ev = new EndVisit(v.getVisitorID());
-                    }
-                    */
+
                     LBMS.getSessions().get(clientID).addUndoable(ev);
                     return ev;
                 case "info":
@@ -157,8 +137,7 @@ public class CommandController implements ICommandController {
                     LBMS.getSessions().get(clientID).clearStacks();
                     if (request.length == 2) {
                         return new FindBorrowed(request[0]);
-                    }
-                    else if (request.length == 3) {
+                    } else if (request.length == 3) {
                         return new FindBorrowed(request[0] + "," + request[2]);
                     }
                 case "return":
@@ -166,8 +145,7 @@ public class CommandController implements ICommandController {
                         Return r = new Return(request[0] + "," + request[2]);
                         LBMS.getSessions().get(clientID).addUndoable(r);
                         return r;
-                    }
-                    else if (request.length == 4) {
+                    } else if (request.length == 4) {
                         Return r = new Return(request[0] + "," + request[2] + "," + request[3]);
                         LBMS.getSessions().get(clientID).addUndoable(r);
                         return r;
@@ -178,8 +156,7 @@ public class CommandController implements ICommandController {
                         pf = new PayFine(request[0] + "," + request[2]);
                         LBMS.getSessions().get(clientID).addUndoable(pf);
                         return pf;
-                    }
-                    else if (request.length == 4) {
+                    } else if (request.length == 4) {
                         pf = new PayFine(request[0] + "," + request[2] + "," + request[3]);
                         LBMS.getSessions().get(clientID).addUndoable(pf);
                         return pf;
@@ -200,7 +177,7 @@ public class CommandController implements ICommandController {
                         return new StatisticsReport("");
                     }
                     return new StatisticsReport(request[2]);
-                case "reset":      // FOR TESTING
+                case "reset":      // FOR TESTING ONLY
                     return new ResetTime();
                 default:
                     return new Invalid();

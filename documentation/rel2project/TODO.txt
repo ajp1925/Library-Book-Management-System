@@ -29,3 +29,11 @@ Files needed to submit:
     -buildlog.txt
     -SRC directory
     -remove this TODO file
+
+Needed in order to complete the design document:
+    -Domain model
+    -Architectural model
+    -2 Sequence Diagrams
+    -Complete the UML
+    -State diagram
+    -CRC Cards

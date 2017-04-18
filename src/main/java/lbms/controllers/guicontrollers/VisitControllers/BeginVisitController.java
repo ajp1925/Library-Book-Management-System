@@ -14,9 +14,11 @@ import lbms.views.GUI.SessionManager;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/14/17.
+ * BeginVisitController class for the Library Book Management System.
+ * @author Team B
  */
 public class BeginVisitController implements StateController {
+
     private SessionManager manager;
 
     @FXML private AnchorPane root;
@@ -24,7 +26,11 @@ public class BeginVisitController implements StateController {
     @FXML private Text visitorIdFail;
     @FXML private Text failedLabel;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the state for this instance of the class.
+     */
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 begin();
@@ -33,47 +39,57 @@ public class BeginVisitController implements StateController {
         });
     }
 
+    /**
+     * Sets the session manager for this class.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
-    @FXML public void begin() {
-        visitorIdFail.setText("");
-        failedLabel.setText("");
+    /**
+     * Begins the visit.
+     */
+    @FXML
+    public void begin() {
+        this.visitorIdFail.setText("");
+        this.failedLabel.setText("");
 
-        String visitorId = visitorIdField.getText();
+        String visitorId = this.visitorIdField.getText();
 
         if (visitorId.isEmpty()) {
-             visitorIdFail.setText("*");
-             failedLabel.setText("Please enter a visitor ID.");
+             this.visitorIdFail.setText("*");
+             this.failedLabel.setText("Please enter a visitor ID.");
         } else {
-            String request = String.format("%s,arrive,%s;", manager.getClientId(), visitorId);
+            String request = String.format("%s,arrive,%s;", this.manager.getClientId(), visitorId);
             System.out.println(request); //TODO remove
-
             String response = new ProxyCommandController().processRequest(request);
             System.out.println(response); //TODO remove
-
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
             switch (responseObject.get("message")) {
                 case "invalid-id":
-                    failedLabel.setText("Visitor does not exist.");
+                    this.failedLabel.setText("Visitor does not exist.");
                     break;
                 case "library-closed":
-                    failedLabel.setText("Sorry the library is closed, please try again later.");
+                    this.failedLabel.setText("Sorry the library is closed, please try again later.");
                     break;
                 case "duplicate":
-                    failedLabel.setText("Visitor is already in the library.");
+                    this.failedLabel.setText("Visitor is already in the library.");
                 default:
-                    manager.display("visit_begun", "Visit Begun");
-                    ((VisitBegunController)manager.getController()).setVisit(responseObject);
+                    this.manager.display("visit_begun", "Visit Begun");
+                    ((VisitBegunController)this.manager.getController()).setVisit(responseObject);
                     break;
             }
         }
     }
 
-    @FXML public void cancel() {
-        manager.display("main_employee", this.manager.getUser());
+    /**
+     * Cancels the request and loads the main employee page.
+     */
+    @FXML
+    public void cancel() {
+        this.manager.display("main_employee", this.manager.getUser());
     }
 }

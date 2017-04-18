@@ -22,10 +22,10 @@ import java.util.HashMap;
  */
 public class MainVisitorController implements StateController {
 
-    private SessionManager manager;
-
     private final static String BEGIN_VISIT_ID = "begin-visit-button";
     private final static String END_VISIT_ID = "end-visit-button";
+
+    private SessionManager manager;
 
     @FXML private AnchorPane root;
     @FXML private TabPane searchTabPane;
@@ -39,19 +39,20 @@ public class MainVisitorController implements StateController {
     @FXML private Text failedLabel;
 
     /**
-     * Initializes the visitor controller.
+     * Initializes the state in this class.
      */
-    @FXML protected void initialize() {
-        root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+    @FXML
+    protected void initialize() {
+        this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 search();
                 e.consume();
             }
         });
 
-        searchByAuthor.setUserData("author");
-        searchByTitle.setUserData("title");
-        searchByISBN.setUserData("isbn");
+        this.searchByAuthor.setUserData("author");
+        this.searchByTitle.setUserData("title");
+        this.searchByISBN.setUserData("isbn");
     }
 
     /**
@@ -63,34 +64,34 @@ public class MainVisitorController implements StateController {
         this.manager = manager;
 
         if (ProxyCommandController.inLibrary(manager.getClientId())) {
-            visitButton.setText("End Visit");
-            visitButton.setOnAction(e -> endVisit());
-            visitButton.setId(END_VISIT_ID);
+            this.visitButton.setText("End Visit");
+            this.visitButton.setOnAction(e -> endVisit());
+            this.visitButton.setId(END_VISIT_ID);
         } else {
-            visitButton.setText("Begin Visit");
-            visitButton.setOnAction(e -> beginVisit());
-            visitButton.setId(BEGIN_VISIT_ID);
+            this.visitButton.setText("Begin Visit");
+            this.visitButton.setOnAction(e -> beginVisit());
+            this.visitButton.setId(BEGIN_VISIT_ID);
         }
     }
 
     /**
-     * Search pane method.
+     * Method used for setting up the search bars in the GUI.
      */
     public void search() {
-        String author = searchAuthorField.getText();
-        String title = searchTitleField.getText();
-        String isbn = searchISBNField.getText();
-        String type = searchTabPane.getSelectionModel().getSelectedItem().getUserData().toString();
+        String author = this.searchAuthorField.getText();
+        String title = this.searchTitleField.getText();
+        String isbn = this.searchISBNField.getText();
+        String type = this.searchTabPane.getSelectionModel().getSelectedItem().getUserData().toString();
 
-        manager.display("search_library", "Library Search");
-        ((LibrarySearchController)manager.getController()).search(type, title, author, isbn);
+        this.manager.display("search_library", "Library Search");
+        ((LibrarySearchController)this.manager.getController()).search(type, title, author, isbn);
     }
 
     /**
      * Begins a visit for the visitor.
      */
     private void beginVisit() {
-        String request = String.format("%s,arrive;", manager.getClientId());
+        String request = String.format("%s,arrive;", this.manager.getClientId());
         System.out.println(request); //TODO remove
 
         String response = new ProxyCommandController().processRequest(request);
@@ -100,17 +101,17 @@ public class MainVisitorController implements StateController {
 
         switch (responseObject.get("message")) {
             case "invalid-id":
-                failedLabel.setText("Visitor does not exist.");
+                this.failedLabel.setText("Visitor does not exist.");
                 break;
             case "library-closed":
-                failedLabel.setText("Sorry the library is closed, please try again later.");
+                this.failedLabel.setText("Sorry the library is closed, please try again later.");
                 break;
             case "duplicate":
-                failedLabel.setText("Visitor is already in the library.");
+                this.failedLabel.setText("Visitor is already in the library.");
             default:
-                visitButton.setText("End Visit");
-                visitButton.setOnAction(e -> endVisit());
-                visitButton.setId(END_VISIT_ID);
+                this.visitButton.setText("End Visit");
+                this.visitButton.setOnAction(e -> endVisit());
+                this.visitButton.setId(END_VISIT_ID);
                 break;
         }
     }
@@ -119,7 +120,7 @@ public class MainVisitorController implements StateController {
      * Ends a visit for the visitor.
      */
     private void endVisit() {
-        String request = String.format("%s,depart;", manager.getClientId());
+        String request = String.format("%s,depart;", this.manager.getClientId());
         System.out.println(request); //TODO remove
 
         String response = new ProxyCommandController().processRequest(request);
@@ -129,17 +130,21 @@ public class MainVisitorController implements StateController {
 
         switch (responseObject.get("message")) {
             case "invalid-id":
-                failedLabel.setText("Visitor is currently not in the library.");
+                this.failedLabel.setText("Visitor is currently not in the library.");
             default:
-                visitButton.setText("Begin Visit");
-                visitButton.setOnAction(e -> beginVisit());
-                visitButton.setId(BEGIN_VISIT_ID);
+                this.visitButton.setText("Begin Visit");
+                this.visitButton.setOnAction(e -> beginVisit());
+                this.visitButton.setId(BEGIN_VISIT_ID);
                 break;
         }
     }
 
-    @FXML public void logout() {
-        new ProxyCommandController().processRequest(manager.getClientId() + ",logout;");
+    /**
+     * Logs out a visitor / employee.
+     */
+    @FXML
+    public void logout() {
+        new ProxyCommandController().processRequest(this.manager.getClientId() + ",logout;");
         this.manager.display("login", "Login", false);
     }
 }

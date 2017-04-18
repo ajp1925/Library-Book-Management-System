@@ -33,7 +33,8 @@ public class LoginController implements StateController {
     /**
      * Initializes the login page.
      */
-    @FXML protected void initialize() {
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 this.loginButton.fire();
@@ -53,7 +54,8 @@ public class LoginController implements StateController {
     /**
      * Executes the controller.
      */
-    @FXML private void execute() {
+    @FXML
+    private void execute() {
         this.usernameFail.setText("");
         this.passwordFail.setText("");
         boolean completed = true;

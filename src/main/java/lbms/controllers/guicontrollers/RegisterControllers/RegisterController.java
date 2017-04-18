@@ -126,7 +126,8 @@ public class RegisterController implements StateController {
     /**
      * Tells the session manager to cancel the last action.
      */
-    @FXML public void cancel() {
+    @FXML
+    public void cancel() {
         this.manager.display("main_employee", this.manager.getUser());
     }
 

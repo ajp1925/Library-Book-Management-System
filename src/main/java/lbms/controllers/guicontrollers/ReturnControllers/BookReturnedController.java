@@ -5,17 +5,27 @@ import lbms.controllers.guicontrollers.StateController;
 import lbms.views.GUI.SessionManager;
 
 /**
- * Created by Chris on 4/18/17.
+ * BookReturnedController class for the Library Book Management System.
+ * @author Team B
  */
 public class BookReturnedController implements StateController {
+
     private SessionManager manager;
 
+    /**
+     * Initializes the manager for this class.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
-    @FXML public void home() {
-        manager.display("main_employee", manager.getUser());
+    /**
+     * Loads the home page for the employee that is logged in.
+     */
+    @FXML
+    public void home() {
+        this.manager.display("main_employee", this.manager.getUser());
     }
 }

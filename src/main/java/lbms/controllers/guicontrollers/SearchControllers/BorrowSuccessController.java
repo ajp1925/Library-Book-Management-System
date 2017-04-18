@@ -9,16 +9,22 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/17/17.
+ * BorrowSuccessController class for the Library Book Management System.
+ * @author Team B
  */
 public class BorrowSuccessController {
+
     private HashMap<String, String> book;
     private String visitor, dueDate;
 
     @FXML private AnchorPane root;
     @FXML private Text title, date;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the state for this class.
+     */
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 close();
@@ -27,6 +33,12 @@ public class BorrowSuccessController {
         });
     }
 
+    /**
+     * Loads any necessary data.
+     * @param book: hash map of date for the book to be loaded
+     * @param visitor: the visitor borrowing books
+     * @param dueDate: the date the books will be due
+     */
     void load(HashMap<String, String> book, String visitor, String dueDate) {
         this.book = book;
         this.visitor = visitor;
@@ -34,13 +46,20 @@ public class BorrowSuccessController {
         display();
     }
 
+    /**
+     * Displays the book.
+     */
     private void display() {
-        title.setText("Visitor " + visitor + " has borrowed " + book.get("title"));
-        date.setText("Due Date: " + dueDate);
+        this.title.setText("Visitor " + this.visitor + " has borrowed " + this.book.get("title"));
+        this.date.setText("Due Date: " + this.dueDate);
     }
 
-    @FXML public void close() {
-        Stage stage = (Stage)title.getScene().getWindow();
+    /**
+     * Closes the stage.
+     */
+    @FXML
+    public void close() {
+        Stage stage = (Stage)this.title.getScene().getWindow();
         stage.close();
     }
 }

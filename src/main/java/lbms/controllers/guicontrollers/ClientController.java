@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
  * @author Team B
  */
 public class ClientController {
+
     private static Boolean stop = false;
 
     @FXML private BorderPane root;
@@ -31,14 +32,14 @@ public class ClientController {
     @FXML private Text clockText;
 
     /**
-     * Initializes the client controller.
+     * Initializes the state for this instance of the class.
      */
-    @FXML protected void initialize() {
+    @FXML
+    protected void initialize() {
         createMenuBar();
-        //createWindowButtons();
+        //createWindowButtons(); // TODO uncomment this?
+        this.clockText.setFont(Font.font(null,FontWeight.BOLD, 13));
 
-        // init clock
-        clockText.setFont(Font.font(null,FontWeight.BOLD, 13));
         Runnable task = () -> {
             while (!stop) {
                 LocalDateTime date = CommandController.getSystemDateTime();
@@ -47,7 +48,6 @@ public class ClientController {
         };
         new Thread(task).start();
 
-        // add new tab button
         Tab addTab = new Tab();
         addTab.setId("addTab");
         addTab.setGraphic(new Button());
@@ -63,14 +63,14 @@ public class ClientController {
 
         addTab.setClosable(false);
         this.tabs.getTabs().add(addTab);
-
         addTab();
     }
 
     /**
      * Adds a tab to the window.
      */
-    @FXML private void addTab() {
+    @FXML
+    private void addTab() {
         int num = this.tabs.getTabs().size();
         Tab tab = new Tab("Login");
 
@@ -82,7 +82,12 @@ public class ClientController {
         this.tabs.getSelectionModel().select(tab);
     }
 
-    public static void stop() { stop = true; }
+    /**
+     * Stops the GUI.
+     */
+    public static void stop() {
+        stop = true;
+    }
 
     /**
      * Creates the menu.
@@ -106,40 +111,42 @@ public class ClientController {
 
         // File
         Menu fileMenu = new Menu("File");
-
         MenuItem newTab = new MenuItem("New Tab");
         newTab.setOnAction((ActionEvent event) -> { addTab(); });
         newTab.setAccelerator(new KeyCodeCombination(KeyCode.T, key));
-
         MenuItem closeTab = new MenuItem("Close Tab");
+
         closeTab.setOnAction((ActionEvent event) -> {
             if (this.tabs.getSelectionModel().getSelectedItem().isClosable()) {
                 this.tabs.getTabs().remove(this.tabs.getSelectionModel().getSelectedItem());
             }
         });
+
         closeTab.setAccelerator(new KeyCodeCombination(KeyCode.W, key));
 
 
         MenuItem closeWindow = new MenuItem("Close Window");
         closeWindow.setOnAction((ActionEvent event) -> { Platform.exit(); });
         closeWindow.setAccelerator(new KeyCodeCombination(KeyCode.Q, key));
-
         fileMenu.getItems().addAll(newTab, closeTab, closeWindow);
 
         // Edit
         Menu editMenu = new Menu("Edit");
-
         MenuItem undo = new MenuItem("Undo");
-        undo.setOnAction((ActionEvent event) -> { /*TODO*/ System.out.println("Undo"); });
+        undo.setOnAction((ActionEvent event) -> {
+            // TODO
+            System.out.println("Undo");
+        });
         undo.setAccelerator(new KeyCodeCombination(KeyCode.Z, key));
 
         MenuItem redo = new MenuItem("Redo");
-        redo.setOnAction((ActionEvent event) -> { /*TODO*/ System.out.println("Redo"); });
+        redo.setOnAction((ActionEvent event) -> {
+            // TODO
+            System.out.println("Redo");
+        });
         redo.setAccelerator(new KeyCodeCombination(KeyCode.Z, key, KeyCombination.SHIFT_DOWN));
 
         editMenu.getItems().addAll(undo, redo);
-
-        // Menu
         menuBar.getMenus().addAll(fileMenu, editMenu);
     }
 }

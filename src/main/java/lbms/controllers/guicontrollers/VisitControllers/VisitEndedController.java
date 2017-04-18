@@ -11,9 +11,11 @@ import lbms.views.GUI.SessionManager;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/14/17.
+ * VisitEndedController class for the Library Book Management System.
+ * @author Team B
  */
 public class VisitEndedController implements StateController {
+
     private SessionManager manager;
 
     @FXML private AnchorPane root;
@@ -21,7 +23,11 @@ public class VisitEndedController implements StateController {
     @FXML private Text visitEndTime;
     @FXML private Text visitDuration;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the state for this class.
+     */
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 home();
@@ -30,19 +36,31 @@ public class VisitEndedController implements StateController {
         });
     }
 
+    /**
+     * Setter for the session manager.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
-    @FXML public void home() {
-        manager.display("main_employee", this.manager.getUser());
+    /**
+     * Goes to the home page for an employee.
+     */
+    @FXML
+    public void home() {
+        this.manager.display("main_employee", this.manager.getUser());
     }
 
-    @FXML public void setVisit(HashMap<String, String> response) {
-        visitorID.setText(response.get("visitorID"));
-        visitEndTime.setText(response.get("visitEndTime"));
-        visitDuration.setText(response.get("visitDuration"));
-
+    /**
+     * Sets the visit.
+     * @param response: input from the parse response utility
+     */
+    @FXML
+    public void setVisit(HashMap<String, String> response) {
+        this.visitorID.setText(response.get("visitorID"));
+        this.visitEndTime.setText(response.get("visitEndTime"));
+        this.visitDuration.setText(response.get("visitDuration"));
     }
 }

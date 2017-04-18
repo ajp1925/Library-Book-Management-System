@@ -12,12 +12,13 @@ import lbms.views.GUI.SessionManager;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/16/17.
+ * SearchResultController class for the Library Book Management System.
+ * @author Team B
  */
 public class SearchResultController {
+
     private SessionManager manager;
     private boolean state;
-
     private HashMap<String, String> book;
 
     @FXML private Hyperlink isbn;
@@ -27,6 +28,12 @@ public class SearchResultController {
     @FXML private Text publisher;
     @FXML private Text pageCount;
 
+    /**
+     * Loads the data into this class.
+     * @param manager: the session manager for the class
+     * @param book: the book data
+     * @param arg: the state for being borrowed of purchased
+     */
     void load(SessionManager manager, HashMap<String, String> book, boolean arg) {
         this.manager = manager;
         this.state = arg;
@@ -34,15 +41,21 @@ public class SearchResultController {
         populate();
     }
 
+    /**
+     * Populates the GUI parts with the data.
+     */
     private void populate() {
-         this.isbn.setText(book.get("isbn"));
-         this.title.setText(book.get("title"));
-         this.author.setText(book.get("authors"));
-         this.pageCount.setText(book.get("pageCount"));
-         this.publishDate.setText(book.get("publishDate"));
-         this.publisher.setText(book.get("publisher"));
+         this.isbn.setText(this.book.get("isbn"));
+         this.title.setText(this.book.get("title"));
+         this.author.setText(this.book.get("authors"));
+         this.pageCount.setText(this.book.get("pageCount"));
+         this.publishDate.setText(this.book.get("publishDate"));
+         this.publisher.setText(this.book.get("publisher"));
     }
 
+    /**
+     * Selects the fxml file.
+     */
     @FXML public void select() {
         Parent root;
         try {
@@ -50,14 +63,13 @@ public class SearchResultController {
             loader.setLocation(SessionManager.class.getResource("/fxml/book_info.fxml"));
             root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle(manager.getVisitor() + " - " + book.get("title"));
+            stage.setTitle(this.manager.getVisitor() + " - " + this.book.get("title"));
             stage.setScene(new Scene(root, 750, 500));
 
-            ((BookInfoController)loader.getController()).load(stage, manager, book, state);
+            ((BookInfoController)loader.getController()).load(stage, this.manager, this.book, this.state);
 
             stage.show();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Error loading FXML file.");
             System.exit(1);
         }

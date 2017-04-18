@@ -14,9 +14,11 @@ import lbms.views.GUI.SessionManager;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/14/17.
+ * EndVisitController class for the Library Book Management System.
+ * @author Team b
  */
 public class EndVisitController implements StateController {
+
     private SessionManager manager;
 
     @FXML private AnchorPane root;
@@ -24,7 +26,11 @@ public class EndVisitController implements StateController {
     @FXML private Text visitorIdFail;
     @FXML private Text failedLabel;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the state for this class.
+     */
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 end();
@@ -33,22 +39,30 @@ public class EndVisitController implements StateController {
         });
     }
 
+    /**
+     * Setter for the session manager.
+     * @param manager: the session manager to be set
+     */
     @Override
     public void initManager(SessionManager manager) {
         this.manager = manager;
     }
 
-    @FXML public void end() {
-        visitorIdFail.setText("");
-        failedLabel.setText("");
+    /**
+     * Ends the visit to the library.
+     */
+    @FXML
+    public void end() {
+        this.visitorIdFail.setText("");
+        this.failedLabel.setText("");
 
-        String visitorId = visitorIdField.getText();
+        String visitorId = this.visitorIdField.getText();
 
         if (visitorId.isEmpty()) {
-            visitorIdFail.setText("*");
-            failedLabel.setText("Please enter a visitor ID.");
+            this.visitorIdFail.setText("*");
+            this.failedLabel.setText("Please enter a visitor ID.");
         } else {
-            String request = String.format("%s,depart,%s;", manager.getClientId(), visitorId);
+            String request = String.format("%s,depart,%s;", this.manager.getClientId(), visitorId);
             System.out.println(request); //TODO remove
 
             String response = new ProxyCommandController().processRequest(request);
@@ -65,7 +79,11 @@ public class EndVisitController implements StateController {
         }
     }
 
-    @FXML public void cancel() {
-        manager.display("main_employee", this.manager.getUser());
+    /**
+     * Cancels the request and loads the employee main page.
+     */
+    @FXML
+    public void cancel() {
+        this.manager.display("main_employee", this.manager.getUser());
     }
 }

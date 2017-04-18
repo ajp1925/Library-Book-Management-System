@@ -9,42 +9,57 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 
 /**
- * Created by Chris on 4/17/17.
+ * PurchaseSuccessController class for the Library Book Management System.
+ * @author Team B
  */
 public class PurchaseSuccessController {
+
     private HashMap<String, String> book;
 
-    @FXML
-    private AnchorPane root;
+    @FXML private Text title, quantity;
+    @FXML private AnchorPane root;
 
+    /**
+     * Initializes the data for this instance of the class.
+     */
     @FXML
-    private Text title, quantity;
-
-    @FXML protected void initialize() {
-        this.root.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
+    protected void initialize() {
+        this.title.getParent().addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 close();
                 e.consume();
             }
         });
     }
+
+    /**
+     * Loads the book to be displayed.
+     * @param book: hash map of the information for a book
+     */
     void load(HashMap<String, String> book) {
         this.book = book;
         display();
     }
 
+    /**
+     * Displays the data for a purchase.
+     */
     private void display() {
-        title.setText("Successfully purchased " + book.get("title"));
+        this.title.setText("Successfully purchased " + this.book.get("title"));
 
-        if (Integer.parseInt(book.get("quantity")) == 1) {
-            quantity.setText("1 copy purchased");
+        if (Integer.parseInt(this.book.get("quantity")) == 1) {
+            this.quantity.setText("1 copy purchased");
         } else {
-            quantity.setText(book.get("quantity") +  " copies purchased");
+            this.quantity.setText(this.book.get("quantity") +  " copies purchased");
         }
     }
 
-    @FXML public void close() {
-        Stage stage = (Stage)title.getScene().getWindow();
+    /**
+     * Closes the stage.
+     */
+    @FXML
+    public void close() {
+        Stage stage = (Stage)this.title.getScene().getWindow();
         stage.close();
     }
 }

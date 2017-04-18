@@ -34,7 +34,7 @@ public class GUIView extends Application implements View {
      */
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Library Management System");
+        primaryStage.setTitle("Library Book Management System");
 
         Parent root = null;
         try {
