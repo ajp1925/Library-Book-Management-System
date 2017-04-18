@@ -13,10 +13,6 @@ import java.util.HashMap;
  */
 public final class ParseResponseUtility {
 
-    public static void main(String[] args) {
-        System.out.println(parseBooks("BOOK:1590335260,\"Computer Games\",{Blair Carter},01/01/2002,1"));
-    }
-
     /**
      * Private constructor to prevent any instantiation of this class.
      */
