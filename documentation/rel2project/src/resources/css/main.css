@@ -1,0 +1,78 @@
+/**
+ * Styling for GUI for R2.
+ * @author: Team B
+ */
+
+*{
+    -search-color: #513127;
+}
+
+.search-tab-pane {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-radius: 25;
+    -fx-background-color: white;
+}
+
+.search-tab-pane .tab-header-background {
+    -fx-background-color: white !important;
+}
+
+.search-tab-pane .tab {
+    -fx-background-color: white !important;
+    -fx-pref-width: 125 !important;
+    -fx-alignment: center !important;
+    -fx-background-radius: 10 10 0 0 !important;
+}
+
+.search-tab-pane .tab:hover {
+    -fx-background-color: -highlight-color !important;
+}
+
+.search-tab-pane .tab:selected {
+    -fx-background-color: -search-color !important;
+}
+
+.search-tab-pane .tab:selected .tab-label {
+    -fx-text-fill: white !important;
+}
+
+.search-tab-pane .tab-header-area {
+    -fx-padding: 0 0 -1 0 !important;
+}
+
+.search-tab-content {
+    -fx-border-style: solid;
+    -fx-border-color: -search-color;
+    -fx-background-color: -search-color;
+    -fx-border-radius: 10;
+    -fx-background-radius: 0 10 10 10;
+}
+
+#search-button {
+    -fx-border-style: none;
+    -fx-background-color: white;
+    -fx-graphic: url("../icons/search.png");
+}
+
+.visit-button {
+    -fx-text-fill: white;
+}
+
+#begin-visit-button {
+    -fx-background-color: GREEN;
+}
+
+#begin-visit-button:hover {
+    -fx-background-color: #b3ffb3;
+    -fx-text-fill: black;
+}
+
+#end-visit-button {
+    -fx-background-color: RED;
+}
+
+#end-visit-button:hover {
+    -fx-background-color: #ff9999;
+    -fx-text-fill: black;
+}

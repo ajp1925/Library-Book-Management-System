@@ -18,16 +18,10 @@ Decorator - SessionManager maybe
 
 
 Files needed to submit:
-    -vclog.txt
-    -start.bat
-    -startAPI.bat
     -README.txt
     -presentation.pdf
-    -listing.pdf - create listings for controllers package and fxml then combine all listings files
     -LBMS-R2.jar
     -design.pdf
-    -buildlog.txt
-    -SRC directory
     -remove this TODO file
 
 Needed in order to complete the design document:

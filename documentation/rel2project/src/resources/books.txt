@@ -1,0 +1,515 @@
+9781450431835,"Daniels' Running Formula-3rd Edition",{Jack Daniels},"Human Kinetics",2013-12-31,306
+9780936070278,"Galloway's Book on Running",{Jeff Galloway},"Shelter Publications",2002,275
+9781840894622,"Running Shoes",{Frederick Lipp},"Zero to Ten",2007-09-01,32
+9780736045100,"Fitness Running",{Richard L. Brown, Joe Henderson},"Human Kinetics",2003,190
+9780375896798,"The Running Dream",{Wendelin Van Draanen},"Knopf Books for Young Readers",2011-01-11,352
+9781449331900,"Running Lean",{Ash Maurya},"O'Reilly Media, Inc.",2012-02-24,240
+9781411676442,"Had, Hoodwinked and Bamboozled (willie Lynch is Running Wild in the Democratic Party)!! and He Has the Black Community, Just where He Wants Them!!",{Evang. G. E. McTyre, Evangelist Evang. G. E., BHG McTyre BA},"Lulu.com",2006-01,138
+9780873229593,"Lore of Running",{Timothy Noakes},"Human Kinetics",2003,931
+9781408855713,"Harry Potter and the Deathly Hallows",{J. K. Rowling},"Bloomsbury Publishing",2014,619
+9781781100516,"Harry Potter and the Prisoner of Azkaban",{J.K. Rowling},"Pottermore",1999-07-08,448
+9781781100486,"Harry Potter and the Sorcerer's Stone",{J.K. Rowling},"Pottermore",2015-12-08,309
+9781338029994,"Harry Potter Coloring Book",{Inc. Scholastic},"Scholastic Incorporated",2015-11-10,96
+9781783296033,"Harry Potter",{Jody Revenson},"Titan Books",2015-09-25,208
+9780062101891,"Harry Potter Page to Screen",{Bob McCabe},"Harper Design",2011-10-25,540
+9780545582971,"Harry Potter and the Order of the Phoenix",{J. K. Rowling},"Scholastic Paperbacks",2013-08-27,870
+9781781107041,"Harry Potter and the Cursed Child – Parts One and Two (Special Rehearsal Edition)",{J.K. Rowling, John Tiffany, Jack Thorne},"Pottermore",2016-07-31,320
+9780545387200,"The Hunger Games Trilogy",{Suzanne Collins},"Scholastic Inc.",2011-05-01,1000
+9780545452373,"The World of the Hunger Games",{Kate Egan},"Scholastic Inc.",2012-03-23,192
+9780545227247,"Catching Fire (The Second Book of the Hunger Games)",{Suzanne Collins},"Scholastic Inc.",2010-06-01,400
+9780545470070,"The Hunger Games Tribute Guide",{Emily Seife},"Scholastic Inc.",2012-02-07,128
+9781407139982,"The Hunger Games Complete Trilogy",{Suzanne Collins},"Scholastic UK",2013-10-03,1344
+9780545229937,"The Hunger Games",{Suzanne Collins},"Scholastic Inc.",2009-09-01,384
+9781118206027,"The Hunger Games and Philosophy",{George A. Dunn, Nicolas Michaud},"John Wiley & Sons",2012-01-26,272
+9780767920223,"How to Win at College",{Cal Newport},"Three Rivers Press",2005-04-12,208
+9780198723530,"How to Think about Analysis",{Lara Alcock},"Oxford University Press, USA",2014,246
+9780826414182,"How to Read Superhero Comics and why",{Geoff Klock},"A&C Black",2002,204
+9780865473362,"How to Cook a Wolf",{M. F. K. Fisher},"Macmillan",1988-10-01,202
+9781452933122,"How to Do Things With Videogames",{Ian Bogost},"U of Minnesota Press",2011,180
+9781451621716,"How To Win Friends and Influence People",{Dale Carnegie},"Simon and Schuster",2010-08-24,320
+9780809132232,"How to Be an Adult",{David Richo},"Paulist Press",1991-01-01,144
+9781416612049,"How to Teach Now",{William Powell, Ochan Kusuma-Powell},"ASCD",2011,178
+9780312340216,"How to Advertise",{Kenneth Roman, Jane Maas, Martin Nisenholtz},"Macmillan",2005-03-01,263
+9781119296195,"Investing For Dummies",{Eric Tyson},"John Wiley & Sons",2016-05-27,432
+9780470922170,"ASVAB For Dummies",{Rod Powers},"John Wiley & Sons",2010-11-29,408
+9781118967751,"The Internet For Dummies",{John R. Levine, Margaret Levine Young},"John Wiley & Sons",2015-01-30,384
+9781119296072,"Coding For Dummies",{Nikhil Abraham},"John Wiley & Sons",2016-05-27,288
+9781118231371,"iPhone 4S For Seniors For Dummies",{Nancy C. Muir},"John Wiley & Sons",2011-12-09,320
+9781118051108,"Bioinformatics For Dummies",{Jean-Michel Claverie, Cedric Notredame},"John Wiley & Sons",2011-02-10,456
+9781119255819,"AutoCAD For Dummies",{Bill Fane},"John Wiley & Sons",2016-05-02,544
+9780764573941,"C++ For Dummies",{Stephen R. Davis},"John Wiley & Sons",2004-05-03,432
+9781118007983,"Spanish For Dummies",{Susana Wald, Cecie Kraynak},"John Wiley & Sons",2011-01-06,432
+9781118052723,"Home Buying For Dummies",{Eric Tyson, Ray Brown},"John Wiley & Sons",2011-03-03,408
+9780702238024,"Kumiko and the Dragon's Secret",{Briony Stewart},"Univ. of Queensland Press",2010,96
+9781585091317,"The Dragon Legacy",{Nicholas de Vere},"Book Tree",2004,437
+9780133002140,"Compilers",{Alfred V. Aho, Monica S. Lam, Jeffrey D. Ullman, Ravi Sethi},"Pearson Higher Ed",2011-11-21,1000
+9781101642337,"Dragons Love Tacos",{Adam Rubin},"Penguin",2012-06-14,40
+9781459716377,"Dragon in the Clouds",{Rosemary Nelson},"Dundurn",1994-10-01,160
+9780547416021,"Dragon's Keep",{Janet Lee Carey},"Houghton Mifflin Harcourt",2008-05-01,320
+9780812589160,"Dragon",{Steven Brust},"Macmillan",1999-11-15,288
+9781101611449,"The Summer Dragon",{Todd Lockwood},"Penguin",2016-05-03,512
+9780393342628,"Ice Fire Water: A Leib Goldkorn Cocktail",{Leslie Epstein},"W. W. Norton & Company",2011-08-08,272
+9780545414654,"Icefire (The Last Dragon Chronicles #2)",{Chris d'Lacey},"Scholastic Inc.",2011-08-01,432
+9781451629309,"Ice Fire",{David Lyons},"Simon and Schuster",2013-03-26,416
+9781462819874,"The Ice-Fire Legacy",{Jack North},"Xlibris Corporation",2002-03-28,567
+9780987200952,"Fire & Ice (book 1 Icefire Trilogy)",{Patty Jansen},"Patty Jansen",2011-10-06,300
+9780671014025,"Icefire",{Judith Reeves-Stevens, Garfield Reeves-Stevens},"Beyond Words/Atria Books",1998,484
+9780545208871,"The Last Council",{Kazu Kibuishi},"Scholastic Inc.",2011,207
+9780545678421,"Firelight (Amulet #7)",{Kazu Kibuishi},"Scholastic Inc.",2016-02-23,208
+9780811220484,"Amulet",{Roberto Bolaño},"New Directions Publishing",2008-05-17,192
+9781613128992,"The Lie Tree",{Frances Hardinge},"Abrams",2016-04-19,384
+9780545208857,"The Cloud Searchers",{Kazu Kibuishi},"Scholastic Inc.",2010,197
+9781439588987,"The Stonekeeper",{Kazu Kibuishi},"Paw Prints",2009-01-12,208
+9780877790426,"Merriam-Webster's Encyclopedia of Literature",{Merriam-Webster, Inc},"Merriam-Webster",1995,1236
+9780877791218,"Merriam-Webster's Crossword Puzzle Dictionary",{Merriam-Webster, Inc},"Merriam-Webster",1996,775
+9781439149850,"Nora Webster",{Colm Toibin},"Simon and Schuster",2014-10-07,384
+9780877795469,"Merriam-Webster's Geographical Dictionary",{Merriam-Webster, Inc},"Merriam-Webster",1997,1387
+9781481422031,"Webster",{Ellen Emerson White},"Simon and Schuster",2015-11-03,256
+9780877793410,"Merriam-Webster's Dictionary of Synonyms",{Merriam-Webster, Inc},"Merriam-Webster",1984,940
+9780877790440,"Merriam-Webster's Encyclopedia of World Religions",{Wendy Doniger, Merriam-Webster, Inc},"Merriam-Webster",1999-01-01,1181
+9780877798095,"Merriam-Webster's Collegiate Dictionary",{Merriam-Webster},"Merriam-Webster",2004,1623
+9780199534067,"A Dictionary of Psychology",{Andrew M. Colman},"Oxford University Press, USA",2009,882
+9780300106992,"Lost for Words",{Lynda Mugglestone},"Yale University Press",2005,273
+9780313258909,"Dictionary of Polynesian Mythology",{Robert D. Craig},"Greenwood Publishing Group",1989-01-01,409
+9780199571123,"Oxford Dictionary of English",{Angus Stevenson},"Oxford University Press, USA",2010-08-19,2112
+9780824803537,"Chamorro-English Dictionary",{Donald M. Topping, Pedro Ogo, Bernardita Dungca},"University of Hawaii Press",1975-01-01,336
+9780304366361,"Cassell's Dictionary of Slang",{Jonathon Green},"Sterling Publishing Company, Inc.",2005,1565
+9781591987628,"Build-a-Skill Instant Books: Synonyms and Antonyms, Gr. K–1, eBook",{Trisha Callella},"Creative Teaching Press",2007-01-01,32
+9781853267574,"Dictionary of Synonyms and Antonyms",{Martin Manser},"Wordsworth Editions",1998,245
+9780521001762,"Using Arabic Synonyms",{Dilworth Parkinson},"Cambridge University Press",2006,688
+9780521794053,"Using Russian Synonyms",{Terence Wade, Nijole White},"Cambridge University Press",2004-01-28,633
+9783640431502,"Synonyms",{Franziska Hofmann},"GRIN Verlag",2009-09,68
+9780446313100,"A Dictionary of Synonyms and Antonyms",{Joseph Devlin, Jerome Fried},"BRILL",1961,384
+9781416587279,"Experience And Education",{John Dewey},"Simon and Schuster",2007-11-01,96
+9780674028678,"The Race Between Education and Technology",{Claudia Dale Goldin, Lawrence F. Katz},"Harvard University Press",2008,488
+9781442611214,"Lowering Higher Education",{James E. Côté, Anton Allahar},"University of Toronto Press",2011-01-01,243
+9780300001631,"Education at the Crossroads",{Jacques Maritain},"Yale University Press",1943,120
+9780253338167,"Changing Perspectives on International Education",{Patrick O'Meara, Howard D. Mehlinger, Roxana Ma Newman},"Indiana University Press",2001,419
+9780393709544,"The Way of Mindful Education: Cultivating Well-Being in Teachers and Students",{Daniel Rechtschaffen},"W. W. Norton & Company",2014-06-08,352
+9780745675763,"Media Education",{David Buckingham},"John Wiley & Sons",2013-06-26,232
+9780739100851,"Locke's Education for Liberty",{Nathan Tarcov},"Lexington Books",1999-01-01,272
+9780307449368,"Real Education",{Charles Murray},"Crown Forum",2008-08-19,224
+9780399168918,"Escape Clause",{John Sandford},"Penguin",2016-10-18,400
+9780345525567,"The Language of Flowers",{Vanessa Diffenbaugh},"Ballantine Books",2011-08-23,336
+9781617691003,"The Exquisite Book of Paper Flowers",{Livia Cetti},"Stewart, Tabori and Chang",2014-04-08,192
+9781501103957,"Flowers in the Attic: A Stage Play",{V.C. Andrews},"Simon and Schuster",2014-10-28,80
+9781476755540,"The Reason for Flowers",{Stephen Buchmann},"Simon and Schuster",2015-07-21,352
+9783822870372,"The Flower Book",{Edward Coley Burne-Jones, Gabriele Uerscheln},"Taschen America Llc",1999,95
+9780521565103,"Diversity and Evolutionary Biology of Tropical Flowers",{Peter K. Endress},"Cambridge University Press",1996-07-25,511
+9780435232931,"The Play of Daniel Keyes' Flowers for Algernon",{Bert Coules, Daniel Keyes},"Heinemann",1993,128
+9781554984329,"Sidewalk Flowers",{JonArno Lawson},"Groundwood Books Ltd",2015-02-22,32
+9781626721265,"The Ghosts of Heaven",{Marcus Sedgwick},"Macmillan",2015-01-06,368
+9780545337533,"Dog Heaven",{Cynthia Rylant},"Scholastic Inc.",2010-11-01,40
+9781401388881,"The Five People You Meet in Heaven",{Mitch Albom},"Hachette Books",2007-04-01,208
+9780465019298,"Armies of Heaven",{Jay Rubenstein},"Basic Books",2011,402
+9780300091076,"Heaven",{Colleen McDannell, Bernhard Lang},"Yale University Press",2001,411
+9781451695205,"Proof of Heaven",{Eben Alexander},"Simon and Schuster",2012-10-23,208
+9781400319381,"The Heaven Answer Book",{Billy Graham},"Harper Collins",2012-03-21,179
+9780800759490,"90 Minutes in Heaven",{Don Piper, Cecil Murphey},"Revell",2006-09-01,208
+9781400078998,"Under the Banner of Heaven",{Jon Krakauer},"Anchor",2004-06-08,432
+9781844740444,"Desiring God",{John Piper},"InterVarsity Press",2004,394
+9780547348667,"The God Delusion",{Richard Dawkins},"Houghton Mifflin Harcourt",2008-01-16,416
+9781556124525,"A Hunger for God",{William A. Barry, Kerry A. Maloney},"Rowman & Littlefield",1991-01-01,150
+9781433673085,"The Insanity of God",{Nik Ripken, Gregg Lewis},"B&H Publishing Group",2013-01-01,322
+9781608330386,"God of the Oppressed",{James H. Cone},"Orbis Books",1977,280
+9780316317542,"Woman of God",{James Patterson},"Little, Brown",2016-09-26,400
+9780618711680,"The God Particle",{Leon M. Lederman, Dick Teresi},"Houghton Mifflin Harcourt",1993,434
+9780754662662,"The Cult of the Mother of God in Byzantium",{Leslie Brubaker, Mary B. Cunningham},"Ashgate Publishing, Ltd.",2011,306
+9780906138236,"In Conversation with God: Ordinary time : weeks 13-23",{Francis Fernandez},"Scepter Publishers",1991-10-01,629
+9780316227711,"Underwater Dogs",{Seth Casteel},"Little, Brown",2012-10-23,144
+9780679644767,"The Big New Yorker Book of Dogs",{The New Yorker Magazine},"Random House",2012-10-30,416
+9781592533251,"101 Dog Tricks",{Kyra Sundance, Chalcy},"Quarry",2007-04-01,208
+9781594205941,"Beloved Dog",{Maira Kalman},"Penguin Press HC",2015-10-27,160
+9780231135283,"Dogs",{Xiaoming Wang, Richard H. Tedford},"Columbia University Press",2008,219
+9781608683406,"My Old Dog",{Laura T. Coffey},"New World Library",2015-09-15,256
+9781770564039,"Fifteen Dogs",{Andre Alexis},"Coach House Books",2015-03-23,160
+9781101609637,"The Genius of Dogs",{Brian Hare, Vanessa Woods},"Penguin",2013-02-05,384
+9781455538331,"Marnie the Dog",{Shirley Braha},"Grand Central Publishing",2015-10-27,144
+9780226258881,"A Reading of Dante's Inferno",{Wallace Fowlie},"University of Chicago Press",1981-05-15,237
+9780253209306,"Dante's Inferno",{Dante Alighieri, Mark Musa},"Indiana University Press",1995,409
+9780199879830,"The Divine Comedy of Dante Alighieri",{Robert M. Durling},"Oxford University Press",2004-04-08,720
+9781113431141,"Inferno",{Dante Alighieri},"BiblioBazaar, LLC",2009-08,388
+9780199878376,"The Divine Comedy",{Dante Alighieri},"Oxford University Press",1961-12-31,432
+9781580495837,"Adventures of Huckleberry Finn",{Mark Twain},"Prestwick House Inc",2005-01-30,280
+9780313293276,"Understanding Adventures of Huckleberry Finn",{Claudia D. Johnson},"Greenwood Publishing Group",1996,246
+9781402724992,"The Adventures of Huckleberry Finn",{Oliver Ho, Mark Twain, Dan Andreasen},"Sterling Publishing Company, Inc.",2006-01-01,153
+9780393020397,"The Annotated Huckleberry Finn",{Mark Twain, Michael Patrick Hearn},"W. W. Norton & Company",2001,480
+9780520946996,"Autobiography of Mark Twain, Volume 1",{Mark Twain},"Univ of California Press",2010-11-15,760
+9780817315221,"Mark Twain",{Mark Twain, Gary Scharnhorst},"University of Alabama Press",2006-10-22,719
+9781588369284,"Mark Twain: Man in White",{Michael Shelden},"Random House",2010-01-26,528
+9780826214126,"Mark Twain Himself",{Mark Twain, Milton Meltzer},"University of Missouri Press",2002,303
+9781429959278,"The Adventures of Tom Sawyer",{Mark Twain},"Macmillan",1989-08-15,256
+9781853260117,"Tom Sawyer & Huckleberry Finn",{Mark Twain},"Wordsworth Editions",1992,390
+9781603035071,"The Adventures of Tom Sawyer. ILLUSTRATED. : Illustrated by True Williams (Mobi Classics)",{Mark Twain},"MobileReference",2008,197
+9780486129723,"Tom Sawyer",{Mark Twain},"Courier Corporation",2012-03-07,96
+9781576906378,"A Guide for Using the Adventures of Tom Sawyer in the Classroom",{Katie Eyles},"Teacher Created Resources",2002,48
+9781575058948,"Raven Quest",{Sharon Stewart},"Carolrhoda Books",2005,320
+9781412072977,"Raven's Revenge",{Roy French},"Trafford Publishing",2005,311
+9780292770409,"The Raven",{Marquis James},"University of Texas Press",1988,532
+9781477147184,"Raven",{Wyatt E. Owens},"Xlibris Corporation",2012-07,108
+9780804834735,"Zen Master Raven",{Robert Aitken},"Tuttle Publishing",2002-10,208
+9780890964668,"The American Crow and the Common Raven",{Lawrence Kilham},"Texas A&M University Press",1990-10-01,272
+9781440627248,"The Portable Edgar Allan Poe",{Edgar Allan Poe},"Penguin",2006-10-03,688
+9780547822587,"Edgar Allan Poe's Pie",{J. Patrick Lewis},"Houghton Mifflin Harcourt",2012-04-03,40
+9780940450189,"Poetry and Tales",{Edgar Allan Poe},"Library of America",1984,1408
+9780761329107,"Edgar Allan Poe",{Milton Meltzer},"Twenty-First Century Books",2003,144
+9781580493871,"The Best of Poe",{Edgar Allan Poe},"Prestwick House Inc",2006,232
+9781681958958,"The Complete Tales and Poems of Edgar Allan Poe",{Edgar Allan Poe},"Xist Publishing",2016-03-24,122
+9780486401553,"Literary Theory and Criticism",{Edgar Allan Poe, Leonard Cassuto},"Courier Corporation",1999,193
+9781873403006,"Edgar Allan Poe",{Graham Clarke},"Routledge",1991,1508
+9780138006020,"PHP and MySQL by Example",{Ellie Quigley, Marko Gargenta},"Prentice Hall Professional",2006-11-22,912
+9781476702933,"Mrs. Poe",{Lynn Cullen},"Simon and Schuster",2013-10-01,336
+9780297859147,"Testament Of Youth",{Vera Brittain},"Weidenfeld & Nicolson",2009-07-16,608
+9780486266855,"The Raven and Other Favorite Poems",{Edgar Allan Poe},"Courier Corporation",1991-01-01,50
+9780307824028,"The Raven and the Monkey's Paw",{Edgar Allan Poe, Edith Wharton, Saki, Charles Dickens, O. Henry},"Modern Library",2012-08-22,224
+9781439113868,"The Raven and Other Writings",{Edgar Allan Poe},"Simon and Schuster",2012-02-28,448
+9781935785118,"THE WORKS OF EDGAR ALLAN POE, The Raven Edition -",{Edgar Allan Poe},"Bottom of the Hill",2010-06-01,198
+9783837059199,"The Raven",{Edgar Allan Poe},"BoD – Books on Demand",2008,84
+9781933747200,"Edgar Allan Poe's Annotated Poems",{Edgar Allan Poe},"Bottletree Books LLC",2008-10,216
+9781938938092,"The Raven (Illustrated)",{Edgar Allan Poe},"Top Five Books LLC",2013-09-13,32
+9781443425353,"The Raven And Other Poems",{Edgar Allan Poe},"Harper Collins",2013-04-09,50
+9781460400272,"Edgar Allan Poe: Selected Poetry and Tales",{Edgar Allan Poe},"Broadview Press",2012-07-25,544
+9781938938108,"Edgar Allan Poe: Essential Tales & Poems",{Edgar Allan Poe},"Top Five Books LLC",2013-09-16,640
+9780451531056,"The Complete Poetry of Edgar Allan Poe",{Edgar Allan Poe},"Penguin",2008,139
+9781598533873,"Edgar Allan Poe: Poetry and Tales",{Edgar Allan Poe},"Library of America",2015-09-22,1408
+9780917786334,"From Poetry to Prose in Old Provençal",{Elizabeth Wilson Poe},"Summa Publications, Inc.",1984-01-01,119
+9780375712593,"Poe: Poems",{Edgar Allan Poe},"Everyman's Library",2014-05-28,256
+9780415967372,"Poems and Essays on Poetry",{Edgar Allan Poe},"Taylor & Francis",2003,150
+9780252069215,"Complete Poems",{Edgar Allan Poe, Thomas Ollive Mabbott},"University of Illinois Press",1969,627
+9780522854312,"The Wayward Tourist",{Mark Twain},"Melbourne University Publish",2007,189
+9780520272255,"Autobiography of Mark Twain",{Mark Twain, Harriet Elinor Smith},"Univ of California Press",2012,414
+9781465558237,"Complete Letters of Mark Twain",{Mark Twain},"Library of Alexandria",1967,453
+9780486498799,"Great Speeches",{Mark Twain, Bob Blaisdell},"Courier Corporation",2013-01,169
+9781587297199,"Mark Twain Speaking",{Paul Fatout},"University of Iowa Press",2006-09-01,720
+9780299234737,"Mark Twain's Own Autobiography",{Mark Twain},"Univ of Wisconsin Press",2010-02-25,318
+9780545685467,"Escaping Peril (Wings of Fire, Book 8)",{Tui T. Sutherland},"Scholastic Inc.",2015-12-29,336
+9780545685429,"Talons of Power (Wings of Fire, Book 9)",{Tui T. Sutherland},"Scholastic Inc.",2016-12-27,336
+9781101939840,"The Amazing Book Is Not on Fire",{Dan Howell, Phil Lester},"Random House Books for Young Readers",2015-10-13,224
+9780345535559,"The World of Ice & Fire",{George R. R. Martin, Elio Garcia, Linda Antonsson},"Bantam",2014-10-28,336
+9780553904055,"Gates of Fire",{Steven Pressfield},"Bantam",2007-01-30,400
+9781407147819,"Wings of Fire: The Hidden Kingdom",{Tui T.  Sutherland},"Scholastic UK",2014-10-03,336
+9781338053616,"Darkstalker",{Tui T. Sutherland},"Scholastic Press",2016-06-28,400
+9781101155806,"Fire",{Kristin Cashore},"Penguin",2009-10-05,528
+9780226965284,"Fires",{Marguerite Yourcenar},"University of Chicago Press",1994-11-05,129
+9780141975351,"Brain On Fire: My Month of Madness",{Susannah Cahalan},"Penguin UK",2012-11-13,288
+9781409417620,"Rome",{Dorigen Sophie Caldwell, Lesley Caldwell},"Ashgate Publishing, Ltd.",2011,262
+9780801843006,"A New Topographical Dictionary of Ancient Rome",{L. Richardson, jr},"JHU Press",1992-10-01,458
+9781606060414,"The Origins of Baroque Art in Rome",{Alois Riegl, Andrew Hopkins, Arnold Alexander Witte, Alina Alexandra Payne},"Getty Publications",2010,279
+9780521519533,"The Emperor and Rome",{Björn C. Ewald, Carlos F. Noreña},"Cambridge University Press",2010-12-02,365
+9788882651763,"Roman Fountains",{Marvin Pulvers},"L'ERMA di BRETSCHNEIDER",2002,927
+9780521192170,"Rome Across Time and Space",{Claudia Bolgia, Rosamond McKitterick, John Osborne},"Cambridge University Press",2011-04-07,351
+9781101118252,"Marriage, a History",{Stephanie Coontz},"Penguin",2006-02-28,448
+9781909669635,"Book of Documents (Shujing)",{Confucius},"Jiahu Books",2013-12,98
+9780061965586,"A People's History of the United States",{Howard Zinn},"Harper Collins",2010-11-02,768
+9780307369796,"Salt",{Mark Kurlansky},"Vintage Canada",2011-03-18,496
+9781627790635,"Killing the Rising Sun",{Bill O'Reilly, Martin Dugard},"Henry Holt and Company",2016-09-13,304
+9780191622946,"A Brief History of Neoliberalism",{David Harvey},"OUP Oxford",2007-01-04,256
+9780813517575,"Framing Disease",{Charles E. Rosenberg, Janet Lynne Golden},"Rutgers University Press",1992,326
+9780761177456,"History Decoded",{Brad Meltzer, Keith Ferrell},"Workman Publishing",2013,152
+9781476733531,"The Gene",{Siddhartha Mukherjee},"Simon and Schuster",2016-05-17,608
+9780486406756,"The Extraterrestrial Life Debate, 1750-1900",{Michael J. Crowe},"Courier Corporation",1999,680
+9780300089035,"London 1900",{Jonathan Schneer},"Yale University Press",2001,336
+9780802132505,"Budapest 1900",{John Lukacs},"Grove Press",1990,255
+9781606060421,"Sacred Possessions",{Gail Feigenbaum, S. Ebert-Schifferer, Galina Tirnanić},"Getty Publications",2011,248
+9781440230851,"Standard Catalog of World Coins - 1801-1900",{George S. Cuhaj, Thomas Michael},"Krause Publications",2012-11-29,1296
+9781571811394,"Rethinking Vienna 1900",{Steven Beller},"Berghahn Books",2001,292
+9780773518865,"Diary of a European Tour, 1900",{Margaret Addison, Jean O'Grady},"McGill-Queen's Press - MQUP",1999-11-30,197
+9780520249660,"Transforming the Screen, 1950-1959",{Peter Lev},"Univ of California Press",2003,382
+9780914386308,"The Nomos of the Earth in the International Law of the Jus Publicum Europaeum",{Carl Schmitt},"Telos Press Publishing",2003-01-01,372
+9780521598941,"Violence in Early Modern Europe 1500-1800",{Julius R. Ruff},"Cambridge University Press",2001-10-04,269
+9781859841082,"The Coming of the Book",{Lucien Febvre, Henri-Jean Martin},"Verso",1997-01-01,378
+9780674012127,"Imperial China 900-1800",{Frederick W. Mote},"Harvard University Press",2003,1106
+9780948170119,"A Dictionary of Members of the Dublin Book Trade 1550-1800",{Mary Pollard, Bibliographical Society (Great Britain)},"Oxford University Press",2000,675
+9781135365837,"Warfare in Atlantic Africa, 1500-1800",{John K. Thornton},"Routledge",2002-11-01,208
+9780300064650,"The Art and Architecture of Islam 1250-1800",{Sheila Blair, Jonathan M. Bloom},"Yale University Press",1995,348
+9781861890146,"Animal Rights",{Hilda Kean},"Reaktion Books",1998-08-01,272
+9780486457437,"1800 Mechanical Movements",{Gardner Dexter Hiscox},"Courier Corporation",2007,409
+9780199728541,"Adams vs. Jefferson",{John Ferling},"Oxford University Press",2004-09-03,288
+9780802072061,"A Guide to Western Historical Scripts from Antiquity to 1600",{Michelle P. Brown},"University of Toronto Press",1993-11-01,138
+9780815627630,"Making Big Money in 1600",{Nelly Hanna},"Syracuse University Press",1998,219
+9780300064698,"Architecture in Italy, 1500-1600",{Wolfgang Lotz, Deborah Howard},"Yale University Press",1995,205
+9780300055870,"Painting in Italy, 1500-1600",{Sydney Joseph Freedberg},"Yale University Press",1993-01-01,761
+9780231157308,"Traditional Japanese Literature",{Haruo Shirane},"Columbia University Press",2012,578
+9780520026032,"Welsh Poems, Sixth Century to 1600",{Gwyn Williams},"Univ of California Press",1974,128
+9780835718820,"French Musical Thought, 1600-1800",{Georgia Cowart},"University Rochester Press",1989-01-01,258
+9780231109390,"Sources of Chinese Tradition",{William Theodore De Bary},"Columbia University Press",2013-08-13,944
+9780521810630,"The Uses of Script and Print, 1300-1700",{Alexandra Walsham},"Cambridge University Press",2004,298
+9780300104691,"Flemish Art and Architecture, 1585-1700",{Hans Vlieghe},"Yale University Press",1998,339
+9780521822749,"Firearms",{Kenneth Warren Chase},"Cambridge University Press",2003-07-07,290
+9780803235861,"Cherokee Women",{Theda Perdue},"U of Nebraska Press",1998,252
+9780802005717,"English Manuscript Studies, 1100-1700",{Peter Beal, Jeremy Griffiths},"University of Toronto Press",1993,306
+9780719049408,"Poverty and Welfare in England, 1700-1850",{Steven King},"Manchester University Press",2000-12-15,294
+9780262122696,"Picturing Machines 1400-1700",{Wolfgang Lefèvre},"MIT Press",2004,347
+9780253211415,"The History of Keyboard Music to 1700",{Willi Apel},"Indiana University Press",1997-01-01,878
+9781440242663,"Standard Catalog of World Coins, 1601-1700",{George S. Cuhaj},"F+W Media, Inc.",2014-11-30,1606
+9780806311029,"New England Marriages Prior to 1700",{unknown},"Genealogical Publishing Com",1985,1009
+9780521839587,"European Sexualities, 1400-1800",{Katherine Crawford},"Cambridge University Press",2007-01-18,246
+9789042917071,"Patrons, Authors and Workshops",{Godfried Croenen},"Peeters Publishers",2006,529
+9789004097629,"Handbook of European History 1400 - 1600",{Thomas A. Brady, Heiko Augustinus Oberman, James D. Tracy},"BRILL",1994,709
+9780415279963,"The Age of Discovery, 1400-1600",{David Arnold},"Psychology Press",2002,69
+9789004117730,"The Emporium of the World",{Angela Schottenhammer},"BRILL",2001,449
+9780801888199,"Women's Writing in Italy, 1400–1650",{Virginia Cox},"JHU Press",2008-05-02,464
+9780300064674,"Architecture in Italy, 1400-1500",{Ludwig Heinrich Heydenreich, Paul Davies},"Yale University Press",1974,186
+9780521627245,"Africa and Africans in the Making of the Atlantic World, 1400-1800",{John Thornton},"Cambridge University Press",1998-04-28,340
+9781586634018,"Fahrenheit 451",{unknown},"Spark Notes",2002-01,72
+9788499485836,"La conciencia deshumanizada",{Juan Ignacio Hernáiz Blázquez},"Editorial Club Universitario",2013-06-12,200
+9781853595455,"Understanding Deaf Culture",{Paddy Ladd},"Multilingual Matters",2003,502
+9781563682742,"Deaf Way II",{Harvey Goodstein, Laura Brown},"Gallaudet University Press",2004,175
+9781563680878,"Deaf History Unveiled",{John V. Van Cleve},"Gallaudet University Press",1999,320
+9781563681325,"Deaf People in Hitler's Europe",{United States Holocaust Memorial Museum},"Gallaudet University Press",2002,233
+9780814798522,"Deaf World",{Lois Bragg},"NYU Press",2001-02-01,430
+9780674041752,"Inside Deaf Culture",{Carol PADDEN, Tom Humphries, Carol Padden},"Harvard University Press",2009-06-30,224
+9780802077875,"Deaf-blind Infants and Children",{John M. McInnes, Jacquelyn A. Treffry},"University of Toronto Press",1993,284
+9780816646180,"Open Your Eyes",{H-Dirksen L. Bauman},"U of Minnesota Press",2008,349
+9781563680618,"Deaf Empowerment",{Katherine A. Jankowski},"Gallaudet University Press",1997,197
+9780674194243,"Deaf in America",{Carol A. Padden, Tom Humphries},"Harvard University Press",1990-09-01,134
+9781426311604,"National Geographic Little Kids First Big Book of Why",{Amy Shields},"National Geographic Society",2014-10-08,126
+9780892369683,"Bernard Picart and the First Global Vision of Religion",{Lynn Avery Hunt, Margaret C. Jacob, W. W. Mijnhardt},"Getty Publications",2010,364
+9781481488006,"A Child's First Book of Trump",{Michael Ian Black, Marc Rosenthal},"Simon and Schuster",2016-07-05,32
+9781474249904,"The First Book of Fashion",{Ulinka Rublack, Maria Hayward, Jenny Tiramani},"Bloomsbury Publishing",2015-10-22,432
+9781582460505,"First Book of Sushi",{Amy Wilson Sanger},"Knopf Books for Young Readers",2001,18
+9781941367032,"DC SUPER HEROES: MY FIRST BOOK OF GIRL POWER",{Julie Merberg},"Downtown Bookworks",2014-10-21,20
+9781462910304,"My First Book of Korean Words",{Kyubyong Park, Henry J. Amen},"Tuttle Publishing",2012-09-10,26
+9780310702870,"Baby's First Book of Prayers",{Melody Carlson},"HarperCollins Christian Publishing",2002,96
+9780198610601,"A Dictionary of First Names",{Patrick Hanks, Kate Hardcastle, Flavia Hodges},"Oxford University Press, USA",2006,434
+9780810862074,"The Commedia Dell'arte of Flaminio Scala",{Flaminio Scala, Richard Andrews},"Rowman & Littlefield",2008,341
+9781442649118,"The Rise of the Diva on the Sixteenth-Century Commedia dell'Arte Stage",{Rosalind Kerr},"University of Toronto Press",2015-03-25,232
+9781404804241,"The Farmer in the Dell",{Ann Owen},"Capstone",2003-01-01,24
+9780521643245,"Performance and Literature in the Commedia Dell'Arte",{Robert Henke},"Cambridge University Press",2002-12-12,263
+9783640316083,"Analysis of Dell's Business Strategy",{Alina Ignatiuk},"GRIN Verlag",2009-05,52
+9781439172537,"Quiet Dell",{Jayne Anne Phillips},"Simon and Schuster",2013-10-15,445
+9780831130497,"Manufacturing Processes Reference Guide",{Robert H. Todd, Dell K. Allen, Leo Alting},"Industrial Press Inc.",1994,486
+9780521744294,"English Idioms in Use Advanced with Answers",{Felicity O'Dell, Michael McCarthy},"Cambridge University Press",2010-02-04,185
+9781859573587,"Rigid Plastics Packaging",{F. Hannay},"iSmithers Rapra Publishing",2002-01-01,140
+9780810851566,"African American Librarians in the Far West",{Binnie Tate Wilkin},"Scarecrow Press",2006,331
+9780313094842,"A Practical Guide to Information Literacy Assessment for Academic Librarians",{Carolyn J. Radcliff},"Greenwood Publishing Group",2007-06-30,180
+9780822516910,"Librarians",{Judith Jango-Cohen},"Lerner Publications",2005-01,32
+9780313322945,"Expectations of Librarians in the 21st Century",{Karl Bridges},"Libraries Unlimited",2003-01-01,235
+9781952534416,"The Bad-Ass Librarians of Timbuktu",{Joshua Hammer},"Allen & Unwin",2016-04-20,276
+9781591588689,"Basic Research Methods for Librarians, Fifth Edition",{Lynn Silipigni Connaway, Ronald R. Powell},"ABC-CLIO",2010-09-17,370
+9780838908471,"Metadata Fundamentals for All Librarians",{Priscilla Caplan},"American Library Association",2003-01,192
+9780789006998,"Readers, Reading, and Librarians",{William A. Katz},"Psychology Press",2001,219
+9780838908921,"How Libraries and Librarians Help",{Joan C. Durrance, Karen E. Fisher, Marian Bouch Hinton},"American Library Association",2005,183
+9781920196240,"Africa's Peacemaker?",{Kurt Shillinger},"Jacana Media",2009,260
+9780521258753,"Slavery in Dutch South Africa",{Nigel Worden},"Cambridge University Press",1985-04-25,207
+9780195337709,"Encyclopedia of Africa",{Anthony Appiah, Henry Louis Gates},"Oxford University Press on Demand",2010,1392
+9780798302449,"Contemporary Social Issues in Africa",{Mokong Simon Mapadimeng},"African Books Collective",2010,267
+9781919930909,"Animal Rights in South Africa",{Michelè Pickover},"Juta and Company Ltd",2005,210
+9781906924706,"Oral Literature in Africa",{Ruth Finnegan},"Open Book Publishers",2012-09,614
+9780684802756,"The Africa Cookbook",{Jessica B. Harris},"Simon and Schuster",1998,382
+9780385673914,"The Traveler",{John Twelve Hawks},"Seal Books",2010-10-29,496
+9781426212741,"How to Be the World's Smartest Traveler (and Save Time, Money, and Hassle)",{Christopher Elliott},"National Geographic Books",2014-03-04,288
+9780385378581,"Traveler",{Arwen Elys Dayton},"Delacorte Press",2016-01-12,400
+9780385348492,"The Travelers",{Chris Pavone},"Broadway Books",2016-03-08,464
+9781583304396,"Halachos for the Traveler",{Donneal Epstein},"Feldheim Publishers",2000,176
+9780385378574,"Seeker",{Arwen Elys Dayton},"Delacorte Press",2015-02-10,448
+9780838632406,"The Humanist as Traveler",{Jonathan Haynes},"Fairleigh Dickinson Univ Press",1986,159
+9780544133402,"If on a winter's night a traveler",{Italo Calvino},"Houghton Mifflin Harcourt",2012-10-25,276
+9780375704758,"The Seekers",{Daniel Joseph Boorstin},"Vintage Books USA",1999,351
+9780307362155,"The Lion Seeker",{Kenneth Bonert},"Knopf Canada",2013-02-26,512
+9781448192656,"SEEKER",{Arwen Elys Dayton},"Random House",2015-02-12,448
+9780768492750,"Seeker",{Diane C. Layton},"Destiny Image Publishers",2011-07-28,285
+9780813527871,"Seeker Churches",{Kimon Howland Sargeant},"Rutgers University Press",2000,252
+9780618333455,"Seeker of Knowledge",{James Rumford},"Houghton Mifflin Harcourt",2003-06,32
+9781553373599,"The Seeker",{Margaret Buffie},"Kids Can Press Ltd",2002,384
+9783525530061,"What is Stronger Than a Lion?",{Brent A. Strawn},"Saint-Paul",2005,587
+9781573980135,"Lions' Commentary on UNIX 6th Edition with Source Code",{John Lions},"Peer to Peer Communications",1996-01-01,254
+9780525245964,"Honey from the lion",{Wendy Laura Belcher},"E P Dutton",1988-04-01,188
+9780718032234,"Through the Eyes of a Lion",{Levi Lusko},"Thomas Nelson Inc",2015-08-04,240
+9780792272977,"Facing the Lion",{Joseph Lemasolai Lekuton, Herman J. Viola},"National Geographic Books",2005-10,127
+9780060764890,"The Lion, the Witch and the Wardrobe (adult)",{C. S. Lewis},"Zondervan",2005-06-01,256
+9780763637842,"Library Lion",{Michelle Knudsen, Kevin Hawkes},"Candlewick Press",2009,48
+9781404840508,"The Lion's Slave",{Terry Deary, Helen Flook},"Capstone",2007,64
+9780698408319,"Big Magic",{Elizabeth Gilbert},"Penguin",2015-09-22,240
+9781423604396,"Magic",{Jeanette R. Lynton},"Gibbs Smith",2011-05-15,127
+9781908011046,"A History of White Magic",{Gareth Knight},"Skylight Press",2011,207
+9780871698544,"Astral Magic in Babylonia",{Erica Reiner},"American Philosophical Society",1995-01-01,150
+9780307407092,"Magic Books & Paper Toys",{Esther K. Smith, Amy Kalyn Sims},"Clarkson Potter",2008,146
+9780271020457,"Spiritual and Demonic Magic",{Daniel Pickering Walker},"Penn State Press",2000,244
+9780759110403,"A Cognitive Theory of Magic",{Jesper Sørensen},"Rowman Altamira",2007,218
+9780141932408,"Religion and the Decline of Magic",{Keith Thomas},"Penguin UK",2003-01-30,880
+9781451673456,"The Magic",{Rhonda Byrne},"Simon and Schuster",2012-03-06,272
+9789072371898,"Birth in Babylonia and the Bible",{Marten Stol, F. A. M. Wiggermann},"BRILL",2000-01-01,276
+9789004124011,"Disease in Babylonia",{Irving L. Finkel, Markham J. Geller},"BRILL",2007,226
+9789072371638,"Epilepsy in Babylonia",{Marten Stol},"BRILL",1993-01-01,155
+9780300070477,"The Geonim of Babylonia and the Shaping of Medieval Jewish Culture",{Robert Brody},"Yale University Press",1998-01,382
+9788120817180,"Astral Travel",{Gavin Frost, Yvonne Frost},"Motilal Banarsidass Publ.",2000-01-01,240
+9780307473356,"The Astral",{Kate Christensen},"Anchor Books",2011,311
+9780787306205,"Astral Projection (Modus Operandi)",{John Mittl},"Health Research Books",1993-03-01,16
+9780877280699,"Projection of the Astral Body",{Sylvan Joseph Muldoon, Hereward Carrington},"Weiser Books",1970,319
+9780835604383,"The Astral Body",{Arthur Edward Powell},"Quest Books",1927-01-01,265
+9781409784302,"The Astral Plane Its Scenery, Inhabitants, and Phenomena",{C. W. Leadbeater},"Wright Press",2008-06,128
+9780738723624,"Astral Travel for Beginners",{Richard Webster},"Llewellyn Worldwide",2012-07-08,256
+9788120818309,"Astral Odyssey",{Carol Eby},"Motilal Banarsidass Publ.",2002-01-01,270
+9781775410898,"The Astral Plane",{C. W. Leadbeater},"The Floating Press",2009-05-01,144
+9780875421810,"The Llewellyn Practical Guide to Astral Projection",{Melita Denning, Osborne Phillips},"Llewellyn Worldwide",2001,239
+9780307960931,"The Dog Stars",{Peter Heller},"Vintage",2012-08-07,336
+9780719058417,"British Stars and Stardom",{Bruce Babington},"Manchester University Press",2001,260
+9780226217246,"African Stars",{Veit Erlmann},"University of Chicago Press",1991-09-24,214
+9781742535203,"The Fault in Our Stars",{John Green},"Penguin Group Australia",2012-01-11,336
+9781557832207,"Amazon All Stars",{Rosemary Curb},"Hal Leonard Corporation",1996,482
+9780547132808,"The Stars",{H. A. Rey},"Houghton Mifflin Harcourt",2008,160
+9781901990003,"The Amazon Journal of Roger Casement",{Sir Roger Casement, Angus Mitchell},"Anaconda Editions",1997,534
+9780827606692,"Jews of the Amazon",{Ariel Segal Freilich},"Jewish Publication Society",1999,341
+9780226080321,"Underdeveloping the Amazon",{Stephen G. Bunker},"University of Chicago Press",1985-01,279
+9780061853128,"Amazon.com",{Robert Spector},"Harper Collins",2009-03-17,304
+9780936513539,"Amazon Peacock Bass Fishing",{Larry Larsen},"Larsen's Outdoor Publishing",2004-01-01,192
+9780199593569,"Languages of the Amazon",{Alexandra Y. Aikhenvald},"Oxford University Press",2012-05-17,514
+9780340560068,"Amazon",{Dennison Berwick},"Dennison Berwick",1992,241
+9780521437233,"Rebellion on the Amazon",{Mark Harris},"Cambridge University Press",2010-09-13,331
+9780547349619,"The Holocaust in American Life",{Peter Novick},"Houghton Mifflin Harcourt",2000-09-20,384
+9780853239758,"Social Theory After the Holocaust",{Robert Fine, Charles Turner},"Liverpool University Press",2000,266
+9780815630838,"Absence/Presence",{Steve Feinstein},"Syracuse University Press",2005,356
+9780801487194,"Modernity and the Holocaust",{Zygmunt Bauman},"Cornell University Press",1989,267
+9780192804365,"Holocaust",{Peter Longerich},"Oxford University Press",2010-04-15,645
+9780195031997,"Hasidic Tales of the Holocaust",{Yaffa Eliach},"Oxford University Press on Demand",1982,266
+9781616136833,"The Holocaust",{Marty Gitlin},"ABDO",2010-09-01,112
+9780300126761,"Abstraction and the Holocaust",{Mark Godfrey},"Yale University Press",2007,294
+9780691025650,"Galactic Astronomy",{James Binney, Michael Merrifield},"Princeton University Press",1998,796
+9781552093023,"NightWatch",{Terence Dickinson},"Firefly Books",1998,176
+9780387948225,"Early Astronomy",{Hugh Thurston},"Springer Science & Business Media",1996-08-29,268
+9780737728156,"Astronomy",{Clay Farris Naff},"Greenhaven Press, Incorporated",2006-01,224
+9781605501741,"The Everything Kids' Astronomy Book",{Kathi Wagner, Sheryl Racine},"Everything Books",2008-04-01,144
+9780596100605,"Astronomy Hacks",{Robert Bruce Thompson, Barbara Fritchman Thompson},"O'Reilly Media, Inc.",2005,388
+9781400828722,"Galactic Dynamics",{James Binney, Scott Tremaine},"Princeton University Press",2011-10-30,904
+9780521479899,"Quasars and Active Galactic Nuclei",{Ajit K. Kembhavi, Jayant V. Narlikar},"Cambridge University Press",1999-03-11,463
+9781451646894,"Klingon for the Galactic Traveler",{Marc Okrand},"Simon and Schuster",2011-05-17,272
+9780750306249,"Dust in the Galactic Environment, 2nd Edition",{D.C.B Whittet},"CRC Press",2002-10-21,390
+9780547999548,"Galactic Pot-Healer",{Philip K. Dick},"Houghton Mifflin Harcourt",2013-04-16,192
+9780691131290,"The Galactic Supermassive Black Hole",{Fulvio Melia},"Princeton University Press",2007,296
+9780702247071,"Galactic Adventures",{Tristan Bancks},"Univ. of Queensland Press",2012,216
+9781435707061,"Galactic Drifter - Love And Divorce",{Ivan Henley},"Lulu.com",2008-01-01,164
+9780521479110,"An Introduction to Active Galactic Nuclei",{Bradley M. Peterson},"Cambridge University Press",1997-02-13,238
+9781570540004,"Draw the Marvel Comics Super Heroes",{Klutz Press},"Klutz",1995,93
+9781441135421,"Thor",{Martin Arnold},"A&C Black",2011-08-04,225
+9780062314697,"Marvel Comics",{Sean Howe},"Harper Collins",2013-10-01,496
+9780300107272,"The Marvel of Maps",{Francesca Fiorani},"Yale University Press",2005,347
+9780786451159,"Marvel Graphic Novels and Related Publications",{Robert G. Weiner},"McFarland",2008-03-17,399
+9788170246817,"Ganga, a Water Marvel",{Ashok Chandra Shukla, Vandana Asthana},"APH Publishing",1995-01-01,315
+9780671530778,"How To Draw Comics The Marvel Way",{Stan Lee, John Buscema},"Simon and Schuster",1984-09-14,192
+9782940222346,"The Large Hadron Collider",{Lyndon R. Evans},"EPFL Press",2009,251
+9783836548458,"75 Years of Marvel Comics",{Roy Thomas},"Taschen",2014-11-25,711
+9781607746355,"The Comic Book Story of Beer",{Jonathan Hennessey, Mike Smith, Aaron McConnell},"Ten Speed Press",2015-09-22,180
+9780060976255,"Understanding Comics",{Scott McCloud},"Harper Collins",1994-04-27,224
+9781440229886,"100 Sexiest Women in Comics",{Brent Frankenhoff},"Krause Publications",2011-11-13,64
+9781933368375,"Bound by Law",{Keith Aoki, James Boyle, Jennifer Jenkins},"Soft Skull Press",2007-02,96
+9780878054992,"The Comics",{Coulton Waugh},"Univ. Press of Mississippi",1947,364
+9781442696273,"Comics Versus Art",{Bart Beaty},"University of Toronto Press",2012-07-17,288
+9780823005673,"Perspective! for Comic Book Artists",{David Chelsea},"Watson-Guptill Publications",1997,176
+9781604731095,"A Comics Studies Reader",{Jeet Heer, Kent Worcester},"Univ. Press of Mississippi",2009-01-01,380
+9781604732672,"Of Comics and Men",{Jean-Paul Gabilliet, Bart Beaty, Nick Nguyen},"Univ. Press of Mississippi",2010-01,390
+9780415214223,"The Language of Comics",{Mario Saraceni},"Psychology Press",2003,110
+9781580537995,"OFDM for Wireless Communications Systems",{Ramjee Prasad},"Artech House",2004-01-01,272
+9781594548888,"Emergency Communications",{Linda K. Moore},"Nova Publishers",2007,82
+9780863411328,"An Introduction to Satellite Communications",{D. I. Dalgleish},"IET",1989-01-01,338
+9780863413308,"Communications",{Russell W. Burns},"IET",2004,639
+9781845644161,"Broadband Power-line Communications Systems",{Justinian Anatory, Nelson Theethayi},"WIT Press",2010-01-01,174
+9781107649187,"Integrated Marketing Communications",{Lawrence Ang},"Cambridge University Press",2014-01-02,400
+9781292100050,"The Interpersonal Communication Book, Global Edition",{Joseph A. DeVito},"Pearson Higher Ed",2015-06-01,428
+9780306437779,"Data Communications Principles",{Richard D. Gitlin, Jeremiah Hayes, Stephen B. Weinstein},"Springer Science & Business Media",1992-09-30,733
+9781420062489,"Effective Communications for Project Management",{Ralph L. Kliem, PMP},"CRC Press",2007-11-28,240
+9780826466365,"Culturally Speaking",{Helen Spencer-Oatey},"A&C Black",2004-06-01,381
+9781466837270,"Talk Like TED",{Carmine Gallo},"St. Martin's Press",2014-03-04,288
+9780534551926,"Confident Public Speaking",{Deanna Sellnow},"Cengage Learning",2004-04-07,544
+9780495901136,"Cengage Advantage Books: Essentials of Public Speaking",{Cheryl Hamilton},"Cengage Learning",2011-02-07,432
+9780143036753,"Speaking Freely",{Floyd Abrams},"Penguin",2006,320
+9780262620895,"Speaking",{Willem J. M. Levelt},"MIT Press",1993,566
+9781134512928,"On Not Speaking Chinese",{Ien Ang},"Routledge",2005-07-08,240
+9780226662770,"Speaking Into the Air",{John Durham Peters},"University of Chicago Press",2000,293
+9780810105317,"Speaking (La Parole)",{Georges Gusdorf},"Northwestern University Press",1979-12-01,132
+9789027226914,"Speaking Back",{Katharine Gelber},"John Benjamins Publishing",2002,176
+9780495006565,"Public Speaking: Concepts and Skills for a Diverse Society",{Clella Iles Jaffe},"Cengage Learning",2006-01,448
+9781602069374,"The Art of Public Speaking",{Dale Carnegie},"Cosimo, Inc.",2007-11-01,528
+9780273755210,"How to be Brilliant at Public Speaking",{Sarah Lloyd-Hughes},"FT Press",2011,247
+9781285159454,"Cengage Advantage Series: Essentials of Public Speaking",{Cheryl Hamilton},"Cengage Learning",2014-03-25,408
+9781443443012,"TED TALKS: The Official TED Guide to Public Speaking",{Chris J. Anderson},"HarperCollins",2016-05-03,288
+9781433102592,"Public Speaking",{W. A. Kelly Huff},"Peter Lang",2008,194
+9781845574437,"The Art Of Public Speaking",{Vijaya Kumar},"Sterling Publishers Pvt. Ltd",2013-09-11,96
+9780736054539,"Teaching Sport Concepts and Skills",{Stephen A. Mitchell, Judith L. Oslin, Linda L. Griffin},"Human Kinetics",2006,547
+9780435104122,"Developing Poetry Skills",{Geoff Barton},"Heinemann",1998,128
+9781134659432,"Conservation Skills",{Chris Caple},"Routledge",2012-11-12,247
+9781439188347,"People Skills",{Robert Bolton},"Simon and Schuster",2009-11-24,324
+9780521423496,"The Skills of Argument",{Deanna Kuhn},"Cambridge University Press",1991-07-26,324
+9781476796062,"100 Deadly Skills",{Clint Emerson},"Simon and Schuster",2015-10-13,272
+9780435420826,"Skills in Food Technology",{Jenny Ridgwell},"Heinemann",1997,96
+9780684837680,"Lost Laysen",{Margaret Mitchell},"Simon and Schuster",1997-05-06,128
+9780545229241,"Lost and Found",{Shaun Tan},"Scholastic Inc.",2011,128
+9789004311817,"Lost Books",{Flavia Bruni, Andrew Pettegree},"Library of the Written Word",2016-04,526
+9780804741156,"Literature of the Lost Home",{Hideo Kobayashi, Paul Anderer},"Stanford University Press",2000,177
+9781554905591,"Finding Lost",{Nikki Stafford},"ECW Press",2010-12-16,279
+9781101174340,"Lost in Cyberspace",{Richard Peck},"Penguin",1997-09-01,160
+9780385535700,"The Lost Book of Mormon",{Avi Steinberg},"Anchor",2014-10-21,288
+9780743246392,"The Great Gatsby",{F. Scott Fitzgerald},"Simon and Schuster",2003-05-27,165
+9780547627991,"Kung Fu High School",{Ryan Gattis},"Houghton Mifflin Harcourt",2005-09-05,288
+9781416620198,"Differentiation in Middle and High School",{Kristina J. Doubet, Jessica A. Hockett},"ASCD",2015-07-14,295
+9781932565355,"The Social Skills Picture Book",{Jed Baker},"Future Horizons",2006,177
+9781471147760,"Surviving High School",{Lele Pons, Melissa de la Cruz},"Simon and Schuster",2016-04-05,272
+9780944708743,"High School Money Book",{Don Silver},"Adams Hall Pub",2006-11-30,162
+9780307715814,"How to Be a High School Superstar",{Cal Newport},"Three Rivers Press",2010-07-27,272
+9780768926101,"Teens Guide to College & Career Planning",{Peterson's},"Peterson's",2008-03-11,224
+9780520201033,"Modernisms",{Peter Nicholls},"Univ of California Press",1995,368
+9780140185478,"The Guide",{R. K. Narayan},"Penguin",1988,220
+9780028644691,"The Complete Idiot's Guide to Native American History",{Walter C. Fleming},"Penguin",2003,311
+9780813523996,"A Practical Guide to the Marine Animals of Northeastern North America",{Leland W. Pollock},"Rutgers University Press",1998,367
+9780300142402,"Web Style Guide, 3rd edition",{unknown},"Yale University Press",2008,338
+9781568064321,"Physical Fitness",{Ernest M. Burgess, Albert Rappoport},"DIANE Publishing",1993,245
+9781847287397,"The Totally Geeky Guide to the Princess Bride",{Maryann Johanson},"Lulu.com",2006,92
+9780759113046,"Practical Evaluation Guide",{Judy Diamond, Jessica J. Luke, David H. Uttal},"Rowman Altamira",2009-09-16,160
+9781615030620,"Titanium",{Matthew J. Donachie},"ASM International",2000,381
+9780062099044,"Louder Than Hell",{Jon Wiederhorn, Katherine Turman},"Harper Collins",2013-05-14,768
+9780760742181,"The Encyclopedia of Heavy Metal",{Daniel Bukszpan, Ronnie James Dio},"Barnes & Noble Publishing",2003,300
+9781936239764,"Black Metal",{Dayal Patterson},"Feral House",2013-11-25,600
+9780198507765,"The Hardness of Metals",{D. Tabor},"Oxford University Press",2000-08-03,175
+9780979616310,"Swedish Death Metal",{Daniel Ekeroth},"Bazillion Points Books",2008,447
+9783540614814,"The Mott Metal-Insulator Transition",{Florian Gebhard},"Springer Science & Business Media",1997-03-20,318
+9780760345467,"The Big Book of Hair Metal",{Martin Popoff},"Voyageur Press (MN)",2014-08-15,224
+9781550227987,"Heavy Metal Fun Time Activity Book",{Aye Jay Morano, Aye Jay},"ECW Press",2007-09-01,48
+9780122135651,"The Psychology of Music",{Diana Deutsch},"Gulf Professional Publishing",1999,807
+9780795309779,"All You Need to Know About the Music Business",{Donald S. Passman},"RosettaBooks",2011-05-18,480
+9780786751006,"Genesis of a Music",{Harry Partch},"Da Capo Press",2009-08-05,544
+9780801431296,"Music in the Moment",{Jerrold Levinson},"Cornell University Press",1997,184
+9780415353274,"Music in Shakespearean Tragedy",{Frederick William Sternfeld},"Psychology Press",1963,334
+9781843791188,"My First Classical Music Book",{Genevieve Helsby},"Naxos Audio Books",2008-10-01,64
+9781317692164,"Music Education",{Clint Randles},"Routledge",2014-09-19,368
+9780521565448,"The Music of John Cage",{James Pritchett},"Cambridge University Press",1996-03-14,223
+9780838712474,"Pitchman's Melody: Shaw about \Shakespear.\",{Jerry Lutz},"Bucknell University Press",1974,175
+9780762456079,"HomeMade Modern",{Ben Uyeda},"Running Press",2015-05-26,224
+9780393313024,"The Enlightenment: The rise of modern paganism",{Peter Gay},"W. W. Norton & Company",1995,592
+9781451616545,"The Modern Book of the Dead",{Ptolemy Tompkins},"Simon and Schuster",2012-02-14,304
+9780195363067,"Church and State in Early Modern England, 1509-1640",{Leo F. Solt},"Oxford University Press",1990-04-19,288
+9780781755641,"Modern Epidemiology",{Kenneth J. Rothman, Sander Greenland, Timothy L. Lash},"Lippincott Williams & Wilkins",2008,758
+9781606060599,"Modern Japanese Art and the Meiji State",{Dōshin Satō},"Getty Publications",2011,365
+9780195086812,"Church and State in the Modern Age",{J. F. Maclear},"Oxford University Press on Demand",1995,510
+9780199208951,"Oxford Dictionary of Modern Quotations",{Elizabeth Knowles},"Oxford University Press",2007-08-23,479
+9780698179967,"Modern Romance",{Aziz Ansari, Eric Klinenberg},"Penguin",2015-06-16,288
+9780300085051,"Victorian Babylon",{Lynda Nead},"Yale University Press",2000,251
+9780275986971,"Family Ties in Victorian England",{Claudia Nelson},"Greenwood Publishing Group",2007,196
+9780195151916,"Victorian Soundscapes",{John M. Picker},"Oxford University Press",2003-09-04,220
+9780804716024,"Victorian Faith in Crisis",{Richard J. Helmstadter},"Stanford University Press",1990,391
+9780802718792,"The Victorian Internet",{Tom Standage},"Bloomsbury Publishing USA",2009-05-26,256
+9780226744100,"Victorian Sensation",{James A. Secord},"University of Chicago Press",2000,624
+9781859847398,"Late Victorian Holocausts",{Mike Davis},"Verso",2001-01-01,464
+9781409427216,"The Late Victorian Gothic",{Hilary Grimes},"Ashgate Publishing, Ltd.",2011-01-01,188
+9780199245321,"Hannah More",{Anne Stott},"Oxford University Press, USA",2003,384
+9781558490161,"Remembering Elizabeth Bishop",{Gary Fountain, Peter Brazeau},"Univ of Massachusetts Press",1996-02,408
+9780738523934,"Elizabeth",{Jean-Rae Turner, Richard T. Koles},"Arcadia Publishing",2003-08-27,160
+9780813523200,"The Selected Papers of Elizabeth Cady Stanton and Susan B. Anthony: When clowns make laws for queens, 1880-1887",{Elizabeth Cady Stanton, Ann Dexter Gordon},"Rutgers University Press",2006,587
+9780521845434,"The Printing Revolution in Early Modern Europe",{Elizabeth L. Eisenstein},"Cambridge University Press",2005-09-12,384
+9781852853044,"Elizabeth I",{David Loades},"A&C Black",2003-05-30,410
+9781860647826,"Bohemians",{Elizabeth Wilson},"Tauris Parke Paperbacks",2003,275
+9781594858642,"Everest: The West Ridge, Anniversary Edition",{Thomas F. Hornbein},"Mountaineers Books",2013-03-13,304
+9780545392327,"The Contest",{Gordon Korman},"Scholastic Paperbacks",2012-02,137
+9780756668013,"DK Eyewitness Books: Everest",{Rebecca Stephens},"Penguin",2001-03-28,66
+9780547349565,"The Top of the World",{Steve Jenkins},"Houghton Mifflin Harcourt",2002-04-29,32
+9781869614867,"Everest",{Jim Howes},"Nelson Thornes",2001,32
+9780330470025,"Into Thin Air",{Jon Krakauer},"Pan Macmillan",2011-07-06,304
+9780691074481,"Life and Death on Mt. Everest",{Sherry B. Ortner},"Princeton University Press",1999,376
+9781429937184,"Dark Summit",{Nick Heil},"Macmillan",2008-04-29,288
+9781594854613,"Sport Climbing",{Andrew Bisharat},"The Mountaineers Books",2009,254
+9781560252504,"Climb",{Clint Willis, David Roberts},"Da Capo Press",2000,259
+9781426714832,"Climb Higher",{Scott McKenzie, Kristine Perry Miller},"Abingdon Press",2011,128
+9780689858574,"A Time to Climb",{Wendy Wax, Artful Doodlers},"Simon and Schuster",2004-01-01,32
+9781434207845,"Free Climb",{Jake Maddox, Sean Tiffany, Bob Temple},"Capstone",2008-08-01,63
+9780439405065,"The Climb",{Gordon Korman},"Scholastic Inc.",2002,151
+9781615668021,"Two Mountains to Climb",{Philip C. Keeling},"Tate Publishing",2010-07,121
+9780762755349,"How to Rock Climb!",{John Long},"Falcon Guides",2010,320

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<GridPane alignment="CENTER" prefHeight="183.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.RegisterControllers.ExistingUserController">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Visitor ID" GridPane.columnIndex="1" />
+      <TextField fx:id="visitorIdField" GridPane.columnIndex="2" />
+      <Text fx:id="visitorIdFail" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" />
+   </children>
+   <columnConstraints>
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="5.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="106.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="283.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+</GridPane>

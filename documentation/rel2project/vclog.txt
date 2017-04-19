@@ -1,3 +1,69 @@
+commit 67582077d57253d1bb59a70b7e7fa6733bfa5359
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 18 22:36:56 2017 -0400
+
+    Optimized imports and commented anything necessary.
+
+commit abe7e67a8ee94c86efc5ad54d1633ac4e0b67a8c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 22:01:54 2017 -0400
+
+    spelling error
+
+commit d60c1188f23719d933d1efe126664c6dbb4266df
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 21:57:14 2017 -0400
+
+    added inLibrary function for searching books
+
+commit 45181c3eda281d3f4bf3fb45c77c77ab539935da
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 18 21:13:01 2017 -0400
+
+    println removal
+
+commit 3725622c49f3e026b7df8d46d15dae6b606448a3
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Apr 18 21:06:26 2017 -0400
+
+    Fixed PayFine
+
+commit 641924cfe0c603f371b2cccbb2a0bef5a0680b27
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 20:06:21 2017 -0400
+
+    fixed issue with info response and accompanying parse
+
+commit 8977bac8f5d047e0b465153e5f255457dbc7ee77
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 19:53:57 2017 -0400
+
+    fixed issue with parsing info response with google book
+
+commit 7734fb33bdc507c0ec4d8e315ea0f235c8acffdf
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 19:16:49 2017 -0400
+
+    fixed issue with parsing dates from google
+
+commit 83c1e61d0742430b5ddec411580f1c8271dd5eb0
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 19:03:53 2017 -0400
+
+    deleted testing code (oops)
+
+commit f7a515e8d35391ca5c300708040c672006f4e0ab
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 18:57:28 2017 -0400
+
+    fixed google parseBooks response (title and isbn)
+
+commit 9316e112e8e32da835a742464f4bd954ef986915
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 18:28:06 2017 -0400
+
+    parse buy command for google
+
 commit 9a01cf9e9cf1cab6d380b399621d014091ecef3d
 Author: APalumbo97 <ajpalumbo97@gmail.com>
 Date:   Tue Apr 18 18:10:53 2017 -0400

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.MainVisitorController">
+   <children>
+      <FlowPane alignment="CENTER" layoutX="-328.0" prefHeight="251.0" styleClass="background" stylesheets="@../css/root.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" spacing="75.0">
+               <children>
+                  <TabPane fx:id="searchTabPane" prefHeight="149.0" prefWidth="1000.0" styleClass="search-tab-pane" stylesheets="@../css/main.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab id="title-tab" fx:id="searchByTitle" closable="false" styleClass="search-tab" text="Search By Title">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="102.0" prefWidth="938.0" styleClass="search-tab-content" stylesheets="@../css/main.css">
+                                 <children>
+                                    <TextField fx:id="searchTitleField" layoutX="23.0" layoutY="20.0" prefHeight="33.0" prefWidth="899.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                                    <Button id="search-button" layoutX="881.0" layoutY="24.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="25.0" />
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab fx:id="searchByAuthor" closable="false" styleClass="search-tab" text="Search By Author">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0" styleClass="search-tab-content" stylesheets="@../css/main.css">
+                                 <children>
+                                    <TextField fx:id="searchAuthorField" layoutX="24.0" layoutY="20.0" prefHeight="33.0" prefWidth="892.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                                     <Button id="search-button" layoutX="881.0" layoutY="24.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="searchByISBN" closable="false" styleClass="search-tab" text="Search By ISBN">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0" styleClass="search-tab-content" stylesheets="@../css/main.css">
+                                 <children>
+                                    <TextField fx:id="searchISBNField" layoutX="16.0" layoutY="20.0" prefHeight="33.0" prefWidth="558.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                                     <Button id="search-button" layoutX="883.0" layoutY="24.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="9.0" stylesheets="@../css/main.css" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="25.0" left="30.0" right="30.0" top="20.0" />
+                     </padding>
+                  </TabPane>
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <HBox alignment="CENTER" spacing="100.0">
+                           <children>
+                              <Button fx:id="visitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" styleClass="visit-button" stylesheets="@../css/main.css">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Text fx:id="failedLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" />
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" onAction="#logout" prefWidth="100.0" text="Logout" />
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>

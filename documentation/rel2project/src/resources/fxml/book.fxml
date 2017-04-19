@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<GridPane hgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.SearchControllers.SearchResultController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="300.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="250.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" />
+      <Text fx:id="author" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" />
+      <Hyperlink fx:id="isbn" onAction="#select" />
+      <Text fx:id="publishDate" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" />
+      <Text fx:id="publisher" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" />
+      <Text fx:id="pageCount" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" />
+   </children>
+</GridPane>

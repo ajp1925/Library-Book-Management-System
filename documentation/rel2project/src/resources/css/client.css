@@ -1,0 +1,105 @@
+/**
+ * Styling for LBMS GUI for R2
+ * @author: Team B
+ */
+
+* {
+    -main-color: #F36E21;
+    -highlight-color: #f9b086;
+}
+
+#root {
+    -fx-background-color: white;
+}
+
+#client-tab-pane .tab-header-background {
+    -fx-background-color: -main-color;
+}
+
+#client-tab-pane .tab-header-area {
+    -fx-padding: 5 0 -1 20;
+}
+
+#client-tab-pane .tab {
+    -fx-background-color: -main-color;
+    -fx-border-style: none;
+    -fx-pref-width: 225;
+}
+
+#client-tab-pane .tab:hover {
+    -fx-background-color: -highlight-color;
+}
+
+#client-tab-pane .tab:selected {
+    -fx-background-color: #ffffff;
+}
+
+#client-tab-pane .tab:selected .tab-label{
+    -fx-font-weight: bold;
+}
+
+#client-tab-pane .tab:selected .focus-indicator{
+    -fx-border-color: transparent;
+}
+
+#addTab {
+    -fx-background-color: -main-color;
+    -fx-padding: 0, 0, 0, 0;
+    -fx-pref-width: 32 !important;
+}
+
+#addTabButton {
+    -fx-border-style: none;
+    -fx-background-color: -main-color;
+    -fx-padding: 0 0 2.25 0;
+}
+
+#addTabButton:hover {
+    -fx-background-color: -highlight-color;
+    -fx-text-fill: #333333;
+}
+
+#addTab:hover {
+    -fx-background-color: -main-color !important;
+}
+
+#menuBackground {
+    -fx-background-color: -main-color;
+}
+
+.menu-bar {
+    -fx-background-color: -main-color;
+}
+
+.menu-button {
+    -fx-background-color: -main-color;
+    -fx-border-style: none;
+}
+
+.menu-button:hover {
+    -fx-background-color: -highlight-color;
+}
+
+.menu-button:hover .label {
+    -fx-text-fill: black;
+}
+
+.menu-button:showing {
+    -fx-background-color: -highlight-color;
+}
+
+.menu-button:showing .label {
+    -fx-text-fill: black;
+}
+
+.menu-item:focused {
+    -fx-background-color: -highlight-color;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: black;
+}
+
+#bottom-box {
+    -fx-background-color: -main-color;
+}
