@@ -63,7 +63,7 @@ public class LBMS {
             new LBMS(StartType.GUI);
         } catch (IllegalArgumentException e) {
             System.out.println("Usage: java -jar LBMS.jar <type>");
-            System.out.println("Valid types are: gui or api");
+            System.out.println("Valid types are: GUI or API");
             System.exit(1);
         } finally {
             System.gc();

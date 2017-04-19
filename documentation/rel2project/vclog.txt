@@ -1,3 +1,27 @@
+commit d94fc1ab2a2b0f7f373184292e39339f037adb5e
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Apr 19 01:02:02 2017 -0400
+
+    renamed packages
+
+commit 647e375390a778e6b3e92acfa09d43de8d20c926
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Apr 19 00:41:34 2017 -0400
+
+    added inLibrary call to bookSearch
+
+commit 416cf142f710cdae5b89f669b699dfd7eb4aa14b
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 18 22:53:49 2017 -0400
+
+    Added the design document.
+
+commit 03200ceb14c370ad7815470c5895a7b0ca5b9efa
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 18 22:47:20 2017 -0400
+
+    Copied the src directory into the documentation folder, edited README.txt and TODO.txt.
+
 commit 67582077d57253d1bb59a70b7e7fa6733bfa5359
 Author: APalumbo97 <ajpalumbo97@gmail.com>
 Date:   Tue Apr 18 22:36:56 2017 -0400

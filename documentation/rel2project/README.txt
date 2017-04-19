@@ -29,6 +29,3 @@ Admin Credentials:
     -Username: "admin"
     -Password: "password"
     -Use these credentials to access the system on a clean start
-
-Known Bugs/Errors:
-    -TODO add any bugs/errors here
