@@ -160,7 +160,7 @@ public class MainEmployeeController implements StateController {
      */
     @FXML
     public void logout() {
-        new ProxyCommandController().processRequest(manager.getClientId() + ",logout;");
+        new ProxyCommandController().processRequest(this.manager.getClientId() + ",logout;");
         this.manager.display("login", "Login", false);
     }
 }

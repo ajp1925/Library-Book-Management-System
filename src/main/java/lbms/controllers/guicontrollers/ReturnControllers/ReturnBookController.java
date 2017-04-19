@@ -129,10 +129,11 @@ public class ReturnBookController implements StateController {
                     root = loader.load();
 
                     Stage stage = new Stage();
-                    stage.setTitle(visitor + " - Pay Fine");
+                    stage.setTitle(this.visitor + " - Pay Fine");
                     stage.setScene(new Scene(root, 750, 500));
 
-                    ((PayFineController)loader.getController()).load(stage, manager, visitor, responseObject, books);
+                    ((PayFineController)loader.getController()).load(stage, this.manager, this.visitor, responseObject,
+                            this.books);
                     stage.show();
                 }
                 catch (Exception e) {

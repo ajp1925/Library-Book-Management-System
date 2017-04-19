@@ -1,0 +1,19 @@
+:compileJava
+:processResources
+:classes
+:jar SKIPPED
+:shadowJar
+:startScripts
+:distTar
+:distZip
+:assemble
+:compileTestJava
+:processTestResources UP-TO-DATE
+:testClasses
+:test
+:check
+:build
+
+BUILD SUCCESSFUL
+
+Total time: 1.915 secs

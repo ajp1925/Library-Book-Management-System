@@ -20,9 +20,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Chris on 4/18/17.
+ * PayFineController class for the Library Book Management System.
+ * @author Team B
  */
 public class PayFineController {
+
     private SessionManager manager;
     private Stage stage;
     private String visitor;
@@ -34,7 +36,11 @@ public class PayFineController {
     @FXML private TextField input;
     @FXML private Text title, fine, failedLabel;
 
-    @FXML protected void initialize() {
+    /**
+     * Initializes the data for this class.
+     */
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 pay();
@@ -44,13 +50,17 @@ public class PayFineController {
     }
 
 
-    @FXML public void pay() {
-        String payment = input.getText();
+    /**
+     * Pays the fine.
+     */
+    @FXML
+    public void pay() {
+        String payment = this.input.getText();
 
         if (payment.isEmpty()) {
-            failedLabel.setText("Please enter and amount to pay.");
+            this.failedLabel.setText("Please enter and amount to pay.");
         } else {
-            String request = manager.getClientId() + ",pay," + payment + "," + visitor + ";";
+            String request = this.manager.getClientId() + ",pay," + payment + "," + this.visitor + ";";
             String response = new ProxyCommandController().processRequest(request);
 
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
@@ -59,18 +69,27 @@ public class PayFineController {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(SessionManager.class.getResource("/fxml/payment_success.fxml"));
                     Parent root = loader.load();
-                    ((PaymentSuccessController)loader.getController()).load(visitor, payment, responseObject.get("balance"));
-                    stage.setScene(new Scene(root, 750, 500));
+                    ((PaymentSuccessController)loader.getController()).load(this.visitor, payment,
+                            responseObject.get("balance"));
+                    this.stage.setScene(new Scene(root, 750, 500));
                 }
                 catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
-                failedLabel.setText("Invalid amount. Please try again.");
+                this.failedLabel.setText("Invalid amount. Please try again.");
             }
         }
     }
 
+    /**
+     * Loads the data for this class and displays it.
+     * @param stage: the stage
+     * @param manager: the session manager
+     * @param visitor: the visitor of the tab
+     * @param response: the parse response data
+     * @param books: the books with fines
+     */
     void load(Stage stage, SessionManager manager, String visitor, HashMap<String, String> response,
               ArrayList<HashMap<String, String>> books) {
         this.stage = stage;
@@ -81,20 +100,23 @@ public class PayFineController {
         display();
     }
 
+    /**
+     * Displays the data for this class.
+     */
     private void display() {
-        title.setText("Visitor " + visitor + " has overdue books.\nPlease pay fines to continue.");
-        fine.setText(response.get("fine"));
+        this.title.setText("Visitor " + this.visitor + " has overdue books.\nPlease pay fines to continue.");
+        this.fine.setText(this.response.get("fine"));
 
-        List<String> ids = Arrays.asList(response.get("ids").split("\\s*,\\s*"));
+        List<String> ids = Arrays.asList(this.response.get("ids").split("\\s*,\\s*"));
         for (String id: ids) {
-            for (HashMap<String, String> book: books) {
+            for (HashMap<String, String> book: this.books) {
                 if (book.get("id").equals(id)) {
                     try {
                         FXMLLoader loader = new FXMLLoader();
                         loader.setLocation(SessionManager.class.getResource("/fxml/overdue.fxml"));
-                        results.getChildren().add(loader.load());
+                        this.results.getChildren().add(loader.load());
                         BorrowedResultController controller = loader.getController();
-                        controller.load(manager, book);
+                        controller.load(this.manager, book);
                     } catch (Exception e) {
                         System.out.println("Error loading book.");
                     }

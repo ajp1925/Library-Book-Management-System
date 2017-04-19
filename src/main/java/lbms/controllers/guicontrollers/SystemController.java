@@ -168,7 +168,8 @@ public class SystemController implements StateController {
             this.inputFail.setText("No input. Please enter a search.");
         } else {
             this.inputFail.setText("");
-            String response = new ProxyCommandController().processRequest(this.manager.getClientId() + "," + request);
+            String response = new ProxyCommandController().processRequest(this.manager.getClientId() + ","
+                    + request);
 
             try {
                 HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);

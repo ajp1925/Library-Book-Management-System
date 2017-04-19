@@ -37,15 +37,15 @@ public class StoreSearchController implements StateController {
     protected void initialize() {
         ToggleGroup group = new ToggleGroup();
 
-        localStore.setToggleGroup(group);
-        localStore.setUserData("local");
-        localStore.setOnAction(e -> service(localStore));
+        this.localStore.setToggleGroup(group);
+        this.localStore.setUserData("local");
+        this.localStore.setOnAction(e -> service(this.localStore));
 
-        googleStore.setToggleGroup(group);
-        googleStore.setUserData("google");
-        googleStore.setOnAction(e -> service(googleStore));
+        this.googleStore.setToggleGroup(group);
+        this.googleStore.setUserData("google");
+        this.googleStore.setOnAction(e -> service(this.googleStore));
 
-        titleField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+        this.titleField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 search("title", this.titleField.getText(), "", "");
                 e.consume();
@@ -74,9 +74,9 @@ public class StoreSearchController implements StateController {
         this.manager = manager;
 
         if (ProxyCommandController.getStore(manager.getClientId()).equals("local")) {
-            localStore.setSelected(true);
+            this.localStore.setSelected(true);
         } else {
-            googleStore.setSelected(true);
+            this.googleStore.setSelected(true);
         }
     }
 
@@ -137,8 +137,12 @@ public class StoreSearchController implements StateController {
         }
     }
 
+    /**
+     * Controls the button for the search service.
+     * @param button: the button for the search service
+     */
     private void service(RadioButton button) {
-        String request = manager.getClientId() + ",service," + button.getUserData() + ";";
+        String request = this.manager.getClientId() + ",service," + button.getUserData() + ";";
         String response = new ProxyCommandController().processRequest(request);
 
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
@@ -147,8 +151,12 @@ public class StoreSearchController implements StateController {
         }
     }
 
-    @FXML public void titleSearch() {
-        search("title", titleField.getText(), "", "");
+    /**
+     * Searches by title.
+     */
+    @FXML
+    public void titleSearch() {
+        search("title", this.titleField.getText(), "", "");
     }
 
     /**

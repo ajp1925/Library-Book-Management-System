@@ -1,0 +1,3349 @@
+commit 9a01cf9e9cf1cab6d380b399621d014091ecef3d
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 18 18:10:53 2017 -0400
+
+    Cleaned up code, added things to R2 TODO.txt file.
+
+commit 4aa0a66e386440d98c843816e454e7bdf0b004c3
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 18 14:32:08 2017 -0400
+
+    Store selection bug fix
+
+commit e60d3dda52732a172f258db880d61b97fbcc0c06
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 18 14:29:25 2017 -0400
+
+    added getStore to proxy
+
+commit 904953d580da82e622bb8e419fd4e581e46e8e73
+Merge: dbb244a 07d9ad2
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 18 13:55:51 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit dbb244add6b11e8c9769e7caf941475ae48544f0
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 18 13:55:44 2017 -0400
+
+    Added store switching functionality
+
+commit 07d9ad2a8d5ee5d217eacbabc2a049fa154e97a5
+Merge: 2dd71f0 1e38144
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Apr 18 13:53:48 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 2dd71f03e2f6dc8bc8c2db3a52ea7bce4a5edb2c
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Apr 18 13:53:32 2017 -0400
+
+    Deleted a letter in a comment
+
+commit 1e38144e740410f4696f5771ec5a7d4d375167da
+Merge: 044d0fc 9f9973a
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 18 13:35:50 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 044d0fce20aab2679727306fa3f645f5554c5c57
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 18 13:35:44 2017 -0400
+
+    Added payment functionality for overdue books
+
+commit 9f9973aaefa828f3642cc586f3d017fd271a147d
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 18 13:34:14 2017 -0400
+
+    Add task to generate listing
+
+commit 225f3f5effae711bf3a965c38a90e8fc72bdb9fe
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 18 13:00:53 2017 -0400
+
+    Fix library search
+
+commit e3b1e93c2a537d5be05407e346eaa560a3b0c225
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 18 12:41:12 2017 -0400
+
+    Search books by lowercase
+
+commit 2194887b47d8154a815a792ea1b442f29f67a150
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 18 00:10:38 2017 -0400
+
+    Added return book functionality and bug fixes for search, borrow, and buy
+
+commit a4a093d15211ef0a85d67296ac0138eec2123338
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 23:32:45 2017 -0400
+
+    Fixed Return command
+
+commit 225450d7c5d29434d86b79f8e83c9025946974f9
+Merge: 8f89bd5 fe3fbdb
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 23:02:16 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 8f89bd50006165ff73bd3b48cd3ccf747ab47d5c
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 23:02:01 2017 -0400
+
+    Fixed FindBorrowed
+
+commit fe3fbdb9fa80e8e0354af13d0ee62a239254e8ed
+Merge: 862625e e9dc8a3
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 17 22:52:28 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/Return.java
+
+commit 862625e80450009b1edb21e3a536cc54467e98ce
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 17 22:51:31 2017 -0400
+
+    Cleaned up a lot of code, still need to go through the controllers and fxml before generating the listings file.
+
+commit e9dc8a341c9297d27ca19d0f2a0506fe1f8f066c
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 22:46:34 2017 -0400
+
+    Forgot to take out some print statements that were used for testing
+
+commit 4cb720f90d71a2387210aac0596da41ad5f22f28
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Apr 17 22:02:46 2017 -0400
+
+    swapped quantity and id in parse info
+
+commit 25dc339d6666c6bd13bdae6d6ce380dafaf0d886
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Apr 17 21:47:50 2017 -0400
+
+    no-more-copies added to error list
+
+commit 0c1afd1a10fc2e9efe712b2fdf9d8c78c944c8d1
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 21:13:31 2017 -0400
+
+    Fixed BookPurchase I think
+
+commit 6dbac72caec2a0581d0b5515aff085aebfe33553
+Merge: 6db5db8 20c6d1a
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 21:08:39 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 6db5db8f5eba43fd5bf9f8b236bc910019e58162
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 21:08:18 2017 -0400
+
+    Fixed BookPurchase I think
+
+commit 20c6d1ab510d48d06dbce608622e0faa41ca3550
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 17 21:00:06 2017 -0400
+
+    Fixed compilation errors.
+
+commit bae2c5b8be3b7331b92e32585b8b35ed28d21b8c
+Merge: 8e57780 241a3c3
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 17 20:54:54 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/Borrow.java
+    #	src/main/java/lbms/command/Return.java
+    #	src/main/java/lbms/controllers/commandproxy/CommandController.java
+
+commit 8e577806bb2a46d9b61200b59b686ef9315f87b5
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 17 20:51:36 2017 -0400
+
+    Attempted to refactor the search array list into the sessions from the LBMS to work with concurrent clients seraching differently.
+
+commit 241a3c318bec891272b159ac544d398fa422b099
+Merge: e146565 a2a88c4
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Apr 17 17:39:33 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e146565e8266071fac358471e6bba70f1c8179cc
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Apr 17 17:39:27 2017 -0400
+
+    Added in purchase and checkout book functionality
+
+commit a2a88c4133cb1b6f183f2407b7ff18760f098ef2
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Apr 17 16:25:56 2017 -0400
+
+    isbn comparisons changed from != to !.equals
+
+commit 6dde07e11a4accc9521e3e6eb49394eda7807505
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Apr 17 15:57:01 2017 -0400
+
+    add pageCount to storeSearch response, update GoogleAPI parseResponse from storeSearch
+
+commit ddeaef7a2f14318125da4ab9dbe2eb792b6a698b
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 14:52:23 2017 -0400
+
+    Undoable commands that result in an error can't be added to the undoable stack
+
+commit 1d9d0330aa897ba6e4a681bfaf888da4935f8c61
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Apr 17 13:08:04 2017 -0400
+
+    Settings disconnect and logout bugfix
+
+commit 4d3810710655b6b3b01c4da5a86e35f52a525ccd
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Apr 17 11:32:05 2017 -0400
+
+    refactor previous commit
+
+commit aa10c806305e1687ca7926ed5395f660bedfdecb
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Apr 17 11:20:28 2017 -0400
+
+    proxy now stops most command executions if not logged in
+
+commit 7095b0d538f71e06b344ce45c218f49b0cd3d98e
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 17 09:57:39 2017 -0400
+
+    Cleaned up formatting issue and error checking in StoreSearch
+
+commit 000d053ec77f00058c0e1bc602ade314f391072a
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sun Apr 16 23:13:40 2017 -0400
+
+    Bug fix with view requests
+
+commit 85dc1ad08a54424e292f0293b0de60f87cd12a7a
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sun Apr 16 23:10:50 2017 -0400
+
+    storeSearch to work with *
+
+commit 682e64aa6d21295a3b2e4c626f15b19973b2e7b3
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sun Apr 16 22:55:10 2017 -0400
+
+    updated to do list
+
+commit d999af9fa5c1027ebacea8021193a86f2dfaab43
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sun Apr 16 22:50:31 2017 -0400
+
+    minor pane bug fix
+
+commit 8650a5d17dcf7eedae702d6baaf3b9e3bc22eb92
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sun Apr 16 22:44:44 2017 -0400
+
+    Store Search bug fix
+
+commit 6c225075e5b8ee904639b75c04112ac31070f6a5
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sun Apr 16 22:13:42 2017 -0400
+
+    parseResponse treats a store and library search differently
+
+commit 1e628fb09bdc7cdb98b1a245bd15616627ab41be
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sun Apr 16 21:55:08 2017 -0400
+
+    Added store search functionality
+
+commit 2ee630e40fa6ffca9ff5e410a45c5c740b9b2808
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sun Apr 16 20:34:01 2017 -0400
+
+    Added visitor search functionality
+
+commit 20e8d9a3ece05a0e4707b094ea51c7bd37b1c7ff
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Apr 16 19:54:21 2017 -0400
+
+    added search functionality
+
+commit 9dfa155b137f1b0e8ea90e75dc26eb6c5ad55024
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Apr 16 16:03:33 2017 -0400
+
+    Made visitorID an optional parameter in PayFine
+
+commit 9396d16c6439a505f5dc37d63d4cc4ad671feedd
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Apr 16 02:28:46 2017 -0400
+
+    Made visitorID an optional parameter in Return and you can actually Return a book
+
+commit d67e00b72d6ef2b8d87871cff6945e59afa81ff1
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sat Apr 15 18:37:40 2017 -0400
+
+    Edited settings view
+
+commit f506814fcbb35de6488512128aa490f134a2098f
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sat Apr 15 17:46:26 2017 -0400
+
+    Made visitorID an optional parameter in FindBorrowed, Found out FindBorrowed resets a search so a visitor can't borrow from a search that occurred before executing FindBorrowed
+
+commit 5f7be6f1ad80c600ef0ac06d2d3f058660ebcdd0
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sat Apr 15 17:19:49 2017 -0400
+
+    Fixed error checking for invalid book ids in Borrow and also added error checking for no books available
+
+commit f029f9b9bc74db11371b46f9ea96962a9b50d045
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 15 10:44:03 2017 -0400
+
+    parseResponse for report now works
+
+commit c3361e2283d591281e5439a5cc27386daa362b42
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sat Apr 15 02:50:26 2017 -0400
+
+    CreateAccount correctly accounts for MissingParameters
+
+commit 9763e8ee35e3dcd4c9c92a2cdde7b2c5b9e268a0
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sat Apr 15 02:11:04 2017 -0400
+
+    changed tab and clock font weight
+
+commit 22047c0c407dcd2d7d53b5f241f44f512fccf71f
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sat Apr 15 02:03:38 2017 -0400
+
+    Keypress fixes and import optimizations for fxml files
+
+commit cedcbff497b38f938e96795e271dad6a23ac7f8e
+Author: Chris <cxl2436@rit.edu>
+Date:   Sat Apr 15 01:45:44 2017 -0400
+
+    Optimized imports
+
+commit 980c4ff6a3b8d0085b17f7392d7fe7ef2b1ccf3c
+Author: Chris <cxl2436@rit.edu>
+Date:   Sat Apr 15 01:45:04 2017 -0400
+
+    Error label fix
+
+commit ff4e4287211e9f2f7956e7fcdfb497c7c2341c54
+Author: Chris <cxl2436@rit.edu>
+Date:   Sat Apr 15 01:42:48 2017 -0400
+
+    Fixed width of settings pane
+
+commit dc678a115fc7911e271876b0961a38089df7fba0
+Author: Chris <cxl2436@rit.edu>
+Date:   Sat Apr 15 01:40:59 2017 -0400
+
+    Added System Settings functionality, report currently broken due to command response
+
+commit 7f0027d361c2e35ddcae636e41e2774d7551ba9d
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Fri Apr 14 23:24:21 2017 -0400
+
+    Cleaned up the code a little.
+
+commit e4d2fe5298bcd220c053e49398fe74cbaa5e3a38
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Fri Apr 14 23:07:07 2017 -0400
+
+    Refactored Undoable interface with the Command interface.
+
+commit 6c6fbc00a002d40d860bff3b0f7b42f9f4e73f25
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Fri Apr 14 21:36:12 2017 -0400
+
+    Fixed unit tests for EndVisit.
+
+commit c5e3707e99fc29923be65ccc84c353bd6724f1c5
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 14 18:54:27 2017 -0400
+
+    created R2 Design Document
+
+commit 147da96245dd8029a5d3767808cc60577eafe812
+Merge: de7d930 16e82d6
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 18:30:34 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit de7d930778c4a0367fced475580314694024357a
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 18:30:16 2017 -0400
+
+    Fixed EndVisit so only employees can end a visit for anyone and visitors can only end their own visits. Tests for EndVisit don't work anymore due to changed constructor parameter.
+
+commit 16e82d6f68f089d976862baae904047eddd12082
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Apr 14 18:12:41 2017 -0400
+
+    Added visit management functionality to views
+
+commit 407497c6b93fa4b31d435d100b0f66043456928e
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 17:44:05 2017 -0400
+
+    Fixed BeginVisit so only employees can begin a visit for anyone and visitors can only begin a visit for themselves
+
+commit e6ccd097b472fe941e6e63a7451608484003e7c1
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 16:28:02 2017 -0400
+
+    Added handling for missing parameters in RegisterVisitor
+
+commit 8843523eb2a34004041066244bd51dae295c5cc7
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Apr 14 16:18:39 2017 -0400
+
+    Added logout and multiple instances of a single user handling
+
+commit 3fd0673cfdc85acd8f40ca9b2c308fce1a08c8f1
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 13:31:36 2017 -0400
+
+    Added initial commas to error strings
+
+commit d19f70dd34e6b00050041fd421ca727f0ea41f68
+Merge: aaf86c7 51aa32d
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 13:31:00 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/test/java/lbms/command/BorrowTest.java
+
+commit aaf86c78449853428122659f762f138d1e2a5085
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 13:27:55 2017 -0400
+
+    Borrow command should now work and changed one test because visitorID is not a required parameter
+
+commit 51aa32d2d2a72dc4adaab657b1ad02c10ad6a642
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 14 12:30:55 2017 -0400
+
+    updated borrowTest (commas)
+
+commit c80a8c06c90f0c1c99f17f8db315bc2ae65b3b4b
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 14 12:28:45 2017 -0400
+
+    updated borrowTest (commas)
+
+commit ecd95e07a9ac173668855dfb4ef7a7f49aa9fbf4
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 12:11:43 2017 -0400
+
+    Borrow command should now work
+
+commit 3d66e9854667eda3f459fbe0771044797e5578de
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Apr 14 11:40:18 2017 -0400
+
+    Borrow command can borrow books without a visitorID mentioned
+
+commit 9245a41f341b6de145eb97472dd9f44a47851dfc
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Apr 14 02:07:41 2017 -0400
+
+    Added Front End todos
+
+commit e3e0d8a10f07b9c939c30ab8bf3f13d59e2316ba
+Merge: 8aad4ff 16e4d56
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Apr 13 21:04:02 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 8aad4ffc4967833be9cb16d2bc65130d45301e76
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Apr 13 21:03:48 2017 -0400
+
+    Comments push.
+
+commit 16e4d56f411b6bba66bd9b8763de792d1e74b46c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Apr 13 20:52:16 2017 -0400
+
+    added case of library closed to mainVisitorController
+
+commit aef6912a42fec455faa2de126b73a66b6e675cf8
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Apr 13 20:38:23 2017 -0400
+
+    added error message for library closed
+
+commit ddf2bbe6f498efe32721f330ea650135482d59dd
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Apr 13 17:35:18 2017 -0400
+
+    Purged the dreaded CLI views that were useless and implemented the state pattern for when the library is open or closed.
+
+commit c3eaa82cfb20de96c1e0fbca5b851cdda3735eea
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Apr 13 16:44:26 2017 -0400
+
+    remove debug print statements
+
+commit e498095614f224193cdfde371148f72b6bcf2f32
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Apr 13 16:43:09 2017 -0400
+
+    fixed bug in Proxy (visitorID passed to isEmployee)
+
+commit fa44b4e85501393d4bd38c99efc3fd8d99bb023f
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Apr 13 15:07:08 2017 -0400
+
+    Updated user registration and account creation
+
+commit 171acffd6f95b5dba95d3c2fb1a754b0bb7bdbab
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Apr 13 13:50:48 2017 -0400
+
+    Optimized imports for the entire lbms package (everything).
+
+commit 926e891f1f1ebce12fd53f9cf8fc0e6a4638b882
+Merge: 1a1e1c3 a97f82e
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Apr 13 13:35:05 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 1a1e1c3d26eabaa4c71753054c9e7cd9be4462f9
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Apr 13 13:34:48 2017 -0400
+
+    Fixed Borrow command so it can borrow all books mentioned instead of just the first one
+
+commit cc271f4710860a92a6175c8b0e267735734b2243
+Merge: 61fc537 3f0228f
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Apr 13 13:33:37 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit a97f82e0fb8342d2a6fb52d612fce243f57209db
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Apr 13 13:32:59 2017 -0400
+
+    visitors can search now
+
+commit 3f0228f55f5167677ba45cf57eb5c5dc987a7f8e
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Apr 13 13:30:48 2017 -0400
+
+    removed unnecessary print statements
+
+commit 61fc53767099d94a615a4d3730d42b2646160a6e
+Merge: 72c1440 fd563c5
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Apr 13 13:25:54 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit fd563c50d8f4d31c35372f5833da08b8bb93894a
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Apr 13 12:40:35 2017 -0400
+
+    missing-parameters is now parsed to message
+
+commit 4ce0757babc9a4b7a36b0644a03784e82c06acd6
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Apr 12 14:40:43 2017 -0400
+
+    updated proxy unrestricted commands and endvisit test
+
+commit 72c14406414f0519de6a1882f017a2bd3b1bec0c
+Merge: edb4e80 dd66873
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Wed Apr 12 14:38:12 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit dd66873c965a04806dc435ee1a853c1f662f1bf6
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Wed Apr 12 14:36:04 2017 -0400
+
+    Added admin pre-load.
+
+commit edb4e80f92b511c8dcbad8b30b5e3d9eea185594
+Merge: 947dc29 f20c5b3
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Wed Apr 12 14:14:15 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/Borrow.java
+
+commit 947dc296d76100a41868a032c05ddf9a57e7d537
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Wed Apr 12 14:10:47 2017 -0400
+
+    Working on borrow command
+
+commit f20c5b38f2d5dde6da5197bc065fb52c808dec42
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Apr 12 14:07:07 2017 -0400
+
+    parseBooks now returns an ArrayList of HashMaps (which maps books info)
+
+commit 5e6a0c5a77437dc3a850f52f3a2c238e2a03b798
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Apr 12 14:03:54 2017 -0400
+
+    parseResponse now always has a message
+
+commit 95ee6435fbe9567d707ffcd30822b5db9e7fca03
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Apr 12 02:15:25 2017 -0400
+
+    removed menu button, added main_employee view, added parse response TODOs
+
+commit d622bf4b91e2e7522d0d02e35db5637414581d2a
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 11 23:39:18 2017 -0400
+
+    added parseResponseUtility
+
+commit 083e8ed8ba68ea5825765e2e92134f393f1850da
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 11 23:23:20 2017 -0400
+
+    added two more getters to Book
+
+commit 55f18bf7613caf58332cb2723c5b9f0edad9f797
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 11 23:06:00 2017 -0400
+
+    updated EndVisitTest and added documentation
+
+commit 2903faf1d867e430979658d608adb0901ca7feb4
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 18:26:00 2017 -0400
+
+    Fixed Borrow so all unit tests pass.
+
+commit f0aded4807ab07b1713463a4890983f9317fe80a
+Merge: c7e0e52 4ad8ce4
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Apr 11 18:01:00 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/Borrow.java
+
+commit c7e0e5241162665c819df9ae2781113a72b7dfbf
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Apr 11 17:58:07 2017 -0400
+
+    Working on fixing the Borrow command
+
+commit 4ad8ce4b5d06dbb3e52ee6ca47646d881f8cf485
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 17:18:41 2017 -0400
+
+    Changed the missing parameters exception usage a tiny bit.
+
+commit 06d0ace98c6441bc449d2e6aa61a81e042f75239
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 17:00:35 2017 -0400
+
+    Added comments to client and main visitor controllers.
+
+commit a8e7c879754e56ba48756bfc54e24a91e724aad9
+Merge: 06fd41d 8291205
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 16:50:58 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/controllers/guicontrollers/ClientController.java
+
+commit 06fd41d16a0c38423cb15bc33b5b2576a122c7de
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 16:46:40 2017 -0400
+
+    Commented all the stuff in the commands package and added files to the release 2 folder in documentation.
+
+commit 82912054de53457d0c3b20d77e926f2747cbf8b3
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 11 16:30:34 2017 -0400
+
+    Removed un-needed hamburger menu (sadface), added visit button hover, fixed tabs
+
+commit 7c7f5ffa81d9a6ec9172502e7c3e143b7aa0742d
+Merge: 87839d8 4efe3a2
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 13:50:05 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 87839d837790076833e8280efdf6cae805e3acec
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 13:49:54 2017 -0400
+
+    Fixed inLIbrary bug.
+
+commit 4efe3a2533a323123da8a433de172f2f2543eb5f
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 11 13:49:23 2017 -0400
+
+    Added main visitor view begin/end visit functionality
+    Added login employee vs visitor landing check
+
+commit d81e72599733dfd3d464c607c8ca1a754abd55b2
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 13:38:55 2017 -0400
+
+    Fixed a compiling error.
+
+commit 8186a41c66bd0b237e61be64e97e5658258d2b78
+Merge: 48f9da8 588176e
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 13:38:10 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 588176e53714c2362df3428926b977d87b3f850f
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Apr 11 13:39:14 2017 -0400
+
+    Fixed formatting and functionality of LibrarySearch
+
+commit 48f9da81b6120155db5e0b385f2289c1b76953f8
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 13:38:02 2017 -0400
+
+    Added inLibrary.
+
+commit f6da115559053c5e7bac8496888a6abced523957
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 13:26:23 2017 -0400
+
+    Added isLoggedIn to the ProxyCommandController.
+
+commit 5dd86c4509d13544c255569c9a04c3c24070fa7e
+Merge: d00baf7 8603647
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 13:12:04 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/ClientConnect.java
+
+commit d00baf766cea040d11dfcc2283bc47607ff2bea3
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 13:11:40 2017 -0400
+
+    Fixed connect.
+
+commit 8603647e81038f1a32fa969ad9ff962a068ff138
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 11 13:06:28 2017 -0400
+
+    updated EndVisitTest
+
+commit 3e6879ce02324c12db63ca59d539d29971eb7fd8
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 11 12:49:20 2017 -0400
+
+    fixed commands to pass unit tests except EndVisit
+
+commit 7bfc1ebccb1016cd94bbb81ccbc1bc3c8861c7b5
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 12:39:04 2017 -0400
+
+    Added a comma.
+
+commit 4554bce624942a6850ffbbc4f765a292aeca91d2
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 11 12:01:59 2017 -0400
+
+    Fixed some of the null pointer exceptions in the unit tests.
+
+commit b0124f4402251fc7a6cade59253ab89177578b0e
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Apr 11 00:13:27 2017 -0400
+
+    Added comments to my new methods and included the this keyword
+
+commit c7b8e195f2c4b5c11c2b3d28e539bed6a969e7c6
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Apr 11 00:02:14 2017 -0400
+
+    Finally pushing my unexecutes
+
+commit aa2740b9f56677a2608bf212e6d14b2d8f5f4275
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Apr 10 23:53:51 2017 -0400
+
+    Trying to fix my life by fixing my Git
+
+commit 543875abcefee770dddb38d02fa183810b97a3f8
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 10 23:45:12 2017 -0400
+
+    Commented everything in the viewstate package, only section left is the entire controllers package.
+
+commit 0cf6271e6632287cf3b4b73231fd2ab7a7bd6896
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 10 23:27:01 2017 -0400
+
+    Commented everything so far except the viewstate package in CLI and the entire controllers package.
+
+commit b2bbd8231eb86e4ed9585bb30cee751320c92d38
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 10 22:21:01 2017 -0400
+
+    Removed some TODOs in the command package.
+
+commit 807599ff8c3ddf5aa1e2c34f5bd71736743f6207
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 10 22:17:32 2017 -0400
+
+    Worked on more commands, also fixed when an invalid command is created.
+
+commit fce776ae7552008a82ed47b820e9dbfd4d10488e
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 10 19:25:29 2017 -0400
+
+    Worked on fixing the commands.
+
+commit faab86b74689e42d2914f1020547a8667dd0ab42
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Apr 10 15:37:22 2017 -0400
+
+    update unit tests
+
+commit 8a3a89da7e09045f690fb841f4fb0b1d80c0cf17
+Merge: 35f91f0 b5ecfd0
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 10 10:07:14 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 35f91f040736eba5500df37c240f52b6e52ac4ca
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 10 10:07:05 2017 -0400
+
+    Fixed register command bug.
+
+commit b5ecfd0dbf8afd50332219c9115389c8dde5536c
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Mon Apr 10 01:44:15 2017 -0400
+
+    renamed commandproxy classes
+
+commit 1f0d6cd26fc77c3967fa3ba3cd57e6f2499c4fc2
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Mon Apr 10 01:07:34 2017 -0400
+
+    Updated todo for R2 with pattern use reminders
+
+commit 36d1415d2530d1303e5c3032da274e4b7fcce80a
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sun Apr 9 23:04:09 2017 -0400
+
+    Minor page adjustments and added new main landing page
+
+commit 4e628bfd1cffb2d2a484cd5fe7f5261ea008049e
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Apr 9 21:57:15 2017 -0400
+
+    Attempted to implement set book service, however you need an employee to get it to work, so it has not been tested.
+
+commit ac9959400923d3a0db3d070eda21754798bb1bc8
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Apr 9 21:18:09 2017 -0400
+
+    Create visitor works, register seems to work too.
+
+commit ac086615671098289023d30a30c88c59e2bef931
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Apr 9 21:00:43 2017 -0400
+
+    Connect and disconnect are confirmed to work.
+
+commit 229e6acb946ce454625fd2b53d363d3f30fdb286
+Merge: 1d34370 2dc8f4b
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Apr 9 17:43:02 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 2dc8f4bb8151f3bd3253a1bab9afdeda496dbe49
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Apr 9 13:28:36 2017 -0400
+
+    Test comment
+
+commit 1d34370042d1717a879979923284db68910fa7e9
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 17:15:25 2017 -0400
+
+    test
+
+commit 52df58e4c2c490e9f629167974a0090de7c16d2c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 15:56:15 2017 -0400
+
+    update endVisit, added endVisit TestCase, create re-usable check in Proxy
+
+commit d07e87600c86ca40c403292d8e584d9252f62c8b
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 13:29:00 2017 -0400
+
+    added conditional to borrow to check book availability
+
+commit 214d48aac2b590a4e453362236483f9dbae8fb0c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 12:20:46 2017 -0400
+
+    fixed ClientConnect TestCase
+
+commit f011366da71312b2d9ffcf3820e7a2328fd3c230
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 12:17:48 2017 -0400
+
+    updated borrow command for R2 request
+
+commit af94193abf0e5f40b53fcd3fd417e06e82e7632b
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 11:44:39 2017 -0400
+
+    add Disconnect TestCase
+
+commit a943744888b610a91cdce4f0647fc84afbee1861
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 11:36:19 2017 -0400
+
+    add ClientConnect TestCase
+
+commit e5b79c35303efd0f3e0ebcb233404eeb2793b10b
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 11:27:58 2017 -0400
+
+    fixed bug in registerVisitor relating to new PhoneNumber class
+
+commit 7b4f7625b80c7cb0fa48941c27ededd77a23acc8
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 11:20:00 2017 -0400
+
+    revised authorization failure message
+
+commit cb7582578b79275c861fa3d1635ca1134f0d41f9
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sat Apr 8 11:19:31 2017 -0400
+
+    implement LogOut and add TestCase
+
+commit e8157a6a1d27415f945809872edf051f66ea650e
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Sat Apr 8 02:40:20 2017 -0400
+
+    Fixed visitor response parsing
+
+commit fc13437d2c472ad758376665827989ca625ba2ff
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Apr 7 23:03:33 2017 -0400
+
+    fixed bug when registering
+
+commit 0a3a17e330902847ef009e02a718e0be6f4a650c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 22:55:58 2017 -0400
+
+    reformat response from controller for connect cause its special
+
+commit 889f7fe8dc3dcb10f3184b1549a4b1e261a83bd4
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 22:52:24 2017 -0400
+
+    reformat response from controller
+
+commit f3e68bdf4e714f2436b00b1419741e5fea4a32cb
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 22:47:23 2017 -0400
+
+    visitor can now create account
+
+commit 635cc2623d02b8e2cc9d8c56ab24f8498cb013f9
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 18:45:47 2017 -0400
+
+    updated LogIn command so it actually makes some sense
+
+commit 1d1b838507ee14bb793e61e43f606ce9531750cf
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 18:31:05 2017 -0400
+
+    implemented login and added LogIn TestCase
+
+commit 70f41932a32d0287677ec1ca99c79bedb4f59c27
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 18:30:44 2017 -0400
+
+    updated visitor permissions
+
+commit ab534ef4d96c54c322efe43d7c12acbd43d43521
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 18:06:52 2017 -0400
+
+    removed session proxy (condensed into session)
+
+commit bd2d1fec0d49246d88df364f2d811e602990b2ef
+Merge: 6068e62 4afd27c
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Apr 7 14:55:53 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 6068e62fc2ef49469a662eaa6c6f2db9da954b6a
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Apr 7 14:55:45 2017 -0400
+
+    Whoopsie doodle
+
+commit 4afd27cae796728d16be5b7e488ea41f3d55db8c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 14:52:11 2017 -0400
+
+    removed duplicate isOpen function
+
+commit 5ffcb75bf2698370991ecd1be26bbccdee3df447
+Merge: fb6935a b3fd901
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 14:50:49 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit fb6935a1bd9885b002d6ace024bf0a7d75a17e0d
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 14:50:37 2017 -0400
+
+    implemented proxy with CommandController
+
+commit b3fd901111575426f4836a422195caf0d8a27926
+Merge: 0181bd3 224ebfd
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Apr 7 14:46:20 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 0181bd32e54f871da0ff9a6dfbdc3db308a1fccc
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Apr 7 14:46:14 2017 -0400
+
+    Implement PhoneNumber
+
+commit 224ebfd116a2a1aba41dd20c3a4cd78a5ac57e02
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Apr 7 14:34:31 2017 -0400
+
+    Converted clientId to Long
+
+commit 113aca372455b449e735acd8fb6efce0b8cfdb1b
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Apr 7 14:15:59 2017 -0400
+
+    Register and login exception check. Button and clock formatting
+
+commit 7f39e55c44c198b986ff02277e14916f46561a1a
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 14:03:17 2017 -0400
+
+    added more getters to visitor
+
+commit 3dfce08cc58c3b96ef0c919cc3a3c4356f4e4794
+Merge: 9aeb20c 6ea6f95
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Apr 7 13:50:41 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 9aeb20c91f3baf342690ee6e3ca9c664094b0e4a
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Apr 7 13:50:36 2017 -0400
+
+    Edited clock format and display
+
+commit 6ea6f9521c89f00441b7e7554c0ed16e8e017d41
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 13:12:28 2017 -0400
+
+    implement CreateAccount command
+
+commit bd199bf44a6f6d2c5e8680941715b5625e3dddf0
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 12:10:32 2017 -0400
+
+    add CreateAccount Testcase, reformatted RegisterTest asserts
+
+commit 2f698fb82cee7ccc102a28ece93cba9ff57929cf
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Apr 7 09:44:40 2017 -0400
+
+    add RegisterVisitor TestCase, fixed Register command to pass
+
+commit 46c8c71a2d4e5318f2696c7ea1541ac93b9691eb
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Apr 6 23:51:37 2017 -0400
+
+    Login field checks
+
+commit 5f6d680b24f5181fe07c0287e4b92e4639302045
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Apr 6 20:51:25 2017 -0400
+
+    Connected register to backend
+
+commit 5b87a560fb340e9f5f9e7e7bdd664986251e43b2
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Apr 6 20:50:42 2017 -0400
+
+    Connected register to backend
+
+commit fdeec6bf61122f7bbbe04ca972a6f3c9e558771b
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Apr 6 20:08:01 2017 -0400
+
+    Added register front end
+
+commit 90e905156b475b916e5b898992415d8f22f1c35d
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Apr 6 12:49:05 2017 -0400
+
+    Deleted empty constructors for CLI viewstates
+
+commit 0f449b59efee24f1dd28c99d8dad8adfcf0bf140
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Apr 6 12:45:27 2017 -0400
+
+    Refactored commands and cli
+
+commit 01515c76d19e1cbf967189202423172e3f612093
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Apr 6 12:26:46 2017 -0400
+
+    removed system_status boolean from commandController
+
+commit 404214ebc9a005a55fa056aabd375862542271c5
+Merge: c2e1267 2d87281
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Apr 5 16:01:20 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit c2e12675e288467df642af142f9b3987a45d586c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Apr 5 16:00:58 2017 -0400
+
+    add Borrow TestCase
+
+commit 2d87281c58726ff2905ab41cff829c8e9d5fee74
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Apr 5 15:12:23 2017 -0400
+
+    Edited tab closing ability
+
+commit a0682a983b0ea7cbc2d6dc78badc52889835911f
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Apr 5 14:54:03 2017 -0400
+
+    Decoupled views and model because I'm bad at programming
+
+commit 607abfbb623c6e2971ffbc8bece3b5d625f273f6
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Wed Apr 5 00:05:28 2017 -0400
+
+    Edit menu bar hover colors for windows
+
+commit f864e77a44688a5ab3c8398bd2870f91f0438e94
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 4 22:25:13 2017 -0400
+
+    Removed two variables.
+
+commit 59fe2e0ef3d7a10032be7a02ce05ce550a969e5d
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 4 22:18:51 2017 -0400
+
+    Implemented connect and disconnect.
+
+commit 7c201b10546ba020357bfbab01e9ca0b9560d4db
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 4 21:20:04 2017 -0400
+
+    Implemented session package stuff.
+
+commit 13361c9377a0092229bd828644110100a27b25ba
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 4 17:31:14 2017 -0400
+
+    Edited menu background color
+
+commit a97a770c34a346d65fa2a1360ca291335c9ecc37
+Merge: e4f820d 3f17bde
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 4 17:24:50 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e4f820d03f9dc013152e4b2a3e64d57759facb46
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 4 17:24:44 2017 -0400
+
+    Adjusted key bindings for menu
+
+commit 3f17bde3af1815d6a3d57182bac09d841ad3280f
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 4 17:12:57 2017 -0400
+
+    fix BookPurchase to pass unit tests
+
+commit 61a040e23337040db4382e18d55a6380b24a4956
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 4 17:11:42 2017 -0400
+
+    add testcase for BookPurchase command
+
+commit 969167712f1b3b95c62fdd872efbbff4395a7444
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Apr 4 17:10:02 2017 -0400
+
+    parse JSON response from GoogleBooksAPI
+
+commit 5a9262af0a79a8c359b397bcce3c654cc4dcd947
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 4 16:34:34 2017 -0400
+
+    Added menuBar to GUI
+
+commit 07c1a0724c1fa05024e4220eeb4161624a5b046e
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 4 14:43:04 2017 -0400
+
+    Fixed infinite loop bug in CLI
+
+commit 9038cce2b83083e0352104976caa56e1e251a411
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 4 14:41:34 2017 -0400
+
+    Refactored packages
+
+commit efb2a58a6cf2fb4253f4844edd445e7ccb17422d
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 4 14:07:59 2017 -0400
+
+    Made the Session package private.
+
+commit 9bec8eea63435765d82c7bfbac87e5a779e5a341
+Merge: 2b99470 663e696
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 4 14:03:21 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/LBMS.java
+
+commit 2b994704632b7590eedfc7c2438260e4c3a96aa4
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Apr 4 14:02:26 2017 -0400
+
+    Edited lots of stuff.
+
+commit 663e6962dd2a238446cbb5111c4c4454fec21d7f
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 4 13:53:19 2017 -0400
+
+    To uppercase instead of lowercase
+
+commit 8284952f305a7c54ce4e26926dce11fba1074b78
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 4 13:47:29 2017 -0400
+
+    accept lowercase arguments
+
+commit acbe29cc66e78529510555d4edb8d97b3f907bd9
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 4 13:45:52 2017 -0400
+
+    ISBN implements Serializable
+
+commit 5440db144e50e1748e95b893647ec32985f8399b
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 4 13:44:59 2017 -0400
+
+    Use Enum for StartType
+
+commit feaa90ea3bce3682bd117318bf25ae684173e08d
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 4 13:29:13 2017 -0400
+
+    Use contains instead of equals in userSearch
+
+commit abf7f3fa0ea480c994fdac262d952ac824e1fc62
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 4 13:21:01 2017 -0400
+
+    Use new ISBN class
+
+commit c5262ce95c3796ee92caccc6f780b65d08c1feaa
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Apr 4 13:11:50 2017 -0400
+
+    Create ISBN class
+
+commit 6d96d8e9f0ec0ccb21c5a61feb01eda3b07d6dee
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Apr 4 12:31:24 2017 -0400
+
+    Reformatted file structure
+
+commit 8550b4978a90f6647d8243c8ab656e79200d27cc
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Apr 3 19:05:41 2017 -0400
+
+    Edited CommandController to parse for clientId
+
+commit fb41834d3a0f639f4171a7d0458bd6673d45d787
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Apr 3 18:44:38 2017 -0400
+
+    Edited the command controller.
+
+commit 69db4d4f3600120ca02368f3de0fd41a0be3726f
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Apr 2 21:20:10 2017 -0400
+
+    Changed Employee.
+
+commit c785a8fcd2a468b539ddf1d7338f1a465a5e84d2
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Apr 2 19:41:45 2017 -0400
+
+    Refactored stuff for the R2 implementation.
+
+commit c6e1a59f36fa2e2b333dfef7df13ea791330fca6
+Merge: 72d6c93 fbf8149
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Apr 2 18:37:56 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit fbf81495184915d0718c10c82394cb27e030c561
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Apr 2 18:34:44 2017 -0400
+
+    Optimized imports and added clock to client
+
+commit 72d6c93037af4da0492170e57ce31346e1acd682
+Merge: 33850d8 a062b2e
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Apr 2 18:30:17 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit a062b2ec12cf40f238d7f368ba76b39ec8659736
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Apr 2 17:16:54 2017 -0400
+
+    Added login success/failure message for login
+
+commit 6fa9049fce0f81dee6a8c3d5c05b624871621b4c
+Author: Chris <cxl2436@rit.edu>
+Date:   Sat Apr 1 18:17:12 2017 -0400
+
+    Updated GUI
+
+commit 33850d895ac80f2a42406b82f59e8ca1b995c3ab
+Merge: 32a6795 21521cb
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Fri Mar 31 16:56:23 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 21521cb265afbef7709beef2ccb59545ccef736c
+Merge: 1365e7d 35c8fbf
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Mar 31 16:49:52 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 1365e7dc1266f255ac9582b0977fbe8059c55d86
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Mar 31 16:49:42 2017 -0400
+
+    Updated GUI tab look
+
+commit 35c8fbf91471a9de9b32a7bdf54a53a165b8a6cd
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Mar 31 14:47:35 2017 -0400
+
+    Don't repeat try-catch in LBMS::makeBooks()
+
+commit 0a59cae9a12342c718513cd5942596c8c1d91418
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Mar 31 14:32:26 2017 -0400
+
+    Use switch in some commands instead of if-else ladder
+
+commit 32a6795b7e5164678ac4ccd1eed4bd50a705c7dd
+Merge: ca9c10d e12b5f7
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Fri Mar 31 14:32:05 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e12b5f72298dd1bc3041b698c3bda1b7d5199393
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Mar 31 14:30:14 2017 -0400
+
+    Optimize string building in LibrarySearch and StoreSearch
+
+commit ca9c10d8264df3008cd9e3d76f5b0ae3f9fa0852
+Merge: c674fb7 b8a552a
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Fri Mar 31 13:58:46 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit b8a552abbaf9c5a877344c24e27f26cfa1278907
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Fri Mar 31 00:40:01 2017 -0400
+
+    Edit clock button font
+
+commit 878936f621593beff6e12b2bc866752c0ca06760
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Fri Mar 31 00:25:44 2017 -0400
+
+    Initial Client GUI
+
+commit c674fb71d66fabd8031c279e56700bca580893c0
+Merge: 59bf1fd 2e55dfa
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Mar 30 21:04:55 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 2e55dfa383fbe0528be6acc0902b51b377ce0fd1
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Thu Mar 30 19:56:25 2017 -0400
+
+    Fixed bug in CLIView
+
+commit 9087a3793a6b96019279df7c1d1b7ebc1b88f008
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Mar 30 19:47:02 2017 -0400
+
+    Began View Creation (NOTE: GUI breaks)
+
+commit 59bf1fd6bb9ae9c2262c3474b50b2ea2322e310e
+Merge: c53f734 f2ac7a5
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Mar 30 13:01:31 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit f2ac7a5793cd732f361d24f7a1101966ac4f068d
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Thu Mar 30 12:50:59 2017 -0400
+
+    Shade GSON into build jar
+
+commit c53f734aafc79483bdff59fc850c19e40ac8c35b
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Mar 30 12:41:08 2017 -0400
+
+    Merge branch 'master' of /home/anthony/Documents/Code/java-projects/Library-Book-Management-System with conflicts.
+
+commit a6fa0ef710a805cda20cec346fe0015128e909be
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Thu Mar 30 12:38:31 2017 -0400
+
+    Fix / Comment out tests
+
+commit f6ff6643de50b1de308004231169d3c0e3f4235c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Mar 30 10:09:00 2017 -0400
+
+    refactor function name
+
+commit 8f1bcfc9103b2bfad4dfd31ee7466463dea309d5
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Mar 29 09:24:08 2017 -0400
+
+    simplified handling
+
+commit 6ffba917724f79217b2309426246b0509522edde
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Mar 28 21:03:14 2017 -0400
+
+    fixed old comment
+
+commit 68a3755cd16ffd9cd17004852a406c29d99f1e01
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Mar 28 21:02:30 2017 -0400
+
+    started search class for searching Google Books
+
+commit d716effd7a001252ceb18776690430eaeb2c2b17
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 28 14:33:29 2017 -0400
+
+    Refactored ViewController and structure
+
+commit 99bbe82c061dfcdcda5e4c015dc0204486b69140
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 28 13:44:09 2017 -0400
+
+    Fixed the SystemDateTime serialization and construction.
+
+commit 6898f95a7de1f6e7f0aca2f0b941d155f1369029
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 28 13:03:07 2017 -0400
+
+    Added Employees and the Account interface to the models.
+
+commit d1575fc75fba91bb664c37954cf66030e9bb48de
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Thu Mar 23 11:31:49 2017 -0400
+
+    Refactor Search classes to not duplicate code
+
+commit 18c77ebcbf5cf2c0dcb4de9cad88032936adf3a5
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 14:39:11 2017 -0400
+
+    Added R2 folder.
+
+commit b6718b6acca7e32b7477191734fff2fbd4fbb38a
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 13:37:12 2017 -0400
+
+    Fixed zip file to include src files.
+
+commit a75ea88098b740ef5e34093e0732478586ead175
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 13:27:34 2017 -0400
+
+    Recreated jar file and re-zipped.
+
+commit b2230170950df175d86fe4a23fc67316385e880d
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 13:23:21 2017 -0400
+
+    Windows flush code bug fix.
+
+commit c564512d3f24a013896cd485cb4780f13fe80b7a
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 20 12:55:55 2017 -0400
+
+    Don't write ANSI escape codes to windows
+
+commit 32511d8a124c2d81ab8e3ea7887264b3ab16a9d6
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 12:37:49 2017 -0400
+
+    Fixed zip file.
+
+commit 8058e11e3cd7a43ccfbae60beab21971ae048769
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 12:33:50 2017 -0400
+
+    Added zip file of R1.
+
+commit 6b24c1ef79af50e1306bbfbed49f2b23d5585bd0
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 12:33:28 2017 -0400
+
+    R1 final commit.
+
+commit 1c54a1423549c912d78f9810c10385bad797f050
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Mon Mar 20 11:55:10 2017 -0400
+
+    Added cover border
+
+commit 42860eb8e723890c93f5ac9cfb9349318f6e5c4b
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Mon Mar 20 11:52:29 2017 -0400
+
+    Generated final draft design document as pdf
+
+commit 7d491a0cf7b4479f1fcf698e92b043c812acdd25
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 20 10:43:21 2017 -0400
+
+    Added pattern charts to design doc.
+
+commit b68a70be1f331a698b675de0d30598d6a59b2062
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 20 10:09:26 2017 -0400
+
+    filled in strategy table in design doc
+
+commit dd285276ddfc447a22c1e754dee62582352a4eb2
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 20 09:38:35 2017 -0400
+
+    filled out command table in the design doc
+
+commit 69e2db19eb9f5cf726e7d0b35d5d6f3600087ca4
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Mon Mar 20 03:22:51 2017 -0400
+
+    Updated Design Document
+
+commit fa9833c31d221fc36159615bb071b432d4659680
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 19 21:46:06 2017 -0400
+
+    Added buildlog.txt and vclog.txt
+
+commit ae9334d7d4ca74147361ea585c2ffeb0fcf7a647
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 19 21:37:03 2017 -0400
+
+    Added src directory and jar file.
+
+commit efc58dba794dc6cd3c3b349b0f85b363bc2c4b35
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 19 21:28:18 2017 -0400
+
+    Added listing.pdf
+
+commit aab243df2442887a26d98e61887edd880ed23bfb
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Mar 16 14:03:32 2017 -0400
+
+    Added components and functions to Design Doc
+
+commit f988423c7a532d0af92bd96329032d549579c400
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Mar 16 00:04:21 2017 -0400
+
+    Updated Design Doc formatting
+
+commit ec104fd50315a199e45e0a1a51212d39495f26f9
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Wed Mar 15 22:58:50 2017 -0400
+
+    Edited design document.
+
+commit 0e6bf1ccbd335c5e3aad83f7cd095cd9f8c5a53f
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Mar 15 15:14:58 2017 -0400
+
+    Added bug to TODO.txt
+
+commit 53124d98805d238f35c87a5da12d3ce11193924b
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Mar 15 13:37:31 2017 -0400
+
+    Updated Design Document
+
+commit 7114877187d5a1fa4777ee2d99fbf4981de0f3dc
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Mar 15 13:21:38 2017 -0400
+
+    Updated Design Document
+
+commit 6e5146e140204f41d29ab1e92388b1557da3ac97
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 14 23:03:37 2017 -0400
+
+    Removed the bash scripts, the batch files can be run through bash if "chmod +x filename" is run on them.
+
+commit d41e341b42b4dcc53173eeb7836763092fe24169
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 14 22:45:20 2017 -0400
+
+    Added known bugs section to TODO.txt and created README.txt.
+
+commit f5f76015640d91541df87866d5402f8a67bb02f4
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 14 19:55:01 2017 -0400
+
+    Added batch and bash scripts in documentation directory.
+
+commit f8bedaedb8c233b80ce4aa3b24f3f5735a41ebcf
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 14 15:28:57 2017 -0400
+
+    renamed to "documentation"
+
+commit 034feaa52d38c4e942edb307674202654d13a8f9
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 14 15:28:17 2017 -0400
+
+    Added Design Document to VCS
+
+commit fcc7555af5c786101a8f7110ee5b7e7f5cac3848
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 14 14:10:37 2017 -0400
+
+    Added borrow TODO
+
+commit 949d47338bb9cfb446c60300ea777f009ccdd772
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Mar 14 14:01:55 2017 -0400
+
+    views add braces so user doesn't have to
+
+commit 700307e7d190e432212d2b0f6a595be0abea6bcc
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 14 00:42:03 2017 -0400
+
+    Cleaned up StoreSearch constructor.
+
+commit e8a73390d03ebbff258462b7291c77a7fda4e2e9
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 14 00:39:53 2017 -0400
+
+    Fixed a compiler error.
+
+commit 590913118741dc0f45b5cf42c93abac029a176a0
+Merge: 46333fb e0fc59f
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 14 00:38:40 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 46333fb175e11f27fdd3b9f50281f9d6c147f4ac
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 14 00:38:33 2017 -0400
+
+    Commenting code is the key to documentation.
+
+commit e0fc59fc770bc71f40016da9e60ec936f75d1dd8
+Merge: a9b1f1b 51c114b
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Mar 14 00:11:51 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit a9b1f1b472036718f9f4038fe0d1f36bc39ac5c1
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Mar 14 00:11:39 2017 -0400
+
+    Added more precise error checking in RegisterVisitor and LibrarySearch commands
+
+commit 51c114b29095b3d8147f633046b44ebd3de93f41
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Mar 14 00:05:23 2017 -0400
+
+    re-implemented StoreSearch parsing based off LibrarySearch
+
+commit 40f912659e0375200e05d0f34db76c0991501131
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 13 23:55:13 2017 -0400
+
+    remove stray if's
+
+commit f4f0144746385e34ae04215d036886cd97d12e0c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 13 23:48:01 2017 -0400
+
+    remove stray comment
+
+commit 15dfe6b91c1170647c41da2c406c0dc66eaa8a31
+Merge: 0b25dc3 1e48225
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 13 23:24:41 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 1e48225540894cc8ebbfcb97e7b0549db543e82b
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 13 23:20:47 2017 -0400
+
+    librarySearch parsing should never fail
+
+commit 0b25dc3aa265cf89f89e078c751ec672d2dfb589
+Merge: 811497b a8163b1
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 13 23:19:16 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit a8163b163b1f016f632b2d131b97493a14573eb1
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 13 22:13:09 2017 -0400
+
+    return from clockView transitions to systemView
+
+commit 9a12df9025de66fdcb1c2b8f3b12bb91c8547afb
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 13 21:58:07 2017 -0400
+
+    Edited search completion redirect and condensed StoreSearchView to one file
+
+commit 811497ba3169e4bae9af6d4ed68684060b21d786
+Merge: 149839c 4a11711
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 13 21:35:29 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 4a117116112c763091ba532bd2a8261b977192f2
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 13 20:38:05 2017 -0400
+
+    Changes stats to report
+
+commit 149839cd8ca293bc13f0ab9dd85f8c9c8aa40bd4
+Merge: ad609b7 54c5f79
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 13 20:19:03 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 54c5f7908bbffd8dddc51d4e6bb1441161fd915f
+Merge: 62103f9 39a4e2b
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 13 20:15:55 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 62103f94c68c293fa60a54fb18a4305151a526ae
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 13 20:15:46 2017 -0400
+
+    Fixed some more bugs in commands. again
+
+commit 39a4e2bb2cbbcba49c3d3624143b42b2ebe12a4c
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 13 18:10:54 2017 -0400
+
+    BookSearchMenu return location
+
+commit 0b8bb7c8fe5a7a8bafe53f64e5de991dbfeecf28
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 13 18:08:41 2017 -0400
+
+    Register View Phone number regex check
+
+commit e18d22c248c3de88409d252a5fe6d3fe29e07382
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 13 17:45:47 2017 -0400
+
+    Updated view
+
+commit ad609b7d50d025b0b1a863242b2dadd39d63ae6d
+Merge: 0c5e62f 2bc5317
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 13 17:28:32 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 0c5e62f6227671292b6427eaf01cbef331b220a1
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 13 17:28:24 2017 -0400
+
+    Fixed small formatting issue BookPurchase command
+
+commit 2bc531771a64dcdb91917e2b02d005b47df17a42
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 13 17:10:39 2017 -0400
+
+    Added list functionality for users and books
+
+commit 07d2462343e903d207746c9e86452bb05285f0e7
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 13 16:43:38 2017 -0400
+
+    Updated views
+
+commit 0bc1b688b9170878276bc5b3ae5ad7af3da2f835
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 13 16:31:39 2017 -0400
+
+    Fixed some more bugs in commands.
+
+commit bdfa6c26434b003df474e457d4ce4e147ee7dc2a
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 13 00:13:53 2017 -0400
+
+    Fixed borrowed, but borrow still has a bug when fines are due for some reason.
+
+commit c36e9db91ce288de007e664b0e2be83b5bf51b60
+Merge: 4e8d39e 7f57537
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 23:34:16 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 4e8d39e86e8c3453b8c659a579eaaa319171ccb2
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 23:33:23 2017 -0400
+
+    Fixed BookPurchase command so the right amount of copies are bought and correctly reflected in library book search
+
+commit 7f5753734b588278d3ee33839fa82bb0111c355c
+Merge: c741efe ee88df6
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 12 23:28:54 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit c741efe9dc6b77879721915f800b915c6b44ce5f
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 12 23:28:49 2017 -0400
+
+    Added try-catches to views. Also fixed book search parse responses
+
+commit ee88df62c7e8022564b35d19a2ce0dd3fe63de6b
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 12 23:17:35 2017 -0400
+
+    Fixed a bug.
+
+commit 5e5ed25cd63a70e736f45e0c0f1632de4e23a521
+Merge: 7b33d92 d7095af
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 23:10:13 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 7b33d926819366cf99ce6339ff8f35065a0a67a6
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 23:10:03 2017 -0400
+
+    Fixed formatting for success of BookPurchase command
+
+commit d7095af41bfb40404dd168c3e6cb91f89422fc16
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 12 22:45:50 2017 -0400
+
+    Fixed library search authors missing bug.
+
+commit 2ec61282b1a06832de6b18b6b7ec91c27176e5f5
+Merge: 4daa927 15e64ea
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 12 22:44:45 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/StoreSearch.java
+
+commit 4daa927ea21af1a029439013e6a5aa5aed82007d
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 12 22:42:08 2017 -0400
+
+    Fixed library search authors missing bug.
+
+commit 15e64eaca257cb2062f474c3daf5d93129b09088
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 12 22:19:19 2017 -0400
+
+    Edited prompt to purchase a book
+
+commit f982aa2e4fa8dfaad0c887cb4744128652079416
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 12 22:06:18 2017 -0400
+
+    Edited parseResponse output for StoreSearch
+
+commit 0a995282fc696c010bbad6344aab8ffdee2a513e
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 21:52:50 2017 -0400
+
+    Added error checking for AdvanceTime command where days and hours to advance are both 0
+
+commit c20b39055adf7f786c3bd8640897893bbddabb70
+Merge: 39a4fd6 a0158de
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 21:42:20 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 39a4fd6724ea110ac07c2a0cfef510839fd4aa34
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 21:42:10 2017 -0400
+
+    Fixed Missing Parameter response for RegisterVisitor
+
+commit a0158de93352183bc15d8a76e75dc34305dc497e
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 12 21:32:21 2017 -0400
+
+    Purchased Book view and edited parse response for store search
+
+commit ef56b18f8774bb2dd4ae19034574eb179bcf8f90
+Merge: bda16e0 8d8bc1f
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 21:06:25 2017 -0400
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit bda16e087e941918179252669a457d443b3a9bde
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 21:06:18 2017 -0400
+
+    Madea change to EndVisit
+
+commit 8d8bc1f34385d004650fbb5f3f52db94955c05c1
+Merge: 6deb7f7 45baa43
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 12 20:59:40 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 6deb7f747480da1a2a8a506b93d6fff2f5ef8f48
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 12 20:58:58 2017 -0400
+
+    Edited a lot of stuff.
+
+commit 45baa435932203e9280d59eeda5408fe130b27ef
+Merge: 0abeb2d e56ccc1
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 12 20:50:12 2017 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 0abeb2d88754ff3e48bc098d0eb98a3e7232eab0
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 12 20:50:06 2017 -0400
+
+    Added return book view state
+
+commit e56ccc1d86c8ecd660a6dc8ea3d2846bd163cc12
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sun Mar 12 20:35:27 2017 -0400
+
+    implemented purchasing through view UI
+
+commit 9ef810877c94afa3111d31beb41598a92145a7ca
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sun Mar 12 18:07:04 2017 -0400
+
+    implemented searching through view UI
+
+commit c4b78fe3c868d0ab6b26a4cffece9ad5af27c891
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sun Mar 12 18:06:06 2017 -0400
+
+    fixed regex and parseResponse for empty response
+
+commit 75d412fb38ebcd9e8fe4624a8c8c2c193598cc9c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Sun Mar 12 17:16:33 2017 -0400
+
+    LibrarySearch request parsing updated for new wildcard format
+
+commit 129a30591c0b11a127b15bbfaa2c6ab7f657ff6e
+Merge: 325f453 ac19ce6
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 12 13:45:38 2017 -0400
+
+    Fixed makeBooks in LBMS to fit new books.txt format
+
+commit ac19ce68a4cdf78099da92f45591d9434a6e7a59
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 12 13:29:41 2017 -0400
+
+    Fixed bugs and refactored the temp id from the books to the LBMS list.
+
+commit 325f453d1ba068752c047a8450aec4c4fba2f7d0
+Merge: 416a96e 6637fd4
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sat Mar 11 17:52:11 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/StoreSearch.java
+
+commit 416a96ed974574ab1bac2da480bdff918dbbb162
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sat Mar 11 16:57:49 2017 -0500
+
+    Fixed StoreSearch for the most part
+
+commit 6637fd4772790fe35d657aafe826c0be69287d5f
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sat Mar 11 16:31:37 2017 -0500
+
+    Working on unit tests.
+
+commit 99d5fed1e50011a634ca9ae4843d33f36f3551e2
+Merge: a8324c2 38e7466
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sat Mar 11 14:20:43 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 38e7466ac301570c5235799de31af49d63af70ba
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Mar 10 22:22:40 2017 -0500
+
+    Fix broken tests
+
+commit 0c46f64445550c2269345bf1b287c372274b6701
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Mar 10 14:50:54 2017 -0500
+
+    Added TODO to views and added BookSearchMenu view
+
+commit 43b4d9b63688501c43d4e143dd24cbde7a933f43
+Author: crb7054 <crb7054@rit.edu>
+Date:   Fri Mar 10 14:30:01 2017 -0500
+
+    fixed issue where report fails if empty system
+
+commit 8f21c37243827a1f43387b91f2995f1faeab0385
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Mar 10 14:26:10 2017 -0500
+
+    Added Statistics report view
+
+commit a8324c253efc6051215075d082fb5e0d1b68e301
+Merge: 35bf405 058ae73
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Fri Mar 10 11:59:42 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 058ae7324ee3839a3e5b975cc42d2eadd675758a
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Fri Mar 10 10:46:06 2017 -0500
+
+    Commented out the no operation states.
+
+commit b29fd49a30782fc1545ed412345461b6f8f3a4f2
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Mar 9 15:29:43 2017 -0500
+
+    Added break statements to switch case.
+
+commit 35bf405e4c6b757b3491147857aad872ef97dc49
+Merge: 9b92c61 1c8e046
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Mar 9 14:57:12 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/StoreSearch.java
+
+commit 9b92c613389a6a4bb2e576c5f76501e595d14968
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Mar 9 14:54:49 2017 -0500
+
+    Changed StoreSearch
+
+commit 1c8e04602ad2ef5cf9ff14c62b4834363463748b
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Mar 9 14:50:03 2017 -0500
+
+    implement sorting and parse in librarySearch
+
+commit 9a81ba47c9a075025e6f05fd7f19667b52162a28
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Mar 9 13:49:25 2017 -0500
+
+    implement parseResponse for statsReport
+
+commit c409c023545d1aa392c1cabbf9400794964164a4
+Merge: 73a872f ca59a91
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Mar 9 13:42:41 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 73a872fdc5480b4d483a67cca1cbed79aade51b0
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Mar 9 13:42:30 2017 -0500
+
+    Added invalid command.
+
+commit ca59a918835ee69adb959a93eaa6f906fd7292f0
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Thu Mar 9 13:42:04 2017 -0500
+
+    Get Visitor from key if 10 digits.
+
+commit 0902e548d8055a84135e154ead0fd717bde1c87c
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Mar 9 13:34:22 2017 -0500
+
+    Converted visitors to HashMap<Long, Visitor>
+
+commit 1a2ceaddd6995c7b652067ef6ec5aab066771c3c
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Mar 9 13:23:00 2017 -0500
+
+    Adjusted view to execute proper open/closed commands
+
+commit 39f8495475c20fc0d2e4d56b9fbbe16cc0c582cd
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Mar 9 12:57:52 2017 -0500
+
+    fixed bug in LibrarySearch constructor
+
+commit 3009f9346618b0b15b1277104257bb64e777a99f
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Mar 9 12:47:21 2017 -0500
+
+    Changed the CloseLibrary command
+
+commit a04097ee44cdbaba5917d61a30ebf196c1455157
+Merge: 07c8718 c3f867e
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Mar 9 12:46:14 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 07c8718606713a474d1beb265f5df02e10be7d94
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Thu Mar 9 12:46:00 2017 -0500
+
+    Added a CloseLibrary command
+
+commit c3f867e0dd1eae0c67668e1d9771ffc0d941ca2c
+Author: crb7054 <crb7054@rit.edu>
+Date:   Thu Mar 9 12:42:33 2017 -0500
+
+    add system status to view request processing
+
+commit 086cbb97fdb08d6e09389c5b1c7d5bdb4477eacc
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Mar 9 12:41:38 2017 -0500
+
+    Added invalid command.
+
+commit d2645e2017024306a93a811b8f7102676290a4be
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Wed Mar 8 22:12:10 2017 -0500
+
+    Implemented parseResponse in PayFine and StoreSearch commands
+
+commit e42b6d2b872cf94d6117b76d89c74852afbd9887
+Merge: 7797ec2 d66bf39
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Wed Mar 8 21:45:57 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/Borrow.java
+
+commit 7797ec2d7fc6ee30b7b43cfc97541b198dbd1fc3
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Wed Mar 8 21:40:46 2017 -0500
+
+    Implemented ParseResponse for Borrow Command
+
+commit d66bf39a3b8b7fd9887d9252f4240754ac20f203
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Mar 8 21:37:26 2017 -0500
+
+    removed semicolon checks in commands and move to one in command controller, added null check in end visit
+
+commit 78f4be9798714716426ccf26aaac42868a41006d
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Mar 8 21:14:17 2017 -0500
+
+    Added in partial response
+
+commit e7a5cbf1f0463256014d2b77d6337a83af8d96e3
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Wed Mar 8 20:39:31 2017 -0500
+
+    Exponential comments.
+
+commit 79a73e2cbcaf1aee6589b26ed8a8dbea0a323dd5
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 18:37:05 2017 -0500
+
+    Finish Removing API
+
+commit 6abe47eee8d4e6943bb735112a8873d96a9ca4f4
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 18:11:29 2017 -0500
+
+    Add UserSearch
+
+commit b8a55551f908b475307212265ec6cf95d46879ef
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 17:56:40 2017 -0500
+
+    Rewrite search classes into BookSearch
+
+commit e28270e1b4478821c2ed03ad5a7edb8996bd297c
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 17:11:16 2017 -0500
+
+    Remove DecimalFormat from API
+
+commit dfa38f1967a41ef7cc02fbcdf2d5f2de1f08a625
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 17:06:51 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/API.java
+
+commit fb82ad326e2c813c60a9224d52cf179d3c476147
+Merge: 7d33b8d cb34b44
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 17:05:23 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/API.java
+
+commit cb34b44f297cb727304ad5419447d8f6b86549a6
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Mar 8 16:59:07 2017 -0500
+
+    Implement Fine and Purchase tracking, complete Report command
+
+commit 7d33b8d39000730fe9930297192203bc85bcc226
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 16:56:51 2017 -0500
+
+    Fix ViewControllerTest
+
+commit 92e99dc8a05a8f6e10226d2b07990980237aff08
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 16:54:35 2017 -0500
+
+    Move everything out of API that's only Used in one place
+
+commit 23397962f57df7a3636f08bc05ddd888e21d1f07
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 14:51:54 2017 -0500
+
+    Remove AdvandeTime and ResetTime from API
+
+commit a0c6653e6f2f41add4e943ac68051f7d6f8dcb89
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 14:49:25 2017 -0500
+
+    Deprecate API Class
+
+commit 8818a9573dc7e9d050c824c4f1034ffd339b93a6
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 14:36:55 2017 -0500
+
+    Stop the clock when the system ends
+
+commit 7876edc0c273ab151f92e1d55629ff85f185a037
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Wed Mar 8 14:31:11 2017 -0500
+
+    Start the clock
+
+commit d5736b26441615ed0f3529da1c41736035bad5cf
+Author: crb7054 <crb7054@rit.edu>
+Date:   Wed Mar 8 12:31:31 2017 -0500
+
+    Update BookPurchase, rolled back API purchase function to work with tempIDs
+
+commit a096f3d87d4a23c75ca2796c3f2fba9673539cd4
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Wed Mar 8 03:32:46 2017 -0500
+
+    Added reset time command, view, and api call
+
+commit d285e1e6130b0db467831e346e4b23fc861d08b9
+Author: Chris <cxl2436@rit.edu>
+Date:   Wed Mar 8 01:14:19 2017 -0500
+
+    Added open/close functionality
+
+commit 52a0a5203a87b9b7196f5e43e398bd6f0bf9d066
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Mar 7 20:54:52 2017 -0500
+
+    Fixed register bug in API
+
+commit ef415f656ef675cfb7e752ff3f27228d3e24adf3
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Tue Mar 7 20:50:40 2017 -0500
+
+    Added Register Visitor response parsing
+
+commit d2e6dc548b50910db5875b4248c1a762d3995b41
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Mar 7 20:31:25 2017 -0500
+
+    Updated StatisticsReport and began accompanying API method
+
+commit 55141e7a305ea262993274e81bda7446415a3f30
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Tue Mar 7 19:57:34 2017 -0500
+
+    Edited CommandController design and view-command interaction
+
+commit 228ab73b7d70be36a1fe34f74be00db77a38a820
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Mar 7 19:43:46 2017 -0500
+
+    Updated LibrarySearch and API purchase command, added getter for available books
+
+commit 83238269a9778646bdc7cc0e70f855b42190481b
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 7 17:15:32 2017 -0500
+
+    Added FindBorrowedViewState
+
+commit d7e5f8b94895cf9bfc4ce69afdb40a9dc48fd0c5
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 7 17:14:28 2017 -0500
+
+    fixed bug in EndVisit constructor
+
+commit 782c9aae0aa9b912bebd1cb8ec8d8302ba5c9883
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Mar 7 16:12:41 2017 -0500
+
+    Implemented Java Comparable and Comparator to sort Book objects
+
+commit adb3fcd92cadf1366af5bcae48dd84f1b0bbce1e
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 7 16:05:58 2017 -0500
+
+    Fixed $ error again.
+
+commit be052e463d517db1456f47183977172779cb4ecd
+Merge: f0d5978 81a8a8e
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 7 16:05:29 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/EndVisit.java
+
+commit f0d59782155777437c82f383dc4ee94d3bf3d77b
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 7 16:05:09 2017 -0500
+
+    Fixed $ error.
+
+commit 81a8a8ee541ec718f974d249e79eaad998259150
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 7 16:00:43 2017 -0500
+
+    fixed bug in EndVisit constructor
+
+commit aa70644ff2f71c686c88d29a1cd24ed0dfd35671
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 7 15:14:49 2017 -0500
+
+    Added begin visit view
+
+commit 7dbc3340f974948644fd476c9e8ab4fe8a6d1ee6
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 7 14:49:54 2017 -0500
+
+    Added begin visit view
+
+commit bb01017daca6a2c7a51c92d724e9ba11f38400fe
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 7 14:37:56 2017 -0500
+
+    fixed bug in CommandController, added Advance clock functionality
+
+commit b766ed5a1c07772dd1cbf983bb82dd2432d44c22
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Mar 7 14:09:53 2017 -0500
+
+    Increment visitor id from array size
+
+commit 3a2d46222e86bdf7bf6015be23458f867ba1e36e
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Mar 7 13:48:35 2017 -0500
+
+    Implemented ViewStates, fixed Date and Time formatters
+
+commit 67d12e91651adf90ae615e9589b634372795dda7
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Mar 7 13:46:54 2017 -0500
+
+    Add BeginVisitTest
+
+commit f32d8437ad341cf613aaf1a3d9358d47af101d2b
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Mar 7 13:20:04 2017 -0500
+
+    Fix error in AdvanceTime
+
+commit 6f5308280abfbe2dadd946889b04163592496c3a
+Merge: 2db700f a2706f2
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Mar 7 13:16:48 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 2db700ff46594a956d5a7a4f9a6e3177a40eafbd
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Mar 7 13:16:43 2017 -0500
+
+    Add unit tests for AdvanceTime
+
+commit a2706f29fafa76ff7346bc3e33f7dd8491b42abd
+Author: crb7054 <crb7054@rit.edu>
+Date:   Tue Mar 7 13:09:22 2017 -0500
+
+    Updated LibrarySearch execute
+
+commit 5a6cc39eef2db6ee690b40887cf404199e99bb5e
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Mar 7 12:44:45 2017 -0500
+
+    add shutdown command
+
+commit 6d7b73fdacd2d1a1bc8c8f0d41ce5e6cdfc7bf38
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Mar 7 12:41:15 2017 -0500
+
+    Fix URI Exception
+
+commit cb306599b559534ab3b1904e199b8dbcbe607b47
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Mar 7 12:37:23 2017 -0500
+
+    Allow system to be run without user input
+
+commit 66267a26388714287b0b6aaf29513632bd0ba171
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Mar 7 12:10:04 2017 -0500
+
+    Made book purchases more efficient.
+
+commit 8844fa55b0be8ff88cafe9d4f4f2ce5805d1f0d2
+Author: Chris Lim <cxl2436@rit.edu>
+Date:   Tue Mar 7 02:56:12 2017 -0500
+
+    Added flush method to State
+
+commit b00d4f3f3e486609b4075f74fdcc91bdb01a3179
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Tue Mar 7 00:11:54 2017 -0500
+
+    Added more implementation to execute of StoreSearch command
+
+commit 45001a36e2ef0274a8043b1f0bd30389e396cbc8
+Merge: ada3222 9844553
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 6 22:33:15 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/Borrow.java
+
+commit ada3222921e6a781758e71ba88630ae45b64282e
+Merge: c69c25f 3242d0b
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 6 22:30:31 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/Borrow.java
+
+commit 984455377624b258e51f8b1bd9bb7cbdb48a3456
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 6 22:02:51 2017 -0500
+
+    Fixed all but 3 command classes.
+
+commit c69c25f0e29339e325e3c39170cf8a4f55431ee7
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 6 17:31:50 2017 -0500
+
+    Made a few changes to Borrow command
+
+commit 3242d0b12ccb090935edb019b7dd7d835c34ca31
+Merge: 636dc3c 2ff110e
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 6 17:29:46 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 636dc3cb224c5a37c7842c2c6e9ee2189b9eb061
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Mar 6 17:29:41 2017 -0500
+
+    Fixed TotalVisits and CurrentVisits design and implemented end and begin visit
+
+commit 2ff110e7c959ae32aefd850c82bd57cdb73636b1
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 17:27:28 2017 -0500
+
+    Remove extra param from Visitor Javadoc
+
+commit 5c7c48311ff92905d5ae3a5532dbf000fed41987
+Merge: 714c132 c29042e
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 17:26:22 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/BookPurchase.java
+    #	src/main/java/lbms/command/Borrow.java
+
+commit 714c1322f0bd46e2016c94e414572e7635c9c6a1
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 17:25:24 2017 -0500
+
+    Remove unnecessary imports
+
+commit c29042ecfaf0cc3a6662de1322b3ef8e5d81caa7
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 6 17:23:09 2017 -0500
+
+    Too many comments were added.
+
+commit c036b647d239e48310f4007bfd9f6c73c944b5a6
+Merge: 444b8ce 22a00b8
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 16:56:12 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 444b8ceed26b338acc17098c15f8cd4104c07e66
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 16:56:07 2017 -0500
+
+    Calculate fine
+
+commit 22a00b8f36ecef545585e53262322e3d4c5f79af
+Merge: f03ad19 06d52f9
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 6 16:43:09 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/models/Visitor.java
+
+commit f03ad196d1bde606c8b0a27865380de32cb64801
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Mon Mar 6 16:41:17 2017 -0500
+
+    Implemented PayFine command and most of Borrow and StoreSearch
+
+commit 06d52f9e6818d453f811302d43ff07c3f26d27c6
+Merge: 4fe2fd4 9f5b77a
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 16:36:14 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 4fe2fd4f01155affa1c00dcad2914085417ecb90
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 16:36:08 2017 -0500
+
+    Complete Return
+
+commit 9f5b77ab31541042041b547d08bac473858e754b
+Author: crb7054 <crb7054@rit.edu>
+Date:   Mon Mar 6 16:34:09 2017 -0500
+
+    Begun to implement 3 commands, added API method, create tempID in book
+
+commit 21374c07bfcc93add28eff23c6c3431b54dfc213
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 6 16:05:28 2017 -0500
+
+    Added implementation of the visitor in-library status.
+
+commit 87693edb976f33cd27eefcdffa5d9395ddfa97d1
+Merge: 924e450 3473139
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 15:39:48 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 924e45089488904aaa235cab79d79edd3fbb4a2f
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Mar 6 15:39:41 2017 -0500
+
+    Complete FindBorrowed
+
+commit 3473139de14c0fedea5e16b7c3d15b44811df36e
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 6 15:24:54 2017 -0500
+
+    Cleaned up some code, added even more docstrings.
+
+commit 9265d1a5e3f03511b7c68d357fa702265e932e90
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Mar 6 15:09:59 2017 -0500
+
+    Added docstrings to command methods and cleaned up the code.
+
+commit b69bca50218805f385052cf1d39aa451ed89fa00
+Merge: 096a80c ef135d1
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 22:44:54 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit ef135d10ea821eade1dd2bfcb2648f43f72b6620
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 22:35:54 2017 -0500
+
+    Fixed RegisterVisitor command, except the visitor ID that is generated.
+
+commit 096a80c7b2a7674d18c7d4045945e4f0ad5443d7
+Merge: 57e1ab3 fc76ffa
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 22:23:15 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit fc76ffa1b9f9f56f10273de472f4333eaafc29b0
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 5 22:19:39 2017 -0500
+
+    Fixed SystemDateTime formatting
+
+commit 57e1ab34f915553a313ebc3893e5217138abdad8
+Merge: 0a41e14 b83c930
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 21:34:49 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit b83c930a56bba7a1f6dd82f79ef775f9211fdfed
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 20:43:44 2017 -0500
+
+    Implemented my commands, added necessary functions to API, and the LBMS.
+
+commit 52326353e007bf87390396d75796f5a24ad7c716
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 19:33:13 2017 -0500
+
+    Implemented advance time command to model other commands with.
+
+commit 0a41e14d96cfaa8215ffa2c0ab867d0d1b4afb95
+Merge: 10ebbe9 a591790
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 19:10:13 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/command/Borrow.java
+    #	src/main/java/lbms/command/PayFine.java
+    #	src/main/java/lbms/command/StoreSearch.java
+
+commit a5917901a4787d4d47a400258f67c8bf208154a3
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 19:00:44 2017 -0500
+
+    Changed command interface to return a string.
+
+commit 50f2e352fcb56f0f75cebdec0dd8ac077d059c44
+Merge: c9e4464 c05cfba
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 5 18:20:07 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit c9e446400660aab7ba24c54f0dfee69ac0c7a98e
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 5 18:20:02 2017 -0500
+
+    Added controller for commands
+
+commit c05cfba5980c10b1dac130f1df86f2a5f3fb7cbd
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 17:57:34 2017 -0500
+
+    Restore time on system restart
+
+commit 3e9a90ad011c0e759b99d8b54b857bfc56c8eb9b
+Merge: e7d260d adad723
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 17:48:18 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e7d260dd96cdc972333da304cfa3dc7f8f130e57
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 17:48:11 2017 -0500
+
+    Fixed packages so the gradle build now works.
+
+commit 10ebbe9678ca7d9f821214bec2b9c7d0e9b3735e
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 17:47:35 2017 -0500
+
+    Added constructor for StoreSearch, Borrow, and PayFine commands
+
+commit adad723d42869d8f84ff5f9b5ec759c5b26164b1
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 17:45:59 2017 -0500
+
+    make private api methods public
+
+commit d799ec5b3d37a28186af9a84568897ef6346cd8b
+Merge: 68b06d9 bb28094
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 17:44:12 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 68b06d941ca912895f97114440e78ef4659e95db
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 17:44:05 2017 -0500
+
+    I don't even remember what changed.
+
+commit bb280949272d61e6884ed952b98c3352c6209823
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 17:42:55 2017 -0500
+
+    Remove .gitkeep
+
+commit 037dc1b205b77328ea7178914529ef54b650938a
+Merge: 25797c7 a04a17b
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 17:41:10 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit d643e321e477c65636c4d52bfc609636f1fd66f3
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 17:40:52 2017 -0500
+
+    Add @Override annotations
+
+commit 25797c7decb1f1ebeb4cf76309933a2feb5ef944
+Merge: 5dda4df c755e52
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 17:40:36 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit a04a17b5873501dd5ef5508b00e5bf60d8f620fc
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 5 17:40:12 2017 -0500
+
+    refactored MVC, Command, and State patterns
+
+commit c755e520bd24a384f35328bd43d14b85ae70ed4b
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 17:11:31 2017 -0500
+
+    add getSystemTime to API
+
+commit 5dda4df7695d4cce4c19d96a9021a6ca33b8d89b
+Merge: 9078380 9399847
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 17:09:25 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 9399847925d11411f52205273befaa42ea424c87
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 17:07:06 2017 -0500
+
+    Implemented AdvanceTime command and commented stuff in the API.
+
+commit 1a32051042d7eb7e933b773b315af56e732a2731
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 16:49:12 2017 -0500
+
+    Add time to api
+
+commit 9078380f384f5a9262aa2d9d2e4435789a41381e
+Merge: bca524c acd7ebe
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 16:47:33 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+    
+    # Conflicts:
+    #	src/main/java/lbms/LBMS.java
+
+commit acd7ebeacb85ec47fd07a6d28236e5e32c00b322
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 16:37:29 2017 -0500
+
+    Create API.java
+
+commit bca524cc83c45eeb66ff1e1cd80af7000053a647
+Merge: 82d051b 57fa523
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 15:43:09 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 57fa523caec1ff9483e4956a02cc85bc6a9a1a39
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 15:42:03 2017 -0500
+
+    Added implementation assignments.
+
+commit 82d051ba2d69f8eed24e0ef4bd5b6af35284fd5f
+Merge: 39ed520 9c255a3
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 15:39:13 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit 9c255a33d3aa56d46c702811f3b7d413ccfe12d6
+Merge: f7e574b 8125450
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 15:38:15 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 39ed52096b00b7616c9d51cf63a73c695baa8fbe
+Merge: 0e9d17e 8125450
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 15:38:15 2017 -0500
+
+    Merge branch 'master' of https://github.com/ajp1925/Library-Book-Management-System
+
+commit f7e574bec06c90bb19cd1ae3f03a81228b4a7754
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 15:38:07 2017 -0500
+
+    Refactored package names.
+
+commit 0e9d17ea1848bff01794051228c2d9f1b1071bdd
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sun Mar 5 15:38:01 2017 -0500
+
+    Added comment for makeBooks method
+
+commit 8125450e3553cc80249312db479d2a461c2a056a
+Merge: e590453 40faf26
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 15:36:49 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e5904534128c05c8b09191361bd678fabc783416
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 15:36:43 2017 -0500
+
+    Remove duplicate getBooks
+
+commit 40faf265fbe3f58d270c5aa26e12fd5d05432fe8
+Merge: 5bc8bea 7ad1442
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 15:36:15 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 5bc8bea90de428030570f85b7dd61e81b37d5841
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 15:36:00 2017 -0500
+
+    Created Command package.
+
+commit 7ad144271cd798baa4513aa769b40ed101fc348c
+Merge: d819458 a866922
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 15:35:30 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/main/java/lbms/LBMS.java
+    #	src/main/java/lbms/Search/SearchByISBN.java
+
+commit 64afb3a3051badf3153b61eab91ec63657f56467
+Merge: 5e05526 a866922
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 15:35:08 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 5e055260542694333ebcb95d07cc95f33e361448
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 15:34:56 2017 -0500
+
+    Created Command package.
+
+commit d819458138e9785ee48da7a346ca25d40ab6eccb
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 15:33:52 2017 -0500
+
+    Use parallel streams for searches
+
+commit a86692237a0aadae9965bf16e764167f2feeb714
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 5 15:28:22 2017 -0500
+
+    Converted long isbn to Long isbn
+    Added type tags to HashMap
+    Fixed run() minute incrementation
+
+commit 23977370922ebee16383fa1bfc435c20d6281c18
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 15:03:26 2017 -0500
+
+    Converted long isbn to Long.
+
+commit ca7f8db9b4e684306d2ef839e929de814102a9a4
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 14:59:51 2017 -0500
+
+    Cleaned up some code.
+
+commit 1c16c9b2d978094759f9964815c59611005621fa
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 14:57:09 2017 -0500
+
+    Converted books to a hashmap.
+
+commit cb9a00b01c609b38d2ae955c398518f110310571
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 14:56:19 2017 -0500
+
+    Converted books to a hashmap.
+
+commit 144574189ae8ff891ab1a16e2ba4d8dbd79a906c
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 14:55:40 2017 -0500
+
+    Converted books to a hashmap.
+
+commit b66ae60426db48c68daefeaa52bdeb99b4c10198
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 14:37:54 2017 -0500
+
+    Move books.txt to Jar
+
+commit 7e0947684a155bffc596c6df27979a29ba31b3c0
+Merge: 1b17d3a 97959ac
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 14:32:11 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 1b17d3ade3b5b0138da876bb02b378f9e2614cd5
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Sun Mar 5 14:32:01 2017 -0500
+
+    Fix SystemDateTime thread
+
+commit 97959ac52f02535d3bd5c4ef2b532afc39308143
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 14:29:27 2017 -0500
+
+    Merged files.
+
+commit de53314dd583c0a4e6b503e55c4983f2538966e7
+Merge: 26620d3 735feb4
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 14:28:48 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 26620d3907712985ebf4a939a7c5f28cae11c59b
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sun Mar 5 14:28:26 2017 -0500
+
+    Created new variable for books to purchase and implemented its serialization.
+
+commit 735feb4f076bea3ac703e172ca24aa36f6553e59
+Author: Chris <cxl2436@rit.edu>
+Date:   Sun Mar 5 14:23:59 2017 -0500
+
+    Fixed how clock worked
+    
+    Bug:
+    Cannot increment hours or days
+
+commit 50a6e7c8940f5c93d6d584a0ae98653231c8898d
+Author: exw4141 <exw4141@cs.rit.edu>
+Date:   Sat Mar 4 18:10:19 2017 -0500
+
+    Implemented CSV parsing for books.txt; changed isbn from int to long
+
+commit 7246b3aea53bb7343dc1cfb82b0dcd49249e7fd4
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 28 13:48:39 2017 -0500
+
+    Create basic tests for StateManager
+
+commit ae6095e7e3ddb26d870f4ee5f7eeaf3146ae5482
+Merge: c2bb5ff 4e48a3e
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Feb 28 13:41:34 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit c2bb5ff7fcc150662d11c09e4339d38639ac1fd3
+Author: Chris <cxl2436@rit.edu>
+Date:   Tue Feb 28 13:41:29 2017 -0500
+
+    Implemented SystemDateTimes in Transaction and Visit
+
+commit 4e48a3efc9e86a8bda93943a980afbace3c53ff1
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 28 13:36:02 2017 -0500
+
+    Create new instances of states instead of entering the old one
+
+commit b80aa07dec8ba380c38af311335bddcd92e50700
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 28 13:28:48 2017 -0500
+
+    Document states
+
+commit 8c42228f0912dbdb4d7451a4812b6f4cd8dc71d0
+Merge: ee6f9c7 d42ee71
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Feb 28 13:25:08 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit ee6f9c787e5363829b87f53b33c145206545385c
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Feb 28 13:24:50 2017 -0500
+
+    Started books.txt parser.
+
+commit d42ee712112dbfbbc1f2d23e8ce44fca33d7cebb
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 28 13:05:18 2017 -0500
+
+    Restrict visibility on states and create StateUsersRegister
+
+commit c5ccedef16903d653bdc62efb858d495cbba6908
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Tue Feb 28 12:39:50 2017 -0500
+
+    Added time to LBMS.
+
+commit 2e1f2ab7dedbadb530f5ac7f758603359c74590c
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 28 09:59:14 2017 -0500
+
+    Create Books and Users views
+
+commit 3eca9dab33294118d1177a83a1b77cd6cd6b5151
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 28 09:32:42 2017 -0500
+
+    Simplify views
+
+commit c4209fa090fc77abca01d4ca0b48880ed1c4da9a
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Feb 27 22:11:15 2017 -0500
+
+    Implemented serialization for the current data in the LBMS.
+
+commit 1fef812eddbd90ba14c693b8233dbbed6fe0d4dd
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Feb 27 15:49:16 2017 -0500
+
+    Create StateManager and add basic implementation to StateDefault
+
+commit 3ef21e0fe9debb92200ef9157bfff38624294191
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Feb 27 15:09:32 2017 -0500
+
+    Add *.ser to .gitignore
+
+commit 972600f15ecc5475bd926adc128e7b03aa96b623
+Author: Chris <cxl2436@rit.edu>
+Date:   Mon Feb 27 14:54:00 2017 -0500
+
+    Created SystemDateTime class and methods
+
+commit 3bedd9f504a439cf62c70ce174aa2e47b20fef92
+Author: Nicholas Feldman <nickcfeldman@gmail.com>
+Date:   Mon Feb 27 09:47:44 2017 -0500
+
+    Create default state
+
+commit f78dea793f6771cad2bcfd64d051f821c4ffa755
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Feb 27 14:09:22 2017 -0500
+
+    Added file creation for serializing data.
+
+commit 35d09411c8d31e6787852c9f7411a10e4f3ffa87
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sat Feb 25 21:52:56 2017 -0500
+
+    Added docstrings to almost everything and started the implementation of serialization.
+
+commit c39a8f00f7cecc0b669f4fed49f2a2755bc3945c
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sat Feb 25 20:37:33 2017 -0500
+
+    Refactored part of LBMS constructor. LBMS works, but the gradle run command does not work with the scanner.
+
+commit e8a4e47037cc8ba48ca6723f81b73ec1267e3938
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Sat Feb 25 20:13:23 2017 -0500
+
+    Implemented search methods in search classes.
+
+commit c608c480b2c82e77862d27ea44a1bff4d03e909f
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Fri Feb 24 15:55:57 2017 -0500
+
+    Create abstract state and main loop
+
+commit adf9fc22e4b6456d89c4f25184d4a5bc1e8da3f0
+Author: Chris <cxl2436@rit.edu>
+Date:   Fri Feb 24 14:06:41 2017 -0500
+
+    created Visit class and stubbed out constructors and storage implementation
+
+commit f7868b055c17409d0b29cac53ca3f95e4372d368
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Fri Feb 24 13:25:39 2017 -0500
+
+    Added class docstrings.
+
+commit 25888444608082ba79f81ee38ddfcb60548d0e1d
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Thu Feb 23 17:09:22 2017 -0500
+
+    Add manifest to jar
+
+commit 809ddf7d61cbce117ef674910e30cb1a81ec6dea
+Merge: 9ca5b71 abb7f22
+Author: Chris <cxl2436@rit.edu>
+Date:   Thu Feb 23 13:53:35 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 9ca5b7136ec5238a362ff261ada7ae37e5fb8424
+Author: Christopher Lim <cxl2436@rit.edu>
+Date:   Thu Feb 23 13:53:26 2017 -0500
+
+    created method stubs, fields, and getters
+
+commit abb7f224370809431787393be6e1be0e02baee3c
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Feb 23 13:47:49 2017 -0500
+
+    Created search methods in the interface and sub-classes.
+
+commit b5e38b593bb3da1aca1830a78e8be17c42ee78d0
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Thu Feb 23 13:06:18 2017 -0500
+
+    Remove .gitkeep from main
+
+commit 5e70f96084f9f5a062718f92add54a5e64cebd8b
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Thu Feb 23 13:04:26 2017 -0500
+
+    Added main class.
+
+commit 9d2fd98cf35e3fcdedda974a48f6d52289c628f5
+Author: Christopher Lim <cxl2436@rit.edu>
+Date:   Thu Feb 23 12:43:19 2017 -0500
+
+    created class stubs
+
+commit 6fe54f20b19ed433a7833321a428ecc3460399cc
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 21 13:16:05 2017 -0500
+
+    Add folder for test classes
+
+commit a41d18d8ca08394f4f311753280312ea4505e0e6
+Author: crb7054 <crb7054@cs.rit.edu>
+Date:   Tue Feb 21 13:10:21 2017 -0500
+
+    added name to README
+
+commit 9c6be9bd4b27bdea242989e5a191fc81c039c615
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 21 12:52:35 2017 -0500
+
+    update readme
+
+commit 1fca19f8185651117a5fad8b4a3c093f6fcbdd11
+Merge: e2d4987 350a669
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 21 12:45:08 2017 -0500
+
+    Merge branch 'master' of github.com:ajp1925/Library-Book-Management-System
+
+commit e2d4987cfccb6860194188ec0ca1c2d4f8a18016
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Tue Feb 21 12:44:53 2017 -0500
+
+    Add gradle and wrapper
+
+commit 350a66996404a00929db6973ec5212d68874cd3d
+Author: Christopher Lim <cxl2436@rit.edu>
+Date:   Mon Feb 20 18:10:16 2017 -0500
+
+    Update README.md
+
+commit d35d7c396fcc8ae4c4e94123b895c6774acf875a
+Author: exw4141 <exw4141@rit.edu>
+Date:   Mon Feb 20 17:37:33 2017 -0500
+
+    Added name to README
+
+commit c6bc2b1070f8be5bf74245e5919a2081c20e7ed4
+Author: Nicholas <nickcfeldman@gmail.com>
+Date:   Mon Feb 20 16:44:39 2017 -0500
+
+    Add my name to the readme
+
+commit 52f61857e84b646971a74880a5eb0b471aefdba0
+Author: APalumbo97 <ajpalumbo97@gmail.com>
+Date:   Mon Feb 20 16:41:57 2017 -0500
+
+    Added name to README.md
+
+commit 4af6577ec64d556b0dfd0167a656d6fb4cb85a74
+Author: Anthony Palumbo <ajp1925@g.rit.edu>
+Date:   Mon Feb 20 16:20:34 2017 -0500
+
+    Initial commit

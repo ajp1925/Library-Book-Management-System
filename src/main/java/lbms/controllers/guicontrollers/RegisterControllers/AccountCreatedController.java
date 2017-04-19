@@ -22,7 +22,8 @@ public class AccountCreatedController implements StateController {
     /**
      * Initializes the controller.
      */
-    @FXML protected void initialize() {
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 home();
@@ -43,7 +44,8 @@ public class AccountCreatedController implements StateController {
     /**
      * Tells the manager to display the home stage.
      */
-    @FXML public void home() {
+    @FXML
+    public void home() {
         this.manager.display("main_employee", this.manager.getUser());
     }
 

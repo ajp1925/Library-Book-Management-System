@@ -40,7 +40,8 @@ public class CreateController implements StateController {
     /**
      * Initializes the controller.
      */
-    @FXML protected void initialize() {
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 this.createButton.fire();
@@ -76,7 +77,8 @@ public class CreateController implements StateController {
     /**
      * Submit function used when the submit button is pressed.
      */
-    @FXML private void create() {
+    @FXML
+    private void create() {
         clearError();
         boolean completed = true;
 
@@ -151,7 +153,8 @@ public class CreateController implements StateController {
     /**
      * Tells the manager to cancel the last action.
      */
-    @FXML public void cancel() {
+    @FXML
+    public void cancel() {
         this.manager.display("main_employee", this.manager.getUser());
     }
 

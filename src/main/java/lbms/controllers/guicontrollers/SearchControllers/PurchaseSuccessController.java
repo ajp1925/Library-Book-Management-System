@@ -2,7 +2,6 @@ package lbms.controllers.guicontrollers.SearchControllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -17,7 +16,6 @@ public class PurchaseSuccessController {
     private HashMap<String, String> book;
 
     @FXML private Text title, quantity;
-    @FXML private AnchorPane root;
 
     /**
      * Initializes the data for this instance of the class.

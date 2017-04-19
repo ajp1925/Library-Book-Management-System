@@ -47,7 +47,8 @@ public class RegisterController implements StateController {
     /**
      * Initializes the state of this class.
      */
-    @FXML protected void initialize() {
+    @FXML
+    protected void initialize() {
         this.root.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 this.registerButton.fire();
@@ -59,7 +60,8 @@ public class RegisterController implements StateController {
     /**
      * Register method registers a visitor.
      */
-    @FXML private void register() {
+    @FXML
+    private void register() {
         clearError();
         boolean completed = true;
 
