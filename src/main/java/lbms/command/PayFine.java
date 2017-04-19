@@ -26,6 +26,7 @@ public class PayFine implements Undoable {
             this.amount = Double.parseDouble(arguments[1]);
             this.visitorID = LBMS.getSessions().get(this.clientID).getV().getVisitorID();
         } else if (arguments.length == 3) {
+            this.clientID = Long.parseLong(arguments[0]);
             this.amount = Double.parseDouble(arguments[1]);
             this.visitorID = Long.parseLong(arguments[2]);
         }
