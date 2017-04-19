@@ -92,13 +92,9 @@ public class MainVisitorController implements StateController {
      */
     private void beginVisit() {
         String request = String.format("%s,arrive;", this.manager.getClientId());
-        System.out.println(request); //TODO remove
-
         String response = new ProxyCommandController().processRequest(request);
-        System.out.println(response); //TODO remove
 
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
         switch (responseObject.get("message")) {
             case "invalid-id":
                 this.failedLabel.setText("Visitor does not exist.");
@@ -121,13 +117,9 @@ public class MainVisitorController implements StateController {
      */
     private void endVisit() {
         String request = String.format("%s,depart;", this.manager.getClientId());
-        System.out.println(request); //TODO remove
-
         String response = new ProxyCommandController().processRequest(request);
-        System.out.println(response); //TODO remove
 
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
         switch (responseObject.get("message")) {
             case "invalid-id":
                 this.failedLabel.setText("Visitor is currently not in the library.");

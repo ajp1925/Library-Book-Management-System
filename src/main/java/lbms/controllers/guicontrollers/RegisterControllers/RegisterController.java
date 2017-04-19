@@ -92,13 +92,10 @@ public class RegisterController implements StateController {
                 try {
                     String request = String.format("%s,register,%s,%s,%s,%s;",
                             this.manager.getClientId(), firstName, lastName, address, phoneNumber);
-                    System.out.println(request);        // TODO remove
 
                     String response = new ProxyCommandController().processRequest(request);
-                    System.out.println(response);       // TODO remove
 
                     HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
                     if (responseObject.get("message").equals("duplicate")) {
                         valid = false;
                         this.failedLabel.setText("This visitor already exists.\nPlease try again "

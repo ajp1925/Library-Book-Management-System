@@ -37,7 +37,6 @@ public class ClientController {
     @FXML
     protected void initialize() {
         createMenuBar();
-        //createWindowButtons(); // TODO uncomment this?
         this.clockText.setFont(Font.font(null,FontWeight.BOLD, 13));
 
         Runnable task = () -> {

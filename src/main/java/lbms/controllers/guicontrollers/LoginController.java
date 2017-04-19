@@ -71,13 +71,11 @@ public class LoginController implements StateController {
 
         if (completed) {
             try {
-                String response = new ProxyCommandController().processRequest(
-                        String.format("%s,login,%s,%s;",
-                                this.manager.getClientId(), this.usernameField.getText(), this.passwordField.getText()));
-                System.out.println(response);       //TODO remove
+                String request = String.format("%s,login,%s,%s;",
+                        this.manager.getClientId(), this.usernameField.getText(), this.passwordField.getText());
+                String response = new ProxyCommandController().processRequest(request);
 
                 HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
                 if (responseObject.get("message").equals("success")) {
                     this.manager.setVisitor(ProxyCommandController.getVisitorID(this.manager.getClientId()));
                     this.manager.setUser(this.usernameField.getText());

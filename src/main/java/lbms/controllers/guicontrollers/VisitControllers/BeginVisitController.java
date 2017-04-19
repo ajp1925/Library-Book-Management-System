@@ -63,11 +63,9 @@ public class BeginVisitController implements StateController {
              this.failedLabel.setText("Please enter a visitor ID.");
         } else {
             String request = String.format("%s,arrive,%s;", this.manager.getClientId(), visitorId);
-            System.out.println(request); //TODO remove
             String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response); //TODO remove
-            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
+            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
             switch (responseObject.get("message")) {
                 case "invalid-id":
                     this.failedLabel.setText("Visitor does not exist.");

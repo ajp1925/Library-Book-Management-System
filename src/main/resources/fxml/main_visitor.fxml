@@ -63,7 +63,6 @@
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" prefWidth="125.0" text="View Profile" />
                            </children>
                         </HBox>
                         <Text fx:id="failedLabel" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" />

@@ -63,13 +63,9 @@ public class EndVisitController implements StateController {
             this.failedLabel.setText("Please enter a visitor ID.");
         } else {
             String request = String.format("%s,depart,%s;", this.manager.getClientId(), visitorId);
-            System.out.println(request); //TODO remove
-
             String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response); //TODO remove
 
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
             if (responseObject.get("message").equals("invalid-id")) {
                 failedLabel.setText("Visitor is currently not in the library.");
             } else {

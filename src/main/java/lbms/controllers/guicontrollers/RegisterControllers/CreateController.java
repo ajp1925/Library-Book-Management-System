@@ -116,13 +116,10 @@ public class CreateController implements StateController {
             try {
                 String request = String.format("%s,create,%s,%s,%s,%s;",
                         this.manager.getClientId(), username, password, role, visitor);
-                System.out.println(request);        // TODO remove
 
                 String response = new ProxyCommandController().processRequest(request);
-                System.out.println(response);       // TODO remove
 
                 HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
                 switch (responseObject.get("message")) {
                     case "duplicate-username":
                         this.failedLabel.setText("Username is taken. Please try a new username.");

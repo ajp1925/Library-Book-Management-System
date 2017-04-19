@@ -51,9 +51,7 @@ public class PayFineController {
             failedLabel.setText("Please enter and amount to pay.");
         } else {
             String request = manager.getClientId() + ",pay," + payment + "," + visitor + ";";
-            System.out.println(request);    // todo remove
             String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response);   // todo remove
 
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
             if (responseObject.get("message").equals("success")) {

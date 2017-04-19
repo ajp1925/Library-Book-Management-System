@@ -104,9 +104,7 @@ public class StoreSearchController implements StateController {
                 break;
         }
 
-        System.out.println(request); //TODO
         String response = new ProxyCommandController().processRequest(request);
-        System.out.println(response);  //TODO
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
         display(responseObject);
     }
@@ -141,12 +139,9 @@ public class StoreSearchController implements StateController {
 
     private void service(RadioButton button) {
         String request = manager.getClientId() + ",service," + button.getUserData() + ";";
-        System.out.println(request);  //todo remove
         String response = new ProxyCommandController().processRequest(request);
-        System.out.println(response); //todo remove
 
         HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
         if (!responseObject.get("message").equals("success")) {
             System.out.println("error occurred");
         }

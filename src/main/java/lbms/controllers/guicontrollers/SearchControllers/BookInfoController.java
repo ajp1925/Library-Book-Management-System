@@ -102,11 +102,10 @@ public class BookInfoController {
         } else {
             String request = String.format("%s,borrow,{%s},%s;", this.manager.getClientId(), this.book.get("id"),
                     this.input.getText());
-            System.out.println(request); // TODO remove
-            String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response);   // TODO remove
-            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
+            String response = new ProxyCommandController().processRequest(request);
+
+            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
             if (responseObject.get("message").equals("success")) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
@@ -142,11 +141,10 @@ public class BookInfoController {
         } else {
             String request = String.format("%s,buy,%s,%s;", this.manager.getClientId(), this.input.getText(),
                     this.book.get("id"));
-            System.out.println(request); //TODO remove
-            String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response); // TODO remove
-            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
+            String response = new ProxyCommandController().processRequest(request);
+
+            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
             if (responseObject.get("message").equals("success")) {
                 try {
                     FXMLLoader loader = new FXMLLoader();

@@ -108,11 +108,9 @@ public class SystemController implements StateController {
             }
 
             String request = String.format("%s,advance,%s,%s;", this.manager.getClientId(), days, hours);
-            System.out.println(request); //TODO remove
             String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response);   //TODO remove
-            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
+            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
             switch (responseObject.get("message")) {
                 case "invalid-number-of-hours":
                     this.label.setText("Can not advance " + hours + " hours. Please try again.");
@@ -147,11 +145,10 @@ public class SystemController implements StateController {
         } else {
             request = String.format("%s,report,%s;", this.manager.getClientId(), days);
         }
-        System.out.println(request); //TODO remove
-        String response = new ProxyCommandController().processRequest(request);
-        System.out.println(response);   //TODO remove
-        HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
+        String response = new ProxyCommandController().processRequest(request);
+
+        HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
         if (responseObject.get("message").equals("success")) {
             this.reportOutput.setText("Date: " + responseObject.get("date") + responseObject.get("report"));
         } else {

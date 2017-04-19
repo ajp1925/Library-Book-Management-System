@@ -71,11 +71,9 @@ public class ReturnBookController implements StateController {
             this.failedLabel.setText("Please enter a visitor ID.");
         } else {
             String request = this.manager.getClientId() + ",borrowed," + this.visitor + ";";
-            System.out.println(request);    // todo remove
             String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response); // todo remove
-            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
 
+            HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
             if (responseObject.get("message").equals("success")) {
                 if (Integer.parseInt(responseObject.get("numberOfBooks")) == 0) {
                     this.failedLabel.setText("This visitor has not borrowed any books.");
@@ -118,12 +116,9 @@ public class ReturnBookController implements StateController {
             }
             request = request.substring(0, request.lastIndexOf(",")) + "};";
 
-            System.out.println(request); // todo remove
             String response = new ProxyCommandController().processRequest(request);
-            System.out.println(response); //todo remove
 
             HashMap<String, String> responseObject = ParseResponseUtility.parseResponse(response);
-
             if (responseObject.get("message").equals("success")) {
                 this.manager.display("return_success", "Book Returned");
             } else if (responseObject.get("message").equals("overdue")){
