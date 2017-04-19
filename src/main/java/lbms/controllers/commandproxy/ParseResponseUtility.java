@@ -255,16 +255,16 @@ public final class ParseResponseUtility {
                     bookInfo.put("quantity", bookPieces[0]);
                     bookInfo.put("id", bookPieces[1]);
                     bookInfo.put("isbn", bookPieces[2]);
-                    bookInfo.put("title", bookPieces[3]);
+                    bookInfo.put("title", bookPieces[3].replaceAll("\"", ""));
                     String authorString = "";
-                    for(int index = 4; index < bookPieces.length-2; index++) { // library search else length-3
+                    for(int index = 4; index < bookPieces.length-3; index++) {
                         authorString += bookPieces[index].replaceAll("[{}]", "");
                         if(index != bookPieces.length-3) {
                             authorString += ",";
                         }
                     }
-                    bookInfo.put("authors", authorString);
-                    bookInfo.put("publisher", "Unknown"); // library search not returning publisher
+                    bookInfo.put("authors", authorString.replaceAll(",$", ""));
+                    bookInfo.put("publisher", bookPieces[bookPieces.length-3].replaceAll("\"", ""));
                     bookInfo.put("publishDate", publishDate);
                     bookInfo.put("pageCount", bookPieces[bookPieces.length-1]);
                     books.add(bookInfo);
