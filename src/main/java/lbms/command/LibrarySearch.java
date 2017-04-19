@@ -76,13 +76,13 @@ public class LibrarySearch implements Command {
         List<Book> matches;
         List<Book> antiMatches = new ArrayList<>();
         if (this.title != null) {
-            matches = BookSearch.BY_TITLE.findAll(this.title);
+            matches = BookSearch.BY_TITLE.inLibrary().findAll(this.title);
         } else if (this.authors != null) {
-            matches = BookSearch.BY_AUTHOR.findAll(this.authors.get(0));
+            matches = BookSearch.BY_AUTHOR.inLibrary().findAll(this.authors.get(0));
         } else if (this.isbn != null) {
-            matches = BookSearch.BY_ISBN.findAll(isbn.toString());
+            matches = BookSearch.BY_ISBN.inLibrary().findAll(isbn.toString());
         } else if (this.publisher != null) {
-            matches = BookSearch.BY_PUBLISHER.findAll(this.publisher);
+            matches = BookSearch.BY_PUBLISHER.inLibrary().findAll(this.publisher);
         } else {
             matches = new ArrayList<>();
         }
