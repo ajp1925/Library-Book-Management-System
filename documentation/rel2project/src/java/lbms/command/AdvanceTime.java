@@ -3,7 +3,7 @@ package lbms.command;
 import lbms.models.SystemDateTime;
 
 /**
- * AdvanceTime class that calls the API to advance system time.
+ * AdvanceTime class that calls the api to advance system time.
  * @author Team B
  */
 public class AdvanceTime implements Command {

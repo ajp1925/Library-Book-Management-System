@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.VisitControllers;
+package lbms.controllers.guicontrollers.visitcontrollers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.controllers.guicontrollers.StateController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 import java.util.HashMap;
 

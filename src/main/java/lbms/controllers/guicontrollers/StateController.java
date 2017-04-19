@@ -1,9 +1,9 @@
 package lbms.controllers.guicontrollers;
 
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 /**
- * StateController interface for the GUI.
+ * StateController interface for the gui.
  * @author Team B
  */
 public interface StateController {

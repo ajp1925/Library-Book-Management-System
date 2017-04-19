@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.ReturnControllers;
+package lbms.controllers.guicontrollers.returncontrollers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.controllers.guicontrollers.StateController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,7 +101,7 @@ public class ReturnBookController implements StateController {
     }
 
     /**
-     * Returns books through the GUI.
+     * Returns books through the gui.
      */
     @FXML
     void returnBooks() {

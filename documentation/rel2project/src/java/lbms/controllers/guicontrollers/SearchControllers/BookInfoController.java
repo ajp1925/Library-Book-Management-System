@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.SearchControllers;
+package lbms.controllers.guicontrollers.searchcontrollers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public class BookInfoController {
 
     /**
      * Loads the book information for this page.
-     * @param stage: the stage for the GUI
+     * @param stage: the stage for the gui
      * @param manager: the session manager
      * @param book: the hash map of books
      * @param state: the state boolean

@@ -156,7 +156,7 @@ public class Book implements Serializable, Comparable<Book> {
     }
 
     /**
-     * String formatting used in API method to purchase books.
+     * String formatting used in api method to purchase books.
      * @return a string representation of the book in a specific format
      */
     @Override

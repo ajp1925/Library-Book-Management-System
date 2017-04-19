@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Searches the Google Books API
+ * Searches the Google Books api
  * @author Team B
  */
 public final class GoogleAPISearch {
@@ -29,7 +29,7 @@ public final class GoogleAPISearch {
     private static final String maxResultsSuffix = "&maxResults=20";
 
     /**
-     * Searches the Google Books API by book title.
+     * Searches the Google Books api by book title.
      * @param title string representing the title of the book
      * @return a list of book objects matching the search parameter
      */
@@ -39,7 +39,7 @@ public final class GoogleAPISearch {
     }
 
     /**
-     * Searches the Google Books API by author(s).
+     * Searches the Google Books api by author(s).
      * @param authors ArrayList of authors
      * @return a list of book objects matching the search parameter
      */
@@ -54,7 +54,7 @@ public final class GoogleAPISearch {
     }
 
     /**
-     * Searches the Google Books API by ISBN.
+     * Searches the Google Books api by ISBN.
      * @param isbn string representing the ISBN of the book.
      * @return a list of book objects matching the search parameter
      */
@@ -63,7 +63,7 @@ public final class GoogleAPISearch {
     }
 
     /**
-     * Searches the Google Books API by publisher.
+     * Searches the Google Books api by publisher.
      * @param publisher string representing the publisher of the book
      * @return a list of book objects matching the search parameter
      */
@@ -100,7 +100,7 @@ public final class GoogleAPISearch {
             responseString = response.toString();
 
         } catch (IOException e) {
-            System.out.println("Improper Google API Query");
+            System.out.println("Improper Google api Query");
         }
 
         return responseString;

@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.VisitControllers;
+package lbms.controllers.guicontrollers.visitcontrollers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
@@ -6,7 +6,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lbms.controllers.guicontrollers.StateController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 import java.util.HashMap;
 

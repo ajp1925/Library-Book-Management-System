@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.RegisterControllers;
+package lbms.controllers.guicontrollers.registercontrollers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
@@ -6,10 +6,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lbms.controllers.guicontrollers.StateController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 /**
- * AccountCreatedController for the GUI part of the Library Book Management System.
+ * AccountCreatedController for the gui part of the Library Book Management System.
  * @author Team B
  */
 public class AccountCreatedController implements StateController {

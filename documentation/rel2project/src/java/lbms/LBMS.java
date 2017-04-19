@@ -13,9 +13,9 @@ import java.util.*;
 
 /**
  * Main class to run the Library Book Management System.
- * 2 different "modes": API, GUI
- * API: used for directly sending requests and receiving responses.
- * GUI: graphical-user-interface that is based on the API functionality
+ * 2 different "modes": api, gui
+ * api: used for directly sending requests and receiving responses.
+ * gui: graphical-user-interface that is based on the api functionality
  *
  * Rochester Institute of Technology
  * SWEN-262 Section: 3, Team B
@@ -63,7 +63,7 @@ public class LBMS {
             new LBMS(StartType.GUI);
         } catch (IllegalArgumentException e) {
             System.out.println("Usage: java -jar LBMS.jar <type>");
-            System.out.println("Valid types are: GUI or API");
+            System.out.println("Valid types are: gui or api");
             System.exit(1);
         } finally {
             System.gc();

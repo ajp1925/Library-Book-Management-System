@@ -1,9 +1,9 @@
-package lbms.controllers.guicontrollers.ReturnControllers;
+package lbms.controllers.guicontrollers.returncontrollers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.text.Text;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 import java.util.HashMap;
 

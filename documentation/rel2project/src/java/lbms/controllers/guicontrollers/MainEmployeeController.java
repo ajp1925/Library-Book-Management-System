@@ -7,12 +7,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ProxyCommandController;
-import lbms.controllers.guicontrollers.SearchControllers.LibrarySearchController;
-import lbms.controllers.guicontrollers.SearchControllers.StoreSearchController;
-import lbms.views.GUI.SessionManager;
+import lbms.controllers.guicontrollers.searchcontrollers.LibrarySearchController;
+import lbms.controllers.guicontrollers.searchcontrollers.StoreSearchController;
+import lbms.views.gui.SessionManager;
 
 /**
- * MainEmployeeController class for the GUI of the Library Book Management System.
+ * MainEmployeeController class for the gui of the Library Book Management System.
  * @author Team B
  */
 public class MainEmployeeController implements StateController {
@@ -72,7 +72,7 @@ public class MainEmployeeController implements StateController {
     }
 
     /**
-     * Used for setting up the search bars in the GUI.
+     * Used for setting up the search bars in the gui.
      */
     @FXML
     public void search() {

@@ -1,4 +1,4 @@
-package lbms.views.GUI;
+package lbms.views.gui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
@@ -72,7 +72,7 @@ public class SessionManager {
     }
 
     /**
-     * Loads a file for the GUI formatting.
+     * Loads a file for the gui formatting.
      * @param file: the filename
      */
     private void load(String file) {

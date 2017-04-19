@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.SearchControllers;
+package lbms.controllers.guicontrollers.searchcontrollers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 import java.util.HashMap;
 
@@ -42,7 +42,7 @@ public class SearchResultController {
     }
 
     /**
-     * Populates the GUI parts with the data.
+     * Populates the gui parts with the data.
      */
     private void populate() {
          this.isbn.setText(this.book.get("isbn"));

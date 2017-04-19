@@ -1,8 +1,8 @@
-package lbms.controllers.guicontrollers.ReturnControllers;
+package lbms.controllers.guicontrollers.returncontrollers;
 
 import javafx.fxml.FXML;
 import lbms.controllers.guicontrollers.StateController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 /**
  * BookReturnedController class for the Library Book Management System.

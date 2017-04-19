@@ -11,8 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
-import lbms.controllers.guicontrollers.SearchControllers.LibrarySearchController;
-import lbms.views.GUI.SessionManager;
+import lbms.controllers.guicontrollers.searchcontrollers.LibrarySearchController;
+import lbms.views.gui.SessionManager;
 
 import java.util.HashMap;
 
@@ -75,7 +75,7 @@ public class MainVisitorController implements StateController {
     }
 
     /**
-     * Method used for setting up the search bars in the GUI.
+     * Method used for setting up the search bars in the gui.
      */
     public void search() {
         String author = this.searchAuthorField.getText();

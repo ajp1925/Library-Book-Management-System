@@ -10,12 +10,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 import java.util.HashMap;
 
 /**
- * StateController class used for the state of the GUI.
+ * StateController class used for the state of the gui.
  * @author Team B
  */
 public class LoginController implements StateController {

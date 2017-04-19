@@ -1,12 +1,12 @@
-package lbms.controllers.guicontrollers.RegisterControllers;
+package lbms.controllers.guicontrollers.registercontrollers;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import lbms.controllers.guicontrollers.StateController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 /**
- * VisitorRegisteredController class for the GUI of the Library Book Management System.
+ * VisitorRegisteredController class for the gui of the Library Book Management System.
  * @author Team B
  */
 public class VisitorRegisteredController implements StateController {

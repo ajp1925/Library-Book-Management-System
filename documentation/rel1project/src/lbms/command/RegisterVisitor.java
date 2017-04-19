@@ -6,7 +6,7 @@ import lbms.models.Visitor;
 import lbms.search.UserSearch;
 
 /**
- * RegisterVisitor class that calls the API to register a visitor in the system.
+ * RegisterVisitor class that calls the api to register a visitor in the system.
  * @author Team B
  */
 public class RegisterVisitor implements Command {

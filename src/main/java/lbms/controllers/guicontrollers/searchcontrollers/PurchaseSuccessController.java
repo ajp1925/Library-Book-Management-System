@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.SearchControllers;
+package lbms.controllers.guicontrollers.searchcontrollers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;

@@ -3,7 +3,7 @@ package lbms.command;
 import lbms.models.SystemDateTime;
 
 /**
- * GetDateTime class that calls the API to get the system time.
+ * GetDateTime class that calls the api to get the system time.
  * @author Team B
  */
 public class GetDateTime implements Command {

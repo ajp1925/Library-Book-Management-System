@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.ReturnControllers;
+package lbms.controllers.guicontrollers.returncontrollers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lbms.controllers.commandproxy.ParseResponseUtility;
 import lbms.controllers.commandproxy.ProxyCommandController;
-import lbms.views.GUI.SessionManager;
+import lbms.views.gui.SessionManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;

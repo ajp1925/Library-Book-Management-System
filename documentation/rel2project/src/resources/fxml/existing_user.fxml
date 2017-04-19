@@ -3,7 +3,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<GridPane alignment="CENTER" prefHeight="183.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.RegisterControllers.ExistingUserController">
+<GridPane alignment="CENTER" prefHeight="183.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lbms.controllers.guicontrollers.registercontrollers.ExistingUserController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Visitor ID" GridPane.columnIndex="1" />
       <TextField fx:id="visitorIdField" GridPane.columnIndex="2" />

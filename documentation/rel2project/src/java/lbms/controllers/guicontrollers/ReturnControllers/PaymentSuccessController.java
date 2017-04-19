@@ -1,4 +1,4 @@
-package lbms.controllers.guicontrollers.ReturnControllers;
+package lbms.controllers.guicontrollers.returncontrollers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;

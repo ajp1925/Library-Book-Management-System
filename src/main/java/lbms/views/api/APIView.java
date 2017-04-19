@@ -1,4 +1,4 @@
-package lbms.views.API;
+package lbms.views.api;
 
 import lbms.controllers.commandproxy.ProxyCommandController;
 import lbms.views.View;
@@ -6,7 +6,7 @@ import lbms.views.View;
 import java.util.Scanner;
 
 /**
- * APIView class used for the API mode of the LBMS.
+ * APIView class used for the api mode of the LBMS.
  * @author Team B
  */
 public class APIView implements View {
@@ -30,7 +30,7 @@ public class APIView implements View {
     }
 
     /**
-     * Runs the API mode of the LBMS.
+     * Runs the api mode of the LBMS.
      */
     public void run() {
         Scanner s = new Scanner(System.in);

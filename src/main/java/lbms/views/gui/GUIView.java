@@ -1,4 +1,4 @@
-package lbms.views.GUI;
+package lbms.views.gui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -21,7 +21,7 @@ public class GUIView extends Application implements View {
     public GUIView() {}
 
     /**
-     * Launches the GUI window.
+     * Launches the gui window.
      */
     @Override
     public void run() {
