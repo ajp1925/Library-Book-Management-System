@@ -61,7 +61,7 @@ public enum BookSearch implements Search<Book> {
 
     /**
      * Creates an instance of this enum.
-     * @return a BookSerach enum object for searching books already in the libary.
+     * @return a BookSearch enum object for searching books already in the libary.
      */
     public BookSearch inLibrary() {
         toSearch = LBMS.getBooks().values();
